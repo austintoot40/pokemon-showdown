@@ -176,6 +176,9 @@ export class Battle {
 
 	teamGenerator: ReturnType<typeof Teams.getGenerator> | null;
 
+	/** Difficulty tier for the nuzlocke AI ('random' | 'game-accurate' | 'smart' | 'competitive'). */
+	nuzlockeDifficulty: string = 'random';
+
 	readonly hints: Set<string>;
 
 	readonly NOT_FAIL: '';
@@ -1388,8 +1391,14 @@ export class Battle {
 		}
 		this.sentRequests = false;
 
-		if (this.sides.every(side => side.isChoiceDone())) {
+		if (!this.sides.some(s => s.isAI) && this.sides.every(side => side.isChoiceDone())) {
 			throw new Error(`Choices are done immediately after a request`);
+		}
+		for (const side of this.sides) {
+			if (side?.isAI) {
+				const decision = this.nuzlockeAI(side.activeRequest!);
+				if (decision) this.choose(side.id, decision);
+			}
 		}
 	}
 
@@ -3246,6 +3255,11 @@ export class Battle {
 		if (options.team && typeof options.team !== 'string') {
 			options.team = Teams.pack(options.team);
 		}
+		if (options.isAI && side.isAI !== options.isAI) {
+			side.isAI = options.isAI;
+			if (options.nuzlockeDifficulty) this.nuzlockeDifficulty = options.nuzlockeDifficulty;
+			didSomething = true;
+		}
 		if (!didSomething) return;
 		this.inputLog.push(`>player ${slot} ` + JSON.stringify(options));
 		this.add('player', side.id, side.name, side.avatar, options.rating || '');
@@ -3338,6 +3352,231 @@ export class Battle {
 				delete state[k];
 			}
 		}
+	}
+
+	nuzlockeAI(request: ChoiceRequest): string | false {
+		if (request.wait) return false;
+		const difficulty = this.nuzlockeDifficulty;
+
+		if (request.forceSwitch) {
+			return this.aiForceSwitch(request, difficulty);
+		}
+		// @ts-expect-error jank request parser
+		if (request.active?.[0]) {
+			if (difficulty === 'smart' || difficulty === 'competitive') {
+				const voluntarySwitch = this.aiConsiderVoluntarySwitch(request, difficulty);
+				if (voluntarySwitch) return voluntarySwitch;
+			}
+			return this.aiChooseMove(request, difficulty);
+		}
+		return 'default';
+	}
+
+	aiForceSwitch(request: ChoiceRequest, difficulty: string): string {
+		if (difficulty === 'random') {
+			return `switch ${this.random(2, request.side.pokemon.length + 1)}`;
+		}
+		// Check B: score bench Pokemon by type matchup, pick best
+		const aiSide = this.sides[1];
+		const opponent = this.sides[0].active[0];
+		if (!opponent) {
+			return `switch ${this.random(2, request.side.pokemon.length + 1)}`;
+		}
+		let bestSlot = -1;
+		let bestScore = -Infinity;
+		for (let i = 1; i < aiSide.pokemon.length; i++) {
+			const p = aiSide.pokemon[i];
+			if (!p || p.fainted || p.hp <= 0) continue;
+			const score = this.aiScoreSwitchTarget(p, opponent);
+			if (score > bestScore) {
+				bestScore = score;
+				bestSlot = i + 1;
+			}
+		}
+		if (bestSlot === -1) {
+			// Fallback: first available bench slot
+			for (let i = 1; i < aiSide.pokemon.length; i++) {
+				const p = aiSide.pokemon[i];
+				if (p && !p.fainted && p.hp > 0) return `switch ${i + 1}`;
+			}
+			return `switch 2`;
+		}
+		return `switch ${bestSlot}`;
+	}
+
+	aiChooseMove(request: ChoiceRequest, difficulty: string): string {
+		if (difficulty === 'random') {
+			// @ts-expect-error jank request parser
+			return `move ${this.random(1, request.active[0].moves.length + 1)}`;
+		}
+		const aiActive = this.sides[1].active[0];
+		const opponent = this.sides[0].active[0];
+		if (!aiActive || !opponent) {
+			// @ts-expect-error jank request parser
+			return `move ${this.random(1, request.active[0].moves.length + 1)}`;
+		}
+		// @ts-expect-error jank request parser
+		const moves = request.active[0].moves as Array<{id: string, disabled: boolean | string}>;
+		let bestSlot = 1;
+		let bestScore = -Infinity;
+		for (let i = 0; i < moves.length; i++) {
+			if (moves[i].disabled) continue;
+			const score = this.aiScoreMove(moves[i].id, aiActive, opponent, difficulty);
+			if (score > bestScore) {
+				bestScore = score;
+				bestSlot = i + 1;
+			}
+		}
+		return `move ${bestSlot}`;
+	}
+
+	aiConsiderVoluntarySwitch(request: ChoiceRequest, difficulty: string): string | null {
+		// @ts-expect-error jank request parser
+		if (request.active?.[0]?.trapped) return null;
+		const aiActive = this.sides[1].active[0];
+		const opponent = this.sides[0].active[0];
+		if (!aiActive || !opponent) return null;
+
+		const aiBench = this.sides[1].pokemon.slice(1).filter(p => p && !p.fainted && p.hp > 0);
+		if (aiBench.length === 0) return null;
+
+		let shouldSwitch = false;
+
+		// Check C: all offensive moves are immune or fully resisted by opponent
+		const usableMoves = aiActive.moveSlots.filter(slot => {
+			if (slot.disabled) return false;
+			const move = this.dex.moves.get(slot.id);
+			if (move.basePower === 0) return true; // status moves count as usable
+			if (!this.dex.getImmunity(move.type, opponent)) return false; // immune
+			// Allow ≥0.5× (eff >= -1); block 0.25× (eff === -2)
+			return this.dex.getEffectiveness(move.type, opponent) >= -1;
+		});
+		if (usableMoves.length === 0) shouldSwitch = true;
+
+		// Check D: opponent has a 4× move vs current AI Pokemon, and AI is damaged
+		if (!shouldSwitch) {
+			const hardCountered = opponent.moveSlots.some(slot => {
+				const move = this.dex.moves.get(slot.id);
+				return move.basePower > 0
+					&& this.dex.getImmunity(move.type, aiActive)
+					&& this.dex.getEffectiveness(move.type, aiActive) >= 2; // 4×
+			});
+			if (hardCountered && aiActive.hp / aiActive.maxhp < 0.6) shouldSwitch = true;
+		}
+
+		// Check E (competitive only): proactively seek a better matchup
+		if (!shouldSwitch && difficulty === 'competitive') {
+			const SWITCH_THRESHOLD = 1.5;
+			const currentScore = this.aiScoreSwitchTarget(aiActive, opponent);
+			const bestBenchScore = Math.max(...aiBench.map(p => this.aiScoreSwitchTarget(p, opponent)));
+			if (bestBenchScore > currentScore + SWITCH_THRESHOLD) shouldSwitch = true;
+		}
+
+		if (!shouldSwitch) return null;
+
+		// Check F (competitive only): filter out switch targets that are still bad matchups
+		let candidates = difficulty === 'competitive'
+			? aiBench.filter(p => this.aiScoreSwitchTarget(p, opponent) > 0)
+			: aiBench;
+		if (candidates.length === 0) candidates = aiBench; // don't get stuck with no options
+
+		let bestSlot = -1;
+		let bestScore = -Infinity;
+		for (const p of candidates) {
+			const score = this.aiScoreSwitchTarget(p, opponent);
+			if (score > bestScore) {
+				bestScore = score;
+				const idx = this.sides[1].pokemon.indexOf(p);
+				if (idx > 0) bestSlot = idx + 1;
+			}
+		}
+		return bestSlot !== -1 ? `switch ${bestSlot}` : null;
+	}
+
+	aiScoreMove(moveId: string, attacker: Pokemon, defender: Pokemon, difficulty: string): number {
+		const move = this.dex.moves.get(moveId);
+
+		if (move.basePower === 0) {
+			// Status / setup move
+			if (difficulty === 'smart' || difficulty === 'competitive') {
+				// Check 4: don't apply status to an already-statused opponent
+				if (move.status && defender.status) return 0;
+			}
+			// Check 5 (competitive): upweight setup moves that boost offensive stats
+			if (difficulty === 'competitive' && move.boosts) {
+				const offBoost = ((move.boosts as AnyObject).atk || 0) + ((move.boosts as AnyObject).spa || 0);
+				if (offBoost > 0 && attacker.hp / attacker.maxhp > 0.5) {
+					// Valuable if we have a decent matchup; score equivalent to a solid neutral hit
+					const matchupScore = this.aiScoreSwitchTarget(attacker, defender);
+					if (matchupScore >= 0) return 60;
+				}
+			}
+			return 30; // baseline: slightly worse than a neutral move
+		}
+
+		// Check 1: immune — never use
+		if (!this.dex.getImmunity(move.type, defender)) return 0;
+
+		// Check 3: type effectiveness multiplier (0.25 | 0.5 | 1 | 2 | 4)
+		const effExp = this.dex.getEffectiveness(move.type, defender);
+		const effectiveness = Math.pow(2, effExp);
+
+		// Check 2: STAB bonus
+		const stab = attacker.types.includes(move.type) ? 1.5 : 1.0;
+
+		const isPhysical = move.category === 'Physical';
+		const atkStat = this.aiGetBoostedStat(attacker, isPhysical ? 'atk' : 'spa');
+		const defStat = this.aiGetBoostedStat(defender, isPhysical ? 'def' : 'spd');
+
+		let score = move.basePower * effectiveness * stab * (atkStat / defStat);
+
+		if (difficulty === 'competitive') {
+			// Check 6: prefer priority moves when nearly dead
+			if (move.priority > 0 && attacker.hp / attacker.maxhp < 0.30) {
+				score *= 1.5;
+			}
+			// Check 7: strongly prefer moves that can KO this turn
+			if (score >= defender.hp) {
+				score *= 3;
+			}
+		}
+
+		return score;
+	}
+
+	aiScoreSwitchTarget(benched: Pokemon, opponent: Pokemon): number {
+		// Offensive: best type effectiveness benched Pokemon can achieve vs opponent
+		let offensiveScore = 0;
+		for (const slot of benched.moveSlots) {
+			const move = this.dex.moves.get(slot.id);
+			if (move.basePower > 0 && this.dex.getImmunity(move.type, opponent)) {
+				const eff = Math.pow(2, this.dex.getEffectiveness(move.type, opponent));
+				if (eff > offensiveScore) offensiveScore = eff;
+			}
+		}
+
+		// Defensive: worst threat opponent's moves pose to benched Pokemon
+		let defensivePenalty = 0;
+		for (const slot of opponent.moveSlots) {
+			const move = this.dex.moves.get(slot.id);
+			if (move.basePower > 0 && this.dex.getImmunity(move.type, benched)) {
+				const eff = Math.pow(2, this.dex.getEffectiveness(move.type, benched));
+				if (eff > defensivePenalty) defensivePenalty = eff;
+			}
+		}
+
+		// HP bonus: prefer healthy Pokemon
+		const hpFraction = benched.hp / benched.maxhp;
+
+		return offensiveScore - defensivePenalty + hpFraction;
+	}
+
+	aiGetBoostedStat(pokemon: Pokemon, stat: 'atk' | 'def' | 'spa' | 'spd'): number {
+		const base = pokemon.storedStats[stat];
+		const boost = pokemon.boosts[stat];
+		// Gen 4+ formula (engine caps boosts at ±6)
+		const mult = boost >= 0 ? (2 + boost) / 2 : 2 / (2 - boost);
+		return Math.floor(base * mult);
 	}
 
 	destroy() {

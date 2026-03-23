@@ -159,6 +159,7 @@ export class Side {
 
 	name: string;
 	avatar: string;
+	isAI: boolean | false;
 	foe: Side = null!; // set in battle.start()
 	/** Only exists in multi battle, for the allied side */
 	allySide: Side | null = null; // set in battle.start()
@@ -207,6 +208,7 @@ export class Side {
 
 		this.name = name;
 		this.avatar = '';
+		this.isAI = false;
 
 		this.team = team;
 		this.pokemon = [];
@@ -500,6 +502,9 @@ export class Side {
 		this.battle.send('sideupdate', `${this.id}\n|error|${type} ${message}`);
 		if (updated) this.emitRequest(this.activeRequest!, true);
 		if (this.battle.strictChoices) throw new Error(`${type} ${message}`);
+		if (this.isAI) {
+			this.battle.choose(this.id, 'default');
+		}
 		return false;
 	}
 
