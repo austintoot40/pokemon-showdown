@@ -59,7 +59,6 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 			const game = new NuzlockeGame(user.id, scenario);
 			game.settings.ai = difficulty as NuzlockeGame['settings']['ai'];
 			nuzlockeGames.set(user.id, game);
-			saveNuzlockeData();
 			game.goToPage('starter');
 		},
 
@@ -296,6 +295,11 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 				],
 			});
 			this.sendReply('Test battle created!');
+		},
+
+		refresh(target, room, user) {
+			const game = nuzlockeGames.get(user.id) ?? null;
+			pushNuzlockeState(user.id, game);
 		},
 
 		'': 'help',

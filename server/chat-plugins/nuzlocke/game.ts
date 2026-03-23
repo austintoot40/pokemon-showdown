@@ -37,7 +37,7 @@ export class NuzlockeGame {
 	constructor(userID: ID, scenario: Scenario) {
 		this.user = userID;
 		this.scenario = scenario;
-		this.curRoom = 'intro';
+		this.curRoom = 'starter';
 		this.inBattle = false;
 		this.battleRoomId = null;
 		this.nextScreen = null;
