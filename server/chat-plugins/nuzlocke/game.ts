@@ -356,13 +356,12 @@ export function serializeGameState(game: NuzlockeGame | null): NuzlockeStatePayl
 		};
 	}
 
-	// Precompute legal moves for alive party members
+	// Precompute legal moves for all alive box pokemon
 	const legalMoves: Record<string, LegalMove[]> = {};
 	if (game.currentSegment) {
-		for (const uid of game.party) {
-			const p = game.getPokemon(uid);
-			if (p?.alive) {
-				legalMoves[uid] = getLegalMoves(p, game.currentSegment.levelCap, game.scenario.generation, game.tmMoves);
+		for (const p of game.box) {
+			if (p.alive) {
+				legalMoves[p.uid] = getLegalMoves(p, game.currentSegment.levelCap, game.scenario.generation, game.tmMoves);
 			}
 		}
 	}

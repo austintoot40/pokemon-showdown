@@ -143,7 +143,7 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 			const game = nuzlockeGames.get(user.id);
 			if (!game) return this.errorReply('No active run.');
 			game.addToParty(target.trim());
-			goToTeambuilding(game);
+			game.goToPage('teambuilding');
 		},
 
 		removefromparty(target, room, user) {
