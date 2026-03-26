@@ -87,6 +87,9 @@ export interface NuzlockeScenarioCard {
 	generation: number;
 	description: string;
 	segmentCount: number;
+	battleCount: number;
+	encounterCount: number;
+	starters: string[];
 }
 
 export interface EvoOption {

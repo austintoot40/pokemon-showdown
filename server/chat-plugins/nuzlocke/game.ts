@@ -304,6 +304,7 @@ export interface NuzlockeStatusPayload {
 	} | null;
 	pastRuns: CompletedRun[];
 	selectedAi: string;
+	scenarios: NuzlockeScenarioCard[];
 }
 
 export function pushNuzlockeStatus(userID: ID, game: NuzlockeGame | null) {
@@ -324,6 +325,7 @@ export function pushNuzlockeStatus(userID: ID, game: NuzlockeGame | null) {
 		} : null,
 		pastRuns: completedRuns.filter(r => r.userId === userID),
 		selectedAi: game?.settings.ai ?? savedAi,
+		scenarios: buildScenarioCards(),
 	};
 	user.send(`|updatenuzlocke|${JSON.stringify(payload)}`);
 }
@@ -335,6 +337,9 @@ function buildScenarioCards(): NuzlockeScenarioCard[] {
 		generation: s.generation,
 		description: s.description,
 		segmentCount: s.segments.length,
+		battleCount: s.segments.reduce((n, seg) => n + seg.battles.length, 0),
+		encounterCount: s.segments.reduce((n, seg) => n + seg.encounters.length, 0),
+		starters: s.starters.map(st => st.species),
 	}));
 }
 

@@ -17,7 +17,7 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 		start(target, room, user) {
 			if (nuzlockeGames.has(user.id)) return this.parse('/join view-nuzlocke');
 			const savedAi = aiPreferences.get(user.id) ?? 'random';
-			const [scenarioId = 'firered', difficulty = savedAi] = target.trim().split(/\s+/);
+			const [scenarioId = 'firered', difficulty = savedAi, starterIndexStr] = target.trim().split(/\s+/);
 			const scenario = getScenario(scenarioId.toLowerCase());
 			if (!scenario) return this.errorReply(`Unknown scenario "${scenarioId}". Available: firered`);
 			if (!['random', 'game-accurate', 'smart', 'competitive'].includes(difficulty)) {
@@ -27,7 +27,17 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 			const game = new NuzlockeGame(user.id, scenario);
 			game.settings.ai = difficulty as NuzlockeGame['settings']['ai'];
 			nuzlockeGames.set(user.id, game);
-			game.goToPage('starter');
+			if (starterIndexStr !== undefined) {
+				const starterIndex = parseInt(starterIndexStr);
+				if (isNaN(starterIndex) || starterIndex < 0 || starterIndex >= scenario.starters.length) {
+					return this.errorReply(`Invalid starter index. Choose 0–${scenario.starters.length - 1}.`);
+				}
+				game.pickStarter(starterIndex);
+				game.resolveSegmentStart();
+				game.goToPage('encounters');
+			} else {
+				game.goToPage('starter');
+			}
 		},
 
 		abandon(target, room, user) {
@@ -48,7 +58,7 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 
 		restart(target, room, user) {
 			const savedAi = aiPreferences.get(user.id) ?? 'random';
-			const [scenarioId = 'firered', difficulty = savedAi] = target.trim().split(/\s+/);
+			const [scenarioId = 'firered', difficulty = savedAi, starterIndexStr] = target.trim().split(/\s+/);
 			const scenario = getScenario(scenarioId.toLowerCase());
 			if (!scenario) return this.errorReply(`Unknown scenario "${scenarioId}". Available: firered`);
 			if (!['random', 'game-accurate', 'smart', 'competitive'].includes(difficulty)) {
@@ -59,7 +69,17 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 			const game = new NuzlockeGame(user.id, scenario);
 			game.settings.ai = difficulty as NuzlockeGame['settings']['ai'];
 			nuzlockeGames.set(user.id, game);
-			game.goToPage('starter');
+			if (starterIndexStr !== undefined) {
+				const starterIndex = parseInt(starterIndexStr);
+				if (isNaN(starterIndex) || starterIndex < 0 || starterIndex >= scenario.starters.length) {
+					return this.errorReply(`Invalid starter index. Choose 0–${scenario.starters.length - 1}.`);
+				}
+				game.pickStarter(starterIndex);
+				game.resolveSegmentStart();
+				game.goToPage('encounters');
+			} else {
+				game.goToPage('starter');
+			}
 		},
 
 		setai(target, room, user) {
