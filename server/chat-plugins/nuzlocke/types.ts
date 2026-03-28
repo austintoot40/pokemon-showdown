@@ -15,16 +15,21 @@ export interface Segment {
 	id: string;
 	name: string;
 	levelCap: number;
-	encounters: RouteEncounter[];
+	encounters: Record<string, RouteEncounter[]>;  // keyed by method: walk/surf/oldRod/etc.
+	gifts: RouteEncounter[];
 	items: string[];     // held items + any bag items (bag items are silently ignored)
 	tmMoves: string[];   // move IDs unlocked by TMs/HMs this segment
 	battles: TrainerBattle[];
 }
 
+export interface EncounterEntry {
+	species: string;
+	rate: number;   // encounter weight; values in a route should sum to 100
+}
+
 export interface RouteEncounter {
 	route: string;
-	type?: 'gift';
-	pokemon: string[];
+	pokemon: EncounterEntry[];
 	levels: [number, number];
 }
 
@@ -79,7 +84,7 @@ export interface StatsTable {
 }
 
 export type NuzlockeScreen =
-	'dashboard' | 'starter' | 'encounters' | 'teambuilding' | 'battle' | 'results' | 'summary';
+	'dashboard' | 'encounters' | 'teambuilding' | 'battle' | 'results' | 'summary';
 
 export interface NuzlockeScenarioCard {
 	id: string;

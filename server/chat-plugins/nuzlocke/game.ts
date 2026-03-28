@@ -6,8 +6,21 @@ import { FS } from '../../../lib';
 import { resolveOneEncounter, getAvailablePool, buildStarterPokemon } from './encounters';
 import { getLegalMoves, type LegalMove } from './learnsets';
 import { listScenarios } from './scenarios';
-import type { Scenario, OwnedPokemon, DeadPokemon, NuzlockeScreen, NuzlockeScenarioCard, EvoOption, CompletedRun } from './types';
+import type { Scenario, Segment, RouteEncounter, OwnedPokemon, DeadPokemon, NuzlockeScreen, NuzlockeScenarioCard, EvoOption, CompletedRun } from './types';
 export type { CompletedRun };
+
+const METHOD_ORDER = ['walk', 'surf', 'oldRod', 'goodRod', 'superRod', 'rockSmash'];
+
+/** Returns all wild encounters in a stable flat order (walk → surf → rods). */
+export function flatEncounters(segment: Segment): RouteEncounter[] {
+	const result: RouteEncounter[] = [];
+	for (const method of METHOD_ORDER) {
+		for (const route of segment.encounters[method] ?? []) {
+			result.push(route);
+		}
+	}
+	return result;
+}
 
 export const nuzlockeGames = new Map<ID, NuzlockeGame>();
 export const completedRuns: CompletedRun[] = [];
@@ -31,13 +44,13 @@ export class NuzlockeGame {
 	tmMoves: string[];   // move IDs unlocked by TMs/HMs across segments
 	completedBattles: string[];
 	resolvedRoutes: string[];
-	settings: { ai: 'random' | 'game-accurate' | 'smart' | 'competitive'; mechanics: 'classic' | 'modern' };
+	settings: { ai: 'game-accurate' | 'smart' | 'competitive'; generation: number };
 	partyErrors: Map<string, string>;
 
 	constructor(userID: ID, scenario: Scenario) {
 		this.user = userID;
 		this.scenario = scenario;
-		this.curRoom = 'starter';
+		this.curRoom = 'encounters';
 		this.inBattle = false;
 		this.battleRoomId = null;
 		this.nextScreen = null;
@@ -51,7 +64,7 @@ export class NuzlockeGame {
 		this.tmMoves = [];
 		this.completedBattles = [];
 		this.resolvedRoutes = [];
-		this.settings = { ai: 'random', mechanics: 'classic' };
+		this.settings = { ai: 'game-accurate', generation: 9 };
 		this.partyErrors = new Map();
 	}
 
@@ -69,23 +82,20 @@ export class NuzlockeGame {
 		if (!segment) return;
 		this.items.push(...segment.items);
 		this.tmMoves.push(...(segment.tmMoves ?? []));
-		for (const route of segment.encounters) {
-			if (route.type !== 'gift') continue;
-			for (const speciesName of route.pokemon) {
-				const pokemon = resolveOneEncounter(route, this.box, this.graveyard as any, segment.levelCap);
-				this.box.push(pokemon);
-				this.addToParty(pokemon.uid);
-			}
+		for (const route of segment.gifts ?? []) {
+			const pokemon = resolveOneEncounter(route, this.box, this.graveyard as any, segment.levelCap);
+			this.box.push(pokemon);
+			this.addToParty(pokemon.uid);
 			this.resolvedRoutes.push(route.route);
 		}
 	}
 
-	/** Called by /nuzlocke encounter <routeIndex>: rolls a single wild route. */
+	/** Called by /nuzlocke encounter <routeIndex>: rolls a single wild route by flat index. */
 	resolveOneRoute(routeIndex: number) {
 		const segment = this.scenario.segments[this.currentSegmentIndex];
 		if (!segment) return;
-		const route = segment.encounters[routeIndex];
-		if (!route || route.type === 'gift') return;
+		const route = flatEncounters(segment)[routeIndex];
+		if (!route) return;
 		if (this.resolvedRoutes.includes(route.route)) return;
 		const pokemon = resolveOneEncounter(route, this.box, this.graveyard as any, segment.levelCap);
 		this.box.push(pokemon);
@@ -153,7 +163,7 @@ export class NuzlockeGame {
 			const evo = Dex.species.get(evoName);
 			if (!evo.exists) continue;
 			const evoType = evo.evoType;
-			if (!evoType || evoType === 'levelUp' || evoType === 'levelFriendship' || evoType === 'levelExtra') {
+			if (!evoType || evoType === 'levelFriendship' || evoType === 'levelExtra') {
 				if ((evo.evoLevel ?? 0) <= levelCap) {
 					results.push({ species: evo.name, item: null, type: 'level' });
 				}
@@ -238,14 +248,16 @@ export class NuzlockeGame {
 	}
 }
 
-export interface NuzlockeStatePayload {
+// Full game state delivered to the view-nuzlocke room (|nuzlockestate| message).
+// Drives all game screens in the Preact panel.
+export interface NuzlockePanelPayload {
 	curScreen: NuzlockeScreen;
 
 	// Scenario metadata (null when no active run)
 	scenarioId: string | null;
 	scenarioName: string | null;
 	scenarioDescription: string | null;
-	starters: { species: string; level: number }[] | null;
+	generation: number;
 
 	// Progress
 	currentSegmentIndex: number;
@@ -258,7 +270,8 @@ export interface NuzlockeStatePayload {
 		name: string;
 		levelCap: number;
 		items: string[];
-		encounters: import('./types').RouteEncounter[];
+		encounters: Record<string, import('./types').RouteEncounter[]>;
+		gifts: import('./types').RouteEncounter[];
 		battles: import('./types').TrainerBattle[];
 	} | null;
 
@@ -290,7 +303,9 @@ export interface NuzlockeStatePayload {
 	scenarios: NuzlockeScenarioCard[];
 }
 
-export interface NuzlockeStatusPayload {
+// Lightweight run summary delivered globally (|updatenuzlocke| message).
+// Drives the main menu widget: active run banner, scenario picker, past runs.
+export interface NuzlockeMenuPayload {
 	activeRun: {
 		scenarioId: string;
 		scenarioName: string;
@@ -311,7 +326,7 @@ export function pushNuzlockeStatus(userID: ID, game: NuzlockeGame | null) {
 	const user = Users.get(userID);
 	if (!user) return;
 	const savedAi = aiPreferences.get(userID) ?? 'random';
-	const payload: NuzlockeStatusPayload = {
+	const payload: NuzlockeMenuPayload = {
 		activeRun: game ? {
 			scenarioId: game.scenario.id,
 			scenarioName: game.scenario.name,
@@ -338,18 +353,18 @@ function buildScenarioCards(): NuzlockeScenarioCard[] {
 		description: s.description,
 		segmentCount: s.segments.length,
 		battleCount: s.segments.reduce((n, seg) => n + seg.battles.length, 0),
-		encounterCount: s.segments.reduce((n, seg) => n + seg.encounters.length, 0),
+		encounterCount: s.segments.reduce((n, seg) => n + flatEncounters(seg).length, 0),
 		starters: s.starters.map(st => st.species),
 	}));
 }
 
-export function serializeGameState(game: NuzlockeGame | null): NuzlockeStatePayload {
+export function serializeGameState(game: NuzlockeGame | null): NuzlockePanelPayload {
 	const scenarios = buildScenarioCards();
 
 	if (!game) {
 		return {
 			curScreen: 'dashboard',
-			scenarioId: null, scenarioName: null, scenarioDescription: null, starters: null,
+			scenarioId: null, scenarioName: null, scenarioDescription: null, generation: 9,
 			currentSegmentIndex: 0, totalSegments: 0, currentBattleIndex: 0,
 			completedBattles: [],
 			segment: null,
@@ -389,7 +404,7 @@ export function serializeGameState(game: NuzlockeGame | null): NuzlockeStatePayl
 		scenarioId: game.scenario.id,
 		scenarioName: game.scenario.name,
 		scenarioDescription: game.scenario.description,
-		starters: game.scenario.starters,
+		generation: game.scenario.generation,
 		currentSegmentIndex: game.currentSegmentIndex,
 		totalSegments: game.scenario.segments.length,
 		currentBattleIndex: game.currentBattleIndex,
@@ -399,6 +414,7 @@ export function serializeGameState(game: NuzlockeGame | null): NuzlockeStatePayl
 			levelCap: seg.levelCap,
 			items: seg.items,
 			encounters: seg.encounters,
+			gifts: seg.gifts ?? [],
 			battles: seg.battles,
 		} : null,
 		box: game.box,

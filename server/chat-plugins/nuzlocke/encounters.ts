@@ -2,7 +2,7 @@
  * Nuzlocke Simulator — Encounter Resolution
  */
 
-import type { OwnedPokemon, RouteEncounter, Segment } from './types';
+import type { EncounterEntry, OwnedPokemon, RouteEncounter, Segment } from './types';
 
 const NATURES = [
 	'Hardy', 'Lonely', 'Brave', 'Adamant', 'Naughty',
@@ -35,17 +35,37 @@ function pickAbility(species: import('../../../sim/dex-types').Species): string 
 }
 
 
-/** Returns the non-duplicate species pool for a route given current ownership. Empty = all dupes. */
+/** Walks up the prevo chain to return the root species of the evolutionary line. */
+function getEvoRoot(speciesName: string): string {
+	let species = Dex.species.get(speciesName);
+	while (species.prevo) {
+		species = Dex.species.get(species.prevo);
+	}
+	return species.id;
+}
+
+/** Returns the non-duplicate entries for a route given current ownership. Empty = all dupes. */
 export function getAvailablePool(
-	routePokemon: string[],
+	entries: EncounterEntry[],
 	box: OwnedPokemon[],
 	graveyard: OwnedPokemon[]
-): string[] {
-	const ownedSpecies = new Set([
-		...box.map(p => Dex.species.get(p.baseSpecies).baseSpecies),
-		...graveyard.map(p => Dex.species.get(p.species).baseSpecies),
+): EncounterEntry[] {
+	const ownedRoots = new Set([
+		...box.map(p => getEvoRoot(p.species)),
+		...graveyard.map(p => getEvoRoot(p.species)),
 	]);
-	return routePokemon.filter(s => !ownedSpecies.has(Dex.species.get(s).baseSpecies));
+	return entries.filter(e => !ownedRoots.has(getEvoRoot(e.species)));
+}
+
+/** Picks a species from entries using weighted random selection. */
+function weightedPick(entries: EncounterEntry[]): string {
+	const total = entries.reduce((sum, e) => sum + e.rate, 0);
+	let roll = Math.random() * total;
+	for (const entry of entries) {
+		roll -= entry.rate;
+		if (roll <= 0) return entry.species;
+	}
+	return entries[entries.length - 1].species; // floating-point safety fallback
 }
 
 export function resolveOneEncounter(
@@ -57,7 +77,7 @@ export function resolveOneEncounter(
 	// Use filtered pool; if all dupes fall back to full pool
 	const pool = getAvailablePool(route.pokemon, box, graveyard);
 	const finalPool = pool.length > 0 ? pool : route.pokemon;
-	const speciesName = finalPool[Math.floor(Math.random() * finalPool.length)];
+	const speciesName = weightedPick(finalPool);
 	const level = randomInt(route.levels[0], route.levels[1]);
 	return buildEncounter(speciesName, level, route.route, levelCap);
 }

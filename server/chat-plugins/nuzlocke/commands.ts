@@ -4,7 +4,7 @@
 
 'use strict';
 
-import { nuzlockeGames, NuzlockeGame, saveNuzlockeData, pushNuzlockeStatus, pushNuzlockeState, aiPreferences } from './game';
+import { nuzlockeGames, NuzlockeGame, flatEncounters, saveNuzlockeData, pushNuzlockeStatus, pushNuzlockeState, aiPreferences } from './game';
 import { getScenario } from './scenarios';
 import { createNuzlockeBattle, goToTeambuilding } from './battle';
 
@@ -16,28 +16,25 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 	nuzlocke: {
 		start(target, room, user) {
 			if (nuzlockeGames.has(user.id)) return this.parse('/join view-nuzlocke');
-			const savedAi = aiPreferences.get(user.id) ?? 'random';
+			const savedAi = aiPreferences.get(user.id) ?? 'game-accurate';
 			const [scenarioId = 'firered', difficulty = savedAi, starterIndexStr] = target.trim().split(/\s+/);
 			const scenario = getScenario(scenarioId.toLowerCase());
 			if (!scenario) return this.errorReply(`Unknown scenario "${scenarioId}". Available: firered`);
-			if (!['random', 'game-accurate', 'smart', 'competitive'].includes(difficulty)) {
-				return this.errorReply(`Unknown difficulty "${difficulty}". Options: random, game-accurate, smart, competitive`);
+			if (!['game-accurate', 'smart', 'competitive'].includes(difficulty)) {
+				return this.errorReply(`Unknown difficulty "${difficulty}". Options: game-accurate, smart, competitive`);
 			}
 			aiPreferences.set(user.id, difficulty);
 			const game = new NuzlockeGame(user.id, scenario);
 			game.settings.ai = difficulty as NuzlockeGame['settings']['ai'];
+			game.settings.generation = scenario.generation;
 			nuzlockeGames.set(user.id, game);
-			if (starterIndexStr !== undefined) {
-				const starterIndex = parseInt(starterIndexStr);
-				if (isNaN(starterIndex) || starterIndex < 0 || starterIndex >= scenario.starters.length) {
-					return this.errorReply(`Invalid starter index. Choose 0–${scenario.starters.length - 1}.`);
-				}
-				game.pickStarter(starterIndex);
-				game.resolveSegmentStart();
-				game.goToPage('encounters');
-			} else {
-				game.goToPage('starter');
+			const starterIndex = parseInt(starterIndexStr);
+			if (isNaN(starterIndex) || starterIndex < 0 || starterIndex >= scenario.starters.length) {
+				return this.errorReply(`Invalid starter index. Choose 0-${scenario.starters.length - 1}.`);
 			}
+			game.pickStarter(starterIndex);
+			game.resolveSegmentStart();
+			game.goToPage('encounters');
 		},
 
 		abandon(target, room, user) {
@@ -56,36 +53,10 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 			pushNuzlockeState(user.id, null);
 		},
 
-		restart(target, room, user) {
-			const savedAi = aiPreferences.get(user.id) ?? 'random';
-			const [scenarioId = 'firered', difficulty = savedAi, starterIndexStr] = target.trim().split(/\s+/);
-			const scenario = getScenario(scenarioId.toLowerCase());
-			if (!scenario) return this.errorReply(`Unknown scenario "${scenarioId}". Available: firered`);
-			if (!['random', 'game-accurate', 'smart', 'competitive'].includes(difficulty)) {
-				return this.errorReply(`Unknown difficulty "${difficulty}". Options: random, game-accurate, smart, competitive`);
-			}
-			aiPreferences.set(user.id, difficulty);
-			nuzlockeGames.delete(user.id);
-			const game = new NuzlockeGame(user.id, scenario);
-			game.settings.ai = difficulty as NuzlockeGame['settings']['ai'];
-			nuzlockeGames.set(user.id, game);
-			if (starterIndexStr !== undefined) {
-				const starterIndex = parseInt(starterIndexStr);
-				if (isNaN(starterIndex) || starterIndex < 0 || starterIndex >= scenario.starters.length) {
-					return this.errorReply(`Invalid starter index. Choose 0–${scenario.starters.length - 1}.`);
-				}
-				game.pickStarter(starterIndex);
-				game.resolveSegmentStart();
-				game.goToPage('encounters');
-			} else {
-				game.goToPage('starter');
-			}
-		},
-
 		setai(target, room, user) {
 			const difficulty = target.trim().toLowerCase();
-			if (!['random', 'game-accurate', 'smart', 'competitive'].includes(difficulty)) {
-				return this.errorReply(`Unknown difficulty "${difficulty}". Options: random, game-accurate, smart, competitive`);
+			if (!['game-accurate', 'smart', 'competitive'].includes(difficulty)) {
+				return this.errorReply(`Unknown difficulty "${difficulty}". Options: game-accurate, smart, competitive`);
 			}
 			aiPreferences.set(user.id, difficulty);
 			const game = nuzlockeGames.get(user.id);
@@ -100,19 +71,6 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 			}
 		},
 
-		starter(target, room, user) {
-			const game = nuzlockeGames.get(user.id);
-			if (!game) return this.errorReply('No active run.');
-			if (game.box.length > 0) return this.errorReply('Starter already chosen.');
-			const index = parseInt(target.trim());
-			if (isNaN(index) || index < 0 || index >= game.scenario.starters.length) {
-				return this.errorReply(`Invalid starter index. Choose 0–${game.scenario.starters.length - 1}.`);
-			}
-			game.pickStarter(index);
-			game.resolveSegmentStart();
-			game.goToPage('encounters');
-		},
-
 		encounter(target, room, user) {
 			const game = nuzlockeGames.get(user.id);
 			if (!game) return this.errorReply('No active run.');
@@ -120,9 +78,8 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 			if (isNaN(routeIndex)) return this.errorReply('Usage: /nuzlocke encounter <routeIndex>');
 			const segment = game.currentSegment;
 			if (!segment) return this.errorReply('No active segment.');
-			const route = segment.encounters[routeIndex];
+			const route = flatEncounters(segment)[routeIndex];
 			if (!route) return this.errorReply('Invalid route index.');
-			if (route.type === 'gift') return this.errorReply('Gift encounters are automatic.');
 			if (game.resolvedRoutes.includes(route.route)) return this.errorReply('Already explored this route.');
 			game.resolveOneRoute(routeIndex);
 			game.goToPage('encounters');

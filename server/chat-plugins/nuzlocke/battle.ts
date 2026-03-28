@@ -88,7 +88,7 @@ function packTrainerTeam(team: TrainerPokemon[]): string {
 export function createNuzlockeBattle(game: NuzlockeGame, user: User) {
 	const segment = game.currentSegment!;
 	const battle = game.currentBattle!;
-	const gen = game.settings.mechanics === 'classic' ? game.scenario.generation : 9;
+	const gen = game.scenario.generation;
 
 	game.partyErrors.clear();
 
