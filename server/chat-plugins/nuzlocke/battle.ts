@@ -106,6 +106,7 @@ export function createNuzlockeBattle(game: NuzlockeGame, user: User) {
 				team: packTrainerTeam(battle.team),
 				isAI: true,
 				nuzlockeDifficulty: game.settings.ai,
+				avatar: battle.sprite,
 			},
 		],
 	});

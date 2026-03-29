@@ -4,7 +4,7 @@
 
 'use strict';
 
-import { nuzlockeGames, NuzlockeGame, flatEncounters, saveNuzlockeData, pushNuzlockeStatus, pushNuzlockeState, aiPreferences } from './game';
+import { nuzlockeGames, NuzlockeGame, flatEncounters, saveNuzlockeData, pushNuzlockeStatus, pushNuzlockeState, aiPreferences, recordCompletedRun } from './game';
 import { getScenario } from './scenarios';
 import { createNuzlockeBattle, goToTeambuilding } from './battle';
 
@@ -85,6 +85,15 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 			game.goToPage('encounters');
 		},
 
+		giveup(target, room, user) {
+			const game = nuzlockeGames.get(user.id);
+			if (!game) return this.errorReply('No active run.');
+			if (game.curRoom !== 'results') return this.errorReply('Can only give up from the results screen.');
+			if (game.lastBattleResult?.won) return this.errorReply('You won — nothing to give up.');
+			recordCompletedRun(game, 'wipe', game.lastBattleResult?.trainerName);
+			game.goToPage('summary');
+		},
+
 		continue(target, room, user) {
 			const game = nuzlockeGames.get(user.id);
 			if (!game) return this.errorReply('No active run.');
@@ -96,7 +105,9 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 					const dest = game.nextScreen ?? 'teambuilding';
 					game.nextScreen = null;
 					game.lastBattleResult = null;
-					if (dest === 'teambuilding') {
+					if (dest === 'battle') {
+						createNuzlockeBattle(game, user);
+					} else if (dest === 'teambuilding') {
 						goToTeambuilding(game);
 					} else {
 						game.goToPage(dest);
@@ -244,7 +255,7 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 			const uid = target.slice(0, spaceIdx);
 			const targetSpecies = target.slice(spaceIdx + 1).trim();
 			game.evolve(uid, targetSpecies);
-			goToTeambuilding(game);
+			game.goToPage('teambuilding');
 		},
 
 		// Phase 1 test command — kept for debugging

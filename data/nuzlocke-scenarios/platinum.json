@@ -1,0 +1,2747 @@
+{
+  "id": "platinum",
+  "name": "Platinum",
+  "generation": 4,
+  "description": "The Platinum region. Battle gyms, the Elite Four, and the Champion.",
+  "color": "#546E7A",
+  "pokemon": "giratina",
+  "starters": [
+    {
+      "species": "Turtwig",
+      "level": 5
+    },
+    {
+      "species": "Chimchar",
+      "level": 5
+    },
+    {
+      "species": "Piplup",
+      "level": 5
+    }
+  ],
+  "segments": [
+    {
+      "id": "pre-gym-1",
+      "name": "To Leader Roark",
+      "levelCap": 14,
+      "encounters": {
+        "walk": [
+          {
+            "route": "Route 201",
+            "pokemon": [
+              {
+                "species": "Bidoof",
+                "rate": 76
+              },
+              {
+                "species": "Starly",
+                "rate": 76
+              },
+              {
+                "species": "Doduo",
+                "rate": 40
+              },
+              {
+                "species": "Kricketot",
+                "rate": 20
+              },
+              {
+                "species": "Nidoran-M",
+                "rate": 11
+              },
+              {
+                "species": "Nidoran-F",
+                "rate": 11
+              },
+              {
+                "species": "Growlithe",
+                "rate": 8
+              }
+            ],
+            "levels": [
+              2,
+              3
+            ]
+          },
+          {
+            "route": "Route 202",
+            "pokemon": [
+              {
+                "species": "Bidoof",
+                "rate": 76
+              },
+              {
+                "species": "Starly",
+                "rate": 46
+              },
+              {
+                "species": "Zigzagoon",
+                "rate": 40
+              },
+              {
+                "species": "Shinx",
+                "rate": 30
+              },
+              {
+                "species": "Sentret",
+                "rate": 22
+              },
+              {
+                "species": "Kricketot",
+                "rate": 20
+              },
+              {
+                "species": "Growlithe",
+                "rate": 8
+              }
+            ],
+            "levels": [
+              2,
+              4
+            ]
+          },
+          {
+            "route": "Lake Verity",
+            "pokemon": [
+              {
+                "species": "Bidoof",
+                "rate": 134
+              },
+              {
+                "species": "Starly",
+                "rate": 134
+              },
+              {
+                "species": "Wobbuffet",
+                "rate": 44
+              },
+              {
+                "species": "Solrock",
+                "rate": 16
+              },
+              {
+                "species": "Lunatone",
+                "rate": 16
+              }
+            ],
+            "levels": [
+              2,
+              4
+            ]
+          },
+          {
+            "route": "Route 203",
+            "pokemon": [
+              {
+                "species": "Starly",
+                "rate": 53
+              },
+              {
+                "species": "Cubone",
+                "rate": 40
+              },
+              {
+                "species": "Bidoof",
+                "rate": 33
+              },
+              {
+                "species": "Shinx",
+                "rate": 25
+              },
+              {
+                "species": "Kricketot",
+                "rate": 20
+              },
+              {
+                "species": "Abra",
+                "rate": 15
+              },
+              {
+                "species": "Zubat",
+                "rate": 10
+              },
+              {
+                "species": "Seedot",
+                "rate": 8
+              },
+              {
+                "species": "Lotad",
+                "rate": 8
+              },
+              {
+                "species": "Pineco",
+                "rate": 8
+              }
+            ],
+            "levels": [
+              4,
+              7
+            ]
+          },
+          {
+            "route": "Oreburgh Gate",
+            "pokemon": [
+              {
+                "species": "Zubat",
+                "rate": 95
+              },
+              {
+                "species": "Psyduck",
+                "rate": 70
+              },
+              {
+                "species": "Geodude",
+                "rate": 30
+              },
+              {
+                "species": "Golbat",
+                "rate": 5
+              }
+            ],
+            "levels": [
+              5,
+              10
+            ]
+          },
+          {
+            "route": "Oreburgh Mine",
+            "pokemon": [
+              {
+                "species": "Geodude",
+                "rate": 172
+              },
+              {
+                "species": "Zubat",
+                "rate": 50
+              },
+              {
+                "species": "Onix",
+                "rate": 20
+              }
+            ],
+            "levels": [
+              4,
+              9
+            ]
+          }
+        ]
+      },
+      "gifts": [],
+      "items": [
+        "Flame Plate"
+      ],
+      "tmMoves": [
+        "Fire Blast",
+        "Flash",
+        "Brick Break",
+        "Focus Punch"
+      ],
+      "battles": [
+        {
+          "id": "roark",
+          "trainer": "Leader Roark",
+          "team": [
+            {
+              "species": "Geodude",
+              "level": 12,
+              "ability": "Rock Head",
+              "moves": [
+                "Rock Throw",
+                "Stealth Rock"
+              ],
+              "item": null
+            },
+            {
+              "species": "Onix",
+              "level": 12,
+              "ability": "Rock Head",
+              "moves": [
+                "Rock Throw",
+                "Screech",
+                "Stealth Rock"
+              ],
+              "item": null
+            },
+            {
+              "species": "Cranidos",
+              "level": 14,
+              "ability": "Mold Breaker",
+              "moves": [
+                "Headbutt",
+                "Pursuit",
+                "Leer"
+              ],
+              "item": null
+            }
+          ],
+          "sprite": "roark"
+        }
+      ]
+    },
+    {
+      "id": "pre-gym-2",
+      "name": "To Leader Gardenia",
+      "levelCap": 22,
+      "encounters": {
+        "walk": [
+          {
+            "route": "Route 204",
+            "pokemon": [
+              {
+                "species": "Budew",
+                "rate": 50
+              },
+              {
+                "species": "Bidoof",
+                "rate": 50
+              },
+              {
+                "species": "Starly",
+                "rate": 50
+              },
+              {
+                "species": "Kricketot",
+                "rate": 40
+              },
+              {
+                "species": "Wurmple",
+                "rate": 40
+              },
+              {
+                "species": "Shinx",
+                "rate": 30
+              },
+              {
+                "species": "Sunkern",
+                "rate": 22
+              },
+              {
+                "species": "Zubat",
+                "rate": 20
+              },
+              {
+                "species": "Seedot",
+                "rate": 16
+              },
+              {
+                "species": "Lotad",
+                "rate": 16
+              },
+              {
+                "species": "Pineco",
+                "rate": 16
+              },
+              {
+                "species": "Weedle",
+                "rate": 16
+              },
+              {
+                "species": "Caterpie",
+                "rate": 16
+              }
+            ],
+            "levels": [
+              3,
+              11
+            ]
+          },
+          {
+            "route": "Ravaged Path",
+            "pokemon": [
+              {
+                "species": "Zubat",
+                "rate": 65
+              },
+              {
+                "species": "Psyduck",
+                "rate": 35
+              }
+            ],
+            "levels": [
+              3,
+              6
+            ]
+          },
+          {
+            "route": "Route 203",
+            "pokemon": [
+              {
+                "species": "Starly",
+                "rate": 53
+              },
+              {
+                "species": "Cubone",
+                "rate": 40
+              },
+              {
+                "species": "Bidoof",
+                "rate": 33
+              },
+              {
+                "species": "Shinx",
+                "rate": 25
+              },
+              {
+                "species": "Kricketot",
+                "rate": 20
+              },
+              {
+                "species": "Abra",
+                "rate": 15
+              },
+              {
+                "species": "Zubat",
+                "rate": 10
+              },
+              {
+                "species": "Seedot",
+                "rate": 8
+              },
+              {
+                "species": "Lotad",
+                "rate": 8
+              },
+              {
+                "species": "Pineco",
+                "rate": 8
+              }
+            ],
+            "levels": [
+              4,
+              7
+            ]
+          },
+          {
+            "route": "Eterna Forest",
+            "pokemon": [
+              {
+                "species": "Budew",
+                "rate": 40
+              },
+              {
+                "species": "Slakoth",
+                "rate": 40
+              },
+              {
+                "species": "Buneary",
+                "rate": 28
+              },
+              {
+                "species": "Nincada",
+                "rate": 22
+              },
+              {
+                "species": "Kricketot",
+                "rate": 20
+              },
+              {
+                "species": "Wurmple",
+                "rate": 20
+              },
+              {
+                "species": "Bidoof",
+                "rate": 10
+              },
+              {
+                "species": "Hoothoot",
+                "rate": 10
+              },
+              {
+                "species": "Seedot",
+                "rate": 8
+              },
+              {
+                "species": "Pineco",
+                "rate": 8
+              },
+              {
+                "species": "Gastly",
+                "rate": 8
+              },
+              {
+                "species": "Cascoon",
+                "rate": 5
+              },
+              {
+                "species": "Silcoon",
+                "rate": 5
+              },
+              {
+                "species": "Kakuna",
+                "rate": 4
+              },
+              {
+                "species": "Weedle",
+                "rate": 4
+              },
+              {
+                "species": "Metapod",
+                "rate": 4
+              },
+              {
+                "species": "Caterpie",
+                "rate": 4
+              },
+              {
+                "species": "Dustox",
+                "rate": 1
+              },
+              {
+                "species": "Beautifly",
+                "rate": 1
+              }
+            ],
+            "levels": [
+              10,
+              14
+            ]
+          },
+          {
+            "route": "Route 205",
+            "pokemon": [
+              {
+                "species": "Budew",
+                "rate": 70
+              },
+              {
+                "species": "Shellos",
+                "rate": 65
+              },
+              {
+                "species": "Bidoof",
+                "rate": 40
+              },
+              {
+                "species": "Hoppip",
+                "rate": 22
+              },
+              {
+                "species": "Slowpoke",
+                "rate": 22
+              },
+              {
+                "species": "Kricketot",
+                "rate": 20
+              },
+              {
+                "species": "Wurmple",
+                "rate": 20
+              },
+              {
+                "species": "Buizel",
+                "rate": 15
+              },
+              {
+                "species": "Pachirisu",
+                "rate": 10
+              },
+              {
+                "species": "Cascoon",
+                "rate": 10
+              },
+              {
+                "species": "Silcoon",
+                "rate": 10
+              },
+              {
+                "species": "Hoothoot",
+                "rate": 10
+              },
+              {
+                "species": "Lotad",
+                "rate": 8
+              },
+              {
+                "species": "Dustox",
+                "rate": 1
+              },
+              {
+                "species": "Beautifly",
+                "rate": 1
+              }
+            ],
+            "levels": [
+              9,
+              15
+            ]
+          },
+          {
+            "route": "Old Chateau",
+            "pokemon": [
+              {
+                "species": "Gastly",
+                "rate": 900
+              },
+              {
+                "species": "Gengar",
+                "rate": 20
+              }
+            ],
+            "levels": [
+              14,
+              17
+            ]
+          }
+        ]
+      },
+      "gifts": [],
+      "items": [
+        "Cheri Berry",
+        "Chesto Berry",
+        "Pecha Berry",
+        "Oran Berry"
+      ],
+      "tmMoves": [
+        "Bullet Seed",
+        "Captivate",
+        "Rock Tomb",
+        "Water Pulse",
+        "Sleep Talk",
+        "Substitute",
+        "Stealth Rock"
+      ],
+      "battles": [
+        {
+          "id": "gardenia",
+          "trainer": "Leader Gardenia",
+          "team": [
+            {
+              "species": "Cherubi",
+              "level": 19,
+              "ability": "Chlorophyll",
+              "moves": [
+                "Grass Knot",
+                "Leech Seed",
+                "Safeguard",
+                "Growth"
+              ],
+              "item": null
+            },
+            {
+              "species": "Turtwig",
+              "level": 19,
+              "ability": "Overgrow",
+              "moves": [
+                "Grass Knot",
+                "Razor Leaf",
+                "Withdraw",
+                "Reflect"
+              ],
+              "item": null
+            },
+            {
+              "species": "Roserade",
+              "level": 22,
+              "ability": "Natural Cure",
+              "moves": [
+                "Grass Knot",
+                "Magical Leaf",
+                "Poison Sting",
+                "Stun Spore"
+              ],
+              "item": "Sitrus Berry"
+            }
+          ],
+          "sprite": "gardenia"
+        }
+      ]
+    },
+    {
+      "id": "pre-gym-3",
+      "name": "To Leader Maylene",
+      "levelCap": 32,
+      "encounters": {
+        "walk": [
+          {
+            "route": "Route 206",
+            "pokemon": [
+              {
+                "species": "Larvitar",
+                "rate": 40
+              },
+              {
+                "species": "Gligar",
+                "rate": 30
+              },
+              {
+                "species": "Ponyta",
+                "rate": 30
+              },
+              {
+                "species": "Geodude",
+                "rate": 30
+              },
+              {
+                "species": "Baltoy",
+                "rate": 22
+              },
+              {
+                "species": "Kricketune",
+                "rate": 20
+              },
+              {
+                "species": "Machop",
+                "rate": 20
+              },
+              {
+                "species": "Zubat",
+                "rate": 10
+              }
+            ],
+            "levels": [
+              16,
+              19
+            ]
+          },
+          {
+            "route": "Wayward Cave",
+            "pokemon": [
+              {
+                "species": "Geodude",
+                "rate": 82
+              },
+              {
+                "species": "Onix",
+                "rate": 62
+              },
+              {
+                "species": "Bronzor",
+                "rate": 60
+              },
+              {
+                "species": "Gible",
+                "rate": 36
+              },
+              {
+                "species": "Zubat",
+                "rate": 25
+              },
+              {
+                "species": "Sandshrew",
+                "rate": 16
+              }
+            ],
+            "levels": [
+              17,
+              20
+            ]
+          },
+          {
+            "route": "Route 207",
+            "pokemon": [
+              {
+                "species": "Machop",
+                "rate": 45
+              },
+              {
+                "species": "Phanpy",
+                "rate": 40
+              },
+              {
+                "species": "Ponyta",
+                "rate": 35
+              },
+              {
+                "species": "Geodude",
+                "rate": 30
+              },
+              {
+                "species": "Stantler",
+                "rate": 22
+              },
+              {
+                "species": "Kricketot",
+                "rate": 20
+              },
+              {
+                "species": "Zubat",
+                "rate": 10
+              }
+            ],
+            "levels": [
+              5,
+              8
+            ]
+          },
+          {
+            "route": "Mt. Coronet",
+            "pokemon": [
+              {
+                "species": "Graveler",
+                "rate": 290
+              },
+              {
+                "species": "Medicham",
+                "rate": 271
+              },
+              {
+                "species": "Golbat",
+                "rate": 238
+              },
+              {
+                "species": "Clefairy",
+                "rate": 200
+              },
+              {
+                "species": "Chingling",
+                "rate": 198
+              },
+              {
+                "species": "Bronzong",
+                "rate": 120
+              },
+              {
+                "species": "Meditite",
+                "rate": 120
+              },
+              {
+                "species": "Machoke",
+                "rate": 110
+              },
+              {
+                "species": "Abomasnow",
+                "rate": 80
+              },
+              {
+                "species": "Bronzor",
+                "rate": 80
+              },
+              {
+                "species": "Solrock",
+                "rate": 72
+              },
+              {
+                "species": "Lunatone",
+                "rate": 72
+              },
+              {
+                "species": "Nosepass",
+                "rate": 65
+              },
+              {
+                "species": "Geodude",
+                "rate": 60
+              },
+              {
+                "species": "Loudred",
+                "rate": 44
+              },
+              {
+                "species": "Snover",
+                "rate": 40
+              },
+              {
+                "species": "Chimecho",
+                "rate": 40
+              },
+              {
+                "species": "Absol",
+                "rate": 34
+              },
+              {
+                "species": "Zubat",
+                "rate": 30
+              },
+              {
+                "species": "Cleffa",
+                "rate": 20
+              },
+              {
+                "species": "Noctowl",
+                "rate": 20
+              },
+              {
+                "species": "Machop",
+                "rate": 20
+              }
+            ],
+            "levels": [
+              13,
+              41
+            ]
+          },
+          {
+            "route": "Route 208",
+            "pokemon": [
+              {
+                "species": "Budew",
+                "rate": 40
+              },
+              {
+                "species": "Dunsparce",
+                "rate": 40
+              },
+              {
+                "species": "Bibarel",
+                "rate": 32
+              },
+              {
+                "species": "Roselia",
+                "rate": 27
+              },
+              {
+                "species": "Smeargle",
+                "rate": 22
+              },
+              {
+                "species": "Bidoof",
+                "rate": 20
+              },
+              {
+                "species": "Ralts",
+                "rate": 15
+              },
+              {
+                "species": "Zubat",
+                "rate": 10
+              },
+              {
+                "species": "Seviper",
+                "rate": 8
+              },
+              {
+                "species": "Zangoose",
+                "rate": 8
+              }
+            ],
+            "levels": [
+              17,
+              20
+            ]
+          },
+          {
+            "route": "Route 209",
+            "pokemon": [
+              {
+                "species": "Ralts",
+                "rate": 46
+              },
+              {
+                "species": "Snubbull",
+                "rate": 40
+              },
+              {
+                "species": "Bibarel",
+                "rate": 30
+              },
+              {
+                "species": "Staravia",
+                "rate": 30
+              },
+              {
+                "species": "Roselia",
+                "rate": 25
+              },
+              {
+                "species": "Kirlia",
+                "rate": 22
+              },
+              {
+                "species": "Chansey",
+                "rate": 21
+              },
+              {
+                "species": "Duskull",
+                "rate": 10
+              },
+              {
+                "species": "Zubat",
+                "rate": 10
+              },
+              {
+                "species": "Vulpix",
+                "rate": 8
+              }
+            ],
+            "levels": [
+              17,
+              20
+            ]
+          },
+          {
+            "route": "Lost Tower",
+            "pokemon": [
+              {
+                "species": "Gastly",
+                "rate": 452
+              },
+              {
+                "species": "Zubat",
+                "rate": 175
+              },
+              {
+                "species": "Duskull",
+                "rate": 100
+              },
+              {
+                "species": "Golbat",
+                "rate": 16
+              }
+            ],
+            "levels": [
+              17,
+              22
+            ]
+          },
+          {
+            "route": "Route 210",
+            "pokemon": [
+              {
+                "species": "Ponyta",
+                "rate": 57
+              },
+              {
+                "species": "Swablu",
+                "rate": 30
+              },
+              {
+                "species": "Meditite",
+                "rate": 30
+              },
+              {
+                "species": "Scyther",
+                "rate": 30
+              },
+              {
+                "species": "Machop",
+                "rate": 27
+              },
+              {
+                "species": "Bagon",
+                "rate": 22
+              },
+              {
+                "species": "Machoke",
+                "rate": 22
+              },
+              {
+                "species": "Bibarel",
+                "rate": 20
+              },
+              {
+                "species": "Staravia",
+                "rate": 20
+              },
+              {
+                "species": "Noctowl",
+                "rate": 20
+              },
+              {
+                "species": "Hoothoot",
+                "rate": 20
+              },
+              {
+                "species": "Geodude",
+                "rate": 20
+              },
+              {
+                "species": "Chansey",
+                "rate": 17
+              },
+              {
+                "species": "Roselia",
+                "rate": 15
+              },
+              {
+                "species": "Miltank",
+                "rate": 11
+              },
+              {
+                "species": "Tauros",
+                "rate": 11
+              },
+              {
+                "species": "Seviper",
+                "rate": 8
+              },
+              {
+                "species": "Zangoose",
+                "rate": 8
+              },
+              {
+                "species": "Pineco",
+                "rate": 8
+              },
+              {
+                "species": "Nuzleaf",
+                "rate": 4
+              },
+              {
+                "species": "Seedot",
+                "rate": 4
+              }
+            ],
+            "levels": [
+              18,
+              30
+            ]
+          }
+        ]
+      },
+      "gifts": [],
+      "items": [
+        "Rawst Berry",
+        "Oran Berry",
+        "Cheri Berry",
+        "Leppa Berry",
+        "Chesto Berry",
+        "Spell Tag",
+        "Sitrus Berry",
+        "Wiki Berry",
+        "Aguav Berry"
+      ],
+      "tmMoves": [
+        "Double Team",
+        "Earthquake",
+        "Giga Drain",
+        "Steel Wing",
+        "Return",
+        "Roost",
+        "Shadow Ball",
+        "Grass Knot"
+      ],
+      "battles": [
+        {
+          "id": "maylene",
+          "trainer": "Leader Maylene",
+          "team": [
+            {
+              "species": "Meditite",
+              "level": 28,
+              "ability": "Pure Power",
+              "moves": [
+                "Drain Punch",
+                "Confusion",
+                "Fake Out",
+                "Rock Tomb"
+              ],
+              "item": null
+            },
+            {
+              "species": "Machoke",
+              "level": 29,
+              "ability": "Guts",
+              "moves": [
+                "Karate Chop",
+                "Strength",
+                "Focus Energy",
+                "Rock Tomb"
+              ],
+              "item": null
+            },
+            {
+              "species": "Lucario",
+              "level": 32,
+              "ability": "Steadfast",
+              "moves": [
+                "Drain Punch",
+                "Metal Claw",
+                "Bone Rush",
+                "Force Palm"
+              ],
+              "item": null
+            }
+          ],
+          "sprite": "maylene"
+        }
+      ]
+    },
+    {
+      "id": "pre-gym-4",
+      "name": "To Leader Crasher Wake",
+      "levelCap": 37,
+      "encounters": {
+        "walk": [
+          {
+            "route": "Route 212",
+            "pokemon": [
+              {
+                "species": "Shellos",
+                "rate": 57
+              },
+              {
+                "species": "Marill",
+                "rate": 45
+              },
+              {
+                "species": "Roselia",
+                "rate": 35
+              },
+              {
+                "species": "Staravia",
+                "rate": 30
+              },
+              {
+                "species": "Quagsire",
+                "rate": 30
+              },
+              {
+                "species": "Buizel",
+                "rate": 27
+              },
+              {
+                "species": "Smeargle",
+                "rate": 22
+              },
+              {
+                "species": "Grimer",
+                "rate": 22
+              },
+              {
+                "species": "Kirlia",
+                "rate": 20
+              },
+              {
+                "species": "Croagunk",
+                "rate": 10
+              },
+              {
+                "species": "Ralts",
+                "rate": 10
+              },
+              {
+                "species": "Ekans",
+                "rate": 8
+              },
+              {
+                "species": "Lombre",
+                "rate": 4
+              },
+              {
+                "species": "Lotad",
+                "rate": 4
+              }
+            ],
+            "levels": [
+              21,
+              26
+            ]
+          },
+          {
+            "route": "Great Marsh",
+            "pokemon": [
+              {
+                "species": "Bibarel",
+                "rate": 200
+              },
+              {
+                "species": "Wooper",
+                "rate": 200
+              },
+              {
+                "species": "Yanma",
+                "rate": 186
+              },
+              {
+                "species": "Tangela",
+                "rate": 186
+              },
+              {
+                "species": "Tropius",
+                "rate": 80
+              },
+              {
+                "species": "Quagsire",
+                "rate": 60
+              },
+              {
+                "species": "Noctowl",
+                "rate": 60
+              },
+              {
+                "species": "Hoothoot",
+                "rate": 60
+              },
+              {
+                "species": "Arbok",
+                "rate": 48
+              }
+            ],
+            "levels": [
+              26,
+              31
+            ]
+          },
+          {
+            "route": "Route 213",
+            "pokemon": [
+              {
+                "species": "Shellos",
+                "rate": 45
+              },
+              {
+                "species": "Chatot",
+                "rate": 40
+              },
+              {
+                "species": "Buizel",
+                "rate": 35
+              },
+              {
+                "species": "Swellow",
+                "rate": 22
+              },
+              {
+                "species": "Wingull",
+                "rate": 20
+              }
+            ],
+            "levels": [
+              23,
+              26
+            ]
+          }
+        ]
+      },
+      "gifts": [],
+      "items": [
+        "Aspear Berry",
+        "Sitrus Berry",
+        "Lum Berry",
+        "Pecha Berry",
+        "Toxic Plate",
+        "Aguav Berry",
+        "Rawst Berry",
+        "Iapapa Berry"
+      ],
+      "tmMoves": [
+        "Sunny Day",
+        "Silver Wind",
+        "Toxic",
+        "Poison Jab",
+        "Roar",
+        "Aerial Ace",
+        "Trick Room",
+        "Drain Punch"
+      ],
+      "battles": [
+        {
+          "id": "crasher-wake",
+          "trainer": "Leader Crasher Wake",
+          "team": [
+            {
+              "species": "Gyarados",
+              "level": 33,
+              "ability": "Intimidate",
+              "moves": [
+                "Brine",
+                "Waterfall",
+                "Bite",
+                "Twister"
+              ],
+              "item": null
+            },
+            {
+              "species": "Quagsire",
+              "level": 34,
+              "ability": "Damp",
+              "moves": [
+                "Water Pulse",
+                "Mud Shot",
+                "Rock Tomb",
+                "Yawn"
+              ],
+              "item": null
+            },
+            {
+              "species": "Floatzel",
+              "level": 37,
+              "ability": "Swift Swim",
+              "moves": [
+                "Brine",
+                "Crunch",
+                "Ice Fang",
+                "Aqua Jet"
+              ],
+              "item": "Sitrus Berry"
+            }
+          ],
+          "sprite": "crasherwake"
+        }
+      ]
+    },
+    {
+      "id": "pre-gym-5",
+      "name": "To Leader Fantina",
+      "levelCap": 26,
+      "encounters": {
+        "walk": [
+          {
+            "route": "Route 214",
+            "pokemon": [
+              {
+                "species": "Rhyhorn",
+                "rate": 56
+              },
+              {
+                "species": "Graveler",
+                "rate": 45
+              },
+              {
+                "species": "Houndour",
+                "rate": 41
+              },
+              {
+                "species": "Spoink",
+                "rate": 40
+              },
+              {
+                "species": "Poochyena",
+                "rate": 22
+              },
+              {
+                "species": "Geodude",
+                "rate": 20
+              },
+              {
+                "species": "Zubat",
+                "rate": 10
+              },
+              {
+                "species": "Vulpix",
+                "rate": 8
+              }
+            ],
+            "levels": [
+              21,
+              24
+            ]
+          },
+          {
+            "route": "Valor Lakefront",
+            "pokemon": [
+              {
+                "species": "Staravia",
+                "rate": 45
+              },
+              {
+                "species": "Bibarel",
+                "rate": 30
+              },
+              {
+                "species": "Girafarig",
+                "rate": 25
+              },
+              {
+                "species": "Kricketune",
+                "rate": 20
+              },
+              {
+                "species": "Houndour",
+                "rate": 20
+              },
+              {
+                "species": "Nidorino",
+                "rate": 11
+              },
+              {
+                "species": "Nidorina",
+                "rate": 11
+              }
+            ],
+            "levels": [
+              25,
+              28
+            ]
+          },
+          {
+            "route": "Lake Valor",
+            "pokemon": [
+              {
+                "species": "Bibarel",
+                "rate": 47
+              },
+              {
+                "species": "Staravia",
+                "rate": 47
+              },
+              {
+                "species": "Wobbuffet",
+                "rate": 22
+              },
+              {
+                "species": "Golduck",
+                "rate": 15
+              },
+              {
+                "species": "Psyduck",
+                "rate": 15
+              },
+              {
+                "species": "Solrock",
+                "rate": 8
+              },
+              {
+                "species": "Lunatone",
+                "rate": 8
+              }
+            ],
+            "levels": [
+              38,
+              41
+            ]
+          },
+          {
+            "route": "Route 215",
+            "pokemon": [
+              {
+                "species": "Staravia",
+                "rate": 50
+              },
+              {
+                "species": "Marill",
+                "rate": 45
+              },
+              {
+                "species": "Drowzee",
+                "rate": 40
+              },
+              {
+                "species": "Scyther",
+                "rate": 15
+              },
+              {
+                "species": "Lickitung",
+                "rate": 10
+              },
+              {
+                "species": "Kadabra",
+                "rate": 10
+              },
+              {
+                "species": "Abra",
+                "rate": 10
+              }
+            ],
+            "levels": [
+              19,
+              22
+            ]
+          },
+          {
+            "route": "Route 211",
+            "pokemon": [
+              {
+                "species": "Meditite",
+                "rate": 120
+              },
+              {
+                "species": "Bronzor",
+                "rate": 36
+              },
+              {
+                "species": "Machop",
+                "rate": 31
+              },
+              {
+                "species": "Chingling",
+                "rate": 30
+              },
+              {
+                "species": "Tyrogue",
+                "rate": 22
+              },
+              {
+                "species": "Bidoof",
+                "rate": 20
+              },
+              {
+                "species": "Graveler",
+                "rate": 20
+              },
+              {
+                "species": "Zubat",
+                "rate": 20
+              },
+              {
+                "species": "Machoke",
+                "rate": 15
+              },
+              {
+                "species": "Noctowl",
+                "rate": 10
+              },
+              {
+                "species": "Hoothoot",
+                "rate": 10
+              },
+              {
+                "species": "Teddiursa",
+                "rate": 8
+              }
+            ],
+            "levels": [
+              13,
+              30
+            ]
+          }
+        ]
+      },
+      "gifts": [],
+      "items": [
+        "Cheri Berry",
+        "Sitrus Berry",
+        "Chesto Berry",
+        "Razor Fang",
+        "Wiki Berry",
+        "Mago Berry",
+        "Pecha Berry",
+        "Aspear Berry",
+        "Iapapa Berry"
+      ],
+      "tmMoves": [
+        "Dream Eater",
+        "Thunder",
+        "Payback",
+        "Shock Wave",
+        "Taunt",
+        "Psych Up",
+        "Psychic",
+        "Brine"
+      ],
+      "battles": [
+        {
+          "id": "fantina",
+          "trainer": "Leader Fantina",
+          "team": [
+            {
+              "species": "Duskull",
+              "level": 24,
+              "ability": "Levitate",
+              "moves": [
+                "Will-O-Wisp",
+                "Future Sight",
+                "Shadow Sneak",
+                "Pursuit"
+              ],
+              "item": null
+            },
+            {
+              "species": "Haunter",
+              "level": 24,
+              "ability": "Levitate",
+              "moves": [
+                "Shadow Claw",
+                "Sucker Punch",
+                "Confuse Ray",
+                "Hypnosis"
+              ],
+              "item": null
+            },
+            {
+              "species": "Mismagius",
+              "level": 26,
+              "ability": "Levitate",
+              "moves": [
+                "Shadow Ball",
+                "Psybeam",
+                "Magical Leaf",
+                "Confuse Ray"
+              ],
+              "item": "Sitrus Berry"
+            }
+          ],
+          "sprite": "fantina"
+        }
+      ]
+    },
+    {
+      "id": "pre-gym-6",
+      "name": "To Leader Byron",
+      "levelCap": 41,
+      "encounters": {
+        "surf": [
+          {
+            "route": "Route 218",
+            "pokemon": [
+              {
+                "species": "Tentacool",
+                "rate": 60
+              },
+              {
+                "species": "Shellos",
+                "rate": 30
+              },
+              {
+                "species": "Tentacruel",
+                "rate": 9
+              },
+              {
+                "species": "Gastrodon",
+                "rate": 1
+              }
+            ],
+            "levels": [
+              20,
+              40
+            ]
+          }
+        ],
+        "walk": [
+          {
+            "route": "Iron Island",
+            "pokemon": [
+              {
+                "species": "Graveler",
+                "rate": 445
+              },
+              {
+                "species": "Golbat",
+                "rate": 110
+              },
+              {
+                "species": "Onix",
+                "rate": 90
+              },
+              {
+                "species": "Steelix",
+                "rate": 50
+              },
+              {
+                "species": "Mawile",
+                "rate": 40
+              },
+              {
+                "species": "Sableye",
+                "rate": 40
+              },
+              {
+                "species": "Geodude",
+                "rate": 35
+              },
+              {
+                "species": "Zubat",
+                "rate": 10
+              }
+            ],
+            "levels": [
+              30,
+              35
+            ]
+          }
+        ]
+      },
+      "gifts": [],
+      "items": [
+        "Rawst Berry",
+        "Persim Berry",
+        "Figy Berry",
+        "Magnet",
+        "Metal Coat"
+      ],
+      "tmMoves": [
+        "Iron Tail",
+        "Shadow Claw"
+      ],
+      "battles": [
+        {
+          "id": "byron",
+          "trainer": "Leader Byron",
+          "team": [
+            {
+              "species": "Magneton",
+              "level": 37,
+              "ability": "Magnet Pull",
+              "moves": [
+                "Flash Cannon",
+                "Thunderbolt",
+                "Tri Attack",
+                "Metal Sound"
+              ],
+              "item": null
+            },
+            {
+              "species": "Steelix",
+              "level": 38,
+              "ability": "Rock Head",
+              "moves": [
+                "Flash Cannon",
+                "Earthquake",
+                "Ice Fang",
+                "Sandstorm"
+              ],
+              "item": null
+            },
+            {
+              "species": "Bastiodon",
+              "level": 41,
+              "ability": "Sturdy",
+              "moves": [
+                "Metal Burst",
+                "Stone Edge",
+                "Iron Defense",
+                "Taunt"
+              ],
+              "item": "Sitrus Berry"
+            }
+          ],
+          "sprite": "byron"
+        }
+      ]
+    },
+    {
+      "id": "pre-gym-7",
+      "name": "To Leader Candice",
+      "levelCap": 44,
+      "encounters": {
+        "walk": [
+          {
+            "route": "Route 216",
+            "pokemon": [
+              {
+                "species": "Snover",
+                "rate": 66
+              },
+              {
+                "species": "Sneasel",
+                "rate": 35
+              },
+              {
+                "species": "Meditite",
+                "rate": 30
+              },
+              {
+                "species": "Graveler",
+                "rate": 21
+              },
+              {
+                "species": "Snorunt",
+                "rate": 10
+              },
+              {
+                "species": "Zubat",
+                "rate": 10
+              },
+              {
+                "species": "Ursaring",
+                "rate": 8
+              }
+            ],
+            "levels": [
+              32,
+              35
+            ]
+          },
+          {
+            "route": "Route 217",
+            "pokemon": [
+              {
+                "species": "Snover",
+                "rate": 66
+              },
+              {
+                "species": "Sneasel",
+                "rate": 51
+              },
+              {
+                "species": "Delibird",
+                "rate": 40
+              },
+              {
+                "species": "Swinub",
+                "rate": 35
+              },
+              {
+                "species": "Piloswine",
+                "rate": 22
+              },
+              {
+                "species": "Snorunt",
+                "rate": 20
+              },
+              {
+                "species": "Ursaring",
+                "rate": 8
+              }
+            ],
+            "levels": [
+              32,
+              35
+            ]
+          },
+          {
+            "route": "Acuity Lakefront",
+            "pokemon": [
+              {
+                "species": "Snover",
+                "rate": 66
+              },
+              {
+                "species": "Sneasel",
+                "rate": 51
+              },
+              {
+                "species": "Swinub",
+                "rate": 35
+              },
+              {
+                "species": "Snorunt",
+                "rate": 20
+              },
+              {
+                "species": "Ursaring",
+                "rate": 8
+              }
+            ],
+            "levels": [
+              32,
+              35
+            ]
+          },
+          {
+            "route": "Lake Acuity",
+            "pokemon": [
+              {
+                "species": "Snover",
+                "rate": 73
+              },
+              {
+                "species": "Bibarel",
+                "rate": 33
+              },
+              {
+                "species": "Snorunt",
+                "rate": 20
+              },
+              {
+                "species": "Golduck",
+                "rate": 15
+              },
+              {
+                "species": "Sneasel",
+                "rate": 10
+              },
+              {
+                "species": "Solrock",
+                "rate": 8
+              },
+              {
+                "species": "Lunatone",
+                "rate": 8
+              },
+              {
+                "species": "Teddiursa",
+                "rate": 8
+              },
+              {
+                "species": "Psyduck",
+                "rate": 5
+              }
+            ],
+            "levels": [
+              38,
+              41
+            ]
+          },
+          {
+            "route": "Route 210",
+            "pokemon": [
+              {
+                "species": "Ponyta",
+                "rate": 57
+              },
+              {
+                "species": "Swablu",
+                "rate": 30
+              },
+              {
+                "species": "Meditite",
+                "rate": 30
+              },
+              {
+                "species": "Scyther",
+                "rate": 30
+              },
+              {
+                "species": "Machop",
+                "rate": 27
+              },
+              {
+                "species": "Bagon",
+                "rate": 22
+              },
+              {
+                "species": "Machoke",
+                "rate": 22
+              },
+              {
+                "species": "Bibarel",
+                "rate": 20
+              },
+              {
+                "species": "Staravia",
+                "rate": 20
+              },
+              {
+                "species": "Noctowl",
+                "rate": 20
+              },
+              {
+                "species": "Hoothoot",
+                "rate": 20
+              },
+              {
+                "species": "Geodude",
+                "rate": 20
+              },
+              {
+                "species": "Chansey",
+                "rate": 17
+              },
+              {
+                "species": "Roselia",
+                "rate": 15
+              },
+              {
+                "species": "Miltank",
+                "rate": 11
+              },
+              {
+                "species": "Tauros",
+                "rate": 11
+              },
+              {
+                "species": "Seviper",
+                "rate": 8
+              },
+              {
+                "species": "Zangoose",
+                "rate": 8
+              },
+              {
+                "species": "Pineco",
+                "rate": 8
+              },
+              {
+                "species": "Nuzleaf",
+                "rate": 4
+              },
+              {
+                "species": "Seedot",
+                "rate": 4
+              }
+            ],
+            "levels": [
+              18,
+              30
+            ]
+          }
+        ]
+      },
+      "gifts": [],
+      "items": [
+        "Sitrus Berry",
+        "Chesto Berry",
+        "Wiki Berry",
+        "Aguav Berry"
+      ],
+      "tmMoves": [
+        "Ice Beam",
+        "Roost",
+        "Flash Cannon"
+      ],
+      "battles": [
+        {
+          "id": "candice",
+          "trainer": "Leader Candice",
+          "team": [
+            {
+              "species": "Sneasel",
+              "level": 40,
+              "ability": "Keen Eye",
+              "moves": [
+                "Faint Attack",
+                "Ice Shard",
+                "Slash",
+                "Aerial Ace"
+              ],
+              "item": null
+            },
+            {
+              "species": "Piloswine",
+              "level": 40,
+              "ability": "Oblivious",
+              "moves": [
+                "Hail",
+                "Earthquake",
+                "Stone Edge",
+                "Avalanche"
+              ],
+              "item": null
+            },
+            {
+              "species": "Abomasnow",
+              "level": 42,
+              "ability": "Snow Warning",
+              "moves": [
+                "Wood Hammer",
+                "Focus Blast",
+                "Water Pulse",
+                "Avalanche"
+              ],
+              "item": null
+            },
+            {
+              "species": "Froslass",
+              "level": 44,
+              "ability": "Snow Cloak",
+              "moves": [
+                "Shadow Ball",
+                "Double Team",
+                "Psychic",
+                "Blizzard"
+              ],
+              "item": "Sitrus Berry"
+            }
+          ],
+          "sprite": "candice"
+        }
+      ]
+    },
+    {
+      "id": "pre-gym-8",
+      "name": "To Leader Volkner",
+      "levelCap": 50,
+      "encounters": {
+        "walk": [
+          {
+            "route": "Route 222",
+            "pokemon": [
+              {
+                "species": "Floatzel",
+                "rate": 40
+              },
+              {
+                "species": "Skitty",
+                "rate": 40
+              },
+              {
+                "species": "Electabuzz",
+                "rate": 40
+              },
+              {
+                "species": "Flaaffy",
+                "rate": 22
+              },
+              {
+                "species": "Chatot",
+                "rate": 20
+              },
+              {
+                "species": "Luxio",
+                "rate": 10
+              },
+              {
+                "species": "Wingull",
+                "rate": 10
+              },
+              {
+                "species": "Magnemite",
+                "rate": 10
+              },
+              {
+                "species": "Pelipper",
+                "rate": 5
+              },
+              {
+                "species": "Magneton",
+                "rate": 5
+              }
+            ],
+            "levels": [
+              38,
+              41
+            ]
+          }
+        ],
+        "surf": [
+          {
+            "route": "Route 219",
+            "pokemon": [
+              {
+                "species": "Tentacool",
+                "rate": 60
+              },
+              {
+                "species": "Wingull",
+                "rate": 30
+              },
+              {
+                "species": "Tentacruel",
+                "rate": 9
+              },
+              {
+                "species": "Pelipper",
+                "rate": 1
+              }
+            ],
+            "levels": [
+              20,
+              40
+            ]
+          },
+          {
+            "route": "Route 221",
+            "pokemon": [
+              {
+                "species": "Tentacool",
+                "rate": 60
+              },
+              {
+                "species": "Wingull",
+                "rate": 30
+              },
+              {
+                "species": "Tentacruel",
+                "rate": 9
+              },
+              {
+                "species": "Pelipper",
+                "rate": 1
+              }
+            ],
+            "levels": [
+              20,
+              40
+            ]
+          }
+        ]
+      },
+      "gifts": [],
+      "items": [
+        "Leppa Berry",
+        "Pecha Berry",
+        "Mago Berry"
+      ],
+      "tmMoves": [
+        "Fling",
+        "X-Scissor",
+        "Hail",
+        "Blizzard",
+        "Shadow Ball",
+        "Avalanche"
+      ],
+      "battles": [
+        {
+          "id": "volkner",
+          "trainer": "Leader Volkner",
+          "team": [
+            {
+              "species": "Jolteon",
+              "level": 46,
+              "ability": "Volt Absorb",
+              "moves": [
+                "Charge Beam",
+                "Thunder Wave",
+                "Iron Tail",
+                "Quick Attack"
+              ],
+              "item": null
+            },
+            {
+              "species": "Raichu",
+              "level": 46,
+              "ability": "Static",
+              "moves": [
+                "Charge Beam",
+                "Signal Beam",
+                "Focus Blast",
+                "Quick Attack"
+              ],
+              "item": null
+            },
+            {
+              "species": "Luxray",
+              "level": 48,
+              "ability": "Rivalry",
+              "moves": [
+                "Thunder Fang",
+                "Ice Fang",
+                "Fire Fang",
+                "Crunch"
+              ],
+              "item": null
+            },
+            {
+              "species": "Electivire",
+              "level": 50,
+              "ability": "Motor Drive",
+              "moves": [
+                "ThunderPunch",
+                "Fire Punch",
+                "Giga Impact",
+                "Quick Attack"
+              ],
+              "item": "Sitrus Berry"
+            }
+          ],
+          "sprite": "volkner"
+        }
+      ]
+    },
+    {
+      "id": "elite-four",
+      "name": "Elite Four Aaron",
+      "levelCap": 53,
+      "encounters": {
+        "walk": [
+          {
+            "route": "Victory Road",
+            "pokemon": [
+              {
+                "species": "Graveler",
+                "rate": 195
+              },
+              {
+                "species": "Floatzel",
+                "rate": 130
+              },
+              {
+                "species": "Golbat",
+                "rate": 90
+              },
+              {
+                "species": "Onix",
+                "rate": 75
+              },
+              {
+                "species": "Steelix",
+                "rate": 60
+              },
+              {
+                "species": "Azumarill",
+                "rate": 60
+              },
+              {
+                "species": "Gabite",
+                "rate": 30
+              },
+              {
+                "species": "Magneton",
+                "rate": 30
+              },
+              {
+                "species": "Rhyhorn",
+                "rate": 20
+              },
+              {
+                "species": "Rhydon",
+                "rate": 15
+              },
+              {
+                "species": "Dewgong",
+                "rate": 15
+              }
+            ],
+            "levels": [
+              40,
+              50
+            ]
+          }
+        ]
+      },
+      "gifts": [],
+      "items": [],
+      "tmMoves": [
+        "Charge Beam"
+      ],
+      "battles": [
+        {
+          "id": "aaron",
+          "trainer": "Elite Four Aaron",
+          "team": [
+            {
+              "species": "Yanmega",
+              "level": 49,
+              "ability": "Speed Boost",
+              "moves": [
+                "Bug Buzz",
+                "Air Slash",
+                "U-turn",
+                "Double Team"
+              ],
+              "item": null
+            },
+            {
+              "species": "Scizor",
+              "level": 49,
+              "ability": "Swarm",
+              "moves": [
+                "X-Scissor",
+                "Iron Head",
+                "Night Slash",
+                "Quick Attack"
+              ],
+              "item": null
+            },
+            {
+              "species": "Heracross",
+              "level": 51,
+              "ability": "Swarm",
+              "moves": [
+                "Megahorn",
+                "Close Combat",
+                "Night Slash",
+                "Stone Edge"
+              ],
+              "item": null
+            },
+            {
+              "species": "Vespiquen",
+              "level": 50,
+              "ability": "Pressure",
+              "moves": [
+                "Attack Order",
+                "Defend Order",
+                "Heal Order",
+                "Power Gem"
+              ],
+              "item": null
+            },
+            {
+              "species": "Drapion",
+              "level": 53,
+              "ability": "Battle Armor",
+              "moves": [
+                "X-Scissor",
+                "Cross Poison",
+                "Ice Fang",
+                "Aerial Ace"
+              ],
+              "item": "Sitrus Berry"
+            }
+          ],
+          "chained": true,
+          "sprite": "aaron"
+        }
+      ]
+    },
+    {
+      "id": "elite-four",
+      "name": "Elite Four Bertha",
+      "levelCap": 55,
+      "encounters": {},
+      "gifts": [],
+      "items": [],
+      "tmMoves": [],
+      "battles": [
+        {
+          "id": "bertha",
+          "trainer": "Elite Four Bertha",
+          "team": [
+            {
+              "species": "Whiscash",
+              "level": 50,
+              "ability": "Oblivious",
+              "moves": [
+                "Earth Power",
+                "Aqua Tail",
+                "Zen Headbutt",
+                "Sandstorm"
+              ],
+              "item": null
+            },
+            {
+              "species": "Gliscor",
+              "level": 53,
+              "ability": "Hyper Cutter",
+              "moves": [
+                "Earthquake",
+                "Ice Fang",
+                "Fire Fang",
+                "Thunder Fang"
+              ],
+              "item": null
+            },
+            {
+              "species": "Hippowdon",
+              "level": 52,
+              "ability": "Sand Stream",
+              "moves": [
+                "Earthquake",
+                "Stone Edge",
+                "Crunch",
+                "Yawn"
+              ],
+              "item": null
+            },
+            {
+              "species": "Golem",
+              "level": 52,
+              "ability": "Rock Head",
+              "moves": [
+                "Earthquake",
+                "Fire Punch",
+                "ThunderPunch",
+                "Sandstorm"
+              ],
+              "item": null
+            },
+            {
+              "species": "Rhyperior",
+              "level": 55,
+              "ability": "Lightningrod",
+              "moves": [
+                "Earthquake",
+                "Rock Wrecker",
+                "Megahorn",
+                "Avalanche"
+              ],
+              "item": "Sitrus Berry"
+            }
+          ],
+          "chained": true,
+          "sprite": "bertha"
+        }
+      ]
+    },
+    {
+      "id": "elite-four",
+      "name": "Elite Four Flint",
+      "levelCap": 57,
+      "encounters": {},
+      "gifts": [],
+      "items": [],
+      "tmMoves": [],
+      "battles": [
+        {
+          "id": "flint",
+          "trainer": "Elite Four Flint",
+          "team": [
+            {
+              "species": "Houndoom",
+              "level": 52,
+              "ability": "Early Bird",
+              "moves": [
+                "Flamethrower",
+                "Sludge Bomb",
+                "Dark Pulse",
+                "Sunny Day"
+              ],
+              "item": null
+            },
+            {
+              "species": "Flareon",
+              "level": 55,
+              "ability": "Flash Fire",
+              "moves": [
+                "Overheat",
+                "Giga Impact",
+                "Quick Attack",
+                "Will-O-Wisp"
+              ],
+              "item": null
+            },
+            {
+              "species": "Rapidash",
+              "level": 53,
+              "ability": "Run Away",
+              "moves": [
+                "Flare Blitz",
+                "SolarBeam",
+                "Bounce",
+                "Sunny Day"
+              ],
+              "item": null
+            },
+            {
+              "species": "Infernape",
+              "level": 55,
+              "ability": "Blaze",
+              "moves": [
+                "Flare Blitz",
+                "ThunderPunch",
+                "Mach Punch",
+                "Earthquake"
+              ],
+              "item": null
+            },
+            {
+              "species": "Magmortar",
+              "level": 57,
+              "ability": "Flame Body",
+              "moves": [
+                "Flamethrower",
+                "Thunderbolt",
+                "SolarBeam",
+                "Hyper Beam"
+              ],
+              "item": "Sitrus Berry"
+            }
+          ],
+          "chained": true,
+          "sprite": "flint"
+        }
+      ]
+    },
+    {
+      "id": "elite-four",
+      "name": "Elite Four Lucian",
+      "levelCap": 59,
+      "encounters": {},
+      "gifts": [],
+      "items": [],
+      "tmMoves": [],
+      "battles": [
+        {
+          "id": "lucian",
+          "trainer": "Elite Four Lucian",
+          "team": [
+            {
+              "species": "Mr. Mime",
+              "level": 53,
+              "ability": "Soundproof",
+              "moves": [
+                "Psychic",
+                "Thunderbolt",
+                "Reflect",
+                "Light Screen"
+              ],
+              "item": null
+            },
+            {
+              "species": "Espeon",
+              "level": 55,
+              "ability": "Synchronize",
+              "moves": [
+                "Psychic",
+                "Shadow Ball",
+                "Quick Attack",
+                "Signal Beam"
+              ],
+              "item": null
+            },
+            {
+              "species": "Bronzong",
+              "level": 54,
+              "ability": "Levitate",
+              "moves": [
+                "Psychic",
+                "Gyro Ball",
+                "Earthquake",
+                "Calm Mind"
+              ],
+              "item": null
+            },
+            {
+              "species": "Alakazam",
+              "level": 56,
+              "ability": "Synchronize",
+              "moves": [
+                "Psychic",
+                "Energy Ball",
+                "Focus Blast",
+                "Recover"
+              ],
+              "item": null
+            },
+            {
+              "species": "Gallade",
+              "level": 59,
+              "ability": "Steadfast",
+              "moves": [
+                "Drain Punch",
+                "Psycho Cut",
+                "Leaf Blade",
+                "Stone Edge"
+              ],
+              "item": "Sitrus Berry"
+            }
+          ],
+          "chained": true,
+          "sprite": "lucian"
+        }
+      ]
+    },
+    {
+      "id": "champion",
+      "name": "Champion Cynthia",
+      "levelCap": 62,
+      "encounters": {},
+      "gifts": [],
+      "items": [],
+      "tmMoves": [],
+      "battles": [
+        {
+          "id": "cynthia",
+          "trainer": "Champion Cynthia",
+          "team": [
+            {
+              "species": "Spiritomb",
+              "level": 58,
+              "ability": "Pressure",
+              "moves": [
+                "Dark Pulse",
+                "Psychic",
+                "Silver Wind",
+                "Shadow Ball"
+              ],
+              "item": null
+            },
+            {
+              "species": "Roserade",
+              "level": 58,
+              "ability": "Natural Cure",
+              "moves": [
+                "Energy Ball",
+                "Sludge Bomb",
+                "Toxic",
+                "Extrasensory"
+              ],
+              "item": null
+            },
+            {
+              "species": "Togekiss",
+              "level": 60,
+              "ability": "Hustle",
+              "moves": [
+                "Air Slash",
+                "Aura Sphere",
+                "Water Pulse",
+                "Shock Wave"
+              ],
+              "item": null
+            },
+            {
+              "species": "Lucario",
+              "level": 60,
+              "ability": "Steadfast",
+              "moves": [
+                "Aura Sphere",
+                "ExtremeSpeed",
+                "Shadow Ball",
+                "Stone Edge"
+              ],
+              "item": null
+            },
+            {
+              "species": "Milotic",
+              "level": 58,
+              "ability": "Marvel Scale",
+              "moves": [
+                "Surf",
+                "Ice Beam",
+                "Mirror Coat",
+                "Dragon Pulse"
+              ],
+              "item": null
+            },
+            {
+              "species": "Garchomp",
+              "level": 62,
+              "ability": "Sand Veil",
+              "moves": [
+                "Dragon Rush",
+                "Earthquake",
+                "Flamethrower",
+                "Giga Impact"
+              ],
+              "item": "Sitrus Berry"
+            }
+          ],
+          "sprite": "cynthia-gen4"
+        }
+      ]
+    }
+  ]
+}

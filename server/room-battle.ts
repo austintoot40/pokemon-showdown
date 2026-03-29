@@ -472,6 +472,7 @@ export interface RoomBattlePlayerOptions {
 	hidden?: boolean;
 	isAI?: boolean;
 	nuzlockeDifficulty?: string;
+	avatar?: string;
 }
 
 export interface RoomBattleOptions {
@@ -1070,7 +1071,7 @@ export class RoomBattle extends RoomGame<RoomBattlePlayer> {
 		if (playerOpts) {
 			const options = {
 				name: player.name,
-				avatar: user ? `${user.avatar}` : '',
+				avatar: user ? `${user.avatar}` : (playerOpts.avatar ?? ''),
 				team: playerOpts.team || undefined,
 				rating: Math.round(playerOpts.rating || 0),
 				isAI: !!playerOpts.isAI || false,

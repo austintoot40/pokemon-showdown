@@ -1,10 +1,10 @@
 {
-  "id": "firered",
-  "name": "FireRed",
+  "id": "leafgreen",
+  "name": "LeafGreen",
   "generation": 3,
-  "description": "The FireRed region. Battle gyms, the Elite Four, and the Champion.",
-  "color": "#C62828",
-  "pokemon": "charizard",
+  "description": "The LeafGreen region. Battle gyms, the Elite Four, and the Champion.",
+  "color": "#388E3C",
+  "pokemon": "venusaur",
   "starters": [
     {
       "species": "Bulbasaur",
@@ -80,7 +80,7 @@
                 "rate": 40
               },
               {
-                "species": "Kakuna",
+                "species": "Metapod",
                 "rate": 10
               },
               {
@@ -88,7 +88,7 @@
                 "rate": 5
               },
               {
-                "species": "Metapod",
+                "species": "Kakuna",
                 "rate": 5
               }
             ],
@@ -152,7 +152,7 @@
                 "rate": 30
               },
               {
-                "species": "Nidoran-M",
+                "species": "Nidoran-F",
                 "rate": 14
               },
               {
@@ -164,7 +164,7 @@
                 "rate": 10
               },
               {
-                "species": "Nidoran-F",
+                "species": "Nidoran-M",
                 "rate": 1
               }
             ],
@@ -210,7 +210,7 @@
                 "rate": 35
               },
               {
-                "species": "Ekans",
+                "species": "Sandshrew",
                 "rate": 25
               },
               {
@@ -227,7 +227,7 @@
             "route": "Route 24",
             "pokemon": [
               {
-                "species": "Oddish",
+                "species": "Bellsprout",
                 "rate": 25
               },
               {
@@ -247,11 +247,11 @@
                 "rate": 15
               },
               {
-                "species": "Kakuna",
+                "species": "Metapod",
                 "rate": 4
               },
               {
-                "species": "Metapod",
+                "species": "Kakuna",
                 "rate": 1
               }
             ],
@@ -264,7 +264,7 @@
             "route": "Route 25",
             "pokemon": [
               {
-                "species": "Oddish",
+                "species": "Bellsprout",
                 "rate": 25
               },
               {
@@ -284,11 +284,11 @@
                 "rate": 15
               },
               {
-                "species": "Kakuna",
+                "species": "Metapod",
                 "rate": 4
               },
               {
-                "species": "Metapod",
+                "species": "Kakuna",
                 "rate": 1
               }
             ],
@@ -379,7 +379,7 @@
                 "rate": 35
               },
               {
-                "species": "Oddish",
+                "species": "Bellsprout",
                 "rate": 25
               }
             ],
@@ -400,7 +400,7 @@
                 "rate": 35
               },
               {
-                "species": "Oddish",
+                "species": "Bellsprout",
                 "rate": 25
               }
             ],
@@ -430,7 +430,7 @@
             "route": "Route 11",
             "pokemon": [
               {
-                "species": "Ekans",
+                "species": "Sandshrew",
                 "rate": 40
               },
               {
@@ -520,7 +520,7 @@
                 "rate": 35
               },
               {
-                "species": "Ekans",
+                "species": "Sandshrew",
                 "rate": 25
               }
             ],
@@ -541,7 +541,7 @@
                 "rate": 35
               },
               {
-                "species": "Ekans",
+                "species": "Sandshrew",
                 "rate": 25
               }
             ],
@@ -612,11 +612,11 @@
                 "rate": 30
               },
               {
-                "species": "Growlithe",
+                "species": "Vulpix",
                 "rate": 20
               },
               {
-                "species": "Ekans",
+                "species": "Sandshrew",
                 "rate": 20
               }
             ],
@@ -637,11 +637,11 @@
                 "rate": 30
               },
               {
-                "species": "Oddish",
+                "species": "Bellsprout",
                 "rate": 20
               },
               {
-                "species": "Growlithe",
+                "species": "Vulpix",
                 "rate": 10
               }
             ],
@@ -736,7 +736,7 @@
             "route": "Route 12",
             "pokemon": [
               {
-                "species": "Oddish",
+                "species": "Bellsprout",
                 "rate": 35
               },
               {
@@ -748,7 +748,7 @@
                 "rate": 30
               },
               {
-                "species": "Gloom",
+                "species": "Weepinbell",
                 "rate": 5
               }
             ],
@@ -761,7 +761,7 @@
             "route": "Route 13",
             "pokemon": [
               {
-                "species": "Oddish",
+                "species": "Bellsprout",
                 "rate": 35
               },
               {
@@ -777,7 +777,7 @@
                 "rate": 5
               },
               {
-                "species": "Gloom",
+                "species": "Weepinbell",
                 "rate": 5
               },
               {
@@ -794,7 +794,7 @@
             "route": "Route 14",
             "pokemon": [
               {
-                "species": "Oddish",
+                "species": "Bellsprout",
                 "rate": 35
               },
               {
@@ -810,7 +810,7 @@
                 "rate": 10
               },
               {
-                "species": "Gloom",
+                "species": "Weepinbell",
                 "rate": 5
               },
               {
@@ -827,7 +827,7 @@
             "route": "Route 15",
             "pokemon": [
               {
-                "species": "Oddish",
+                "species": "Bellsprout",
                 "rate": 35
               },
               {
@@ -843,7 +843,7 @@
                 "rate": 5
               },
               {
-                "species": "Gloom",
+                "species": "Weepinbell",
                 "rate": 5
               },
               {
@@ -947,7 +947,7 @@
                 "rate": 80
               },
               {
-                "species": "Nidoran-M",
+                "species": "Nidoran-F",
                 "rate": 80
               },
               {
@@ -959,7 +959,7 @@
                 "rate": 40
               },
               {
-                "species": "Nidorino",
+                "species": "Nidorina",
                 "rate": 40
               },
               {
@@ -979,11 +979,11 @@
                 "rate": 10
               },
               {
-                "species": "Nidorina",
+                "species": "Nidorino",
                 "rate": 10
               },
               {
-                "species": "Nidoran-F",
+                "species": "Nidoran-M",
                 "rate": 10
               },
               {
@@ -991,7 +991,7 @@
                 "rate": 5
               },
               {
-                "species": "Scyther",
+                "species": "Pinsir",
                 "rate": 5
               },
               {
@@ -1184,7 +1184,7 @@
             "route": "Seafoam Islands",
             "pokemon": [
               {
-                "species": "Psyduck",
+                "species": "Slowpoke",
                 "rate": 165
               },
               {
@@ -1200,7 +1200,7 @@
                 "rate": 57
               },
               {
-                "species": "Golduck",
+                "species": "Slowbro",
                 "rate": 45
               },
               {
@@ -1217,7 +1217,7 @@
             "route": "Pok\u00e9mon Mansion",
             "pokemon": [
               {
-                "species": "Koffing",
+                "species": "Grimer",
                 "rate": 120
               },
               {
@@ -1225,7 +1225,7 @@
                 "rate": 120
               },
               {
-                "species": "Growlithe",
+                "species": "Vulpix",
                 "rate": 60
               },
               {
@@ -1233,11 +1233,11 @@
                 "rate": 50
               },
               {
-                "species": "Weezing",
+                "species": "Koffing",
                 "rate": 20
               },
               {
-                "species": "Grimer",
+                "species": "Muk",
                 "rate": 20
               },
               {
@@ -1260,7 +1260,7 @@
                 "rate": 120
               },
               {
-                "species": "Horsea",
+                "species": "Krabby",
                 "rate": 60
               },
               {
@@ -1268,11 +1268,11 @@
                 "rate": 10
               },
               {
-                "species": "Psyduck",
+                "species": "Slowpoke",
                 "rate": 8
               },
               {
-                "species": "Golduck",
+                "species": "Slowbro",
                 "rate": 2
               }
             ],
@@ -1385,7 +1385,7 @@
                 "rate": 25
               },
               {
-                "species": "Ekans",
+                "species": "Sandshrew",
                 "rate": 20
               },
               {
@@ -1397,7 +1397,7 @@
                 "rate": 5
               },
               {
-                "species": "Arbok",
+                "species": "Sandslash",
                 "rate": 5
               }
             ],
@@ -1438,7 +1438,7 @@
                 "rate": 15
               },
               {
-                "species": "Arbok",
+                "species": "Sandslash",
                 "rate": 15
               },
               {
@@ -1457,7 +1457,7 @@
             "route": "Route 22",
             "pokemon": [
               {
-                "species": "Psyduck",
+                "species": "Slowpoke",
                 "rate": 100
               }
             ],
@@ -1470,7 +1470,7 @@
             "route": "Route 23",
             "pokemon": [
               {
-                "species": "Psyduck",
+                "species": "Slowpoke",
                 "rate": 100
               }
             ],
@@ -1575,7 +1575,6 @@
         {
           "id": "lorelei",
           "trainer": "Elite Four Lorelei",
-          "chained": true,
           "team": [
             {
               "species": "Dewgong",
@@ -1638,6 +1637,7 @@
               "item": "Sitrus Berry"
             }
           ],
+          "chained": true,
           "sprite": "lorelei"
         }
       ]
@@ -1654,7 +1654,6 @@
         {
           "id": "bruno",
           "trainer": "Elite Four Bruno",
-          "chained": true,
           "team": [
             {
               "species": "Onix",
@@ -1717,6 +1716,7 @@
               "item": "Sitrus Berry"
             }
           ],
+          "chained": true,
           "sprite": "bruno"
         }
       ]
@@ -1733,7 +1733,6 @@
         {
           "id": "agatha",
           "trainer": "Elite Four Agatha",
-          "chained": true,
           "team": [
             {
               "species": "Gengar",
@@ -1796,6 +1795,7 @@
               "item": "Sitrus Berry"
             }
           ],
+          "chained": true,
           "sprite": "agatha"
         }
       ]
@@ -1812,7 +1812,6 @@
         {
           "id": "lance",
           "trainer": "Elite Four Lance",
-          "chained": true,
           "team": [
             {
               "species": "Gyarados",
@@ -1875,6 +1874,7 @@
               "item": "Sitrus Berry"
             }
           ],
+          "chained": true,
           "sprite": "lance"
         }
       ]

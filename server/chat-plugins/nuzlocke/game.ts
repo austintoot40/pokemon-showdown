@@ -151,6 +151,14 @@ export class NuzlockeGame {
 		if (pokemon) pokemon.nickname = name.slice(0, 12).trim() || pokemon.species;
 	}
 
+	/** Maps evoRegion values to the generation number where those regional forms originate. */
+	static readonly REGION_GEN: {[region: string]: number} = {
+		Alola: 7,
+		Galar: 8,
+		Hisui: 8,
+		Paldea: 9,
+	};
+
 	/** Returns all evolutions currently available for a Pokemon given inventory and level cap. */
 	getAvailableEvolutions(uid: string): EvoOption[] {
 		const pokemon = this.getPokemon(uid);
@@ -162,13 +170,24 @@ export class NuzlockeGame {
 		for (const evoName of dexSpecies.evos) {
 			const evo = Dex.species.get(evoName);
 			if (!evo.exists) continue;
+			// Skip regional forms that don't belong to this scenario's generation.
+			if (evo.evoRegion) {
+				const regionGen = NuzlockeGame.REGION_GEN[evo.evoRegion];
+				if (!regionGen || this.scenario.generation !== regionGen) continue;
+			}
 			const evoType = evo.evoType;
 			if (!evoType || evoType === 'levelFriendship' || evoType === 'levelExtra') {
 				if ((evo.evoLevel ?? 0) <= levelCap) {
 					results.push({ species: evo.name, item: null, type: 'level' });
 				}
 			} else if (evoType === 'trade') {
-				results.push({ species: evo.name, item: null, type: 'trade' });
+				if (evo.evoItem) {
+					if (this.items.includes(evo.evoItem)) {
+						results.push({ species: evo.name, item: evo.evoItem, type: 'trade' });
+					}
+				} else {
+					results.push({ species: evo.name, item: null, type: 'trade' });
+				}
 			} else if (evoType === 'useItem' && evo.evoItem) {
 				if (this.items.includes(evo.evoItem)) {
 					results.push({ species: evo.name, item: evo.evoItem, type: 'item' });
@@ -211,6 +230,7 @@ export class NuzlockeGame {
 	/** Advances battle/segment indices and resolves encounters. Returns the next screen. */
 	advanceAfterWin(): NuzlockeScreen {
 		const segment = this.currentSegment!;
+		const wasChained = this.currentBattle?.chained ?? false;
 		this.completedBattles.push(this.currentBattle!.id);
 		this.currentBattleIndex++;
 
@@ -231,7 +251,7 @@ export class NuzlockeGame {
 		} else {
 			// More battles in this segment
 			this.cleanParty();
-			return 'teambuilding';
+			return wasChained ? 'battle' : 'teambuilding';
 		}
 	}
 
@@ -270,6 +290,7 @@ export interface NuzlockePanelPayload {
 		name: string;
 		levelCap: number;
 		items: string[];
+		tmMoves: string[];
 		encounters: Record<string, import('./types').RouteEncounter[]>;
 		gifts: import('./types').RouteEncounter[];
 		battles: import('./types').TrainerBattle[];
@@ -355,6 +376,8 @@ function buildScenarioCards(): NuzlockeScenarioCard[] {
 		battleCount: s.segments.reduce((n, seg) => n + seg.battles.length, 0),
 		encounterCount: s.segments.reduce((n, seg) => n + flatEncounters(seg).length, 0),
 		starters: s.starters.map(st => st.species),
+		color: s.color,
+		pokemon: s.pokemon,
 	}));
 }
 
@@ -413,6 +436,7 @@ export function serializeGameState(game: NuzlockeGame | null): NuzlockePanelPayl
 			name: seg.name,
 			levelCap: seg.levelCap,
 			items: seg.items,
+			tmMoves: seg.tmMoves ?? [],
 			encounters: seg.encounters,
 			gifts: seg.gifts ?? [],
 			battles: seg.battles,

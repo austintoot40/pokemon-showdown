@@ -7,6 +7,8 @@ export interface Scenario {
 	name: string;
 	generation: number;
 	description: string;
+	color: string;
+	pokemon: string;
 	starters: { species: string; level: number }[];
 	segments: Segment[];
 }
@@ -37,6 +39,8 @@ export interface TrainerBattle {
 	id: string;
 	trainer: string;
 	team: TrainerPokemon[];
+	chained?: boolean;
+	sprite?: string;
 }
 
 export interface TrainerPokemon {
@@ -95,6 +99,8 @@ export interface NuzlockeScenarioCard {
 	battleCount: number;
 	encounterCount: number;
 	starters: string[];
+	color: string;
+	pokemon: string;
 }
 
 export interface EvoOption {
