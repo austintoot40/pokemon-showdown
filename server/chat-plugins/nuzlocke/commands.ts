@@ -39,10 +39,13 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 
 		abandon(target, room, user) {
 			if (!nuzlockeGames.has(user.id)) return this.errorReply('No active run.');
+			const game = nuzlockeGames.get(user.id)!;
+			const battleRoomId = game.battleRoomId;
 			nuzlockeGames.delete(user.id);
 			saveNuzlockeData();
 			pushNuzlockeStatus(user.id, null);
 			closeNuzlockePanel(user.id);
+			if (battleRoomId) user.send(`>${battleRoomId}\n|deinit|`);
 		},
 
 		// Called after a run naturally ends (victory or wipe) — clears the game and closes the panel
