@@ -234,7 +234,8 @@
         "Fire Blast",
         "Flash",
         "Brick Break",
-        "Focus Punch"
+        "Focus Punch",
+        "Rock Smash"
       ],
       "battles": [
         {
@@ -584,7 +585,26 @@
           }
         ]
       },
-      "gifts": [],
+      "gifts": [
+        {
+          "route": "Fossil Revival (Oreburgh Museum)",
+          "pokemon": [
+            {
+              "species": "Cranidos",
+              "rate": 50
+            },
+            {
+              "species": "Shieldon",
+              "rate": 50
+            }
+          ],
+          "levels": [
+            20,
+            20
+          ],
+          "choice": true
+        }
+      ],
       "items": [
         "Cheri Berry",
         "Chesto Berry",
@@ -598,7 +618,8 @@
         "Water Pulse",
         "Sleep Talk",
         "Substitute",
-        "Stealth Rock"
+        "Stealth Rock",
+        "Cut"
       ],
       "battles": [
         {
@@ -1098,7 +1119,8 @@
         "Return",
         "Roost",
         "Shadow Ball",
-        "Grass Knot"
+        "Grass Knot",
+        "Fly"
       ],
       "battles": [
         {
@@ -1312,7 +1334,9 @@
         "Roar",
         "Aerial Ace",
         "Trick Room",
-        "Drain Punch"
+        "Drain Punch",
+        "Defog",
+        "Strength"
       ],
       "battles": [
         {
@@ -1597,7 +1621,8 @@
         "Taunt",
         "Psych Up",
         "Psychic",
-        "Brine"
+        "Brine",
+        "Surf"
       ],
       "battles": [
         {
@@ -2219,7 +2244,9 @@
         "Hail",
         "Blizzard",
         "Shadow Ball",
-        "Avalanche"
+        "Avalanche",
+        "Waterfall",
+        "Rock Climb"
       ],
       "battles": [
         {

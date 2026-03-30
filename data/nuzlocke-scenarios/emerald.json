@@ -369,7 +369,9 @@
       ],
       "tmMoves": [
         "Steel Wing",
-        "Rock Tomb"
+        "Rock Tomb",
+        "Cut",
+        "Flash"
       ],
       "battles": [
         {
@@ -588,7 +590,9 @@
         "Leppa Berry"
       ],
       "tmMoves": [
-        "Bulk Up"
+        "Bulk Up",
+        "Rock Smash",
+        "Strength"
       ],
       "battles": [
         {
@@ -827,7 +831,26 @@
           }
         ]
       },
-      "gifts": [],
+      "gifts": [
+        {
+          "route": "Fossil Revival (Devon Corp)",
+          "pokemon": [
+            {
+              "species": "Lileep",
+              "rate": 50
+            },
+            {
+              "species": "Anorith",
+              "rate": 50
+            }
+          ],
+          "levels": [
+            20,
+            20
+          ],
+          "choice": true
+        }
+      ],
       "items": [
         "Oran Berry",
         "Pecha Berry",
@@ -1184,7 +1207,9 @@
         "Iapapa Berry"
       ],
       "tmMoves": [
-        "Facade"
+        "Facade",
+        "Surf",
+        "Fly"
       ],
       "battles": [
         {
@@ -1812,7 +1837,9 @@
       "gifts": [],
       "items": [],
       "tmMoves": [
-        "Calm Mind"
+        "Calm Mind",
+        "Waterfall",
+        "Dive"
       ],
       "battles": [
         {

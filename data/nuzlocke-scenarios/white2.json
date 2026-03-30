@@ -410,7 +410,8 @@
       ],
       "tmMoves": [
         "Dig",
-        "Torment"
+        "Torment",
+        "Surf"
       ],
       "battles": [
         {
@@ -826,7 +827,8 @@
         "Sludge Bomb",
         "Poison Jab",
         "Dragon Claw",
-        "Volt Switch"
+        "Volt Switch",
+        "Fly"
       ],
       "battles": [
         {
@@ -977,7 +979,26 @@
           }
         ]
       },
-      "gifts": [],
+      "gifts": [
+        {
+          "route": "Fossil Revival (Nacrene Museum)",
+          "pokemon": [
+            {
+              "species": "Tirtouga",
+              "rate": 50
+            },
+            {
+              "species": "Archen",
+              "rate": 50
+            }
+          ],
+          "levels": [
+            25,
+            25
+          ],
+          "choice": true
+        }
+      ],
       "items": [],
       "tmMoves": [
         "Earthquake",
@@ -1301,7 +1322,9 @@
       },
       "gifts": [],
       "items": [],
-      "tmMoves": [],
+      "tmMoves": [
+        "Waterfall"
+      ],
       "battles": [
         {
           "id": "shauntal",

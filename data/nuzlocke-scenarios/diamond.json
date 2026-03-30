@@ -244,7 +244,8 @@
         "Fire Blast",
         "Flash",
         "Brick Break",
-        "Focus Punch"
+        "Focus Punch",
+        "Rock Smash"
       ],
       "battles": [
         {
@@ -558,7 +559,21 @@
           }
         ]
       },
-      "gifts": [],
+      "gifts": [
+        {
+          "route": "Skull Fossil Revival (Oreburgh Museum)",
+          "pokemon": [
+            {
+              "species": "Cranidos",
+              "rate": 100
+            }
+          ],
+          "levels": [
+            20,
+            20
+          ]
+        }
+      ],
       "items": [
         "Cheri Berry",
         "Chesto Berry",
@@ -572,7 +587,8 @@
         "Water Pulse",
         "Sleep Talk",
         "Substitute",
-        "Stealth Rock"
+        "Stealth Rock",
+        "Cut"
       ],
       "battles": [
         {
@@ -1067,7 +1083,8 @@
         "Return",
         "Roost",
         "Shadow Ball",
-        "Grass Knot"
+        "Grass Knot",
+        "Fly"
       ],
       "battles": [
         {
@@ -1291,7 +1308,9 @@
         "Roar",
         "Aerial Ace",
         "Trick Room",
-        "Drain Punch"
+        "Drain Punch",
+        "Defog",
+        "Strength"
       ],
       "battles": [
         {
@@ -1603,7 +1622,8 @@
         "Taunt",
         "Psych Up",
         "Psychic",
-        "Brine"
+        "Brine",
+        "Surf"
       ],
       "battles": [
         {
@@ -2251,7 +2271,9 @@
       "tmMoves": [
         "Fling",
         "X-Scissor",
-        "Avalanche"
+        "Avalanche",
+        "Waterfall",
+        "Rock Climb"
       ],
       "battles": [
         {

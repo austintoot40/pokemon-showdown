@@ -373,7 +373,8 @@
         "Rain Dance",
         "Headbutt",
         "Sweet Scent",
-        "Mud-Slap"
+        "Mud-Slap",
+        "Flash"
       ],
       "battles": [
         {
@@ -603,7 +604,8 @@
       "tmMoves": [
         "Dig",
         "Rock Smash",
-        "Fury Cutter"
+        "Fury Cutter",
+        "Cut"
       ],
       "battles": [
         {
@@ -858,7 +860,9 @@
         "Sharp Beak"
       ],
       "tmMoves": [
-        "Shadow Ball"
+        "Shadow Ball",
+        "Surf",
+        "Strength"
       ],
       "battles": [
         {
@@ -902,7 +906,8 @@
       "gifts": [],
       "items": [],
       "tmMoves": [
-        "DynamicPunch"
+        "DynamicPunch",
+        "Fly"
       ],
       "battles": [
         {
@@ -1089,7 +1094,8 @@
       "tmMoves": [
         "Sludge Bomb",
         "Defense Curl",
-        "Iron Tail"
+        "Iron Tail",
+        "Whirlpool"
       ],
       "battles": [
         {
@@ -1226,7 +1232,8 @@
       ],
       "tmMoves": [
         "Rest",
-        "Icy Wind"
+        "Icy Wind",
+        "Waterfall"
       ],
       "battles": [
         {

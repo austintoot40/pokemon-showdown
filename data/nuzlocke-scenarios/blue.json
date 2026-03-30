@@ -416,7 +416,9 @@
       "items": [],
       "tmMoves": [
         "Water Gun",
-        "BubbleBeam"
+        "BubbleBeam",
+        "Cut",
+        "Flash"
       ],
       "battles": [
         {
@@ -965,7 +967,10 @@
         "Swift",
         "Pay Day",
         "Rage",
-        "Mega Drain"
+        "Mega Drain",
+        "Fly",
+        "Surf",
+        "Strength"
       ],
       "battles": [
         {
@@ -1236,7 +1241,39 @@
           }
         ]
       },
-      "gifts": [],
+      "gifts": [
+        {
+          "route": "Fossil Revival (Cinnabar Lab)",
+          "pokemon": [
+            {
+              "species": "Omanyte",
+              "rate": 50
+            },
+            {
+              "species": "Kabuto",
+              "rate": 50
+            }
+          ],
+          "levels": [
+            5,
+            5
+          ],
+          "choice": true
+        },
+        {
+          "route": "Old Amber Revival (Cinnabar Lab)",
+          "pokemon": [
+            {
+              "species": "Aerodactyl",
+              "rate": 100
+            }
+          ],
+          "levels": [
+            5,
+            5
+          ]
+        }
+      ],
       "items": [],
       "tmMoves": [
         "Psywave"

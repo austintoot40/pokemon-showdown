@@ -48,8 +48,8 @@ export function getLegalMoves(
 					continue;
 				}
 
-				// TM moves: check against collected TM move IDs
-				if (sourceType === 'M') {
+				// TM/HM moves: check against collected TM/HM move IDs
+				if (sourceType === 'M' || sourceType === 'H') {
 					if (tmMoves.some(m => toID(m) === moveId)) {
 						tmMoveIds.add(moveId);
 					}

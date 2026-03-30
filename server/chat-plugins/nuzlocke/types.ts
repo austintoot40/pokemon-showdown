@@ -33,6 +33,7 @@ export interface RouteEncounter {
 	route: string;
 	pokemon: EncounterEntry[];
 	levels: [number, number];
+	choice?: boolean;  // if true, player selects the species rather than auto-resolve
 }
 
 export interface TrainerBattle {
@@ -88,7 +89,7 @@ export interface StatsTable {
 }
 
 export type NuzlockeScreen =
-	'dashboard' | 'encounters' | 'teambuilding' | 'battle' | 'results' | 'summary';
+	'encounters' | 'teambuilding' | 'battle' | 'results' | 'summary';
 
 export interface NuzlockeScenarioCard {
 	id: string;

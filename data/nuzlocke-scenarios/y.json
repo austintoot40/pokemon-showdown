@@ -299,7 +299,26 @@
           }
         ]
       },
-      "gifts": [],
+      "gifts": [
+        {
+          "route": "Fossil Revival (Ambrette Town)",
+          "pokemon": [
+            {
+              "species": "Tyrunt",
+              "rate": 50
+            },
+            {
+              "species": "Amaura",
+              "rate": 50
+            }
+          ],
+          "levels": [
+            20,
+            20
+          ],
+          "choice": true
+        }
+      ],
       "items": [
         "Oran Berry",
         "Sharp Beak",

@@ -8,14 +8,18 @@
 
 'use strict';
 
-import { nuzlockeGames, pushNuzlockeState } from './game';
+import { nuzlockeGames, pushNuzlockeState, closeNuzlockePanel } from './game';
 
 export const nuzlockePages: Chat.PageTable = {
 	nuzlocke(query, user) {
-		const game = nuzlockeGames.get(user.id) ?? null;
+		const game = nuzlockeGames.get(user.id);
 		// Deferred so it runs after setHTML sends |init|html — otherwise the room
-		// doesn't exist client-side yet when |nuzlockestate| arrives and is dropped.
-		setImmediate(() => pushNuzlockeState(user.id, game));
+		// doesn't exist client-side yet when the message arrives and is dropped.
+		if (game) {
+			setImmediate(() => pushNuzlockeState(user.id, game));
+		} else {
+			setImmediate(() => closeNuzlockePanel(user.id));
+		}
 		return '';
 	},
 };

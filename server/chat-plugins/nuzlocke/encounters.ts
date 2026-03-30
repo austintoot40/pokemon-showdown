@@ -68,6 +68,16 @@ function weightedPick(entries: EncounterEntry[]): string {
 	return entries[entries.length - 1].species; // floating-point safety fallback
 }
 
+/** Resolves a choice gift to a specific species chosen by the player. */
+export function resolveChoiceGift(
+	route: RouteEncounter,
+	species: string,
+	levelCap: number
+): OwnedPokemon {
+	const level = randomInt(route.levels[0], route.levels[1]);
+	return buildEncounter(species, level, route.route, levelCap);
+}
+
 export function resolveOneEncounter(
 	route: RouteEncounter,
 	box: OwnedPokemon[],

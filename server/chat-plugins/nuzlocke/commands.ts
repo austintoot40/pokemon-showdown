@@ -4,7 +4,7 @@
 
 'use strict';
 
-import { nuzlockeGames, NuzlockeGame, flatEncounters, saveNuzlockeData, pushNuzlockeStatus, pushNuzlockeState, aiPreferences, recordCompletedRun } from './game';
+import { nuzlockeGames, NuzlockeGame, flatEncounters, saveNuzlockeData, pushNuzlockeStatus, pushNuzlockeState, closeNuzlockePanel, aiPreferences, recordCompletedRun } from './game';
 import { getScenario } from './scenarios';
 import { createNuzlockeBattle, goToTeambuilding } from './battle';
 
@@ -42,15 +42,15 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 			nuzlockeGames.delete(user.id);
 			saveNuzlockeData();
 			pushNuzlockeStatus(user.id, null);
-			pushNuzlockeState(user.id, null);
+			closeNuzlockePanel(user.id);
 		},
 
-		// Called after a run naturally ends (victory or wipe) — clears the game and shows dashboard
+		// Called after a run naturally ends (victory or wipe) — clears the game and closes the panel
 		done(target, room, user) {
 			nuzlockeGames.delete(user.id);
 			saveNuzlockeData();
 			pushNuzlockeStatus(user.id, null);
-			pushNuzlockeState(user.id, null);
+			closeNuzlockePanel(user.id);
 		},
 
 		setai(target, room, user) {
@@ -82,6 +82,21 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 			if (!route) return this.errorReply('Invalid route index.');
 			if (game.resolvedRoutes.includes(route.route)) return this.errorReply('Already explored this route.');
 			game.resolveOneRoute(routeIndex);
+			game.goToPage('encounters');
+		},
+
+		choosegift(target, room, user) {
+			const game = nuzlockeGames.get(user.id);
+			if (!game) return this.errorReply('No active run.');
+			const [giftIndexStr, speciesId] = target.trim().split(' ');
+			const giftIndex = parseInt(giftIndexStr);
+			if (isNaN(giftIndex) || !speciesId) return this.errorReply('Usage: /nuzlocke choosegift <giftIndex> <speciesId>');
+			const segment = game.currentSegment;
+			if (!segment) return this.errorReply('No active segment.');
+			const route = (segment.gifts ?? [])[giftIndex];
+			if (!route || !route.choice) return this.errorReply('Not a valid choice gift.');
+			if (game.resolvedRoutes.includes(route.route)) return this.errorReply('Already received this gift.');
+			game.resolveGiftChoice(giftIndex, speciesId);
 			game.goToPage('encounters');
 		},
 
@@ -286,8 +301,12 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 		},
 
 		refresh(target, room, user) {
-			const game = nuzlockeGames.get(user.id) ?? null;
-			pushNuzlockeState(user.id, game);
+			const game = nuzlockeGames.get(user.id);
+			if (game) {
+				pushNuzlockeState(user.id, game);
+			} else {
+				closeNuzlockePanel(user.id);
+			}
 		},
 
 		'': 'help',

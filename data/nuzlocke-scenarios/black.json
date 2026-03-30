@@ -935,7 +935,9 @@
       },
       "gifts": [],
       "items": [],
-      "tmMoves": [],
+      "tmMoves": [
+        "Surf"
+      ],
       "battles": [
         {
           "id": "skyla",
@@ -1114,9 +1116,25 @@
           }
         ]
       },
-      "gifts": [],
+      "gifts": [
+        {
+          "route": "Cover Fossil Revival (Nacrene Museum)",
+          "pokemon": [
+            {
+              "species": "Tirtouga",
+              "rate": 100
+            }
+          ],
+          "levels": [
+            25,
+            25
+          ]
+        }
+      ],
       "items": [],
-      "tmMoves": [],
+      "tmMoves": [
+        "Fly"
+      ],
       "battles": [
         {
           "id": "brycen",
@@ -1326,7 +1344,9 @@
       "encounters": {},
       "gifts": [],
       "items": [],
-      "tmMoves": [],
+      "tmMoves": [
+        "Waterfall"
+      ],
       "battles": [
         {
           "id": "shauntal",

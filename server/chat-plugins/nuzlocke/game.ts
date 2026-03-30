@@ -3,7 +3,7 @@
  */
 
 import { FS } from '../../../lib';
-import { resolveOneEncounter, getAvailablePool, buildStarterPokemon } from './encounters';
+import { resolveOneEncounter, resolveChoiceGift, getAvailablePool, buildStarterPokemon } from './encounters';
 import { getLegalMoves, type LegalMove } from './learnsets';
 import { listScenarios } from './scenarios';
 import type { Scenario, Segment, RouteEncounter, OwnedPokemon, DeadPokemon, NuzlockeScreen, NuzlockeScenarioCard, EvoOption, CompletedRun } from './types';
@@ -76,18 +76,35 @@ export class NuzlockeGame {
 		this.addToParty(starter.uid);
 	}
 
-	/** Called when entering a new segment: adds items/TMs and auto-resolves gift encounters. */
+	/** Called when entering a new segment: adds items/TMs and auto-resolves non-choice gift encounters. */
 	resolveSegmentStart() {
 		const segment = this.scenario.segments[this.currentSegmentIndex];
 		if (!segment) return;
 		this.items.push(...segment.items);
 		this.tmMoves.push(...(segment.tmMoves ?? []));
 		for (const route of segment.gifts ?? []) {
+			if (route.choice) continue;  // Player must choose manually
 			const pokemon = resolveOneEncounter(route, this.box, this.graveyard as any, segment.levelCap);
 			this.box.push(pokemon);
 			this.addToParty(pokemon.uid);
 			this.resolvedRoutes.push(route.route);
 		}
+	}
+
+	/** Called by /nuzlocke choosegift: resolves a choice gift to the player's selected species. */
+	resolveGiftChoice(giftIndex: number, speciesId: string) {
+		const segment = this.scenario.segments[this.currentSegmentIndex];
+		if (!segment) return;
+		const gifts = segment.gifts ?? [];
+		const route = gifts[giftIndex];
+		if (!route || !route.choice) return;
+		if (this.resolvedRoutes.includes(route.route)) return;
+		const entry = route.pokemon.find(e => toID(e.species) === speciesId);
+		if (!entry) return;
+		const pokemon = resolveChoiceGift(route, entry.species, segment.levelCap);
+		this.box.push(pokemon);
+		this.addToParty(pokemon.uid);
+		this.resolvedRoutes.push(route.route);
 	}
 
 	/** Called by /nuzlocke encounter <routeIndex>: rolls a single wild route by flat index. */
@@ -322,6 +339,9 @@ export interface NuzlockePanelPayload {
 
 	// Dashboard data
 	scenarios: NuzlockeScenarioCard[];
+
+	// Active battle room (null when no battle in progress)
+	battleRoomId: string | null;
 }
 
 // Lightweight run summary delivered globally (|updatenuzlocke| message).
@@ -381,23 +401,8 @@ function buildScenarioCards(): NuzlockeScenarioCard[] {
 	}));
 }
 
-export function serializeGameState(game: NuzlockeGame | null): NuzlockePanelPayload {
+export function serializeGameState(game: NuzlockeGame): NuzlockePanelPayload {
 	const scenarios = buildScenarioCards();
-
-	if (!game) {
-		return {
-			curScreen: 'dashboard',
-			scenarioId: null, scenarioName: null, scenarioDescription: null, generation: 9,
-			currentSegmentIndex: 0, totalSegments: 0, currentBattleIndex: 0,
-			completedBattles: [],
-			segment: null,
-			box: [], party: [], graveyard: [], items: [], tmMoves: [], resolvedRoutes: [],
-			legalMoves: {}, availableEvolutions: {},
-			lastBattleResult: null, nextScreen: null,
-			segmentNames: {},
-			scenarios,
-		};
-	}
 
 	// Precompute legal moves for all alive box pokemon
 	const legalMoves: Record<string, LegalMove[]> = {};
@@ -453,14 +458,21 @@ export function serializeGameState(game: NuzlockeGame | null): NuzlockePanelPayl
 		nextScreen: game.nextScreen,
 		segmentNames,
 		scenarios,
+		battleRoomId: game.battleRoomId,
 	};
 }
 
-export function pushNuzlockeState(userID: ID, game: NuzlockeGame | null) {
+export function pushNuzlockeState(userID: ID, game: NuzlockeGame) {
 	const user = Users.get(userID);
 	if (!user) return;
 	const payload = JSON.stringify(serializeGameState(game));
 	user.send(`>view-nuzlocke\n|nuzlockestate|${payload}`);
+}
+
+export function closeNuzlockePanel(userID: ID) {
+	const user = Users.get(userID);
+	if (!user) return;
+	user.send(`>view-nuzlocke\n|deinit|`);
 }
 
 

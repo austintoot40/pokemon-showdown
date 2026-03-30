@@ -1063,7 +1063,8 @@
         "Facade",
         "Bulk Up",
         "Venoshock",
-        "Rock Slide"
+        "Rock Slide",
+        "Surf"
       ],
       "battles": [
         {
@@ -1243,7 +1244,21 @@
           }
         ]
       },
-      "gifts": [],
+      "gifts": [
+        {
+          "route": "Plume Fossil Revival (Nacrene Museum)",
+          "pokemon": [
+            {
+              "species": "Archen",
+              "rate": 100
+            }
+          ],
+          "levels": [
+            25,
+            25
+          ]
+        }
+      ],
       "items": [
         "Poison Barb",
         "Damp Rock",
@@ -1260,7 +1275,8 @@
         "Shadow Ball",
         "Calm Mind",
         "Embargo",
-        "Acrobatics"
+        "Acrobatics",
+        "Fly"
       ],
       "battles": [
         {
@@ -1475,7 +1491,9 @@
       "encounters": {},
       "gifts": [],
       "items": [],
-      "tmMoves": [],
+      "tmMoves": [
+        "Waterfall"
+      ],
       "battles": [
         {
           "id": "shauntal",

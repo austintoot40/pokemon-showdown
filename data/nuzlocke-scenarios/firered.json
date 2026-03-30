@@ -454,7 +454,9 @@
         "Sitrus Berry"
       ],
       "tmMoves": [
-        "Water Pulse"
+        "Water Pulse",
+        "Cut",
+        "Flash"
       ],
       "battles": [
         {
@@ -1046,7 +1048,10 @@
         "Return",
         "Skill Swap",
         "Rain Dance",
-        "Giga Drain"
+        "Giga Drain",
+        "Fly",
+        "Surf",
+        "Strength"
       ],
       "battles": [
         {
@@ -1283,7 +1288,39 @@
           }
         ]
       },
-      "gifts": [],
+      "gifts": [
+        {
+          "route": "Fossil Revival (Cinnabar Lab)",
+          "pokemon": [
+            {
+              "species": "Omanyte",
+              "rate": 50
+            },
+            {
+              "species": "Kabuto",
+              "rate": 50
+            }
+          ],
+          "levels": [
+            5,
+            5
+          ],
+          "choice": true
+        },
+        {
+          "route": "Old Amber Revival (Cinnabar Lab)",
+          "pokemon": [
+            {
+              "species": "Aerodactyl",
+              "rate": 100
+            }
+          ],
+          "levels": [
+            5,
+            5
+          ]
+        }
+      ],
       "items": [],
       "tmMoves": [
         "Calm Mind"
@@ -1569,7 +1606,8 @@
       "gifts": [],
       "items": [],
       "tmMoves": [
-        "Earthquake"
+        "Earthquake",
+        "Waterfall"
       ],
       "battles": [
         {

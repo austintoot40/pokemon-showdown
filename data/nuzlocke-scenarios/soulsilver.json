@@ -534,7 +534,8 @@
         "Rain Dance",
         "Taunt",
         "Embargo",
-        "Roost"
+        "Roost",
+        "Flash"
       ],
       "battles": [
         {
@@ -783,7 +784,9 @@
       "tmMoves": [
         "Payback",
         "Dig",
-        "U-turn"
+        "U-turn",
+        "Cut",
+        "Rock Smash"
       ],
       "battles": [
         {
@@ -1104,7 +1107,9 @@
       "gifts": [],
       "items": [],
       "tmMoves": [
-        "Shadow Ball"
+        "Shadow Ball",
+        "Surf",
+        "Strength"
       ],
       "battles": [
         {
@@ -1148,7 +1153,8 @@
       "gifts": [],
       "items": [],
       "tmMoves": [
-        "Focus Punch"
+        "Focus Punch",
+        "Fly"
       ],
       "battles": [
         {
@@ -1383,7 +1389,8 @@
         "Shadow Claw",
         "Sludge Bomb",
         "Aerial Ace",
-        "Iron Tail"
+        "Iron Tail",
+        "Whirlpool"
       ],
       "battles": [
         {
@@ -1576,7 +1583,8 @@
       ],
       "tmMoves": [
         "Avalanche",
-        "Hail"
+        "Hail",
+        "Waterfall"
       ],
       "battles": [
         {

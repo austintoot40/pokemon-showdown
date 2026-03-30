@@ -354,7 +354,8 @@
         "Flash",
         "Steel Wing",
         "Shadow Claw",
-        "Rock Tomb"
+        "Rock Tomb",
+        "Cut"
       ],
       "battles": [
         {
@@ -566,7 +567,9 @@
         "Chesto Berry"
       ],
       "tmMoves": [
-        "Bulk Up"
+        "Bulk Up",
+        "Rock Smash",
+        "Strength"
       ],
       "battles": [
         {
@@ -786,7 +789,26 @@
           }
         ]
       },
-      "gifts": [],
+      "gifts": [
+        {
+          "route": "Fossil Revival (Devon Corp)",
+          "pokemon": [
+            {
+              "species": "Lileep",
+              "rate": 50
+            },
+            {
+              "species": "Anorith",
+              "rate": 50
+            }
+          ],
+          "levels": [
+            20,
+            20
+          ],
+          "choice": true
+        }
+      ],
       "items": [
         "Hard Stone",
         "Normal Gem",
@@ -1106,7 +1128,9 @@
       ],
       "tmMoves": [
         "Acrobatics",
-        "Retaliate"
+        "Retaliate",
+        "Surf",
+        "Fly"
       ],
       "battles": [
         {
@@ -1639,7 +1663,9 @@
       "tmMoves": [
         "Scald",
         "Solar Beam",
-        "Calm Mind"
+        "Calm Mind",
+        "Waterfall",
+        "Dive"
       ],
       "battles": [
         {
