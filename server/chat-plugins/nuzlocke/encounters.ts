@@ -83,11 +83,10 @@ export function resolveOneEncounter(
 	box: OwnedPokemon[],
 	graveyard: OwnedPokemon[],
 	levelCap: number
-): OwnedPokemon {
-	// Use filtered pool; if all dupes fall back to full pool
+): OwnedPokemon | null {
 	const pool = getAvailablePool(route.pokemon, box, graveyard);
-	const finalPool = pool.length > 0 ? pool : route.pokemon;
-	const speciesName = weightedPick(finalPool);
+	if (!pool.length) return null; // all dupes — nothing to encounter
+	const speciesName = weightedPick(pool);
 	const level = randomInt(route.levels[0], route.levels[1]);
 	return buildEncounter(speciesName, level, route.route, levelCap);
 }

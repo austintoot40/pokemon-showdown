@@ -85,6 +85,7 @@ export class NuzlockeGame {
 		for (const route of segment.gifts ?? []) {
 			if (route.choice) continue;  // Player must choose manually
 			const pokemon = resolveOneEncounter(route, this.box, this.graveyard as any, segment.levelCap);
+			if (!pokemon) continue; // all dupes — skip
 			this.box.push(pokemon);
 			this.addToParty(pokemon.uid);
 			this.resolvedRoutes.push(route.route);
@@ -115,9 +116,10 @@ export class NuzlockeGame {
 		if (!route) return;
 		if (this.resolvedRoutes.includes(route.route)) return;
 		const pokemon = resolveOneEncounter(route, this.box, this.graveyard as any, segment.levelCap);
+		this.resolvedRoutes.push(route.route);
+		if (!pokemon) return; // all dupes — route resolved with no encounter
 		this.box.push(pokemon);
 		this.addToParty(pokemon.uid);
-		this.resolvedRoutes.push(route.route);
 	}
 
 	get currentSegment() {
@@ -263,7 +265,7 @@ export class NuzlockeGame {
 				// New segment: add items/gifts; wild routes are player-initiated
 				this.resolvedRoutes = [];
 				this.resolveSegmentStart();
-				return 'encounters';
+				return wasChained ? 'battle' : 'encounters';
 			}
 		} else {
 			// More battles in this segment
@@ -495,7 +497,10 @@ export function recordCompletedRun(game: NuzlockeGame, outcome: 'victory' | 'wip
 		deathCount: game.graveyard.length,
 		graveyard: [...game.graveyard],
 		survivors: game.box.filter(p => p.alive).map(p => ({ species: p.species, nickname: p.nickname })),
-		finalParty: game.box.map(p => ({ species: p.species, alive: p.alive })),
+		finalParty: game.party
+			.map(uid => game.box.find(p => p.uid === uid))
+			.filter(Boolean)
+			.map(p => ({ species: p!.species, alive: p!.alive })),
 		finalBattle: finalBattle ?? game.currentBattle?.trainer ?? '',
 		segmentIndex: game.currentSegmentIndex,
 		ai: game.settings.ai,
