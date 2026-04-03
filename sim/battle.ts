@@ -176,8 +176,8 @@ export class Battle {
 
 	teamGenerator: ReturnType<typeof Teams.getGenerator> | null;
 
-	/** Difficulty tier for the nuzlocke AI ('random' | 'game-accurate' | 'smart' | 'competitive'). */
-	nuzlockeDifficulty: string = 'random';
+	/** Difficulty tier for the nuzlocke AI ('game-accurate' | 'smart' | 'competitive'). */
+	nuzlockeDifficulty: string = 'game-accurate';
 
 	readonly hints: Set<string>;
 
@@ -3373,9 +3373,6 @@ export class Battle {
 	}
 
 	aiForceSwitch(request: ChoiceRequest, difficulty: string): string {
-		if (difficulty === 'random') {
-			return `switch ${this.random(2, request.side.pokemon.length + 1)}`;
-		}
 		// Check B: score bench Pokemon by type matchup, pick best
 		const aiSide = this.sides[1];
 		const opponent = this.sides[0].active[0];
@@ -3405,10 +3402,6 @@ export class Battle {
 	}
 
 	aiChooseMove(request: ChoiceRequest, difficulty: string): string {
-		if (difficulty === 'random') {
-			// @ts-expect-error jank request parser
-			return `move ${this.random(1, request.active[0].moves.length + 1)}`;
-		}
 		const aiActive = this.sides[1].active[0];
 		const opponent = this.sides[0].active[0];
 		if (!aiActive || !opponent) {
@@ -3448,18 +3441,18 @@ export class Battle {
 			const move = this.dex.moves.get(slot.id);
 			if (move.basePower === 0) return true; // status moves count as usable
 			if (!this.dex.getImmunity(move.type, opponent)) return false; // immune
-			// Allow ≥0.5× (eff >= -1); block 0.25× (eff === -2)
-			return this.dex.getEffectiveness(move.type, opponent) >= -1;
+			// Allow ≥1× (eff >= 0); block 0.5× and below
+			return this.dex.getEffectiveness(move.type, opponent) >= 0;
 		});
 		if (usableMoves.length === 0) shouldSwitch = true;
 
-		// Check D: opponent has a 4× move vs current AI Pokemon, and AI is damaged
+		// Check D: opponent has a 2× move vs current AI Pokemon, and AI is damaged
 		if (!shouldSwitch) {
 			const hardCountered = opponent.moveSlots.some(slot => {
 				const move = this.dex.moves.get(slot.id);
 				return move.basePower > 0
 					&& this.dex.getImmunity(move.type, aiActive)
-					&& this.dex.getEffectiveness(move.type, aiActive) >= 2; // 4×
+					&& this.dex.getEffectiveness(move.type, aiActive) >= 1; // 2×
 			});
 			if (hardCountered && aiActive.hp / aiActive.maxhp < 0.6) shouldSwitch = true;
 		}
