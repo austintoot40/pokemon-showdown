@@ -4,18 +4,26 @@
 
 'use strict';
 
-import { loadNuzlockeData, nuzlockeGames, pushNuzlockeStatus, pushNuzlockeState, navigateToNuzlocke } from './game';
+import { loadUserGame, nuzlockeGames, pushNuzlockeStatus, pushNuzlockeState, navigateToNuzlocke, pingRedis } from './game';
 
-loadNuzlockeData();
+void pingRedis();
 
 export const loginfilter: Chat.LoginFilter = user => {
 	if (!user.named) return;
-	const game = nuzlockeGames.get(user.id) ?? null;
-	pushNuzlockeStatus(user.id, game);
-	if (game) {
+	const cached = nuzlockeGames.get(user.id) ?? null;
+	if (cached) {
+		pushNuzlockeStatus(user.id, cached);
 		navigateToNuzlocke(user.id);
-		setImmediate(() => pushNuzlockeState(user.id, game));
+		setImmediate(() => pushNuzlockeState(user.id, cached));
+		return;
 	}
+	void loadUserGame(user.id).then(game => {
+		pushNuzlockeStatus(user.id, game);
+		if (game) {
+			navigateToNuzlocke(user.id);
+			setImmediate(() => pushNuzlockeState(user.id, game));
+		}
+	});
 };
 
 export { nuzlockePages as pages } from './pages';

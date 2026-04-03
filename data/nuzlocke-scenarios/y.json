@@ -149,9 +149,12 @@
       },
       "gifts": [],
       "items": [
-        "Heracronite"
+        "Heracronite",
+        "Dawn Stone"
       ],
-      "tmMoves": [],
+      "tmMoves": [
+        "Infestation"
+      ],
       "battles": [
         {
           "id": "viola",
@@ -320,13 +323,7 @@
         }
       ],
       "items": [
-        "Oran Berry",
         "Sharp Beak",
-        "Rawst Berry",
-        "Lum Berry",
-        "Aguav Berry",
-        "Chesto Berry",
-        "Wiki Berry",
         "Mental Herb",
         "Power Herb",
         "White Herb",
@@ -341,7 +338,7 @@
         "Aerial Ace",
         "Frustration",
         "Shadow Claw",
-        "Infestation"
+        "Rock Tomb"
       ],
       "battles": [
         {
@@ -414,7 +411,7 @@
                 "rate": 10
               },
               {
-                "species": "Flab\u00e9b\u00e9",
+                "species": "Flabébé",
                 "rate": 5
               }
             ],
@@ -539,27 +536,18 @@
       "gifts": [],
       "items": [
         "Silver Powder",
-        "Persim Berry",
-        "Rawst Berry",
-        "Lum Berry",
-        "Aguav Berry",
-        "Chesto Berry",
-        "Wiki Berry",
         "Mental Herb",
         "Power Herb",
         "White Herb",
-        "Mago Berry",
+        "Water Stone",
+        "Leaf Stone",
         "Hard Stone",
         "Soft Sand",
-        "Aspear Berry",
-        "Sitrus Berry",
-        "Iapapa Berry",
+        "Fire Stone",
+        "Thunder Stone",
         "Heat Rock",
-        "Cheri Berry",
-        "Leppa Berry",
-        "Figy Berry",
-        "Pecha Berry",
         "Mind Plate",
+        "Moon Stone",
         "Black Belt",
         "Earth Plate",
         "Alakazite"
@@ -569,7 +557,7 @@
         "Thunder Wave",
         "Flash",
         "Gyro Ball",
-        "Rock Tomb"
+        "Power-Up Punch"
       ],
       "battles": [
         {
@@ -759,25 +747,17 @@
       },
       "gifts": [],
       "items": [
-        "Sitrus Berry",
-        "Rawst Berry",
-        "Lum Berry",
-        "Aguav Berry",
-        "Chesto Berry",
-        "Wiki Berry",
+        "Thunder Stone",
         "Mental Herb",
         "Power Herb",
         "White Herb",
-        "Aspear Berry",
+        "Sachet",
+        "Shiny Stone",
+        "Whipped Dream",
         "Leftovers",
+        "Water Stone",
         "Hard Stone",
         "Soft Sand",
-        "Cheri Berry",
-        "Leppa Berry",
-        "Figy Berry",
-        "Pecha Berry",
-        "Persim Berry",
-        "Mago Berry",
         "Ampharosite",
         "Splash Plate",
         "Deep Sea Tooth",
@@ -791,7 +771,7 @@
         "X-Scissor",
         "Toxic",
         "Will-O-Wisp",
-        "Power-Up Punch"
+        "Grass Knot"
       ],
       "battles": [
         {
@@ -952,18 +932,19 @@
       "items": [
         "Damp Rock",
         "Spell Tag",
-        "Leppa Berry",
         "Stone Plate",
         "Smoke Ball",
         "Twisted Spoon",
-        "Dread Plate"
+        "Dread Plate",
+        "Protector"
       ],
       "tmMoves": [
         "Toxic",
         "Will-O-Wisp",
         "Dark Pulse",
         "Snarl",
-        "Fling"
+        "Fling",
+        "Thunderbolt"
       ],
       "battles": [
         {
@@ -1057,22 +1038,17 @@
       "items": [
         "Hard Stone",
         "Soft Sand",
-        "Rawst Berry",
-        "Lum Berry",
-        "Aguav Berry",
-        "Chesto Berry",
-        "Wiki Berry",
         "Mental Herb",
         "Power Herb",
         "White Herb",
-        "Aspear Berry",
-        "Sitrus Berry",
-        "Iapapa Berry",
+        "Fire Stone",
+        "Thunder Stone",
+        "Water Stone",
+        "Leaf Stone",
         "Heat Rock"
       ],
       "tmMoves": [
-        "Thunderbolt",
-        "Grass Knot"
+        "Dazzling Gleam"
       ],
       "battles": [
         {
@@ -1195,7 +1171,6 @@
       },
       "gifts": [],
       "items": [
-        "Oran Berry",
         "Snowball",
         "Never-Melt Ice",
         "Icy Rock",
@@ -1208,7 +1183,7 @@
         "Stone Edge",
         "Frost Breath",
         "Energy Ball",
-        "Dazzling Gleam"
+        "Calm Mind"
       ],
       "battles": [
         {
@@ -1333,17 +1308,16 @@
       "gifts": [],
       "items": [
         "Draco Plate",
-        "Rawst Berry",
-        "Lum Berry",
-        "Aguav Berry",
-        "Chesto Berry",
-        "Wiki Berry",
         "Mental Herb",
         "Power Herb",
         "White Herb",
         "Normal Gem",
+        "Dragon Scale",
         "Heat Rock",
+        "Moon Stone",
+        "Dusk Stone",
         "Iron Plate",
+        "Reaper Cloth",
         "Griseous Orb",
         "Lustrous Orb",
         "Adamant Orb",
@@ -1356,7 +1330,7 @@
         "Earthquake",
         "Brick Break",
         "Shadow Ball",
-        "Calm Mind"
+        "Ice Beam"
       ],
       "battles": [
         {
@@ -1446,9 +1420,7 @@
       },
       "gifts": [],
       "items": [],
-      "tmMoves": [
-        "Ice Beam"
-      ],
+      "tmMoves": [],
       "battles": [
         {
           "id": "malva",
@@ -1503,8 +1475,8 @@
               "item": null
             }
           ],
-          "chained": true,
-          "sprite": "malva"
+          "sprite": "malva",
+          "chained": true
         }
       ]
     },
@@ -1570,8 +1542,8 @@
               "item": null
             }
           ],
-          "chained": true,
-          "sprite": "siebold"
+          "sprite": "siebold",
+          "chained": true
         }
       ]
     },
@@ -1637,8 +1609,8 @@
               "item": null
             }
           ],
-          "chained": true,
-          "sprite": "wikstrom"
+          "sprite": "wikstrom",
+          "chained": true
         }
       ]
     },
@@ -1704,8 +1676,8 @@
               "item": null
             }
           ],
-          "chained": true,
-          "sprite": "drasna"
+          "sprite": "drasna",
+          "chained": true
         }
       ]
     },

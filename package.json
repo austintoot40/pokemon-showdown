@@ -6,6 +6,7 @@
   "types": "dist/sim/index.d.ts",
   "dependencies": {
     "esbuild": "^0.25.0",
+    "ioredis": "^5.10.1",
     "mysql2": "^3.14.2",
     "preact": "^10.5.15",
     "preact-render-to-string": "^6.5.13",

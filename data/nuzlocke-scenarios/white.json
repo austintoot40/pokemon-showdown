@@ -151,8 +151,6 @@
       },
       "gifts": [],
       "items": [
-        "Oran Berry",
-        "Lum Berry",
         "Mystic Water",
         "Fire Gem",
         "Water Gem",
@@ -171,10 +169,18 @@
         "Dark Gem",
         "Steel Gem",
         "Normal Gem",
+        "Fire Stone",
+        "Water Stone",
+        "Thunder Stone",
+        "Leaf Stone",
+        "Moon Stone",
+        "Sun Stone",
+        "Shiny Stone",
+        "Dusk Stone",
+        "Dawn Stone",
+        "Oval Stone",
         "Hard Stone",
         "Big Root",
-        "Chesto Berry",
-        "Pecha Berry",
         "Miracle Seed",
         "Silver Powder"
       ],
@@ -184,7 +190,8 @@
         "Focus Blast",
         "Rock Smash",
         "Grass Knot",
-        "SolarBeam"
+        "SolarBeam",
+        "Work Up"
       ],
       "battles": [
         {
@@ -309,16 +316,15 @@
       },
       "gifts": [],
       "items": [
-        "Oran Berry",
-        "Lum Berry",
         "Black Glasses",
-        "Soft Sand"
+        "Soft Sand",
+        "Fire Stone"
       ],
       "tmMoves": [
         "Torment",
         "Dig",
         "Rock Tomb",
-        "Work Up"
+        "Retaliate"
       ],
       "battles": [
         {
@@ -470,7 +476,7 @@
         "Payback",
         "Scald",
         "Hone Claws",
-        "Retaliate"
+        "Struggle Bug"
       ],
       "battles": [
         {
@@ -615,8 +621,10 @@
       },
       "gifts": [],
       "items": [
+        "Shiny Stone",
         "Silk Scarf",
         "Magnet",
+        "Thunder Stone",
         "Bright Powder",
         "Fire Gem",
         "Water Gem",
@@ -635,13 +643,21 @@
         "Dark Gem",
         "Steel Gem",
         "Normal Gem",
+        "Fire Stone",
+        "Water Stone",
+        "Leaf Stone",
+        "Moon Stone",
+        "Sun Stone",
+        "Dusk Stone",
+        "Dawn Stone",
+        "Oval Stone",
         "Hard Stone"
       ],
       "tmMoves": [
         "Poison Jab",
         "Bulldoze",
         "Rock Polish",
-        "Struggle Bug"
+        "Volt Switch"
       ],
       "battles": [
         {
@@ -815,9 +831,10 @@
       },
       "gifts": [],
       "items": [
+        "Shiny Stone",
         "Silk Scarf",
-        "Lum Berry",
         "Hard Stone",
+        "Dusk Stone",
         "Fire Gem",
         "Water Gem",
         "Electric Gem",
@@ -835,15 +852,24 @@
         "Dark Gem",
         "Steel Gem",
         "Normal Gem",
+        "Fire Stone",
+        "Water Stone",
+        "Thunder Stone",
+        "Leaf Stone",
+        "Moon Stone",
+        "Sun Stone",
+        "Dawn Stone",
+        "Oval Stone",
         "Metal Coat"
       ],
       "tmMoves": [
         "Poison Jab",
         "Charge Beam",
         "X-Scissor",
+        "Rock Slide",
+        "Surf",
         "Flash Cannon",
-        "Substitute",
-        "Volt Switch"
+        "Substitute"
       ],
       "battles": [
         {
@@ -1046,13 +1072,14 @@
       },
       "gifts": [],
       "items": [
-        "Lum Berry",
         "Spell Tag",
         "Poison Barb",
         "Damp Rock",
         "Heat Rock",
         "Smooth Rock",
-        "Icy Rock"
+        "Icy Rock",
+        "Reaper Cloth",
+        "Up-Grade"
       ],
       "tmMoves": [
         "Charge Beam",
@@ -1063,8 +1090,7 @@
         "Facade",
         "Bulk Up",
         "Venoshock",
-        "Rock Slide",
-        "Surf"
+        "Acrobatics"
       ],
       "battles": [
         {
@@ -1244,27 +1270,15 @@
           }
         ]
       },
-      "gifts": [
-        {
-          "route": "Plume Fossil Revival (Nacrene Museum)",
-          "pokemon": [
-            {
-              "species": "Archen",
-              "rate": 100
-            }
-          ],
-          "levels": [
-            25,
-            25
-          ]
-        }
-      ],
+      "gifts": [],
       "items": [
         "Poison Barb",
         "Damp Rock",
         "Heat Rock",
         "Smooth Rock",
         "Icy Rock",
+        "Sun Stone",
+        "Shiny Stone",
         "Dragon Fang"
       ],
       "tmMoves": [
@@ -1275,7 +1289,7 @@
         "Shadow Ball",
         "Calm Mind",
         "Embargo",
-        "Acrobatics",
+        "Frost Breath",
         "Fly"
       ],
       "battles": [
@@ -1432,11 +1446,13 @@
         ]
       },
       "gifts": [],
-      "items": [],
+      "items": [
+        "Dawn Stone",
+        "Dusk Stone"
+      ],
       "tmMoves": [
         "Fling",
-        "Roar",
-        "Frost Breath"
+        "Roar"
       ],
       "battles": [
         {
@@ -1548,8 +1564,8 @@
               "item": null
             }
           ],
-          "chained": true,
-          "sprite": "shauntal"
+          "sprite": "shauntal",
+          "chained": true
         }
       ]
     },
@@ -1615,8 +1631,8 @@
               "item": null
             }
           ],
-          "chained": true,
-          "sprite": "marshal"
+          "sprite": "marshal",
+          "chained": true
         }
       ]
     },
@@ -1682,8 +1698,8 @@
               "item": null
             }
           ],
-          "chained": true,
-          "sprite": "grimsley"
+          "sprite": "grimsley",
+          "chained": true
         }
       ]
     },
@@ -1749,8 +1765,8 @@
               "item": null
             }
           ],
-          "chained": true,
-          "sprite": "caitlin"
+          "sprite": "caitlin",
+          "chained": true
         }
       ]
     },

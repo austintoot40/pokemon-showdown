@@ -228,14 +228,16 @@
       },
       "gifts": [],
       "items": [
+        "Earth Plate",
         "Flame Plate"
       ],
       "tmMoves": [
         "Fire Blast",
+        "Rock Smash",
         "Flash",
         "Brick Break",
         "Focus Punch",
-        "Rock Smash"
+        "Stealth Rock"
       ],
       "battles": [
         {
@@ -606,10 +608,10 @@
         }
       ],
       "items": [
-        "Cheri Berry",
-        "Chesto Berry",
-        "Pecha Berry",
-        "Oran Berry"
+        "Sea Incense",
+        "Insect Plate",
+        "Silver Powder",
+        "Dread Plate"
       ],
       "tmMoves": [
         "Bullet Seed",
@@ -618,7 +620,7 @@
         "Water Pulse",
         "Sleep Talk",
         "Substitute",
-        "Stealth Rock",
+        "Grass Knot",
         "Cut"
       ],
       "battles": [
@@ -1101,15 +1103,15 @@
       },
       "gifts": [],
       "items": [
-        "Rawst Berry",
-        "Oran Berry",
-        "Cheri Berry",
-        "Leppa Berry",
-        "Chesto Berry",
+        "Poison Barb",
+        "Dusk Stone",
+        "Grip Claw",
+        "Oval Stone",
         "Spell Tag",
-        "Sitrus Berry",
-        "Wiki Berry",
-        "Aguav Berry"
+        "Shiny Stone",
+        "Meadow Plate",
+        "Wave Incense",
+        "Smoke Ball"
       ],
       "tmMoves": [
         "Double Team",
@@ -1119,7 +1121,7 @@
         "Return",
         "Roost",
         "Shadow Ball",
-        "Grass Knot",
+        "Drain Punch",
         "Fly"
       ],
       "battles": [
@@ -1317,14 +1319,11 @@
       },
       "gifts": [],
       "items": [
-        "Aspear Berry",
-        "Sitrus Berry",
-        "Lum Berry",
-        "Pecha Berry",
+        "Rose Incense",
+        "Dawn Stone",
         "Toxic Plate",
-        "Aguav Berry",
-        "Rawst Berry",
-        "Iapapa Berry"
+        "Leaf Stone",
+        "Water Stone"
       ],
       "tmMoves": [
         "Sunny Day",
@@ -1334,9 +1333,8 @@
         "Roar",
         "Aerial Ace",
         "Trick Room",
-        "Drain Punch",
-        "Defog",
-        "Strength"
+        "Brine",
+        "Defog"
       ],
       "battles": [
         {
@@ -1603,15 +1601,11 @@
       },
       "gifts": [],
       "items": [
-        "Cheri Berry",
-        "Sitrus Berry",
-        "Chesto Berry",
+        "Big Root",
         "Razor Fang",
-        "Wiki Berry",
-        "Mago Berry",
-        "Pecha Berry",
-        "Aspear Berry",
-        "Iapapa Berry"
+        "Magmarizer",
+        "Sun Stone",
+        "Fist Plate"
       ],
       "tmMoves": [
         "Dream Eater",
@@ -1621,7 +1615,7 @@
         "Taunt",
         "Psych Up",
         "Psychic",
-        "Brine",
+        "Shadow Claw",
         "Surf"
       ],
       "battles": [
@@ -1748,15 +1742,16 @@
       },
       "gifts": [],
       "items": [
-        "Rawst Berry",
-        "Persim Berry",
-        "Figy Berry",
+        "Metal Coat",
+        "Protector",
         "Magnet",
-        "Metal Coat"
+        "Iron Plate",
+        "Shiny Stone"
       ],
       "tmMoves": [
+        "Strength",
         "Iron Tail",
-        "Shadow Claw"
+        "Flash Cannon"
       ],
       "battles": [
         {
@@ -2055,15 +2050,23 @@
       },
       "gifts": [],
       "items": [
-        "Sitrus Berry",
-        "Chesto Berry",
-        "Wiki Berry",
-        "Aguav Berry"
+        "Mental Herb",
+        "Icicle Plate",
+        "Spell Tag",
+        "Reaper Cloth",
+        "Shiny Stone",
+        "Meadow Plate",
+        "Wave Incense",
+        "Smoke Ball"
       ],
       "tmMoves": [
         "Ice Beam",
+        "Hail",
+        "Rock Climb",
+        "Blizzard",
         "Roost",
-        "Flash Cannon"
+        "Shadow Ball",
+        "Avalanche"
       ],
       "battles": [
         {
@@ -2234,19 +2237,15 @@
       },
       "gifts": [],
       "items": [
-        "Leppa Berry",
-        "Pecha Berry",
-        "Mago Berry"
+        "Black Belt",
+        "Expert Belt",
+        "Focus Sash"
       ],
       "tmMoves": [
         "Fling",
         "X-Scissor",
-        "Hail",
-        "Blizzard",
-        "Shadow Ball",
-        "Avalanche",
-        "Waterfall",
-        "Rock Climb"
+        "Charge Beam",
+        "Waterfall"
       ],
       "battles": [
         {
@@ -2369,9 +2368,7 @@
       },
       "gifts": [],
       "items": [],
-      "tmMoves": [
-        "Charge Beam"
-      ],
+      "tmMoves": [],
       "battles": [
         {
           "id": "aaron",
@@ -2438,8 +2435,8 @@
               "item": "Sitrus Berry"
             }
           ],
-          "chained": true,
-          "sprite": "aaron"
+          "sprite": "aaron",
+          "chained": true
         }
       ]
     },
@@ -2517,8 +2514,8 @@
               "item": "Sitrus Berry"
             }
           ],
-          "chained": true,
-          "sprite": "bertha"
+          "sprite": "bertha",
+          "chained": true
         }
       ]
     },
@@ -2596,8 +2593,8 @@
               "item": "Sitrus Berry"
             }
           ],
-          "chained": true,
-          "sprite": "flint"
+          "sprite": "flint",
+          "chained": true
         }
       ]
     },
@@ -2675,8 +2672,8 @@
               "item": "Sitrus Berry"
             }
           ],
-          "chained": true,
-          "sprite": "lucian"
+          "sprite": "lucian",
+          "chained": true
         }
       ]
     },

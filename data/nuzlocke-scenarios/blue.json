@@ -96,8 +96,13 @@
         ]
       },
       "gifts": [],
-      "items": [],
-      "tmMoves": [],
+      "items": [
+        "Moon Stone"
+      ],
+      "tmMoves": [
+        "Flash",
+        "Bide"
+      ],
       "battles": [
         {
           "id": "brock",
@@ -285,13 +290,16 @@
           ]
         }
       ],
-      "items": [],
+      "items": [
+        "Moon Stone"
+      ],
       "tmMoves": [
+        "Water Gun",
         "Mega Punch",
         "Whirlwind",
         "Thunder Wave",
         "Seismic Toss",
-        "Bide"
+        "BubbleBeam"
       ],
       "battles": [
         {
@@ -415,10 +423,8 @@
       "gifts": [],
       "items": [],
       "tmMoves": [
-        "Water Gun",
-        "BubbleBeam",
-        "Cut",
-        "Flash"
+        "Thunderbolt",
+        "Cut"
       ],
       "battles": [
         {
@@ -538,7 +544,7 @@
             ]
           },
           {
-            "route": "Pok\u00e9mon Tower",
+            "route": "Pokémon Tower",
             "pokemon": [
               {
                 "species": "Gastly",
@@ -614,7 +620,7 @@
       "items": [],
       "tmMoves": [
         "Teleport",
-        "Thunderbolt"
+        "Mega Drain"
       ],
       "battles": [
         {
@@ -967,8 +973,8 @@
         "Swift",
         "Pay Day",
         "Rage",
-        "Mega Drain",
         "Fly",
+        "Toxic",
         "Surf",
         "Strength"
       ],
@@ -1038,7 +1044,7 @@
       "gifts": [],
       "items": [],
       "tmMoves": [
-        "Toxic"
+        "Psywave"
       ],
       "battles": [
         {
@@ -1203,7 +1209,7 @@
             ]
           },
           {
-            "route": "Pok\u00e9mon Mansion",
+            "route": "Pokémon Mansion",
             "pokemon": [
               {
                 "species": "Grimer",
@@ -1259,24 +1265,11 @@
             5
           ],
           "choice": true
-        },
-        {
-          "route": "Old Amber Revival (Cinnabar Lab)",
-          "pokemon": [
-            {
-              "species": "Aerodactyl",
-              "rate": 100
-            }
-          ],
-          "levels": [
-            5,
-            5
-          ]
         }
       ],
       "items": [],
       "tmMoves": [
-        "Psywave"
+        "Fire Blast"
       ],
       "battles": [
         {
@@ -1446,7 +1439,7 @@
       "gifts": [],
       "items": [],
       "tmMoves": [
-        "Fire Blast"
+        "Fissure"
       ],
       "battles": [
         {
@@ -1525,9 +1518,7 @@
       "encounters": {},
       "gifts": [],
       "items": [],
-      "tmMoves": [
-        "Fissure"
-      ],
+      "tmMoves": [],
       "battles": [
         {
           "id": "lorelei",
@@ -1594,8 +1585,8 @@
               "item": null
             }
           ],
-          "chained": true,
-          "sprite": "lorelei"
+          "sprite": "lorelei",
+          "chained": true
         }
       ]
     },
@@ -1673,8 +1664,8 @@
               "item": null
             }
           ],
-          "chained": true,
-          "sprite": "bruno"
+          "sprite": "bruno",
+          "chained": true
         }
       ]
     },
@@ -1752,8 +1743,8 @@
               "item": null
             }
           ],
-          "chained": true,
-          "sprite": "agatha"
+          "sprite": "agatha",
+          "chained": true
         }
       ]
     },
@@ -1831,8 +1822,8 @@
               "item": null
             }
           ],
-          "chained": true,
-          "sprite": "lance"
+          "sprite": "lance",
+          "chained": true
         }
       ]
     },

@@ -4,7 +4,7 @@
 
 'use strict';
 
-import { nuzlockeGames, NuzlockeGame, saveNuzlockeData, recordCompletedRun } from './game';
+import { nuzlockeGames, NuzlockeGame, recordCompletedRun } from './game';
 import { getLegalMoves } from './learnsets';
 import type { OwnedPokemon, TrainerPokemon } from './types';
 

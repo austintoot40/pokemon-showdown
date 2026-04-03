@@ -102,7 +102,9 @@
       "items": [
         "Twisted Spoon"
       ],
-      "tmMoves": [],
+      "tmMoves": [
+        "Roost"
+      ],
       "battles": [
         {
           "id": "falkner",
@@ -512,29 +514,21 @@
       },
       "gifts": [],
       "items": [
-        "Cheri Berry",
-        "Chesto Berry",
-        "Pecha Berry",
-        "Rawst Berry",
-        "Aspear Berry",
-        "Leppa Berry",
-        "Oran Berry",
-        "Persim Berry",
-        "Sitrus Berry",
-        "Lum Berry",
         "Black Glasses",
         "King's Rock",
         "Zap Plate",
-        "Power Herb"
+        "Power Herb",
+        "Leaf Stone"
       ],
       "tmMoves": [
         "Rest",
         "False Swipe",
         "Rock Tomb",
         "Rain Dance",
+        "Cut",
         "Taunt",
         "Embargo",
-        "Roost",
+        "U-turn",
         "Flash"
       ],
       "battles": [
@@ -776,17 +770,16 @@
       "gifts": [],
       "items": [
         "Quick Claw",
+        "Shiny Stone",
         "Hard Stone",
-        "Oran Berry",
-        "Pecha Berry",
+        "Fire Stone",
         "Magnet"
       ],
       "tmMoves": [
         "Payback",
         "Dig",
-        "U-turn",
-        "Cut",
-        "Rock Smash"
+        "Rock Smash",
+        "Attract"
       ],
       "battles": [
         {
@@ -971,13 +964,14 @@
       },
       "gifts": [],
       "items": [
+        "Thunder Stone",
         "Lax Incense"
       ],
       "tmMoves": [
         "Natural Gift",
         "Drain Punch",
         "Taunt",
-        "Attract"
+        "Shadow Ball"
       ],
       "battles": [
         {
@@ -1111,9 +1105,8 @@
       "gifts": [],
       "items": [],
       "tmMoves": [
-        "Shadow Ball",
-        "Surf",
-        "Strength"
+        "Focus Punch",
+        "Surf"
       ],
       "battles": [
         {
@@ -1157,7 +1150,7 @@
       "gifts": [],
       "items": [],
       "tmMoves": [
-        "Focus Punch",
+        "Iron Tail",
         "Fly"
       ],
       "battles": [
@@ -1390,14 +1383,19 @@
       },
       "gifts": [],
       "items": [
+        "Water Stone",
+        "Dubious Disc",
         "Iron Ball",
-        "Full Incense"
+        "Protector",
+        "Full Incense",
+        "Dragon Scale"
       ],
       "tmMoves": [
         "Shadow Claw",
+        "Strength",
         "Sludge Bomb",
         "Aerial Ace",
-        "Iron Tail",
+        "Hail",
         "Whirlpool"
       ],
       "battles": [
@@ -1586,9 +1584,8 @@
         "NeverMeltIce"
       ],
       "tmMoves": [
-        "Avalanche",
-        "Hail",
-        "Waterfall"
+        "Waterfall",
+        "Avalanche"
       ],
       "battles": [
         {
@@ -1770,8 +1767,8 @@
               "item": "Sitrus Berry"
             }
           ],
-          "chained": true,
-          "sprite": "will"
+          "sprite": "will",
+          "chained": true
         }
       ]
     },
@@ -1782,7 +1779,9 @@
       "encounters": {},
       "gifts": [],
       "items": [],
-      "tmMoves": [],
+      "tmMoves": [
+        "Poison Jab"
+      ],
       "battles": [
         {
           "id": "koga",
@@ -1849,8 +1848,8 @@
               "item": "Sitrus Berry"
             }
           ],
-          "chained": true,
-          "sprite": "koga"
+          "sprite": "koga",
+          "chained": true
         }
       ]
     },
@@ -1861,9 +1860,7 @@
       "encounters": {},
       "gifts": [],
       "items": [],
-      "tmMoves": [
-        "Poison Jab"
-      ],
+      "tmMoves": [],
       "battles": [
         {
           "id": "bruno",
@@ -1930,8 +1927,8 @@
               "item": "Sitrus Berry"
             }
           ],
-          "chained": true,
-          "sprite": "bruno"
+          "sprite": "bruno",
+          "chained": true
         }
       ]
     },
@@ -2009,8 +2006,8 @@
               "item": "Sitrus Berry"
             }
           ],
-          "chained": true,
-          "sprite": "karen"
+          "sprite": "karen",
+          "chained": true
         }
       ]
     },
@@ -2040,7 +2037,8 @@
               "item": null
             }
           ],
-          "sprite": "lance"
+          "sprite": "lance",
+          "chained": true
         }
       ]
     }

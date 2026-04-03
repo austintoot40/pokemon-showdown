@@ -15,6 +15,7 @@ import type { OwnedPokemon } from './types';
 export interface LegalMove {
 	name: string;
 	fromTM: boolean;
+	fromHM: boolean;
 }
 
 export function getLegalMoves(
@@ -24,8 +25,10 @@ export function getLegalMoves(
 	tmMoves: string[]
 ): LegalMove[] {
 	const speciesName = pokemon.species;
-	const levelMoveIds = new Set<string>();
+	// Maps moveId -> minimum level learned (for learnset order sorting)
+	const levelMoveMap = new Map<string, number>();
 	const tmMoveIds = new Set<string>();
+	const hmMoveIds = new Set<string>();
 
 	// getFullLearnset includes all pre-evolution learnsets
 	const fullLearnset = Dex.species.getFullLearnset(toID(speciesName));
@@ -42,16 +45,25 @@ export function getLegalMoves(
 
 				if (sourceGen > generation) continue;
 
-				// Level-up moves: only up to cap
+				// Level-up moves: only up to cap; track minimum learn level
 				if (sourceType === 'L') {
-					if (sourceLevel <= levelCap) levelMoveIds.add(moveId);
+					if (sourceLevel <= levelCap) {
+						const existing = levelMoveMap.get(moveId);
+						if (existing === undefined || sourceLevel < existing) {
+							levelMoveMap.set(moveId, sourceLevel);
+						}
+					}
 					continue;
 				}
 
 				// TM/HM moves: check against collected TM/HM move IDs
 				if (sourceType === 'M' || sourceType === 'H') {
 					if (tmMoves.some(m => toID(m) === moveId)) {
-						tmMoveIds.add(moveId);
+						if (sourceType === 'H') {
+							hmMoveIds.add(moveId);
+						} else {
+							tmMoveIds.add(moveId);
+						}
 					}
 					continue;
 				}
@@ -61,11 +73,39 @@ export function getLegalMoves(
 		}
 	}
 
-	const allMoveIds = new Set([...levelMoveIds, ...tmMoveIds]);
+	// Level-up moves sorted by minimum learn level (learnset order).
+	// Moves learnable both naturally and by TM/HM appear here, not in the TM/HM section.
+	const levelResults: LegalMove[] = [...levelMoveMap.entries()]
+		.sort(([, a], [, b]) => a - b)
+		.map(([id]) => Dex.moves.get(id))
+		.filter(m => m.exists)
+		.map(m => ({ name: m.name, fromTM: false, fromHM: false }));
 
-	return [...allMoveIds]
+	// TM moves after level-up moves, sorted by position in tmMoves (scenario TM number order).
+	// Exclude moves already covered by the level-up section.
+	const tmResults: LegalMove[] = [...tmMoveIds]
+		.filter(id => !levelMoveMap.has(id))
+		.sort((a, b) => {
+			const ai = tmMoves.findIndex(m => toID(m) === a);
+			const bi = tmMoves.findIndex(m => toID(m) === b);
+			return ai - bi;
+		})
 		.map(id => Dex.moves.get(id))
 		.filter(m => m.exists)
-		.sort((a, b) => a.name.localeCompare(b.name))
-		.map(m => ({ name: m.name, fromTM: tmMoveIds.has(m.id) }));
+		.map(m => ({ name: m.name, fromTM: true, fromHM: false }));
+
+	// HM moves last, sorted by position in tmMoves (scenario HM number order).
+	// Exclude moves already covered by the level-up section.
+	const hmResults: LegalMove[] = [...hmMoveIds]
+		.filter(id => !levelMoveMap.has(id))
+		.sort((a, b) => {
+			const ai = tmMoves.findIndex(m => toID(m) === a);
+			const bi = tmMoves.findIndex(m => toID(m) === b);
+			return ai - bi;
+		})
+		.map(id => Dex.moves.get(id))
+		.filter(m => m.exists)
+		.map(m => ({ name: m.name, fromTM: false, fromHM: true }));
+
+	return [...levelResults, ...tmResults, ...hmResults];
 }

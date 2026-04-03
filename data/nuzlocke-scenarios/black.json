@@ -150,8 +150,49 @@
         ]
       },
       "gifts": [],
-      "items": [],
-      "tmMoves": [],
+      "items": [
+        "Mystic Water",
+        "Fire Gem",
+        "Water Gem",
+        "Electric Gem",
+        "Grass Gem",
+        "Ice Gem",
+        "Fighting Gem",
+        "Poison Gem",
+        "Ground Gem",
+        "Flying Gem",
+        "Psychic Gem",
+        "Bug Gem",
+        "Rock Gem",
+        "Ghost Gem",
+        "Dragon Gem",
+        "Dark Gem",
+        "Steel Gem",
+        "Normal Gem",
+        "Fire Stone",
+        "Water Stone",
+        "Thunder Stone",
+        "Leaf Stone",
+        "Moon Stone",
+        "Sun Stone",
+        "Shiny Stone",
+        "Dusk Stone",
+        "Dawn Stone",
+        "Oval Stone",
+        "Hard Stone",
+        "Big Root",
+        "Miracle Seed",
+        "Silver Powder"
+      ],
+      "tmMoves": [
+        "Thief",
+        "Low Sweep",
+        "Focus Blast",
+        "Rock Smash",
+        "Grass Knot",
+        "SolarBeam",
+        "Work Up"
+      ],
       "battles": [
         {
           "id": "cilan",
@@ -274,8 +315,17 @@
         ]
       },
       "gifts": [],
-      "items": [],
-      "tmMoves": [],
+      "items": [
+        "Black Glasses",
+        "Soft Sand",
+        "Fire Stone"
+      ],
+      "tmMoves": [
+        "Torment",
+        "Dig",
+        "Rock Tomb",
+        "Retaliate"
+      ],
       "battles": [
         {
           "id": "lenora",
@@ -415,8 +465,19 @@
         ]
       },
       "gifts": [],
-      "items": [],
-      "tmMoves": [],
+      "items": [
+        "Charcoal",
+        "Rocky Helmet",
+        "Never-Melt Ice"
+      ],
+      "tmMoves": [
+        "Torment",
+        "Dig",
+        "Payback",
+        "Scald",
+        "Hone Claws",
+        "Struggle Bug"
+      ],
       "battles": [
         {
           "id": "burgh",
@@ -559,8 +620,45 @@
         ]
       },
       "gifts": [],
-      "items": [],
-      "tmMoves": [],
+      "items": [
+        "Shiny Stone",
+        "Silk Scarf",
+        "Magnet",
+        "Thunder Stone",
+        "Bright Powder",
+        "Fire Gem",
+        "Water Gem",
+        "Electric Gem",
+        "Grass Gem",
+        "Ice Gem",
+        "Fighting Gem",
+        "Poison Gem",
+        "Ground Gem",
+        "Flying Gem",
+        "Psychic Gem",
+        "Bug Gem",
+        "Rock Gem",
+        "Ghost Gem",
+        "Dragon Gem",
+        "Dark Gem",
+        "Steel Gem",
+        "Normal Gem",
+        "Fire Stone",
+        "Water Stone",
+        "Leaf Stone",
+        "Moon Stone",
+        "Sun Stone",
+        "Dusk Stone",
+        "Dawn Stone",
+        "Oval Stone",
+        "Hard Stone"
+      ],
+      "tmMoves": [
+        "Poison Jab",
+        "Bulldoze",
+        "Rock Polish",
+        "Volt Switch"
+      ],
       "battles": [
         {
           "id": "elesa",
@@ -732,8 +830,47 @@
         ]
       },
       "gifts": [],
-      "items": [],
-      "tmMoves": [],
+      "items": [
+        "Shiny Stone",
+        "Silk Scarf",
+        "Hard Stone",
+        "Dusk Stone",
+        "Fire Gem",
+        "Water Gem",
+        "Electric Gem",
+        "Grass Gem",
+        "Ice Gem",
+        "Fighting Gem",
+        "Poison Gem",
+        "Ground Gem",
+        "Flying Gem",
+        "Psychic Gem",
+        "Bug Gem",
+        "Rock Gem",
+        "Ghost Gem",
+        "Dragon Gem",
+        "Dark Gem",
+        "Steel Gem",
+        "Normal Gem",
+        "Fire Stone",
+        "Water Stone",
+        "Thunder Stone",
+        "Leaf Stone",
+        "Moon Stone",
+        "Sun Stone",
+        "Dawn Stone",
+        "Oval Stone",
+        "Metal Coat"
+      ],
+      "tmMoves": [
+        "Poison Jab",
+        "Charge Beam",
+        "X-Scissor",
+        "Rock Slide",
+        "Surf",
+        "Flash Cannon",
+        "Substitute"
+      ],
       "battles": [
         {
           "id": "clay",
@@ -934,9 +1071,26 @@
         ]
       },
       "gifts": [],
-      "items": [],
+      "items": [
+        "Spell Tag",
+        "Poison Barb",
+        "Damp Rock",
+        "Heat Rock",
+        "Smooth Rock",
+        "Icy Rock",
+        "Reaper Cloth",
+        "Up-Grade"
+      ],
       "tmMoves": [
-        "Surf"
+        "Charge Beam",
+        "X-Scissor",
+        "Will-O-Wisp",
+        "Shadow Claw",
+        "Sludge Bomb",
+        "Facade",
+        "Bulk Up",
+        "Venoshock",
+        "Acrobatics"
       ],
       "battles": [
         {
@@ -1116,23 +1270,26 @@
           }
         ]
       },
-      "gifts": [
-        {
-          "route": "Cover Fossil Revival (Nacrene Museum)",
-          "pokemon": [
-            {
-              "species": "Tirtouga",
-              "rate": 100
-            }
-          ],
-          "levels": [
-            25,
-            25
-          ]
-        }
+      "gifts": [],
+      "items": [
+        "Poison Barb",
+        "Damp Rock",
+        "Heat Rock",
+        "Smooth Rock",
+        "Icy Rock",
+        "Sun Stone",
+        "Shiny Stone",
+        "Dragon Fang"
       ],
-      "items": [],
       "tmMoves": [
+        "Sludge Bomb",
+        "Facade",
+        "Fling",
+        "Earthquake",
+        "Shadow Ball",
+        "Calm Mind",
+        "Embargo",
+        "Frost Breath",
         "Fly"
       ],
       "battles": [
@@ -1289,8 +1446,15 @@
         ]
       },
       "gifts": [],
-      "items": [],
-      "tmMoves": [],
+      "items": [
+        "Dawn Stone",
+        "Dusk Stone"
+      ],
+      "tmMoves": [
+        "Fling",
+        "Roar",
+        "Dragon Tail"
+      ],
       "battles": [
         {
           "id": "drayden",
@@ -1401,8 +1565,8 @@
               "item": null
             }
           ],
-          "chained": true,
-          "sprite": "shauntal"
+          "sprite": "shauntal",
+          "chained": true
         }
       ]
     },
@@ -1468,8 +1632,8 @@
               "item": null
             }
           ],
-          "chained": true,
-          "sprite": "marshal"
+          "sprite": "marshal",
+          "chained": true
         }
       ]
     },
@@ -1535,8 +1699,8 @@
               "item": null
             }
           ],
-          "chained": true,
-          "sprite": "grimsley"
+          "sprite": "grimsley",
+          "chained": true
         }
       ]
     },
@@ -1602,8 +1766,8 @@
               "item": null
             }
           ],
-          "chained": true,
-          "sprite": "caitlin"
+          "sprite": "caitlin",
+          "chained": true
         }
       ]
     },

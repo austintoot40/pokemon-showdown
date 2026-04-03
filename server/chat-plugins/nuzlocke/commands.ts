@@ -4,7 +4,7 @@
 
 'use strict';
 
-import { nuzlockeGames, NuzlockeGame, flatEncounters, saveNuzlockeData, pushNuzlockeStatus, pushNuzlockeState, closeNuzlockePanel, aiPreferences, recordCompletedRun } from './game';
+import { nuzlockeGames, NuzlockeGame, flatEncounters, saveGame, deleteGame, pushNuzlockeStatus, pushNuzlockeState, closeNuzlockePanel, recordCompletedRun } from './game';
 import { getScenario } from './scenarios';
 import { createNuzlockeBattle, goToTeambuilding } from './battle';
 
@@ -16,14 +16,12 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 	nuzlocke: {
 		start(target, room, user) {
 			if (nuzlockeGames.has(user.id)) return this.parse('/join view-nuzlocke');
-			const savedAi = aiPreferences.get(user.id) ?? 'game-accurate';
-			const [scenarioId = 'firered', difficulty = savedAi, starterIndexStr] = target.trim().split(/\s+/);
+			const [scenarioId = 'firered', difficulty = 'game-accurate', starterIndexStr] = target.trim().split(/\s+/);
 			const scenario = getScenario(scenarioId.toLowerCase());
 			if (!scenario) return this.errorReply(`Unknown scenario "${scenarioId}". Available: firered`);
 			if (!['game-accurate', 'smart', 'competitive'].includes(difficulty)) {
 				return this.errorReply(`Unknown difficulty "${difficulty}". Options: game-accurate, smart, competitive`);
 			}
-			aiPreferences.set(user.id, difficulty);
 			const game = new NuzlockeGame(user.id, scenario);
 			game.settings.ai = difficulty as NuzlockeGame['settings']['ai'];
 			game.settings.generation = scenario.generation;
@@ -42,7 +40,7 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 			const game = nuzlockeGames.get(user.id)!;
 			const battleRoomId = game.battleRoomId;
 			nuzlockeGames.delete(user.id);
-			saveNuzlockeData();
+			deleteGame(user.id);
 			pushNuzlockeStatus(user.id, null);
 			closeNuzlockePanel(user.id);
 			if (battleRoomId) user.send(`>${battleRoomId}\n|deinit|`);
@@ -51,7 +49,7 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 		// Called after a run naturally ends (victory or wipe) — clears the game and closes the panel
 		done(target, room, user) {
 			nuzlockeGames.delete(user.id);
-			saveNuzlockeData();
+			deleteGame(user.id);
 			pushNuzlockeStatus(user.id, null);
 			closeNuzlockePanel(user.id);
 		},
@@ -61,16 +59,12 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 			if (!['game-accurate', 'smart', 'competitive'].includes(difficulty)) {
 				return this.errorReply(`Unknown difficulty "${difficulty}". Options: game-accurate, smart, competitive`);
 			}
-			aiPreferences.set(user.id, difficulty);
 			const game = nuzlockeGames.get(user.id);
 			if (game) {
 				if (game.inBattle) return this.errorReply('Cannot change AI difficulty during a battle.');
 				game.settings.ai = difficulty as NuzlockeGame['settings']['ai'];
-				saveNuzlockeData();
+				saveGame(game);
 				pushNuzlockeStatus(user.id, game);
-			} else {
-				saveNuzlockeData();
-				pushNuzlockeStatus(user.id, null);
 			}
 		},
 
@@ -172,7 +166,6 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 			} else {
 				return this.errorReply('Usage: /nuzlocke partymove <uid> left|right');
 			}
-			saveNuzlockeData();
 			game.goToPage('teambuilding');
 		},
 
@@ -191,7 +184,6 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 			} else if (pokemon.moves.length < 4) {
 				pokemon.moves.push(move);
 			}
-			saveNuzlockeData();
 			game.goToPage('teambuilding');
 		},
 

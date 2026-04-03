@@ -84,7 +84,9 @@
       },
       "gifts": [],
       "items": [],
-      "tmMoves": [],
+      "tmMoves": [
+        "Mud-Slap"
+      ],
       "battles": [
         {
           "id": "falkner",
@@ -456,16 +458,18 @@
       "items": [
         "Black Glasses",
         "King's Rock",
-        "Soft Sand"
+        "Soft Sand",
+        "Leaf Stone"
       ],
       "tmMoves": [
         "Nightmare",
         "Snore",
         "Swift",
         "Rain Dance",
+        "Cut",
         "Headbutt",
         "Sweet Scent",
-        "Mud-Slap",
+        "Fury Cutter",
         "Flash"
       ],
       "battles": [
@@ -739,13 +743,14 @@
       "items": [
         "Quick Claw",
         "Hard Stone",
+        "Fire Stone",
         "Magnet"
       ],
       "tmMoves": [
+        "Rollout",
         "Dig",
         "Rock Smash",
-        "Fury Cutter",
-        "Cut"
+        "Attract"
       ],
       "battles": [
         {
@@ -872,11 +877,12 @@
         ]
       },
       "gifts": [],
-      "items": [],
+      "items": [
+        "Thunder Stone"
+      ],
       "tmMoves": [
         "Snore",
-        "Rollout",
-        "Attract"
+        "Shadow Ball"
       ],
       "battles": [
         {
@@ -1012,7 +1018,7 @@
         "Sharp Beak"
       ],
       "tmMoves": [
-        "Shadow Ball",
+        "DynamicPunch",
         "Surf",
         "Strength"
       ],
@@ -1058,7 +1064,7 @@
       "gifts": [],
       "items": [],
       "tmMoves": [
-        "DynamicPunch",
+        "Iron Tail",
         "Fly"
       ],
       "battles": [
@@ -1266,11 +1272,14 @@
         ]
       },
       "gifts": [],
-      "items": [],
+      "items": [
+        "Water Stone",
+        "Dragon Scale"
+      ],
       "tmMoves": [
         "Sludge Bomb",
         "Defense Curl",
-        "Iron Tail",
+        "Icy Wind",
         "Whirlpool"
       ],
       "battles": [
@@ -1431,9 +1440,8 @@
         "NeverMeltIce"
       ],
       "tmMoves": [
-        "Rest",
-        "Icy Wind",
-        "Waterfall"
+        "Waterfall",
+        "Rest"
       ],
       "battles": [
         {
@@ -1567,8 +1575,8 @@
               "item": null
             }
           ],
-          "chained": true,
-          "sprite": "will"
+          "sprite": "will",
+          "chained": true
         }
       ]
     },
@@ -1579,7 +1587,9 @@
       "encounters": {},
       "gifts": [],
       "items": [],
-      "tmMoves": [],
+      "tmMoves": [
+        "Toxic"
+      ],
       "battles": [
         {
           "id": "koga",
@@ -1646,8 +1656,8 @@
               "item": null
             }
           ],
-          "chained": true,
-          "sprite": "koga"
+          "sprite": "koga",
+          "chained": true
         }
       ]
     },
@@ -1658,9 +1668,7 @@
       "encounters": {},
       "gifts": [],
       "items": [],
-      "tmMoves": [
-        "Toxic"
-      ],
+      "tmMoves": [],
       "battles": [
         {
           "id": "bruno",
@@ -1727,8 +1735,8 @@
               "item": null
             }
           ],
-          "chained": true,
-          "sprite": "bruno"
+          "sprite": "bruno",
+          "chained": true
         }
       ]
     },
@@ -1806,8 +1814,8 @@
               "item": null
             }
           ],
-          "chained": true,
-          "sprite": "karen"
+          "sprite": "karen",
+          "chained": true
         }
       ]
     },
@@ -1897,7 +1905,8 @@
               "item": null
             }
           ],
-          "sprite": "lance"
+          "sprite": "lance",
+          "chained": true
         }
       ]
     }

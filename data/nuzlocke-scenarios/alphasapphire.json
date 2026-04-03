@@ -167,20 +167,13 @@
       },
       "gifts": [],
       "items": [
-        "Oran Berry",
-        "Pecha Berry",
-        "Leppa Berry",
-        "Chesto Berry",
         "Miracle Seed",
         "Scizorite",
-        "Cheri Berry",
-        "White Herb",
-        "Rawst Berry",
-        "Aspear Berry",
-        "Persim Berry"
+        "White Herb"
       ],
       "tmMoves": [
-        "Echoed Voice"
+        "Echoed Voice",
+        "Rock Tomb"
       ],
       "battles": [
         {
@@ -343,18 +336,18 @@
       },
       "gifts": [],
       "items": [
-        "Chesto Berry",
         "Black Glasses",
         "Aggronite",
         "Hard Stone",
         "Normal Gem",
-        "Soft Sand"
+        "Soft Sand",
+        "Water Stone"
       ],
       "tmMoves": [
         "Flash",
         "Steel Wing",
         "Shadow Claw",
-        "Rock Tomb",
+        "Bulk Up",
         "Cut"
       ],
       "battles": [
@@ -562,14 +555,11 @@
       "gifts": [],
       "items": [
         "Flame Plate",
-        "Soft Sand",
-        "Leppa Berry",
-        "Chesto Berry"
+        "Soft Sand"
       ],
       "tmMoves": [
-        "Bulk Up",
-        "Rock Smash",
-        "Strength"
+        "Volt Switch",
+        "Rock Smash"
       ],
       "battles": [
         {
@@ -814,16 +804,16 @@
         "Normal Gem",
         "Soft Sand",
         "Safety Goggles",
-        "Rawst Berry",
-        "Persim Berry",
         "Tyranitarite",
+        "Moon Stone",
+        "Fire Stone",
         "Charizardite X",
-        "Aspear Berry",
         "Aerodactylite"
       ],
       "tmMoves": [
         "Sandstorm",
         "Secret Power",
+        "Strength",
         "Flame Charge",
         "Rock Polish",
         "Nature Power",
@@ -832,7 +822,7 @@
         "Dig",
         "Roar",
         "Dragon Claw",
-        "Volt Switch"
+        "Overheat"
       ],
       "battles": [
         {
@@ -973,12 +963,13 @@
       },
       "gifts": [],
       "items": [
-        "Sitrus Berry",
-        "Chesto Berry",
+        "Leaf Stone",
+        "Thunder Stone",
+        "Sun Stone",
         "Black Glasses"
       ],
       "tmMoves": [
-        "Overheat"
+        "Retaliate"
       ],
       "battles": [
         {
@@ -1113,24 +1104,17 @@
       },
       "gifts": [],
       "items": [
-        "Sitrus Berry",
-        "Leppa Berry",
+        "Leaf Stone",
+        "Thunder Stone",
         "Venusaurite",
         "Blazikenite",
-        "Aspear Berry",
-        "Pecha Berry",
-        "Light Ball",
-        "Figy Berry",
-        "Wiki Berry",
-        "Mago Berry",
-        "Aguav Berry",
-        "Iapapa Berry"
+        "Light Ball"
       ],
       "tmMoves": [
+        "Fly",
         "Acrobatics",
-        "Retaliate",
-        "Surf",
-        "Fly"
+        "Roost",
+        "Surf"
       ],
       "battles": [
         {
@@ -1463,30 +1447,17 @@
       },
       "gifts": [],
       "items": [
-        "Aspear Berry",
-        "Persim Berry",
-        "Rawst Berry",
+        "Shiny Stone",
+        "Dusk Stone",
         "Sea Incense",
         "Lax Incense",
         "Medichamite",
         "Banettite",
         "Big Root",
-        "Leppa Berry",
-        "Sitrus Berry",
         "Gyaradosite",
         "Eviolite",
         "Wide Lens",
-        "Lum Berry",
-        "Figy Berry",
-        "Wiki Berry",
-        "Mago Berry",
-        "Aguav Berry",
-        "Iapapa Berry",
         "Abomasite",
-        "Cheri Berry",
-        "Chesto Berry",
-        "Pecha Berry",
-        "Oran Berry",
         "Pinsirite",
         "Sky Plate",
         "Shell Bell",
@@ -1505,8 +1476,9 @@
         "Hail",
         "Dream Eater",
         "Energy Ball",
+        "Solar Beam",
         "Wild Charge",
-        "Roost"
+        "Calm Mind"
       ],
       "battles": [
         {
@@ -1662,8 +1634,7 @@
       ],
       "tmMoves": [
         "Scald",
-        "Solar Beam",
-        "Calm Mind",
+        "Earthquake",
         "Waterfall",
         "Dive"
       ],
@@ -1941,7 +1912,9 @@
         "Icicle Plate",
         "Earth Plate",
         "Meadow Plate",
-        "Griseous Orb"
+        "Griseous Orb",
+        "Dragon Scale",
+        "Dawn Stone"
       ],
       "tmMoves": [
         "Sludge Wave",
@@ -1949,8 +1922,7 @@
         "Rock Slide",
         "Explosion",
         "Flamethrower",
-        "X-Scissor",
-        "Earthquake"
+        "X-Scissor"
       ],
       "battles": [
         {
@@ -2018,8 +1990,8 @@
               "item": null
             }
           ],
-          "chained": true,
-          "sprite": "sidney"
+          "sprite": "sidney",
+          "chained": true
         }
       ]
     },
@@ -2097,8 +2069,8 @@
               "item": null
             }
           ],
-          "chained": true,
-          "sprite": "phoebe"
+          "sprite": "phoebe",
+          "chained": true
         }
       ]
     },
@@ -2176,8 +2148,8 @@
               "item": null
             }
           ],
-          "chained": true,
-          "sprite": "glacia"
+          "sprite": "glacia",
+          "chained": true
         }
       ]
     },
@@ -2255,8 +2227,8 @@
               "item": null
             }
           ],
-          "chained": true,
-          "sprite": "drake"
+          "sprite": "drake",
+          "chained": true
         }
       ]
     },

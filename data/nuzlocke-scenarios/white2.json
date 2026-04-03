@@ -297,18 +297,19 @@
         "Mystic Water",
         "Light Clay",
         "BrightPowder",
-        "Sitrus Berry",
         "Soft Sand",
         "Ground Gem",
-        "Pecha Berry",
-        "Cheri Berry",
+        "Fire Stone",
+        "Sun Stone",
+        "Leaf Stone",
         "Grass Gem"
       ],
       "tmMoves": [
         "Dig",
         "Rock Tomb",
         "Payback",
-        "Snarl"
+        "Snarl",
+        "Fly"
       ],
       "battles": [
         {
@@ -402,7 +403,6 @@
         "Mystic Water",
         "Light Clay",
         "BrightPowder",
-        "Sitrus Berry",
         "Twisted Spoon",
         "Leftovers",
         "Poison Gem",
@@ -410,8 +410,9 @@
       ],
       "tmMoves": [
         "Dig",
+        "Strength",
         "Torment",
-        "Surf"
+        "Struggle Bug"
       ],
       "battles": [
         {
@@ -605,8 +606,10 @@
       },
       "gifts": [],
       "items": [
-        "Pecha Berry",
+        "Moon Stone",
+        "Shiny Stone",
         "Magnet",
+        "Thunder Stone",
         "Metal Coat",
         "Electric Gem",
         "Fire Gem",
@@ -625,13 +628,20 @@
         "Dark Gem",
         "Steel Gem",
         "Normal Gem",
-        "Leppa Berry"
+        "Fire Stone",
+        "Water Stone",
+        "Leaf Stone",
+        "Sun Stone",
+        "Dusk Stone",
+        "Dawn Stone",
+        "Oval Stone"
       ],
       "tmMoves": [
+        "Surf",
         "Fling",
         "X-Scissor",
         "Rock Slide",
-        "Struggle Bug"
+        "Volt Switch"
       ],
       "battles": [
         {
@@ -815,10 +825,11 @@
         "Heat Rock",
         "Smooth Rock",
         "Icy Rock",
-        "Lum Berry",
+        "Dawn Stone",
         "King's Rock",
         "Black Belt",
         "Never-Melt Ice",
+        "Shiny Stone",
         "Adamant Orb",
         "Lustrous Orb",
         "Griseous Orb"
@@ -827,8 +838,7 @@
         "Sludge Bomb",
         "Poison Jab",
         "Dragon Claw",
-        "Volt Switch",
-        "Fly"
+        "Bulldoze"
       ],
       "battles": [
         {
@@ -1003,7 +1013,7 @@
       "tmMoves": [
         "Earthquake",
         "Psychic",
-        "Bulldoze"
+        "Acrobatics"
       ],
       "battles": [
         {
@@ -1114,11 +1124,21 @@
         "Dragon Gem",
         "Dark Gem",
         "Steel Gem",
-        "Normal Gem"
+        "Normal Gem",
+        "Fire Stone",
+        "Water Stone",
+        "Thunder Stone",
+        "Leaf Stone",
+        "Moon Stone",
+        "Sun Stone",
+        "Shiny Stone",
+        "Dusk Stone",
+        "Dawn Stone",
+        "Oval Stone"
       ],
       "tmMoves": [
         "Toxic",
-        "Acrobatics"
+        "Dragon Tail"
       ],
       "battles": [
         {
@@ -1229,8 +1249,10 @@
       },
       "gifts": [],
       "items": [
+        "Moon Stone",
         "Ice Gem",
         "Razor Claw",
+        "Sun Stone",
         "Fire Gem",
         "Water Gem",
         "Electric Gem",
@@ -1246,12 +1268,19 @@
         "Dragon Gem",
         "Dark Gem",
         "Steel Gem",
-        "Normal Gem"
+        "Normal Gem",
+        "Fire Stone",
+        "Water Stone",
+        "Thunder Stone",
+        "Leaf Stone",
+        "Shiny Stone",
+        "Dusk Stone",
+        "Dawn Stone",
+        "Oval Stone"
       ],
       "tmMoves": [
         "Ice Beam",
-        "Psyshock",
-        "Dragon Tail"
+        "Psyshock"
       ],
       "battles": [
         {
@@ -1379,8 +1408,8 @@
               "item": "Sitrus Berry"
             }
           ],
-          "chained": true,
-          "sprite": "shauntal"
+          "sprite": "shauntal",
+          "chained": true
         }
       ]
     },
@@ -1446,8 +1475,8 @@
               "item": "Sitrus Berry"
             }
           ],
-          "chained": true,
-          "sprite": "marshal"
+          "sprite": "marshal",
+          "chained": true
         }
       ]
     },
@@ -1513,8 +1542,8 @@
               "item": "Sitrus Berry"
             }
           ],
-          "chained": true,
-          "sprite": "grimsley"
+          "sprite": "grimsley",
+          "chained": true
         }
       ]
     },
@@ -1580,8 +1609,8 @@
               "item": "Sitrus Berry"
             }
           ],
-          "chained": true,
-          "sprite": "caitlin"
+          "sprite": "caitlin",
+          "chained": true
         }
       ]
     },

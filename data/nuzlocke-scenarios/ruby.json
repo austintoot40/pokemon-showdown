@@ -167,19 +167,12 @@
       },
       "gifts": [],
       "items": [
-        "Oran Berry",
-        "Pecha Berry",
-        "Cheri Berry",
-        "Leppa Berry",
         "Miracle Seed",
-        "Chesto Berry",
-        "White Herb",
-        "Rawst Berry",
-        "Aspear Berry",
-        "Persim Berry"
+        "White Herb"
       ],
       "tmMoves": [
-        "Bullet Seed"
+        "Bullet Seed",
+        "Rock Tomb"
       ],
       "battles": [
         {
@@ -344,14 +337,14 @@
       },
       "gifts": [],
       "items": [
-        "Chesto Berry",
         "Black Glasses"
       ],
       "tmMoves": [
+        "Strength",
+        "Flash",
         "Steel Wing",
-        "Rock Tomb",
-        "Cut",
-        "Flash"
+        "Bulk Up",
+        "Cut"
       ],
       "battles": [
         {
@@ -557,14 +550,11 @@
       },
       "gifts": [],
       "items": [
-        "Soft Sand",
-        "Cheri Berry",
-        "Leppa Berry"
+        "Soft Sand"
       ],
       "tmMoves": [
-        "Bulk Up",
-        "Rock Smash",
-        "Strength"
+        "Shock Wave",
+        "Rock Smash"
       ],
       "battles": [
         {
@@ -812,10 +802,8 @@
         }
       ],
       "items": [
-        "Oran Berry",
-        "Pecha Berry",
-        "Rawst Berry",
-        "Persim Berry"
+        "Fire Stone",
+        "Moon Stone"
       ],
       "tmMoves": [
         "Sandstorm",
@@ -826,7 +814,7 @@
         "Roar",
         "Iron Tail",
         "Dragon Claw",
-        "Shock Wave"
+        "Overheat"
       ],
       "battles": [
         {
@@ -975,12 +963,11 @@
       },
       "gifts": [],
       "items": [
-        "Sitrus Berry",
-        "Chesto Berry",
         "Black Glasses"
       ],
       "tmMoves": [
-        "Overheat"
+        "Focus Punch",
+        "Facade"
       ],
       "battles": [
         {
@@ -1127,21 +1114,12 @@
       },
       "gifts": [],
       "items": [
-        "Sitrus Berry",
-        "Leppa Berry",
-        "Aspear Berry",
-        "Pecha Berry",
-        "Figy Berry",
-        "Wiki Berry",
-        "Mago Berry",
-        "Aguav Berry",
-        "Iapapa Berry"
+        "Leaf Stone"
       ],
       "tmMoves": [
-        "Focus Punch",
-        "Facade",
-        "Surf",
-        "Fly"
+        "Fly",
+        "Aerial Ace",
+        "Surf"
       ],
       "battles": [
         {
@@ -1502,18 +1480,8 @@
       },
       "gifts": [],
       "items": [
-        "Aspear Berry",
-        "Chesto Berry",
-        "Persim Berry",
-        "Rawst Berry",
         "Sea Incense",
         "Lax Incense",
-        "Pecha Berry",
-        "Sitrus Berry",
-        "Leppa Berry",
-        "Cheri Berry",
-        "Oran Berry",
-        "Lum Berry",
         "Shell Bell",
         "Focus Band",
         "Never-Melt Ice"
@@ -1523,7 +1491,7 @@
         "Skill Swap",
         "Giga Drain",
         "Hail",
-        "Aerial Ace"
+        "Calm Mind"
       ],
       "battles": [
         {
@@ -1685,7 +1653,7 @@
       "gifts": [],
       "items": [],
       "tmMoves": [
-        "Calm Mind",
+        "Earthquake",
         "Waterfall",
         "Dive"
       ],
@@ -1982,12 +1950,8 @@
         ]
       },
       "gifts": [],
-      "items": [
-        "Liechi Berry"
-      ],
-      "tmMoves": [
-        "Earthquake"
-      ],
+      "items": [],
+      "tmMoves": [],
       "battles": [
         {
           "id": "sidney",
@@ -2054,8 +2018,8 @@
               "item": "Sitrus Berry"
             }
           ],
-          "chained": true,
-          "sprite": "sidney"
+          "sprite": "sidney",
+          "chained": true
         }
       ]
     },
@@ -2133,8 +2097,8 @@
               "item": "Sitrus Berry"
             }
           ],
-          "chained": true,
-          "sprite": "phoebe"
+          "sprite": "phoebe",
+          "chained": true
         }
       ]
     },
@@ -2212,8 +2176,8 @@
               "item": "Sitrus Berry"
             }
           ],
-          "chained": true,
-          "sprite": "glacia"
+          "sprite": "glacia",
+          "chained": true
         }
       ]
     },
@@ -2291,8 +2255,8 @@
               "item": "Sitrus Berry"
             }
           ],
-          "chained": true,
-          "sprite": "drake"
+          "sprite": "drake",
+          "chained": true
         }
       ]
     },

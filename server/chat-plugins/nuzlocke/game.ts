@@ -2,10 +2,10 @@
  * Nuzlocke Simulator — Game State
  */
 
-import { FS } from '../../../lib';
+import { saveGameToRedis, deleteGameFromRedis, loadGameFromRedis, pingRedis } from './redis-store';
 import { resolveOneEncounter, resolveChoiceGift, getAvailablePool, buildStarterPokemon } from './encounters';
 import { getLegalMoves, type LegalMove } from './learnsets';
-import { listScenarios } from './scenarios';
+import { listScenarios, getScenario } from './scenarios';
 import type { Scenario, Segment, RouteEncounter, OwnedPokemon, DeadPokemon, NuzlockeScreen, NuzlockeScenarioCard, EvoOption, CompletedRun } from './types';
 export type { CompletedRun };
 
@@ -23,8 +23,6 @@ export function flatEncounters(segment: Segment): RouteEncounter[] {
 }
 
 export const nuzlockeGames = new Map<ID, NuzlockeGame>();
-export const completedRuns: CompletedRun[] = [];
-export const aiPreferences = new Map<ID, string>();
 
 export class NuzlockeGame {
 	user: ID;
@@ -46,6 +44,7 @@ export class NuzlockeGame {
 	resolvedRoutes: string[];
 	settings: { ai: 'game-accurate' | 'smart' | 'competitive'; generation: number };
 	partyErrors: Map<string, string>;
+	lastCompletedRun: CompletedRun | null;
 
 	constructor(userID: ID, scenario: Scenario) {
 		this.user = userID;
@@ -66,6 +65,7 @@ export class NuzlockeGame {
 		this.resolvedRoutes = [];
 		this.settings = { ai: 'game-accurate', generation: 9 };
 		this.partyErrors = new Map();
+		this.lastCompletedRun = null;
 	}
 
 	pickStarter(index: number) {
@@ -275,15 +275,15 @@ export class NuzlockeGame {
 	}
 
 	toJSON() {
-		const { partyErrors, ...rest } = this as any;
-		return rest;
+		const { partyErrors, scenario, ...rest } = this as any;
+		return { ...rest, scenarioId: this.scenario.id };
 	}
 
 	goToPage(target: NuzlockeScreen) {
 		this.curRoom = target;
 		navigateToNuzlocke(this.user);
 		pushNuzlockeStatus(this.user, this);
-		saveNuzlockeData();
+		saveGame(this);
 	}
 }
 
@@ -344,6 +344,9 @@ export interface NuzlockePanelPayload {
 
 	// Active battle room (null when no battle in progress)
 	battleRoomId: string | null;
+
+	// Set when a run just ended — client saves this to localStorage
+	completedRun: CompletedRun | null;
 }
 
 // Lightweight run summary delivered globally (|updatenuzlocke| message).
@@ -360,15 +363,12 @@ export interface NuzlockeMenuPayload {
 		curRoom: NuzlockeScreen;
 		ai: string;
 	} | null;
-	pastRuns: CompletedRun[];
-	selectedAi: string;
 	scenarios: NuzlockeScenarioCard[];
 }
 
 export function pushNuzlockeStatus(userID: ID, game: NuzlockeGame | null) {
 	const user = Users.get(userID);
 	if (!user) return;
-	const savedAi = aiPreferences.get(userID) ?? 'random';
 	const payload: NuzlockeMenuPayload = {
 		activeRun: game ? {
 			scenarioId: game.scenario.id,
@@ -381,8 +381,6 @@ export function pushNuzlockeStatus(userID: ID, game: NuzlockeGame | null) {
 			curRoom: game.curRoom,
 			ai: game.settings.ai,
 		} : null,
-		pastRuns: completedRuns.filter(r => r.userId === userID),
-		selectedAi: game?.settings.ai ?? savedAi,
 		scenarios: buildScenarioCards(),
 	};
 	user.send(`|updatenuzlocke|${JSON.stringify(payload)}`);
@@ -461,6 +459,7 @@ export function serializeGameState(game: NuzlockeGame): NuzlockePanelPayload {
 		segmentNames,
 		scenarios,
 		battleRoomId: game.battleRoomId,
+		completedRun: game.lastCompletedRun,
 	};
 }
 
@@ -508,30 +507,36 @@ export function recordCompletedRun(game: NuzlockeGame, outcome: 'victory' | 'wip
 		segmentIndex: game.currentSegmentIndex,
 		ai: game.settings.ai,
 	};
-	completedRuns.push(run);
+	game.lastCompletedRun = run;
 }
 
-export function saveNuzlockeData() {
-	FS('config/nuzlocke.json').writeUpdate(
-		() => JSON.stringify({ games: [...nuzlockeGames], completed: completedRuns, aiPrefs: [...aiPreferences] })
-	);
+export { pingRedis } from './redis-store';
+
+export function saveGame(game: NuzlockeGame) {
+	void saveGameToRedis(game);
 }
 
-export function loadNuzlockeData() {
+export function deleteGame(userId: ID) {
+	void deleteGameFromRedis(userId);
+}
+
+export async function loadUserGame(userId: ID): Promise<NuzlockeGame | null> {
+	const raw = await loadGameFromRedis(userId);
+	if (!raw) return null;
 	try {
-		const raw = FS('config/nuzlocke.json').readIfExistsSync();
-		if (!raw) return;
-		const data = JSON.parse(raw);
-		// Support both old array format and new object format
-		const games: [ID, any][] = Array.isArray(data) ? data : (data.games ?? []);
-		const completed: CompletedRun[] = Array.isArray(data) ? [] : (data.completed ?? []);
-		const prefs: [ID, string][] = Array.isArray(data) ? [] : (data.aiPrefs ?? []);
-		for (const [id, gameData] of games) {
-			nuzlockeGames.set(id, Object.assign(new NuzlockeGame(id, gameData.scenario), gameData));
+		const gameData = JSON.parse(raw);
+		const scenario = getScenario(gameData.scenarioId);
+		if (!scenario) return null;
+		const game = Object.assign(new NuzlockeGame(userId, scenario), gameData, { scenario });
+		// Battle rooms don't survive server restarts — put the player back at teambuilding
+		if (game.inBattle) {
+			game.inBattle = false;
+			game.battleRoomId = null;
+			game.curRoom = 'teambuilding';
 		}
-		completedRuns.push(...completed);
-		for (const [id, ai] of prefs) {
-			aiPreferences.set(id, ai);
-		}
-	} catch {}
+		nuzlockeGames.set(userId, game);
+		return game;
+	} catch {
+		return null;
+	}
 }
