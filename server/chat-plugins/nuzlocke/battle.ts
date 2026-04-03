@@ -23,7 +23,6 @@ function packPlayerTeam(game: NuzlockeGame): string {
 			name: p.nickname || p.species,
 			species: p.species,
 			gender: p.gender,
-			shiny: p.shiny,
 			item: p.item || '',
 			ability: p.ability,
 			moves,

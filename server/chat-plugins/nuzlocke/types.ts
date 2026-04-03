@@ -65,7 +65,6 @@ export interface OwnedPokemon {
 	moves: string[];       // currently assigned moves (up to 4)
 	item: string;          // held item or ''
 	gender: string;
-	shiny: boolean;
 	caughtRoute: string;
 	alive: boolean;
 }

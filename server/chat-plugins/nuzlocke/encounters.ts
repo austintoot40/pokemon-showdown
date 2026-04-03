@@ -120,7 +120,6 @@ function buildEncounter(
 		moves: [],
 		item: '',
 		gender,
-		shiny: Math.random() < 1 / 4096,
 		caughtRoute: route,
 		alive: true,
 	};
@@ -148,7 +147,6 @@ export function buildStarterPokemon(speciesName: string, level: number): OwnedPo
 			: dexSpecies.gender === 'F' ? 'F'
 			: dexSpecies.gender === 'N' ? 'N'
 			: Math.random() < 0.5 ? 'M' : 'F',
-		shiny: false,
 		caughtRoute: 'Starter',
 		alive: true,
 	};

@@ -496,11 +496,14 @@ export function recordCompletedRun(game: NuzlockeGame, outcome: 'victory' | 'wip
 		date: new Date().toISOString(),
 		deathCount: game.graveyard.length,
 		graveyard: [...game.graveyard],
-		survivors: game.box.filter(p => p.alive).map(p => ({ species: p.species, nickname: p.nickname })),
+		survivors: game.party
+			.map(uid => game.getPokemon(uid))
+			.filter((p): p is OwnedPokemon => p != null && p.alive)
+			.map(p => ({ species: p.species, nickname: p.nickname })),
 		finalParty: game.party
-			.map(uid => game.box.find(p => p.uid === uid))
-			.filter(Boolean)
-			.map(p => ({ species: p!.species, alive: p!.alive })),
+			.map(uid => game.getPokemon(uid))
+			.filter((p): p is OwnedPokemon => p != null)
+			.map(p => ({ species: p.species, alive: p.alive })),
 		finalBattle: finalBattle ?? game.currentBattle?.trainer ?? '',
 		segmentIndex: game.currentSegmentIndex,
 		ai: game.settings.ai,
