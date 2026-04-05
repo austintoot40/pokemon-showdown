@@ -4,9 +4,11 @@
 
 'use strict';
 
-import { nuzlockeGames, NuzlockeGame, flatEncounters, saveGame, deleteGame, pushNuzlockeStatus, pushNuzlockeState, closeNuzlockePanel, recordCompletedRun } from './game';
+import { nuzlockeGames, NuzlockeGame, flatEncounters, saveGame, deleteGame, pushNuzlockeStatus, pushNuzlockeState, closeNuzlockePanel, recordCompletedRun, pendingRandomizers } from './game';
 import { getScenario } from './scenarios';
 import { createNuzlockeBattle, goToTeambuilding } from './battle';
+import { buildRandomizerMappings, buildStarterPokemon } from './encounters';
+import type { RandomizerConfig } from './types';
 
 // ---------------------------------------------------------------------------
 // Commands export
@@ -25,12 +27,121 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 			const game = new NuzlockeGame(user.id, scenario);
 			game.settings.ai = difficulty as NuzlockeGame['settings']['ai'];
 			game.settings.generation = scenario.generation;
+			pendingRandomizers.delete(user.id);
 			nuzlockeGames.set(user.id, game);
 			const starterIndex = parseInt(starterIndexStr);
 			if (isNaN(starterIndex) || starterIndex < 0 || starterIndex >= scenario.starters.length) {
 				return this.errorReply(`Invalid starter index. Choose 0-${scenario.starters.length - 1}.`);
 			}
 			game.pickStarter(starterIndex);
+			game.resolveSegmentStart();
+			game.goToPage('encounters');
+		},
+
+		/**
+		 * Computes randomizer mappings and pushes randomized starters to the client
+		 * without starting the run. The user picks a starter, then calls randomizestart.
+		 */
+		randomizerpreview(target, room, user) {
+			if (nuzlockeGames.has(user.id)) return this.errorReply('Already in a run.');
+			const [scenarioId = 'firered', mode = 'shuffle', bstVariance = 'medium', randomizeItemsStr = 'false'] = target.trim().split(/\s+/);
+			const scenario = getScenario(scenarioId.toLowerCase());
+			if (!scenario) return this.errorReply(`Unknown scenario "${scenarioId}".`);
+			if (!['shuffle', 'fully-random'].includes(mode)) {
+				return this.errorReply(`Unknown mode "${mode}". Options: shuffle, fully-random`);
+			}
+			if (!['low', 'medium', 'high'].includes(bstVariance)) {
+				return this.errorReply(`Unknown BST variance "${bstVariance}". Options: low, medium, high`);
+			}
+			const config: RandomizerConfig = {
+				mode: mode as RandomizerConfig['mode'],
+				bstVariance: bstVariance as RandomizerConfig['bstVariance'],
+				randomizeItems: randomizeItemsStr === 'true',
+				seed: Date.now(),
+			};
+			const mappings = buildRandomizerMappings(scenario, config);
+			pendingRandomizers.set(user.id, { scenarioId: scenario.id, config, mappings });
+			pushNuzlockeStatus(user.id, null);
+		},
+
+		/**
+		 * Starts a randomized run using the pending randomizer preview config.
+		 * Called after randomizerpreview once the user has picked a starter.
+		 */
+		randomizestart(target, room, user) {
+			if (nuzlockeGames.has(user.id)) return this.parse('/join view-nuzlocke');
+			const [scenarioId = '', difficulty = 'game-accurate', starterIndexStr] = target.trim().split(/\s+/);
+			const pending = pendingRandomizers.get(user.id);
+			if (!pending || pending.scenarioId !== scenarioId) {
+				return this.errorReply('No pending randomizer preview. Click Randomize first.');
+			}
+			const scenario = getScenario(scenarioId);
+			if (!scenario) return this.errorReply(`Unknown scenario "${scenarioId}".`);
+			if (!['game-accurate', 'smart', 'competitive'].includes(difficulty)) {
+				return this.errorReply(`Unknown difficulty "${difficulty}". Options: game-accurate, smart, competitive`);
+			}
+			const starterIndex = parseInt(starterIndexStr);
+			if (isNaN(starterIndex) || starterIndex < 0 || starterIndex >= scenario.starters.length) {
+				return this.errorReply(`Invalid starter index. Choose 0-${scenario.starters.length - 1}.`);
+			}
+			const game = new NuzlockeGame(user.id, scenario);
+			game.settings.ai = difficulty as NuzlockeGame['settings']['ai'];
+			game.settings.generation = scenario.generation;
+			game.randomizerConfig = pending.config;
+			game.randomizerMappings = pending.mappings;
+			pendingRandomizers.delete(user.id);
+			nuzlockeGames.set(user.id, game);
+			const randStarterSpecies = pending.mappings.starterSpecies[starterIndex];
+			const starterDef = scenario.starters[starterIndex];
+			const starter = buildStarterPokemon(randStarterSpecies ?? starterDef.species, starterDef.level);
+			game.box.push(starter);
+			game.addToParty(starter.uid);
+			game.resolveSegmentStart();
+			game.goToPage('encounters');
+		},
+
+		randomizercancel(target, room, user) {
+			pendingRandomizers.delete(user.id);
+			pushNuzlockeStatus(user.id, nuzlockeGames.get(user.id) ?? null);
+		},
+
+		randomize(target, room, user) {
+			if (nuzlockeGames.has(user.id)) return this.parse('/join view-nuzlocke');
+			const [scenarioId = 'firered', difficulty = 'game-accurate', starterIndexStr, mode = 'shuffle', bstVariance = 'medium', randomizeItemsStr = 'false'] = target.trim().split(/\s+/);
+			const scenario = getScenario(scenarioId.toLowerCase());
+			if (!scenario) return this.errorReply(`Unknown scenario "${scenarioId}". Available: firered`);
+			if (!['game-accurate', 'smart', 'competitive'].includes(difficulty)) {
+				return this.errorReply(`Unknown difficulty "${difficulty}". Options: game-accurate, smart, competitive`);
+			}
+			if (!['shuffle', 'fully-random'].includes(mode)) {
+				return this.errorReply(`Unknown randomizer mode "${mode}". Options: shuffle, fully-random`);
+			}
+			if (!['low', 'medium', 'high'].includes(bstVariance)) {
+				return this.errorReply(`Unknown BST variance "${bstVariance}". Options: low, medium, high`);
+			}
+			const starterIndex = parseInt(starterIndexStr);
+			if (isNaN(starterIndex) || starterIndex < 0 || starterIndex >= scenario.starters.length) {
+				return this.errorReply(`Invalid starter index. Choose 0-${scenario.starters.length - 1}.`);
+			}
+			const config: RandomizerConfig = {
+				mode: mode as RandomizerConfig['mode'],
+				bstVariance: bstVariance as RandomizerConfig['bstVariance'],
+				randomizeItems: randomizeItemsStr === 'true',
+				seed: Date.now(),
+			};
+			const mappings = buildRandomizerMappings(scenario, config);
+			const game = new NuzlockeGame(user.id, scenario);
+			game.settings.ai = difficulty as NuzlockeGame['settings']['ai'];
+			game.settings.generation = scenario.generation;
+			game.randomizerConfig = config;
+			game.randomizerMappings = mappings;
+			pendingRandomizers.delete(user.id);
+			nuzlockeGames.set(user.id, game);
+			const randStarterSpecies = mappings.starterSpecies[starterIndex];
+			const starterDef = scenario.starters[starterIndex];
+			const starter = buildStarterPokemon(randStarterSpecies ?? starterDef.species, starterDef.level);
+			game.box.push(starter);
+			game.addToParty(starter.uid);
 			game.resolveSegmentStart();
 			game.goToPage('encounters');
 		},

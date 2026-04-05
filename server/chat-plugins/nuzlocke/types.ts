@@ -87,6 +87,24 @@ export interface StatsTable {
 	spe: number;
 }
 
+export interface RandomizerConfig {
+	mode: 'shuffle' | 'fully-random';
+	bstVariance: 'low' | 'medium' | 'high';
+	randomizeItems: boolean;
+	seed: number;
+}
+
+export interface RandomizerMappings {
+	/** Shuffle mode: original species ID → replacement species name */
+	speciesMap: Record<string, string>;
+	/** Fully Random mode: route name → replacement species name */
+	routeMap: Record<string, string>;
+	/** Item shuffle: segment ID → shuffled items (only when randomizeItems is true) */
+	itemMap: Record<string, string[]>;
+	/** Randomized starter species in original slot order */
+	starterSpecies: string[];
+}
+
 export type NuzlockeScreen =
 	'encounters' | 'teambuilding' | 'battle' | 'results' | 'summary';
 

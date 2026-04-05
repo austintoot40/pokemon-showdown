@@ -24,6 +24,13 @@ export function flatEncounters(segment: Segment): RouteEncounter[] {
 
 export const nuzlockeGames = new Map<ID, NuzlockeGame>();
 
+/** Pending randomizer previews: computed before run start so the user can see randomized starters. */
+export const pendingRandomizers = new Map<ID, {
+	scenarioId: string;
+	config: import('./types').RandomizerConfig;
+	mappings: import('./types').RandomizerMappings;
+}>();
+
 export class NuzlockeGame {
 	user: ID;
 	scenario: Scenario;
@@ -45,6 +52,8 @@ export class NuzlockeGame {
 	settings: { ai: 'game-accurate' | 'smart' | 'competitive'; generation: number };
 	partyErrors: Map<string, string>;
 	lastCompletedRun: CompletedRun | null;
+	randomizerConfig: import('./types').RandomizerConfig | null;
+	randomizerMappings: import('./types').RandomizerMappings | null;
 
 	constructor(userID: ID, scenario: Scenario) {
 		this.user = userID;
@@ -66,6 +75,8 @@ export class NuzlockeGame {
 		this.settings = { ai: 'game-accurate', generation: 9 };
 		this.partyErrors = new Map();
 		this.lastCompletedRun = null;
+		this.randomizerConfig = null;
+		this.randomizerMappings = null;
 	}
 
 	pickStarter(index: number) {
@@ -80,11 +91,12 @@ export class NuzlockeGame {
 	resolveSegmentStart() {
 		const segment = this.scenario.segments[this.currentSegmentIndex];
 		if (!segment) return;
-		this.items.push(...segment.items);
+		const segmentItems = this.randomizerMappings?.itemMap?.[segment.id] ?? segment.items;
+		this.items.push(...segmentItems);
 		this.tmMoves.push(...(segment.tmMoves ?? []));
 		for (const route of segment.gifts ?? []) {
 			if (route.choice) continue;  // Player must choose manually
-			const pokemon = resolveOneEncounter(route, this.box, this.graveyard as any, segment.levelCap);
+			const pokemon = resolveOneEncounter(route, this.box, this.graveyard as any, segment.levelCap, this.randomizerMappings);
 			if (!pokemon) continue; // all dupes — skip
 			this.box.push(pokemon);
 			this.addToParty(pokemon.uid);
@@ -115,7 +127,7 @@ export class NuzlockeGame {
 		const route = flatEncounters(segment)[routeIndex];
 		if (!route) return;
 		if (this.resolvedRoutes.includes(route.route)) return;
-		const pokemon = resolveOneEncounter(route, this.box, this.graveyard as any, segment.levelCap);
+		const pokemon = resolveOneEncounter(route, this.box, this.graveyard as any, segment.levelCap, this.randomizerMappings);
 		this.resolvedRoutes.push(route.route);
 		if (!pokemon) return; // all dupes — route resolved with no encounter
 		this.box.push(pokemon);
@@ -364,11 +376,17 @@ export interface NuzlockeMenuPayload {
 		ai: string;
 	} | null;
 	scenarios: NuzlockeScenarioCard[];
+	/** Set while the user has a pending randomizer preview but hasn't started the run yet. */
+	randomizerPreview: {
+		scenarioId: string;
+		starters: string[];
+	} | null;
 }
 
 export function pushNuzlockeStatus(userID: ID, game: NuzlockeGame | null) {
 	const user = Users.get(userID);
 	if (!user) return;
+	const pending = pendingRandomizers.get(userID);
 	const payload: NuzlockeMenuPayload = {
 		activeRun: game ? {
 			scenarioId: game.scenario.id,
@@ -382,6 +400,10 @@ export function pushNuzlockeStatus(userID: ID, game: NuzlockeGame | null) {
 			ai: game.settings.ai,
 		} : null,
 		scenarios: buildScenarioCards(),
+		randomizerPreview: pending ? {
+			scenarioId: pending.scenarioId,
+			starters: pending.mappings.starterSpecies,
+		} : null,
 	};
 	user.send(`|updatenuzlocke|${JSON.stringify(payload)}`);
 }
@@ -399,6 +421,42 @@ function buildScenarioCards(): NuzlockeScenarioCard[] {
 		color: s.color,
 		pokemon: s.pokemon,
 	}));
+}
+
+function applyMappingsToEncounters(
+	encounters: Record<string, RouteEncounter[]>,
+	m: import('./types').RandomizerMappings
+): Record<string, RouteEncounter[]> {
+	const result: Record<string, RouteEncounter[]> = {};
+	for (const [method, routes] of Object.entries(encounters)) {
+		result[method] = routes.map(route => {
+			const routeOverride = m.routeMap[route.route];
+			if (routeOverride) {
+				return { ...route, pokemon: [{ species: routeOverride, rate: 1 }] };
+			}
+			if (Object.keys(m.speciesMap).length > 0) {
+				return { ...route, pokemon: route.pokemon.map(e => ({ ...e, species: m.speciesMap[toID(e.species)] ?? e.species })) };
+			}
+			return route;
+		});
+	}
+	return result;
+}
+
+function applyMappingsToGifts(
+	gifts: RouteEncounter[],
+	m: import('./types').RandomizerMappings
+): RouteEncounter[] {
+	return gifts.map(route => {
+		const routeOverride = m.routeMap[route.route];
+		if (routeOverride) {
+			return { ...route, pokemon: [{ species: routeOverride, rate: 1 }] };
+		}
+		if (Object.keys(m.speciesMap).length > 0) {
+			return { ...route, pokemon: route.pokemon.map(e => ({ ...e, species: m.speciesMap[toID(e.species)] ?? e.species })) };
+		}
+		return route;
+	});
 }
 
 export function serializeGameState(game: NuzlockeGame): NuzlockePanelPayload {
@@ -427,6 +485,7 @@ export function serializeGameState(game: NuzlockeGame): NuzlockePanelPayload {
 	}
 
 	const seg = game.currentSegment;
+	const m = game.randomizerMappings;
 	return {
 		curScreen: game.curRoom,
 		scenarioId: game.scenario.id,
@@ -442,8 +501,8 @@ export function serializeGameState(game: NuzlockeGame): NuzlockePanelPayload {
 			levelCap: seg.levelCap,
 			items: seg.items,
 			tmMoves: seg.tmMoves ?? [],
-			encounters: seg.encounters,
-			gifts: seg.gifts ?? [],
+			encounters: m ? applyMappingsToEncounters(seg.encounters, m) : seg.encounters,
+			gifts: m ? applyMappingsToGifts(seg.gifts ?? [], m) : (seg.gifts ?? []),
 			battles: seg.battles,
 		} : null,
 		box: game.box,

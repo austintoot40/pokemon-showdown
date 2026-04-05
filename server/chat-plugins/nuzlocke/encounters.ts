@@ -2,7 +2,124 @@
  * Nuzlocke Simulator — Encounter Resolution
  */
 
-import type { EncounterEntry, OwnedPokemon, RouteEncounter, Segment } from './types';
+import type { EncounterEntry, OwnedPokemon, RandomizerConfig, RandomizerMappings, RouteEncounter, Scenario } from './types';
+
+/** Mulberry32 — a fast, seedable PRNG returning values in [0, 1). */
+function mulberry32(seed: number): () => number {
+	return function () {
+		seed |= 0; seed = seed + 0x6D2B79F5 | 0;
+		let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+		t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+		return ((t ^ t >>> 14) >>> 0) / 4294967296;
+	};
+}
+
+function seededShuffle<T>(arr: T[], rng: () => number): T[] {
+	for (let i = arr.length - 1; i > 0; i--) {
+		const j = Math.floor(rng() * (i + 1));
+		[arr[i], arr[j]] = [arr[j], arr[i]];
+	}
+	return arr;
+}
+
+function withinBstVariance(origBst: number, newBst: number, variance: RandomizerConfig['bstVariance']): boolean {
+	if (variance === 'high') return true;
+	const ratio = Math.abs(newBst - origBst) / (origBst || 1);
+	return variance === 'low' ? ratio <= 0.33 : ratio <= 0.66;
+}
+
+/** Returns all base-form, non-fangame species available in the given generation. */
+function getGenPool(generation: number): string[] {
+	return (Dex.forGen(generation).species.all() as import('../../../sim/dex-types').Species[])
+		.filter(s => !s.prevo && s.gen <= generation && !s.isNonstandard)
+		.map(s => s.name);
+}
+
+/**
+ * Pre-computes the encounter and item mappings for a randomized run.
+ * The result is stored in the game state (persisted to Redis) so randomization
+ * stays consistent across page reloads and server restarts.
+ */
+export function buildRandomizerMappings(scenario: Scenario, config: RandomizerConfig): RandomizerMappings {
+	const rng = mulberry32(config.seed);
+	const speciesMap: Record<string, string> = {};
+	const routeMap: Record<string, string> = {};
+	const itemMap: Record<string, string[]> = {};
+
+	const candidates = seededShuffle(getGenPool(scenario.generation), rng);
+
+	if (config.mode === 'shuffle') {
+		// Collect all unique original species from starters, routes, and gifts across all segments
+		const origSpeciesSet = new Set<string>();
+		for (const s of scenario.starters) origSpeciesSet.add(toID(s.species));
+		for (const seg of scenario.segments) {
+			for (const routes of Object.values(seg.encounters ?? {})) {
+				for (const route of routes) {
+					for (const e of route.pokemon) origSpeciesSet.add(toID(e.species));
+				}
+			}
+			for (const route of seg.gifts ?? []) {
+				for (const e of route.pokemon) origSpeciesSet.add(toID(e.species));
+			}
+		}
+		const origSpecies = [...origSpeciesSet].sort();
+
+		// Assign each original species a replacement from the shuffled candidate pool
+		const used = new Set<string>();
+		for (const orig of origSpecies) {
+			const origBst = (Dex.species.get(orig) as import('../../../sim/dex-types').Species).bst ?? 0;
+			const assigned =
+				candidates.find(c => !used.has(c) && withinBstVariance(origBst, (Dex.species.get(c) as import('../../../sim/dex-types').Species).bst ?? 0, config.bstVariance)) ??
+				candidates.find(c => !used.has(c)) ??
+				orig; // impossible fallback: no candidates available
+			speciesMap[orig] = assigned;
+			used.add(assigned);
+		}
+	} else {
+		// Fully Random: independently assign one species per route
+		for (const seg of scenario.segments) {
+			const allRoutes: RouteEncounter[] = [
+				...Object.values(seg.encounters ?? {}).flat(),
+				...(seg.gifts ?? []),
+			];
+			for (const route of allRoutes) {
+				if (routeMap[route.route]) continue; // already assigned (same route name in multiple segments)
+				const avgBst = route.pokemon.reduce((sum, e) => sum + ((Dex.species.get(e.species) as import('../../../sim/dex-types').Species).bst ?? 0), 0) / (route.pokemon.length || 1);
+				const pool = candidates.filter(c => withinBstVariance(avgBst, (Dex.species.get(c) as import('../../../sim/dex-types').Species).bst ?? 0, config.bstVariance));
+				const pick = (pool.length ? pool : candidates)[Math.floor(rng() * (pool.length || candidates.length))];
+				routeMap[route.route] = pick;
+			}
+		}
+	}
+
+	// Compute randomized starters
+	let starterSpecies: string[];
+	if (config.mode === 'shuffle') {
+		starterSpecies = scenario.starters.map(s => speciesMap[toID(s.species)] ?? s.species);
+	} else {
+		starterSpecies = scenario.starters.map(() => {
+			const pick = (candidates.length ? candidates : ['Bulbasaur'])[Math.floor(rng() * candidates.length)];
+			return pick;
+		});
+	}
+
+	if (config.randomizeItems) {
+		const allItems: string[] = [];
+		const segmentCounts: [string, number][] = [];
+		for (const seg of scenario.segments) {
+			segmentCounts.push([seg.id, seg.items.length]);
+			allItems.push(...seg.items);
+		}
+		seededShuffle(allItems, rng);
+		let idx = 0;
+		for (const [segId, count] of segmentCounts) {
+			itemMap[segId] = allItems.slice(idx, idx + count);
+			idx += count;
+		}
+	}
+
+	return { speciesMap, routeMap, itemMap, starterSpecies };
+}
 
 const NATURES = [
 	'Hardy', 'Lonely', 'Brave', 'Adamant', 'Naughty',
@@ -82,9 +199,26 @@ export function resolveOneEncounter(
 	route: RouteEncounter,
 	box: OwnedPokemon[],
 	graveyard: OwnedPokemon[],
-	levelCap: number
+	levelCap: number,
+	mappings?: RandomizerMappings | null
 ): OwnedPokemon | null {
-	const pool = getAvailablePool(route.pokemon, box, graveyard);
+	let entries = route.pokemon;
+
+	if (mappings) {
+		const routeOverride = mappings.routeMap[route.route];
+		if (routeOverride) {
+			// Fully Random: use pre-assigned species for this route
+			entries = [{ species: routeOverride, rate: 1 }];
+		} else if (Object.keys(mappings.speciesMap).length > 0) {
+			// Shuffle: remap each entry's species using the pre-built species map
+			entries = entries.map(e => ({
+				...e,
+				species: mappings.speciesMap[toID(e.species)] ?? e.species,
+			}));
+		}
+	}
+
+	const pool = getAvailablePool(entries, box, graveyard);
 	if (!pool.length) return null; // all dupes — nothing to encounter
 	const speciesName = weightedPick(pool);
 	const level = randomInt(route.levels[0], route.levels[1]);
