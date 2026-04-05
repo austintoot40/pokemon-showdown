@@ -1209,7 +1209,6 @@
               "moves": [
                 "Psychic",
                 "Calm Mind",
-                "Power Gem",
                 "Yawn"
               ],
               "item": null
@@ -1311,7 +1310,6 @@
         "Mental Herb",
         "Power Herb",
         "White Herb",
-        "Normal Gem",
         "Dragon Scale",
         "Heat Rock",
         "Moon Stone",
@@ -1578,7 +1576,6 @@
               "ability": "Sturdy",
               "moves": [
                 "Earth Power",
-                "Power Gem",
                 "Discharge",
                 "Flash Cannon"
               ],

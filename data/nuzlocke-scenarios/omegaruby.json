@@ -339,7 +339,6 @@
         "Black Glasses",
         "Aggronite",
         "Hard Stone",
-        "Normal Gem",
         "Soft Sand",
         "Water Stone"
       ],
@@ -801,7 +800,6 @@
       ],
       "items": [
         "Hard Stone",
-        "Normal Gem",
         "Soft Sand",
         "Safety Goggles",
         "Tyranitarite",
@@ -1464,7 +1462,6 @@
         "Focus Band",
         "Never-Melt Ice",
         "Hard Stone",
-        "Normal Gem",
         "Soft Sand",
         "Absolite"
       ],
@@ -1629,7 +1626,6 @@
         "Pixie Plate",
         "Adamant Orb",
         "Hard Stone",
-        "Normal Gem",
         "Soft Sand"
       ],
       "tmMoves": [
@@ -2039,7 +2035,6 @@
               "moves": [
                 "Shadow Claw",
                 "Foul Play",
-                "Power Gem",
                 "Fake Out"
               ],
               "item": null

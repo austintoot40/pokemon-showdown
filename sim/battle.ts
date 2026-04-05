@@ -3467,6 +3467,11 @@ export class Battle {
 
 		if (!shouldSwitch) return null;
 
+		// Guard: only switch if the best bench candidate actually improves the matchup
+		const currentScore = this.aiScoreSwitchTarget(aiActive, opponent);
+		const bestBenchScore = Math.max(...aiBench.map(p => this.aiScoreSwitchTarget(p, opponent)));
+		if (bestBenchScore <= currentScore) return null;
+
 		// Check F (competitive only): filter out switch targets that are still bad matchups
 		let candidates = difficulty === 'competitive'
 			? aiBench.filter(p => this.aiScoreSwitchTarget(p, opponent) > 0)
@@ -3491,19 +3496,57 @@ export class Battle {
 
 		if (move.basePower === 0) {
 			// Status / setup move
+
+			// Check 8 (competitive): don't waste a turn on non-damaging moves when nearly dead
+			if (difficulty === 'competitive' && attacker.hp / attacker.maxhp < 0.30) return 0;
+
 			if (difficulty === 'smart' || difficulty === 'competitive') {
 				// Check 4: don't apply status to an already-statused opponent
 				if (move.status && defender.status) return 0;
 			}
-			// Check 5 (competitive): upweight setup moves that boost offensive stats
-			if (difficulty === 'competitive' && move.boosts) {
-				const offBoost = ((move.boosts as AnyObject).atk || 0) + ((move.boosts as AnyObject).spa || 0);
-				if (offBoost > 0 && attacker.hp / attacker.maxhp > 0.5) {
-					// Valuable if we have a decent matchup; score equivalent to a solid neutral hit
-					const matchupScore = this.aiScoreSwitchTarget(attacker, defender);
-					if (matchupScore >= 0) return 60;
+
+			if (difficulty === 'competitive') {
+				// Check 9: recovery moves — heal if low HP and matchup is still favorable
+				if (move.heal?.[0]) {
+					const hpFraction = attacker.hp / attacker.maxhp;
+					if (hpFraction < 0.5) {
+						const matchupScore = this.aiScoreSwitchTarget(attacker, defender);
+						if (matchupScore >= 0) return 80;
+					}
+				}
+
+				// Check 10: contextual status scoring — burn physical attackers, paralyze faster opponents
+				if (move.status === 'brn') {
+					if (defender.storedStats.atk > defender.storedStats.spa) return 50;
+				} else if (move.status === 'par') {
+					if (defender.storedStats.spe > attacker.storedStats.spe) return 50;
+				}
+
+				// Check 5: upweight setup moves that boost offensive stats
+				if (move.boosts) {
+					const offBoost = ((move.boosts as AnyObject).atk || 0) + ((move.boosts as AnyObject).spa || 0);
+					if (offBoost > 0 && attacker.hp / attacker.maxhp > 0.5) {
+						// Don't set up if opponent can likely KO next turn
+						let opponentThreat = 0;
+						for (const slot of defender.moveSlots) {
+							const m = this.dex.moves.get(slot.id);
+							if (m.basePower === 0 || !this.dex.getImmunity(m.type, attacker)) continue;
+							const eff = Math.pow(2, this.dex.getEffectiveness(m.type, attacker));
+							const stab = defender.types.includes(m.type) ? 1.5 : 1.0;
+							const isPhys = m.category === 'Physical';
+							const atkStat = this.aiGetBoostedStat(defender, isPhys ? 'atk' : 'spa');
+							const defStat = this.aiGetBoostedStat(attacker, isPhys ? 'def' : 'spd');
+							const threat = m.basePower * eff * stab * (atkStat / defStat);
+							if (threat > opponentThreat) opponentThreat = threat;
+						}
+						if (opponentThreat < attacker.hp) {
+							const matchupScore = this.aiScoreSwitchTarget(attacker, defender);
+							if (matchupScore >= 0) return 60;
+						}
+					}
 				}
 			}
+
 			return 30; // baseline: slightly worse than a neutral move
 		}
 
@@ -3528,9 +3571,11 @@ export class Battle {
 			if (move.priority > 0 && attacker.hp / attacker.maxhp < 0.30) {
 				score *= 1.5;
 			}
-			// Check 7: strongly prefer moves that can KO this turn
+			// Check 7: strongly prefer moves that can KO this turn — only if we move first
 			if (score >= defender.hp) {
-				score *= 3;
+				const aiSpeed = this.aiGetBoostedStat(attacker, 'spe');
+				const oppSpeed = this.aiGetBoostedStat(defender, 'spe');
+				if (move.priority > 0 || aiSpeed >= oppSpeed) score *= 3;
 			}
 		}
 
@@ -3558,13 +3603,25 @@ export class Battle {
 			}
 		}
 
-		// HP bonus: prefer healthy Pokemon
-		const hpFraction = benched.hp / benched.maxhp;
+		// HP bonus: prefer healthy Pokemon, reduced by predicted entry hazard damage
+		let hazardHpLost = 0;
+		if (this.sides[1].sideConditions['stealthrock']) {
+			const rockEff = Math.pow(2, this.dex.getEffectiveness('Rock', benched));
+			hazardHpLost += benched.maxhp * rockEff / 8;
+		}
+		if (this.sides[1].sideConditions['spikes']) {
+			const layers = (this.sides[1].sideConditions['spikes'] as any).layers ?? 1;
+			const spikeFraction = [0, 1 / 8, 1 / 6, 1 / 4][Math.min(layers, 3)];
+			const isGrounded = !benched.types.includes('Flying') && benched.ability !== 'levitate';
+			if (isGrounded) hazardHpLost += benched.maxhp * spikeFraction;
+		}
+		const effectiveHp = Math.max(0, benched.hp - hazardHpLost);
+		const hpFraction = effectiveHp / benched.maxhp;
 
 		return offensiveScore - defensivePenalty + hpFraction;
 	}
 
-	aiGetBoostedStat(pokemon: Pokemon, stat: 'atk' | 'def' | 'spa' | 'spd'): number {
+	aiGetBoostedStat(pokemon: Pokemon, stat: 'atk' | 'def' | 'spa' | 'spd' | 'spe'): number {
 		const base = pokemon.storedStats[stat];
 		const boost = pokemon.boosts[stat];
 		// Gen 4+ formula (engine caps boosts at ±6)

@@ -2402,8 +2402,7 @@
               "moves": [
                 "Attack Order",
                 "Defend Order",
-                "Heal Order",
-                "Power Gem"
+                "Heal Order"
               ],
               "item": null
             },
