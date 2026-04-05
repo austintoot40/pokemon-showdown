@@ -1496,7 +1496,7 @@
       "battles": [
         {
           "id": "tate",
-          "trainer": "Leader Tate",
+          "trainer": "Tate & Liza",
           "team": [
             {
               "species": "Lunatone",
@@ -1523,7 +1523,8 @@
               "item": null
             }
           ],
-          "sprite": "tate"
+          "sprite": "tate",
+          "battleType": "doubles"
         }
       ]
     },

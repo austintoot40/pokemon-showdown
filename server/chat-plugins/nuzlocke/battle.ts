@@ -88,11 +88,12 @@ export function createNuzlockeBattle(game: NuzlockeGame, user: User) {
 	const segment = game.currentSegment!;
 	const battle = game.currentBattle!;
 	const gen = game.scenario.generation;
+	const isDoubles = battle.battleType === 'doubles';
 
 	game.partyErrors.clear();
 
 	Rooms.createBattle({
-		format: `gen${gen}nuzlockebattle`,
+		format: `gen${gen}nuzlocke${isDoubles ? 'doubles' : ''}battle`,
 		isNuzlockeBattle: true,
 		players: [
 			{
