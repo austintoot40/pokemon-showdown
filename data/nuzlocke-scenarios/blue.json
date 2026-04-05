@@ -2,7 +2,7 @@
   "id": "blue",
   "name": "Blue",
   "generation": 1,
-  "description": "The Blue region. Battle gyms, the Elite Four, and the Champion.",
+  "description": "",
   "color": "#1565C0",
   "pokemon": "blastoise",
   "starters": [

@@ -2,7 +2,7 @@
   "id": "red",
   "name": "Red",
   "generation": 1,
-  "description": "The Red region. Battle gyms, the Elite Four, and the Champion.",
+  "description": "",
   "color": "#C62828",
   "pokemon": "charizard",
   "starters": [
