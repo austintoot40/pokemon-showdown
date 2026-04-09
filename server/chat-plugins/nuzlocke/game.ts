@@ -420,6 +420,7 @@ function buildScenarioCards(): NuzlockeScenarioCard[] {
 		starters: s.starters.map(st => st.species),
 		color: s.color,
 		pokemon: s.pokemon,
+		verified: s.verified,
 	}));
 }
 

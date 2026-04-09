@@ -191,8 +191,7 @@ export function resolveChoiceGift(
 	species: string,
 	levelCap: number
 ): OwnedPokemon {
-	const level = randomInt(route.levels[0], route.levels[1]);
-	return buildEncounter(species, level, route.route, levelCap);
+	return buildEncounter(species, route.route, levelCap);
 }
 
 export function resolveOneEncounter(
@@ -221,13 +220,11 @@ export function resolveOneEncounter(
 	const pool = getAvailablePool(entries, box, graveyard);
 	if (!pool.length) return null; // all dupes — nothing to encounter
 	const speciesName = weightedPick(pool);
-	const level = randomInt(route.levels[0], route.levels[1]);
-	return buildEncounter(speciesName, level, route.route, levelCap);
+	return buildEncounter(speciesName, route.route, levelCap);
 }
 
 function buildEncounter(
 	speciesName: string,
-	level: number,
 	route: string,
 	levelCap: number
 ): OwnedPokemon {

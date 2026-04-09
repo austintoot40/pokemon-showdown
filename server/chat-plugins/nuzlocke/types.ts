@@ -9,6 +9,7 @@ export interface Scenario {
 	description: string;
 	color: string;
 	pokemon: string;
+	verified: boolean;
 	starters: { species: string; level: number }[];
 	segments: Segment[];
 }
@@ -32,7 +33,6 @@ export interface EncounterEntry {
 export interface RouteEncounter {
 	route: string;
 	pokemon: EncounterEntry[];
-	levels: [number, number];
 	choice?: boolean;  // if true, player selects the species rather than auto-resolve
 }
 
@@ -120,6 +120,7 @@ export interface NuzlockeScenarioCard {
 	starters: string[];
 	color: string;
 	pokemon: string;
+	verified: boolean;
 }
 
 export interface EvoOption {
