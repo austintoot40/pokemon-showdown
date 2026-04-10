@@ -8,6 +8,8 @@ const copyOverDataJSON = (file = 'data') => {
 	const files = fs.readdirSync(file);
 	for (const f of files) {
 		if (fs.statSync(`${file}/${f}`).isDirectory()) {
+			const destDir = require('path').resolve('dist', `${file}/${f}`);
+			fs.mkdirSync(destDir, { recursive: true });
 			copyOverDataJSON(`${file}/${f}`);
 		} else if (f.endsWith('.json')) {
 			fs.copyFileSync(`${file}/${f}`, require('path').resolve('dist', `${file}/${f}`));

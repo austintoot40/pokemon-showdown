@@ -88,7 +88,7 @@ export class NuzlockeGame {
 		this.tmMoves.push(...(segment.tmMoves ?? []));
 		for (const route of segment.gifts ?? []) {
 			if (route.choice) continue;  // Player must choose manually
-			const pokemon = resolveOneEncounter(route, this.box, this.graveyard as any, segment.levelCap, this.randomizerMappings);
+			const pokemon = resolveOneEncounter(route, this.box, this.graveyard as any, this.currentLevelCap, this.randomizerMappings);
 			if (!pokemon) continue; // all dupes — skip
 			this.box.push(pokemon);
 			this.addToParty(pokemon.uid);
@@ -106,7 +106,7 @@ export class NuzlockeGame {
 		if (this.resolvedRoutes.includes(route.route)) return;
 		const entry = getGiftPool(route).find(e => toID(e.species) === speciesId);
 		if (!entry) return;
-		const pokemon = resolveChoiceGift(route, entry.species, segment.levelCap);
+		const pokemon = resolveChoiceGift(route, entry.species, this.currentLevelCap);
 		this.box.push(pokemon);
 		this.addToParty(pokemon.uid);
 		this.resolvedRoutes.push(route.route);
@@ -119,7 +119,7 @@ export class NuzlockeGame {
 		const route = flatEncounters(segment)[routeIndex];
 		if (!route) return;
 		if (this.resolvedRoutes.includes(route.route)) return;
-		const pokemon = resolveOneEncounter(route, zoneIndex, this.box, this.graveyard as any, segment.levelCap, this.randomizerMappings);
+		const pokemon = resolveOneEncounter(route, zoneIndex, this.box, this.graveyard as any, this.currentLevelCap, this.randomizerMappings);
 		this.resolvedRoutes.push(route.route);
 		if (!pokemon) return; // all dupes — route resolved with no encounter
 		pokemon.caughtZoneIndex = zoneIndex;
@@ -133,6 +133,13 @@ export class NuzlockeGame {
 
 	get currentBattle() {
 		return this.currentSegment?.battles[this.currentBattleIndex] ?? null;
+	}
+
+	/** Level cap for the current battle: the highest level on the upcoming trainer's team. */
+	get currentLevelCap(): number {
+		const battle = this.currentBattle;
+		if (!battle?.team.length) return 0;
+		return Math.max(...battle.team.map(p => p.level));
 	}
 
 	getPokemon(uid: string): OwnedPokemon | null {
@@ -187,7 +194,7 @@ export class NuzlockeGame {
 	getAvailableEvolutions(uid: string): EvoOption[] {
 		const pokemon = this.getPokemon(uid);
 		if (!pokemon || !pokemon.alive) return [];
-		const levelCap = this.currentSegment?.levelCap ?? 0;
+		const levelCap = this.currentLevelCap;
 		const dexSpecies = Dex.species.get(pokemon.species);
 		const results: EvoOption[] = [];
 
@@ -254,7 +261,6 @@ export class NuzlockeGame {
 	/** Advances battle/segment indices and resolves encounters. Returns the next screen. */
 	advanceAfterWin(): NuzlockeScreen {
 		const segment = this.currentSegment!;
-		const wasChained = this.currentBattle?.chained ?? false;
 		this.completedBattles.push(this.currentBattle!.id);
 		this.currentBattleIndex++;
 
@@ -270,12 +276,12 @@ export class NuzlockeGame {
 				// New segment: add items/gifts; wild routes are player-initiated
 				this.resolvedRoutes = [];
 				this.resolveSegmentStart();
-				return wasChained ? 'battle' : 'encounters';
+				return 'encounters';
 			}
 		} else {
-			// More battles in this segment
+			// More battles remain in this segment — chained, go straight to next battle
 			this.cleanParty();
-			return wasChained ? 'battle' : 'teambuilding';
+			return 'battle';
 		}
 	}
 
@@ -444,7 +450,7 @@ export function serializeGameState(game: NuzlockeGame): NuzlockePanelPayload {
 	if (game.currentSegment) {
 		for (const p of game.box) {
 			if (p.alive) {
-				legalMoves[p.uid] = getLegalMoves(p, game.currentSegment.levelCap, game.scenario.generation, game.tmMoves);
+				legalMoves[p.uid] = getLegalMoves(p, game.currentLevelCap, game.scenario.generation, game.tmMoves);
 			}
 		}
 	}
@@ -475,7 +481,7 @@ export function serializeGameState(game: NuzlockeGame): NuzlockePanelPayload {
 		completedBattles: game.completedBattles,
 		segment: seg ? {
 			name: seg.name,
-			levelCap: seg.levelCap,
+			levelCap: game.currentLevelCap,
 			items: seg.items,
 			tmMoves: seg.tmMoves ?? [],
 			encounters: m ? applyMappingsToRoutes(seg.encounters ?? [], m) : (seg.encounters ?? []),

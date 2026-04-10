@@ -17,7 +17,6 @@ export interface Scenario {
 export interface Segment {
 	id: string;
 	name: string;
-	levelCap: number;
 	encounters: RouteEncounter[];
 	gifts: RouteEncounter[];
 	items: string[];     // held items + any bag items (bag items are silently ignored)
@@ -34,7 +33,9 @@ export interface ZoneEncounter {
 	zone: string;      // exact Bulbapedia zone label: "1F", "B2F", "Grass", "Surfing"
 	method: string;    // exact Bulbapedia method string: "Cave", "Grass", "Surfing", "Rock Smash"
 	time?: string;     // "Morning" | "Day" | "Night" — only present when rates differ by time of day
+	choice?: boolean;  // true for Gift zones where the player selects the species (new format only)
 	pokemon: EncounterEntry[];
+	requires?: { type: 'hm' | 'item'; name: string };  // explicit prereq (overrides METHOD_PREREQS inference on client)
 }
 
 export interface RouteEncounter {
@@ -48,7 +49,6 @@ export interface TrainerBattle {
 	trainer: string;
 	team: TrainerPokemon[];
 	battleType?: 'singles' | 'doubles';
-	chained?: boolean;
 	sprite?: string;
 }
 
@@ -58,6 +58,52 @@ export interface TrainerPokemon {
 	ability: string;
 	moves: string[];
 	item: string | null;
+}
+
+// ---------------------------------------------------------------------------
+// Source-format types (the unresolved form stored in JSON files)
+// ---------------------------------------------------------------------------
+
+/** An item or TM whose availability is gated on a move being unlocked first. */
+export interface DeferredItem {
+	id: string;
+	requires: string;  // move name; item defers to the first segment where this move is available
+}
+
+/**
+ * A named location in the game world. Can be a wild route, a gift source,
+ * an item-only location (e.g. gym reward), or any combination.
+ *
+ * - `zones` absent → item-only location (won't appear in encounters screen)
+ * - Gift zones (`method: "Gift"`) coexist with encounter zones on the same location
+ * - `choice: true` on a Gift zone → player selects the species rather than auto-resolve
+ */
+export interface LocationDefinition {
+	id: string;
+	name?: string;
+	zones?: ZoneEncounter[];
+	items?: (string | DeferredItem)[];
+	tmMoves?: (string | DeferredItem)[];
+}
+
+/** Segment as stored in nuzlocke.json — locations and battles are ID references. */
+export interface RawSegment {
+	id: string;
+	name: string;
+	locations: string[];   // LocationDefinition IDs
+	battles: string[];     // TrainerBattle IDs
+}
+
+/** Top-level nuzlocke.json structure. */
+export interface RawScenario {
+	id: string;
+	name: string;
+	generation: number;
+	description: string;
+	color: string;
+	pokemon: string;
+	starters: { species: string; level: number }[];
+	segments: RawSegment[];
 }
 
 export interface OwnedPokemon {

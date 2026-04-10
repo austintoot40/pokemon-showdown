@@ -29,7 +29,7 @@ function packPlayerTeam(game: NuzlockeGame): string {
 			nature: p.nature,
 			evs: p.evs,
 			ivs: p.ivs,
-			level: game.currentSegment!.levelCap,
+			level: game.currentLevelCap,
 		};
 	});
 
@@ -37,8 +37,7 @@ function packPlayerTeam(game: NuzlockeGame): string {
 }
 
 function getDefaultMoves(p: OwnedPokemon, game: NuzlockeGame): string[] {
-	const segment = game.currentSegment!;
-	return getLegalMoves(p, segment.levelCap, game.scenario.generation, game.tmMoves)
+	return getLegalMoves(p, game.currentLevelCap, game.scenario.generation, game.tmMoves)
 		.slice(0, 4).map(m => m.name);
 }
 
@@ -46,15 +45,14 @@ function getDefaultMoves(p: OwnedPokemon, game: NuzlockeGame): string[] {
 export function goToTeambuilding(game: NuzlockeGame) {
 	game.autoFillParty();
 	// Auto-fill moves for any party Pokemon with no moves assigned
-	const segment = game.currentSegment;
-	if (segment) {
+	if (game.currentSegment) {
 		for (const p of game.box) {
 			if (!p.alive) continue;
 			const filled = p.moves.filter(Boolean);
 			if (filled.length < 4) {
 				// Fill empty slots with level-up moves (no TMs — those require manual selection)
 				const filledIds = new Set(filled.map(m => toID(m)));
-				const legal = getLegalMoves(p, segment.levelCap, game.scenario.generation, []);
+				const legal = getLegalMoves(p, game.currentLevelCap, game.scenario.generation, []);
 				const toAdd = legal.filter(m => !filledIds.has(toID(m.name))).slice(0, 4 - filled.length);
 				p.moves = [...filled, ...toAdd.map(m => m.name)];
 			}

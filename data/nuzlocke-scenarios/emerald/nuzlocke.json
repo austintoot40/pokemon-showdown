@@ -1,0 +1,169 @@
+{
+  "id": "emerald",
+  "name": "Emerald",
+  "generation": 3,
+  "description": "",
+  "color": "#2E7D32",
+  "pokemon": "rayquaza",
+  "starters": [
+    {
+      "species": "Treecko",
+      "level": 5
+    },
+    {
+      "species": "Torchic",
+      "level": 5
+    },
+    {
+      "species": "Mudkip",
+      "level": 5
+    }
+  ],
+  "segments": [
+    {
+      "id": "pre-gym-1",
+      "name": "To Leader Roxanne",
+      "locations": [
+        "hoenn-route-101",
+        "hoenn-route-102",
+        "hoenn-route-103",
+        "petalburg-woods",
+        "hoenn-route-104",
+        "pre-gym-1-items"
+      ],
+      "battles": [
+        "roxanne"
+      ]
+    },
+    {
+      "id": "pre-gym-2",
+      "name": "To Leader Brawly",
+      "locations": [
+        "hoenn-route-116",
+        "rusturf-tunnel",
+        "granite-cave",
+        "hoenn-route-105",
+        "hoenn-route-106",
+        "pre-gym-2-items"
+      ],
+      "battles": [
+        "brawly"
+      ]
+    },
+    {
+      "id": "pre-gym-3",
+      "name": "To Leader Wattson",
+      "locations": [
+        "hoenn-route-107",
+        "hoenn-route-108",
+        "hoenn-route-109",
+        "hoenn-route-110",
+        "hoenn-route-103",
+        "hoenn-route-117",
+        "pre-gym-3-items"
+      ],
+      "battles": [
+        "wattson"
+      ]
+    },
+    {
+      "id": "pre-gym-4",
+      "name": "To Leader Flannery",
+      "locations": [
+        "hoenn-route-111",
+        "hoenn-route-112",
+        "jagged-pass",
+        "fiery-path",
+        "hoenn-route-113",
+        "hoenn-route-114",
+        "meteor-falls",
+        "pre-gym-4-gift-1",
+        "pre-gym-4-items"
+      ],
+      "battles": [
+        "flannery"
+      ]
+    },
+    {
+      "id": "pre-gym-5",
+      "name": "To Leader Norman",
+      "locations": [
+        "hoenn-route-118",
+        "hoenn-route-115",
+        "hoenn-route-116",
+        "pre-gym-5-items"
+      ],
+      "battles": [
+        "norman"
+      ]
+    },
+    {
+      "id": "pre-gym-6",
+      "name": "To Leader Winona",
+      "locations": [
+        "hoenn-route-118",
+        "hoenn-route-119",
+        "hoenn-route-120",
+        "pre-gym-6-items"
+      ],
+      "battles": [
+        "winona"
+      ]
+    },
+    {
+      "id": "pre-gym-7",
+      "name": "To Leader Tate & Liza",
+      "locations": [
+        "hoenn-route-121",
+        "hoenn-route-122",
+        "mt-pyre",
+        "hoenn-route-123",
+        "hoenn-route-124",
+        "hoenn-route-125",
+        "shoal-cave",
+        "hoenn-safari-zone",
+        "pre-gym-7-items"
+      ],
+      "battles": [
+        "tate"
+      ]
+    },
+    {
+      "id": "pre-gym-8",
+      "name": "To Leader Juan",
+      "locations": [
+        "hoenn-route-126",
+        "hoenn-route-127",
+        "hoenn-route-128",
+        "seafloor-cavern",
+        "cave-of-origin",
+        "pre-gym-8-items"
+      ],
+      "battles": [
+        "juan"
+      ]
+    },
+    {
+      "id": "elite-four",
+      "name": "Elite Four Sidney",
+      "locations": [
+        "hoenn-route-129",
+        "hoenn-route-130",
+        "hoenn-route-131",
+        "hoenn-route-132",
+        "hoenn-route-133",
+        "hoenn-route-134",
+        "sky-pillar",
+        "victory-road-hoenn",
+        "elite-four-items"
+      ],
+      "battles": [
+        "sidney",
+        "phoebe",
+        "glacia",
+        "drake",
+        "wallace"
+      ]
+    }
+  ]
+}
