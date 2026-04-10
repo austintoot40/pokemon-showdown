@@ -182,14 +182,16 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 		encounter(target, room, user) {
 			const game = nuzlockeGames.get(user.id);
 			if (!game) return this.errorReply('No active run.');
-			const routeIndex = parseInt(target.trim());
-			if (isNaN(routeIndex)) return this.errorReply('Usage: /nuzlocke encounter <routeIndex>');
+			const [riStr, ziStr] = target.trim().split(/\s+/);
+			const routeIndex = parseInt(riStr);
+			const zoneIndex = parseInt(ziStr);
+			if (isNaN(routeIndex) || isNaN(zoneIndex)) return this.errorReply('Usage: /nuzlocke encounter <routeIndex> <zoneIndex>');
 			const segment = game.currentSegment;
 			if (!segment) return this.errorReply('No active segment.');
 			const route = flatEncounters(segment)[routeIndex];
 			if (!route) return this.errorReply('Invalid route index.');
 			if (game.resolvedRoutes.includes(route.route)) return this.errorReply('Already explored this route.');
-			game.resolveOneRoute(routeIndex);
+			game.resolveOneRoute(routeIndex, zoneIndex);
 			game.goToPage('encounters');
 		},
 

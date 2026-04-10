@@ -1,1781 +1,2418 @@
 {
-	"id": "blue",
-	"name": "Blue",
-	"generation": 1,
-	"description": "",
-	"color": "#1565C0",
-	"pokemon": "blastoise",
-	"verified": false,
-	"starters": [
-		{
-			"species": "Bulbasaur",
-			"level": 5
-		},
-		{
-			"species": "Charmander",
-			"level": 5
-		},
-		{
-			"species": "Squirtle",
-			"level": 5
-		}
-	],
-	"segments": [
-		{
-			"id": "pre-gym-1",
-			"name": "To Leader Brock",
-			"levelCap": 14,
-			"encounters": {
-				"walk": [
-					{
-						"route": "Route 1",
-						"pokemon": [
-							{
-								"species": "Rattata",
-								"rate": 50
-							},
-							{
-								"species": "Pidgey",
-								"rate": 50
-							}
-						]
-					},
-					{
-						"route": "Route 2",
-						"pokemon": [
-							{
-								"species": "Pidgey",
-								"rate": 45
-							},
-							{
-								"species": "Rattata",
-								"rate": 40
-							},
-							{
-								"species": "Caterpie",
-								"rate": 15
-							}
-						]
-					},
-					{
-						"route": "Viridian Forest",
-						"pokemon": [
-							{
-								"species": "Caterpie",
-								"rate": 45
-							},
-							{
-								"species": "Metapod",
-								"rate": 40
-							},
-							{
-								"species": "Pikachu",
-								"rate": 5
-							},
-							{
-								"species": "Kakuna",
-								"rate": 5
-							},
-							{
-								"species": "Weedle",
-								"rate": 5
-							}
-						]
-					}
-				]
-			},
-			"gifts": [],
-			"items": [
-				"Moon Stone"
-			],
-			"tmMoves": [
-				"Flash",
-				"Bide"
-			],
-			"battles": [
-				{
-					"id": "brock",
-					"trainer": "Leader Brock",
-					"team": [
-						{
-							"species": "Geodude",
-							"level": 12,
-							"ability": null,
-							"moves": [
-								"Tackle",
-								"Defense Curl"
-							],
-							"item": null
-						},
-						{
-							"species": "Onix",
-							"level": 14,
-							"ability": null,
-							"moves": [
-								"Tackle",
-								"Screech",
-								"Bide"
-							],
-							"item": null
-						}
-					],
-					"sprite": "brock"
-				}
-			]
-		},
-		{
-			"id": "pre-gym-2",
-			"name": "To Leader Misty",
-			"levelCap": 21,
-			"encounters": {
-				"walk": [
-					{
-						"route": "Route 3",
-						"pokemon": [
-							{
-								"species": "Spearow",
-								"rate": 45
-							},
-							{
-								"species": "Pidgey",
-								"rate": 45
-							},
-							{
-								"species": "Jigglypuff",
-								"rate": 10
-							}
-						]
-					},
-					{
-						"route": "Mt. Moon",
-						"pokemon": [
-							{
-								"species": "Zubat",
-								"rate": 188
-							},
-							{
-								"species": "Geodude",
-								"rate": 71
-							},
-							{
-								"species": "Paras",
-								"rate": 30
-							},
-							{
-								"species": "Clefairy",
-								"rate": 11
-							}
-						]
-					},
-					{
-						"route": "Route 4",
-						"pokemon": [
-							{
-								"species": "Rattata",
-								"rate": 40
-							},
-							{
-								"species": "Spearow",
-								"rate": 35
-							},
-							{
-								"species": "Sandshrew",
-								"rate": 25
-							}
-						]
-					},
-					{
-						"route": "Route 24",
-						"pokemon": [
-							{
-								"species": "Bellsprout",
-								"rate": 25
-							},
-							{
-								"species": "Pidgey",
-								"rate": 20
-							},
-							{
-								"species": "Metapod",
-								"rate": 20
-							},
-							{
-								"species": "Caterpie",
-								"rate": 20
-							},
-							{
-								"species": "Abra",
-								"rate": 15
-							}
-						]
-					},
-					{
-						"route": "Route 25",
-						"pokemon": [
-							{
-								"species": "Bellsprout",
-								"rate": 25
-							},
-							{
-								"species": "Metapod",
-								"rate": 20
-							},
-							{
-								"species": "Caterpie",
-								"rate": 20
-							},
-							{
-								"species": "Abra",
-								"rate": 15
-							},
-							{
-								"species": "Pidgey",
-								"rate": 15
-							},
-							{
-								"species": "Kakuna",
-								"rate": 4
-							},
-							{
-								"species": "Weedle",
-								"rate": 1
-							}
-						]
-					}
-				]
-			},
-			"gifts": [
-				{
-					"route": "Cerulean City Gift",
-					"pokemon": [
-						{
-							"species": "Magikarp",
-							"rate": 100
-						}
-					],
-					"levels": [
-						5,
-						5
-					]
-				}
-			],
-			"items": [
-				"Moon Stone"
-			],
-			"tmMoves": [
-				"Water Gun",
-				"Mega Punch",
-				"Whirlwind",
-				"Thunder Wave",
-				"Seismic Toss",
-				"BubbleBeam"
-			],
-			"battles": [
-				{
-					"id": "misty",
-					"trainer": "Leader Misty",
-					"team": [
-						{
-							"species": "Staryu",
-							"level": 18,
-							"ability": null,
-							"moves": [
-								"Tackle",
-								"Water Gun"
-							],
-							"item": null
-						},
-						{
-							"species": "Starmie",
-							"level": 21,
-							"ability": null,
-							"moves": [
-								"Tackle",
-								"Water Gun",
-								"BubbleBeam"
-							],
-							"item": null
-						}
-					],
-					"sprite": "misty"
-				}
-			]
-		},
-		{
-			"id": "pre-gym-3",
-			"name": "To Leader Lt. Surge",
-			"levelCap": 24,
-			"encounters": {
-				"walk": [
-					{
-						"route": "Route 5",
-						"pokemon": [
-							{
-								"species": "Pidgey",
-								"rate": 40
-							},
-							{
-								"species": "Bellsprout",
-								"rate": 35
-							},
-							{
-								"species": "Meowth",
-								"rate": 25
-							}
-						]
-					},
-					{
-						"route": "Route 6",
-						"pokemon": [
-							{
-								"species": "Pidgey",
-								"rate": 40
-							},
-							{
-								"species": "Bellsprout",
-								"rate": 35
-							},
-							{
-								"species": "Meowth",
-								"rate": 25
-							}
-						]
-					},
-					{
-						"route": "Diglett's Cave",
-						"pokemon": [
-							{
-								"species": "Diglett",
-								"rate": 95
-							},
-							{
-								"species": "Dugtrio",
-								"rate": 5
-							}
-						]
-					},
-					{
-						"route": "Route 11",
-						"pokemon": [
-							{
-								"species": "Sandshrew",
-								"rate": 40
-							},
-							{
-								"species": "Spearow",
-								"rate": 35
-							},
-							{
-								"species": "Drowzee",
-								"rate": 25
-							}
-						]
-					}
-				]
-			},
-			"gifts": [],
-			"items": [],
-			"tmMoves": [
-				"Thunderbolt",
-				"Cut"
-			],
-			"battles": [
-				{
-					"id": "lt-surge",
-					"trainer": "Leader Lt. Surge",
-					"team": [
-						{
-							"species": "Voltorb",
-							"level": 21,
-							"ability": null,
-							"moves": [
-								"Tackle",
-								"Screech",
-								"SonicBoom"
-							],
-							"item": null
-						},
-						{
-							"species": "Pikachu",
-							"level": 18,
-							"ability": null,
-							"moves": [
-								"ThunderShock",
-								"Growl",
-								"Thunder Wave",
-								"Quick Attack"
-							],
-							"item": null
-						},
-						{
-							"species": "Raichu",
-							"level": 24,
-							"ability": null,
-							"moves": [
-								"ThunderShock",
-								"Growl",
-								"Thunderbolt"
-							],
-							"item": null
-						}
-					],
-					"sprite": "ltsurge"
-				}
-			]
-		},
-		{
-			"id": "pre-gym-4",
-			"name": "To Leader Erika",
-			"levelCap": 29,
-			"encounters": {
-				"walk": [
-					{
-						"route": "Route 9",
-						"pokemon": [
-							{
-								"species": "Rattata",
-								"rate": 40
-							},
-							{
-								"species": "Spearow",
-								"rate": 35
-							},
-							{
-								"species": "Sandshrew",
-								"rate": 25
-							}
-						]
-					},
-					{
-						"route": "Route 10",
-						"pokemon": [
-							{
-								"species": "Voltorb",
-								"rate": 40
-							},
-							{
-								"species": "Spearow",
-								"rate": 35
-							},
-							{
-								"species": "Sandshrew",
-								"rate": 25
-							}
-						]
-					},
-					{
-						"route": "Rock Tunnel",
-						"pokemon": [
-							{
-								"species": "Zubat",
-								"rate": 105
-							},
-							{
-								"species": "Geodude",
-								"rate": 51
-							},
-							{
-								"species": "Machop",
-								"rate": 30
-							},
-							{
-								"species": "Onix",
-								"rate": 14
-							}
-						]
-					},
-					{
-						"route": "Pokémon Tower",
-						"pokemon": [
-							{
-								"species": "Gastly",
-								"rate": 422
-							},
-							{
-								"species": "Cubone",
-								"rate": 46
-							},
-							{
-								"species": "Haunter",
-								"rate": 32
-							}
-						]
-					},
-					{
-						"route": "Route 8",
-						"pokemon": [
-							{
-								"species": "Meowth",
-								"rate": 30
-							},
-							{
-								"species": "Pidgey",
-								"rate": 30
-							},
-							{
-								"species": "Vulpix",
-								"rate": 20
-							},
-							{
-								"species": "Sandshrew",
-								"rate": 20
-							}
-						]
-					},
-					{
-						"route": "Route 7",
-						"pokemon": [
-							{
-								"species": "Bellsprout",
-								"rate": 30
-							},
-							{
-								"species": "Meowth",
-								"rate": 30
-							},
-							{
-								"species": "Pidgey",
-								"rate": 30
-							},
-							{
-								"species": "Vulpix",
-								"rate": 10
-							}
-						]
-					}
-				]
-			},
-			"gifts": [],
-			"items": [],
-			"tmMoves": [
-				"Teleport",
-				"Mega Drain"
-			],
-			"battles": [
-				{
-					"id": "erika",
-					"trainer": "Leader Erika",
-					"team": [
-						{
-							"species": "Victreebel",
-							"level": 29,
-							"ability": null,
-							"moves": [
-								"Razor Leaf",
-								"Wrap",
-								"PoisonPowder",
-								"Sleep Powder"
-							],
-							"item": null
-						},
-						{
-							"species": "Tangela",
-							"level": 24,
-							"ability": null,
-							"moves": [
-								"Constrict",
-								"Bind"
-							],
-							"item": null
-						},
-						{
-							"species": "Vileplume",
-							"level": 29,
-							"ability": null,
-							"moves": [
-								"Petal Dance",
-								"PoisonPowder",
-								"Mega Drain",
-								"Sleep Powder"
-							],
-							"item": null
-						}
-					],
-					"sprite": "erika"
-				}
-			]
-		},
-		{
-			"id": "pre-gym-5",
-			"name": "To Leader Koga",
-			"levelCap": 43,
-			"encounters": {
-				"walk": [
-					{
-						"route": "Route 12",
-						"pokemon": [
-							{
-								"species": "Pidgey",
-								"rate": 40
-							},
-							{
-								"species": "Bellsprout",
-								"rate": 35
-							},
-							{
-								"species": "Venonat",
-								"rate": 20
-							},
-							{
-								"species": "Weepinbell",
-								"rate": 5
-							}
-						]
-					},
-					{
-						"route": "Route 13",
-						"pokemon": [
-							{
-								"species": "Bellsprout",
-								"rate": 35
-							},
-							{
-								"species": "Pidgey",
-								"rate": 35
-							},
-							{
-								"species": "Venonat",
-								"rate": 20
-							},
-							{
-								"species": "Ditto",
-								"rate": 5
-							},
-							{
-								"species": "Weepinbell",
-								"rate": 5
-							}
-						]
-					},
-					{
-						"route": "Route 14",
-						"pokemon": [
-							{
-								"species": "Bellsprout",
-								"rate": 35
-							},
-							{
-								"species": "Venonat",
-								"rate": 20
-							},
-							{
-								"species": "Pidgey",
-								"rate": 20
-							},
-							{
-								"species": "Ditto",
-								"rate": 15
-							},
-							{
-								"species": "Weepinbell",
-								"rate": 5
-							},
-							{
-								"species": "Pidgeotto",
-								"rate": 5
-							}
-						]
-					},
-					{
-						"route": "Route 15",
-						"pokemon": [
-							{
-								"species": "Bellsprout",
-								"rate": 35
-							},
-							{
-								"species": "Ditto",
-								"rate": 20
-							},
-							{
-								"species": "Venonat",
-								"rate": 20
-							},
-							{
-								"species": "Pidgey",
-								"rate": 15
-							},
-							{
-								"species": "Weepinbell",
-								"rate": 5
-							},
-							{
-								"species": "Pidgeotto",
-								"rate": 5
-							}
-						]
-					},
-					{
-						"route": "Route 16",
-						"pokemon": [
-							{
-								"species": "Spearow",
-								"rate": 40
-							},
-							{
-								"species": "Rattata",
-								"rate": 30
-							},
-							{
-								"species": "Doduo",
-								"rate": 25
-							},
-							{
-								"species": "Raticate",
-								"rate": 5
-							}
-						]
-					},
-					{
-						"route": "Route 17",
-						"pokemon": [
-							{
-								"species": "Spearow",
-								"rate": 40
-							},
-							{
-								"species": "Raticate",
-								"rate": 30
-							},
-							{
-								"species": "Doduo",
-								"rate": 25
-							},
-							{
-								"species": "Fearow",
-								"rate": 5
-							}
-						]
-					},
-					{
-						"route": "Route 18",
-						"pokemon": [
-							{
-								"species": "Spearow",
-								"rate": 40
-							},
-							{
-								"species": "Doduo",
-								"rate": 25
-							},
-							{
-								"species": "Raticate",
-								"rate": 20
-							},
-							{
-								"species": "Fearow",
-								"rate": 15
-							}
-						]
-					},
-					{
-						"route": "Safari Zone",
-						"pokemon": [
-							{
-								"species": "Exeggcute",
-								"rate": 80
-							},
-							{
-								"species": "Nidoran-F",
-								"rate": 80
-							},
-							{
-								"species": "Rhyhorn",
-								"rate": 40
-							},
-							{
-								"species": "Doduo",
-								"rate": 40
-							},
-							{
-								"species": "Nidorina",
-								"rate": 40
-							},
-							{
-								"species": "Venonat",
-								"rate": 30
-							},
-							{
-								"species": "Paras",
-								"rate": 30
-							},
-							{
-								"species": "Venomoth",
-								"rate": 10
-							},
-							{
-								"species": "Parasect",
-								"rate": 10
-							},
-							{
-								"species": "Nidorino",
-								"rate": 10
-							},
-							{
-								"species": "Nidoran-M",
-								"rate": 10
-							},
-							{
-								"species": "Tauros",
-								"rate": 5
-							},
-							{
-								"species": "Pinsir",
-								"rate": 5
-							},
-							{
-								"species": "Kangaskhan",
-								"rate": 5
-							},
-							{
-								"species": "Chansey",
-								"rate": 5
-							}
-						]
-					},
-					{
-						"route": "Power Plant",
-						"pokemon": [
-							{
-								"species": "Voltorb",
-								"rate": 30
-							},
-							{
-								"species": "Magnemite",
-								"rate": 30
-							},
-							{
-								"species": "Pikachu",
-								"rate": 25
-							},
-							{
-								"species": "Magneton",
-								"rate": 10
-							},
-							{
-								"species": "Raichu",
-								"rate": 5
-							}
-						]
-					}
-				]
-			},
-			"gifts": [],
-			"items": [],
-			"tmMoves": [
-				"Swift",
-				"Pay Day",
-				"Rage",
-				"Fly",
-				"Toxic",
-				"Surf",
-				"Strength"
-			],
-			"battles": [
-				{
-					"id": "koga",
-					"trainer": "Leader Koga",
-					"team": [
-						{
-							"species": "Koffing",
-							"level": 37,
-							"ability": null,
-							"moves": [
-								"Tackle",
-								"Smog",
-								"Sludge",
-								"SmokeScreen"
-							],
-							"item": null
-						},
-						{
-							"species": "Muk",
-							"level": 39,
-							"ability": null,
-							"moves": [
-								"Disable",
-								"Poison Gas",
-								"Minimize",
-								"Sludge"
-							],
-							"item": null
-						},
-						{
-							"species": "Koffing",
-							"level": 37,
-							"ability": null,
-							"moves": [
-								"Tackle",
-								"Smog",
-								"Sludge",
-								"SmokeScreen"
-							],
-							"item": null
-						},
-						{
-							"species": "Weezing",
-							"level": 43,
-							"ability": null,
-							"moves": [
-								"Smog",
-								"Sludge",
-								"Toxic",
-								"Selfdestruct"
-							],
-							"item": null
-						}
-					],
-					"sprite": "koga"
-				}
-			]
-		},
-		{
-			"id": "pre-gym-6",
-			"name": "To Leader Sabrina",
-			"levelCap": 43,
-			"encounters": {},
-			"gifts": [],
-			"items": [],
-			"tmMoves": [
-				"Psywave"
-			],
-			"battles": [
-				{
-					"id": "sabrina",
-					"trainer": "Leader Sabrina",
-					"team": [
-						{
-							"species": "Kadabra",
-							"level": 38,
-							"ability": null,
-							"moves": [
-								"Disable",
-								"Psybeam",
-								"Recover",
-								"Psychic"
-							],
-							"item": null
-						},
-						{
-							"species": "Mr. Mime",
-							"level": 37,
-							"ability": null,
-							"moves": [
-								"Confusion",
-								"Barrier",
-								"Light Screen",
-								"DoubleSlap"
-							],
-							"item": null
-						},
-						{
-							"species": "Venomoth",
-							"level": 38,
-							"ability": null,
-							"moves": [
-								"PoisonPowder",
-								"Leech Life",
-								"Stun Spore",
-								"Psybeam"
-							],
-							"item": null
-						},
-						{
-							"species": "Alakazam",
-							"level": 43,
-							"ability": null,
-							"moves": [
-								"Psybeam",
-								"Recover",
-								"Psywave",
-								"Reflect"
-							],
-							"item": null
-						}
-					],
-					"sprite": "sabrina"
-				}
-			]
-		},
-		{
-			"id": "pre-gym-7",
-			"name": "To Leader Blaine",
-			"levelCap": 47,
-			"encounters": {
-				"surf": [
-					{
-						"route": "Sea Route 19",
-						"pokemon": [
-							{
-								"species": "Tentacool",
-								"rate": 100
-							}
-						]
-					},
-					{
-						"route": "Sea Route 20",
-						"pokemon": [
-							{
-								"species": "Tentacool",
-								"rate": 100
-							}
-						]
-					},
-					{
-						"route": "Sea Route 21",
-						"pokemon": [
-							{
-								"species": "Tentacool",
-								"rate": 100
-							}
-						]
-					}
-				],
-				"walk": [
-					{
-						"route": "Seafoam Islands",
-						"pokemon": [
-							{
-								"species": "Krabby",
-								"rate": 115
-							},
-							{
-								"species": "Seel",
-								"rate": 115
-							},
-							{
-								"species": "Psyduck",
-								"rate": 115
-							},
-							{
-								"species": "Staryu",
-								"rate": 84
-							},
-							{
-								"species": "Shellder",
-								"rate": 30
-							},
-							{
-								"species": "Golbat",
-								"rate": 10
-							},
-							{
-								"species": "Zubat",
-								"rate": 10
-							},
-							{
-								"species": "Kingler",
-								"rate": 5
-							},
-							{
-								"species": "Dewgong",
-								"rate": 5
-							},
-							{
-								"species": "Slowpoke",
-								"rate": 5
-							},
-							{
-								"species": "Golduck",
-								"rate": 5
-							},
-							{
-								"species": "Slowbro",
-								"rate": 1
-							}
-						]
-					},
-					{
-						"route": "Pokémon Mansion",
-						"pokemon": [
-							{
-								"species": "Grimer",
-								"rate": 170
-							},
-							{
-								"species": "Ponyta",
-								"rate": 94
-							},
-							{
-								"species": "Vulpix",
-								"rate": 65
-							},
-							{
-								"species": "Muk",
-								"rate": 33
-							},
-							{
-								"species": "Koffing",
-								"rate": 20
-							},
-							{
-								"species": "Magmar",
-								"rate": 14
-							},
-							{
-								"species": "Weezing",
-								"rate": 4
-							}
-						]
-					}
-				]
-			},
-			"gifts": [
-				{
-					"route": "Fossil Revival (Cinnabar Lab)",
-					"pokemon": [
-						{
-							"species": "Omanyte",
-							"rate": 50
-						},
-						{
-							"species": "Kabuto",
-							"rate": 50
-						}
-					],
-					"levels": [
-						5,
-						5
-					],
-					"choice": true
-				}
-			],
-			"items": [],
-			"tmMoves": [
-				"Fire Blast"
-			],
-			"battles": [
-				{
-					"id": "blaine",
-					"trainer": "Leader Blaine",
-					"team": [
-						{
-							"species": "Growlithe",
-							"level": 42,
-							"ability": null,
-							"moves": [
-								"Ember",
-								"Leer",
-								"Take Down",
-								"Agility"
-							],
-							"item": null
-						},
-						{
-							"species": "Ponyta",
-							"level": 40,
-							"ability": null,
-							"moves": [
-								"Tail Whip",
-								"Stomp",
-								"Growl",
-								"Fire Spin"
-							],
-							"item": null
-						},
-						{
-							"species": "Rapidash",
-							"level": 42,
-							"ability": null,
-							"moves": [
-								"Tail Whip",
-								"Stomp",
-								"Growl",
-								"Fire Spin"
-							],
-							"item": null
-						},
-						{
-							"species": "Arcanine",
-							"level": 47,
-							"ability": null,
-							"moves": [
-								"Roar",
-								"Ember",
-								"Fire Blast",
-								"Take Down"
-							],
-							"item": null
-						}
-					],
-					"sprite": "blaine"
-				}
-			]
-		},
-		{
-			"id": "pre-gym-8",
-			"name": "To Leader Giovanni",
-			"levelCap": 50,
-			"encounters": {
-				"walk": [
-					{
-						"route": "Route 22",
-						"pokemon": [
-							{
-								"species": "Rattata",
-								"rate": 45
-							},
-							{
-								"species": "Nidoran-F",
-								"rate": 40
-							},
-							{
-								"species": "Spearow",
-								"rate": 10
-							},
-							{
-								"species": "Nidoran-M",
-								"rate": 5
-							}
-						]
-					},
-					{
-						"route": "Route 23",
-						"pokemon": [
-							{
-								"species": "Ditto",
-								"rate": 35
-							},
-							{
-								"species": "Fearow",
-								"rate": 25
-							},
-							{
-								"species": "Sandshrew",
-								"rate": 20
-							},
-							{
-								"species": "Spearow",
-								"rate": 15
-							},
-							{
-								"species": "Sandslash",
-								"rate": 5
-							}
-						]
-					},
-					{
-						"route": "Victory Road",
-						"pokemon": [
-							{
-								"species": "Onix",
-								"rate": 80
-							},
-							{
-								"species": "Geodude",
-								"rate": 60
-							},
-							{
-								"species": "Machop",
-								"rate": 60
-							},
-							{
-								"species": "Zubat",
-								"rate": 45
-							},
-							{
-								"species": "Golbat",
-								"rate": 15
-							},
-							{
-								"species": "Machoke",
-								"rate": 14
-							},
-							{
-								"species": "Graveler",
-								"rate": 11
-							},
-							{
-								"species": "Venomoth",
-								"rate": 10
-							},
-							{
-								"species": "Marowak",
-								"rate": 5
-							}
-						]
-					}
-				]
-			},
-			"gifts": [],
-			"items": [],
-			"tmMoves": [
-				"Fissure"
-			],
-			"battles": [
-				{
-					"id": "giovanni",
-					"trainer": "Leader Giovanni",
-					"team": [
-						{
-							"species": "Rhyhorn",
-							"level": 45,
-							"ability": null,
-							"moves": [
-								"Stomp",
-								"Tail Whip",
-								"Fury Attack",
-								"Horn Drill"
-							],
-							"item": null
-						},
-						{
-							"species": "Dugtrio",
-							"level": 42,
-							"ability": null,
-							"moves": [
-								"Growl",
-								"Dig",
-								"Sand-Attack",
-								"Slash"
-							],
-							"item": null
-						},
-						{
-							"species": "Nidoqueen",
-							"level": 44,
-							"ability": null,
-							"moves": [
-								"Scratch",
-								"Tail Whip",
-								"Body Slam",
-								"Poison Sting"
-							],
-							"item": null
-						},
-						{
-							"species": "Nidoking",
-							"level": 45,
-							"ability": null,
-							"moves": [
-								"Tackle",
-								"Horn Attack",
-								"Poison Sting",
-								"Thrash"
-							],
-							"item": null
-						},
-						{
-							"species": "Rhydon",
-							"level": 50,
-							"ability": null,
-							"moves": [
-								"Stomp",
-								"Tail Whip",
-								"Fissure",
-								"Horn Drill"
-							],
-							"item": null
-						}
-					],
-					"sprite": "giovanni"
-				}
-			]
-		},
-		{
-			"id": "elite-four",
-			"name": "Elite Four Lorelei",
-			"levelCap": 56,
-			"encounters": {},
-			"gifts": [],
-			"items": [],
-			"tmMoves": [],
-			"battles": [
-				{
-					"id": "lorelei",
-					"trainer": "Elite Four Lorelei",
-					"team": [
-						{
-							"species": "Dewgong",
-							"level": 54,
-							"ability": null,
-							"moves": [
-								"Growl",
-								"Aurora Beam",
-								"Rest",
-								"Take Down"
-							],
-							"item": null
-						},
-						{
-							"species": "Cloyster",
-							"level": 53,
-							"ability": null,
-							"moves": [
-								"Supersonic",
-								"Clamp",
-								"Aurora Beam",
-								"Spike Cannon"
-							],
-							"item": null
-						},
-						{
-							"species": "Slowbro",
-							"level": 54,
-							"ability": null,
-							"moves": [
-								"Growl",
-								"Water Gun",
-								"Withdraw",
-								"Amnesia"
-							],
-							"item": null
-						},
-						{
-							"species": "Jynx",
-							"level": 56,
-							"ability": null,
-							"moves": [
-								"DoubleSlap",
-								"Ice Punch",
-								"Body Slam",
-								"Thrash"
-							],
-							"item": null
-						},
-						{
-							"species": "Lapras",
-							"level": 56,
-							"ability": null,
-							"moves": [
-								"Body Slam",
-								"Confuse Ray",
-								"Blizzard",
-								"Hydro Pump"
-							],
-							"item": null
-						}
-					],
-					"sprite": "lorelei",
-					"chained": true
-				}
-			]
-		},
-		{
-			"id": "elite-four",
-			"name": "Elite Four Bruno",
-			"levelCap": 58,
-			"encounters": {},
-			"gifts": [],
-			"items": [],
-			"tmMoves": [],
-			"battles": [
-				{
-					"id": "bruno",
-					"trainer": "Elite Four Bruno",
-					"team": [
-						{
-							"species": "Onix",
-							"level": 53,
-							"ability": null,
-							"moves": [
-								"Rock Throw",
-								"Rage",
-								"Slam",
-								"Harden"
-							],
-							"item": null
-						},
-						{
-							"species": "Hitmonchan",
-							"level": 55,
-							"ability": null,
-							"moves": [
-								"Ice Punch",
-								"ThunderPunch",
-								"Mega Punch",
-								"Counter"
-							],
-							"item": null
-						},
-						{
-							"species": "Hitmonlee",
-							"level": 55,
-							"ability": null,
-							"moves": [
-								"Jump Kick",
-								"Focus Energy",
-								"Hi Jump Kick",
-								"Mega Kick"
-							],
-							"item": null
-						},
-						{
-							"species": "Onix",
-							"level": 56,
-							"ability": null,
-							"moves": [
-								"Rock Throw",
-								"Rage",
-								"Slam",
-								"Harden"
-							],
-							"item": null
-						},
-						{
-							"species": "Machamp",
-							"level": 58,
-							"ability": null,
-							"moves": [
-								"Leer",
-								"Focus Energy",
-								"Fissure",
-								"Submission"
-							],
-							"item": null
-						}
-					],
-					"sprite": "bruno",
-					"chained": true
-				}
-			]
-		},
-		{
-			"id": "elite-four",
-			"name": "Elite Four Agatha",
-			"levelCap": 60,
-			"encounters": {},
-			"gifts": [],
-			"items": [],
-			"tmMoves": [],
-			"battles": [
-				{
-					"id": "agatha",
-					"trainer": "Elite Four Agatha",
-					"team": [
-						{
-							"species": "Gengar",
-							"level": 56,
-							"ability": null,
-							"moves": [
-								"Confuse Ray",
-								"Night Shade",
-								"Hypnosis",
-								"Dream Eater"
-							],
-							"item": null
-						},
-						{
-							"species": "Golbat",
-							"level": 56,
-							"ability": null,
-							"moves": [
-								"Supersonic",
-								"Confuse Ray",
-								"Wing Attack",
-								"Haze"
-							],
-							"item": null
-						},
-						{
-							"species": "Haunter",
-							"level": 55,
-							"ability": null,
-							"moves": [
-								"Confuse Ray",
-								"Night Shade",
-								"Hypnosis",
-								"Dream Eater"
-							],
-							"item": null
-						},
-						{
-							"species": "Arbok",
-							"level": 58,
-							"ability": null,
-							"moves": [
-								"Bite",
-								"Glare",
-								"Screech",
-								"Acid"
-							],
-							"item": null
-						},
-						{
-							"species": "Gengar",
-							"level": 60,
-							"ability": null,
-							"moves": [
-								"Confuse Ray",
-								"Night Shade",
-								"Toxic",
-								"Dream Eater"
-							],
-							"item": null
-						}
-					],
-					"sprite": "agatha",
-					"chained": true
-				}
-			]
-		},
-		{
-			"id": "elite-four",
-			"name": "Elite Four Lance",
-			"levelCap": 62,
-			"encounters": {},
-			"gifts": [],
-			"items": [],
-			"tmMoves": [],
-			"battles": [
-				{
-					"id": "lance",
-					"trainer": "Elite Four Lance",
-					"team": [
-						{
-							"species": "Gyarados",
-							"level": 58,
-							"ability": null,
-							"moves": [
-								"Dragon Rage",
-								"Leer",
-								"Hydro Pump",
-								"Hyper Beam"
-							],
-							"item": null
-						},
-						{
-							"species": "Dragonair",
-							"level": 56,
-							"ability": null,
-							"moves": [
-								"Agility",
-								"Slam",
-								"Dragon Rage",
-								"Hyper Beam"
-							],
-							"item": null
-						},
-						{
-							"species": "Dragonair",
-							"level": 56,
-							"ability": null,
-							"moves": [
-								"Agility",
-								"Slam",
-								"Dragon Rage",
-								"Hyper Beam"
-							],
-							"item": null
-						},
-						{
-							"species": "Aerodactyl",
-							"level": 60,
-							"ability": null,
-							"moves": [
-								"Supersonic",
-								"Bite",
-								"Take Down",
-								"Hyper Beam"
-							],
-							"item": null
-						},
-						{
-							"species": "Dragonite",
-							"level": 62,
-							"ability": null,
-							"moves": [
-								"Agility",
-								"Slam",
-								"Barrier",
-								"Hyper Beam"
-							],
-							"item": null
-						}
-					],
-					"sprite": "lance",
-					"chained": true
-				}
-			]
-		},
-		{
-			"id": "champion",
-			"name": "Champion Blue",
-			"levelCap": 65,
-			"encounters": {},
-			"gifts": [],
-			"items": [],
-			"tmMoves": [],
-			"battles": [
-				{
-					"id": "blue",
-					"trainer": "Champion Blue",
-					"team": [
-						{
-							"species": "Pidgeot",
-							"level": 61,
-							"ability": null,
-							"moves": [
-								"Wing Attack",
-								"Mirror Move",
-								"Sky Attack",
-								"Whirlwind"
-							],
-							"item": null
-						},
-						{
-							"species": "Alakazam",
-							"level": 59,
-							"ability": null,
-							"moves": [
-								"Psybeam",
-								"Psychic",
-								"Reflect",
-								"Recover"
-							],
-							"item": null
-						},
-						{
-							"species": "Rhydon",
-							"level": 61,
-							"ability": null,
-							"moves": [
-								"Leer",
-								"Tail Whip",
-								"Fury Attack",
-								"Horn Drill"
-							],
-							"item": null
-						},
-						{
-							"species": "Exeggutor",
-							"level": 61,
-							"ability": null,
-							"moves": [
-								"Hypnosis",
-								"Barrage",
-								"Stomp"
-							],
-							"item": null
-						},
-						{
-							"species": "Gyarados",
-							"level": 63,
-							"ability": null,
-							"moves": [
-								"Dragon Rage",
-								"Hydro Pump",
-								"Hyper Beam",
-								"Leer"
-							],
-							"item": null
-						},
-						{
-							"species": "Charizard",
-							"level": 65,
-							"ability": null,
-							"moves": [
-								"Fire Blast",
-								"Rage",
-								"Slash",
-								"Fire Spin"
-							],
-							"item": null
-						}
-					],
-					"sprite": "blue"
-				}
-			]
-		}
-	]
+  "id": "blue",
+  "name": "Blue",
+  "generation": 1,
+  "description": "",
+  "color": "#1565C0",
+  "pokemon": "blastoise",
+  "starters": [
+    {
+      "species": "Bulbasaur",
+      "level": 5
+    },
+    {
+      "species": "Charmander",
+      "level": 5
+    },
+    {
+      "species": "Squirtle",
+      "level": 5
+    }
+  ],
+  "segments": [
+    {
+      "id": "pre-gym-1",
+      "name": "To Leader Brock",
+      "levelCap": 14,
+      "encounters": [
+        {
+          "route": "Kanto Route 1",
+          "zones": [
+            {
+              "zone": "",
+              "method": "Grass",
+              "pokemon": [
+                {
+                  "species": "Pidgey",
+                  "rate": 50
+                },
+                {
+                  "species": "Rattata",
+                  "rate": 50
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "route": "Kanto Route 2",
+          "zones": [
+            {
+              "zone": "",
+              "method": "Grass",
+              "pokemon": [
+                {
+                  "species": "Pidgey",
+                  "rate": 45
+                },
+                {
+                  "species": "Rattata",
+                  "rate": 40
+                },
+                {
+                  "species": "Caterpie",
+                  "rate": 15
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "route": "Viridian Forest",
+          "zones": [
+            {
+              "zone": "",
+              "method": "Grass",
+              "pokemon": [
+                {
+                  "species": "Caterpie",
+                  "rate": 45
+                },
+                {
+                  "species": "Metapod",
+                  "rate": 40
+                },
+                {
+                  "species": "Weedle",
+                  "rate": 5
+                },
+                {
+                  "species": "Kakuna",
+                  "rate": 5
+                },
+                {
+                  "species": "Pikachu",
+                  "rate": 5
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "gifts": [],
+      "items": [
+        "Moon Stone"
+      ],
+      "tmMoves": [
+        "Flash",
+        "Bide"
+      ],
+      "battles": [
+        {
+          "id": "brock",
+          "trainer": "Leader Brock",
+          "team": [
+            {
+              "species": "Geodude",
+              "level": 12,
+              "ability": null,
+              "moves": [
+                "Tackle",
+                "Defense Curl"
+              ],
+              "item": null
+            },
+            {
+              "species": "Onix",
+              "level": 14,
+              "ability": null,
+              "moves": [
+                "Tackle",
+                "Screech",
+                "Bide"
+              ],
+              "item": null
+            }
+          ],
+          "sprite": "brock"
+        }
+      ]
+    },
+    {
+      "id": "pre-gym-2",
+      "name": "To Leader Misty",
+      "levelCap": 21,
+      "encounters": [
+        {
+          "route": "Kanto Route 3",
+          "zones": [
+            {
+              "zone": "",
+              "method": "Grass",
+              "pokemon": [
+                {
+                  "species": "Pidgey",
+                  "rate": 45
+                },
+                {
+                  "species": "Spearow",
+                  "rate": 45
+                },
+                {
+                  "species": "Jigglypuff",
+                  "rate": 10
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "route": "Kanto Route 4",
+          "zones": [
+            {
+              "zone": "",
+              "method": "Grass",
+              "pokemon": [
+                {
+                  "species": "Rattata",
+                  "rate": 40
+                },
+                {
+                  "species": "Spearow",
+                  "rate": 35
+                },
+                {
+                  "species": "Sandshrew",
+                  "rate": 25
+                }
+              ]
+            },
+            {
+              "zone": "",
+              "method": "Fish Old",
+              "pokemon": [
+                {
+                  "species": "Magikarp",
+                  "rate": 100
+                }
+              ]
+            },
+            {
+              "zone": "",
+              "method": "Fish Good",
+              "pokemon": [
+                {
+                  "species": "Poliwag",
+                  "rate": 50
+                },
+                {
+                  "species": "Goldeen",
+                  "rate": 50
+                }
+              ]
+            },
+            {
+              "zone": "",
+              "method": "Fish Super",
+              "pokemon": [
+                {
+                  "species": "Psyduck",
+                  "rate": 33
+                },
+                {
+                  "species": "Krabby",
+                  "rate": 33
+                },
+                {
+                  "species": "Goldeen",
+                  "rate": 33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "route": "Kanto Route 24",
+          "zones": [
+            {
+              "zone": "",
+              "method": "Grass",
+              "pokemon": [
+                {
+                  "species": "Bellsprout",
+                  "rate": 25
+                },
+                {
+                  "species": "Caterpie",
+                  "rate": 20
+                },
+                {
+                  "species": "Metapod",
+                  "rate": 20
+                },
+                {
+                  "species": "Pidgey",
+                  "rate": 20
+                },
+                {
+                  "species": "Abra",
+                  "rate": 15
+                }
+              ]
+            },
+            {
+              "zone": "",
+              "method": "Fish Old",
+              "pokemon": [
+                {
+                  "species": "Magikarp",
+                  "rate": 100
+                }
+              ]
+            },
+            {
+              "zone": "",
+              "method": "Fish Good",
+              "pokemon": [
+                {
+                  "species": "Poliwag",
+                  "rate": 50
+                },
+                {
+                  "species": "Goldeen",
+                  "rate": 50
+                }
+              ]
+            },
+            {
+              "zone": "",
+              "method": "Fish Super",
+              "pokemon": [
+                {
+                  "species": "Psyduck",
+                  "rate": 33
+                },
+                {
+                  "species": "Krabby",
+                  "rate": 33
+                },
+                {
+                  "species": "Goldeen",
+                  "rate": 33
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "route": "Kanto Route 25",
+          "zones": [
+            {
+              "zone": "",
+              "method": "Grass",
+              "pokemon": [
+                {
+                  "species": "Bellsprout",
+                  "rate": 25
+                },
+                {
+                  "species": "Caterpie",
+                  "rate": 20
+                },
+                {
+                  "species": "Metapod",
+                  "rate": 20
+                },
+                {
+                  "species": "Pidgey",
+                  "rate": 15
+                },
+                {
+                  "species": "Abra",
+                  "rate": 15
+                },
+                {
+                  "species": "Kakuna",
+                  "rate": 4
+                },
+                {
+                  "species": "Weedle",
+                  "rate": 1
+                }
+              ]
+            },
+            {
+              "zone": "",
+              "method": "Fish Old",
+              "pokemon": [
+                {
+                  "species": "Magikarp",
+                  "rate": 100
+                }
+              ]
+            },
+            {
+              "zone": "",
+              "method": "Fish Good",
+              "pokemon": [
+                {
+                  "species": "Poliwag",
+                  "rate": 50
+                },
+                {
+                  "species": "Goldeen",
+                  "rate": 50
+                }
+              ]
+            },
+            {
+              "zone": "",
+              "method": "Fish Super",
+              "pokemon": [
+                {
+                  "species": "Psyduck",
+                  "rate": 33
+                },
+                {
+                  "species": "Krabby",
+                  "rate": 33
+                },
+                {
+                  "species": "Goldeen",
+                  "rate": 33
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "gifts": [
+        {
+          "route": "Cerulean City Gift",
+          "zones": [
+            {
+              "zone": "Cerulean City Gift",
+              "method": "Gift",
+              "pokemon": [
+                {
+                  "species": "Magikarp",
+                  "rate": 100
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "items": [],
+      "tmMoves": [
+        "Whirlwind",
+        "Thunder Wave",
+        "Seismic Toss",
+        "BubbleBeam"
+      ],
+      "battles": [
+        {
+          "id": "misty",
+          "trainer": "Leader Misty",
+          "team": [
+            {
+              "species": "Staryu",
+              "level": 18,
+              "ability": null,
+              "moves": [
+                "Tackle",
+                "Water Gun"
+              ],
+              "item": null
+            },
+            {
+              "species": "Starmie",
+              "level": 21,
+              "ability": null,
+              "moves": [
+                "Tackle",
+                "Water Gun",
+                "BubbleBeam"
+              ],
+              "item": null
+            }
+          ],
+          "sprite": "misty"
+        }
+      ]
+    },
+    {
+      "id": "pre-gym-3",
+      "name": "To Leader Lt. Surge",
+      "levelCap": 24,
+      "encounters": [
+        {
+          "route": "Kanto Route 5",
+          "zones": [
+            {
+              "zone": "",
+              "method": "Grass",
+              "pokemon": [
+                {
+                  "species": "Pidgey",
+                  "rate": 40
+                },
+                {
+                  "species": "Bellsprout",
+                  "rate": 35
+                },
+                {
+                  "species": "Meowth",
+                  "rate": 25
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "route": "Kanto Route 6",
+          "zones": [
+            {
+              "zone": "",
+              "method": "Grass",
+              "pokemon": [
+                {
+                  "species": "Pidgey",
+                  "rate": 40
+                },
+                {
+                  "species": "Bellsprout",
+                  "rate": 35
+                },
+                {
+                  "species": "Meowth",
+                  "rate": 25
+                }
+              ]
+            },
+            {
+              "zone": "",
+              "method": "Fish Old",
+              "pokemon": [
+                {
+                  "species": "Magikarp",
+                  "rate": 100
+                }
+              ]
+            },
+            {
+              "zone": "",
+              "method": "Fish Good",
+              "pokemon": [
+                {
+                  "species": "Poliwag",
+                  "rate": 50
+                },
+                {
+                  "species": "Goldeen",
+                  "rate": 50
+                }
+              ]
+            },
+            {
+              "zone": "",
+              "method": "Fish Super",
+              "pokemon": [
+                {
+                  "species": "Shellder",
+                  "rate": 50
+                },
+                {
+                  "species": "Krabby",
+                  "rate": 50
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "route": "Kanto Route 11",
+          "zones": [
+            {
+              "zone": "",
+              "method": "Grass",
+              "pokemon": [
+                {
+                  "species": "Sandshrew",
+                  "rate": 40
+                },
+                {
+                  "species": "Spearow",
+                  "rate": 35
+                },
+                {
+                  "species": "Drowzee",
+                  "rate": 25
+                }
+              ]
+            },
+            {
+              "zone": "",
+              "method": "Fish Old",
+              "pokemon": [
+                {
+                  "species": "Magikarp",
+                  "rate": 100
+                }
+              ]
+            },
+            {
+              "zone": "",
+              "method": "Fish Good",
+              "pokemon": [
+                {
+                  "species": "Poliwag",
+                  "rate": 50
+                }
+              ]
+            },
+            {
+              "zone": "",
+              "method": "Fish Super",
+              "pokemon": [
+                {
+                  "species": "Shellder",
+                  "rate": 50
+                },
+                {
+                  "species": "Krabby",
+                  "rate": 50
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "gifts": [],
+      "items": [],
+      "tmMoves": [
+        "Thunderbolt",
+        "Cut"
+      ],
+      "battles": [
+        {
+          "id": "lt-surge",
+          "trainer": "Leader Lt. Surge",
+          "team": [
+            {
+              "species": "Voltorb",
+              "level": 21,
+              "ability": null,
+              "moves": [
+                "Tackle",
+                "Screech",
+                "SonicBoom"
+              ],
+              "item": null
+            },
+            {
+              "species": "Pikachu",
+              "level": 18,
+              "ability": null,
+              "moves": [
+                "ThunderShock",
+                "Growl",
+                "Thunder Wave",
+                "Quick Attack"
+              ],
+              "item": null
+            },
+            {
+              "species": "Raichu",
+              "level": 24,
+              "ability": null,
+              "moves": [
+                "ThunderShock",
+                "Growl",
+                "Thunderbolt"
+              ],
+              "item": null
+            }
+          ],
+          "sprite": "ltsurge"
+        }
+      ]
+    },
+    {
+      "id": "pre-gym-4",
+      "name": "To Leader Erika",
+      "levelCap": 29,
+      "encounters": [
+        {
+          "route": "Kanto Route 9",
+          "zones": [
+            {
+              "zone": "",
+              "method": "Grass",
+              "pokemon": [
+                {
+                  "species": "Rattata",
+                  "rate": 40
+                },
+                {
+                  "species": "Spearow",
+                  "rate": 35
+                },
+                {
+                  "species": "Sandshrew",
+                  "rate": 25
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "route": "Kanto Route 10",
+          "zones": [
+            {
+              "zone": "",
+              "method": "Grass",
+              "pokemon": [
+                {
+                  "species": "Voltorb",
+                  "rate": 40
+                },
+                {
+                  "species": "Spearow",
+                  "rate": 35
+                },
+                {
+                  "species": "Sandshrew",
+                  "rate": 25
+                }
+              ]
+            },
+            {
+              "zone": "",
+              "method": "Fish Old",
+              "pokemon": [
+                {
+                  "species": "Magikarp",
+                  "rate": 100
+                }
+              ]
+            },
+            {
+              "zone": "",
+              "method": "Fish Good",
+              "pokemon": [
+                {
+                  "species": "Poliwag",
+                  "rate": 50
+                },
+                {
+                  "species": "Goldeen",
+                  "rate": 50
+                }
+              ]
+            },
+            {
+              "zone": "",
+              "method": "Fish Super",
+              "pokemon": [
+                {
+                  "species": "Poliwhirl",
+                  "rate": 50
+                },
+                {
+                  "species": "Slowpoke",
+                  "rate": 50
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "route": "Rock Tunnel",
+          "zones": [
+            {
+              "zone": "1F",
+              "method": "Cave",
+              "pokemon": [
+                {
+                  "species": "Zubat",
+                  "rate": 55
+                },
+                {
+                  "species": "Geodude",
+                  "rate": 25
+                },
+                {
+                  "species": "Machop",
+                  "rate": 15
+                },
+                {
+                  "species": "Onix",
+                  "rate": 5
+                }
+              ]
+            },
+            {
+              "zone": "B1F",
+              "method": "Cave",
+              "pokemon": [
+                {
+                  "species": "Zubat",
+                  "rate": 50
+                },
+                {
+                  "species": "Geodude",
+                  "rate": 26
+                },
+                {
+                  "species": "Machop",
+                  "rate": 15
+                },
+                {
+                  "species": "Onix",
+                  "rate": 9
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "route": "Kanto Route 8",
+          "zones": [
+            {
+              "zone": "",
+              "method": "Grass",
+              "pokemon": [
+                {
+                  "species": "Pidgey",
+                  "rate": 30
+                },
+                {
+                  "species": "Meowth",
+                  "rate": 30
+                },
+                {
+                  "species": "Sandshrew",
+                  "rate": 20
+                },
+                {
+                  "species": "Vulpix",
+                  "rate": 20
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "route": "Kanto Route 7",
+          "zones": [
+            {
+              "zone": "",
+              "method": "Grass",
+              "pokemon": [
+                {
+                  "species": "Pidgey",
+                  "rate": 30
+                },
+                {
+                  "species": "Meowth",
+                  "rate": 30
+                },
+                {
+                  "species": "Bellsprout",
+                  "rate": 30
+                },
+                {
+                  "species": "Vulpix",
+                  "rate": 10
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "gifts": [],
+      "items": [],
+      "tmMoves": [
+        "Teleport",
+        "Mega Drain"
+      ],
+      "battles": [
+        {
+          "id": "erika",
+          "trainer": "Leader Erika",
+          "team": [
+            {
+              "species": "Victreebel",
+              "level": 29,
+              "ability": null,
+              "moves": [
+                "Razor Leaf",
+                "Wrap",
+                "PoisonPowder",
+                "Sleep Powder"
+              ],
+              "item": null
+            },
+            {
+              "species": "Tangela",
+              "level": 24,
+              "ability": null,
+              "moves": [
+                "Constrict",
+                "Bind"
+              ],
+              "item": null
+            },
+            {
+              "species": "Vileplume",
+              "level": 29,
+              "ability": null,
+              "moves": [
+                "Petal Dance",
+                "PoisonPowder",
+                "Mega Drain",
+                "Sleep Powder"
+              ],
+              "item": null
+            }
+          ],
+          "sprite": "erika"
+        }
+      ]
+    },
+    {
+      "id": "pre-gym-5",
+      "name": "To Leader Koga",
+      "levelCap": 43,
+      "encounters": [
+        {
+          "route": "Kanto Route 12",
+          "zones": [
+            {
+              "zone": "",
+              "method": "Grass",
+              "pokemon": [
+                {
+                  "species": "Pidgey",
+                  "rate": 40
+                },
+                {
+                  "species": "Bellsprout",
+                  "rate": 35
+                },
+                {
+                  "species": "Venonat",
+                  "rate": 20
+                },
+                {
+                  "species": "Weepinbell",
+                  "rate": 5
+                }
+              ]
+            },
+            {
+              "zone": "",
+              "method": "Fish Old",
+              "pokemon": [
+                {
+                  "species": "Magikarp",
+                  "rate": 100
+                }
+              ]
+            },
+            {
+              "zone": "",
+              "method": "Fish Good",
+              "pokemon": [
+                {
+                  "species": "Poliwag",
+                  "rate": 50
+                },
+                {
+                  "species": "Goldeen",
+                  "rate": 50
+                }
+              ]
+            },
+            {
+              "zone": "",
+              "method": "Fish Super",
+              "pokemon": [
+                {
+                  "species": "Tentacool",
+                  "rate": 25
+                },
+                {
+                  "species": "Krabby",
+                  "rate": 25
+                },
+                {
+                  "species": "Goldeen",
+                  "rate": 25
+                },
+                {
+                  "species": "Magikarp",
+                  "rate": 25
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "route": "Kanto Route 13",
+          "zones": [
+            {
+              "zone": "",
+              "method": "Grass",
+              "pokemon": [
+                {
+                  "species": "Pidgey",
+                  "rate": 35
+                },
+                {
+                  "species": "Bellsprout",
+                  "rate": 35
+                },
+                {
+                  "species": "Venonat",
+                  "rate": 20
+                },
+                {
+                  "species": "Weepinbell",
+                  "rate": 5
+                },
+                {
+                  "species": "Ditto",
+                  "rate": 5
+                }
+              ]
+            },
+            {
+              "zone": "",
+              "method": "Fish Old",
+              "pokemon": [
+                {
+                  "species": "Magikarp",
+                  "rate": 100
+                }
+              ]
+            },
+            {
+              "zone": "",
+              "method": "Fish Good",
+              "pokemon": [
+                {
+                  "species": "Poliwag",
+                  "rate": 50
+                }
+              ]
+            },
+            {
+              "zone": "",
+              "method": "Fish Super",
+              "pokemon": [
+                {
+                  "species": "Tentacool",
+                  "rate": 25
+                },
+                {
+                  "species": "Krabby",
+                  "rate": 25
+                },
+                {
+                  "species": "Goldeen",
+                  "rate": 25
+                },
+                {
+                  "species": "Magikarp",
+                  "rate": 25
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "route": "Kanto Route 14",
+          "zones": [
+            {
+              "zone": "",
+              "method": "Grass",
+              "pokemon": [
+                {
+                  "species": "Bellsprout",
+                  "rate": 35
+                },
+                {
+                  "species": "Pidgey",
+                  "rate": 20
+                },
+                {
+                  "species": "Venonat",
+                  "rate": 20
+                },
+                {
+                  "species": "Ditto",
+                  "rate": 15
+                },
+                {
+                  "species": "Pidgeotto",
+                  "rate": 5
+                },
+                {
+                  "species": "Weepinbell",
+                  "rate": 5
+                }
+              ]
+            },
+            {
+              "zone": "",
+              "method": "Fish Old",
+              "pokemon": [
+                {
+                  "species": "Magikarp",
+                  "rate": 100
+                }
+              ]
+            },
+            {
+              "zone": "",
+              "method": "Fish Good",
+              "pokemon": [
+                {
+                  "species": "Poliwag",
+                  "rate": 50
+                },
+                {
+                  "species": "Goldeen",
+                  "rate": 50
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "route": "Kanto Route 15",
+          "zones": [
+            {
+              "zone": "",
+              "method": "Grass",
+              "pokemon": [
+                {
+                  "species": "Bellsprout",
+                  "rate": 35
+                },
+                {
+                  "species": "Venonat",
+                  "rate": 20
+                },
+                {
+                  "species": "Ditto",
+                  "rate": 20
+                },
+                {
+                  "species": "Pidgey",
+                  "rate": 15
+                },
+                {
+                  "species": "Pidgeotto",
+                  "rate": 5
+                },
+                {
+                  "species": "Weepinbell",
+                  "rate": 5
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "route": "Kanto Route 16",
+          "zones": [
+            {
+              "zone": "",
+              "method": "Grass",
+              "pokemon": [
+                {
+                  "species": "Spearow",
+                  "rate": 40
+                },
+                {
+                  "species": "Rattata",
+                  "rate": 30
+                },
+                {
+                  "species": "Doduo",
+                  "rate": 25
+                },
+                {
+                  "species": "Raticate",
+                  "rate": 5
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "route": "Kanto Route 17",
+          "zones": [
+            {
+              "zone": "",
+              "method": "Grass",
+              "pokemon": [
+                {
+                  "species": "Spearow",
+                  "rate": 40
+                },
+                {
+                  "species": "Raticate",
+                  "rate": 30
+                },
+                {
+                  "species": "Doduo",
+                  "rate": 25
+                },
+                {
+                  "species": "Fearow",
+                  "rate": 5
+                }
+              ]
+            },
+            {
+              "zone": "",
+              "method": "Fish Old",
+              "pokemon": [
+                {
+                  "species": "Magikarp",
+                  "rate": 100
+                }
+              ]
+            },
+            {
+              "zone": "",
+              "method": "Fish Good",
+              "pokemon": [
+                {
+                  "species": "Poliwag",
+                  "rate": 50
+                }
+              ]
+            },
+            {
+              "zone": "",
+              "method": "Fish Super",
+              "pokemon": [
+                {
+                  "species": "Tentacool",
+                  "rate": 25
+                },
+                {
+                  "species": "Krabby",
+                  "rate": 25
+                },
+                {
+                  "species": "Goldeen",
+                  "rate": 25
+                },
+                {
+                  "species": "Magikarp",
+                  "rate": 25
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "route": "Kanto Route 18",
+          "zones": [
+            {
+              "zone": "",
+              "method": "Grass",
+              "pokemon": [
+                {
+                  "species": "Spearow",
+                  "rate": 40
+                },
+                {
+                  "species": "Doduo",
+                  "rate": 25
+                },
+                {
+                  "species": "Raticate",
+                  "rate": 20
+                },
+                {
+                  "species": "Fearow",
+                  "rate": 15
+                }
+              ]
+            },
+            {
+              "zone": "",
+              "method": "Fish Old",
+              "pokemon": [
+                {
+                  "species": "Magikarp",
+                  "rate": 100
+                }
+              ]
+            },
+            {
+              "zone": "",
+              "method": "Fish Good",
+              "pokemon": [
+                {
+                  "species": "Poliwag",
+                  "rate": 50
+                },
+                {
+                  "species": "Goldeen",
+                  "rate": 50
+                }
+              ]
+            },
+            {
+              "zone": "",
+              "method": "Fish Super",
+              "pokemon": [
+                {
+                  "species": "Tentacool",
+                  "rate": 25
+                },
+                {
+                  "species": "Krabby",
+                  "rate": 25
+                },
+                {
+                  "species": "Goldeen",
+                  "rate": 25
+                },
+                {
+                  "species": "Magikarp",
+                  "rate": 25
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "gifts": [],
+      "items": [],
+      "tmMoves": [
+        "Swift",
+        "Pay Day",
+        "Rage",
+        "Fly",
+        "Toxic",
+        "Surf",
+        "Strength"
+      ],
+      "battles": [
+        {
+          "id": "koga",
+          "trainer": "Leader Koga",
+          "team": [
+            {
+              "species": "Koffing",
+              "level": 37,
+              "ability": null,
+              "moves": [
+                "Tackle",
+                "Smog",
+                "Sludge",
+                "SmokeScreen"
+              ],
+              "item": null
+            },
+            {
+              "species": "Muk",
+              "level": 39,
+              "ability": null,
+              "moves": [
+                "Disable",
+                "Poison Gas",
+                "Minimize",
+                "Sludge"
+              ],
+              "item": null
+            },
+            {
+              "species": "Koffing",
+              "level": 37,
+              "ability": null,
+              "moves": [
+                "Tackle",
+                "Smog",
+                "Sludge",
+                "SmokeScreen"
+              ],
+              "item": null
+            },
+            {
+              "species": "Weezing",
+              "level": 43,
+              "ability": null,
+              "moves": [
+                "Smog",
+                "Sludge",
+                "Toxic",
+                "Selfdestruct"
+              ],
+              "item": null
+            }
+          ],
+          "sprite": "koga"
+        }
+      ]
+    },
+    {
+      "id": "pre-gym-6",
+      "name": "To Leader Sabrina",
+      "levelCap": 43,
+      "encounters": [],
+      "gifts": [],
+      "items": [],
+      "tmMoves": [
+        "Psywave"
+      ],
+      "battles": [
+        {
+          "id": "sabrina",
+          "trainer": "Leader Sabrina",
+          "team": [
+            {
+              "species": "Kadabra",
+              "level": 38,
+              "ability": null,
+              "moves": [
+                "Disable",
+                "Psybeam",
+                "Recover",
+                "Psychic"
+              ],
+              "item": null
+            },
+            {
+              "species": "Mr. Mime",
+              "level": 37,
+              "ability": null,
+              "moves": [
+                "Confusion",
+                "Barrier",
+                "Light Screen",
+                "DoubleSlap"
+              ],
+              "item": null
+            },
+            {
+              "species": "Venomoth",
+              "level": 38,
+              "ability": null,
+              "moves": [
+                "PoisonPowder",
+                "Leech Life",
+                "Stun Spore",
+                "Psybeam"
+              ],
+              "item": null
+            },
+            {
+              "species": "Alakazam",
+              "level": 43,
+              "ability": null,
+              "moves": [
+                "Psybeam",
+                "Recover",
+                "Psywave",
+                "Reflect"
+              ],
+              "item": null
+            }
+          ],
+          "sprite": "sabrina"
+        }
+      ]
+    },
+    {
+      "id": "pre-gym-7",
+      "name": "To Leader Blaine",
+      "levelCap": 47,
+      "encounters": [
+        {
+          "route": "Seafoam Islands",
+          "zones": [
+            {
+              "zone": "1F",
+              "method": "Cave",
+              "pokemon": [
+                {
+                  "species": "Psyduck",
+                  "rate": 20
+                },
+                {
+                  "species": "Seel",
+                  "rate": 20
+                },
+                {
+                  "species": "Krabby",
+                  "rate": 20
+                },
+                {
+                  "species": "Staryu",
+                  "rate": 19
+                },
+                {
+                  "species": "Zubat",
+                  "rate": 10
+                },
+                {
+                  "species": "Golbat",
+                  "rate": 5
+                },
+                {
+                  "species": "Slowpoke",
+                  "rate": 5
+                },
+                {
+                  "species": "Slowbro",
+                  "rate": 1
+                }
+              ]
+            },
+            {
+              "zone": "B1F",
+              "method": "Cave",
+              "pokemon": [
+                {
+                  "species": "Krabby",
+                  "rate": 30
+                },
+                {
+                  "species": "Shellder",
+                  "rate": 20
+                },
+                {
+                  "species": "Psyduck",
+                  "rate": 15
+                },
+                {
+                  "species": "Seel",
+                  "rate": 15
+                },
+                {
+                  "species": "Staryu",
+                  "rate": 15
+                },
+                {
+                  "species": "Dewgong",
+                  "rate": 4
+                },
+                {
+                  "species": "Kingler",
+                  "rate": 1
+                }
+              ]
+            },
+            {
+              "zone": "B2F",
+              "method": "Cave",
+              "pokemon": [
+                {
+                  "species": "Seel",
+                  "rate": 35
+                },
+                {
+                  "species": "Psyduck",
+                  "rate": 30
+                },
+                {
+                  "species": "Krabby",
+                  "rate": 15
+                },
+                {
+                  "species": "Shellder",
+                  "rate": 10
+                },
+                {
+                  "species": "Staryu",
+                  "rate": 5
+                },
+                {
+                  "species": "Golbat",
+                  "rate": 4
+                },
+                {
+                  "species": "Golduck",
+                  "rate": 1
+                }
+              ]
+            },
+            {
+              "zone": "B3F",
+              "method": "Cave",
+              "pokemon": [
+                {
+                  "species": "Psyduck",
+                  "rate": 35
+                },
+                {
+                  "species": "Seel",
+                  "rate": 30
+                },
+                {
+                  "species": "Krabby",
+                  "rate": 15
+                },
+                {
+                  "species": "Staryu",
+                  "rate": 15
+                },
+                {
+                  "species": "Kingler",
+                  "rate": 4
+                },
+                {
+                  "species": "Dewgong",
+                  "rate": 1
+                }
+              ]
+            },
+            {
+              "zone": "B3F",
+              "method": "Fish Old",
+              "pokemon": [
+                {
+                  "species": "Magikarp",
+                  "rate": 100
+                }
+              ]
+            },
+            {
+              "zone": "B3F",
+              "method": "Fish Good",
+              "pokemon": [
+                {
+                  "species": "Poliwag",
+                  "rate": 50
+                },
+                {
+                  "species": "Goldeen",
+                  "rate": 50
+                }
+              ]
+            },
+            {
+              "zone": "B3F",
+              "method": "Fish Super",
+              "pokemon": [
+                {
+                  "species": "Shellder",
+                  "rate": 25
+                },
+                {
+                  "species": "Horsea",
+                  "rate": 25
+                },
+                {
+                  "species": "Goldeen",
+                  "rate": 25
+                },
+                {
+                  "species": "Staryu",
+                  "rate": 25
+                }
+              ]
+            },
+            {
+              "zone": "B4F",
+              "method": "Cave",
+              "pokemon": [
+                {
+                  "species": "Krabby",
+                  "rate": 35
+                },
+                {
+                  "species": "Staryu",
+                  "rate": 30
+                },
+                {
+                  "species": "Psyduck",
+                  "rate": 15
+                },
+                {
+                  "species": "Seel",
+                  "rate": 15
+                },
+                {
+                  "species": "Golduck",
+                  "rate": 4
+                },
+                {
+                  "species": "Golbat",
+                  "rate": 1
+                }
+              ]
+            },
+            {
+              "zone": "B4F",
+              "method": "Fish Old",
+              "pokemon": [
+                {
+                  "species": "Magikarp",
+                  "rate": 100
+                }
+              ]
+            },
+            {
+              "zone": "B4F",
+              "method": "Fish Good",
+              "pokemon": [
+                {
+                  "species": "Poliwag",
+                  "rate": 50
+                },
+                {
+                  "species": "Goldeen",
+                  "rate": 50
+                }
+              ]
+            },
+            {
+              "zone": "B4F",
+              "method": "Fish Super",
+              "pokemon": [
+                {
+                  "species": "Shellder",
+                  "rate": 25
+                },
+                {
+                  "species": "Horsea",
+                  "rate": 25
+                },
+                {
+                  "species": "Goldeen",
+                  "rate": 25
+                },
+                {
+                  "species": "Staryu",
+                  "rate": 25
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "gifts": [
+        {
+          "route": "Fossil Revival (Cinnabar Lab)",
+          "zones": [
+            {
+              "zone": "Fossil Revival (Cinnabar Lab)",
+              "method": "Gift",
+              "pokemon": [
+                {
+                  "species": "Omanyte",
+                  "rate": 50
+                },
+                {
+                  "species": "Kabuto",
+                  "rate": 50
+                }
+              ]
+            }
+          ],
+          "choice": true
+        }
+      ],
+      "items": [],
+      "tmMoves": [
+        "Fire Blast"
+      ],
+      "battles": [
+        {
+          "id": "blaine",
+          "trainer": "Leader Blaine",
+          "team": [
+            {
+              "species": "Growlithe",
+              "level": 42,
+              "ability": null,
+              "moves": [
+                "Ember",
+                "Leer",
+                "Take Down",
+                "Agility"
+              ],
+              "item": null
+            },
+            {
+              "species": "Ponyta",
+              "level": 40,
+              "ability": null,
+              "moves": [
+                "Tail Whip",
+                "Stomp",
+                "Growl",
+                "Fire Spin"
+              ],
+              "item": null
+            },
+            {
+              "species": "Rapidash",
+              "level": 42,
+              "ability": null,
+              "moves": [
+                "Tail Whip",
+                "Stomp",
+                "Growl",
+                "Fire Spin"
+              ],
+              "item": null
+            },
+            {
+              "species": "Arcanine",
+              "level": 47,
+              "ability": null,
+              "moves": [
+                "Roar",
+                "Ember",
+                "Fire Blast",
+                "Take Down"
+              ],
+              "item": null
+            }
+          ],
+          "sprite": "blaine"
+        }
+      ]
+    },
+    {
+      "id": "pre-gym-8",
+      "name": "To Leader Giovanni",
+      "levelCap": 50,
+      "encounters": [
+        {
+          "route": "Kanto Route 22",
+          "zones": [
+            {
+              "zone": "",
+              "method": "Grass",
+              "pokemon": [
+                {
+                  "species": "Rattata",
+                  "rate": 45
+                },
+                {
+                  "species": "Nidoran-F",
+                  "rate": 40
+                },
+                {
+                  "species": "Spearow",
+                  "rate": 10
+                },
+                {
+                  "species": "Nidoran-M",
+                  "rate": 5
+                }
+              ]
+            },
+            {
+              "zone": "",
+              "method": "Fish Old",
+              "pokemon": [
+                {
+                  "species": "Magikarp",
+                  "rate": 100
+                }
+              ]
+            },
+            {
+              "zone": "",
+              "method": "Fish Good",
+              "pokemon": [
+                {
+                  "species": "Poliwag",
+                  "rate": 50
+                },
+                {
+                  "species": "Goldeen",
+                  "rate": 50
+                }
+              ]
+            },
+            {
+              "zone": "",
+              "method": "Fish Super",
+              "pokemon": [
+                {
+                  "species": "Poliwag",
+                  "rate": 50
+                },
+                {
+                  "species": "Goldeen",
+                  "rate": 50
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "route": "Kanto Route 23",
+          "zones": [
+            {
+              "zone": "",
+              "method": "Grass",
+              "pokemon": [
+                {
+                  "species": "Ditto",
+                  "rate": 35
+                },
+                {
+                  "species": "Fearow",
+                  "rate": 25
+                },
+                {
+                  "species": "Sandshrew",
+                  "rate": 20
+                },
+                {
+                  "species": "Spearow",
+                  "rate": 15
+                },
+                {
+                  "species": "Sandslash",
+                  "rate": 5
+                }
+              ]
+            },
+            {
+              "zone": "",
+              "method": "Fish Old",
+              "pokemon": [
+                {
+                  "species": "Magikarp",
+                  "rate": 100
+                }
+              ]
+            },
+            {
+              "zone": "",
+              "method": "Fish Good",
+              "pokemon": [
+                {
+                  "species": "Poliwag",
+                  "rate": 50
+                },
+                {
+                  "species": "Goldeen",
+                  "rate": 50
+                }
+              ]
+            },
+            {
+              "zone": "",
+              "method": "Fish Super",
+              "pokemon": [
+                {
+                  "species": "Slowbro",
+                  "rate": 25
+                },
+                {
+                  "species": "Kingler",
+                  "rate": 25
+                },
+                {
+                  "species": "Seadra",
+                  "rate": 25
+                },
+                {
+                  "species": "Seaking",
+                  "rate": 25
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "gifts": [],
+      "items": [],
+      "tmMoves": [
+        "Fissure"
+      ],
+      "battles": [
+        {
+          "id": "giovanni",
+          "trainer": "Leader Giovanni",
+          "team": [
+            {
+              "species": "Rhyhorn",
+              "level": 45,
+              "ability": null,
+              "moves": [
+                "Stomp",
+                "Tail Whip",
+                "Fury Attack",
+                "Horn Drill"
+              ],
+              "item": null
+            },
+            {
+              "species": "Dugtrio",
+              "level": 42,
+              "ability": null,
+              "moves": [
+                "Growl",
+                "Dig",
+                "Sand-Attack",
+                "Slash"
+              ],
+              "item": null
+            },
+            {
+              "species": "Nidoqueen",
+              "level": 44,
+              "ability": null,
+              "moves": [
+                "Scratch",
+                "Tail Whip",
+                "Body Slam",
+                "Poison Sting"
+              ],
+              "item": null
+            },
+            {
+              "species": "Nidoking",
+              "level": 45,
+              "ability": null,
+              "moves": [
+                "Tackle",
+                "Horn Attack",
+                "Poison Sting",
+                "Thrash"
+              ],
+              "item": null
+            },
+            {
+              "species": "Rhydon",
+              "level": 50,
+              "ability": null,
+              "moves": [
+                "Stomp",
+                "Tail Whip",
+                "Fissure",
+                "Horn Drill"
+              ],
+              "item": null
+            }
+          ],
+          "sprite": "giovanni"
+        }
+      ]
+    },
+    {
+      "id": "elite-four",
+      "name": "Elite Four Lorelei",
+      "levelCap": 56,
+      "encounters": [],
+      "gifts": [],
+      "items": [],
+      "tmMoves": [],
+      "battles": [
+        {
+          "id": "lorelei",
+          "trainer": "Elite Four Lorelei",
+          "team": [
+            {
+              "species": "Dewgong",
+              "level": 54,
+              "ability": null,
+              "moves": [
+                "Growl",
+                "Aurora Beam",
+                "Rest",
+                "Take Down"
+              ],
+              "item": null
+            },
+            {
+              "species": "Cloyster",
+              "level": 53,
+              "ability": null,
+              "moves": [
+                "Supersonic",
+                "Clamp",
+                "Aurora Beam",
+                "Spike Cannon"
+              ],
+              "item": null
+            },
+            {
+              "species": "Slowbro",
+              "level": 54,
+              "ability": null,
+              "moves": [
+                "Growl",
+                "Water Gun",
+                "Withdraw",
+                "Amnesia"
+              ],
+              "item": null
+            },
+            {
+              "species": "Jynx",
+              "level": 56,
+              "ability": null,
+              "moves": [
+                "DoubleSlap",
+                "Ice Punch",
+                "Body Slam",
+                "Thrash"
+              ],
+              "item": null
+            },
+            {
+              "species": "Lapras",
+              "level": 56,
+              "ability": null,
+              "moves": [
+                "Body Slam",
+                "Confuse Ray",
+                "Blizzard",
+                "Hydro Pump"
+              ],
+              "item": null
+            }
+          ],
+          "sprite": "lorelei",
+          "chained": true
+        }
+      ]
+    },
+    {
+      "id": "elite-four",
+      "name": "Elite Four Bruno",
+      "levelCap": 58,
+      "encounters": [],
+      "gifts": [],
+      "items": [],
+      "tmMoves": [],
+      "battles": [
+        {
+          "id": "bruno",
+          "trainer": "Elite Four Bruno",
+          "team": [
+            {
+              "species": "Onix",
+              "level": 53,
+              "ability": null,
+              "moves": [
+                "Rock Throw",
+                "Rage",
+                "Slam",
+                "Harden"
+              ],
+              "item": null
+            },
+            {
+              "species": "Hitmonchan",
+              "level": 55,
+              "ability": null,
+              "moves": [
+                "Ice Punch",
+                "ThunderPunch",
+                "Mega Punch",
+                "Counter"
+              ],
+              "item": null
+            },
+            {
+              "species": "Hitmonlee",
+              "level": 55,
+              "ability": null,
+              "moves": [
+                "Jump Kick",
+                "Focus Energy",
+                "Hi Jump Kick",
+                "Mega Kick"
+              ],
+              "item": null
+            },
+            {
+              "species": "Onix",
+              "level": 56,
+              "ability": null,
+              "moves": [
+                "Rock Throw",
+                "Rage",
+                "Slam",
+                "Harden"
+              ],
+              "item": null
+            },
+            {
+              "species": "Machamp",
+              "level": 58,
+              "ability": null,
+              "moves": [
+                "Leer",
+                "Focus Energy",
+                "Fissure",
+                "Submission"
+              ],
+              "item": null
+            }
+          ],
+          "sprite": "bruno",
+          "chained": true
+        }
+      ]
+    },
+    {
+      "id": "elite-four",
+      "name": "Elite Four Agatha",
+      "levelCap": 60,
+      "encounters": [],
+      "gifts": [],
+      "items": [],
+      "tmMoves": [],
+      "battles": [
+        {
+          "id": "agatha",
+          "trainer": "Elite Four Agatha",
+          "team": [
+            {
+              "species": "Gengar",
+              "level": 56,
+              "ability": null,
+              "moves": [
+                "Confuse Ray",
+                "Night Shade",
+                "Hypnosis",
+                "Dream Eater"
+              ],
+              "item": null
+            },
+            {
+              "species": "Golbat",
+              "level": 56,
+              "ability": null,
+              "moves": [
+                "Supersonic",
+                "Confuse Ray",
+                "Wing Attack",
+                "Haze"
+              ],
+              "item": null
+            },
+            {
+              "species": "Haunter",
+              "level": 55,
+              "ability": null,
+              "moves": [
+                "Confuse Ray",
+                "Night Shade",
+                "Hypnosis",
+                "Dream Eater"
+              ],
+              "item": null
+            },
+            {
+              "species": "Arbok",
+              "level": 58,
+              "ability": null,
+              "moves": [
+                "Bite",
+                "Glare",
+                "Screech",
+                "Acid"
+              ],
+              "item": null
+            },
+            {
+              "species": "Gengar",
+              "level": 60,
+              "ability": null,
+              "moves": [
+                "Confuse Ray",
+                "Night Shade",
+                "Toxic",
+                "Dream Eater"
+              ],
+              "item": null
+            }
+          ],
+          "sprite": "agatha",
+          "chained": true
+        }
+      ]
+    },
+    {
+      "id": "elite-four",
+      "name": "Elite Four Lance",
+      "levelCap": 62,
+      "encounters": [],
+      "gifts": [],
+      "items": [],
+      "tmMoves": [],
+      "battles": [
+        {
+          "id": "lance",
+          "trainer": "Elite Four Lance",
+          "team": [
+            {
+              "species": "Gyarados",
+              "level": 58,
+              "ability": null,
+              "moves": [
+                "Dragon Rage",
+                "Leer",
+                "Hydro Pump",
+                "Hyper Beam"
+              ],
+              "item": null
+            },
+            {
+              "species": "Dragonair",
+              "level": 56,
+              "ability": null,
+              "moves": [
+                "Agility",
+                "Slam",
+                "Dragon Rage",
+                "Hyper Beam"
+              ],
+              "item": null
+            },
+            {
+              "species": "Dragonair",
+              "level": 56,
+              "ability": null,
+              "moves": [
+                "Agility",
+                "Slam",
+                "Dragon Rage",
+                "Hyper Beam"
+              ],
+              "item": null
+            },
+            {
+              "species": "Aerodactyl",
+              "level": 60,
+              "ability": null,
+              "moves": [
+                "Supersonic",
+                "Bite",
+                "Take Down",
+                "Hyper Beam"
+              ],
+              "item": null
+            },
+            {
+              "species": "Dragonite",
+              "level": 62,
+              "ability": null,
+              "moves": [
+                "Agility",
+                "Slam",
+                "Barrier",
+                "Hyper Beam"
+              ],
+              "item": null
+            }
+          ],
+          "sprite": "lance",
+          "chained": true
+        }
+      ]
+    },
+    {
+      "id": "champion",
+      "name": "Champion Blue",
+      "levelCap": 65,
+      "encounters": [],
+      "gifts": [],
+      "items": [],
+      "tmMoves": [],
+      "battles": [
+        {
+          "id": "blue",
+          "trainer": "Champion Blue",
+          "team": [
+            {
+              "species": "Pidgeot",
+              "level": 61,
+              "ability": null,
+              "moves": [
+                "Wing Attack",
+                "Mirror Move",
+                "Sky Attack",
+                "Whirlwind"
+              ],
+              "item": null
+            },
+            {
+              "species": "Alakazam",
+              "level": 59,
+              "ability": null,
+              "moves": [
+                "Psybeam",
+                "Psychic",
+                "Reflect",
+                "Recover"
+              ],
+              "item": null
+            },
+            {
+              "species": "Rhydon",
+              "level": 61,
+              "ability": null,
+              "moves": [
+                "Leer",
+                "Tail Whip",
+                "Fury Attack",
+                "Horn Drill"
+              ],
+              "item": null
+            },
+            {
+              "species": "Exeggutor",
+              "level": 61,
+              "ability": null,
+              "moves": [
+                "Hypnosis",
+                "Barrage",
+                "Stomp"
+              ],
+              "item": null
+            },
+            {
+              "species": "Gyarados",
+              "level": 63,
+              "ability": null,
+              "moves": [
+                "Dragon Rage",
+                "Hydro Pump",
+                "Hyper Beam",
+                "Leer"
+              ],
+              "item": null
+            },
+            {
+              "species": "Charizard",
+              "level": 65,
+              "ability": null,
+              "moves": [
+                "Fire Blast",
+                "Rage",
+                "Slash",
+                "Fire Spin"
+              ],
+              "item": null
+            }
+          ],
+          "sprite": "blue"
+        }
+      ]
+    }
+  ]
 }

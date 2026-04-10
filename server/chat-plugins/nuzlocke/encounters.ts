@@ -53,13 +53,15 @@ export function buildRandomizerMappings(scenario: Scenario, config: RandomizerCo
 		const origSpeciesSet = new Set<string>();
 		for (const s of scenario.starters) origSpeciesSet.add(toID(s.species));
 		for (const seg of scenario.segments) {
-			for (const routes of Object.values(seg.encounters ?? {})) {
-				for (const route of routes) {
-					for (const e of route.pokemon) origSpeciesSet.add(toID(e.species));
+			for (const route of seg.encounters ?? []) {
+				for (const zone of route.zones) {
+					for (const e of zone.pokemon) origSpeciesSet.add(toID(e.species));
 				}
 			}
 			for (const route of seg.gifts ?? []) {
-				for (const e of route.pokemon) origSpeciesSet.add(toID(e.species));
+				for (const zone of route.zones) {
+					for (const e of zone.pokemon) origSpeciesSet.add(toID(e.species));
+				}
 			}
 		}
 		const origSpecies = [...origSpeciesSet].sort();
@@ -79,12 +81,13 @@ export function buildRandomizerMappings(scenario: Scenario, config: RandomizerCo
 		// Fully Random: independently assign one species per route
 		for (const seg of scenario.segments) {
 			const allRoutes: RouteEncounter[] = [
-				...Object.values(seg.encounters ?? {}).flat(),
+				...(seg.encounters ?? []),
 				...(seg.gifts ?? []),
 			];
 			for (const route of allRoutes) {
 				if (routeMap[route.route]) continue; // already assigned (same route name in multiple segments)
-				const avgBst = route.pokemon.reduce((sum, e) => sum + ((Dex.species.get(e.species) as import('../../../sim/dex-types').Species).bst ?? 0), 0) / (route.pokemon.length || 1);
+				const allPokemon = route.zones.flatMap(z => z.pokemon);
+				const avgBst = allPokemon.reduce((sum, e) => sum + ((Dex.species.get(e.species) as import('../../../sim/dex-types').Species).bst ?? 0), 0) / (allPokemon.length || 1);
 				const pool = candidates.filter(c => withinBstVariance(avgBst, (Dex.species.get(c) as import('../../../sim/dex-types').Species).bst ?? 0, config.bstVariance));
 				const pick = (pool.length ? pool : candidates)[Math.floor(rng() * (pool.length || candidates.length))];
 				routeMap[route.route] = pick;
@@ -194,14 +197,22 @@ export function resolveChoiceGift(
 	return buildEncounter(species, route.route, levelCap);
 }
 
+/** Returns all pokemon entries across all zones of a gift route. */
+export function getGiftPool(route: RouteEncounter): import('./types').EncounterEntry[] {
+	return route.zones.flatMap(z => z.pokemon);
+}
+
 export function resolveOneEncounter(
 	route: RouteEncounter,
+	zoneIndex: number,
 	box: OwnedPokemon[],
 	graveyard: OwnedPokemon[],
 	levelCap: number,
 	mappings?: RandomizerMappings | null
 ): OwnedPokemon | null {
-	let entries = route.pokemon;
+	const zone = route.zones[zoneIndex];
+	if (!zone) return null;
+	let entries = zone.pokemon;
 
 	if (mappings) {
 		const routeOverride = mappings.routeMap[route.route];

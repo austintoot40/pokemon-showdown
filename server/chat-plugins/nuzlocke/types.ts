@@ -18,7 +18,7 @@ export interface Segment {
 	id: string;
 	name: string;
 	levelCap: number;
-	encounters: Record<string, RouteEncounter[]>;  // keyed by method: walk/surf/oldRod/etc.
+	encounters: RouteEncounter[];
 	gifts: RouteEncounter[];
 	items: string[];     // held items + any bag items (bag items are silently ignored)
 	tmMoves: string[];   // move IDs unlocked by TMs/HMs this segment
@@ -27,13 +27,20 @@ export interface Segment {
 
 export interface EncounterEntry {
 	species: string;
-	rate: number;   // encounter weight; values in a route should sum to 100
+	rate: number;   // encounter weight; values in a zone should sum to 100
+}
+
+export interface ZoneEncounter {
+	zone: string;      // exact Bulbapedia zone label: "1F", "B2F", "Grass", "Surfing"
+	method: string;    // exact Bulbapedia method string: "Cave", "Grass", "Surfing", "Rock Smash"
+	time?: string;     // "Morning" | "Day" | "Night" — only present when rates differ by time of day
+	pokemon: EncounterEntry[];
 }
 
 export interface RouteEncounter {
 	route: string;
-	pokemon: EncounterEntry[];
-	choice?: boolean;  // if true, player selects the species rather than auto-resolve
+	zones: ZoneEncounter[];
+	choice?: boolean;  // if true, player selects the species rather than auto-resolve (gifts only)
 }
 
 export interface TrainerBattle {
@@ -67,6 +74,7 @@ export interface OwnedPokemon {
 	item: string;          // held item or ''
 	gender: string;
 	caughtRoute: string;
+	caughtZoneIndex?: number;
 	alive: boolean;
 }
 

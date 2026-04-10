@@ -3,23 +3,15 @@
  */
 
 import { saveGameToRedis, deleteGameFromRedis, loadGameFromRedis, pingRedis } from './redis-store';
-import { resolveOneEncounter, resolveChoiceGift, getAvailablePool, buildStarterPokemon } from './encounters';
+import { resolveOneEncounter, resolveChoiceGift, getAvailablePool, getGiftPool, buildStarterPokemon } from './encounters';
 import { getLegalMoves, type LegalMove } from './learnsets';
 import { listScenarios, getScenario } from './scenarios';
 import type { Scenario, Segment, RouteEncounter, OwnedPokemon, DeadPokemon, NuzlockeScreen, NuzlockeScenarioCard, EvoOption, CompletedRun } from './types';
 export type { CompletedRun };
 
-const METHOD_ORDER = ['walk', 'surf', 'oldRod', 'goodRod', 'superRod', 'rockSmash'];
-
-/** Returns all wild encounters in a stable flat order (walk → surf → rods). */
+/** Returns all wild encounters for a segment. */
 export function flatEncounters(segment: Segment): RouteEncounter[] {
-	const result: RouteEncounter[] = [];
-	for (const method of METHOD_ORDER) {
-		for (const route of segment.encounters[method] ?? []) {
-			result.push(route);
-		}
-	}
-	return result;
+	return segment.encounters ?? [];
 }
 
 export const nuzlockeGames = new Map<ID, NuzlockeGame>();
@@ -112,7 +104,7 @@ export class NuzlockeGame {
 		const route = gifts[giftIndex];
 		if (!route || !route.choice) return;
 		if (this.resolvedRoutes.includes(route.route)) return;
-		const entry = route.pokemon.find(e => toID(e.species) === speciesId);
+		const entry = getGiftPool(route).find(e => toID(e.species) === speciesId);
 		if (!entry) return;
 		const pokemon = resolveChoiceGift(route, entry.species, segment.levelCap);
 		this.box.push(pokemon);
@@ -120,16 +112,17 @@ export class NuzlockeGame {
 		this.resolvedRoutes.push(route.route);
 	}
 
-	/** Called by /nuzlocke encounter <routeIndex>: rolls a single wild route by flat index. */
-	resolveOneRoute(routeIndex: number) {
+	/** Called by /nuzlocke encounter <routeIndex> <zoneIndex>: rolls a zone from a wild route. */
+	resolveOneRoute(routeIndex: number, zoneIndex: number) {
 		const segment = this.scenario.segments[this.currentSegmentIndex];
 		if (!segment) return;
 		const route = flatEncounters(segment)[routeIndex];
 		if (!route) return;
 		if (this.resolvedRoutes.includes(route.route)) return;
-		const pokemon = resolveOneEncounter(route, this.box, this.graveyard as any, segment.levelCap, this.randomizerMappings);
+		const pokemon = resolveOneEncounter(route, zoneIndex, this.box, this.graveyard as any, segment.levelCap, this.randomizerMappings);
 		this.resolvedRoutes.push(route.route);
 		if (!pokemon) return; // all dupes — route resolved with no encounter
+		pokemon.caughtZoneIndex = zoneIndex;
 		this.box.push(pokemon);
 		this.addToParty(pokemon.uid);
 	}
@@ -424,37 +417,20 @@ function buildScenarioCards(): NuzlockeScenarioCard[] {
 	}));
 }
 
-function applyMappingsToEncounters(
-	encounters: Record<string, RouteEncounter[]>,
-	m: import('./types').RandomizerMappings
-): Record<string, RouteEncounter[]> {
-	const result: Record<string, RouteEncounter[]> = {};
-	for (const [method, routes] of Object.entries(encounters)) {
-		result[method] = routes.map(route => {
-			const routeOverride = m.routeMap[route.route];
-			if (routeOverride) {
-				return { ...route, pokemon: [{ species: routeOverride, rate: 1 }] };
-			}
-			if (Object.keys(m.speciesMap).length > 0) {
-				return { ...route, pokemon: route.pokemon.map(e => ({ ...e, species: m.speciesMap[toID(e.species)] ?? e.species })) };
-			}
-			return route;
-		});
-	}
-	return result;
-}
-
-function applyMappingsToGifts(
-	gifts: RouteEncounter[],
+function applyMappingsToRoutes(
+	routes: RouteEncounter[],
 	m: import('./types').RandomizerMappings
 ): RouteEncounter[] {
-	return gifts.map(route => {
+	return routes.map(route => {
 		const routeOverride = m.routeMap[route.route];
 		if (routeOverride) {
-			return { ...route, pokemon: [{ species: routeOverride, rate: 1 }] };
+			return { ...route, zones: route.zones.map(z => ({ ...z, pokemon: [{ species: routeOverride, rate: 1 }] })) };
 		}
 		if (Object.keys(m.speciesMap).length > 0) {
-			return { ...route, pokemon: route.pokemon.map(e => ({ ...e, species: m.speciesMap[toID(e.species)] ?? e.species })) };
+			return { ...route, zones: route.zones.map(z => ({
+				...z,
+				pokemon: z.pokemon.map(e => ({ ...e, species: m.speciesMap[toID(e.species)] ?? e.species })),
+			})) };
 		}
 		return route;
 	});
@@ -502,8 +478,8 @@ export function serializeGameState(game: NuzlockeGame): NuzlockePanelPayload {
 			levelCap: seg.levelCap,
 			items: seg.items,
 			tmMoves: seg.tmMoves ?? [],
-			encounters: m ? applyMappingsToEncounters(seg.encounters, m) : seg.encounters,
-			gifts: m ? applyMappingsToGifts(seg.gifts ?? [], m) : (seg.gifts ?? []),
+			encounters: m ? applyMappingsToRoutes(seg.encounters ?? [], m) : (seg.encounters ?? []),
+			gifts: m ? applyMappingsToRoutes(seg.gifts ?? [], m) : (seg.gifts ?? []),
 			battles: seg.battles,
 		} : null,
 		box: game.box,
