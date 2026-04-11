@@ -189,7 +189,7 @@ function resolveScenario(
 		description: raw.description ?? '',
 		color: raw.color ?? '',
 		pokemon: raw.pokemon ?? '',
-		verified: false,
+		verified: raw.verified ?? false,
 		starters: raw.starters,
 		segments,
 	};

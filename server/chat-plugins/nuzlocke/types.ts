@@ -102,6 +102,7 @@ export interface RawScenario {
 	description: string;
 	color: string;
 	pokemon: string;
+	verified?: boolean;
 	starters: { species: string; level: number }[];
 	segments: RawSegment[];
 }

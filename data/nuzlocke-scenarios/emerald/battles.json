@@ -319,7 +319,7 @@
   },
   {
     "id": "tate",
-    "trainer": "Leader Tate & Liza",
+    "trainer": "Leaders Tate & Liza",
     "team": [
       {
         "species": "Claydol",
@@ -370,7 +370,8 @@
         "item": "Sitrus Berry"
       }
     ],
-    "sprite": "tate"
+    "sprite": "tate",
+    "battleType": "doubles"
   },
   {
     "id": "juan",
