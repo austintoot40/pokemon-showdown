@@ -18,12 +18,9 @@ const scenarios = new Map<string, Scenario>();
  *
  * Zone `requires` fields are left in place for the client to use.
  */
-function resolveRequires(raw: any): Scenario {
-	const segs: any[] = raw.segments ?? [];
-
-	// Pass 1: build move availability index from plain-string TM entries only.
-	// Deferred TMs (those with `requires`) are not counted here since they may
-	// themselves move to a later segment.
+function buildRequiresIndexes(segs: any[]) {
+	// Move index: first segment where a plain-string TM appears.
+	// Deferred TMs are excluded since they may themselves shift to a later segment.
 	const moveFirstAvailable = new Map<string, number>();
 	for (let i = 0; i < segs.length; i++) {
 		for (const tm of segs[i].tmMoves ?? []) {
@@ -34,7 +31,40 @@ function resolveRequires(raw: any): Scenario {
 		}
 	}
 
-	// Pass 2: resolve deferred items and TMs into per-segment buckets.
+	// Battle index: first segment containing each battle ID.
+	// Battle-gated items defer to the segment AFTER the battle (battles fire mid-segment,
+	// not at resolveSegmentStart, so the item must wait until the following segment).
+	const battleFirstAvailable = new Map<string, number>();
+	for (let i = 0; i < segs.length; i++) {
+		for (const battle of segs[i].battles ?? []) {
+			const id = toID(typeof battle === 'string' ? battle : battle.id);
+			if (!battleFirstAvailable.has(id)) battleFirstAvailable.set(id, i + 1);
+		}
+	}
+
+	return { moveFirstAvailable, battleFirstAvailable };
+}
+
+function resolveTarget(
+	entry: any,
+	i: number,
+	maxIdx: number,
+	moveFirstAvailable: Map<string, number>,
+	battleFirstAvailable: Map<string, number>
+): number {
+	const type = entry.requires?.type;
+	const name = toID(entry.requires?.name ?? '');
+	const reqIdx = type === 'battle'
+		? battleFirstAvailable.get(name)
+		: moveFirstAvailable.get(name);
+	return reqIdx !== undefined && reqIdx > i ? Math.min(reqIdx, maxIdx) : i;
+}
+
+function resolveRequires(raw: any): Scenario {
+	const segs: any[] = raw.segments ?? [];
+	const { moveFirstAvailable, battleFirstAvailable } = buildRequiresIndexes(segs);
+
+	// Resolve deferred items and TMs into per-segment buckets.
 	const resolvedItems: string[][] = segs.map(() => []);
 	const resolvedTms: string[][] = segs.map(() => []);
 
@@ -43,18 +73,16 @@ function resolveRequires(raw: any): Scenario {
 			if (typeof entry === 'string') {
 				resolvedItems[i].push(entry);
 			} else {
-				const reqIdx = moveFirstAvailable.get(toID(entry.requires));
-				const target = reqIdx !== undefined && reqIdx > i ? reqIdx : i;
-				resolvedItems[target].push(entry.id);
+				const target = resolveTarget(entry, i, segs.length - 1, moveFirstAvailable, battleFirstAvailable);
+				resolvedItems[target].push(entry.name);
 			}
 		}
 		for (const entry of segs[i].tmMoves ?? []) {
 			if (typeof entry === 'string') {
 				resolvedTms[i].push(entry);
 			} else {
-				const reqIdx = moveFirstAvailable.get(toID(entry.requires));
-				const target = reqIdx !== undefined && reqIdx > i ? reqIdx : i;
-				resolvedTms[target].push(entry.id);
+				const target = resolveTarget(entry, i, segs.length - 1, moveFirstAvailable, battleFirstAvailable);
+				resolvedTms[target].push(entry.name);
 			}
 		}
 	}
@@ -81,8 +109,8 @@ function resolveScenario(
 	const locationMap = new Map(locationDefs.map(l => [l.id, l]));
 	const battleMap = new Map(battleDefs.map(b => [b.id, b]));
 
-	// Build a synthetic flat structure matching what resolveRequires expects:
-	// each "segment" has items/tmMoves arrays aggregated from its locations.
+	// Aggregate items/tmMoves from each segment's locations into synthetic flat segments,
+	// then resolve deferred entries using the shared helpers.
 	const syntheticSegs = raw.segments.map(seg => {
 		const locs = seg.locations.map(id => locationMap.get(id));
 		const items: any[] = [];
@@ -92,19 +120,10 @@ function resolveScenario(
 			items.push(...(loc.items ?? []));
 			tmMoves.push(...(loc.tmMoves ?? []));
 		}
-		return { items, tmMoves };
+		return { items, tmMoves, battles: seg.battles };
 	});
 
-	// Run the same two-pass resolveRequires logic, but sourced from syntheticSegs.
-	const moveFirstAvailable = new Map<string, number>();
-	for (let i = 0; i < syntheticSegs.length; i++) {
-		for (const tm of syntheticSegs[i].tmMoves) {
-			if (typeof tm === 'string') {
-				const id = toID(tm);
-				if (!moveFirstAvailable.has(id)) moveFirstAvailable.set(id, i);
-			}
-		}
-	}
+	const { moveFirstAvailable, battleFirstAvailable } = buildRequiresIndexes(syntheticSegs);
 
 	const resolvedItems: string[][] = syntheticSegs.map(() => []);
 	const resolvedTms: string[][] = syntheticSegs.map(() => []);
@@ -114,18 +133,16 @@ function resolveScenario(
 			if (typeof entry === 'string') {
 				resolvedItems[i].push(entry);
 			} else {
-				const reqIdx = moveFirstAvailable.get(toID(entry.requires));
-				const target = reqIdx !== undefined && reqIdx > i ? reqIdx : i;
-				resolvedItems[target].push(entry.id);
+				const target = resolveTarget(entry, i, syntheticSegs.length - 1, moveFirstAvailable, battleFirstAvailable);
+				resolvedItems[target].push(entry.name);
 			}
 		}
 		for (const entry of syntheticSegs[i].tmMoves) {
 			if (typeof entry === 'string') {
 				resolvedTms[i].push(entry);
 			} else {
-				const reqIdx = moveFirstAvailable.get(toID(entry.requires));
-				const target = reqIdx !== undefined && reqIdx > i ? reqIdx : i;
-				resolvedTms[target].push(entry.id);
+				const target = resolveTarget(entry, i, syntheticSegs.length - 1, moveFirstAvailable, battleFirstAvailable);
+				resolvedTms[target].push(entry.name);
 			}
 		}
 	}
@@ -145,9 +162,10 @@ function resolveScenario(
 			if (encounterZones.length) {
 				encounters.push({ route: routeName, zones: encounterZones });
 			}
-			// Each Gift zone becomes its own RouteEncounter so choice can differ per zone.
+			// Each Gift zone becomes its own RouteEncounter. Choice is inferred: multiple
+			// Pokemon options means the player selects; a single Pokemon auto-resolves.
 			for (const gz of giftZones) {
-				gifts.push({ route: routeName, zones: [gz], choice: gz.choice });
+				gifts.push({ route: routeName, zones: [gz], choice: gz.pokemon.length > 1 });
 			}
 		}
 

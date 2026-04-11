@@ -41,6 +41,8 @@ export class NuzlockeGame {
 	tmMoves: string[];   // move IDs unlocked by TMs/HMs across segments
 	completedBattles: string[];
 	resolvedRoutes: string[];
+	deferredRoutes: RouteEncounter[];   // explicitly deferred by player; re-appear as pending each session
+	lockedRoutes: RouteEncounter[];     // auto-carried routes where all zones were inaccessible at segment end
 	settings: { ai: 'game-accurate' | 'smart' | 'competitive'; generation: number };
 	partyErrors: Map<string, string>;
 	lastCompletedRun: CompletedRun | null;
@@ -64,6 +66,8 @@ export class NuzlockeGame {
 		this.tmMoves = [];
 		this.completedBattles = [];
 		this.resolvedRoutes = [];
+		this.deferredRoutes = [];
+		this.lockedRoutes = [];
 		this.settings = { ai: 'game-accurate', generation: 9 };
 		this.partyErrors = new Map();
 		this.lastCompletedRun = null;
@@ -88,7 +92,7 @@ export class NuzlockeGame {
 		this.tmMoves.push(...(segment.tmMoves ?? []));
 		for (const route of segment.gifts ?? []) {
 			if (route.choice) continue;  // Player must choose manually
-			const pokemon = resolveOneEncounter(route, this.box, this.graveyard as any, this.currentLevelCap, this.randomizerMappings);
+			const pokemon = resolveOneEncounter(route, 0, this.box, this.graveyard as any, this.currentLevelCap, this.randomizerMappings);
 			if (!pokemon) continue; // all dupes — skip
 			this.box.push(pokemon);
 			this.addToParty(pokemon.uid);
@@ -112,13 +116,59 @@ export class NuzlockeGame {
 		this.resolvedRoutes.push(route.route);
 	}
 
-	/** Called by /nuzlocke encounter <routeIndex> <zoneIndex>: rolls a zone from a wild route. */
-	resolveOneRoute(routeIndex: number, zoneIndex: number) {
-		const segment = this.scenario.segments[this.currentSegmentIndex];
+	/** Method prerequisites mirrored from the client for server-side lock detection. */
+	static readonly METHOD_PREREQS: Record<string, { type: string; name: string }> = {
+		'Surf':       { type: 'move', name: 'Surf' },
+		'Rock Smash': { type: 'move', name: 'Rock Smash' },
+		'Fish Old':   { type: 'item', name: 'Old Rod' },
+		'Fish Good':  { type: 'item', name: 'Good Rod' },
+		'Fish Super': { type: 'item', name: 'Super Rod' },
+	};
+
+	/** Returns true if every zone in the route has an unmet prerequisite. */
+	isRouteAllLocked(route: RouteEncounter): boolean {
+		return route.zones.every(zone => {
+			const prereq = zone.requires ?? NuzlockeGame.METHOD_PREREQS[zone.method];
+			if (!prereq) return false;
+			if (prereq.type === 'move' || prereq.type === 'hm') return !this.tmMoves.includes(prereq.name);
+			return !this.items.includes(prereq.name);
+		});
+	}
+
+	/** Explicitly defer a route; moves it from lockedRoutes to deferredRoutes if needed. */
+	deferRoute(routeName: string): boolean {
+		if (this.resolvedRoutes.includes(routeName)) return false;
+		const segment = this.currentSegment;
+		const allRoutes = [
+			...(segment ? flatEncounters(segment) : []),
+			...this.deferredRoutes,
+			...this.lockedRoutes,
+		];
+		const route = allRoutes.find(r => r.route === routeName);
+		if (!route) return false;
+		// Move from lockedRoutes to deferredRoutes if it was auto-carried
+		this.lockedRoutes = this.lockedRoutes.filter(r => r.route !== routeName);
+		if (!this.deferredRoutes.some(r => r.route === routeName)) {
+			this.deferredRoutes.push(route);
+		}
+		return true;
+	}
+
+	/** Called by /nuzlocke encounter <routeName> <zoneIndex>: rolls a zone from a wild route. */
+	resolveOneRoute(routeName: string, zoneIndex: number) {
+		const segment = this.currentSegment;
 		if (!segment) return;
-		const route = flatEncounters(segment)[routeIndex];
+		const allRoutes = [
+			...flatEncounters(segment),
+			...this.deferredRoutes,
+			...this.lockedRoutes,
+		];
+		const route = allRoutes.find(r => r.route === routeName);
 		if (!route) return;
 		if (this.resolvedRoutes.includes(route.route)) return;
+		// Remove from deferred/locked carry lists
+		this.deferredRoutes = this.deferredRoutes.filter(r => r.route !== routeName);
+		this.lockedRoutes = this.lockedRoutes.filter(r => r.route !== routeName);
 		const pokemon = resolveOneEncounter(route, zoneIndex, this.box, this.graveyard as any, this.currentLevelCap, this.randomizerMappings);
 		this.resolvedRoutes.push(route.route);
 		if (!pokemon) return; // all dupes — route resolved with no encounter
@@ -265,6 +315,17 @@ export class NuzlockeGame {
 		this.currentBattleIndex++;
 
 		if (this.currentBattleIndex >= segment.battles.length) {
+			// Auto-carry fully-locked routes from the current segment before advancing.
+			// These are routes the player couldn't act on because all zones had unmet prereqs.
+			for (const route of flatEncounters(segment)) {
+				if (this.resolvedRoutes.includes(route.route)) continue;
+				if (this.deferredRoutes.some(r => r.route === route.route)) continue;
+				if (this.lockedRoutes.some(r => r.route === route.route)) continue;
+				if (this.isRouteAllLocked(route)) {
+					this.lockedRoutes.push(route);
+				}
+			}
+
 			// Segment complete — move to next segment
 			this.currentSegmentIndex++;
 			this.currentBattleIndex = 0;
@@ -321,7 +382,7 @@ export interface NuzlockePanelPayload {
 		levelCap: number;
 		items: string[];
 		tmMoves: string[];
-		encounters: Record<string, import('./types').RouteEncounter[]>;
+		encounters: import('./types').RouteEncounter[];
 		gifts: import('./types').RouteEncounter[];
 		battles: import('./types').TrainerBattle[];
 	} | null;
@@ -333,6 +394,8 @@ export interface NuzlockePanelPayload {
 	items: string[];
 	tmMoves: string[];
 	resolvedRoutes: string[];
+	deferredRoutes: import('./types').RouteEncounter[];
+	lockedRoutes: import('./types').RouteEncounter[];
 
 	// Precomputed derived data
 	legalMoves: Record<string, LegalMove[]>;
@@ -494,6 +557,8 @@ export function serializeGameState(game: NuzlockeGame): NuzlockePanelPayload {
 		items: game.items,
 		tmMoves: game.tmMoves,
 		resolvedRoutes: game.resolvedRoutes,
+		deferredRoutes: m ? applyMappingsToRoutes(game.deferredRoutes, m) : game.deferredRoutes,
+		lockedRoutes: m ? applyMappingsToRoutes(game.lockedRoutes, m) : game.lockedRoutes,
 		legalMoves,
 		availableEvolutions,
 		lastBattleResult: game.lastBattleResult,

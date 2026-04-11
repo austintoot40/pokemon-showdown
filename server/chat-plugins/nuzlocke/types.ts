@@ -33,9 +33,9 @@ export interface ZoneEncounter {
 	zone: string;      // exact Bulbapedia zone label: "1F", "B2F", "Grass", "Surfing"
 	method: string;    // exact Bulbapedia method string: "Cave", "Grass", "Surfing", "Rock Smash"
 	time?: string;     // "Morning" | "Day" | "Night" — only present when rates differ by time of day
-	choice?: boolean;  // true for Gift zones where the player selects the species (new format only)
+	// choice is not stored; it is inferred at load time: Gift zones with >1 pokemon entry are choice gifts
 	pokemon: EncounterEntry[];
-	requires?: { type: 'hm' | 'item'; name: string };  // explicit prereq (overrides METHOD_PREREQS inference on client)
+	requires?: { type: 'move' | 'item' | 'battle'; name: string };  // explicit prereq (overrides METHOD_PREREQS inference on client)
 }
 
 export interface RouteEncounter {
@@ -64,10 +64,10 @@ export interface TrainerPokemon {
 // Source-format types (the unresolved form stored in JSON files)
 // ---------------------------------------------------------------------------
 
-/** An item or TM whose availability is gated on a move being unlocked first. */
+/** An item or TM whose availability is gated on a move or item being unlocked first. */
 export interface DeferredItem {
-	id: string;
-	requires: string;  // move name; item defers to the first segment where this move is available
+	name: string;
+	requires: { type: 'move' | 'item' | 'battle'; name: string };
 }
 
 /**
@@ -76,7 +76,7 @@ export interface DeferredItem {
  *
  * - `zones` absent → item-only location (won't appear in encounters screen)
  * - Gift zones (`method: "Gift"`) coexist with encounter zones on the same location
- * - `choice: true` on a Gift zone → player selects the species rather than auto-resolve
+ * - Gift zones with >1 pokemon → player selects the species rather than auto-resolve
  */
 export interface LocationDefinition {
 	id: string;

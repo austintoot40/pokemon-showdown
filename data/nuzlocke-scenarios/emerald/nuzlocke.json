@@ -21,54 +21,54 @@
   ],
   "segments": [
     {
-      "id": "pre-gym-1",
-      "name": "To Leader Roxanne",
+      "id": "roxanne",
+      "name": "Roxanne",
       "locations": [
         "hoenn-route-101",
         "hoenn-route-102",
-        "hoenn-route-103",
         "petalburg-woods",
         "hoenn-route-104",
-        "pre-gym-1-items"
+        "rustboro-city",
+        "hoenn-route-103"
       ],
       "battles": [
         "roxanne"
       ]
     },
     {
-      "id": "pre-gym-2",
-      "name": "To Leader Brawly",
+      "id": "brawly",
+      "name": "Brawly",
       "locations": [
         "hoenn-route-116",
         "rusturf-tunnel",
         "granite-cave",
-        "hoenn-route-105",
-        "hoenn-route-106",
-        "pre-gym-2-items"
+        "dewford-city",
+        "petalburg-city"
       ],
       "battles": [
         "brawly"
       ]
     },
     {
-      "id": "pre-gym-3",
-      "name": "To Leader Wattson",
+      "id": "wattson",
+      "name": "Wattson",
       "locations": [
         "hoenn-route-107",
         "hoenn-route-108",
         "hoenn-route-109",
+        "slateport-city",
         "hoenn-route-110",
-        "hoenn-route-103",
         "hoenn-route-117",
-        "pre-gym-3-items"
+        "hoenn-route-118",
+        "mauville-city"
       ],
       "battles": [
         "wattson"
       ]
     },
     {
-      "id": "pre-gym-4",
-      "name": "To Leader Flannery",
+      "id": "flannery",
+      "name": "Flannery",
       "locations": [
         "hoenn-route-111",
         "hoenn-route-112",
@@ -77,42 +77,40 @@
         "hoenn-route-113",
         "hoenn-route-114",
         "meteor-falls",
-        "pre-gym-4-gift-1",
-        "pre-gym-4-items"
+        "lavaridge-town"
       ],
       "battles": [
         "flannery"
       ]
     },
     {
-      "id": "pre-gym-5",
-      "name": "To Leader Norman",
+      "id": "norman",
+      "name": "Norman",
       "locations": [
-        "hoenn-route-118",
-        "hoenn-route-115",
-        "hoenn-route-116",
-        "pre-gym-5-items"
+        "hoenn-route-115"
       ],
       "battles": [
         "norman"
       ]
     },
     {
-      "id": "pre-gym-6",
-      "name": "To Leader Winona",
+      "id": "winona",
+      "name": "Winona",
       "locations": [
-        "hoenn-route-118",
         "hoenn-route-119",
         "hoenn-route-120",
-        "pre-gym-6-items"
+        "hoenn-route-105",
+        "hoenn-route-106",
+        "fortree-city",
+        "new-mauville"
       ],
       "battles": [
         "winona"
       ]
     },
     {
-      "id": "pre-gym-7",
-      "name": "To Leader Tate & Liza",
+      "id": "tate-and-liza",
+      "name": "Tate and Liza",
       "locations": [
         "hoenn-route-121",
         "hoenn-route-122",
@@ -122,22 +120,23 @@
         "hoenn-route-125",
         "shoal-cave",
         "hoenn-safari-zone",
-        "pre-gym-7-items"
+        "mossdeep-city",
+        "lilycove-city"
       ],
       "battles": [
         "tate"
       ]
     },
     {
-      "id": "pre-gym-8",
-      "name": "To Leader Juan",
+      "id": "juan",
+      "name": "Juan",
       "locations": [
         "hoenn-route-126",
         "hoenn-route-127",
         "hoenn-route-128",
         "seafloor-cavern",
         "cave-of-origin",
-        "pre-gym-8-items"
+        "sootopolis"
       ],
       "battles": [
         "juan"
@@ -145,7 +144,7 @@
     },
     {
       "id": "elite-four",
-      "name": "Elite Four Sidney",
+      "name": "Elite Four",
       "locations": [
         "hoenn-route-129",
         "hoenn-route-130",
@@ -155,7 +154,9 @@
         "hoenn-route-134",
         "sky-pillar",
         "victory-road-hoenn",
-        "elite-four-items"
+        "pacifidlog-town",
+        "abandoned-ship",
+        "evergrand-city"
       ],
       "battles": [
         "sidney",

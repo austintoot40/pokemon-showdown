@@ -182,17 +182,25 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 		encounter(target, room, user) {
 			const game = nuzlockeGames.get(user.id);
 			if (!game) return this.errorReply('No active run.');
-			const [riStr, ziStr] = target.trim().split(/\s+/);
-			const routeIndex = parseInt(riStr);
-			const zoneIndex = parseInt(ziStr);
-			if (isNaN(routeIndex) || isNaN(zoneIndex)) return this.errorReply('Usage: /nuzlocke encounter <routeIndex> <zoneIndex>');
-			const segment = game.currentSegment;
-			if (!segment) return this.errorReply('No active segment.');
-			const route = flatEncounters(segment)[routeIndex];
-			if (!route) return this.errorReply('Invalid route index.');
-			if (game.resolvedRoutes.includes(route.route)) return this.errorReply('Already explored this route.');
-			game.resolveOneRoute(routeIndex, zoneIndex);
+			const parts = target.trim().split(/\s+/);
+			if (parts.length < 2) return this.errorReply('Usage: /nuzlocke encounter <routeName> <zoneIndex>');
+			const zoneIndex = parseInt(parts[parts.length - 1]);
+			const routeName = parts.slice(0, -1).join(' ');
+			if (isNaN(zoneIndex)) return this.errorReply('Usage: /nuzlocke encounter <routeName> <zoneIndex>');
+			if (!game.currentSegment) return this.errorReply('No active segment.');
+			if (game.resolvedRoutes.includes(routeName)) return this.errorReply('Already explored this route.');
+			game.resolveOneRoute(routeName, zoneIndex);
 			game.goToPage('encounters');
+		},
+
+		defer(target, room, user) {
+			const game = nuzlockeGames.get(user.id);
+			if (!game) return this.errorReply('No active run.');
+			const routeName = target.trim();
+			if (!routeName) return this.errorReply('Usage: /nuzlocke defer <routeName>');
+			if (!game.deferRoute(routeName)) return this.errorReply('Cannot defer that route.');
+			saveGame(game);
+			pushNuzlockeState(user.id, game);
 		},
 
 		choosegift(target, room, user) {
