@@ -87,7 +87,8 @@
       "id": "norman",
       "name": "Norman",
       "locations": [
-        "hoenn-route-115"
+        "hoenn-route-115",
+        "mirage-tower"
       ],
       "battles": [
         "norman"
@@ -119,7 +120,12 @@
         "hoenn-route-124",
         "hoenn-route-125",
         "shoal-cave",
-        "hoenn-safari-zone",
+        "hoenn-safari-zone-area-1",
+        "hoenn-safari-zone-area-2",
+        "hoenn-safari-zone-area-3",
+        "hoenn-safari-zone-area-4",
+        "hoenn-safari-zone-area-5",
+        "hoenn-safari-zone-area-6",
         "mossdeep-city",
         "lilycove-city"
       ],
