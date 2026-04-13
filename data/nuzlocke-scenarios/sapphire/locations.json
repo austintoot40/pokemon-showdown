@@ -8,7 +8,7 @@
         "method": "Grass",
         "pokemon": [
           {
-            "species": "Poochyena",
+            "species": "Zigzagoon",
             "rate": 45
           },
           {
@@ -16,7 +16,7 @@
             "rate": 45
           },
           {
-            "species": "Zigzagoon",
+            "species": "Poochyena",
             "rate": 10
           }
         ]
@@ -32,7 +32,7 @@
         "method": "Grass",
         "pokemon": [
           {
-            "species": "Poochyena",
+            "species": "Zigzagoon",
             "rate": 30
           },
           {
@@ -44,7 +44,7 @@
             "rate": 20
           },
           {
-            "species": "Zigzagoon",
+            "species": "Poochyena",
             "rate": 15
           },
           {
@@ -52,7 +52,7 @@
             "rate": 4
           },
           {
-            "species": "Seedot",
+            "species": "Surskit",
             "rate": 1
           }
         ]
@@ -66,7 +66,7 @@
             "rate": 99
           },
           {
-            "species": "Goldeen",
+            "species": "Surskit",
             "rate": 1
           }
         ]
@@ -116,6 +116,20 @@
     ]
   },
   {
+    "id": "rustboro-city",
+    "name": "Rustboro City",
+    "tmMoves": [
+      "Cut",
+      {
+        "name": "Rock Tomb",
+        "requires": {
+          "type": "battle",
+          "name": "roxanne"
+        }
+      }
+    ]
+  },
+  {
     "id": "hoenn-route-103",
     "name": "Hoenn Route 103",
     "zones": [
@@ -124,16 +138,16 @@
         "method": "Grass",
         "pokemon": [
           {
-            "species": "Poochyena",
+            "species": "Zigzagoon",
             "rate": 60
           },
           {
-            "species": "Zigzagoon",
-            "rate": 20
+            "species": "Poochyena",
+            "rate": 30
           },
           {
             "species": "Wingull",
-            "rate": 20
+            "rate": 10
           }
         ]
       },
@@ -212,7 +226,7 @@
         "method": "Grass",
         "pokemon": [
           {
-            "species": "Poochyena",
+            "species": "Zigzagoon",
             "rate": 30
           },
           {
@@ -255,16 +269,12 @@
         "method": "Grass",
         "pokemon": [
           {
-            "species": "Poochyena",
-            "rate": 40
-          },
-          {
-            "species": "Marill",
-            "rate": 20
+            "species": "Zigzagoon",
+            "rate": 50
           },
           {
             "species": "Wurmple",
-            "rate": 20
+            "rate": 30
           },
           {
             "species": "Taillow",
@@ -326,20 +336,6 @@
     ]
   },
   {
-    "id": "rustboro-city",
-    "name": "Rustboro City",
-    "tmMoves": [
-      "Cut",
-      {
-        "name": "Rock Tomb",
-        "requires": {
-          "type": "battle",
-          "name": "roxanne"
-        }
-      }
-    ]
-  },
-  {
     "id": "hoenn-route-116",
     "name": "Hoenn Route 116",
     "zones": [
@@ -348,7 +344,11 @@
         "method": "Grass",
         "pokemon": [
           {
-            "species": "Poochyena",
+            "species": "Whismur",
+            "rate": 30
+          },
+          {
+            "species": "Zigzagoon",
             "rate": 28
           },
           {
@@ -358,14 +358,6 @@
           {
             "species": "Nincada",
             "rate": 20
-          },
-          {
-            "species": "Whismur",
-            "rate": 20
-          },
-          {
-            "species": "Abra",
-            "rate": 10
           },
           {
             "species": "Skitty",
@@ -394,6 +386,26 @@
     ]
   },
   {
+    "id": "petalburg-city",
+    "name": "Petalburg City",
+    "tmMoves": [
+      {
+        "name": "Facade",
+        "requires": {
+          "type": "battle",
+          "name": "norman"
+        }
+      },
+      {
+        "name": "Surf",
+        "requires": {
+          "type": "battle",
+          "name": "norman"
+        }
+      }
+    ]
+  },
+  {
     "id": "rusturf-tunnel",
     "name": "Rusturf Tunnel",
     "zones": [
@@ -406,6 +418,22 @@
             "rate": 100
           }
         ]
+      }
+    ]
+  },
+  {
+    "id": "dewford-city",
+    "name": "Dewford City",
+    "items": [
+      "Old Rod"
+    ],
+    "tmMoves": [
+      {
+        "name": "Bulk Up",
+        "requires": {
+          "type": "battle",
+          "name": "brawly"
+        }
       }
     ]
   },
@@ -885,11 +913,11 @@
             "rate": 30
           },
           {
-            "species": "Poochyena",
+            "species": "Zigzagoon",
             "rate": 20
           },
           {
-            "species": "Minun",
+            "species": "Plusle",
             "rate": 15
           },
           {
@@ -905,7 +933,7 @@
             "rate": 8
           },
           {
-            "species": "Plusle",
+            "species": "Minun",
             "rate": 2
           }
         ]
@@ -973,6 +1001,27 @@
     ]
   },
   {
+    "id": "mauville-city",
+    "name": "Mauville City",
+    "tmMoves": [
+      "Rock Smash",
+      {
+        "name": "Shock Wave",
+        "requires": {
+          "type": "battle",
+          "name": "wattson"
+        }
+      },
+      {
+        "name": "Thunderbolt",
+        "requires": {
+          "type": "battle",
+          "name": "norman"
+        }
+      }
+    ]
+  },
+  {
     "id": "hoenn-route-117",
     "name": "Hoenn Route 117",
     "zones": [
@@ -981,27 +1030,31 @@
         "method": "Grass",
         "pokemon": [
           {
-            "species": "Oddish",
-            "rate": 40
-          },
-          {
-            "species": "Poochyena",
+            "species": "Zigzagoon",
             "rate": 30
           },
           {
-            "species": "Illumise",
+            "species": "Roselia",
+            "rate": 30
+          },
+          {
+            "species": "Volbeat",
             "rate": 18
+          },
+          {
+            "species": "Oddish",
+            "rate": 10
           },
           {
             "species": "Marill",
             "rate": 10
           },
           {
-            "species": "Seedot",
+            "species": "Surskit",
             "rate": 1
           },
           {
-            "species": "Volbeat",
+            "species": "Illumise",
             "rate": 1
           }
         ]
@@ -1015,7 +1068,7 @@
             "rate": 99
           },
           {
-            "species": "Goldeen",
+            "species": "Surskit",
             "rate": 1
           }
         ]
@@ -1065,16 +1118,624 @@
     ]
   },
   {
+    "id": "hoenn-route-111",
+    "name": "Hoenn Route 111",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Sand",
+        "pokemon": [
+          {
+            "species": "Sandshrew",
+            "rate": 35
+          },
+          {
+            "species": "Trapinch",
+            "rate": 35
+          },
+          {
+            "species": "Cacnea",
+            "rate": 20
+          },
+          {
+            "species": "Baltoy",
+            "rate": 10
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Rock Smash",
+        "pokemon": [
+          {
+            "species": "Geodude",
+            "rate": 100
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Surf",
+        "pokemon": [
+          {
+            "species": "Marill",
+            "rate": 99
+          },
+          {
+            "species": "Surskit",
+            "rate": 1
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fish Old",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 70
+          },
+          {
+            "species": "Goldeen",
+            "rate": 30
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fish Good",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 60
+          },
+          {
+            "species": "Goldeen",
+            "rate": 20
+          },
+          {
+            "species": "Barboach",
+            "rate": 20
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fish Super",
+        "pokemon": [
+          {
+            "species": "Barboach",
+            "rate": 100
+          }
+        ]
+      }
+    ],
+    "tmMoves": [
+      {
+        "name": "Sandstorm",
+        "requires": {
+          "type": "item",
+          "name": "Go-Goggles"
+        }
+      },
+      "Secret Power"
+    ]
+  },
+  {
+    "id": "hoenn-route-112",
+    "name": "Hoenn Route 112",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Grass",
+        "pokemon": [
+          {
+            "species": "Numel",
+            "rate": 75
+          },
+          {
+            "species": "Machop",
+            "rate": 25
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "jagged-pass",
+    "name": "Jagged Pass",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Grass",
+        "pokemon": [
+          {
+            "species": "Numel",
+            "rate": 55
+          },
+          {
+            "species": "Machop",
+            "rate": 25
+          },
+          {
+            "species": "Spoink",
+            "rate": 20
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fiery-path",
+    "name": "Fiery Path",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Cave",
+        "pokemon": [
+          {
+            "species": "Numel",
+            "rate": 30
+          },
+          {
+            "species": "Grimer",
+            "rate": 25
+          },
+          {
+            "species": "Torkoal",
+            "rate": 18
+          },
+          {
+            "species": "Machop",
+            "rate": 15
+          },
+          {
+            "species": "Slugma",
+            "rate": 10
+          },
+          {
+            "species": "Koffing",
+            "rate": 2
+          }
+        ]
+      }
+    ],
+    "items": [
+      {
+        "name": "Fire Stone",
+        "requires": {
+          "type": "move",
+          "name": "Strength"
+        }
+      }
+    ],
+    "tmMoves": [
+      {
+        "name": "Toxic",
+        "requires": {
+          "type": "move",
+          "name": "Strength"
+        }
+      }
+    ]
+  },
+  {
+    "id": "hoenn-route-113",
+    "name": "Hoenn Route 113",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Grass",
+        "pokemon": [
+          {
+            "species": "Spinda",
+            "rate": 70
+          },
+          {
+            "species": "Sandshrew",
+            "rate": 25
+          },
+          {
+            "species": "Skarmory",
+            "rate": 5
+          }
+        ]
+      }
+    ],
+    "tmMoves": [
+      "Double Team"
+    ]
+  },
+  {
+    "id": "hoenn-route-114",
+    "name": "Hoenn Route 114",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Grass",
+        "pokemon": [
+          {
+            "species": "Swablu",
+            "rate": 40
+          },
+          {
+            "species": "Lotad",
+            "rate": 30
+          },
+          {
+            "species": "Seviper",
+            "rate": 19
+          },
+          {
+            "species": "Lombre",
+            "rate": 10
+          },
+          {
+            "species": "Surskit",
+            "rate": 1
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Rock Smash",
+        "pokemon": [
+          {
+            "species": "Geodude",
+            "rate": 100
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Surf",
+        "pokemon": [
+          {
+            "species": "Marill",
+            "rate": 99
+          },
+          {
+            "species": "Surskit",
+            "rate": 1
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fish Old",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 70
+          },
+          {
+            "species": "Goldeen",
+            "rate": 30
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fish Good",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 60
+          },
+          {
+            "species": "Goldeen",
+            "rate": 20
+          },
+          {
+            "species": "Barboach",
+            "rate": 20
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fish Super",
+        "pokemon": [
+          {
+            "species": "Barboach",
+            "rate": 100
+          }
+        ]
+      }
+    ],
+    "tmMoves": [
+      "Dig",
+      "Roar"
+    ]
+  },
+  {
+    "id": "lavaridge-town",
+    "name": "Lavaridge Town",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Gift",
+        "pokemon": [
+          {
+            "species": "Wynaut",
+            "rate": 100
+          }
+        ]
+      }
+    ],
+    "items": [
+      {
+        "name": "Go-Goggles",
+        "requires": {
+          "type": "battle",
+          "name": "flannery"
+        }
+      }
+    ],
+    "tmMoves": [
+      {
+        "name": "Overheat",
+        "requires": {
+          "type": "battle",
+          "name": "flannery"
+        }
+      }
+    ]
+  },
+  {
+    "id": "meteor-falls",
+    "name": "Meteor Falls",
+    "zones": [
+      {
+        "zone": "1F 1R",
+        "method": "Cave",
+        "pokemon": [
+          {
+            "species": "Zubat",
+            "rate": 80
+          },
+          {
+            "species": "Lunatone",
+            "rate": 20
+          }
+        ]
+      },
+      {
+        "zone": "1F 1R",
+        "method": "Surf",
+        "pokemon": [
+          {
+            "species": "Zubat",
+            "rate": 90
+          },
+          {
+            "species": "Lunatone",
+            "rate": 10
+          }
+        ]
+      },
+      {
+        "zone": "1F 1R",
+        "method": "Fish Old",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 70
+          },
+          {
+            "species": "Goldeen",
+            "rate": 30
+          }
+        ]
+      },
+      {
+        "zone": "1F 1R",
+        "method": "Fish Good",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 60
+          },
+          {
+            "species": "Goldeen",
+            "rate": 20
+          },
+          {
+            "species": "Barboach",
+            "rate": 20
+          }
+        ]
+      },
+      {
+        "zone": "1F 1R",
+        "method": "Fish Super",
+        "pokemon": [
+          {
+            "species": "Barboach",
+            "rate": 100
+          }
+        ]
+      },
+      {
+        "zone": "1F 2R & B1F 1R",
+        "method": "Cave",
+        "pokemon": [
+          {
+            "species": "Golbat",
+            "rate": 65
+          },
+          {
+            "species": "Lunatone",
+            "rate": 35
+          }
+        ]
+      },
+      {
+        "zone": "1F 2R & B1F 1R",
+        "method": "Surf",
+        "pokemon": [
+          {
+            "species": "Golbat",
+            "rate": 90
+          },
+          {
+            "species": "Lunatone",
+            "rate": 10
+          }
+        ]
+      },
+      {
+        "zone": "1F 2R & B1F 1R",
+        "method": "Fish Old",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 70
+          },
+          {
+            "species": "Goldeen",
+            "rate": 30
+          }
+        ]
+      },
+      {
+        "zone": "1F 2R & B1F 1R",
+        "method": "Fish Good",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 60
+          },
+          {
+            "species": "Goldeen",
+            "rate": 20
+          },
+          {
+            "species": "Barboach",
+            "rate": 20
+          }
+        ]
+      },
+      {
+        "zone": "1F 2R & B1F 1R",
+        "method": "Fish Super",
+        "pokemon": [
+          {
+            "species": "Barboach",
+            "rate": 80
+          },
+          {
+            "species": "Whiscash",
+            "rate": 20
+          }
+        ]
+      },
+      {
+        "zone": "B1F 2R",
+        "method": "Cave",
+        "pokemon": [
+          {
+            "species": "Golbat",
+            "rate": 50
+          },
+          {
+            "species": "Lunatone",
+            "rate": 25
+          },
+          {
+            "species": "Bagon",
+            "rate": 25
+          }
+        ]
+      },
+      {
+        "zone": "B1F 2R",
+        "method": "Surf",
+        "pokemon": [
+          {
+            "species": "Golbat",
+            "rate": 90
+          },
+          {
+            "species": "Lunatone",
+            "rate": 10
+          }
+        ]
+      },
+      {
+        "zone": "B1F 2R",
+        "method": "Fish Old",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 70
+          },
+          {
+            "species": "Goldeen",
+            "rate": 30
+          }
+        ]
+      },
+      {
+        "zone": "B1F 2R",
+        "method": "Fish Good",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 60
+          },
+          {
+            "species": "Goldeen",
+            "rate": 20
+          },
+          {
+            "species": "Barboach",
+            "rate": 20
+          }
+        ]
+      },
+      {
+        "zone": "B1F 2R",
+        "method": "Fish Super",
+        "pokemon": [
+          {
+            "species": "Barboach",
+            "rate": 80
+          },
+          {
+            "species": "Whiscash",
+            "rate": 20
+          }
+        ]
+      }
+    ],
+    "items": [
+      "Moon Stone"
+    ],
+    "tmMoves": [
+      {
+        "name": "Iron Tail",
+        "requires": {
+          "type": "move",
+          "name": "Waterfall"
+        }
+      },
+      {
+        "name": "Dragon Claw",
+        "requires": {
+          "type": "move",
+          "name": "Waterfall"
+        }
+      }
+    ]
+  },
+  {
     "id": "hoenn-route-118",
     "name": "Hoenn Route 118",
     "zones": [
       {
         "zone": "",
         "method": "Grass",
-        "requires": {
-          "type": "move",
-          "name": "Surf"
-        },
         "pokemon": [
           {
             "species": "Zigzagoon",
@@ -1178,697 +1839,22 @@
     ]
   },
   {
-    "id": "mauville-city",
-    "name": "Mauville City",
-    "tmMoves": [
-      "Rock Smash",
-      {
-        "name": "Shock Wave",
-        "requires": {
-          "type": "battle",
-          "name": "wattson"
-        }
-      },
-      {
-        "name": "Thunderbolt",
-        "requires": {
-          "type": "battle",
-          "name": "norman"
-        }
-      }
-    ]
-  },
-  {
-    "id": "hoenn-route-111",
-    "name": "Hoenn Route 111",
-    "zones": [
-      {
-        "zone": "",
-        "method": "Sand",
-        "requires": {
-          "type": "item",
-          "name": "Go-Goggles"
-        },
-        "pokemon": [
-          {
-            "species": "Sandshrew",
-            "rate": 35
-          },
-          {
-            "species": "Trapinch",
-            "rate": 35
-          },
-          {
-            "species": "Baltoy",
-            "rate": 24
-          },
-          {
-            "species": "Cacnea",
-            "rate": 6
-          }
-        ]
-      },
-      {
-        "zone": "",
-        "method": "Rock Smash",
-        "pokemon": [
-          {
-            "species": "Geodude",
-            "rate": 100
-          }
-        ]
-      },
-      {
-        "zone": "",
-        "method": "Surf",
-        "pokemon": [
-          {
-            "species": "Marill",
-            "rate": 99
-          },
-          {
-            "species": "Goldeen",
-            "rate": 1
-          }
-        ]
-      },
-      {
-        "zone": "",
-        "method": "Fish Old",
-        "pokemon": [
-          {
-            "species": "Magikarp",
-            "rate": 70
-          },
-          {
-            "species": "Goldeen",
-            "rate": 30
-          }
-        ]
-      },
-      {
-        "zone": "",
-        "method": "Fish Good",
-        "pokemon": [
-          {
-            "species": "Magikarp",
-            "rate": 60
-          },
-          {
-            "species": "Goldeen",
-            "rate": 20
-          },
-          {
-            "species": "Barboach",
-            "rate": 20
-          }
-        ]
-      },
-      {
-        "zone": "",
-        "method": "Fish Super",
-        "pokemon": [
-          {
-            "species": "Barboach",
-            "rate": 100
-          }
-        ]
-      }
-    ],
-    "tmMoves": [
-      {
-        "name": "Sandstorm",
-        "requires": {
-          "type": "item",
-          "name": "Go-Goggles"
-        }
-      },
-      "Secret Power"
-    ]
-  },
-  {
-    "id": "hoenn-route-112",
-    "name": "Hoenn Route 112",
-    "zones": [
-      {
-        "zone": "",
-        "method": "Grass",
-        "pokemon": [
-          {
-            "species": "Numel",
-            "rate": 75
-          },
-          {
-            "species": "Marill",
-            "rate": 25
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "jagged-pass",
-    "name": "Jagged Pass",
-    "zones": [
-      {
-        "zone": "",
-        "method": "Grass",
-        "pokemon": [
-          {
-            "species": "Numel",
-            "rate": 55
-          },
-          {
-            "species": "Machop",
-            "rate": 25
-          },
-          {
-            "species": "Spoink",
-            "rate": 20
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "fiery-path",
-    "name": "Fiery Path",
-    "zones": [
-      {
-        "zone": "",
-        "method": "Cave",
-        "pokemon": [
-          {
-            "species": "Numel",
-            "rate": 30
-          },
-          {
-            "species": "Koffing",
-            "rate": 25
-          },
-          {
-            "species": "Torkoal",
-            "rate": 18
-          },
-          {
-            "species": "Machop",
-            "rate": 15
-          },
-          {
-            "species": "Slugma",
-            "rate": 10
-          },
-          {
-            "species": "Grimer",
-            "rate": 2
-          }
-        ]
-      }
-    ],
-    "items": [
-      {
-        "name": "Fire Stone",
-        "requires": {
-          "type": "move",
-          "name": "Strength"
-        }
-      }
-    ],
-    "tmMoves": [
-      {
-        "name": "Toxic",
-        "requires": {
-          "type": "move",
-          "name": "Strength"
-        }
-      }
-    ]
-  },
-  {
-    "id": "hoenn-route-113",
-    "name": "Hoenn Route 113",
-    "zones": [
-      {
-        "zone": "",
-        "method": "Grass",
-        "pokemon": [
-          {
-            "species": "Spinda",
-            "rate": 70
-          },
-          {
-            "species": "Slugma",
-            "rate": 25
-          },
-          {
-            "species": "Skarmory",
-            "rate": 5
-          }
-        ]
-      }
-    ],
-    "tmMoves": [
-      "Double Team"
-    ]
-  },
-  {
-    "id": "hoenn-route-114",
-    "name": "Hoenn Route 114",
-    "zones": [
-      {
-        "zone": "",
-        "method": "Grass",
-        "pokemon": [
-          {
-            "species": "Swablu",
-            "rate": 40
-          },
-          {
-            "species": "Lotad",
-            "rate": 30
-          },
-          {
-            "species": "Lombre",
-            "rate": 20
-          },
-          {
-            "species": "Seviper",
-            "rate": 9
-          },
-          {
-            "species": "Nuzleaf",
-            "rate": 1
-          }
-        ]
-      },
-      {
-        "zone": "",
-        "method": "Rock Smash",
-        "pokemon": [
-          {
-            "species": "Geodude",
-            "rate": 100
-          }
-        ]
-      },
-      {
-        "zone": "",
-        "method": "Surf",
-        "pokemon": [
-          {
-            "species": "Marill",
-            "rate": 99
-          },
-          {
-            "species": "Goldeen",
-            "rate": 1
-          }
-        ]
-      },
-      {
-        "zone": "",
-        "method": "Fish Old",
-        "pokemon": [
-          {
-            "species": "Magikarp",
-            "rate": 70
-          },
-          {
-            "species": "Goldeen",
-            "rate": 30
-          }
-        ]
-      },
-      {
-        "zone": "",
-        "method": "Fish Good",
-        "pokemon": [
-          {
-            "species": "Magikarp",
-            "rate": 60
-          },
-          {
-            "species": "Goldeen",
-            "rate": 20
-          },
-          {
-            "species": "Barboach",
-            "rate": 20
-          }
-        ]
-      },
-      {
-        "zone": "",
-        "method": "Fish Super",
-        "pokemon": [
-          {
-            "species": "Barboach",
-            "rate": 100
-          }
-        ]
-      }
-    ],
-    "tmMoves": [
-      "Dig",
-      "Roar"
-    ]
-  },
-  {
-    "id": "meteor-falls",
-    "name": "Meteor Falls",
-    "zones": [
-      {
-        "zone": "1F 1R",
-        "method": "Cave",
-        "pokemon": [
-          {
-            "species": "Zubat",
-            "rate": 80
-          },
-          {
-            "species": "Solrock",
-            "rate": 20
-          }
-        ]
-      },
-      {
-        "zone": "1F 1R",
-        "method": "Surf",
-        "pokemon": [
-          {
-            "species": "Zubat",
-            "rate": 90
-          },
-          {
-            "species": "Solrock",
-            "rate": 10
-          }
-        ]
-      },
-      {
-        "zone": "1F 1R",
-        "method": "Fish Old",
-        "pokemon": [
-          {
-            "species": "Magikarp",
-            "rate": 70
-          },
-          {
-            "species": "Goldeen",
-            "rate": 30
-          }
-        ]
-      },
-      {
-        "zone": "1F 1R",
-        "method": "Fish Good",
-        "pokemon": [
-          {
-            "species": "Magikarp",
-            "rate": 60
-          },
-          {
-            "species": "Goldeen",
-            "rate": 20
-          },
-          {
-            "species": "Barboach",
-            "rate": 20
-          }
-        ]
-      },
-      {
-        "zone": "1F 1R",
-        "method": "Fish Super",
-        "pokemon": [
-          {
-            "species": "Barboach",
-            "rate": 100
-          }
-        ]
-      },
-      {
-        "zone": "1F 2R & B1F 1R",
-        "method": "Cave",
-        "requires": {
-          "type": "move",
-          "name": "Waterfall"
-        },
-        "pokemon": [
-          {
-            "species": "Golbat",
-            "rate": 65
-          },
-          {
-            "species": "Solrock",
-            "rate": 35
-          }
-        ]
-      },
-      {
-        "zone": "1F 2R & B1F 1R",
-        "method": "Surf",
-        "requires": {
-          "type": "move",
-          "name": "Waterfall"
-        },
-        "pokemon": [
-          {
-            "species": "Golbat",
-            "rate": 90
-          },
-          {
-            "species": "Solrock",
-            "rate": 10
-          }
-        ]
-      },
-      {
-        "zone": "1F 2R & B1F 1R",
-        "method": "Fish Old",
-        "requires": {
-          "type": "move",
-          "name": "Waterfall"
-        },
-        "pokemon": [
-          {
-            "species": "Magikarp",
-            "rate": 70
-          },
-          {
-            "species": "Goldeen",
-            "rate": 30
-          }
-        ]
-      },
-      {
-        "zone": "1F 2R & B1F 1R",
-        "method": "Fish Good",
-        "requires": {
-          "type": "move",
-          "name": "Waterfall"
-        },
-        "pokemon": [
-          {
-            "species": "Magikarp",
-            "rate": 60
-          },
-          {
-            "species": "Goldeen",
-            "rate": 20
-          },
-          {
-            "species": "Barboach",
-            "rate": 20
-          }
-        ]
-      },
-      {
-        "zone": "1F 2R & B1F 1R",
-        "method": "Fish Super",
-        "requires": {
-          "type": "move",
-          "name": "Waterfall"
-        },
-        "pokemon": [
-          {
-            "species": "Barboach",
-            "rate": 80
-          },
-          {
-            "species": "Whiscash",
-            "rate": 20
-          }
-        ]
-      },
-      {
-        "zone": "B1F 2R",
-        "method": "Cave",
-        "requires": {
-          "type": "move",
-          "name": "Waterfall"
-        },
-        "pokemon": [
-          {
-            "species": "Golbat",
-            "rate": 50
-          },
-          {
-            "species": "Solrock",
-            "rate": 25
-          },
-          {
-            "species": "Bagon",
-            "rate": 25
-          }
-        ]
-      },
-      {
-        "zone": "B1F 2R",
-        "method": "Surf",
-        "requires": {
-          "type": "move",
-          "name": "Waterfall"
-        },
-        "pokemon": [
-          {
-            "species": "Golbat",
-            "rate": 90
-          },
-          {
-            "species": "Solrock",
-            "rate": 10
-          }
-        ]
-      },
-      {
-        "zone": "B1F 2R",
-        "method": "Fish Old",
-        "requires": {
-          "type": "move",
-          "name": "Waterfall"
-        },
-        "pokemon": [
-          {
-            "species": "Magikarp",
-            "rate": 70
-          },
-          {
-            "species": "Goldeen",
-            "rate": 30
-          }
-        ]
-      },
-      {
-        "zone": "B1F 2R",
-        "method": "Fish Good",
-        "requires": {
-          "type": "move",
-          "name": "Waterfall"
-        },
-        "pokemon": [
-          {
-            "species": "Magikarp",
-            "rate": 60
-          },
-          {
-            "species": "Goldeen",
-            "rate": 20
-          },
-          {
-            "species": "Barboach",
-            "rate": 20
-          }
-        ]
-      },
-      {
-        "zone": "B1F 2R",
-        "method": "Fish Super",
-        "requires": {
-          "type": "move",
-          "name": "Waterfall"
-        },
-        "pokemon": [
-          {
-            "species": "Barboach",
-            "rate": 80
-          },
-          {
-            "species": "Whiscash",
-            "rate": 20
-          }
-        ]
-      },
-      {
-        "zone": "Steven's cave",
-        "method": "Cave",
-        "requires": {
-          "type": "move",
-          "name": "Waterfall"
-        },
-        "pokemon": [
-          {
-            "species": "Golbat",
-            "rate": 65
-          },
-          {
-            "species": "Solrock",
-            "rate": 35
-          }
-        ]
-      }
-    ],
-    "items": [
-      "Moon Stone"
-    ],
-    "tmMoves": [
-      {
-        "name": "Iron Tail",
-        "requires": {
-          "type": "move",
-          "name": "Waterfall"
-        }
-      },
-      {
-        "name": "Dragon Claw",
-        "requires": {
-          "type": "move",
-          "name": "Waterfall"
-        }
-      }
-    ]
-  },
-  {
-    "id": "lavaridge-town",
-    "name": "Lavaridge Town",
+    "id": "mirage-tower",
+    "name": "Mirage Tower",
     "zones": [
       {
         "zone": "",
         "method": "Gift",
         "pokemon": [
           {
-            "species": "Wynaut",
-            "rate": 100
+            "species": "Lileep",
+            "rate": 50
+          },
+          {
+            "species": "Anorith",
+            "rate": 50
           }
         ]
-      }
-    ],
-    "items": [
-      {
-        "name": "Go-Goggles",
-        "requires": {
-          "type": "battle",
-          "name": "flannery"
-        }
-      }
-    ],
-    "tmMoves": [
-      {
-        "name": "Overheat",
-        "requires": {
-          "type": "battle",
-          "name": "flannery"
-        }
       }
     ]
   },
@@ -1968,80 +1954,6 @@
     ]
   },
   {
-    "id": "petalburg-city",
-    "name": "Petalburg City",
-    "tmMoves": [
-      {
-        "name": "Facade",
-        "requires": {
-          "type": "battle",
-          "name": "norman"
-        }
-      },
-      {
-        "name": "Surf",
-        "requires": {
-          "type": "battle",
-          "name": "norman"
-        }
-      }
-    ],
-    "zones": [
-      {
-        "zone": "",
-        "method": "Surf",
-        "pokemon": [
-          {
-            "species": "Marill",
-            "rate": 100
-          }
-        ]
-      },
-      {
-        "zone": "",
-        "method": "Fish Old",
-        "pokemon": [
-          {
-            "species": "Goldeen",
-            "rate": 30
-          },
-          {
-            "species": "Magikarp",
-            "rate": 70
-          }
-        ]
-      },
-      {
-        "zone": "",
-        "method": "Fish Good",
-        "pokemon": [
-          {
-            "species": "Goldeen",
-            "rate": 20
-          },
-          {
-            "species": "Magikarp",
-            "rate": 60
-          },
-          {
-            "species": "Corphish",
-            "rate": 20
-          }
-        ]
-      },
-      {
-        "zone": "",
-        "method": "Fish Super",
-        "pokemon": [
-          {
-            "species": "Corphish",
-            "rate": 100
-          }
-        ]
-      }
-    ]
-  },
-  {
     "id": "hoenn-route-119",
     "name": "Hoenn Route 119",
     "zones": [
@@ -2062,12 +1974,12 @@
             "rate": 30
           },
           {
-            "species": "Kecleon",
-            "rate": 1
-          },
-          {
             "species": "Tropius",
             "rate": 9
+          },
+          {
+            "species": "Kecleon",
+            "rate": 1
           }
         ]
       },
@@ -2140,6 +2052,65 @@
     ]
   },
   {
+    "id": "fortree-city",
+    "name": "Fortree City",
+    "tmMoves": [
+      {
+        "name": "Aerial Ace",
+        "requires": {
+          "type": "battle",
+          "name": "winona"
+        }
+      },
+      "Hidden Power"
+    ]
+  },
+  {
+    "id": "new-mauville",
+    "name": "New Mauville",
+    "zones": [
+      {
+        "zone": "Entrance",
+        "method": "Cave",
+        "pokemon": [
+          {
+            "species": "Magnemite",
+            "rate": 50
+          },
+          {
+            "species": "Voltorb",
+            "rate": 50
+          }
+        ]
+      },
+      {
+        "zone": "Basement",
+        "method": "Cave",
+        "pokemon": [
+          {
+            "species": "Magnemite",
+            "rate": 49
+          },
+          {
+            "species": "Voltorb",
+            "rate": 1
+          },
+          {
+            "species": "Magneton",
+            "rate": 49
+          },
+          {
+            "species": "Electrode",
+            "rate": 1
+          }
+        ]
+      }
+    ],
+    "items": [
+      "Thunder Stone"
+    ]
+  },
+  {
     "id": "hoenn-route-120",
     "name": "Hoenn Route 120",
     "zones": [
@@ -2148,7 +2119,7 @@
         "method": "Long grass",
         "pokemon": [
           {
-            "species": "Mightyena",
+            "species": "Linoone",
             "rate": 30
           },
           {
@@ -2156,7 +2127,7 @@
             "rate": 25
           },
           {
-            "species": "Poochyena",
+            "species": "Zigzagoon",
             "rate": 20
           },
           {
@@ -2168,7 +2139,7 @@
             "rate": 8
           },
           {
-            "species": "Seedot",
+            "species": "Surskit",
             "rate": 1
           },
           {
@@ -2186,7 +2157,7 @@
             "rate": 99
           },
           {
-            "species": "Goldeen",
+            "species": "Surskit",
             "rate": 1
           }
         ]
@@ -2236,21 +2207,6 @@
     ]
   },
   {
-    "id": "fortree-city",
-    "items": [],
-    "tmMoves": [
-      {
-        "name": "Aerial Ace",
-        "requires": {
-          "type": "battle",
-          "name": "winona"
-        }
-      },
-      "Hidden Power"
-    ],
-    "name": "Fortree City"
-  },
-  {
     "id": "hoenn-route-121",
     "name": "Hoenn Route 121",
     "zones": [
@@ -2263,11 +2219,11 @@
             "rate": 30
           },
           {
-            "species": "Poochyena",
+            "species": "Zigzagoon",
             "rate": 20
           },
           {
-            "species": "Mightyena",
+            "species": "Linoone",
             "rate": 20
           },
           {
@@ -2425,8 +2381,8 @@
     "name": "Mt. Pyre",
     "zones": [
       {
-        "zone": "Interior 1F-3F",
-        "method": "Cave",
+        "zone": "Interior",
+        "method": "1F-3F",
         "pokemon": [
           {
             "species": "Shuppet",
@@ -2435,8 +2391,8 @@
         ]
       },
       {
-        "zone": "Interior 4F-6F",
-        "method": "Cave",
+        "zone": "Interior",
+        "method": "4F-6F",
         "pokemon": [
           {
             "species": "Shuppet",
@@ -2454,11 +2410,15 @@
         "pokemon": [
           {
             "species": "Shuppet",
-            "rate": 60
+            "rate": 40
+          },
+          {
+            "species": "Meditite",
+            "rate": 30
           },
           {
             "species": "Vulpix",
-            "rate": 30
+            "rate": 20
           },
           {
             "species": "Wingull",
@@ -2485,13 +2445,13 @@
         ]
       }
     ],
-    "tmMoves": [
-      "Shadow Ball",
-      "Skill Swap"
-    ],
     "items": [
       "Sea Incense",
       "Lax Incense"
+    ],
+    "tmMoves": [
+      "Shadow Ball",
+      "Skill Swap"
     ]
   },
   {
@@ -2507,11 +2467,11 @@
             "rate": 30
           },
           {
-            "species": "Poochyena",
+            "species": "Zigzagoon",
             "rate": 20
           },
           {
-            "species": "Mightyena",
+            "species": "Linoone",
             "rate": 20
           },
           {
@@ -2756,6 +2716,38 @@
     ]
   },
   {
+    "id": "mossdeep-city",
+    "name": "Mossdeep City",
+    "items": [
+      "Super Rod"
+    ],
+    "tmMoves": [
+      {
+        "name": "Calm Mind",
+        "requires": {
+          "type": "battle",
+          "name": "tate"
+        }
+      },
+      "Dive"
+    ]
+  },
+  {
+    "id": "lilycove-city",
+    "name": "Lilycove City",
+    "tmMoves": [
+      "Rest",
+      "Fire Blast",
+      "Thunder",
+      "Blizzard",
+      "Hyper Beam",
+      "Protect",
+      "Safeguard",
+      "Reflect",
+      "Light Screen"
+    ]
+  },
+  {
     "id": "shoal-cave",
     "name": "Shoal Cave",
     "zones": [
@@ -2907,8 +2899,7 @@
           }
         ]
       }
-    ],
-    "tmMoves": []
+    ]
   },
   {
     "id": "hoenn-safari-zone-area-2",
@@ -3456,6 +3447,27 @@
     ]
   },
   {
+    "id": "sootopolis",
+    "name": "Sootopolis",
+    "tmMoves": [
+      "Brick Break",
+      {
+        "name": "Water Pulse",
+        "requires": {
+          "type": "battle",
+          "name": "wallace"
+        }
+      },
+      {
+        "name": "Waterfall",
+        "requires": {
+          "type": "battle",
+          "name": "wallace"
+        }
+      }
+    ]
+  },
+  {
     "id": "cave-of-origin",
     "name": "Cave of Origin",
     "zones": [
@@ -3478,27 +3490,6 @@
         ]
       }
     ]
-  },
-  {
-    "id": "sootopolis",
-    "tmMoves": [
-      "Brick Break",
-      {
-        "name": "Water Pulse",
-        "requires": {
-          "type": "battle",
-          "name": "juan"
-        }
-      },
-      {
-        "name": "Waterfall",
-        "requires": {
-          "type": "battle",
-          "name": "juan"
-        }
-      }
-    ],
-    "name": "Sootopolis"
   },
   {
     "id": "hoenn-route-129",
@@ -3947,12 +3938,214 @@
     ]
   },
   {
+    "id": "pacifidlog-town",
+    "name": "Pacifidlog Town",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Surf",
+        "pokemon": [
+          {
+            "species": "Tentacool",
+            "rate": 60
+          },
+          {
+            "species": "Wingull",
+            "rate": 35
+          },
+          {
+            "species": "Pelipper",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fish Old",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 70
+          },
+          {
+            "species": "Tentacool",
+            "rate": 30
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fish Good",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 60
+          },
+          {
+            "species": "Tentacool",
+            "rate": 20
+          },
+          {
+            "species": "Wailmer",
+            "rate": 20
+          }
+        ]
+      }
+    ],
+    "tmMoves": [
+      "Frustration",
+      "Return"
+    ]
+  },
+  {
+    "id": "abandoned-ship",
+    "name": "Abandoned Ship",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Surf",
+        "pokemon": [
+          {
+            "species": "Tentacool",
+            "rate": 99
+          },
+          {
+            "species": "Tentacruel",
+            "rate": 1
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fish Old",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 70
+          },
+          {
+            "species": "Tentacool",
+            "rate": 30
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fish Good",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 60
+          },
+          {
+            "species": "Tentacool",
+            "rate": 40
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fish Super",
+        "pokemon": [
+          {
+            "species": "Tentacool",
+            "rate": 80
+          },
+          {
+            "species": "Tentacruel",
+            "rate": 20
+          }
+        ]
+      }
+    ],
+    "items": [
+      "Water Stone"
+    ],
+    "tmMoves": [
+      "Ice Beam"
+    ]
+  },
+  {
+    "id": "evergrand-city",
+    "name": "EverGrande City",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Surf",
+        "pokemon": [
+          {
+            "species": "Tentacool",
+            "rate": 60
+          },
+          {
+            "species": "Wingull",
+            "rate": 35
+          },
+          {
+            "species": "Pelipper",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fish Old",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 70
+          },
+          {
+            "species": "Tentacool",
+            "rate": 30
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fish Good",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 60
+          },
+          {
+            "species": "Wailmer",
+            "rate": 20
+          },
+          {
+            "species": "Luvdisc",
+            "rate": 20
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fish Super",
+        "pokemon": [
+          {
+            "species": "Corsola",
+            "rate": 15
+          },
+          {
+            "species": "Wailmer",
+            "rate": 45
+          },
+          {
+            "species": "Luvdisc",
+            "rate": 40
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "sky-pillar",
     "name": "Sky Pillar",
     "zones": [
       {
-        "zone": "1F",
-        "method": "Cave",
+        "zone": "",
+        "method": "1F",
         "pokemon": [
           {
             "species": "Golbat",
@@ -3973,8 +4166,8 @@
         ]
       },
       {
-        "zone": "3F",
-        "method": "Cave",
+        "zone": "",
+        "method": "3F",
         "pokemon": [
           {
             "species": "Golbat",
@@ -3995,8 +4188,8 @@
         ]
       },
       {
-        "zone": "5F",
-        "method": "Cave",
+        "zone": "",
+        "method": "5F",
         "pokemon": [
           {
             "species": "Golbat",
@@ -4078,10 +4271,14 @@
           },
           {
             "species": "Lairon",
-            "rate": 25
+            "rate": 15
           },
           {
-            "species": "Mawile",
+            "species": "Medicham",
+            "rate": 10
+          },
+          {
+            "species": "Meditite",
             "rate": 5
           }
         ]
@@ -4114,11 +4311,11 @@
           },
           {
             "species": "Lairon",
-            "rate": 25
+            "rate": 15
           },
           {
-            "species": "Mawile",
-            "rate": 5
+            "species": "Medicham",
+            "rate": 15
           }
         ]
       },
@@ -4181,339 +4378,6 @@
     ],
     "tmMoves": [
       "Psychic"
-    ]
-  },
-  {
-    "id": "dewford-city",
-    "name": "Dewford City",
-    "zones": [],
-    "items": [
-      "Old Rod"
-    ],
-    "tmMoves": [
-      {
-        "name": "Bulk Up",
-        "requires": {
-          "type": "battle",
-          "name": "brawly"
-        }
-      }
-    ]
-  },
-  {
-    "id": "mossdeep-city",
-    "name": "Mossdeep City",
-    "zones": [],
-    "items": [
-      "Super Rod"
-    ],
-    "tmMoves": [
-      {
-        "name": "Calm Mind",
-        "requires": {
-          "type": "battle",
-          "name": "tate"
-        }
-      },
-      "Dive"
-    ]
-  },
-  {
-    "id": "new-mauville",
-    "name": "New Mauville",
-    "zones": [
-      {
-        "zone": "Entrance",
-        "method": "Cave",
-        "pokemon": [
-          {
-            "species": "Magnemite",
-            "rate": 50
-          },
-          {
-            "species": "Voltorb",
-            "rate": 50
-          }
-        ]
-      },
-      {
-        "zone": "Basement",
-        "method": "Cave",
-        "pokemon": [
-          {
-            "species": "Magnemite",
-            "rate": 49
-          },
-          {
-            "species": "Voltorb",
-            "rate": 1
-          },
-          {
-            "species": "Magneton",
-            "rate": 49
-          },
-          {
-            "species": "Electrode",
-            "rate": 1
-          }
-        ]
-      }
-    ],
-    "items": [
-      "Thunder Stone"
-    ]
-  },
-  {
-    "id": "lilycove-city",
-    "name": "Lilycove City",
-    "zones": [],
-    "items": [],
-    "tmMoves": [
-      "Rest",
-      "Fire Blast",
-      "Thunder",
-      "Blizzard",
-      "Hyper Beam",
-      "Protect",
-      "Safeguard",
-      "Reflect",
-      "Light Screen"
-    ]
-  },
-  {
-    "id": "pacifidlog-town",
-    "name": "Pacifidlog Town",
-    "zones": [
-      {
-        "zone": "",
-        "method": "Surf",
-        "pokemon": [
-          {
-            "species": "Tentacool",
-            "rate": 60
-          },
-          {
-            "species": "Wingull",
-            "rate": 35
-          },
-          {
-            "species": "Pelipper",
-            "rate": 5
-          }
-        ]
-      },
-      {
-        "zone": "",
-        "method": "Fish Old",
-        "pokemon": [
-          {
-            "species": "Tentacool",
-            "rate": 30
-          },
-          {
-            "species": "Magikarp",
-            "rate": 70
-          }
-        ]
-      },
-      {
-        "zone": "",
-        "method": "Fish Good",
-        "pokemon": [
-          {
-            "species": "Tentacool",
-            "rate": 20
-          },
-          {
-            "species": "Magikarp",
-            "rate": 60
-          },
-          {
-            "species": "Wailmer",
-            "rate": 20
-          }
-        ]
-      },
-      {
-        "zone": "",
-        "method": "Fish Super",
-        "pokemon": [
-          {
-            "species": "Sharpedo",
-            "rate": 40
-          },
-          {
-            "species": "Wailmer",
-            "rate": 60
-          }
-        ]
-      }
-    ],
-    "tmMoves": [
-      "Frustration",
-      "Return"
-    ]
-  },
-  {
-    "id": "abandoned-ship",
-    "name": "Abandoned Ship",
-    "zones": [
-      {
-        "zone": "",
-        "method": "Surf",
-        "pokemon": [
-          {
-            "species": "Tentacool",
-            "rate": 99
-          },
-          {
-            "species": "Tentacruel",
-            "rate": 1
-          }
-        ]
-      },
-      {
-        "zone": "",
-        "method": "Fish Old",
-        "pokemon": [
-          {
-            "species": "Tentacool",
-            "rate": 30
-          },
-          {
-            "species": "Magikarp",
-            "rate": 70
-          }
-        ]
-      },
-      {
-        "zone": "",
-        "method": "Fish Good",
-        "pokemon": [
-          {
-            "species": "Tentacool",
-            "rate": 40
-          },
-          {
-            "species": "Magikarp",
-            "rate": 60
-          }
-        ]
-      },
-      {
-        "zone": "",
-        "method": "Fish Super",
-        "pokemon": [
-          {
-            "species": "Tentacool",
-            "rate": 80
-          },
-          {
-            "species": "Tentacruel",
-            "rate": 20
-          }
-        ]
-      }
-    ],
-    "tmMoves": [
-      "Ice Beam"
-    ],
-    "items": [
-      "Water Stone"
-    ]
-  },
-  {
-    "id": "evergrand-city",
-    "name": "EverGrande City",
-    "zones": [
-      {
-        "zone": "",
-        "method": "Surf",
-        "pokemon": [
-          {
-            "species": "Tentacool",
-            "rate": 60
-          },
-          {
-            "species": "Wingull",
-            "rate": 35
-          },
-          {
-            "species": "Pelipper",
-            "rate": 5
-          }
-        ]
-      },
-      {
-        "zone": "",
-        "method": "Fish Old",
-        "pokemon": [
-          {
-            "species": "Tentacool",
-            "rate": 30
-          },
-          {
-            "species": "Magikarp",
-            "rate": 70
-          }
-        ]
-      },
-      {
-        "zone": "",
-        "method": "Fish Good",
-        "pokemon": [
-          {
-            "species": "Magikarp",
-            "rate": 60
-          },
-          {
-            "species": "Wailmer",
-            "rate": 20
-          },
-          {
-            "species": "Luvdisc",
-            "rate": 20
-          }
-        ]
-      },
-      {
-        "zone": "",
-        "method": "Fish Super",
-        "pokemon": [
-          {
-            "species": "Corsola",
-            "rate": 15
-          },
-          {
-            "species": "Wailmer",
-            "rate": 45
-          },
-          {
-            "species": "Luvdisc",
-            "rate": 40
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "mirage-tower",
-    "name": "Mirage Tower",
-    "zones": [
-      {
-        "zone": "",
-        "method": "Gift",
-        "pokemon": [
-          {
-            "species": "Lileep",
-            "rate": 50
-          },
-          {
-            "species": "Anorith",
-            "rate": 50
-          }
-        ]
-      }
     ]
   }
 ]
