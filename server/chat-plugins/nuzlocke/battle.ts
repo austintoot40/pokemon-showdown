@@ -198,12 +198,18 @@ export const battleHandlers: Chat.Handlers = {
 			});
 		}
 
+		// Snapshot the party before cleanParty() removes dead members.
+		const finalPartySnapshot = game.party
+			.map(uid => game.getPokemon(uid))
+			.filter((p): p is OwnedPokemon => p != null)
+			.map(p => ({ species: p.species, nickname: p.nickname, alive: p.alive }));
+
 		game.cleanParty();
 
 		// Check for total wipe — go straight to summary, no results page
 		const alive = game.box.filter(p => p.alive);
 		if (alive.length === 0) {
-			recordCompletedRun(game, 'wipe', game.currentBattle?.trainer);
+			recordCompletedRun(game, 'wipe', game.currentBattle?.trainer, finalPartySnapshot);
 			game.goToPage('summary');
 			return;
 		}
@@ -218,7 +224,7 @@ export const battleHandlers: Chat.Handlers = {
 			game.nextScreen = 'teambuilding';
 		}
 		if (game.nextScreen === 'summary') {
-			recordCompletedRun(game, 'victory', trainerName);
+			recordCompletedRun(game, 'victory', trainerName, finalPartySnapshot);
 		}
 		game.lastBattleResult = { won: playerWon, perfect: playerWon && deaths.length === 0, trainerName, deaths: battleDeaths };
 		game.goToPage('results');

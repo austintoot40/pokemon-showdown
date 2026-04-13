@@ -19,18 +19,6 @@ const scenarios = new Map<string, Scenario>();
  * Zone `requires` fields are left in place for the client to use.
  */
 function buildRequiresIndexes(segs: any[]) {
-	// Move index: first segment where a plain-string TM appears.
-	// Deferred TMs are excluded since they may themselves shift to a later segment.
-	const moveFirstAvailable = new Map<string, number>();
-	for (let i = 0; i < segs.length; i++) {
-		for (const tm of segs[i].tmMoves ?? []) {
-			if (typeof tm === 'string') {
-				const id = toID(tm);
-				if (!moveFirstAvailable.has(id)) moveFirstAvailable.set(id, i);
-			}
-		}
-	}
-
 	// Battle index: first segment containing each battle ID.
 	// Battle-gated items defer to the segment AFTER the battle (battles fire mid-segment,
 	// not at resolveSegmentStart, so the item must wait until the following segment).
@@ -39,6 +27,32 @@ function buildRequiresIndexes(segs: any[]) {
 		for (const battle of segs[i].battles ?? []) {
 			const id = toID(typeof battle === 'string' ? battle : battle.id);
 			if (!battleFirstAvailable.has(id)) battleFirstAvailable.set(id, i + 1);
+		}
+	}
+
+	// Move index: first segment where each TM/HM becomes available.
+	// Deferred TMs are indexed at their resolved landing segment (computed here using
+	// battleFirstAvailable), so that items gated behind them (e.g. Good Rod requires Surf,
+	// Surf requires Norman) are correctly deferred.
+	const moveFirstAvailable = new Map<string, number>();
+	for (let i = 0; i < segs.length; i++) {
+		for (const tm of segs[i].tmMoves ?? []) {
+			if (typeof tm === 'string') {
+				const id = toID(tm);
+				if (!moveFirstAvailable.has(id)) moveFirstAvailable.set(id, i);
+			} else {
+				// Deferred TM: resolve its actual landing segment now.
+				const type = tm.requires?.type;
+				const reqName = toID(tm.requires?.name ?? '');
+				let resolvedIdx = i;
+				if (type === 'battle') {
+					const reqIdx = battleFirstAvailable.get(reqName);
+					if (reqIdx !== undefined && reqIdx > i) resolvedIdx = Math.min(reqIdx, segs.length - 1);
+				}
+				// move-requires-move not present in current data; if needed, add a second pass.
+				const id = toID(tm.name);
+				if (!moveFirstAvailable.has(id)) moveFirstAvailable.set(id, resolvedIdx);
+			}
 		}
 	}
 

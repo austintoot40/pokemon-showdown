@@ -98,6 +98,26 @@ export class NuzlockeGame {
 			this.addToParty(pokemon.uid);
 			this.resolvedRoutes.push(route.route);
 		}
+		// Re-lock previously-deferred routes that are still fully inaccessible.
+		// This prevents routes in deferredRoutes from showing confusing "Deferred" badges
+		// when they haven't become accessible yet.
+		this.deferredRoutes = this.deferredRoutes.filter(r => {
+			if (!this.isRouteDeferrable(r)) return true; // accessible or all dupes — keep as deferred
+			if (!this.lockedRoutes.some(lr => lr.route === r.route)) {
+				this.lockedRoutes.push(r);
+			}
+			return false; // moved to lockedRoutes
+		});
+
+		// Auto-lock encounters whose every zone is currently inaccessible (and have
+		// something non-dupe to come back for), so the client shows them as handled
+		// from the moment the segment loads rather than waiting until segment end.
+		for (const route of flatEncounters(segment)) {
+			if (this.resolvedRoutes.includes(route.route)) continue;
+			if (this.deferredRoutes.some(r => r.route === route.route)) continue;
+			if (this.lockedRoutes.some(r => r.route === route.route)) continue;
+			if (this.isRouteDeferrable(route)) this.lockedRoutes.push(route);
+		}
 	}
 
 	/** Called by /nuzlocke choosegift: resolves a choice gift to the player's selected species. */
@@ -125,13 +145,36 @@ export class NuzlockeGame {
 		'Fish Super': { type: 'item', name: 'Super Rod' },
 	};
 
+	/** Returns true if a zone's prerequisite is currently unmet. */
+	isZoneLocked(zone: import('./types').ZoneEncounter): boolean {
+		const prereq = zone.requires ?? NuzlockeGame.METHOD_PREREQS[zone.method];
+		if (!prereq) return false;
+		if (prereq.type === 'move' || prereq.type === 'hm') return !this.tmMoves.includes(prereq.name);
+		return !this.items.includes(prereq.name);
+	}
+
 	/** Returns true if every zone in the route has an unmet prerequisite. */
 	isRouteAllLocked(route: RouteEncounter): boolean {
-		return route.zones.every(zone => {
-			const prereq = zone.requires ?? NuzlockeGame.METHOD_PREREQS[zone.method];
-			if (!prereq) return false;
-			if (prereq.type === 'move' || prereq.type === 'hm') return !this.tmMoves.includes(prereq.name);
-			return !this.items.includes(prereq.name);
+		return route.zones.every(zone => this.isZoneLocked(zone));
+	}
+
+	/**
+	 * Returns true if the route should be auto-carried to a future segment.
+	 * Conditions: no accessible zone has a non-duplicate available,
+	 * AND at least one locked zone has a non-duplicate (worth coming back for).
+	 */
+	isRouteDeferrable(route: RouteEncounter): boolean {
+		// If any accessible zone has a non-dupe catchable Pokemon, player can act now — not deferrable.
+		const canCatchNow = route.zones.some(zone => {
+			if (this.isZoneLocked(zone)) return false;
+			return getAvailablePool(zone.pokemon, this.box, this.graveyard as any).length > 0;
+		});
+		if (canCatchNow) return false;
+
+		// At least one locked zone must have something non-dupe to return for.
+		return route.zones.some(zone => {
+			if (!this.isZoneLocked(zone)) return false;
+			return getAvailablePool(zone.pokemon, this.box, this.graveyard as any).length > 0;
 		});
 	}
 
@@ -256,6 +299,8 @@ export class NuzlockeGame {
 				const regionGen = NuzlockeGame.REGION_GEN[evo.evoRegion];
 				if (!regionGen || this.scenario.generation !== regionGen) continue;
 			}
+			// Skip evolutions introduced in a later generation than this scenario.
+			if (evo.gen && evo.gen > this.scenario.generation) continue;
 			const evoType = evo.evoType;
 			if (!evoType || evoType === 'levelFriendship' || evoType === 'levelExtra') {
 				if ((evo.evoLevel ?? 0) <= levelCap) {
@@ -321,7 +366,7 @@ export class NuzlockeGame {
 				if (this.resolvedRoutes.includes(route.route)) continue;
 				if (this.deferredRoutes.some(r => r.route === route.route)) continue;
 				if (this.lockedRoutes.some(r => r.route === route.route)) continue;
-				if (this.isRouteAllLocked(route)) {
+				if (this.isRouteDeferrable(route)) {
 					this.lockedRoutes.push(route);
 				}
 			}
@@ -421,6 +466,9 @@ export interface NuzlockePanelPayload {
 
 	// Set when a run just ended — client saves this to localStorage
 	completedRun: CompletedRun | null;
+
+	// Full party going into the final battle (wipe runs only). Used by summary screen.
+	finalParty: { species: string; nickname: string; alive: boolean }[] | null;
 }
 
 // Lightweight run summary delivered globally (|updatenuzlocke| message).
@@ -555,6 +603,15 @@ export function serializeGameState(game: NuzlockeGame): NuzlockePanelPayload {
 		party: game.party,
 		graveyard: game.graveyard,
 		items: game.items,
+		holdableItems: (() => {
+			const dex = Dex.forGen(game.scenario.generation);
+			return [...new Set(game.items)].filter(name => {
+				const it = dex.items.get(name);
+				if (!it.exists || !it.fling) return false;
+				if (it.isBerry || it.isGem) return true;
+				return Object.keys(it).some(k => k.startsWith('on') && (it as any)[k] !== undefined);
+			});
+		})(),
 		tmMoves: game.tmMoves,
 		resolvedRoutes: game.resolvedRoutes,
 		deferredRoutes: m ? applyMappingsToRoutes(game.deferredRoutes, m) : game.deferredRoutes,
@@ -567,6 +624,9 @@ export function serializeGameState(game: NuzlockeGame): NuzlockePanelPayload {
 		scenarios,
 		battleRoomId: game.battleRoomId,
 		completedRun: game.lastCompletedRun,
+		finalParty: game.curRoom === 'summary' && game.lastCompletedRun?.outcome === 'wipe'
+			? (game.lastCompletedRun.finalParty ?? null)
+			: null,
 	};
 }
 
@@ -592,7 +652,12 @@ export function navigateToNuzlocke(userID: ID) {
 	}
 }
 
-export function recordCompletedRun(game: NuzlockeGame, outcome: 'victory' | 'wipe', finalBattle?: string) {
+export function recordCompletedRun(
+	game: NuzlockeGame,
+	outcome: 'victory' | 'wipe',
+	finalBattle?: string,
+	finalPartySnapshot?: { species: string; nickname: string; alive: boolean }[],
+) {
 	const run: CompletedRun = {
 		id: `${game.user}-${Date.now()}`,
 		userId: game.user,
@@ -602,14 +667,8 @@ export function recordCompletedRun(game: NuzlockeGame, outcome: 'victory' | 'wip
 		date: new Date().toISOString(),
 		deathCount: game.graveyard.length,
 		graveyard: [...game.graveyard],
-		survivors: game.party
-			.map(uid => game.getPokemon(uid))
-			.filter((p): p is OwnedPokemon => p != null && p.alive)
-			.map(p => ({ species: p.species, nickname: p.nickname })),
-		finalParty: game.party
-			.map(uid => game.getPokemon(uid))
-			.filter((p): p is OwnedPokemon => p != null)
-			.map(p => ({ species: p.species, alive: p.alive })),
+		survivors: (finalPartySnapshot ?? []).filter(p => p.alive).map(p => ({ species: p.species, nickname: p.nickname })),
+		finalParty: finalPartySnapshot ?? [],
 		finalBattle: finalBattle ?? game.currentBattle?.trainer ?? '',
 		segmentIndex: game.currentSegmentIndex,
 		ai: game.settings.ai,

@@ -194,7 +194,7 @@ export interface CompletedRun {
 	deathCount: number;
 	graveyard: DeadPokemon[];
 	survivors: { species: string; nickname: string }[];
-	finalParty: { species: string; alive: boolean }[];
+	finalParty: { species: string; nickname: string; alive: boolean }[];
 	finalBattle: string;    // trainer name that ended the run
 	segmentIndex: number;   // which segment the run ended on
 	ai: string;             // AI difficulty tier used for this run

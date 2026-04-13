@@ -16,6 +16,23 @@ export interface LegalMove {
 	name: string;
 	fromTM: boolean;
 	fromHM: boolean;
+	hpType?: string;  // Computed Hidden Power type (gen 2+, based on pokemon's IVs)
+}
+
+const HP_TYPES = [
+	'Fighting', 'Flying', 'Poison', 'Ground', 'Rock', 'Bug', 'Ghost', 'Steel',
+	'Fire', 'Water', 'Grass', 'Electric', 'Psychic', 'Ice', 'Dragon', 'Dark',
+];
+
+export function hiddenPowerType(ivs: { hp: number; atk: number; def: number; spe: number; spa: number; spd: number }): string {
+	const bits =
+		(ivs.hp & 1) |
+		((ivs.atk & 1) << 1) |
+		((ivs.def & 1) << 2) |
+		((ivs.spe & 1) << 3) |
+		((ivs.spa & 1) << 4) |
+		((ivs.spd & 1) << 5);
+	return HP_TYPES[Math.floor(bits * 15 / 63)];
 }
 
 export function getLegalMoves(
@@ -24,6 +41,7 @@ export function getLegalMoves(
 	generation: number,
 	tmMoves: string[]
 ): LegalMove[] {
+	const hpType = generation >= 2 && pokemon.ivs ? hiddenPowerType(pokemon.ivs) : undefined;
 	const speciesName = pokemon.species;
 	// Maps moveId -> minimum level learned (for learnset order sorting)
 	const levelMoveMap = new Map<string, number>();
@@ -75,11 +93,17 @@ export function getLegalMoves(
 
 	// Level-up moves sorted by minimum learn level (learnset order).
 	// Moves learnable both naturally and by TM/HM appear here, not in the TM/HM section.
+	const toMove = (m: ReturnType<typeof Dex.moves.get>, fromTM: boolean, fromHM: boolean): LegalMove => {
+		const result: LegalMove = { name: m.name, fromTM, fromHM };
+		if (hpType && m.id === 'hiddenpower') result.hpType = hpType;
+		return result;
+	};
+
 	const levelResults: LegalMove[] = [...levelMoveMap.entries()]
 		.sort(([, a], [, b]) => a - b)
 		.map(([id]) => Dex.moves.get(id))
 		.filter(m => m.exists)
-		.map(m => ({ name: m.name, fromTM: false, fromHM: false }));
+		.map(m => toMove(m, false, false));
 
 	// TM moves after level-up moves, sorted by position in tmMoves (scenario TM number order).
 	// Exclude moves already covered by the level-up section.
@@ -92,7 +116,7 @@ export function getLegalMoves(
 		})
 		.map(id => Dex.moves.get(id))
 		.filter(m => m.exists)
-		.map(m => ({ name: m.name, fromTM: true, fromHM: false }));
+		.map(m => toMove(m, true, false));
 
 	// HM moves last, sorted by position in tmMoves (scenario HM number order).
 	// Exclude moves already covered by the level-up section.
@@ -105,7 +129,7 @@ export function getLegalMoves(
 		})
 		.map(id => Dex.moves.get(id))
 		.filter(m => m.exists)
-		.map(m => ({ name: m.name, fromTM: false, fromHM: true }));
+		.map(m => toMove(m, false, true));
 
 	return [...levelResults, ...tmResults, ...hmResults];
 }
