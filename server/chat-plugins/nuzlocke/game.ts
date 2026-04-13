@@ -272,7 +272,7 @@ export class NuzlockeGame {
 
 	setNickname(uid: string, name: string) {
 		const pokemon = this.getPokemon(uid);
-		if (pokemon) pokemon.nickname = name.slice(0, 12).trim() || pokemon.species;
+		if (pokemon) pokemon.nickname = name.replace(/[|\n\r]/g, '').slice(0, 12).trim() || pokemon.species;
 	}
 
 	/** Maps evoRegion values to the generation number where those regional forms originate. */

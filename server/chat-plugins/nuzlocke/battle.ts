@@ -18,14 +18,22 @@ function packPlayerTeam(game: NuzlockeGame): string {
 		.filter(Boolean);
 
 	const sets: PokemonSet[] = partyPokemon.map(p => {
-		const moves = p.moves.length ? p.moves : getDefaultMoves(p, game);
+		const legalMoveIds = new Set(
+			getLegalMoves(p, game.currentLevelCap, game.scenario.generation, game.tmMoves)
+				.map(m => toID(m.name))
+		);
+		const raw = p.moves.length ? p.moves : getDefaultMoves(p, game);
+		// Strip any moves that aren't legal for this Pokemon at the current level cap.
+		// This is the last line of defense — commands that set moves should also validate,
+		// but we enforce it here regardless of how moves ended up in game state.
+		const moves = raw.filter(m => legalMoveIds.has(toID(m)));
 		return {
 			name: p.nickname || p.species,
 			species: p.species,
 			gender: p.gender,
 			item: p.item || '',
 			ability: p.ability,
-			moves,
+			moves: moves.length ? moves : getDefaultMoves(p, game),
 			nature: p.nature,
 			evs: p.evs,
 			ivs: p.ivs,

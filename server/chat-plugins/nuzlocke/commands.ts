@@ -8,7 +8,20 @@ import { nuzlockeGames, NuzlockeGame, flatEncounters, saveGame, deleteGame, push
 import { getScenario } from './scenarios';
 import { createNuzlockeBattle, goToTeambuilding } from './battle';
 import { buildRandomizerMappings, buildStarterPokemon } from './encounters';
+import { getLegalMoves } from './learnsets';
 import type { RandomizerConfig } from './types';
+
+/** Strip PS protocol characters from a user-supplied nickname. */
+function sanitizeNickname(raw: string, fallback: string): string {
+	return raw.replace(/[|\n\r]/g, '').slice(0, 12).trim() || fallback;
+}
+
+/** Return the canonical Dex item name, or null if the item doesn't exist. */
+function resolveItem(itemId: string): string | null {
+	if (itemId === 'none') return '';
+	const item = Dex.items.get(itemId);
+	return item.exists ? item.name : null;
+}
 
 // ---------------------------------------------------------------------------
 // Commands export
@@ -186,7 +199,7 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 			if (parts.length < 2) return this.errorReply('Usage: /nuzlocke encounter <routeName> <zoneIndex>');
 			const zoneIndex = parseInt(parts[parts.length - 1]);
 			const routeName = parts.slice(0, -1).join(' ');
-			if (isNaN(zoneIndex)) return this.errorReply('Usage: /nuzlocke encounter <routeName> <zoneIndex>');
+			if (isNaN(zoneIndex) || zoneIndex < 0) return this.errorReply('Usage: /nuzlocke encounter <routeName> <zoneIndex>');
 			if (!game.currentSegment) return this.errorReply('No active segment.');
 			if (game.resolvedRoutes.includes(routeName)) return this.errorReply('Already explored this route.');
 			game.resolveOneRoute(routeName, zoneIndex);
@@ -208,7 +221,7 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 			if (!game) return this.errorReply('No active run.');
 			const [giftIndexStr, speciesId] = target.trim().split(' ');
 			const giftIndex = parseInt(giftIndexStr);
-			if (isNaN(giftIndex) || !speciesId) return this.errorReply('Usage: /nuzlocke choosegift <giftIndex> <speciesId>');
+			if (isNaN(giftIndex) || giftIndex < 0 || !speciesId) return this.errorReply('Usage: /nuzlocke choosegift <giftIndex> <speciesId>');
 			const segment = game.currentSegment;
 			if (!segment) return this.errorReply('No active segment.');
 			const route = (segment.gifts ?? [])[giftIndex];
@@ -298,11 +311,15 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 			const uid = target.slice(0, spaceIdx);
 			const move = target.slice(spaceIdx + 1).trim();
 			const pokemon = game.getPokemon(uid);
-			if (!pokemon) return this.errorReply('Pokemon not found.');
+			if (!pokemon || !pokemon.alive) return this.errorReply('Pokemon not found.');
 			const idx = pokemon.moves.indexOf(move);
 			if (idx !== -1) {
 				pokemon.moves.splice(idx, 1);
 			} else if (pokemon.moves.length < 4) {
+				const legal = getLegalMoves(pokemon, game.currentLevelCap, game.scenario.generation, game.tmMoves);
+				if (!legal.some(m => toID(m.name) === toID(move))) {
+					return this.errorReply(`${move} is not a legal move for this Pokémon.`);
+				}
 				pokemon.moves.push(move);
 			}
 			game.goToPage('teambuilding');
@@ -319,12 +336,21 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 			let i = 0;
 			while (i + 2 < parts.length) {
 				const uid = parts[i];
-				const moves = parts[i + 1].split(',').map(m => m.trim()).filter(Boolean);
+				const pokemon = game.getPokemon(uid);
+				const rawMoves = parts[i + 1].split(',').map(m => m.trim()).filter(Boolean);
 				const itemId = parts[i + 2];
-				const item = itemId === 'none' ? '' : (Dex.items.get(itemId).name || itemId);
+				i += 3;
+				if (!pokemon || !pokemon.alive) continue;
+				// Only allow moves that are legal for this Pokemon at the current level cap.
+				const legalMoveIds = new Set(
+					getLegalMoves(pokemon, game.currentLevelCap, game.scenario.generation, game.tmMoves)
+						.map(m => toID(m.name))
+				);
+				const moves = rawMoves.filter(m => legalMoveIds.has(toID(m)));
+				const item = resolveItem(itemId);
+				if (item === null) continue; // unknown item — skip rather than store garbage
 				game.setMoves(uid, moves);
 				game.setItem(uid, item);
-				i += 3;
 			}
 			// Validate party before battling
 			game.partyErrors.clear();
@@ -360,7 +386,11 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 			const spaceIdx = target.indexOf(' ');
 			if (spaceIdx === -1) return this.errorReply('Usage: /nuzlocke setitem <uid> <item>');
 			const uid = target.slice(0, spaceIdx);
-			const item = target.slice(spaceIdx + 1).trim();
+			const pokemon = game.getPokemon(uid);
+			if (!pokemon || !pokemon.alive) return this.errorReply('Pokemon not found.');
+			const itemId = target.slice(spaceIdx + 1).trim();
+			const item = resolveItem(itemId);
+			if (item === null) return this.errorReply(`Unknown item "${itemId}".`);
 			game.setItem(uid, item);
 			game.goToPage('teambuilding');
 		},
@@ -372,8 +402,12 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 			const parts = target.trim().split(' ');
 			for (let i = 0; i + 1 < parts.length; i += 2) {
 				const uid = parts[i];
-				const nick = parts[i + 1];
-				if (uid && nick) game.setNickname(uid, nick);
+				const rawNick = parts[i + 1];
+				if (!uid || !rawNick) continue;
+				const pokemon = game.getPokemon(uid);
+				if (!pokemon) continue;
+				const nick = sanitizeNickname(rawNick, pokemon.species);
+				game.setNickname(uid, nick);
 			}
 			goToTeambuilding(game);
 		},
