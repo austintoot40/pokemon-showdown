@@ -3650,7 +3650,7 @@ export class Battle {
 
 			// --- RELIC SONG: Meloetta form-specific ---
 			if (moveId === 'relicsong') {
-				const isPirouette = attacker.species === 'meloettapirouette' as ID;
+				const isPirouette = attacker.species.id === 'meloettapirouette' as ID;
 				if (isPirouette) return -20;
 				let score = 10;
 				if (difficulty !== 'game-accurate' && ctx.kills) score += ctx.faster ? 6 : 3;

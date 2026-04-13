@@ -404,6 +404,7 @@ interface PlayerOptions {
 	team?: PokemonSet[] | string | null;
 	seed?: PRNGSeed;
 	isAI?: boolean;
+	nuzlockeDifficulty?: string;
 }
 
 interface BasicTextData {
