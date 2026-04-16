@@ -114,10 +114,10 @@ export class BestOfGame extends RoomGame<BestOfPlayer> {
 	override makePlayer(user: User | null, options: RoomBattlePlayerOptions): BestOfPlayer {
 		return new BestOfPlayer(user, this, ++this.playerNum, options);
 	}
-	override addPlayer(user: User, options: RoomBattlePlayerOptions) {
+	override addPlayer(user: User | null, options: RoomBattlePlayerOptions) {
 		const player = super.addPlayer(user, options);
 		if (!player) throw new Error(`Failed to make player ${user} in ${this.roomid}`);
-		this.room.auth.set(user.id, Users.PLAYER_SYMBOL);
+		if (user) this.room.auth.set(user.id, Users.PLAYER_SYMBOL);
 		return player;
 	}
 	checkPrivacySettings(options: RoomBattleOptions & Partial<RoomSettings>) {

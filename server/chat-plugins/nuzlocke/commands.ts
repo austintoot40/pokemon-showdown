@@ -31,11 +31,11 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 	nuzlocke: {
 		start(target, room, user) {
 			if (nuzlockeGames.has(user.id)) return this.parse('/join view-nuzlocke');
-			const [scenarioId = 'firered', difficulty = 'game-accurate', starterIndexStr] = target.trim().split(/\s+/);
+			const [scenarioId = 'firered', difficulty = 'basic', starterIndexStr] = target.trim().split(/\s+/);
 			const scenario = getScenario(scenarioId.toLowerCase());
 			if (!scenario) return this.errorReply(`Unknown scenario "${scenarioId}". Available: firered`);
-			if (!['game-accurate', 'smart', 'competitive'].includes(difficulty)) {
-				return this.errorReply(`Unknown difficulty "${difficulty}". Options: game-accurate, smart, competitive`);
+			if (!['basic', 'smart', 'competitive'].includes(difficulty)) {
+				return this.errorReply(`Unknown difficulty "${difficulty}". Options: basic, smart, competitive`);
 			}
 			const game = new NuzlockeGame(user.id, scenario);
 			game.settings.ai = difficulty as NuzlockeGame['settings']['ai'];
@@ -83,15 +83,15 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 		 */
 		randomizestart(target, room, user) {
 			if (nuzlockeGames.has(user.id)) return this.parse('/join view-nuzlocke');
-			const [scenarioId = '', difficulty = 'game-accurate', starterIndexStr] = target.trim().split(/\s+/);
+			const [scenarioId = '', difficulty = 'basic', starterIndexStr] = target.trim().split(/\s+/);
 			const pending = pendingRandomizers.get(user.id);
 			if (!pending || pending.scenarioId !== scenarioId) {
 				return this.errorReply('No pending randomizer preview. Click Randomize first.');
 			}
 			const scenario = getScenario(scenarioId);
 			if (!scenario) return this.errorReply(`Unknown scenario "${scenarioId}".`);
-			if (!['game-accurate', 'smart', 'competitive'].includes(difficulty)) {
-				return this.errorReply(`Unknown difficulty "${difficulty}". Options: game-accurate, smart, competitive`);
+			if (!['basic', 'smart', 'competitive'].includes(difficulty)) {
+				return this.errorReply(`Unknown difficulty "${difficulty}". Options: basic, smart, competitive`);
 			}
 			const starterIndex = parseInt(starterIndexStr);
 			if (isNaN(starterIndex) || starterIndex < 0 || starterIndex >= scenario.starters.length) {
@@ -120,11 +120,11 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 
 		randomize(target, room, user) {
 			if (nuzlockeGames.has(user.id)) return this.parse('/join view-nuzlocke');
-			const [scenarioId = 'firered', difficulty = 'game-accurate', starterIndexStr, mode = 'shuffle', bstVariance = 'medium', randomizeItemsStr = 'false'] = target.trim().split(/\s+/);
+			const [scenarioId = 'firered', difficulty = 'basic', starterIndexStr, mode = 'shuffle', bstVariance = 'medium', randomizeItemsStr = 'false'] = target.trim().split(/\s+/);
 			const scenario = getScenario(scenarioId.toLowerCase());
 			if (!scenario) return this.errorReply(`Unknown scenario "${scenarioId}". Available: firered`);
-			if (!['game-accurate', 'smart', 'competitive'].includes(difficulty)) {
-				return this.errorReply(`Unknown difficulty "${difficulty}". Options: game-accurate, smart, competitive`);
+			if (!['basic', 'smart', 'competitive'].includes(difficulty)) {
+				return this.errorReply(`Unknown difficulty "${difficulty}". Options: basic, smart, competitive`);
 			}
 			if (!['shuffle', 'fully-random'].includes(mode)) {
 				return this.errorReply(`Unknown randomizer mode "${mode}". Options: shuffle, fully-random`);
@@ -180,8 +180,8 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 
 		setai(target, room, user) {
 			const difficulty = target.trim().toLowerCase();
-			if (!['game-accurate', 'smart', 'competitive'].includes(difficulty)) {
-				return this.errorReply(`Unknown difficulty "${difficulty}". Options: game-accurate, smart, competitive`);
+			if (!['basic', 'smart', 'competitive'].includes(difficulty)) {
+				return this.errorReply(`Unknown difficulty "${difficulty}". Options: basic, smart, competitive`);
 			}
 			const game = nuzlockeGames.get(user.id);
 			if (game) {

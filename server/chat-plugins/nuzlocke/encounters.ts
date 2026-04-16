@@ -30,7 +30,7 @@ function withinBstVariance(origBst: number, newBst: number, variance: Randomizer
 
 /** Returns all base-form, non-fangame species available in the given generation. */
 function getGenPool(generation: number): string[] {
-	return (Dex.forGen(generation).species.all() as import('../../../sim/dex-types').Species[])
+	return (Dex.forGen(generation).species.all() as import('../../../sim/dex-species').Species[])
 		.filter(s => !s.prevo && s.gen <= generation && !s.isNonstandard)
 		.map(s => s.name);
 }
@@ -69,9 +69,9 @@ export function buildRandomizerMappings(scenario: Scenario, config: RandomizerCo
 		// Assign each original species a replacement from the shuffled candidate pool
 		const used = new Set<string>();
 		for (const orig of origSpecies) {
-			const origBst = (Dex.species.get(orig) as import('../../../sim/dex-types').Species).bst ?? 0;
+			const origBst = (Dex.species.get(orig) as import('../../../sim/dex-species').Species).bst ?? 0;
 			const assigned =
-				candidates.find(c => !used.has(c) && withinBstVariance(origBst, (Dex.species.get(c) as import('../../../sim/dex-types').Species).bst ?? 0, config.bstVariance)) ??
+				candidates.find(c => !used.has(c) && withinBstVariance(origBst, (Dex.species.get(c) as import('../../../sim/dex-species').Species).bst ?? 0, config.bstVariance)) ??
 				candidates.find(c => !used.has(c)) ??
 				orig; // impossible fallback: no candidates available
 			speciesMap[orig] = assigned;
@@ -87,8 +87,8 @@ export function buildRandomizerMappings(scenario: Scenario, config: RandomizerCo
 			for (const route of allRoutes) {
 				if (routeMap[route.route]) continue; // already assigned (same route name in multiple segments)
 				const allPokemon = route.zones.flatMap(z => z.pokemon);
-				const avgBst = allPokemon.reduce((sum, e) => sum + ((Dex.species.get(e.species) as import('../../../sim/dex-types').Species).bst ?? 0), 0) / (allPokemon.length || 1);
-				const pool = candidates.filter(c => withinBstVariance(avgBst, (Dex.species.get(c) as import('../../../sim/dex-types').Species).bst ?? 0, config.bstVariance));
+				const avgBst = allPokemon.reduce((sum, e) => sum + ((Dex.species.get(e.species) as import('../../../sim/dex-species').Species).bst ?? 0), 0) / (allPokemon.length || 1);
+				const pool = candidates.filter(c => withinBstVariance(avgBst, (Dex.species.get(c) as import('../../../sim/dex-species').Species).bst ?? 0, config.bstVariance));
 				const pick = (pool.length ? pool : candidates)[Math.floor(rng() * (pool.length || candidates.length))];
 				routeMap[route.route] = pick;
 			}
@@ -147,7 +147,7 @@ function randomIVs(): OwnedPokemon['ivs'] {
 	};
 }
 
-function pickAbility(species: import('../../../sim/dex-types').Species): string {
+function pickAbility(species: import('../../../sim/dex-species').Species): string {
 	const options: string[] = [species.abilities[0]];
 	if (species.abilities[1]) options.push(species.abilities[1]);
 	// Never pick hidden ability (abilities['H'])

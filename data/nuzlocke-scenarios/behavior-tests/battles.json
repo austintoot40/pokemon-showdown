@@ -1,0 +1,187 @@
+[
+  {
+    "id": "bt-bat-status",
+    "trainer": "Test: Status Spam",
+    "team": [
+      {
+        "species": "Breloom",
+        "level": 50,
+        "ability": "Effect Spore",
+        "item": "Leftovers",
+        "moves": [
+          "Spore",
+          "Mach Punch"
+        ]
+      },
+      {
+        "species": "Garchomp",
+        "level": 50,
+        "ability": "Rough Skin",
+        "item": null,
+        "moves": [
+          "Earthquake",
+          "Dragon Claw",
+          "Fire Fang",
+          "Poison Jab"
+        ]
+      }
+    ],
+    "sprite": "hexmaniac"
+  },
+
+  {
+    "id": "bt-bat-protect",
+    "trainer": "Test: Protect Spam",
+    "team": [
+      {
+        "species": "Heatran",
+        "level": 50,
+        "ability": "Flash Fire",
+        "item": "Leftovers",
+        "moves": [
+          "Protect",
+          "Lava Plume"
+        ]
+      },
+      {
+        "species": "Garchomp",
+        "level": 50,
+        "ability": "Rough Skin",
+        "item": null,
+        "moves": [
+          "Earthquake",
+          "Dragon Claw",
+          "Fire Fang",
+          "Poison Jab"
+        ]
+      }
+    ],
+    "sprite": "hexmaniac"
+  },
+
+  {
+    "id": "bt-bat-immune",
+    "trainer": "Test: Immune Move",
+    "team": [
+      {
+        "species": "Gliscor",
+        "level": 50,
+        "ability": "Hyper Cutter",
+        "item": null,
+        "moves": [
+          "Earthquake",
+          "Ice Fang"
+        ]
+      },
+      {
+        "species": "Garchomp",
+        "level": 50,
+        "ability": "Rough Skin",
+        "item": null,
+        "moves": [
+          "Earthquake",
+          "Dragon Claw",
+          "Fire Fang",
+          "Poison Jab"
+        ]
+      }
+    ],
+    "sprite": "hexmaniac"
+  },
+
+  {
+    "id": "bt-bat-setup-safe",
+    "trainer": "Test: Setup When Safe",
+    "team": [
+      {
+        "species": "Dragonite",
+        "level": 50,
+        "ability": "Multiscale",
+        "item": "Lum Berry",
+        "moves": [
+          "Dragon Dance",
+          "ExtremeSpeed",
+          "Outrage",
+          "Fire Punch"
+        ]
+      },
+      {
+        "species": "Garchomp",
+        "level": 50,
+        "ability": "Rough Skin",
+        "item": null,
+        "moves": [
+          "Earthquake",
+          "Dragon Claw",
+          "Fire Fang",
+          "Poison Jab"
+        ]
+      }
+    ],
+    "sprite": "hexmaniac"
+  },
+
+  {
+    "id": "bt-bat-setup-threat",
+    "trainer": "Test: Avoid Setup When Threatened",
+    "team": [
+      {
+        "species": "Dragonite",
+        "level": 50,
+        "ability": "Multiscale",
+        "item": "Lum Berry",
+        "moves": [
+          "Dragon Dance",
+          "ExtremeSpeed",
+          "Outrage",
+          "Fire Punch"
+        ]
+      },
+      {
+        "species": "Garchomp",
+        "level": 50,
+        "ability": "Rough Skin",
+        "item": null,
+        "moves": [
+          "Earthquake",
+          "Dragon Claw",
+          "Fire Fang",
+          "Poison Jab"
+        ]
+      }
+    ],
+    "sprite": "hexmaniac"
+  },
+
+  {
+    "id": "bt-bat-stall",
+    "trainer": "Test: Protect Cycling",
+    "team": [
+      {
+        "species": "Gliscor",
+        "level": 50,
+        "ability": "Poison Heal",
+        "item": "Toxic Orb",
+        "moves": [
+          "Toxic",
+          "Protect",
+          "Earthquake",
+          "Ice Fang"
+        ]
+      },
+      {
+        "species": "Garchomp",
+        "level": 50,
+        "ability": "Rough Skin",
+        "item": null,
+        "moves": [
+          "Earthquake",
+          "Dragon Claw",
+          "Fire Fang",
+          "Poison Jab"
+        ]
+      }
+    ],
+    "sprite": "hexmaniac"
+  }
+]

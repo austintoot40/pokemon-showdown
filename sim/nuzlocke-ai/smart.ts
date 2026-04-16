@@ -1,8 +1,9 @@
 /**
  * Nuzlocke AI — Smart
  *
- * Intermediate AI with type-matchup awareness, kill-shot prioritization,
- * recovery logic, and tactical switching when hard-countered.
+ * Best possible heuristics-based AI. Includes type-matchup awareness,
+ * kill-shot prioritization, principled recovery logic, strategic switching,
+ * and full context-sensitive status/setup move scoring.
  */
 
 import type { Battle } from '../battle';
@@ -16,7 +17,7 @@ export class SmartAI extends NuzlockeAI {
 	}
 
 	// =========================================================================
-	// Voluntary switching — Based on Run and Bun spec
+	// Voluntary switching — with survivability filter
 	// =========================================================================
 
 	protected override considerVoluntarySwitch(request: ChoiceRequest): string | null {
@@ -46,8 +47,16 @@ export class SmartAI extends NuzlockeAI {
 		const shouldSwitch = usableMoves.length === 0 || (hardCountered && aiActive.hp / aiActive.maxhp < 0.6);
 		if (!shouldSwitch) return null;
 
-		// No safety filter — picks the best available option without checking survivability
-		const candidates = this.battle.sides[1].pokemon.slice(1).filter(p => p && !p.fainted && p.hp > 0);
+		// Safety filter: only switch into a Pokemon that can absorb the next hit
+		const oppSpd = this.getEffectiveSpeed(opponent);
+		const aiBench = this.battle.sides[1].pokemon.slice(1).filter(p => p && !p.fainted && p.hp > 0);
+		const candidates = aiBench.filter(p => {
+			const benchSpd = this.getEffectiveSpeed(p);
+			const incomingDmg = this.maxOpponentDamage(opponent, p);
+			if (benchSpd > oppSpd && incomingDmg < p.hp) return true;
+			if (benchSpd <= oppSpd && incomingDmg * 2 < p.hp) return true;
+			return false;
+		});
 		if (candidates.length === 0) return null;
 
 		const currentScore = this.scoreSwitchTarget(aiActive, opponent);
@@ -68,11 +77,26 @@ export class SmartAI extends NuzlockeAI {
 	}
 
 	// =========================================================================
-	// Recovery
+	// Recovery — full principled logic
 	// =========================================================================
 
 	protected override shouldRecover(attacker: Pokemon, defender: Pokemon, healFraction: number): boolean {
-		return attacker.hp / attacker.maxhp < 0.5;
+		const hpFrac = attacker.hp / attacker.maxhp;
+		if (attacker.status === 'tox') return false;
+		const healAmount = attacker.maxhp * healFraction;
+		const maxDamage = this.maxOpponentDamage(defender, attacker);
+		if (maxDamage >= healAmount) return false;
+		const faster = this.getBoostedStat(attacker, 'spe') > this.getBoostedStat(defender, 'spe');
+		if (faster) {
+			if (maxDamage >= attacker.hp && attacker.hp + healAmount > maxDamage) return true;
+			if (hpFrac < 0.4) return true;
+			if (hpFrac < 0.66) return Math.random() < 0.5;
+			return false;
+		} else {
+			if (hpFrac < 0.5) return true;
+			if (hpFrac < 0.7) return Math.random() < 0.75;
+			return false;
+		}
 	}
 
 	// =========================================================================
@@ -85,6 +109,13 @@ export class SmartAI extends NuzlockeAI {
 
 	protected override killBonus(dmgCtx: DmgCtx): number {
 		return dmgCtx.kills ? (dmgCtx.faster ? 6 : 3) : 0;
+	}
+
+	protected override priorityBonus(ctx: MoveCtx): number {
+		if (ctx.move.priority > 0 && !ctx.faster) {
+			if (this.maxOpponentDamage(ctx.defender, ctx.attacker) >= ctx.attacker.hp) return 11;
+		}
+		return 0;
 	}
 
 	protected override acidSprayBonus(): number {
@@ -176,7 +207,9 @@ export class SmartAI extends NuzlockeAI {
 
 	protected override scoreStealthRock(ctx: MoveCtx): number {
 		if (this.battle.sides[0].sideConditions['stealthrock']) return -20;
-		return ctx.attacker.activeTurns <= 1 ? 7 : 6;
+		const firstTurn = ctx.attacker.activeTurns <= 1;
+		const base = Math.random() < 0.25 ? 8 : 9;
+		return firstTurn ? base : base - 2;
 	}
 
 	protected override scoreSpikes(ctx: MoveCtx): number {
@@ -184,7 +217,8 @@ export class SmartAI extends NuzlockeAI {
 		if (spikes && ((spikes as AnyObject).layers ?? 1) >= 3) return -20;
 		const alreadySet = spikes ? 1 : 0;
 		const firstTurn = ctx.attacker.activeTurns <= 1;
-		return (firstTurn ? 7 : 6) - alreadySet;
+		const base = Math.random() < 0.25 ? 8 : 9;
+		return (firstTurn ? base : base - 2) - alreadySet;
 	}
 
 	protected override scoreToxicSpikes(ctx: MoveCtx): number {
@@ -192,14 +226,16 @@ export class SmartAI extends NuzlockeAI {
 		if (tspikes && ((tspikes as AnyObject).layers ?? 1) >= 2) return -20;
 		const alreadySet = tspikes ? 1 : 0;
 		const firstTurn = ctx.attacker.activeTurns <= 1;
-		return (firstTurn ? 7 : 6) - alreadySet;
+		const base = Math.random() < 0.25 ? 8 : 9;
+		return (firstTurn ? base : base - 2) - alreadySet;
 	}
 
 	protected override scoreParalysis(ctx: MoveCtx): number {
 		if (ctx.defender.types.includes('Electric')) return -20;
-		const oppSpe = this.getBoostedStat(ctx.defender, 'spe');
-		const aiSpe = this.getBoostedStat(ctx.attacker, 'spe');
-		const playerFasterButSlowedByPar = oppSpe > aiSpe && Math.floor(oppSpe / 4) < aiSpe;
+		const oppEffSpd = this.getEffectiveSpeed(ctx.defender);
+		const aiEffSpd = this.getEffectiveSpeed(ctx.attacker);
+		const parFactor = this.battle.gen >= 7 ? 0.5 : 0.25;
+		const playerFasterButSlowedByPar = oppEffSpd > aiEffSpd && Math.floor(oppEffSpd * parFactor) < aiEffSpd;
 		const aiHasFlinchMove = ctx.attacker.moveSlots.some(slot => {
 			const m = this.battle.dex.moves.get(slot.id);
 			return (m as AnyObject).secondary?.volatileStatus === 'flinch';
@@ -212,26 +248,98 @@ export class SmartAI extends NuzlockeAI {
 
 	protected override scoreBurn(ctx: MoveCtx): number {
 		if (ctx.defender.types.includes('Fire')) return -20;
-		return this.hasMoveCategory(ctx.defender, 'Physical') ? 6 : 5;
+		let score = 6;
+		if (Math.random() < 0.37) {
+			if (this.hasMoveCategory(ctx.defender, 'Physical')) score += 1;
+			if (ctx.attacker.moveSlots.some(s => s.id === 'hex')) score += 1;
+		}
+		return score;
+	}
+
+	protected override scorePoison(ctx: MoveCtx): number {
+		if (ctx.defender.types.includes('Steel') || ctx.defender.types.includes('Poison')) return -20;
+		let score = 6;
+		if (Math.random() < 0.38) {
+			const aiHasHex = ctx.attacker.moveSlots.some(s => s.id === 'hex');
+			const aiHasVenoshock = ctx.attacker.moveSlots.some(s => s.id === 'venoshock');
+			const aiHasMerciless = ctx.attacker.ability === 'merciless' as ID;
+			const playerHasDmg = this.hasMoveCategory(ctx.defender, 'Physical') || this.hasMoveCategory(ctx.defender, 'Special');
+			if ((aiHasHex || aiHasVenoshock || aiHasMerciless) && !playerHasDmg) score += 2;
+		}
+		return score;
 	}
 
 	protected override scoreSleep(ctx: MoveCtx): number {
 		if (ctx.defender.status) return -20;
 		if (ctx.defender.volatiles['yawn']) return -20;
-		return 7;
+		let score = 6;
+		if (Math.random() < 0.25) {
+			score += 1;
+			const aiHasDreamEater = ctx.attacker.moveSlots.some(s => s.id === 'dreameater');
+			const aiHasNightmare = ctx.attacker.moveSlots.some(s => s.id === 'nightmare');
+			const playerHasSnore = ctx.defender.moveSlots.some(s => s.id === 'snore');
+			const playerHasSleepTalk = ctx.defender.moveSlots.some(s => s.id === 'sleeptalk');
+			if ((aiHasDreamEater || aiHasNightmare) && !playerHasSnore && !playerHasSleepTalk) score += 1;
+			if (ctx.attacker.moveSlots.some(s => s.id === 'hex')) score += 1;
+		}
+		return score;
+	}
+
+	protected override scoreRest(ctx: MoveCtx): number {
+		if (ctx.hpFrac >= 1.0) return -20;
+		if (ctx.hpFrac >= 0.85) return -6;
+		if (!this.shouldRecover(ctx.attacker, ctx.defender, 1.0)) return 5;
+		const hasSleepCure = (
+			ctx.attacker.item === 'lumberry' as ID ||
+			ctx.attacker.item === 'chestoberry' as ID ||
+			ctx.attacker.moveSlots.some(s => s.id === 'sleeptalk' || s.id === 'snore') ||
+			ctx.attacker.ability === 'shedskin' as ID ||
+			ctx.attacker.ability === 'earlybird' as ID ||
+			(ctx.attacker.ability === 'hydration' as ID && this.battle.field.isWeather('raindance'))
+		);
+		return hasSleepCure ? 8 : 7;
 	}
 
 	protected override scoreProtect(ctx: MoveCtx): number {
+		let score = 6;
+		const aiDraining = ['psn', 'tox', 'brn'].includes(ctx.attacker.status || '') ||
+			!!(ctx.attacker.volatiles['curse'] || ctx.attacker.volatiles['leechseed'] ||
+			ctx.attacker.volatiles['attract'] || ctx.attacker.volatiles['perish2']);
+		if (aiDraining) score -= 2;
+		const playerDraining = ['psn', 'tox', 'brn'].includes(ctx.defender.status || '') ||
+			!!(ctx.defender.volatiles['curse'] || ctx.defender.volatiles['leechseed']);
+		if (playerDraining) score += 1;
+		if (ctx.attacker.activeTurns <= 1) score -= 1;
 		const lastId = ctx.attacker.lastMove?.id ?? '';
 		const protectIds = ['protect', 'kingsshield', 'spikyshield', 'banefulbunker'];
-		if (protectIds.includes(lastId)) return -20;
-		return 6;
+		if (protectIds.includes(lastId)) {
+			if (Math.random() < 0.5) return -20;
+		}
+		return score;
 	}
 
 	protected override scoreSubstitute(ctx: MoveCtx): number {
 		if (ctx.hpFrac <= 0.5) return -20;
 		if (ctx.defender.ability === 'infiltrator' as ID) return -20;
-		return 6;
+		let score = 6;
+		if (ctx.defender.status === 'slp') score += 2;
+		if (ctx.defender.volatiles['leechseed'] && ctx.faster) score += 2;
+		if (Math.random() < 0.5) score -= 1;
+		const playerHasSoundMove = ctx.defender.moveSlots.some(slot =>
+			(this.battle.dex.moves.get(slot.id) as AnyObject).flags?.sound
+		);
+		if (playerHasSoundMove) score -= 8;
+		return score;
+	}
+
+	protected override scoreTaunt(ctx: MoveCtx): number {
+		const trActive = !!this.battle.field.pseudoWeather['trickroom'];
+		const opponentHasTR = ctx.defender.moveSlots.some(s => s.id === 'trickroom');
+		if (opponentHasTR && !trActive) return 9;
+		const opponentHasDefog = ctx.defender.moveSlots.some(s => s.id === 'defog');
+		const auroraVeilUp = !!this.battle.sides[1].sideConditions['auroraveil'];
+		if (opponentHasDefog && auroraVeilUp && ctx.faster) return 9;
+		return 5;
 	}
 
 	protected override scoreEncore(ctx: MoveCtx): number {
@@ -243,12 +351,55 @@ export class SmartAI extends NuzlockeAI {
 	}
 
 	protected override scoreExplodeSelf(ctx: MoveCtx): number {
-		return ctx.hpFrac < 0.2 ? 7 : 5;
+		const aiAlive = this.battle.sides[1].pokemon.filter(p => !p.fainted && p.hp > 0).length;
+		const oppAlive = this.battle.sides[0].pokemon.filter(p => !p.fainted && p.hp > 0).length;
+		if (aiAlive === 1 && oppAlive > 1) return -20;
+		let score: number;
+		if (ctx.hpFrac < 0.1) score = 10;
+		else if (ctx.hpFrac < 0.33) score = Math.random() < 0.7 ? 8 : 0;
+		else if (ctx.hpFrac < 0.66) score = Math.random() < 0.5 ? 7 : 0;
+		else score = Math.random() < 0.05 ? 7 : 0;
+		if (aiAlive === 1 && oppAlive === 1) score -= 1;
+		return score;
+	}
+
+	protected override scoreBatonPass(ctx: MoveCtx): number {
+		const bench = this.battle.sides[1].pokemon.slice(1).filter(p => p && !p.fainted && p.hp > 0);
+		if (bench.length === 0) return -20;
+		const hasSub = !!ctx.attacker.volatiles['substitute'];
+		const hasBoost = Object.values(ctx.attacker.boosts).some(v => (v as number) > 0);
+		if (hasSub || hasBoost) return 14;
+		return 0;
+	}
+
+	protected override scoreDestinyBond(ctx: MoveCtx): number {
+		const dies = this.maxOpponentDamage(ctx.defender, ctx.attacker) >= ctx.attacker.hp;
+		if (ctx.faster && dies) return Math.random() < 0.81 ? 7 : 6;
+		return Math.random() < 0.5 ? 5 : 6;
+	}
+
+	protected override scoreTrick(ctx: MoveCtx): number {
+		const item = ctx.attacker.item;
+		if (item === 'toxicorb' as ID || item === 'flameorb' as ID || item === 'blacksludge' as ID) {
+			return Math.random() < 0.5 ? 6 : 7;
+		}
+		if (item === 'ironball' as ID || item === 'laggingtail' as ID || item === 'stickybarb' as ID) return 7;
+		return 5;
+	}
+
+	protected override scoreImprison(ctx: MoveCtx): number {
+		const hasSharedMove = ctx.defender.moveSlots.some(defSlot =>
+			ctx.attacker.moveSlots.some(attSlot => attSlot.id === defSlot.id)
+		);
+		return hasSharedMove ? 9 : -20;
 	}
 
 	protected override scoreStickyWeb(ctx: MoveCtx): number {
 		if (this.battle.sides[0].sideConditions['stickyweb']) return -20;
-		return ctx.attacker.activeTurns <= 1 ? 9 : 6;
+		const firstTurn = ctx.attacker.activeTurns <= 1;
+		return firstTurn
+			? (Math.random() < 0.25 ? 9 : 12)
+			: (Math.random() < 0.25 ? 6 : 9);
 	}
 
 	protected override scoreTailwind(ctx: MoveCtx): number {
@@ -277,6 +428,15 @@ export class SmartAI extends NuzlockeAI {
 		return 6;
 	}
 
+	protected override scoreMemento(ctx: MoveCtx): number {
+		const bench = this.battle.sides[1].pokemon.slice(1).filter(p => !p.fainted && p.hp > 0);
+		if (bench.length === 0) return -20;
+		if (ctx.hpFrac < 0.1) return 16;
+		if (ctx.hpFrac < 0.33) return Math.random() < 0.7 ? 14 : 6;
+		if (ctx.hpFrac < 0.66) return Math.random() < 0.5 ? 13 : 6;
+		return Math.random() < 0.05 ? 13 : 6;
+	}
+
 	protected override scoreFocusEnergy(ctx: MoveCtx): number {
 		if (ctx.defender.ability === 'shellarmor' as ID || ctx.defender.ability === 'battlearmor' as ID) return -20;
 		const hasHighCrit = (
@@ -287,6 +447,10 @@ export class SmartAI extends NuzlockeAI {
 			ctx.attacker.moveSlots.some(s => ((this.battle.dex.moves.get(s.id) as AnyObject).critRatio ?? 1) >= 2)
 		);
 		return hasHighCrit ? 7 : 6;
+	}
+
+	protected override scoreTerrain(ctx: MoveCtx): number {
+		return ctx.attacker.item === 'terrainextender' as ID ? 9 : 8;
 	}
 
 	protected override scoreCounterMirrorCoat(ctx: MoveCtx): number {
@@ -321,10 +485,18 @@ export class SmartAI extends NuzlockeAI {
 		if (speBoost > 0 && offBoost === 0 && defBoost === 0) return faster ? -20 : 7;
 
 		const canOHKO = this.maxOpponentDamage(defender, attacker) >= attacker.hp;
+		const can2HKO = this.maxOpponentDamage(defender, attacker) * 2 >= attacker.hp;
 
 		if (ctx.move.id === 'shellsmash') {
+			if (canOHKO) return -20;
 			if ((attacker.boosts.atk ?? 0) >= 1) return -20;
-			return canOHKO ? -20 : 6;
+			let score = 6;
+			if (this.isIncapacitated(defender)) score += 3;
+			const hasWhiteHerb = attacker.item === 'whiteherb' as ID;
+			const postSmashMult = hasWhiteHerb ? 1.0 : 1.5;
+			const postSmashDamage = this.maxOpponentDamage(defender, attacker) * postSmashMult;
+			score += postSmashDamage < attacker.hp ? 2 : -2;
+			return score;
 		}
 
 		if (ctx.move.id === 'bellydrum') {
@@ -335,6 +507,49 @@ export class SmartAI extends NuzlockeAI {
 			return 8;
 		}
 
-		return canOHKO ? -20 : 6;
+		if (canOHKO) return -20;
+
+		const defenderHasUnaware = defender.ability === 'unaware' as ID;
+		const unawareExceptions = ['poweruppunch', 'swordsdance', 'howl'];
+		if (defenderHasUnaware && !unawareExceptions.includes(ctx.move.id)) return -20;
+
+		const isMixed = offBoost > 0 && defBoost > 0;
+		let treatAsOffensive: boolean;
+		if (isMixed) {
+			if ((boosts.atk ?? 0) > 0 && (boosts.spa ?? 0) === 0) {
+				treatAsOffensive = !(this.hasMoveCategory(defender, 'Physical') && !this.hasMoveCategory(defender, 'Special'));
+			} else {
+				treatAsOffensive = !(this.hasMoveCategory(defender, 'Special') && !this.hasMoveCategory(defender, 'Physical'));
+			}
+		} else {
+			treatAsOffensive = offBoost > 0;
+		}
+
+		let score = 6;
+		if (treatAsOffensive) {
+			if (this.isIncapacitated(defender)) {
+				score += 3;
+			} else if (can2HKO && !faster) {
+				score -= 5;
+			}
+			if (!isMixed && (boosts.spa ?? 0) > 0) {
+				const can3HKO = this.maxOpponentDamage(defender, attacker) * 3 >= attacker.hp;
+				if (!this.isIncapacitated(defender) && !can3HKO) {
+					score += 1;
+					if (faster) score += 1;
+				}
+				if ((attacker.boosts.spa ?? 0) >= 2) score -= 1;
+			}
+		} else {
+			if (can2HKO && !faster) score -= 5;
+			if (Math.random() < 0.95) {
+				if (this.isIncapacitated(defender)) score += 2;
+				if ((boosts.def ?? 0) > 0 && (boosts.spd ?? 0) > 0 &&
+					((attacker.boosts.def ?? 0) < 2 || (attacker.boosts.spd ?? 0) < 2)) {
+					score += 2;
+				}
+			}
+		}
+		return score;
 	}
 }

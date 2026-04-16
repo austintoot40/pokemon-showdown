@@ -35,7 +35,7 @@ export interface ZoneEncounter {
 	time?: string;     // "Morning" | "Day" | "Night" — only present when rates differ by time of day
 	// choice is not stored; it is inferred at load time: Gift zones with >1 pokemon entry are choice gifts
 	pokemon: EncounterEntry[];
-	requires?: { type: 'move' | 'item' | 'battle'; name: string };  // explicit prereq (overrides METHOD_PREREQS inference on client)
+	requires?: { type: 'move' | 'item' | 'battle' | 'pokemon'; name: string };  // explicit prereq (overrides METHOD_PREREQS inference on client)
 }
 
 export interface RouteEncounter {

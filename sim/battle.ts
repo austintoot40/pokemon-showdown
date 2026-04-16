@@ -177,8 +177,8 @@ export class Battle {
 
 	teamGenerator: ReturnType<typeof Teams.getGenerator> | null;
 
-	/** Difficulty tier for the nuzlocke AI ('game-accurate' | 'smart' | 'competitive'). */
-	nuzlockeDifficulty: string = 'game-accurate';
+	/** Difficulty tier for the nuzlocke AI ('basic' | 'smart' | 'competitive'). */
+	nuzlockeDifficulty: string = 'basic';
 	private nuzlockeAIInstance: NuzlockeAI | null = null;
 
 	readonly hints: Set<string>;

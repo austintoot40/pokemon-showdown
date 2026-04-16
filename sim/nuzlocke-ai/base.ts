@@ -1,7 +1,7 @@
 /**
  * Nuzlocke AI — Base Class
  *
- * Defines the full decision-making interface. Game-accurate behavior is the default
+ * Defines the full decision-making interface. Basic behavior is the default
  * for all overridable methods. Subclasses (SmartAI, CompetitiveAI) override only the
  * methods where their difficulty diverges.
  */
@@ -9,6 +9,7 @@
 import type { Battle } from '../battle';
 import type { Pokemon } from '../pokemon';
 import type { ChoiceRequest } from '../side';
+import * as calc from './calculator';
 
 export interface DmgCtx {
 	damage: number;
@@ -87,9 +88,7 @@ export abstract class NuzlockeAI {
 		// @ts-expect-error jank request parser
 		const moves = request.active[0].moves as Array<{id: string, disabled: boolean | string}>;
 
-		const aiSpeed = this.getBoostedStat(aiActive, 'spe');
-		const oppSpeed = this.getBoostedStat(opponent, 'spe');
-		const aiFaster = aiSpeed > oppSpeed;
+		const aiFaster = this.isFaster(aiActive, opponent);
 
 		const dmgCtxMap = new Map<number, DmgCtx>();
 		let highestDamage = 0;
@@ -171,49 +170,36 @@ export abstract class NuzlockeAI {
 	}
 
 	protected simulateDamage(move: Move, attacker: Pokemon, defender: Pokemon): { damage: number } {
-		if (move.basePower === 0 || !this.battle.dex.getImmunity(move.type, defender)) return { damage: 0 };
-		const effExp = this.battle.dex.getEffectiveness(move.type, defender);
-		const effectiveness = Math.pow(2, effExp);
-		const stab = attacker.types.includes(move.type) ? 1.5 : 1.0;
-		const isPhysical = move.category === 'Physical';
-		const atkStat = this.getBoostedStat(attacker, isPhysical ? 'atk' : 'spa');
-		const defStat = this.getBoostedStat(defender, isPhysical ? 'def' : 'spd');
-		const roll = 0.85 + Math.random() * 0.15;
-		return { damage: move.basePower * effectiveness * stab * (atkStat / defStat) * roll };
+		return calc.simulateDamage(this.battle, move, attacker, defender);
 	}
 
 	protected maxOpponentDamage(attacker: Pokemon, defender: Pokemon): number {
-		let maxDamage = 0;
-		for (const slot of attacker.moveSlots) {
-			const m = this.battle.dex.moves.get(slot.id);
-			if (m.basePower === 0 || !this.battle.dex.getImmunity(m.type, defender)) continue;
-			const { damage } = this.simulateDamage(m, attacker, defender);
-			if (damage > maxDamage) maxDamage = damage;
-		}
-		return maxDamage;
+		return calc.maxOpponentDamage(this.battle, attacker, defender);
 	}
 
 	protected getBoostedStat(pokemon: Pokemon, stat: 'atk' | 'def' | 'spa' | 'spd' | 'spe'): number {
-		const base = pokemon.storedStats[stat];
-		const boost = pokemon.boosts[stat];
-		const mult = boost >= 0 ? (2 + boost) / 2 : 2 / (2 - boost);
-		return Math.floor(base * mult);
+		return calc.getBoostedStat(pokemon, stat);
+	}
+
+	protected getEffectiveSpeed(pokemon: Pokemon): number {
+		return calc.getEffectiveSpeed(this.battle, pokemon);
+	}
+
+	protected isFaster(a: Pokemon, b: Pokemon): boolean {
+		return calc.isFaster(this.battle, a, b);
 	}
 
 	protected hasMoveCategory(pokemon: Pokemon, category: 'Physical' | 'Special'): boolean {
-		return pokemon.moveSlots.some(slot => {
-			const move = this.battle.dex.moves.get(slot.id);
-			return move.category === category && move.basePower > 0;
-		});
+		return calc.hasMoveCategory(this.battle, pokemon, category);
 	}
 
 	protected isIncapacitated(pokemon: Pokemon): boolean {
-		return pokemon.status === 'slp' || pokemon.status === 'frz';
+		return calc.isIncapacitated(pokemon);
 	}
 
 	// =========================================================================
 	// Decision point: voluntary switching
-	// Game-accurate default: never switch voluntarily.
+	// Basic default: never switch voluntarily.
 	// =========================================================================
 
 	protected considerVoluntarySwitch(request: ChoiceRequest): string | null {
@@ -222,7 +208,7 @@ export abstract class NuzlockeAI {
 
 	// =========================================================================
 	// Decision point: recovery
-	// Game-accurate default: never use recovery.
+	// Basic default: never use recovery.
 	// =========================================================================
 
 	protected shouldRecover(attacker: Pokemon, defender: Pokemon, healFraction: number): boolean {
@@ -264,7 +250,7 @@ export abstract class NuzlockeAI {
 		}
 
 		// Status move
-		const faster = this.getBoostedStat(attacker, 'spe') > this.getBoostedStat(defender, 'spe');
+		const faster = this.isFaster(attacker, defender);
 		const ctx: MoveCtx = {
 			move, attacker, defender, dmgCtx: null, isHighestDamage: false,
 			faster, hpFrac: attacker.hp / attacker.maxhp,
@@ -305,7 +291,7 @@ export abstract class NuzlockeAI {
 		return score;
 	}
 
-	/** Fell Stinger — game-accurate: treat as normal damage */
+	/** Fell Stinger — basic: treat as normal damage */
 	protected scoreFellStinger(ctx: MoveCtx): number {
 		return this.scoreDamagingMove(ctx);
 	}
@@ -330,7 +316,7 @@ export abstract class NuzlockeAI {
 
 	/**
 	 * General damaging move scoring.
-	 * Game-accurate default: isHighestDamage ? highestDamageBonus : 0.
+	 * Basic default: isHighestDamage ? highestDamageBonus : 0.
 	 * No kill bonus, no priority bonus, no stat-reduction utility.
 	 */
 	protected scoreDamagingMove(ctx: MoveCtx): number {
@@ -346,33 +332,33 @@ export abstract class NuzlockeAI {
 	}
 
 	// =========================================================================
-	// Per-feature damage move hooks (game-accurate defaults = no bonus)
+	// Per-feature damage move hooks (basic defaults = no bonus)
 	// =========================================================================
 
-	/** +6 for game-accurate, randomized for smart/competitive. */
+	/** +6 for basic, randomized for smart/competitive. */
 	protected highestDamageBonus(): number { return 6; }
 
-	/** Kill bonus added to killing moves. Game-accurate: 0. */
+	/** Kill bonus added to killing moves. Basic: 0. */
 	protected killBonus(dmgCtx: DmgCtx): number { return 0; }
 
-	/** Priority move bonus when dying and slower. Game-accurate / smart: 0. */
+	/** Priority move bonus when dying and slower. Basic / smart: 0. */
 	protected priorityBonus(ctx: MoveCtx): number { return 0; }
 
-	/** Acid Spray utility bonus. Game-accurate: 0. */
+	/** Acid Spray utility bonus. Basic: 0. */
 	protected acidSprayBonus(): number { return 0; }
 
-	/** Pursuit stacking bonus. Game-accurate: 0. */
+	/** Pursuit stacking bonus. Basic: 0. */
 	protected pursuitBonus(ctx: MoveCtx): number { return 0; }
 
 	/**
 	 * Contrary ability scoring. Returns a score to use (early exit) or null to continue.
-	 * Game-accurate: null (no special handling).
+	 * Basic: null (no special handling).
 	 */
 	protected scoreContraryMove(ctx: MoveCtx): number | null { return null; }
 
 	/**
 	 * Score non-highest-damage moves that have speed/stat reduction secondaries.
-	 * Game-accurate: 0 (no utility scoring).
+	 * Basic: 0 (no utility scoring).
 	 */
 	protected scoreStatReductionMove(ctx: MoveCtx): number { return 0; }
 
@@ -438,7 +424,7 @@ export abstract class NuzlockeAI {
 	}
 
 	// =========================================================================
-	// Status move hooks (game-accurate defaults)
+	// Status move hooks (basic defaults)
 	// =========================================================================
 
 	protected scoreStealthRock(ctx: MoveCtx): number {
@@ -460,8 +446,8 @@ export abstract class NuzlockeAI {
 
 	protected scoreParalysis(ctx: MoveCtx): number {
 		if (ctx.defender.types.includes('Electric')) return -20;
-		// Paralysis logic is the same for smart and competitive (non-game-accurate):
-		// game-accurate simply returns 6.
+		// Paralysis logic is the same for smart and competitive (non-basic):
+		// basic simply returns 6.
 		return 6;
 	}
 

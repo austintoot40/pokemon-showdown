@@ -1,0 +1,38 @@
+{
+  "id": "behavior-tests",
+  "name": "AI Behavior Tests",
+  "generation": 5,
+  "description": "Six isolated tests for specific AI edge cases. Each segment: catch the encounter Pokemon, then fight the battle and observe the AI's move log.",
+  "color": "#6A1B9A",
+  "pokemon": "gengar",
+  "starters": [
+    { "species": "Latios", "level": 5 }
+  ],
+  "segments": [
+    {
+      "id": "bt-immune",
+      "name": "3. Immune: Skip Earthquake vs Flying",
+      "locations": ["bt-enc-togekiss"],
+      "battles": ["bt-bat-immune"]
+    },
+    {
+      "id": "bt-setup-safe",
+      "name": "4. Setup: DD When Not Threatened",
+      "locations": ["bt-enc-blissey"],
+      "battles": ["bt-bat-setup-safe"]
+    },
+    {
+      "id": "bt-setup-threat",
+      "name": "5. Setup: Skip DD When Threatened",
+      "locations": ["bt-enc-mamoswine"],
+      "battles": ["bt-bat-setup-threat"]
+    },
+    {
+      "id": "bt-stall",
+      "name": "6. Stall: Protect Cycling (Not Spam)",
+      "locations": ["bt-enc-chansey"],
+      "battles": ["bt-bat-stall"]
+    }
+  ],
+  "verified": true
+}

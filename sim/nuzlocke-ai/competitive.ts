@@ -1,554 +1,287 @@
 /**
  * Nuzlocke AI — Competitive
  *
- * Advanced AI following the Run and Bun specification. Uses tournament-grade
- * decision-making with probabilistic move selection, detailed recovery logic,
- * and strategic switching.
+ * Move selection via MCTS (UCB1 bandit over root moves, formula-based rollouts).
+ * Voluntary switching via depth-1 minimax (fast enough, switching is less
+ * sensitive to deep lookahead than move selection).
+ *
+ * No hardcoded move scores. Multi-turn payoffs (hazards, status, setup) emerge
+ * from rollout statistics rather than explicit heuristics.
  */
 
+import * as fs from 'fs';
+import * as path from 'path';
 import type { Battle } from '../battle';
 import type { Pokemon } from '../pokemon';
 import type { ChoiceRequest } from '../side';
-import { NuzlockeAI, type DmgCtx, type MoveCtx } from './base';
+import { NuzlockeAI } from './base';
+import { PositionEvaluator, projectMoveState, projectSwitchInState } from './evaluator';
+import { initRolloutState, type RolloutState } from './rollout';
+import { MCTSEngine } from './mcts';
+import { isAbilityImmune } from './calculator';
+
+const LOG_PATH = path.join(process.cwd(), 'logs', 'competitive-ai.log');
+const PROTECT_IDS = new Set(['protect', 'kingsshield', 'spikyshield', 'banefulbunker']);
+function appendLog(text: string): void {
+	try {
+		fs.mkdirSync(path.dirname(LOG_PATH), { recursive: true });
+		fs.appendFileSync(LOG_PATH, text);
+	} catch { /* never crash over logging */ }
+}
+
+// ─── Action descriptors (used for voluntary switch depth-1 eval) ──────────────
+
+interface MoveAction { kind: 'move'; slot: number; move: Move; }
+interface SwitchAction { kind: 'switch'; slot: number; pokemon: Pokemon; }
+type Action = MoveAction | SwitchAction;
+
+// ─── CompetitiveAI ────────────────────────────────────────────────────────────
 
 export class CompetitiveAI extends NuzlockeAI {
+	private evaluator: PositionEvaluator;
+	/**
+	 * ID of the move we chose last turn, keyed by Pokemon slot index.
+	 * Used for consecutive-Protect detection (more reliable than pokemon.lastMove
+	 * which may not be populated at choice time in this format).
+	 */
+	private lastChoiceBySlot: Map<number, string> = new Map();
+
 	constructor(battle: Battle) {
 		super(battle);
+		this.evaluator = new PositionEvaluator(battle);
 	}
 
 	// =========================================================================
-	// Voluntary switching — Based on Run and Bun spec
+	// Move selection — MCTS
+	// =========================================================================
+
+	protected override chooseMove(request: ChoiceRequest): string {
+		const ai = this.battle.sides[1].active[0];
+		const opp = this.battle.sides[0].active[0];
+		if (!ai || !opp) {
+			// @ts-expect-error jank request parser
+			return `move ${this.battle.random(1, request.active[0].moves.length + 1)}`;
+		}
+
+		// Build rollout state first — it reads hazards/status correctly and we
+		// pass it into the filter so both use the same snapshot.
+		const initialState = initRolloutState(this.battle);
+
+		const aiSlot = this.battle.sides[1].pokemon.indexOf(ai);
+		const lastChosenId = this.lastChoiceBySlot.get(aiSlot) ?? '';
+
+		const candidateMoves = this.getCandidateMoves(request, initialState, lastChosenId);
+		if (candidateMoves.length === 0) return 'move 1';
+		if (candidateMoves.length === 1) {
+			this.lastChoiceBySlot.set(aiSlot, candidateMoves[0].move.id);
+			return `move ${candidateMoves[0].slot}`;
+		}
+
+		const engine = new MCTSEngine(this.battle);
+		// slot is 1-indexed; MCTSEngine works with 0-based moveSlot indices
+		const candidateIndices = candidateMoves.map(m => m.slot - 1);
+		const bestIdx = engine.selectMove(initialState, candidateIndices);
+
+		// Record what we chose (slot index → move id) for next turn's Protect check
+		const chosenMove = candidateMoves.find(m => m.slot === bestIdx + 1);
+		this.lastChoiceBySlot.set(aiSlot, chosenMove?.move.id ?? '');
+
+		return `move ${bestIdx + 1}`;
+	}
+
+	// =========================================================================
+	// Voluntary switching — depth-1 minimax
+	// Switching is less sensitive to deep lookahead than move selection,
+	// so depth-1 is sufficient and avoids doubling the MCTS budget.
 	// =========================================================================
 
 	protected override considerVoluntarySwitch(request: ChoiceRequest): string | null {
 		// @ts-expect-error jank request parser
 		if (request.active?.[0]?.trapped) return null;
-		const aiActive = this.battle.sides[1].active[0];
-		const opponent = this.battle.sides[0].active[0];
-		if (!aiActive || !opponent) return null;
+		const ai = this.battle.sides[1].active[0];
+		const opp = this.battle.sides[0].active[0];
+		if (!ai || !opp) return null;
 
-		// Switch if all offensive moves are immune or fully resisted by opponent
-		const usableMoves = aiActive.moveSlots.filter(slot => {
-			if (slot.disabled) return false;
-			const move = this.battle.dex.moves.get(slot.id);
-			if (move.basePower === 0) return true;
-			if (!this.battle.dex.getImmunity(move.type, opponent)) return false;
-			return this.battle.dex.getEffectiveness(move.type, opponent) >= 0;
-		});
+		const oppOptions = this.getOpponentOptions(opp);
+		const oppBestMove = this.getBestMoveAgainst(opp, ai);
 
-		// Switch if opponent has a 2× move vs AI and AI is below 60% HP
-		const hardCountered = opponent.moveSlots.some(slot => {
-			const move = this.battle.dex.moves.get(slot.id);
-			return move.basePower > 0 &&
-				this.battle.dex.getImmunity(move.type, aiActive) &&
-				this.battle.dex.getEffectiveness(move.type, aiActive) >= 1;
-		});
+		// Score of staying in: best move we can use vs worst opponent response
+		const stayInScore = this.minMaxScore(ai, opp, oppOptions);
 
-		const shouldSwitch = usableMoves.length === 0 || (hardCountered && aiActive.hp / aiActive.maxhp < 0.6);
-		if (!shouldSwitch) return null;
-
-		// Safety filter: only switch into a Pokemon that can absorb the next hit
-		const oppSpd = this.getBoostedStat(opponent, 'spe');
-		const aiBench = this.battle.sides[1].pokemon.slice(1).filter(p => p && !p.fainted && p.hp > 0);
-		const candidates = aiBench.filter(p => {
-			const benchSpd = this.getBoostedStat(p, 'spe');
-			const incomingDmg = this.maxOpponentDamage(opponent, p);
-			if (benchSpd > oppSpd && incomingDmg < p.hp) return true;
-			if (benchSpd <= oppSpd && incomingDmg * 2 < p.hp) return true;
-			return false;
-		});
-		if (candidates.length === 0) return null;
-
-		const currentScore = this.scoreSwitchTarget(aiActive, opponent);
-		const bestBenchScore = Math.max(...candidates.map(p => this.scoreSwitchTarget(p, opponent)));
-		if (bestBenchScore <= currentScore) return null;
-
+		// Score of each bench option
+		let bestSwitchScore = -Infinity;
 		let bestSlot = -1;
-		let bestScore = -Infinity;
-		for (const p of candidates) {
-			const score = this.scoreSwitchTarget(p, opponent);
-			if (score > bestScore) {
-				bestScore = score;
-				const idx = this.battle.sides[1].pokemon.indexOf(p);
-				if (idx > 0) bestSlot = idx + 1;
+
+		const bench = this.battle.sides[1].pokemon;
+		for (let i = 1; i < bench.length; i++) {
+			const p = bench[i];
+			if (!p || p.fainted || p.hp <= 0) continue;
+
+			// Project state after switching in (opponent gets a free hit)
+			let worstScore = Infinity;
+			for (const oppAction of oppOptions) {
+				const oppMove = oppAction.kind === 'move' ? oppAction.move : oppBestMove;
+				const state = projectSwitchInState(this.battle, p, opp, oppMove);
+				const score = this.evaluator.evaluate(state);
+				if (score < worstScore) worstScore = score;
+			}
+
+			if (worstScore > bestSwitchScore) {
+				bestSwitchScore = worstScore;
+				bestSlot = i + 1;
 			}
 		}
-		return bestSlot !== -1 ? `switch ${bestSlot}` : null;
-	}
 
-	// =========================================================================
-	// Recovery — full Run and Bun spec
-	// =========================================================================
-
-	protected override shouldRecover(attacker: Pokemon, defender: Pokemon, healFraction: number): boolean {
-		const hpFrac = attacker.hp / attacker.maxhp;
-		if (attacker.status === 'tox') return false;
-		const healAmount = attacker.maxhp * healFraction;
-		const maxDamage = this.maxOpponentDamage(defender, attacker);
-		if (maxDamage >= healAmount) return false;
-		const faster = this.getBoostedStat(attacker, 'spe') > this.getBoostedStat(defender, 'spe');
-		if (faster) {
-			if (maxDamage >= attacker.hp && attacker.hp + healAmount > maxDamage) return true;
-			if (hpFrac < 0.4) return true;
-			if (hpFrac < 0.66) return Math.random() < 0.5;
-			return false;
-		} else {
-			if (hpFrac < 0.5) return true;
-			if (hpFrac < 0.7) return Math.random() < 0.75;
-			return false;
-		}
-	}
-
-	// =========================================================================
-	// Damage move feature hooks
-	// =========================================================================
-
-	protected override highestDamageBonus(): number {
-		return Math.random() < 0.8 ? 6 : 8;
-	}
-
-	protected override killBonus(dmgCtx: DmgCtx): number {
-		return dmgCtx.kills ? (dmgCtx.faster ? 6 : 3) : 0;
-	}
-
-	protected override priorityBonus(ctx: MoveCtx): number {
-		if (ctx.move.priority > 0 && !ctx.faster) {
-			if (this.maxOpponentDamage(ctx.defender, ctx.attacker) >= ctx.attacker.hp) return 11;
-		}
-		return 0;
-	}
-
-	protected override acidSprayBonus(): number {
-		return 6;
-	}
-
-	protected override pursuitBonus(ctx: MoveCtx): number {
-		if (ctx.move.id !== 'pursuit') return 0;
-		let bonus = 0;
-		if (ctx.dmgCtx!.kills) {
-			bonus += 10;
-		} else {
-			const oppHpFrac = ctx.defender.hp / ctx.defender.maxhp;
-			if (oppHpFrac < 0.2) bonus += 10;
-			else if (oppHpFrac < 0.4 && Math.random() < 0.5) bonus += 8;
-		}
-		if (ctx.dmgCtx!.faster) bonus += 3;
-		return bonus;
-	}
-
-	protected override scoreContraryMove(ctx: MoveCtx): number | null {
-		const { attacker, defender, dmgCtx, faster } = ctx;
-		if (attacker.ability !== 'contrary' as ID) return null;
-		if (ctx.isHighestDamage || dmgCtx!.kills) return null;
-		const selfBoosts = (ctx.move as AnyObject).self?.boosts;
-		if (!selfBoosts) return null;
-		const spaBoost = -(selfBoosts.spa ?? 0);
-		const atkBoost = -(selfBoosts.atk ?? 0);
-		if (spaBoost >= 2) {
-			let score = 6;
-			if (this.isIncapacitated(defender)) {
-				score += 3;
-			} else {
-				const can3HKO = this.maxOpponentDamage(defender, attacker) * 3 >= attacker.hp;
-				if (!can3HKO) {
-					score += 1;
-					if (faster) score += 1;
-				}
-			}
-			if ((attacker.boosts.spa ?? 0) >= 2) score -= 1;
-			return score;
-		} else if (atkBoost >= 1) {
-			let score = 6;
-			const can2HKO = this.maxOpponentDamage(defender, attacker) * 2 >= attacker.hp;
-			if (this.isIncapacitated(defender)) score += 3;
-			else if (can2HKO && !faster) score -= 5;
-			return score;
+		// Only switch if bench is meaningfully better (>10 pts avoids thrashing)
+		if (bestSlot !== -1 && bestSwitchScore > stayInScore + 10) {
+			const switchIn = this.battle.sides[1].pokemon[bestSlot - 1];
+			appendLog(
+				`\n=== Turn ${this.battle.turn} — Voluntary Switch ===\n` +
+				`  Pulling: ${ai.species.name} (stay-in score: ${stayInScore.toFixed(1)})\n` +
+				`  Sending: ${switchIn?.species?.name ?? '?'} (switch-in score: ${bestSwitchScore.toFixed(1)})\n` +
+				`---\n`
+			);
+			return `switch ${bestSlot}`;
 		}
 		return null;
 	}
 
-	protected override scoreStatReductionMove(ctx: MoveCtx): number {
-		const { move, defender, faster } = ctx;
-		const sec = (move as AnyObject).secondary;
-		const blocked = defender.ability === 'contrary' as ID ||
-			defender.ability === 'clearbody' as ID ||
-			defender.ability === 'whitesmoke' as ID;
-		const hasSpeDown = sec?.chance === 100 && (sec?.boosts?.spe ?? 0) < 0;
-		if (hasSpeDown) {
-			return (!blocked && !faster) ? 6 : 5;
+	// =========================================================================
+	// Helpers
+	// =========================================================================
+
+	/** Depth-1 minimax score for staying in (used by considerVoluntarySwitch). */
+	private minMaxScore(ai: Pokemon, opp: Pokemon, oppOptions: Action[]): number {
+		const aiMoves = ai.moveSlots
+			.map((slot, i) => ({ slot: i + 1, move: this.battle.dex.moves.get(slot.id) }))
+			.filter(({ move }) => move.basePower > 0 &&
+				this.battle.dex.getImmunity(move.type, opp.types) &&
+				!isAbilityImmune(ai.ability as string, opp.ability as string, move.type));
+
+		if (aiMoves.length === 0) return -Infinity;
+
+		let bestMinScore = -Infinity;
+		for (const { move: aiMove } of aiMoves) {
+			let minScore = Infinity;
+			for (const oppAction of oppOptions) {
+				const oppMove = oppAction.kind === 'move' ? oppAction.move : this.getBestMoveAgainst(opp, ai);
+				const state = projectMoveState(this.battle, ai, opp, aiMove, oppMove);
+				const score = this.evaluator.evaluate(state);
+				if (score < minScore) minScore = score;
+			}
+			if (minScore > bestMinScore) bestMinScore = minScore;
 		}
-		const hasAtkDown = sec?.chance === 100 && (sec?.boosts?.atk ?? 0) < 0;
-		const hasSpaDown = sec?.chance === 100 && (sec?.boosts?.spa ?? 0) < 0;
-		if (hasAtkDown || hasSpaDown) {
-			const relevantCategory: 'Physical' | 'Special' = hasAtkDown ? 'Physical' : 'Special';
-			const targetHasSplit = this.hasMoveCategory(defender, relevantCategory);
-			return (!blocked && targetHasSplit) ? 6 : 5;
+		return bestMinScore;
+	}
+
+	/** Candidate AI moves: excludes disabled, zero-PP moves, and clearly useless moves. */
+	private getCandidateMoves(
+		request: ChoiceRequest,
+		state: RolloutState,
+		lastChosenId: string
+	): MoveAction[] {
+		// @ts-expect-error jank request parser
+		const moves = request.active[0].moves as Array<{id: string, disabled: boolean | string, pp: number}>;
+		const actions: MoveAction[] = [];
+		for (let i = 0; i < moves.length; i++) {
+			const m = moves[i];
+			if (m.disabled || m.pp === 0) continue;
+			const move = this.battle.dex.moves.get(m.id);
+			actions.push({ kind: 'move', slot: i + 1, move });
 		}
-		return 0;
+		return this.filterUselessMoves(actions, state, lastChosenId);
 	}
 
-	// =========================================================================
-	// Fell Stinger
-	// =========================================================================
+	/**
+	 * Removes moves that are guaranteed to have no useful effect this turn.
+	 * Uses the rollout state snapshot (known-correct at choice time) rather than
+	 * reading from battle directly, which can be stale in this async format.
+	 * Keeps at least one move (never filters down to empty).
+	 */
+	private filterUselessMoves(
+		candidates: MoveAction[],
+		state: RolloutState,
+		lastChosenId: string
+	): MoveAction[] {
+		const opp = this.battle.sides[0].active[0];
+		if (!opp) return candidates;
 
-	protected override scoreFellStinger(ctx: MoveCtx): number {
-		const dmgCtx = ctx.dmgCtx!;
-		if (dmgCtx.kills && (ctx.attacker.boosts.atk ?? 0) < 6) {
-			return dmgCtx.faster
-				? (Math.random() < 0.8 ? 21 : 23)
-				: (Math.random() < 0.8 ? 15 : 17);
-		}
-		return this.scoreDamagingMove(ctx);
-	}
+		const oppMon = state.opp[state.oppActiveIdx];
+		const hazards = state.hazardsOnOppSide;
+		const oppHasStatus = !!oppMon.status;
+		const lastWasProtect = PROTECT_IDS.has(lastChosenId);
 
-	// =========================================================================
-	// Status move hooks
-	// =========================================================================
+		const ai = this.battle.sides[1].active[0];
+		const filtered = candidates.filter(({ move }) => {
+			// Immune moves: type or ability makes the move deal zero damage
+			if (move.basePower > 0 && !this.battle.dex.getImmunity(move.type, opp.types)) return false;
+			if (move.basePower > 0 && isAbilityImmune(ai?.ability as string ?? '', opp.ability as string, move.type)) return false;
 
-	protected override scoreStealthRock(ctx: MoveCtx): number {
-		if (this.battle.sides[0].sideConditions['stealthrock']) return -20;
-		const firstTurn = ctx.attacker.activeTurns <= 1;
-		const base = Math.random() < 0.25 ? 8 : 9;
-		return firstTurn ? base : base - 2;
-	}
+			// Hazard moves: already at max layers on opponent's side
+			if (move.id === 'stealthrock' && hazards.stealthRock) return false;
+			if (move.id === 'spikes' && hazards.spikes >= 3) return false;
+			if (move.id === 'toxicspikes' && hazards.toxicSpikes >= 2) return false;
+			if (move.id === 'stickyweb' && hazards.stickyWeb) return false;
 
-	protected override scoreSpikes(ctx: MoveCtx): number {
-		const spikes = this.battle.sides[0].sideConditions['spikes'];
-		if (spikes && ((spikes as AnyObject).layers ?? 1) >= 3) return -20;
-		const alreadySet = spikes ? 1 : 0;
-		const firstTurn = ctx.attacker.activeTurns <= 1;
-		const base = Math.random() < 0.25 ? 8 : 9;
-		return (firstTurn ? base : base - 2) - alreadySet;
-	}
+			// Status infliction: target already has a status condition
+			if (move.status && oppHasStatus) return false;
 
-	protected override scoreToxicSpikes(ctx: MoveCtx): number {
-		const tspikes = this.battle.sides[0].sideConditions['toxicspikes'];
-		if (tspikes && ((tspikes as AnyObject).layers ?? 1) >= 2) return -20;
-		const alreadySet = tspikes ? 1 : 0;
-		const firstTurn = ctx.attacker.activeTurns <= 1;
-		const base = Math.random() < 0.25 ? 8 : 9;
-		return (firstTurn ? base : base - 2) - alreadySet;
-	}
+			// Protect: consecutive use always fails
+			if (PROTECT_IDS.has(move.id) && lastWasProtect) return false;
 
-	protected override scoreParalysis(ctx: MoveCtx): number {
-		if (ctx.defender.types.includes('Electric')) return -20;
-		const oppSpe = this.getBoostedStat(ctx.defender, 'spe');
-		const aiSpe = this.getBoostedStat(ctx.attacker, 'spe');
-		const playerFasterButSlowedByPar = oppSpe > aiSpe && Math.floor(oppSpe / 4) < aiSpe;
-		const aiHasFlinchMove = ctx.attacker.moveSlots.some(slot => {
-			const m = this.battle.dex.moves.get(slot.id);
-			return (m as AnyObject).secondary?.volatileStatus === 'flinch';
+			return true;
 		});
-		const playerHasVolatile = !!(ctx.defender.volatiles['confusion'] || ctx.defender.volatiles['attract']);
-		let score = (playerFasterButSlowedByPar || aiHasFlinchMove || playerHasVolatile) ? 8 : 7;
-		if (Math.random() < 0.5) score -= 1;
-		return score;
+
+		return filtered.length > 0 ? filtered : candidates;
 	}
 
-	protected override scoreBurn(ctx: MoveCtx): number {
-		if (ctx.defender.types.includes('Fire')) return -20;
-		let score = 6;
-		if (Math.random() < 0.37) {
-			if (this.hasMoveCategory(ctx.defender, 'Physical')) score += 1;
-			if (ctx.attacker.moveSlots.some(s => s.id === 'hex')) score += 1;
+	/** Opponent's available actions: all non-disabled moves + abstract switch option. */
+	private getOpponentOptions(opp: Pokemon): Action[] {
+		const actions: Action[] = [];
+		for (let i = 0; i < opp.moveSlots.length; i++) {
+			const slot = opp.moveSlots[i];
+			if (slot.disabled) continue;
+			const move = this.battle.dex.moves.get(slot.id);
+			actions.push({ kind: 'move', slot: i + 1, move });
 		}
-		return score;
-	}
-
-	protected override scorePoison(ctx: MoveCtx): number {
-		if (ctx.defender.types.includes('Steel') || ctx.defender.types.includes('Poison')) return -20;
-		let score = 6;
-		if (Math.random() < 0.38) {
-			const aiHasHex = ctx.attacker.moveSlots.some(s => s.id === 'hex');
-			const aiHasVenoshock = ctx.attacker.moveSlots.some(s => s.id === 'venoshock');
-			const aiHasMerciless = ctx.attacker.ability === 'merciless' as ID;
-			const playerHasDmg = this.hasMoveCategory(ctx.defender, 'Physical') || this.hasMoveCategory(ctx.defender, 'Special');
-			if ((aiHasHex || aiHasVenoshock || aiHasMerciless) && !playerHasDmg) score += 2;
-		}
-		return score;
-	}
-
-	protected override scoreSleep(ctx: MoveCtx): number {
-		if (ctx.defender.status) return -20;
-		if (ctx.defender.volatiles['yawn']) return -20;
-		let score = 6;
-		if (Math.random() < 0.25) {
-			score += 1;
-			const aiHasDreamEater = ctx.attacker.moveSlots.some(s => s.id === 'dreameater');
-			const aiHasNightmare = ctx.attacker.moveSlots.some(s => s.id === 'nightmare');
-			const playerHasSnore = ctx.defender.moveSlots.some(s => s.id === 'snore');
-			const playerHasSleepTalk = ctx.defender.moveSlots.some(s => s.id === 'sleeptalk');
-			if ((aiHasDreamEater || aiHasNightmare) && !playerHasSnore && !playerHasSleepTalk) score += 1;
-			if (ctx.attacker.moveSlots.some(s => s.id === 'hex')) score += 1;
-		}
-		return score;
-	}
-
-	protected override scoreRest(ctx: MoveCtx): number {
-		if (ctx.hpFrac >= 1.0) return -20;
-		if (ctx.hpFrac >= 0.85) return -6;
-		if (!this.shouldRecover(ctx.attacker, ctx.defender, 1.0)) return 5;
-		const hasSleepCure = (
-			ctx.attacker.item === 'lumberry' as ID ||
-			ctx.attacker.item === 'chestoberry' as ID ||
-			ctx.attacker.moveSlots.some(s => s.id === 'sleeptalk' || s.id === 'snore') ||
-			ctx.attacker.ability === 'shedskin' as ID ||
-			ctx.attacker.ability === 'earlybird' as ID ||
-			(ctx.attacker.ability === 'hydration' as ID && this.battle.field.isWeather('raindance'))
-		);
-		return hasSleepCure ? 8 : 7;
-	}
-
-	protected override scoreProtect(ctx: MoveCtx): number {
-		let score = 6;
-		const aiDraining = ['psn', 'tox', 'brn'].includes(ctx.attacker.status || '') ||
-			!!(ctx.attacker.volatiles['curse'] || ctx.attacker.volatiles['leechseed'] ||
-			ctx.attacker.volatiles['attract'] || ctx.attacker.volatiles['perish2']);
-		if (aiDraining) score -= 2;
-		const playerDraining = ['psn', 'tox', 'brn'].includes(ctx.defender.status || '') ||
-			!!(ctx.defender.volatiles['curse'] || ctx.defender.volatiles['leechseed']);
-		if (playerDraining) score += 1;
-		if (ctx.attacker.activeTurns <= 1) score -= 1;
-		const lastId = ctx.attacker.lastMove?.id ?? '';
-		const protectIds = ['protect', 'kingsshield', 'spikyshield', 'banefulbunker'];
-		if (protectIds.includes(lastId)) {
-			if (Math.random() < 0.5) return -20;
-		}
-		return score;
-	}
-
-	protected override scoreSubstitute(ctx: MoveCtx): number {
-		if (ctx.hpFrac <= 0.5) return -20;
-		if (ctx.defender.ability === 'infiltrator' as ID) return -20;
-		let score = 6;
-		if (ctx.defender.status === 'slp') score += 2;
-		if (ctx.defender.volatiles['leechseed'] && ctx.faster) score += 2;
-		if (Math.random() < 0.5) score -= 1;
-		const playerHasSoundMove = ctx.defender.moveSlots.some(slot =>
-			(this.battle.dex.moves.get(slot.id) as AnyObject).flags?.sound
-		);
-		if (playerHasSoundMove) score -= 8;
-		return score;
-	}
-
-	protected override scoreTaunt(ctx: MoveCtx): number {
-		const trActive = !!this.battle.field.pseudoWeather['trickroom'];
-		const opponentHasTR = ctx.defender.moveSlots.some(s => s.id === 'trickroom');
-		if (opponentHasTR && !trActive) return 9;
-		const opponentHasDefog = ctx.defender.moveSlots.some(s => s.id === 'defog');
-		const auroraVeilUp = !!this.battle.sides[1].sideConditions['auroraveil'];
-		if (opponentHasDefog && auroraVeilUp && ctx.faster) return 9;
-		return 5;
-	}
-
-	protected override scoreEncore(ctx: MoveCtx): number {
-		if (!ctx.defender.lastMove) return -20;
-		if (ctx.defender.volatiles['encore']) return -20;
-		const lastMoveWasStatus = this.battle.dex.moves.get(ctx.defender.lastMove.id).category === 'Status';
-		if (lastMoveWasStatus) return ctx.faster ? 7 : (Math.random() < 0.5 ? 6 : 5);
-		return Math.random() < 0.5 ? 6 : 5;
-	}
-
-	protected override scoreExplodeSelf(ctx: MoveCtx): number {
-		const aiAlive = this.battle.sides[1].pokemon.filter(p => !p.fainted && p.hp > 0).length;
-		const oppAlive = this.battle.sides[0].pokemon.filter(p => !p.fainted && p.hp > 0).length;
-		if (aiAlive === 1 && oppAlive > 1) return -20;
-		let score: number;
-		if (ctx.hpFrac < 0.1) score = 10;
-		else if (ctx.hpFrac < 0.33) score = Math.random() < 0.7 ? 8 : 0;
-		else if (ctx.hpFrac < 0.66) score = Math.random() < 0.5 ? 7 : 0;
-		else score = Math.random() < 0.05 ? 7 : 0;
-		if (aiAlive === 1 && oppAlive === 1) score -= 1;
-		return score;
-	}
-
-	protected override scoreBatonPass(ctx: MoveCtx): number {
-		const bench = this.battle.sides[1].pokemon.slice(1).filter(p => p && !p.fainted && p.hp > 0);
-		if (bench.length === 0) return -20;
-		const hasSub = !!ctx.attacker.volatiles['substitute'];
-		const hasBoost = Object.values(ctx.attacker.boosts).some(v => (v as number) > 0);
-		if (hasSub || hasBoost) return 14;
-		return 0;
-	}
-
-	protected override scoreDestinyBond(ctx: MoveCtx): number {
-		const dies = this.maxOpponentDamage(ctx.defender, ctx.attacker) >= ctx.attacker.hp;
-		if (ctx.faster && dies) return Math.random() < 0.81 ? 7 : 6;
-		return Math.random() < 0.5 ? 5 : 6;
-	}
-
-	protected override scoreTrick(ctx: MoveCtx): number {
-		const item = ctx.attacker.item;
-		if (item === 'toxicorb' as ID || item === 'flameorb' as ID || item === 'blacksludge' as ID) {
-			return Math.random() < 0.5 ? 6 : 7;
-		}
-		if (item === 'ironball' as ID || item === 'laggingtail' as ID || item === 'stickybarb' as ID) return 7;
-		return 5;
-	}
-
-	protected override scoreImprison(ctx: MoveCtx): number {
-		const hasSharedMove = ctx.defender.moveSlots.some(defSlot =>
-			ctx.attacker.moveSlots.some(attSlot => attSlot.id === defSlot.id)
-		);
-		return hasSharedMove ? 9 : -20;
-	}
-
-	protected override scoreStickyWeb(ctx: MoveCtx): number {
-		if (this.battle.sides[0].sideConditions['stickyweb']) return -20;
-		const firstTurn = ctx.attacker.activeTurns <= 1;
-		return firstTurn
-			? (Math.random() < 0.25 ? 9 : 12)
-			: (Math.random() < 0.25 ? 6 : 9);
-	}
-
-	protected override scoreTailwind(ctx: MoveCtx): number {
-		return !ctx.faster ? 9 : 5;
-	}
-
-	protected override scoreTrickRoom(ctx: MoveCtx): number {
-		if (this.battle.field.pseudoWeather['trickroom']) return -20;
-		return !ctx.faster ? 10 : 5;
-	}
-
-	protected override scoreReflectLightScreen(ctx: MoveCtx): number {
-		const correspondingCategory: 'Physical' | 'Special' = ctx.move.id === 'reflect' ? 'Physical' : 'Special';
-		let score = 6;
-		if (this.hasMoveCategory(ctx.defender, correspondingCategory)) {
-			if (ctx.attacker.item === 'lightclay' as ID) score += 1;
-			if (Math.random() < 0.5) score += 1;
-		}
-		return score;
-	}
-
-	protected override scoreFinalGambit(ctx: MoveCtx): number {
-		if (ctx.faster && ctx.attacker.hp > ctx.defender.hp) return 8;
-		const dies = this.maxOpponentDamage(ctx.defender, ctx.attacker) >= ctx.attacker.hp;
-		if (ctx.faster && dies) return 7;
-		return 6;
-	}
-
-	protected override scoreMemento(ctx: MoveCtx): number {
-		const bench = this.battle.sides[1].pokemon.slice(1).filter(p => !p.fainted && p.hp > 0);
-		if (bench.length === 0) return -20;
-		if (ctx.hpFrac < 0.1) return 16;
-		if (ctx.hpFrac < 0.33) return Math.random() < 0.7 ? 14 : 6;
-		if (ctx.hpFrac < 0.66) return Math.random() < 0.5 ? 13 : 6;
-		return Math.random() < 0.05 ? 13 : 6;
-	}
-
-	protected override scoreFocusEnergy(ctx: MoveCtx): number {
-		if (ctx.defender.ability === 'shellarmor' as ID || ctx.defender.ability === 'battlearmor' as ID) return -20;
-		const hasHighCrit = (
-			ctx.attacker.ability === 'superluck' as ID ||
-			ctx.attacker.ability === 'sniper' as ID ||
-			ctx.attacker.item === 'scopelens' as ID ||
-			ctx.attacker.item === 'razorclaw' as ID ||
-			ctx.attacker.moveSlots.some(s => ((this.battle.dex.moves.get(s.id) as AnyObject).critRatio ?? 1) >= 2)
-		);
-		return hasHighCrit ? 7 : 6;
-	}
-
-	protected override scoreTerrain(ctx: MoveCtx): number {
-		return ctx.attacker.item === 'terrainextender' as ID ? 9 : 8;
-	}
-
-	protected override scoreCounterMirrorCoat(ctx: MoveCtx): number {
-		const { attacker, defender, faster } = ctx;
-		const relevantCategory: 'Physical' | 'Special' = ctx.move.id === 'counter' ? 'Physical' : 'Special';
-		const canOHKO = this.maxOpponentDamage(defender, attacker) >= attacker.hp;
-		const hasSturdy = attacker.ability === 'sturdy' as ID;
-		const hasSash = attacker.item === 'focussash' as ID;
-		if (canOHKO && !hasSturdy && !hasSash) return -14;
-		let score = 6;
-		const targetOnlyHasRelevantSplit = (
-			this.hasMoveCategory(defender, relevantCategory) &&
-			!this.hasMoveCategory(defender, relevantCategory === 'Physical' ? 'Special' : 'Physical')
-		);
-		if (canOHKO && (hasSturdy || hasSash) && attacker.hp === attacker.maxhp && targetOnlyHasRelevantSplit) {
-			score += 2;
-		} else if (!canOHKO && targetOnlyHasRelevantSplit) {
-			if (Math.random() < 0.8) score += 2;
-		}
-		if (faster && Math.random() < 0.25) score -= 1;
-		if (defender.moveSlots.some(s => this.battle.dex.moves.get(s.id).category === 'Status') && Math.random() < 0.25) score -= 1;
-		return score;
-	}
-
-	protected override scoreSetupMove(ctx: MoveCtx): number {
-		const { attacker, defender, faster } = ctx;
-		const boosts = (ctx.move as AnyObject).boosts as AnyObject;
-		const offBoost = (boosts.atk ?? 0) + (boosts.spa ?? 0);
-		const defBoost = (boosts.def ?? 0) + (boosts.spd ?? 0);
-		const speBoost = boosts.spe ?? 0;
-
-		if (speBoost > 0 && offBoost === 0 && defBoost === 0) return faster ? -20 : 7;
-
-		const canOHKO = this.maxOpponentDamage(defender, attacker) >= attacker.hp;
-		const can2HKO = this.maxOpponentDamage(defender, attacker) * 2 >= attacker.hp;
-
-		if (ctx.move.id === 'shellsmash') {
-			if (canOHKO) return -20;
-			if ((attacker.boosts.atk ?? 0) >= 1) return -20;
-			let score = 6;
-			if (this.isIncapacitated(defender)) score += 3;
-			const hasWhiteHerb = attacker.item === 'whiteherb' as ID;
-			const postSmashMult = hasWhiteHerb ? 1.0 : 1.5;
-			const postSmashDamage = this.maxOpponentDamage(defender, attacker) * postSmashMult;
-			score += postSmashDamage < attacker.hp ? 2 : -2;
-			return score;
-		}
-
-		if (ctx.move.id === 'bellydrum') {
-			if (this.isIncapacitated(defender)) return 9;
-			const hasSitrus = attacker.item === 'sitrusberry' as ID;
-			const hpAfterDrum = hasSitrus ? attacker.maxhp * 0.75 : attacker.hp * 0.5;
-			if (this.maxOpponentDamage(defender, attacker) >= hpAfterDrum) return 4;
-			return 8;
-		}
-
-		if (canOHKO) return -20;
-
-		const defenderHasUnaware = defender.ability === 'unaware' as ID;
-		const unawareExceptions = ['poweruppunch', 'swordsdance', 'howl'];
-		if (defenderHasUnaware && !unawareExceptions.includes(ctx.move.id)) return -20;
-
-		const isMixed = offBoost > 0 && defBoost > 0;
-		let treatAsOffensive: boolean;
-		if (isMixed) {
-			if ((boosts.atk ?? 0) > 0 && (boosts.spa ?? 0) === 0) {
-				treatAsOffensive = !(this.hasMoveCategory(defender, 'Physical') && !this.hasMoveCategory(defender, 'Special'));
-			} else {
-				treatAsOffensive = !(this.hasMoveCategory(defender, 'Special') && !this.hasMoveCategory(defender, 'Physical'));
-			}
-		} else {
-			treatAsOffensive = offBoost > 0;
-		}
-
-		let score = 6;
-		if (treatAsOffensive) {
-			if (this.isIncapacitated(defender)) {
-				score += 3;
-			} else if (can2HKO && !faster) {
-				score -= 5;
-			}
-			if (!isMixed && (boosts.spa ?? 0) > 0) {
-				const can3HKO = this.maxOpponentDamage(defender, attacker) * 3 >= attacker.hp;
-				if (!this.isIncapacitated(defender) && !can3HKO) {
-					score += 1;
-					if (faster) score += 1;
-				}
-				if ((attacker.boosts.spa ?? 0) >= 2) score -= 1;
-			}
-		} else {
-			if (can2HKO && !faster) score -= 5;
-			if (Math.random() < 0.95) {
-				if (this.isIncapacitated(defender)) score += 2;
-				if ((boosts.def ?? 0) > 0 && (boosts.spd ?? 0) > 0 &&
-					((attacker.boosts.def ?? 0) < 2 || (attacker.boosts.spd ?? 0) < 2)) {
-					score += 2;
+		const oppBench = this.battle.sides[0].pokemon.slice(1).filter(p => p && !p.fainted && p.hp > 0);
+		if (oppBench.length > 0) {
+			const aiActive = this.battle.sides[1].active[0];
+			let bestBench = oppBench[0];
+			if (aiActive) {
+				let bestScore = -Infinity;
+				for (const p of oppBench) {
+					let offScore = 0;
+					for (const slot of p.moveSlots) {
+						const m = this.battle.dex.moves.get(slot.id);
+						if (m.basePower > 0 && this.battle.dex.getImmunity(m.type, aiActive.types) &&
+								!isAbilityImmune(p.ability as string, aiActive.ability as string, m.type)) {
+							const eff = Math.pow(2, this.battle.dex.getEffectiveness(m.type, aiActive.types));
+							if (eff > offScore) offScore = eff;
+						}
+					}
+					if (offScore > bestScore) { bestScore = offScore; bestBench = p; }
 				}
 			}
+			actions.push({ kind: 'switch', slot: 0, pokemon: bestBench });
 		}
-		return score;
+		return actions.length > 0
+			? actions
+			: [{ kind: 'move', slot: 1, move: this.battle.dex.moves.get(opp.moveSlots[0]?.id ?? 'tackle') }];
+	}
+
+	/** Highest-damage move the attacker has against defender (for switch modeling). */
+	private getBestMoveAgainst(attacker: Pokemon, defender: Pokemon): Move {
+		let bestMove: Move | null = null;
+		let bestDmg = -1;
+		for (const slot of attacker.moveSlots) {
+			const m = this.battle.dex.moves.get(slot.id);
+			if (m.basePower === 0) continue;
+			if (!this.battle.dex.getImmunity(m.type, defender.types)) continue;
+			if (isAbilityImmune(attacker.ability as string, defender.ability as string, m.type)) continue;
+			const eff = Math.pow(2, this.battle.dex.getEffectiveness(m.type, defender.types));
+			if (eff > bestDmg) { bestDmg = eff; bestMove = m; }
+		}
+		return bestMove ?? this.battle.dex.moves.get(attacker.moveSlots[0]?.id ?? 'tackle');
 	}
 }

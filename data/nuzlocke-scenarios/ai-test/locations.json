@@ -1,0 +1,67 @@
+[
+  {
+    "id": "test-route-charizard",
+    "name": "Inferno Cliffs",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Grass",
+        "pokemon": [
+          { "species": "Charizard", "rate": 100 }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "test-route-blissey",
+    "name": "Serene Meadow",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Grass",
+        "pokemon": [
+          { "species": "Blissey", "rate": 100 }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "test-route-mamoswine",
+    "name": "Frozen Tundra",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Grass",
+        "pokemon": [
+          { "species": "Mamoswine", "rate": 100 }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "test-route-starmie",
+    "name": "Crystal Shore",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Grass",
+        "pokemon": [
+          { "species": "Starmie", "rate": 100 }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "test-route-togekiss",
+    "name": "Skyward Pass",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Grass",
+        "pokemon": [
+          { "species": "Togekiss", "rate": 100 }
+        ]
+      }
+    ]
+  }
+]

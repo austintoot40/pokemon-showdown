@@ -43,7 +43,7 @@ export class NuzlockeGame {
 	resolvedRoutes: string[];
 	deferredRoutes: RouteEncounter[];   // explicitly deferred by player; re-appear as pending each session
 	lockedRoutes: RouteEncounter[];     // auto-carried routes where all zones were inaccessible at segment end
-	settings: { ai: 'game-accurate' | 'smart' | 'competitive'; generation: number };
+	settings: { ai: 'basic' | 'smart' | 'competitive'; generation: number };
 	partyErrors: Map<string, string>;
 	lastCompletedRun: CompletedRun | null;
 	randomizerConfig: import('./types').RandomizerConfig | null;
@@ -68,7 +68,7 @@ export class NuzlockeGame {
 		this.resolvedRoutes = [];
 		this.deferredRoutes = [];
 		this.lockedRoutes = [];
-		this.settings = { ai: 'game-accurate', generation: 9 };
+		this.settings = { ai: 'basic', generation: 9 };
 		this.partyErrors = new Map();
 		this.lastCompletedRun = null;
 		this.randomizerConfig = null;
@@ -150,6 +150,7 @@ export class NuzlockeGame {
 		const prereq = zone.requires ?? NuzlockeGame.METHOD_PREREQS[zone.method];
 		if (!prereq) return false;
 		if (prereq.type === 'move' || prereq.type === 'hm') return !this.tmMoves.includes(prereq.name);
+		if (prereq.type === 'pokemon') return !this.box.some(p => toID(p.species) === toID(prereq.name));
 		return !this.items.includes(prereq.name);
 	}
 
@@ -218,6 +219,16 @@ export class NuzlockeGame {
 		pokemon.caughtZoneIndex = zoneIndex;
 		this.box.push(pokemon);
 		this.addToParty(pokemon.uid);
+		// Trade zones: remove the traded-away pokemon from the box
+		const zone = route.zones[zoneIndex];
+		if (zone?.requires?.type === 'pokemon') {
+			const tradedIdx = this.box.findIndex(p => toID(p.species) === toID(zone.requires!.name));
+			if (tradedIdx >= 0) {
+				const traded = this.box[tradedIdx];
+				this.party = this.party.filter(uid => uid !== traded.uid);
+				this.box.splice(tradedIdx, 1);
+			}
+		}
 	}
 
 	get currentSegment() {
@@ -437,6 +448,7 @@ export interface NuzlockePanelPayload {
 	party: string[];
 	graveyard: DeadPokemon[];
 	items: string[];
+	holdableItems: string[];
 	tmMoves: string[];
 	resolvedRoutes: string[];
 	deferredRoutes: import('./types').RouteEncounter[];
