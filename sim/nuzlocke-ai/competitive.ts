@@ -9,8 +9,6 @@
  * from rollout statistics rather than explicit heuristics.
  */
 
-import * as fs from 'fs';
-import * as path from 'path';
 import type { Battle } from '../battle';
 import type { Pokemon } from '../pokemon';
 import type { ChoiceRequest } from '../side';
@@ -20,14 +18,7 @@ import { initRolloutState, type RolloutState } from './rollout';
 import { MCTSEngine } from './mcts';
 import { isAbilityImmune } from './calculator';
 
-const LOG_PATH = path.join(process.cwd(), 'logs', 'competitive-ai.log');
 const PROTECT_IDS = new Set(['protect', 'kingsshield', 'spikyshield', 'banefulbunker']);
-function appendLog(text: string): void {
-	try {
-		fs.mkdirSync(path.dirname(LOG_PATH), { recursive: true });
-		fs.appendFileSync(LOG_PATH, text);
-	} catch { /* never crash over logging */ }
-}
 
 // ─── Action descriptors (used for voluntary switch depth-1 eval) ──────────────
 
@@ -134,13 +125,6 @@ export class CompetitiveAI extends NuzlockeAI {
 
 		// Only switch if bench is meaningfully better (>10 pts avoids thrashing)
 		if (bestSlot !== -1 && bestSwitchScore > stayInScore + 10) {
-			const switchIn = this.battle.sides[1].pokemon[bestSlot - 1];
-			appendLog(
-				`\n=== Turn ${this.battle.turn} — Voluntary Switch ===\n` +
-				`  Pulling: ${ai.species.name} (stay-in score: ${stayInScore.toFixed(1)})\n` +
-				`  Sending: ${switchIn?.species?.name ?? '?'} (switch-in score: ${bestSwitchScore.toFixed(1)})\n` +
-				`---\n`
-			);
 			return `switch ${bestSlot}`;
 		}
 		return null;

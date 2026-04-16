@@ -13,26 +13,11 @@
  * remains meaningful regardless of the raw score range (≈ −1000 to +1000).
  */
 
-import * as fs from 'fs';
-import * as path from 'path';
 import type { Battle } from '../battle';
 import type { RolloutState } from './rollout';
 import {
 	rolloutPolicy, stepRollout, isRolloutTerminal, evaluateRolloutState,
 } from './rollout';
-
-// ─── Logging ──────────────────────────────────────────────────────────────────
-
-const LOG_PATH = path.join(process.cwd(), 'logs', 'competitive-ai.log');
-
-function appendLog(text: string): void {
-	try {
-		fs.mkdirSync(path.dirname(LOG_PATH), { recursive: true });
-		fs.appendFileSync(LOG_PATH, text);
-	} catch {
-		// Never crash the game over logging
-	}
-}
 
 const SCORE_MIN = -1000;
 const SCORE_MAX = 1000;
@@ -61,7 +46,6 @@ export class MCTSEngine {
 	 */
 	selectMove(initialState: RolloutState, candidateMoveIndices: number[]): number {
 		if (candidateMoveIndices.length === 1) {
-			this.logSingleMove(initialState, candidateMoveIndices[0]);
 			return candidateMoveIndices[0];
 		}
 
@@ -90,7 +74,6 @@ export class MCTSEngine {
 			}
 		}
 
-		this.logDecision(initialState, arms, best.moveIdx);
 		return best.moveIdx;
 	}
 
@@ -110,81 +93,6 @@ export class MCTSEngine {
 		}
 
 		return bestArm;
-	}
-
-	private logDecision(state: RolloutState, arms: Arm[], bestMoveIdx: number): void {
-		const lines: string[] = [];
-		const turn = this.battle.turn;
-		const aiMon = state.ai[state.aiActiveIdx];
-		const oppMon = state.opp[state.oppActiveIdx];
-
-		// Battle separator on turn 1
-		if (turn <= 1) {
-			lines.push('\n' + '='.repeat(60) + ' NEW BATTLE ' + '='.repeat(60) + '\n');
-		}
-
-		lines.push(`\n=== Turn ${turn} — MCTS Decision ===\n`);
-
-		// Active Pokemon
-		const pct = (m: typeof aiMon) => `${(m.hp / m.maxHp * 100).toFixed(1)}%`;
-		const sts = (s: string) => s || 'none';
-		lines.push(`AI  active: ${aiMon.ref.species.name.padEnd(12)} ${pct(aiMon).padStart(6)}  | status: ${sts(aiMon.status)}\n`);
-		lines.push(`Opp active: ${oppMon.ref.species.name.padEnd(12)} ${pct(oppMon).padStart(6)}  | status: ${sts(oppMon.status)}\n`);
-
-		// Hazards
-		const fmtHazards = (h: typeof state.hazardsOnAiSide) => {
-			const parts: string[] = [];
-			if (h.stealthRock) parts.push('SR');
-			if (h.spikes > 0) parts.push(`Spikes×${h.spikes}`);
-			if (h.toxicSpikes > 0) parts.push(`TSpikes×${h.toxicSpikes}`);
-			if (h.stickyWeb) parts.push('Web');
-			return parts.length > 0 ? parts.join(', ') : 'none';
-		};
-		lines.push(`Hazards — opp side: ${fmtHazards(state.hazardsOnOppSide)}  |  ai side: ${fmtHazards(state.hazardsOnAiSide)}\n`);
-
-		// Bench
-		const fmtBench = (team: typeof state.ai, activeIdx: number) =>
-			team
-				.filter((m, i) => i !== activeIdx && !m.fainted)
-				.map(m => `${m.ref.species.name} ${pct(m)}`)
-				.join(', ') || '(empty)';
-		lines.push(`AI  bench: ${fmtBench(state.ai, state.aiActiveIdx)}\n`);
-		lines.push(`Opp bench: ${fmtBench(state.opp, state.oppActiveIdx)}\n`);
-
-		// MCTS results
-		const totalRollouts = arms.reduce((s, a) => s + a.visits, 0);
-		lines.push(`\nMCTS: ${this.timeBudgetMs}ms budget, ${totalRollouts} rollouts, depth ${this.rolloutDepth}\n`);
-		lines.push(`${'Move'.padEnd(20)} ${'Visits'.padStart(7)}  ${'Avg Score'.padStart(10)}\n`);
-		lines.push(`${'-'.repeat(44)}\n`);
-
-		const sorted = [...arms].sort((a, b) => {
-			const avgA = a.visits > 0 ? a.totalNormScore / a.visits : -Infinity;
-			const avgB = b.visits > 0 ? b.totalNormScore / b.visits : -Infinity;
-			return avgB - avgA;
-		});
-
-		for (const arm of sorted) {
-			const moveName = this.battle.dex.moves.get(
-				aiMon.ref.moveSlots[arm.moveIdx]?.id ?? ''
-			).name || `slot${arm.moveIdx + 1}`;
-			const rawAvg = arm.visits > 0
-				? ((arm.totalNormScore / arm.visits) * SCORE_RANGE + SCORE_MIN).toFixed(1)
-				: 'N/A';
-			const chosen = arm.moveIdx === bestMoveIdx ? '  ← CHOSEN' : '';
-			lines.push(
-				`${moveName.padEnd(20)} ${arm.visits.toString().padStart(7)}  ${rawAvg.padStart(10)}${chosen}\n`
-			);
-		}
-		lines.push('---\n');
-
-		appendLog(lines.join(''));
-	}
-
-	private logSingleMove(state: RolloutState, moveIdx: number): void {
-		const moveName = this.battle.dex.moves.get(
-			state.ai[state.aiActiveIdx].ref.moveSlots[moveIdx]?.id ?? ''
-		).name || `slot${moveIdx + 1}`;
-		appendLog(`\n=== Turn ${this.battle.turn} — only candidate: ${moveName} ===\n`);
 	}
 
 	private runRollout(initialState: RolloutState, aiMoveIdx: number): number {
