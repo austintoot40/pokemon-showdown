@@ -3,6 +3,7 @@
  */
 
 import { saveGameToRedis, deleteGameFromRedis, loadGameFromRedis, pingRedis } from './redis-store';
+import { logNuzlockeError } from './error-logger';
 import { resolveOneEncounter, resolveChoiceGift, getAvailablePool, getGiftPool, buildStarterPokemon } from './encounters';
 import { getLegalMoves, type LegalMove } from './learnsets';
 import { listScenarios, getScenario } from './scenarios';
@@ -102,6 +103,7 @@ export class NuzlockeGame {
 		// This prevents routes in deferredRoutes from showing confusing "Deferred" badges
 		// when they haven't become accessible yet.
 		this.deferredRoutes = this.deferredRoutes.filter(r => {
+			if (this.resolvedRoutes.includes(r.route)) return false; // clear resolved carry-overs at segment transition
 			if (!this.isRouteDeferrable(r)) return true; // accessible or all dupes — keep as deferred
 			if (!this.lockedRoutes.some(lr => lr.route === r.route)) {
 				this.lockedRoutes.push(r);
@@ -128,9 +130,27 @@ export class NuzlockeGame {
 		const route = gifts[giftIndex];
 		if (!route || !route.choice) return;
 		if (this.resolvedRoutes.includes(route.route)) return;
-		const entry = getGiftPool(route).find(e => toID(e.species) === speciesId);
-		if (!entry) return;
-		const pokemon = resolveChoiceGift(route, entry.species, this.currentLevelCap);
+
+		// Resolve species accounting for randomizer mappings.
+		// The client sends the *randomized* species ID, but the original route still has the original pool.
+		let speciesName: string | null = null;
+		const m = this.randomizerMappings;
+		if (m?.routeMap[route.route]) {
+			// Fully-random: one species pre-assigned for the whole route
+			const mapped = m.routeMap[route.route];
+			if (toID(mapped) === speciesId) speciesName = mapped;
+		} else if (m && Object.keys(m.speciesMap).length > 0) {
+			// Shuffle: find original entry whose remapped species matches
+			const entry = getGiftPool(route).find(e => toID(m.speciesMap[toID(e.species)] ?? e.species) === speciesId);
+			if (entry) speciesName = m.speciesMap[toID(entry.species)] ?? entry.species;
+		} else {
+			// No randomizer: direct match against original pool
+			const entry = getGiftPool(route).find(e => toID(e.species) === speciesId);
+			if (entry) speciesName = entry.species;
+		}
+		if (!speciesName) return;
+
+		const pokemon = resolveChoiceGift(route, speciesName, this.currentLevelCap);
 		this.box.push(pokemon);
 		this.addToParty(pokemon.uid);
 		this.resolvedRoutes.push(route.route);
@@ -210,8 +230,7 @@ export class NuzlockeGame {
 		const route = allRoutes.find(r => r.route === routeName);
 		if (!route) return;
 		if (this.resolvedRoutes.includes(route.route)) return;
-		// Remove from deferred/locked carry lists
-		this.deferredRoutes = this.deferredRoutes.filter(r => r.route !== routeName);
+		// Remove from lockedRoutes; keep in deferredRoutes so resolved carry-over routes remain visible
 		this.lockedRoutes = this.lockedRoutes.filter(r => r.route !== routeName);
 		const pokemon = resolveOneEncounter(route, zoneIndex, this.box, this.graveyard as any, this.currentLevelCap, this.randomizerMappings);
 		this.resolvedRoutes.push(route.route);
@@ -704,7 +723,16 @@ export async function loadUserGame(userId: ID): Promise<NuzlockeGame | null> {
 	try {
 		const gameData = JSON.parse(raw);
 		const scenario = getScenario(gameData.scenarioId);
-		if (!scenario) return null;
+		if (!scenario) {
+			logNuzlockeError({
+				timestamp: new Date().toISOString(),
+				source: 'server',
+				error: { message: `Unknown scenarioId "${gameData.scenarioId}" for user ${userId} — scenario not loaded` },
+				scenarioId: gameData.scenarioId,
+				context: { command: 'loadUserGame', userId },
+			});
+			return null;
+		}
 		const game = Object.assign(new NuzlockeGame(userId, scenario), gameData, { scenario });
 		// Battle rooms don't survive server restarts — put the player back at teambuilding
 		if (game.inBattle) {
@@ -714,7 +742,13 @@ export async function loadUserGame(userId: ID): Promise<NuzlockeGame | null> {
 		}
 		nuzlockeGames.set(userId, game);
 		return game;
-	} catch {
+	} catch (e: any) {
+		logNuzlockeError({
+			timestamp: new Date().toISOString(),
+			source: 'server',
+			error: { message: e?.message ?? String(e), stack: e?.stack },
+			context: { command: 'loadUserGame', userId },
+		});
 		return null;
 	}
 }

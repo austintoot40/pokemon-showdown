@@ -5,6 +5,7 @@
 'use strict';
 
 import { nuzlockeGames, NuzlockeGame, flatEncounters, saveGame, deleteGame, pushNuzlockeStatus, pushNuzlockeState, closeNuzlockePanel, recordCompletedRun, pendingRandomizers } from './game';
+import { logNuzlockeError } from './error-logger';
 import { getScenario } from './scenarios';
 import { createNuzlockeBattle, goToTeambuilding } from './battle';
 import { buildRandomizerMappings, buildStarterPokemon } from './encounters';
@@ -457,6 +458,26 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 			} else {
 				closeNuzlockePanel(user.id);
 			}
+		},
+
+		logerror(target, room, user) {
+			let payload: any;
+			try {
+				payload = JSON.parse(Buffer.from(target, 'base64').toString('utf8'));
+			} catch {
+				return;
+			}
+			const game = nuzlockeGames.get(user.id);
+			const segment = game?.scenario.segments[game.currentSegmentIndex];
+			logNuzlockeError({
+				timestamp: new Date().toISOString(),
+				source: 'client',
+				error: { message: payload.error?.message ?? 'Unknown', stack: payload.error?.stack },
+				gameState: game?.toJSON(),
+				scenarioId: game?.scenario.id,
+				segmentId: segment?.id,
+				context: { userId: user.id, ...payload.context },
+			});
 		},
 
 		'': 'help',

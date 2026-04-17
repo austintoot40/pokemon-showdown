@@ -12,6 +12,7 @@
 
 import Redis from 'ioredis';
 import type { NuzlockeGame } from './game';
+import { logNuzlockeError } from './error-logger';
 
 const DB_GAMES = 0;
 const GAME_KEY = (userId: string) => `game:${userId}`;
@@ -24,7 +25,12 @@ function getRedis(): Redis {
 		const url = process.env.REDIS_URL ?? 'redis://localhost:6379';
 		client = new Redis(url, { db: DB_GAMES });
 		client.on('error', err => {
-			console.error('[nuzlocke] Redis error:', err.message);
+			logNuzlockeError({
+				timestamp: new Date().toISOString(),
+				source: 'server',
+				error: { message: err.message, stack: err.stack },
+				context: { command: 'redis.on(error)' },
+			});
 		});
 	}
 	return client;
@@ -34,16 +40,26 @@ export async function pingRedis(): Promise<void> {
 	try {
 		await getRedis().ping();
 		console.log('[nuzlocke] Redis connected');
-	} catch (err) {
-		console.warn('[nuzlocke] Redis unavailable — game state will not persist across restarts:', err);
+	} catch (err: any) {
+		logNuzlockeError({
+			timestamp: new Date().toISOString(),
+			source: 'server',
+			error: { message: err?.message ?? String(err), stack: err?.stack },
+			context: { command: 'pingRedis' },
+		});
 	}
 }
 
 export async function saveGameToRedis(game: NuzlockeGame): Promise<void> {
 	try {
 		await getRedis().set(GAME_KEY(game.user), JSON.stringify(game), 'EX', TTL_SECONDS);
-	} catch (err) {
-		console.error('[nuzlocke] saveGameToRedis failed for', game.user, ':', err);
+	} catch (err: any) {
+		logNuzlockeError({
+			timestamp: new Date().toISOString(),
+			source: 'server',
+			error: { message: err?.message ?? String(err), stack: err?.stack },
+			context: { command: 'saveGameToRedis', userId: game.user },
+		});
 	}
 }
 

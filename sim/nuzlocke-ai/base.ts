@@ -373,6 +373,9 @@ export abstract class NuzlockeAI {
 		// Universal: don't re-apply an existing status
 		if (move.status && defender.status) return -20;
 
+		// Type-chart immunity (e.g. Thunder Wave vs Ground-type)
+		if (!this.battle.dex.getImmunity(move.type, defender)) return -20;
+
 		if (moveId === 'stealthrock') return this.scoreStealthRock(ctx);
 		if (moveId === 'spikes') return this.scoreSpikes(ctx);
 		if (moveId === 'toxicspikes') return this.scoreToxicSpikes(ctx);

@@ -31,7 +31,7 @@ function withinBstVariance(origBst: number, newBst: number, variance: Randomizer
 /** Returns all base-form, non-fangame species available in the given generation. */
 function getGenPool(generation: number): string[] {
 	return (Dex.forGen(generation).species.all() as import('../../../sim/dex-species').Species[])
-		.filter(s => !s.prevo && s.gen <= generation && !s.isNonstandard)
+		.filter(s => !s.prevo && s.gen <= generation && !s.isNonstandard && s.name === s.baseSpecies)
 		.map(s => s.name);
 }
 
