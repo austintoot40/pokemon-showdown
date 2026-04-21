@@ -413,6 +413,10 @@ export abstract class NuzlockeAI {
 		if (moveId === 'tailwind') return this.scoreTailwind(ctx);
 		if (moveId === 'trickroom') return this.scoreTrickRoom(ctx);
 		if (moveId === 'reflect' || moveId === 'lightscreen') return this.scoreReflectLightScreen(ctx);
+		if (moveId === 'auroraveil') return this.scoreAuroraVeil(ctx);
+		if (['sunnyday', 'raindance', 'sandstorm', 'hail', 'snowscape', 'chillyreception'].includes(moveId)) {
+			return this.scoreWeather(ctx);
+		}
 		if (moveId === 'finalgambit') return this.scoreFinalGambit(ctx);
 		if (moveId === 'memento') return this.scoreMemento(ctx);
 		if (moveId === 'focusenergy' || moveId === 'laserfocus') return this.scoreFocusEnergy(ctx);
@@ -542,6 +546,7 @@ export abstract class NuzlockeAI {
 	}
 
 	protected scoreTailwind(ctx: MoveCtx): number {
+		if (this.battle.sides[1].sideConditions['tailwind']) return -20;
 		return 6;
 	}
 
@@ -551,6 +556,23 @@ export abstract class NuzlockeAI {
 	}
 
 	protected scoreReflectLightScreen(ctx: MoveCtx): number {
+		const condKey = ctx.move.id === 'reflect' ? 'reflect' : 'lightscreen';
+		if (this.battle.sides[1].sideConditions[condKey]) return -20;
+		return 6;
+	}
+
+	protected scoreAuroraVeil(ctx: MoveCtx): number {
+		if (this.battle.sides[1].sideConditions['auroraveil']) return -20;
+		return 6;
+	}
+
+	protected scoreWeather(ctx: MoveCtx): number {
+		const weatherMap: Record<string, string> = {
+			sunnyday: 'sunnyday', raindance: 'raindance', sandstorm: 'sandstorm',
+			hail: 'hail', snowscape: 'snow', chillyreception: 'snow',
+		};
+		const target = weatherMap[ctx.move.id];
+		if (target && this.battle.field.isWeather(target)) return -20;
 		return 6;
 	}
 

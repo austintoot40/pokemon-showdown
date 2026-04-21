@@ -44,7 +44,6 @@ export function buildRandomizerMappings(scenario: Scenario, config: RandomizerCo
 	const rng = mulberry32(config.seed);
 	const speciesMap: Record<string, string> = {};
 	const routeMap: Record<string, string> = {};
-	const itemMap: Record<string, string[]> = {};
 
 	const candidates = seededShuffle(getGenPool(scenario.generation), rng);
 
@@ -106,22 +105,7 @@ export function buildRandomizerMappings(scenario: Scenario, config: RandomizerCo
 		});
 	}
 
-	if (config.randomizeItems) {
-		const allItems: string[] = [];
-		const segmentCounts: [string, number][] = [];
-		for (const seg of scenario.segments) {
-			segmentCounts.push([seg.id, seg.items.length]);
-			allItems.push(...seg.items);
-		}
-		seededShuffle(allItems, rng);
-		let idx = 0;
-		for (const [segId, count] of segmentCounts) {
-			itemMap[segId] = allItems.slice(idx, idx + count);
-			idx += count;
-		}
-	}
-
-	return { speciesMap, routeMap, itemMap, starterSpecies };
+	return { speciesMap, routeMap, starterSpecies };
 }
 
 const NATURES = [

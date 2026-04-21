@@ -30,7 +30,7 @@ class LocalFileLogger implements ErrorLogger {
 	}
 }
 
-const LOG_PATH = path.join(__dirname, '..', '..', '..', 'nuzlocke-error.log');
+const LOG_PATH = path.join(__dirname, '..', '..', '..', '..', 'logs', 'nuzlocke-error.log');
 
 const errorLogger: ErrorLogger = new LocalFileLogger(LOG_PATH);
 

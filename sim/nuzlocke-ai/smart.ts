@@ -403,6 +403,7 @@ export class SmartAI extends NuzlockeAI {
 	}
 
 	protected override scoreTailwind(ctx: MoveCtx): number {
+		if (this.battle.sides[1].sideConditions['tailwind']) return -20;
 		return !ctx.faster ? 9 : 5;
 	}
 
@@ -412,6 +413,8 @@ export class SmartAI extends NuzlockeAI {
 	}
 
 	protected override scoreReflectLightScreen(ctx: MoveCtx): number {
+		const condKey = ctx.move.id === 'reflect' ? 'reflect' : 'lightscreen';
+		if (this.battle.sides[1].sideConditions[condKey]) return -20;
 		const correspondingCategory: 'Physical' | 'Special' = ctx.move.id === 'reflect' ? 'Physical' : 'Special';
 		let score = 6;
 		if (this.hasMoveCategory(ctx.defender, correspondingCategory)) {
@@ -419,6 +422,24 @@ export class SmartAI extends NuzlockeAI {
 			if (Math.random() < 0.5) score += 1;
 		}
 		return score;
+	}
+
+	protected override scoreAuroraVeil(ctx: MoveCtx): number {
+		if (this.battle.sides[1].sideConditions['auroraveil']) return -20;
+		if (!this.battle.field.isWeather(['hail', 'snow'])) return -20;
+		let score = 7;
+		if (ctx.attacker.item === 'lightclay' as ID) score += 1;
+		return score;
+	}
+
+	protected override scoreWeather(ctx: MoveCtx): number {
+		const weatherMap: Record<string, string> = {
+			sunnyday: 'sunnyday', raindance: 'raindance', sandstorm: 'sandstorm',
+			hail: 'hail', snowscape: 'snow', chillyreception: 'snow',
+		};
+		const target = weatherMap[ctx.move.id];
+		if (target && this.battle.field.isWeather(target)) return -20;
+		return 7;
 	}
 
 	protected override scoreFinalGambit(ctx: MoveCtx): number {

@@ -4,7 +4,7 @@
 
 'use strict';
 
-import { nuzlockeGames, NuzlockeGame, recordCompletedRun } from './game';
+import { nuzlockeGames, NuzlockeGame, recordCompletedRun, deleteGame, pushNuzlockeStatus, pushNuzlockeState, closeNuzlockePanel } from './game';
 import { getLegalMoves } from './learnsets';
 import type { OwnedPokemon, TrainerPokemon } from './types';
 
@@ -93,13 +93,18 @@ function packTrainerTeam(team: TrainerPokemon[]): string {
 export function createNuzlockeBattle(game: NuzlockeGame, user: User) {
 	const segment = game.currentSegment!;
 	const battle = game.currentBattle!;
-	const gen = game.scenario.generation;
+	const gen = game.settings.generation;
 	const isDoubles = battle.battleType === 'doubles';
+	const isModernized = gen === 9 && game.scenario.generation !== 9;
+	const doublesTag = isDoubles ? 'doubles' : '';
+	const formatId = isModernized
+		? `gen9modernizednuzlocke${doublesTag}battle`
+		: `gen${gen}nuzlocke${doublesTag}battle`;
 
 	game.partyErrors.clear();
 
 	Rooms.createBattle({
-		format: `gen${gen}nuzlocke${isDoubles ? 'doubles' : ''}battle`,
+		format: formatId,
 		isNuzlockeBattle: true,
 		players: [
 			{
@@ -214,27 +219,45 @@ export const battleHandlers: Chat.Handlers = {
 
 		game.cleanParty();
 
-		// Check for total wipe — go straight to summary, no results page
+		// Check for total wipe — push completed run to client then close the panel
 		const alive = game.box.filter(p => p.alive);
 		if (alive.length === 0) {
 			recordCompletedRun(game, 'wipe', game.currentBattle?.trainer, finalPartySnapshot);
-			game.goToPage('summary');
+			pushNuzlockeState(humanId as ID, game);
+			nuzlockeGames.delete(humanId as ID);
+			void deleteGame(humanId as ID);
+			pushNuzlockeStatus(humanId as ID, null);
+			closeNuzlockePanel(humanId as ID);
 			return;
 		}
 
 		const playerWon = humanId === winner;
 		const trainerName = game.currentBattle?.trainer ?? 'the trainer';
 		const battleDeaths = deaths.map(({ uid }) => game.graveyard.find(d => d.uid === uid)!).filter(Boolean);
+		game.lastBattleResult = { won: playerWon, perfect: playerWon && deaths.length === 0, trainerName, deaths: battleDeaths };
 
 		if (playerWon) {
-			game.nextScreen = game.advanceAfterWin();
+			const dest = game.advanceAfterWin();
+			if (dest === 'done') {
+				recordCompletedRun(game, 'victory', trainerName, finalPartySnapshot);
+				pushNuzlockeState(humanId as ID, game);
+				nuzlockeGames.delete(humanId as ID);
+				void deleteGame(humanId as ID);
+				pushNuzlockeStatus(humanId as ID, null);
+				closeNuzlockePanel(humanId as ID);
+			} else if (dest === 'battle') {
+				const user = Users.get(humanId as ID);
+				if (user) {
+					createNuzlockeBattle(game, user);
+				} else {
+					goToTeambuilding(game);
+				}
+			} else {
+				game.goToPage(dest);
+			}
 		} else {
-			game.nextScreen = 'teambuilding';
+			// Loss — stay on battle screen so the player can choose to continue or give up
+			game.goToPage('battle');
 		}
-		if (game.nextScreen === 'summary') {
-			recordCompletedRun(game, 'victory', trainerName, finalPartySnapshot);
-		}
-		game.lastBattleResult = { won: playerWon, perfect: playerWon && deaths.length === 0, trainerName, deaths: battleDeaths };
-		game.goToPage('results');
 	},
 };

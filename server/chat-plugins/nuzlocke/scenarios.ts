@@ -106,6 +106,7 @@ function resolveRequires(raw: any): Scenario {
 		segs[i].tmMoves = resolvedTms[i];
 	}
 
+	raw.tmRouteMap = {};
 	return raw as Scenario;
 }
 
@@ -196,6 +197,18 @@ function resolveScenario(
 		};
 	});
 
+	// Build moveId → location name map from original location data (before deferred resolution,
+	// so the route shown is always where the TM was physically found, not where it was deferred to).
+	const tmRouteMap: Record<string, string> = {};
+	for (const loc of locationDefs) {
+		const routeName = loc.name ?? loc.id;
+		for (const entry of loc.tmMoves ?? []) {
+			const moveName = typeof entry === 'string' ? entry : entry.name;
+			const id = toID(moveName);
+			if (!tmRouteMap[id]) tmRouteMap[id] = routeName;
+		}
+	}
+
 	return {
 		id: raw.id,
 		name: raw.name,
@@ -206,6 +219,7 @@ function resolveScenario(
 		verified: raw.verified ?? false,
 		starters: raw.starters,
 		segments,
+		tmRouteMap,
 	};
 }
 

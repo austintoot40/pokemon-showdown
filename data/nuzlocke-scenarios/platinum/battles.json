@@ -1,0 +1,713 @@
+[
+  {
+    "id": "roark",
+    "trainer": "Leader Roark",
+    "team": [
+      {
+        "species": "Geodude",
+        "level": 12,
+        "ability": "Rock Head",
+        "moves": [
+          "Rock Throw",
+          "Stealth Rock"
+        ],
+        "item": null
+      },
+      {
+        "species": "Onix",
+        "level": 12,
+        "ability": "Rock Head",
+        "moves": [
+          "Rock Throw",
+          "Screech",
+          "Stealth Rock"
+        ],
+        "item": null
+      },
+      {
+        "species": "Cranidos",
+        "level": 14,
+        "ability": "Mold Breaker",
+        "moves": [
+          "Headbutt",
+          "Pursuit",
+          "Leer"
+        ],
+        "item": null
+      }
+    ],
+    "sprite": "roark"
+  },
+  {
+    "id": "gardenia",
+    "trainer": "Leader Gardenia",
+    "team": [
+      {
+        "species": "Cherubi",
+        "level": 19,
+        "ability": "Chlorophyll",
+        "moves": [
+          "Grass Knot",
+          "Leech Seed",
+          "Safeguard",
+          "Growth"
+        ],
+        "item": null
+      },
+      {
+        "species": "Turtwig",
+        "level": 19,
+        "ability": "Overgrow",
+        "moves": [
+          "Grass Knot",
+          "Razor Leaf",
+          "Withdraw",
+          "Reflect"
+        ],
+        "item": null
+      },
+      {
+        "species": "Roserade",
+        "level": 22,
+        "ability": "Natural Cure",
+        "moves": [
+          "Grass Knot",
+          "Magical Leaf",
+          "Poison Sting",
+          "Stun Spore"
+        ],
+        "item": "Sitrus Berry"
+      }
+    ],
+    "sprite": "gardenia"
+  },
+  {
+    "id": "maylene",
+    "trainer": "Leader Maylene",
+    "team": [
+      {
+        "species": "Meditite",
+        "level": 28,
+        "ability": "Pure Power",
+        "moves": [
+          "Drain Punch",
+          "Confusion",
+          "Fake Out",
+          "Rock Tomb"
+        ],
+        "item": null
+      },
+      {
+        "species": "Machoke",
+        "level": 29,
+        "ability": "Guts",
+        "moves": [
+          "Karate Chop",
+          "Strength",
+          "Focus Energy",
+          "Rock Tomb"
+        ],
+        "item": null
+      },
+      {
+        "species": "Lucario",
+        "level": 32,
+        "ability": "Steadfast",
+        "moves": [
+          "Drain Punch",
+          "Metal Claw",
+          "Bone Rush",
+          "Force Palm"
+        ],
+        "item": null
+      }
+    ],
+    "sprite": "maylene"
+  },
+  {
+    "id": "crasher-wake",
+    "trainer": "Leader Crasher Wake",
+    "team": [
+      {
+        "species": "Gyarados",
+        "level": 33,
+        "ability": "Intimidate",
+        "moves": [
+          "Brine",
+          "Waterfall",
+          "Bite",
+          "Twister"
+        ],
+        "item": null
+      },
+      {
+        "species": "Quagsire",
+        "level": 34,
+        "ability": "Damp",
+        "moves": [
+          "Water Pulse",
+          "Mud Shot",
+          "Rock Tomb",
+          "Yawn"
+        ],
+        "item": null
+      },
+      {
+        "species": "Floatzel",
+        "level": 37,
+        "ability": "Swift Swim",
+        "moves": [
+          "Brine",
+          "Crunch",
+          "Ice Fang",
+          "Aqua Jet"
+        ],
+        "item": "Sitrus Berry"
+      }
+    ],
+    "sprite": "crasherwake"
+  },
+  {
+    "id": "fantina",
+    "trainer": "Leader Fantina",
+    "team": [
+      {
+        "species": "Duskull",
+        "level": 24,
+        "ability": "Levitate",
+        "moves": [
+          "Will-O-Wisp",
+          "Future Sight",
+          "Shadow Sneak",
+          "Pursuit"
+        ],
+        "item": null
+      },
+      {
+        "species": "Haunter",
+        "level": 24,
+        "ability": "Levitate",
+        "moves": [
+          "Shadow Claw",
+          "Sucker Punch",
+          "Confuse Ray",
+          "Hypnosis"
+        ],
+        "item": null
+      },
+      {
+        "species": "Mismagius",
+        "level": 26,
+        "ability": "Levitate",
+        "moves": [
+          "Shadow Ball",
+          "Psybeam",
+          "Magical Leaf",
+          "Confuse Ray"
+        ],
+        "item": "Sitrus Berry"
+      }
+    ],
+    "sprite": "fantina"
+  },
+  {
+    "id": "byron",
+    "trainer": "Leader Byron",
+    "team": [
+      {
+        "species": "Magneton",
+        "level": 37,
+        "ability": "Magnet Pull",
+        "moves": [
+          "Flash Cannon",
+          "Thunderbolt",
+          "Tri Attack",
+          "Metal Sound"
+        ],
+        "item": null
+      },
+      {
+        "species": "Steelix",
+        "level": 38,
+        "ability": "Rock Head",
+        "moves": [
+          "Flash Cannon",
+          "Earthquake",
+          "Ice Fang",
+          "Sandstorm"
+        ],
+        "item": null
+      },
+      {
+        "species": "Bastiodon",
+        "level": 41,
+        "ability": "Sturdy",
+        "moves": [
+          "Metal Burst",
+          "Stone Edge",
+          "Iron Defense",
+          "Taunt"
+        ],
+        "item": "Sitrus Berry"
+      }
+    ],
+    "sprite": "byron"
+  },
+  {
+    "id": "candice",
+    "trainer": "Leader Candice",
+    "team": [
+      {
+        "species": "Sneasel",
+        "level": 40,
+        "ability": "Keen Eye",
+        "moves": [
+          "Faint Attack",
+          "Ice Shard",
+          "Slash",
+          "Aerial Ace"
+        ],
+        "item": null
+      },
+      {
+        "species": "Piloswine",
+        "level": 40,
+        "ability": "Oblivious",
+        "moves": [
+          "Hail",
+          "Earthquake",
+          "Stone Edge",
+          "Avalanche"
+        ],
+        "item": null
+      },
+      {
+        "species": "Abomasnow",
+        "level": 42,
+        "ability": "Snow Warning",
+        "moves": [
+          "Wood Hammer",
+          "Focus Blast",
+          "Water Pulse",
+          "Avalanche"
+        ],
+        "item": null
+      },
+      {
+        "species": "Froslass",
+        "level": 44,
+        "ability": "Snow Cloak",
+        "moves": [
+          "Shadow Ball",
+          "Double Team",
+          "Psychic",
+          "Blizzard"
+        ],
+        "item": "Sitrus Berry"
+      }
+    ],
+    "sprite": "candice"
+  },
+  {
+    "id": "volkner",
+    "trainer": "Leader Volkner",
+    "team": [
+      {
+        "species": "Jolteon",
+        "level": 46,
+        "ability": "Volt Absorb",
+        "moves": [
+          "Charge Beam",
+          "Thunder Wave",
+          "Iron Tail",
+          "Quick Attack"
+        ],
+        "item": null
+      },
+      {
+        "species": "Raichu",
+        "level": 46,
+        "ability": "Static",
+        "moves": [
+          "Charge Beam",
+          "Signal Beam",
+          "Focus Blast",
+          "Quick Attack"
+        ],
+        "item": null
+      },
+      {
+        "species": "Luxray",
+        "level": 48,
+        "ability": "Rivalry",
+        "moves": [
+          "Thunder Fang",
+          "Ice Fang",
+          "Fire Fang",
+          "Crunch"
+        ],
+        "item": null
+      },
+      {
+        "species": "Electivire",
+        "level": 50,
+        "ability": "Motor Drive",
+        "moves": [
+          "ThunderPunch",
+          "Fire Punch",
+          "Giga Impact",
+          "Quick Attack"
+        ],
+        "item": "Sitrus Berry"
+      }
+    ],
+    "sprite": "volkner"
+  },
+  {
+    "id": "aaron",
+    "trainer": "Elite Four Aaron",
+    "team": [
+      {
+        "species": "Yanmega",
+        "level": 49,
+        "ability": "Speed Boost",
+        "moves": [
+          "Bug Buzz",
+          "Air Slash",
+          "U-turn",
+          "Double Team"
+        ],
+        "item": null
+      },
+      {
+        "species": "Scizor",
+        "level": 49,
+        "ability": "Swarm",
+        "moves": [
+          "X-Scissor",
+          "Iron Head",
+          "Night Slash",
+          "Quick Attack"
+        ],
+        "item": null
+      },
+      {
+        "species": "Heracross",
+        "level": 51,
+        "ability": "Swarm",
+        "moves": [
+          "Megahorn",
+          "Close Combat",
+          "Night Slash",
+          "Stone Edge"
+        ],
+        "item": null
+      },
+      {
+        "species": "Vespiquen",
+        "level": 50,
+        "ability": "Pressure",
+        "moves": [
+          "Attack Order",
+          "Defend Order",
+          "Heal Order",
+          "Power Gem"
+        ],
+        "item": null
+      },
+      {
+        "species": "Drapion",
+        "level": 53,
+        "ability": "Battle Armor",
+        "moves": [
+          "X-Scissor",
+          "Cross Poison",
+          "Ice Fang",
+          "Aerial Ace"
+        ],
+        "item": "Sitrus Berry"
+      }
+    ],
+    "sprite": "aaron"
+  },
+  {
+    "id": "bertha",
+    "trainer": "Elite Four Bertha",
+    "team": [
+      {
+        "species": "Whiscash",
+        "level": 50,
+        "ability": "Oblivious",
+        "moves": [
+          "Earth Power",
+          "Aqua Tail",
+          "Zen Headbutt",
+          "Sandstorm"
+        ],
+        "item": null
+      },
+      {
+        "species": "Gliscor",
+        "level": 53,
+        "ability": "Hyper Cutter",
+        "moves": [
+          "Earthquake",
+          "Ice Fang",
+          "Fire Fang",
+          "Thunder Fang"
+        ],
+        "item": null
+      },
+      {
+        "species": "Hippowdon",
+        "level": 52,
+        "ability": "Sand Stream",
+        "moves": [
+          "Earthquake",
+          "Stone Edge",
+          "Crunch",
+          "Yawn"
+        ],
+        "item": null
+      },
+      {
+        "species": "Golem",
+        "level": 52,
+        "ability": "Rock Head",
+        "moves": [
+          "Earthquake",
+          "Fire Punch",
+          "ThunderPunch",
+          "Sandstorm"
+        ],
+        "item": null
+      },
+      {
+        "species": "Rhyperior",
+        "level": 55,
+        "ability": "Lightningrod",
+        "moves": [
+          "Earthquake",
+          "Rock Wrecker",
+          "Megahorn",
+          "Avalanche"
+        ],
+        "item": "Sitrus Berry"
+      }
+    ],
+    "sprite": "bertha"
+  },
+  {
+    "id": "flint",
+    "trainer": "Elite Four Flint",
+    "team": [
+      {
+        "species": "Houndoom",
+        "level": 52,
+        "ability": "Early Bird",
+        "moves": [
+          "Flamethrower",
+          "Sludge Bomb",
+          "Dark Pulse",
+          "Sunny Day"
+        ],
+        "item": null
+      },
+      {
+        "species": "Flareon",
+        "level": 55,
+        "ability": "Flash Fire",
+        "moves": [
+          "Overheat",
+          "Giga Impact",
+          "Quick Attack",
+          "Will-O-Wisp"
+        ],
+        "item": null
+      },
+      {
+        "species": "Rapidash",
+        "level": 53,
+        "ability": "Run Away",
+        "moves": [
+          "Flare Blitz",
+          "SolarBeam",
+          "Bounce",
+          "Sunny Day"
+        ],
+        "item": null
+      },
+      {
+        "species": "Infernape",
+        "level": 55,
+        "ability": "Blaze",
+        "moves": [
+          "Flare Blitz",
+          "ThunderPunch",
+          "Mach Punch",
+          "Earthquake"
+        ],
+        "item": null
+      },
+      {
+        "species": "Magmortar",
+        "level": 57,
+        "ability": "Flame Body",
+        "moves": [
+          "Flamethrower",
+          "Thunderbolt",
+          "SolarBeam",
+          "Hyper Beam"
+        ],
+        "item": "Sitrus Berry"
+      }
+    ],
+    "sprite": "flint"
+  },
+  {
+    "id": "lucian",
+    "trainer": "Elite Four Lucian",
+    "team": [
+      {
+        "species": "Mr. Mime",
+        "level": 53,
+        "ability": "Soundproof",
+        "moves": [
+          "Psychic",
+          "Thunderbolt",
+          "Reflect",
+          "Light Screen"
+        ],
+        "item": null
+      },
+      {
+        "species": "Espeon",
+        "level": 55,
+        "ability": "Synchronize",
+        "moves": [
+          "Psychic",
+          "Shadow Ball",
+          "Quick Attack",
+          "Signal Beam"
+        ],
+        "item": null
+      },
+      {
+        "species": "Bronzong",
+        "level": 54,
+        "ability": "Levitate",
+        "moves": [
+          "Psychic",
+          "Gyro Ball",
+          "Earthquake",
+          "Calm Mind"
+        ],
+        "item": null
+      },
+      {
+        "species": "Alakazam",
+        "level": 56,
+        "ability": "Synchronize",
+        "moves": [
+          "Psychic",
+          "Energy Ball",
+          "Focus Blast",
+          "Recover"
+        ],
+        "item": null
+      },
+      {
+        "species": "Gallade",
+        "level": 59,
+        "ability": "Steadfast",
+        "moves": [
+          "Drain Punch",
+          "Psycho Cut",
+          "Leaf Blade",
+          "Stone Edge"
+        ],
+        "item": "Sitrus Berry"
+      }
+    ],
+    "sprite": "lucian"
+  },
+  {
+    "id": "cynthia",
+    "trainer": "Champion Cynthia",
+    "team": [
+      {
+        "species": "Spiritomb",
+        "level": 58,
+        "ability": "Pressure",
+        "moves": [
+          "Dark Pulse",
+          "Psychic",
+          "Silver Wind",
+          "Shadow Ball"
+        ],
+        "item": null
+      },
+      {
+        "species": "Roserade",
+        "level": 58,
+        "ability": "Natural Cure",
+        "moves": [
+          "Energy Ball",
+          "Sludge Bomb",
+          "Toxic",
+          "Extrasensory"
+        ],
+        "item": null
+      },
+      {
+        "species": "Togekiss",
+        "level": 60,
+        "ability": "Hustle",
+        "moves": [
+          "Air Slash",
+          "Aura Sphere",
+          "Water Pulse",
+          "Shock Wave"
+        ],
+        "item": null
+      },
+      {
+        "species": "Lucario",
+        "level": 60,
+        "ability": "Steadfast",
+        "moves": [
+          "Aura Sphere",
+          "ExtremeSpeed",
+          "Shadow Ball",
+          "Stone Edge"
+        ],
+        "item": null
+      },
+      {
+        "species": "Milotic",
+        "level": 58,
+        "ability": "Marvel Scale",
+        "moves": [
+          "Surf",
+          "Ice Beam",
+          "Mirror Coat",
+          "Dragon Pulse"
+        ],
+        "item": null
+      },
+      {
+        "species": "Garchomp",
+        "level": 62,
+        "ability": "Sand Veil",
+        "moves": [
+          "Dragon Rush",
+          "Earthquake",
+          "Flamethrower",
+          "Giga Impact"
+        ],
+        "item": "Sitrus Berry"
+      }
+    ],
+    "sprite": "cynthia-gen4"
+  }
+]

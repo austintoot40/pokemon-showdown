@@ -12,6 +12,7 @@ export interface Scenario {
 	verified: boolean;
 	starters: { species: string; level: number }[];
 	segments: Segment[];
+	tmRouteMap: Record<string, string>; // moveId → location name (e.g. "Hoenn Route 111")
 }
 
 export interface Segment {
@@ -146,7 +147,6 @@ export interface StatsTable {
 export interface RandomizerConfig {
 	mode: 'shuffle' | 'fully-random';
 	bstVariance: 'low' | 'medium' | 'high';
-	randomizeItems: boolean;
 	seed: number;
 }
 
@@ -155,14 +155,12 @@ export interface RandomizerMappings {
 	speciesMap: Record<string, string>;
 	/** Fully Random mode: route name → replacement species name */
 	routeMap: Record<string, string>;
-	/** Item shuffle: segment ID → shuffled items (only when randomizeItems is true) */
-	itemMap: Record<string, string[]>;
-	/** Randomized starter species in original slot order */
+/** Randomized starter species in original slot order */
 	starterSpecies: string[];
 }
 
 export type NuzlockeScreen =
-	'encounters' | 'teambuilding' | 'battle' | 'results' | 'summary';
+	'encounters' | 'teambuilding' | 'battle' | 'done';
 
 export interface NuzlockeScenarioCard {
 	id: string;

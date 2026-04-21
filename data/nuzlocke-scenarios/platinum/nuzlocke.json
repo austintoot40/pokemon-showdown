@@ -1,0 +1,154 @@
+{
+  "id": "platinum",
+  "name": "Platinum",
+  "generation": 4,
+  "description": "",
+  "color": "#546E7A",
+  "pokemon": "giratina",
+  "starters": [
+    {
+      "species": "Turtwig",
+      "level": 5
+    },
+    {
+      "species": "Chimchar",
+      "level": 5
+    },
+    {
+      "species": "Piplup",
+      "level": 5
+    }
+  ],
+  "segments": [
+    {
+      "id": "roark",
+      "name": "Roark",
+      "locations": [
+        "sinnoh-route-201",
+        "sinnoh-route-202",
+        "lake-verity",
+        "sinnoh-route-203",
+        "oreburgh-gate",
+        "oreburgh-mine",
+        "oreburgh-city"
+      ],
+      "battles": [
+        "roark"
+      ]
+    },
+    {
+      "id": "gardenia",
+      "name": "Gardenia",
+      "locations": [
+        "sinnoh-route-204",
+        "ravaged-path",
+        "sinnoh-route-203",
+        "eterna-forest",
+        "sinnoh-route-205",
+        "old-chateau",
+        "pre-gym-2-gift-1",
+        "pre-gym-2-items"
+      ],
+      "battles": [
+        "gardenia"
+      ]
+    },
+    {
+      "id": "maylene",
+      "name": "Maylene",
+      "locations": [
+        "sinnoh-route-206",
+        "wayward-cave",
+        "sinnoh-route-207",
+        "sinnoh-route-208",
+        "sinnoh-route-209",
+        "lost-tower",
+        "sinnoh-route-210",
+        "pre-gym-3-items"
+      ],
+      "battles": [
+        "maylene"
+      ]
+    },
+    {
+      "id": "crasher-wake",
+      "name": "Crasher Wake",
+      "locations": [
+        "sinnoh-route-212",
+        "great-marsh",
+        "sinnoh-route-213",
+        "pre-gym-4-items"
+      ],
+      "battles": [
+        "crasher-wake"
+      ]
+    },
+    {
+      "id": "fantina",
+      "name": "Fantina",
+      "locations": [
+        "sinnoh-route-214",
+        "valor-lakefront",
+        "lake-valor",
+        "sinnoh-route-215",
+        "sinnoh-route-211",
+        "pre-gym-5-items"
+      ],
+      "battles": [
+        "fantina"
+      ]
+    },
+    {
+      "id": "byron",
+      "name": "Byron",
+      "locations": [
+        "sinnoh-route-218",
+        "iron-island",
+        "pre-gym-6-items"
+      ],
+      "battles": [
+        "byron"
+      ]
+    },
+    {
+      "id": "candice",
+      "name": "Candice",
+      "locations": [
+        "sinnoh-route-216",
+        "sinnoh-route-217",
+        "acuity-lakefront",
+        "lake-acuity",
+        "sinnoh-route-210",
+        "pre-gym-7-items"
+      ],
+      "battles": [
+        "candice"
+      ]
+    },
+    {
+      "id": "volkner",
+      "name": "Volkner",
+      "locations": [
+        "sinnoh-route-222",
+        "sinnoh-route-219",
+        "sinnoh-route-221",
+        "pre-gym-8-items"
+      ],
+      "battles": [
+        "volkner"
+      ]
+    },
+    {
+      "id": "elite-four",
+      "name": "Elite Four",
+      "locations": [],
+      "battles": [
+        "aaron",
+        "bertha",
+        "flint",
+        "lucian",
+        "cynthia"
+      ]
+    }
+  ]
+}

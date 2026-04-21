@@ -30,9 +30,7 @@ export class NuzlockeGame {
 	curRoom: NuzlockeScreen;
 	inBattle: boolean;
 	battleRoomId: string | null;
-	nextScreen: NuzlockeScreen | null;
 	lastBattleResult: { won: boolean; perfect: boolean; trainerName: string; deaths: DeadPokemon[] } | null;
-
 	currentSegmentIndex: number;
 	currentBattleIndex: number;
 	box: OwnedPokemon[];
@@ -56,7 +54,6 @@ export class NuzlockeGame {
 		this.curRoom = 'encounters';
 		this.inBattle = false;
 		this.battleRoomId = null;
-		this.nextScreen = null;
 		this.lastBattleResult = null;
 		this.currentSegmentIndex = 0;
 		this.currentBattleIndex = 0;
@@ -88,7 +85,7 @@ export class NuzlockeGame {
 	resolveSegmentStart() {
 		const segment = this.scenario.segments[this.currentSegmentIndex];
 		if (!segment) return;
-		const segmentItems = this.randomizerMappings?.itemMap?.[segment.id] ?? segment.items;
+		const segmentItems = segment.items;
 		this.items.push(...segmentItems);
 		this.tmMoves.push(...(segment.tmMoves ?? []));
 		for (const route of segment.gifts ?? []) {
@@ -103,7 +100,6 @@ export class NuzlockeGame {
 		// This prevents routes in deferredRoutes from showing confusing "Deferred" badges
 		// when they haven't become accessible yet.
 		this.deferredRoutes = this.deferredRoutes.filter(r => {
-			if (this.resolvedRoutes.includes(r.route)) return false; // clear resolved carry-overs at segment transition
 			if (!this.isRouteDeferrable(r)) return true; // accessible or all dupes — keep as deferred
 			if (!this.lockedRoutes.some(lr => lr.route === r.route)) {
 				this.lockedRoutes.push(r);
@@ -350,6 +346,10 @@ export class NuzlockeGame {
 				}
 			}
 		}
+		// Nincada: collapse the dual evolution — Shedinja is created as a side effect of evolving to Ninjask.
+		if (toID(pokemon.species) === 'nincada') {
+			return results.filter(e => toID(e.species) !== 'shedinja');
+		}
 		return results;
 	}
 
@@ -366,9 +366,29 @@ export class NuzlockeGame {
 			this.items.splice(idx, 1);
 		}
 		if (toID(pokemon.nickname) === toID(pokemon.species)) pokemon.nickname = target.species;
+		const wasNincada = toID(pokemon.species) === 'nincada';
 		pokemon.species = target.species;
 		const dexSpecies = Dex.species.get(target.species);
 		pokemon.ability = dexSpecies.abilities[0];
+
+		// Nincada → Ninjask also creates a Shedinja inheriting Nincada's stats.
+		if (wasNincada && toID(target.species) === 'ninjask') {
+			const shedinja = buildStarterPokemon('Shedinja', pokemon.level);
+			shedinja.nature = pokemon.nature;
+			shedinja.ivs = { ...pokemon.ivs };
+			shedinja.caughtRoute = pokemon.caughtRoute;
+			this.box.push(shedinja);
+			this.addToParty(shedinja.uid);
+		}
+	}
+
+	/** Evolve all Pokemon that have exactly one unambiguous, resource-free evolution available. */
+	evolveAll() {
+		for (const pokemon of this.box) {
+			if (!pokemon.alive) continue;
+			const eligible = this.getAvailableEvolutions(pokemon.uid).filter(e => e.item === null);
+			if (eligible.length === 1) this.evolve(pokemon.uid, eligible[0].species);
+		}
 	}
 
 	/** Remove party members that have died or are no longer in box */
@@ -407,9 +427,12 @@ export class NuzlockeGame {
 
 			if (this.currentSegmentIndex >= this.scenario.segments.length) {
 				// All segments done — victory!
-				return 'summary';
+				return 'done';
 			} else {
 				// New segment: add items/gifts; wild routes are player-initiated
+				// Prune resolved deferred routes before clearing resolvedRoutes, or the check in
+				// resolveSegmentStart would always see an empty list and never remove them.
+				this.deferredRoutes = this.deferredRoutes.filter(r => !this.resolvedRoutes.includes(r.route));
 				this.resolvedRoutes = [];
 				this.resolveSegmentStart();
 				return 'encounters';
@@ -477,14 +500,8 @@ export interface NuzlockePanelPayload {
 	legalMoves: Record<string, LegalMove[]>;
 	availableEvolutions: Record<string, EvoOption[]>;
 
-	// Battle result
-	lastBattleResult: {
-		won: boolean;
-		perfect: boolean;
-		trainerName: string;
-		deaths: DeadPokemon[];
-	} | null;
-	nextScreen: NuzlockeScreen | null;
+	// Result of the most recent battle
+	lastBattleResult: { won: boolean; perfect: boolean; trainerName: string; deaths: DeadPokemon[] } | null;
 
 	// Segment name lookup for graveyard display
 	segmentNames: Record<string, string>;
@@ -498,7 +515,7 @@ export interface NuzlockePanelPayload {
 	// Set when a run just ended — client saves this to localStorage
 	completedRun: CompletedRun | null;
 
-	// Full party going into the final battle (wipe runs only). Used by summary screen.
+	// Party snapshot going into the final battle (populated for both victory and wipe runs)
 	finalParty: { species: string; nickname: string; alive: boolean }[] | null;
 }
 
@@ -590,9 +607,18 @@ export function serializeGameState(game: NuzlockeGame): NuzlockePanelPayload {
 	// Precompute legal moves for all alive box pokemon
 	const legalMoves: Record<string, LegalMove[]> = {};
 	if (game.currentSegment) {
+		const prevSeg = game.scenario.segments[game.currentSegmentIndex - 1];
+		const previousLevelCap = prevSeg?.battles.length
+			? Math.max(...prevSeg.battles.flatMap(b => b.team.map(p => p.level)))
+			: 0;
+		const tmRoutes = game.scenario.tmRouteMap;
+		const newTmMoves = game.currentSegment.tmMoves ?? [];
 		for (const p of game.box) {
 			if (p.alive) {
-				legalMoves[p.uid] = getLegalMoves(p, game.currentLevelCap, game.scenario.generation, game.tmMoves);
+				legalMoves[p.uid] = getLegalMoves(
+					p, game.currentLevelCap, game.scenario.generation, game.tmMoves,
+					previousLevelCap, newTmMoves, tmRoutes
+				);
 			}
 		}
 	}
@@ -617,6 +643,7 @@ export function serializeGameState(game: NuzlockeGame): NuzlockePanelPayload {
 		scenarioName: game.scenario.name,
 		scenarioDescription: game.scenario.description,
 		generation: game.scenario.generation,
+		battleGeneration: game.settings.generation,
 		currentSegmentIndex: game.currentSegmentIndex,
 		totalSegments: game.scenario.segments.length,
 		currentBattleIndex: game.currentBattleIndex,
@@ -650,14 +677,11 @@ export function serializeGameState(game: NuzlockeGame): NuzlockePanelPayload {
 		legalMoves,
 		availableEvolutions,
 		lastBattleResult: game.lastBattleResult,
-		nextScreen: game.nextScreen,
 		segmentNames,
 		scenarios,
 		battleRoomId: game.battleRoomId,
 		completedRun: game.lastCompletedRun,
-		finalParty: game.curRoom === 'summary' && game.lastCompletedRun?.outcome === 'wipe'
-			? (game.lastCompletedRun.finalParty ?? null)
-			: null,
+		finalParty: game.lastCompletedRun?.finalParty ?? null,
 	};
 }
 

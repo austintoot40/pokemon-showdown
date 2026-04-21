@@ -32,15 +32,18 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 	nuzlocke: {
 		start(target, room, user) {
 			if (nuzlockeGames.has(user.id)) return this.parse('/join view-nuzlocke');
-			const [scenarioId = 'firered', difficulty = 'basic', starterIndexStr] = target.trim().split(/\s+/);
+			const [scenarioId = 'firered', difficulty = 'basic', generationMode = 'original', starterIndexStr] = target.trim().split(/\s+/);
 			const scenario = getScenario(scenarioId.toLowerCase());
 			if (!scenario) return this.errorReply(`Unknown scenario "${scenarioId}". Available: firered`);
 			if (!['basic', 'smart', 'competitive'].includes(difficulty)) {
 				return this.errorReply(`Unknown difficulty "${difficulty}". Options: basic, smart, competitive`);
 			}
+			if (!['original', 'modern'].includes(generationMode)) {
+				return this.errorReply(`Unknown generation mode "${generationMode}". Options: original, modern`);
+			}
 			const game = new NuzlockeGame(user.id, scenario);
 			game.settings.ai = difficulty as NuzlockeGame['settings']['ai'];
-			game.settings.generation = scenario.generation;
+			game.settings.generation = generationMode === 'modern' ? 9 : scenario.generation;
 			pendingRandomizers.delete(user.id);
 			nuzlockeGames.set(user.id, game);
 			const starterIndex = parseInt(starterIndexStr);
@@ -58,7 +61,7 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 		 */
 		randomizerpreview(target, room, user) {
 			if (nuzlockeGames.has(user.id)) return this.errorReply('Already in a run.');
-			const [scenarioId = 'firered', mode = 'shuffle', bstVariance = 'medium', randomizeItemsStr = 'false'] = target.trim().split(/\s+/);
+			const [scenarioId = 'firered', mode = 'shuffle', bstVariance = 'medium'] = target.trim().split(/\s+/);
 			const scenario = getScenario(scenarioId.toLowerCase());
 			if (!scenario) return this.errorReply(`Unknown scenario "${scenarioId}".`);
 			if (!['shuffle', 'fully-random'].includes(mode)) {
@@ -70,7 +73,6 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 			const config: RandomizerConfig = {
 				mode: mode as RandomizerConfig['mode'],
 				bstVariance: bstVariance as RandomizerConfig['bstVariance'],
-				randomizeItems: randomizeItemsStr === 'true',
 				seed: Date.now(),
 			};
 			const mappings = buildRandomizerMappings(scenario, config);
@@ -84,7 +86,7 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 		 */
 		randomizestart(target, room, user) {
 			if (nuzlockeGames.has(user.id)) return this.parse('/join view-nuzlocke');
-			const [scenarioId = '', difficulty = 'basic', starterIndexStr] = target.trim().split(/\s+/);
+			const [scenarioId = '', difficulty = 'basic', generationMode = 'original', starterIndexStr] = target.trim().split(/\s+/);
 			const pending = pendingRandomizers.get(user.id);
 			if (!pending || pending.scenarioId !== scenarioId) {
 				return this.errorReply('No pending randomizer preview. Click Randomize first.');
@@ -94,13 +96,16 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 			if (!['basic', 'smart', 'competitive'].includes(difficulty)) {
 				return this.errorReply(`Unknown difficulty "${difficulty}". Options: basic, smart, competitive`);
 			}
+			if (!['original', 'modern'].includes(generationMode)) {
+				return this.errorReply(`Unknown generation mode "${generationMode}". Options: original, modern`);
+			}
 			const starterIndex = parseInt(starterIndexStr);
 			if (isNaN(starterIndex) || starterIndex < 0 || starterIndex >= scenario.starters.length) {
 				return this.errorReply(`Invalid starter index. Choose 0-${scenario.starters.length - 1}.`);
 			}
 			const game = new NuzlockeGame(user.id, scenario);
 			game.settings.ai = difficulty as NuzlockeGame['settings']['ai'];
-			game.settings.generation = scenario.generation;
+			game.settings.generation = generationMode === 'modern' ? 9 : scenario.generation;
 			game.randomizerConfig = pending.config;
 			game.randomizerMappings = pending.mappings;
 			pendingRandomizers.delete(user.id);
@@ -121,7 +126,7 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 
 		randomize(target, room, user) {
 			if (nuzlockeGames.has(user.id)) return this.parse('/join view-nuzlocke');
-			const [scenarioId = 'firered', difficulty = 'basic', starterIndexStr, mode = 'shuffle', bstVariance = 'medium', randomizeItemsStr = 'false'] = target.trim().split(/\s+/);
+			const [scenarioId = 'firered', difficulty = 'basic', starterIndexStr, mode = 'shuffle', bstVariance = 'medium'] = target.trim().split(/\s+/);
 			const scenario = getScenario(scenarioId.toLowerCase());
 			if (!scenario) return this.errorReply(`Unknown scenario "${scenarioId}". Available: firered`);
 			if (!['basic', 'smart', 'competitive'].includes(difficulty)) {
@@ -140,7 +145,6 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 			const config: RandomizerConfig = {
 				mode: mode as RandomizerConfig['mode'],
 				bstVariance: bstVariance as RandomizerConfig['bstVariance'],
-				randomizeItems: randomizeItemsStr === 'true',
 				seed: Date.now(),
 			};
 			const mappings = buildRandomizerMappings(scenario, config);
@@ -235,31 +239,22 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 		giveup(target, room, user) {
 			const game = nuzlockeGames.get(user.id);
 			if (!game) return this.errorReply('No active run.');
-			if (game.curRoom !== 'results') return this.errorReply('Can only give up from the results screen.');
-			if (game.lastBattleResult?.won) return this.errorReply('You won — nothing to give up.');
-			recordCompletedRun(game, 'wipe', game.lastBattleResult?.trainerName);
-			game.goToPage('summary');
+			if (game.curRoom !== 'battle' || game.inBattle || game.lastBattleResult?.won !== false) {
+				return this.errorReply('Can only give up after losing a battle.');
+			}
+			recordCompletedRun(game, 'wipe', game.lastBattleResult.trainerName);
+			pushNuzlockeState(user.id, game);
+			nuzlockeGames.delete(user.id);
+			deleteGame(user.id);
+			pushNuzlockeStatus(user.id, null);
+			closeNuzlockePanel(user.id);
 		},
 
 		continue(target, room, user) {
 			const game = nuzlockeGames.get(user.id);
-			if (!game) return this.errorReply('No active run.');
-			if (game.curRoom === 'results') {
-				const alive = game.box.filter(p => p.alive);
-				if (alive.length === 0) {
-					game.goToPage('summary');
-				} else {
-					const dest = game.nextScreen ?? 'teambuilding';
-					game.nextScreen = null;
-					game.lastBattleResult = null;
-					if (dest === 'battle') {
-						createNuzlockeBattle(game, user);
-					} else if (dest === 'teambuilding') {
-						goToTeambuilding(game);
-					} else {
-						game.goToPage(dest);
-					}
-				}
+			if (game?.curRoom === 'battle' && !game.inBattle) {
+				game.lastBattleResult = null;
+				goToTeambuilding(game);
 			} else {
 				void this.parse('/join view-nuzlocke');
 			}
@@ -421,6 +416,13 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 			const uid = target.slice(0, spaceIdx);
 			const targetSpecies = target.slice(spaceIdx + 1).trim();
 			game.evolve(uid, targetSpecies);
+			game.goToPage('teambuilding');
+		},
+
+		evolveall(target, room, user) {
+			const game = nuzlockeGames.get(user.id);
+			if (!game) return this.errorReply('No active run.');
+			game.evolveAll();
 			game.goToPage('teambuilding');
 		},
 
