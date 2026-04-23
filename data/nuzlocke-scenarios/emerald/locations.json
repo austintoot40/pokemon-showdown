@@ -337,6 +337,22 @@
           "name": "roxanne"
         }
       }
+    ],
+    "zones": [
+      {
+        "zone": "",
+        "method": "Trade",
+        "pokemon": [
+          {
+            "species": "Seedot",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "pokemon",
+          "name": "Ralts"
+        }
+      }
     ]
   },
   {
@@ -2248,7 +2264,23 @@
       },
       "Hidden Power"
     ],
-    "name": "Fortree City"
+    "name": "Fortree City",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Trade",
+        "pokemon": [
+          {
+            "species": "Plusle",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "pokemon",
+          "name": "Volbeat"
+        }
+      }
+    ]
   },
   {
     "id": "hoenn-route-121",
@@ -4347,6 +4379,20 @@
             "rate": 60
           }
         ]
+      },
+      {
+        "zone": "",
+        "method": "Trade",
+        "pokemon": [
+          {
+            "species": "Horsea",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "pokemon",
+          "name": "Bagon"
+        }
       }
     ],
     "tmMoves": [

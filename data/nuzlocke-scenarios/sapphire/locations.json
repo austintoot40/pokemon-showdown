@@ -127,6 +127,22 @@
           "name": "roxanne"
         }
       }
+    ],
+    "zones": [
+      {
+        "zone": "",
+        "method": "Trade",
+        "pokemon": [
+          {
+            "species": "Makuhita",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "pokemon",
+          "name": "Slakoth"
+        }
+      }
     ]
   },
   {
@@ -2063,6 +2079,22 @@
         }
       },
       "Hidden Power"
+    ],
+    "zones": [
+      {
+        "zone": "",
+        "method": "Trade",
+        "pokemon": [
+          {
+            "species": "Skitty",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "pokemon",
+          "name": "Pikachu"
+        }
+      }
     ]
   },
   {
@@ -3990,6 +4022,20 @@
             "rate": 20
           }
         ]
+      },
+      {
+        "zone": "",
+        "method": "Trade",
+        "pokemon": [
+          {
+            "species": "Corsola",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "pokemon",
+          "name": "Bellossom"
+        }
       }
     ],
     "tmMoves": [

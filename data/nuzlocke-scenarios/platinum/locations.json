@@ -219,20 +219,6 @@
             "rate": 5
           }
         ]
-      },
-      {
-        "zone": "",
-        "method": "Fish Super",
-        "pokemon": [
-          {
-            "species": "Gyarados",
-            "rate": 55
-          },
-          {
-            "species": "Seaking",
-            "rate": 45
-          }
-        ]
       }
     ],
     "tmMoves": [
@@ -367,20 +353,6 @@
             "rate": 45
           }
         ]
-      },
-      {
-        "zone": "",
-        "method": "Fish Super",
-        "pokemon": [
-          {
-            "species": "Gyarados",
-            "rate": 55
-          },
-          {
-            "species": "Seaking",
-            "rate": 45
-          }
-        ]
       }
     ]
   },
@@ -473,20 +445,6 @@
             "rate": 45
           }
         ]
-      },
-      {
-        "zone": "B1F",
-        "method": "Fish Super",
-        "pokemon": [
-          {
-            "species": "Gyarados",
-            "rate": 55
-          },
-          {
-            "species": "Whiscash",
-            "rate": 45
-          }
-        ]
       }
     ],
     "tmMoves": [
@@ -545,14 +503,15 @@
           }
         ]
       }
-    ]
+    ],
+    "items": []
   },
   {
     "id": "sinnoh-route-204",
     "name": "Sinnoh Route 204",
     "zones": [
       {
-        "zone": "South",
+        "zone": "South Morning",
         "method": "Grass",
         "time": "Morning",
         "pokemon": [
@@ -583,7 +542,7 @@
         ]
       },
       {
-        "zone": "South",
+        "zone": "South Day",
         "method": "Grass",
         "time": "Day",
         "pokemon": [
@@ -610,7 +569,7 @@
         ]
       },
       {
-        "zone": "South",
+        "zone": "South Night",
         "method": "Grass",
         "time": "Night",
         "pokemon": [
@@ -679,21 +638,7 @@
         ]
       },
       {
-        "zone": "South",
-        "method": "Fish Super",
-        "pokemon": [
-          {
-            "species": "Gyarados",
-            "rate": 55
-          },
-          {
-            "species": "Seaking",
-            "rate": 45
-          }
-        ]
-      },
-      {
-        "zone": "North",
+        "zone": "North Morning",
         "method": "Grass",
         "time": "Morning",
         "pokemon": [
@@ -721,10 +666,14 @@
             "species": "Kricketot",
             "rate": 10
           }
-        ]
+        ],
+        "requires": {
+          "type": "battle",
+          "name": "roark"
+        }
       },
       {
-        "zone": "North",
+        "zone": "North Day",
         "method": "Grass",
         "time": "Day",
         "pokemon": [
@@ -748,10 +697,14 @@
             "species": "Wurmple",
             "rate": 10
           }
-        ]
+        ],
+        "requires": {
+          "type": "battle",
+          "name": "roark"
+        }
       },
       {
-        "zone": "North",
+        "zone": "North Night",
         "method": "Grass",
         "time": "Night",
         "pokemon": [
@@ -779,7 +732,36 @@
             "species": "Kricketot",
             "rate": 10
           }
-        ]
+        ],
+        "requires": {
+          "type": "battle",
+          "name": "roark"
+        }
+      }
+    ],
+    "tmMoves": [
+      {
+        "name": "Bullet Seed",
+        "requires": {
+          "type": "battle",
+          "name": "roark"
+        }
+      },
+      {
+        "name": "Captivate",
+        "requires": {
+          "type": "move",
+          "name": "Cut"
+        }
+      }
+    ],
+    "items": [
+      {
+        "name": "Sea Incense",
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       }
     ]
   },
@@ -846,20 +828,29 @@
             "rate": 45
           }
         ]
+      }
+    ],
+    "tmMoves": [
+      {
+        "name": "Rock Tomb",
+        "requires": {
+          "type": "move",
+          "name": "Rock Smash"
+        }
       },
       {
-        "zone": "",
-        "method": "Fish Super",
-        "pokemon": [
-          {
-            "species": "Gyarados",
-            "rate": 55
-          },
-          {
-            "species": "Whiscash",
-            "rate": 45
-          }
-        ]
+        "name": "Water Pulse",
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "name": "Luck Incense",
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       }
     ]
   },
@@ -868,7 +859,7 @@
     "name": "Eterna Forest",
     "zones": [
       {
-        "zone": "",
+        "zone": "Morning",
         "method": "Grass",
         "time": "Morning",
         "pokemon": [
@@ -915,7 +906,7 @@
         ]
       },
       {
-        "zone": "",
+        "zone": "Day",
         "method": "Grass",
         "time": "Day",
         "pokemon": [
@@ -958,7 +949,7 @@
         ]
       },
       {
-        "zone": "",
+        "zone": "Night",
         "method": "Grass",
         "time": "Night",
         "pokemon": [
@@ -1004,6 +995,32 @@
           }
         ]
       }
+    ],
+    "items": [
+      {
+        "name": "Insect Plate",
+        "requires": {
+          "type": "move",
+          "name": "Cut"
+        }
+      },
+      "Soothe Bell",
+      {
+        "name": "Silver Powder",
+        "requires": {
+          "type": "move",
+          "name": "Cut"
+        }
+      }
+    ],
+    "tmMoves": [
+      {
+        "name": "Sleep Talk",
+        "requires": {
+          "type": "move",
+          "name": "Cut"
+        }
+      }
     ]
   },
   {
@@ -1011,7 +1028,7 @@
     "name": "Sinnoh Route 205",
     "zones": [
       {
-        "zone": "Southern segment",
+        "zone": "South",
         "method": "Grass",
         "pokemon": [
           {
@@ -1033,7 +1050,7 @@
         ]
       },
       {
-        "zone": "Southern segment",
+        "zone": "South",
         "method": "Surf",
         "pokemon": [
           {
@@ -1055,7 +1072,7 @@
         ]
       },
       {
-        "zone": "Southern segment",
+        "zone": "South",
         "method": "Fish Old",
         "pokemon": [
           {
@@ -1065,7 +1082,7 @@
         ]
       },
       {
-        "zone": "Southern segment",
+        "zone": "South",
         "method": "Fish Good",
         "pokemon": [
           {
@@ -1079,25 +1096,7 @@
         ]
       },
       {
-        "zone": "Southern segment",
-        "method": "Fish Super",
-        "pokemon": [
-          {
-            "species": "Lumineon",
-            "rate": 45
-          },
-          {
-            "species": "Gyarados",
-            "rate": 40
-          },
-          {
-            "species": "Shellder",
-            "rate": 15
-          }
-        ]
-      },
-      {
-        "zone": "Northern segment",
+        "zone": "North Morning",
         "method": "Grass",
         "time": "Morning",
         "pokemon": [
@@ -1136,7 +1135,7 @@
         ]
       },
       {
-        "zone": "Northern segment",
+        "zone": "North Day",
         "method": "Grass",
         "time": "Day",
         "pokemon": [
@@ -1171,7 +1170,7 @@
         ]
       },
       {
-        "zone": "Northern segment",
+        "zone": "North Night",
         "method": "Grass",
         "time": "Night",
         "pokemon": [
@@ -1210,7 +1209,7 @@
         ]
       },
       {
-        "zone": "Northern segment",
+        "zone": "North",
         "method": "Surf",
         "pokemon": [
           {
@@ -1224,7 +1223,7 @@
         ]
       },
       {
-        "zone": "Northern segment",
+        "zone": "North",
         "method": "Fish Old",
         "pokemon": [
           {
@@ -1234,7 +1233,7 @@
         ]
       },
       {
-        "zone": "Northern segment",
+        "zone": "North",
         "method": "Fish Good",
         "pokemon": [
           {
@@ -1243,20 +1242,6 @@
           },
           {
             "species": "Barboach",
-            "rate": 45
-          }
-        ]
-      },
-      {
-        "zone": "Northern segment",
-        "method": "Fish Super",
-        "pokemon": [
-          {
-            "species": "Gyarados",
-            "rate": 55
-          },
-          {
-            "species": "Whiscash",
             "rate": 45
           }
         ]
@@ -1275,57 +1260,44 @@
             "species": "Gastly",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Cut"
+        }
       },
       {
         "zone": "",
-        "method": "Any",
-        "pokemon": [
-          {
-            "species": "Gengar",
-            "rate": 4
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "pre-gym-2-gift-1",
-    "name": "Fossil Revival (Oreburgh Museum)",
-    "zones": [
-      {
-        "zone": "Fossil Revival (Oreburgh Museum)",
         "method": "Gift",
         "pokemon": [
           {
-            "species": "Cranidos",
-            "rate": 50
-          },
-          {
-            "species": "Shieldon",
-            "rate": 50
+            "species": "Rotom",
+            "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Cut"
+        }
       }
-    ]
-  },
-  {
-    "id": "pre-gym-2-items",
+    ],
     "items": [
-      "Sea Incense",
-      "Insect Plate",
-      "Silver Powder",
-      "Dread Plate"
+      {
+        "name": "Dread Plate",
+        "requires": {
+          "type": "move",
+          "name": "Cut"
+        }
+      }
     ],
     "tmMoves": [
-      "Bullet Seed",
-      "Captivate",
-      "Rock Tomb",
-      "Water Pulse",
-      "Sleep Talk",
-      "Substitute",
-      "Grass Knot",
-      "Cut"
+      {
+        "name": "Substitute",
+        "requires": {
+          "type": "move",
+          "name": "Cut"
+        }
+      }
     ]
   },
   {
@@ -1333,7 +1305,7 @@
     "name": "Sinnoh Route 206",
     "zones": [
       {
-        "zone": "",
+        "zone": "Morning",
         "method": "Grass",
         "time": "Morning",
         "pokemon": [
@@ -1360,7 +1332,7 @@
         ]
       },
       {
-        "zone": "",
+        "zone": "Day",
         "method": "Grass",
         "time": "Day",
         "pokemon": [
@@ -1383,7 +1355,7 @@
         ]
       },
       {
-        "zone": "",
+        "zone": "Night",
         "method": "Grass",
         "time": "Night",
         "pokemon": [
@@ -1412,6 +1384,15 @@
             "rate": 10
           }
         ]
+      }
+    ],
+    "items": [
+      {
+        "name": "Poison Barb",
+        "requires": {
+          "type": "move",
+          "name": "Cut"
+        }
       }
     ]
   },
@@ -1467,6 +1448,19 @@
           }
         ]
       }
+    ],
+    "tmMoves": [
+      "Double Team",
+      {
+        "name": "Earthquake",
+        "requires": {
+          "type": "move",
+          "name": "Strength"
+        }
+      }
+    ],
+    "items": [
+      "Grip Claw"
     ]
   },
   {
@@ -1474,7 +1468,7 @@
     "name": "Sinnoh Route 207",
     "zones": [
       {
-        "zone": "",
+        "zone": "Morning",
         "method": "Grass",
         "time": "Morning",
         "pokemon": [
@@ -1497,7 +1491,7 @@
         ]
       },
       {
-        "zone": "",
+        "zone": "Day",
         "method": "Grass",
         "time": "Day",
         "pokemon": [
@@ -1516,7 +1510,7 @@
         ]
       },
       {
-        "zone": "",
+        "zone": "Night",
         "method": "Grass",
         "time": "Night",
         "pokemon": [
@@ -1549,7 +1543,7 @@
     "name": "Sinnoh Route 208",
     "zones": [
       {
-        "zone": "",
+        "zone": "Morning",
         "method": "Grass",
         "time": "Morning",
         "pokemon": [
@@ -1563,7 +1557,7 @@
           },
           {
             "species": "Budew",
-            "rate": 20
+            "rate": 30
           },
           {
             "species": "Ralts",
@@ -1576,7 +1570,7 @@
         ]
       },
       {
-        "zone": "",
+        "zone": "Day",
         "method": "Grass",
         "time": "Day",
         "pokemon": [
@@ -1590,7 +1584,7 @@
           },
           {
             "species": "Budew",
-            "rate": 20
+            "rate": 30
           },
           {
             "species": "Ralts",
@@ -1603,7 +1597,7 @@
         ]
       },
       {
-        "zone": "",
+        "zone": "Night",
         "method": "Grass",
         "time": "Night",
         "pokemon": [
@@ -1667,20 +1661,6 @@
           },
           {
             "species": "Goldeen",
-            "rate": 45
-          }
-        ]
-      },
-      {
-        "zone": "",
-        "method": "Fish Super",
-        "pokemon": [
-          {
-            "species": "Gyarados",
-            "rate": 55
-          },
-          {
-            "species": "Seaking",
             "rate": 45
           }
         ]
@@ -1692,7 +1672,7 @@
     "name": "Sinnoh Route 209",
     "zones": [
       {
-        "zone": "",
+        "zone": "Morning",
         "method": "Grass",
         "time": "Morning",
         "pokemon": [
@@ -1719,7 +1699,7 @@
         ]
       },
       {
-        "zone": "",
+        "zone": "Day",
         "method": "Grass",
         "time": "Day",
         "pokemon": [
@@ -1746,7 +1726,7 @@
         ]
       },
       {
-        "zone": "",
+        "zone": "Night",
         "method": "Grass",
         "time": "Night",
         "pokemon": [
@@ -1817,20 +1797,25 @@
             "rate": 35
           }
         ]
+      }
+    ],
+    "items": [
+      "Good Rod"
+    ],
+    "tmMoves": [
+      {
+        "name": "Giga Drain",
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
-        "zone": "",
-        "method": "Fish Super",
-        "pokemon": [
-          {
-            "species": "Gyarados",
-            "rate": 65
-          },
-          {
-            "species": "Seaking",
-            "rate": 35
-          }
-        ]
+        "name": "Steel Wing",
+        "requires": {
+          "type": "move",
+          "name": "Cut"
+        }
       }
     ]
   },
@@ -1839,7 +1824,7 @@
     "name": "Lost Tower",
     "zones": [
       {
-        "zone": "1F",
+        "zone": "1F Morning",
         "method": "Cave",
         "time": "Morning",
         "pokemon": [
@@ -1854,7 +1839,7 @@
         ]
       },
       {
-        "zone": "1F",
+        "zone": "1F Day",
         "method": "Cave",
         "time": "Day",
         "pokemon": [
@@ -1869,7 +1854,7 @@
         ]
       },
       {
-        "zone": "1F",
+        "zone": "1F Night",
         "method": "Cave",
         "time": "Night",
         "pokemon": [
@@ -1888,7 +1873,7 @@
         ]
       },
       {
-        "zone": "2F",
+        "zone": "2F Morning",
         "method": "Cave",
         "time": "Morning",
         "pokemon": [
@@ -1903,7 +1888,7 @@
         ]
       },
       {
-        "zone": "2F",
+        "zone": "2F Day",
         "method": "Cave",
         "time": "Day",
         "pokemon": [
@@ -1918,7 +1903,7 @@
         ]
       },
       {
-        "zone": "2F",
+        "zone": "2F Night",
         "method": "Cave",
         "time": "Night",
         "pokemon": [
@@ -1937,7 +1922,7 @@
         ]
       },
       {
-        "zone": "3F",
+        "zone": "3F Morning",
         "method": "Cave",
         "time": "Morning",
         "pokemon": [
@@ -1956,7 +1941,7 @@
         ]
       },
       {
-        "zone": "3F",
+        "zone": "3F Day",
         "method": "Cave",
         "time": "Day",
         "pokemon": [
@@ -1975,7 +1960,7 @@
         ]
       },
       {
-        "zone": "3F",
+        "zone": "3F Night",
         "method": "Cave",
         "time": "Night",
         "pokemon": [
@@ -1998,7 +1983,7 @@
         ]
       },
       {
-        "zone": "4F",
+        "zone": "4F Morning",
         "method": "Cave",
         "time": "Morning",
         "pokemon": [
@@ -2017,7 +2002,7 @@
         ]
       },
       {
-        "zone": "4F",
+        "zone": "4F Day",
         "method": "Cave",
         "time": "Day",
         "pokemon": [
@@ -2036,7 +2021,7 @@
         ]
       },
       {
-        "zone": "4F",
+        "zone": "4F Night",
         "method": "Cave",
         "time": "Night",
         "pokemon": [
@@ -2059,7 +2044,7 @@
         ]
       },
       {
-        "zone": "5F",
+        "zone": "5F Morning",
         "method": "Cave",
         "time": "Morning",
         "pokemon": [
@@ -2069,7 +2054,7 @@
           },
           {
             "species": "Zubat",
-            "rate": 30
+            "rate": 35
           },
           {
             "species": "Golbat",
@@ -2078,7 +2063,7 @@
         ]
       },
       {
-        "zone": "5F",
+        "zone": "5F Day",
         "method": "Cave",
         "time": "Day",
         "pokemon": [
@@ -2088,7 +2073,7 @@
           },
           {
             "species": "Zubat",
-            "rate": 30
+            "rate": 35
           },
           {
             "species": "Golbat",
@@ -2097,7 +2082,7 @@
         ]
       },
       {
-        "zone": "5F",
+        "zone": "5F Night",
         "method": "Cave",
         "time": "Night",
         "pokemon": [
@@ -2107,7 +2092,7 @@
           },
           {
             "species": "Zubat",
-            "rate": 30
+            "rate": 35
           },
           {
             "species": "Duskull",
@@ -2119,6 +2104,27 @@
           }
         ]
       }
+    ],
+    "items": [
+      "Oval Stone",
+      {
+        "name": "Cleanse Tag",
+        "requires": {
+          "type": "move",
+          "name": "Defog"
+        }
+      },
+      {
+        "name": "Spell Tag",
+        "requires": {
+          "type": "move",
+          "name": "Defog"
+        }
+      }
+    ],
+    "tmMoves": [
+      "Return",
+      "Strength"
     ]
   },
   {
@@ -2126,7 +2132,7 @@
     "name": "Sinnoh Route 210",
     "zones": [
       {
-        "zone": "Southern section",
+        "zone": "South Morning",
         "method": "Grass",
         "time": "Morning",
         "pokemon": [
@@ -2157,7 +2163,7 @@
         ]
       },
       {
-        "zone": "Southern section",
+        "zone": "South Day",
         "method": "Grass",
         "time": "Day",
         "pokemon": [
@@ -2188,7 +2194,7 @@
         ]
       },
       {
-        "zone": "Southern section",
+        "zone": "South Night",
         "method": "Grass",
         "time": "Night",
         "pokemon": [
@@ -2227,7 +2233,7 @@
         ]
       },
       {
-        "zone": "Northern (foggy) section",
+        "zone": "North Morning",
         "method": "Grass",
         "time": "Morning",
         "pokemon": [
@@ -2258,7 +2264,7 @@
         ]
       },
       {
-        "zone": "Northern (foggy) section",
+        "zone": "North Day",
         "method": "Grass",
         "time": "Day",
         "pokemon": [
@@ -2289,7 +2295,7 @@
         ]
       },
       {
-        "zone": "Northern (foggy) section",
+        "zone": "North Night",
         "method": "Grass",
         "time": "Night",
         "pokemon": [
@@ -2328,7 +2334,7 @@
         ]
       },
       {
-        "zone": "Northern (foggy) section",
+        "zone": "North",
         "method": "Surf",
         "pokemon": [
           {
@@ -2342,7 +2348,7 @@
         ]
       },
       {
-        "zone": "Northern (foggy) section",
+        "zone": "North",
         "method": "Fish Old",
         "pokemon": [
           {
@@ -2352,7 +2358,7 @@
         ]
       },
       {
-        "zone": "Northern (foggy) section",
+        "zone": "North",
         "method": "Fish Good",
         "pokemon": [
           {
@@ -2368,46 +2374,34 @@
             "rate": 5
           }
         ]
-      },
-      {
-        "zone": "Northern (foggy) section",
-        "method": "Fish Super",
-        "pokemon": [
-          {
-            "species": "Gyarados",
-            "rate": 55
-          },
-          {
-            "species": "Whiscash",
-            "rate": 45
-          }
-        ]
       }
-    ]
-  },
-  {
-    "id": "pre-gym-3-items",
-    "items": [
-      "Poison Barb",
-      "Dusk Stone",
-      "Grip Claw",
-      "Oval Stone",
-      "Spell Tag",
-      "Shiny Stone",
-      "Meadow Plate",
-      "Wave Incense",
-      "Smoke Ball"
     ],
     "tmMoves": [
-      "Double Team",
-      "Earthquake",
-      "Giga Drain",
-      "Steel Wing",
-      "Return",
       "Roost",
-      "Shadow Ball",
-      "Drain Punch",
-      "Fly"
+      {
+        "name": "Shadow Ball",
+        "requires": {
+          "type": "move",
+          "name": "Rock Smash"
+        }
+      }
+    ],
+    "items": [
+      "Shiny Stone",
+      {
+        "name": "Meadow Plate",
+        "requires": {
+          "type": "move",
+          "name": "Waterfall"
+        }
+      },
+      {
+        "name": "Wave Incense",
+        "requires": {
+          "type": "move",
+          "name": "Waterfall"
+        }
+      }
     ]
   },
   {
@@ -2415,7 +2409,7 @@
     "name": "Sinnoh Route 212",
     "zones": [
       {
-        "zone": "Northern area (clear)",
+        "zone": "North Morning",
         "method": "Grass",
         "time": "Morning",
         "pokemon": [
@@ -2438,7 +2432,7 @@
         ]
       },
       {
-        "zone": "Northern area (clear)",
+        "zone": "North Day",
         "method": "Grass",
         "time": "Day",
         "pokemon": [
@@ -2465,7 +2459,7 @@
         ]
       },
       {
-        "zone": "Northern area (clear)",
+        "zone": "North Night",
         "method": "Grass",
         "time": "Night",
         "pokemon": [
@@ -2488,7 +2482,7 @@
         ]
       },
       {
-        "zone": "Northern area (clear)",
+        "zone": "North",
         "method": "Surf",
         "pokemon": [
           {
@@ -2502,7 +2496,7 @@
         ]
       },
       {
-        "zone": "Northern area (clear)",
+        "zone": "North",
         "method": "Fish Old",
         "pokemon": [
           {
@@ -2512,7 +2506,7 @@
         ]
       },
       {
-        "zone": "Northern area (clear)",
+        "zone": "North",
         "method": "Fish Good",
         "pokemon": [
           {
@@ -2526,21 +2520,7 @@
         ]
       },
       {
-        "zone": "Northern area (clear)",
-        "method": "Fish Super",
-        "pokemon": [
-          {
-            "species": "Gyarados",
-            "rate": 55
-          },
-          {
-            "species": "Seaking",
-            "rate": 45
-          }
-        ]
-      },
-      {
-        "zone": "Southern area (rainy)",
+        "zone": "South",
         "method": "Grass",
         "pokemon": [
           {
@@ -2562,7 +2542,7 @@
         ]
       },
       {
-        "zone": "Southern area (rainy)",
+        "zone": "South",
         "method": "Surf",
         "pokemon": [
           {
@@ -2584,7 +2564,7 @@
         ]
       },
       {
-        "zone": "Southern area (rainy)",
+        "zone": "South",
         "method": "Fish Old",
         "pokemon": [
           {
@@ -2594,7 +2574,7 @@
         ]
       },
       {
-        "zone": "Southern area (rainy)",
+        "zone": "South",
         "method": "Fish Good",
         "pokemon": [
           {
@@ -2606,29 +2586,25 @@
             "rate": 45
           }
         ]
-      },
-      {
-        "zone": "Southern area (rainy)",
-        "method": "Fish Super",
-        "pokemon": [
-          {
-            "species": "Gyarados",
-            "rate": 55
-          },
-          {
-            "species": "Octillery",
-            "rate": 45
-          }
-        ]
       }
+    ],
+    "tmMoves": [
+      "Sunny Day",
+      "Silver Wind",
+      "Toxic",
+      "Poison Jab"
+    ],
+    "items": [
+      "Rose Incense",
+      "Dawn Stone"
     ]
   },
   {
-    "id": "great-marsh",
-    "name": "Great Marsh",
+    "id": "great-marsh-areas-1-2",
+    "name": "Great Marsh Areas 1 and 2",
     "zones": [
       {
-        "zone": "All areas",
+        "zone": "",
         "method": "Surf",
         "pokemon": [
           {
@@ -2642,7 +2618,7 @@
         ]
       },
       {
-        "zone": "All areas",
+        "zone": "",
         "method": "Fish Old",
         "pokemon": [
           {
@@ -2652,7 +2628,7 @@
         ]
       },
       {
-        "zone": "All areas",
+        "zone": "",
         "method": "Fish Good",
         "pokemon": [
           {
@@ -2666,25 +2642,7 @@
         ]
       },
       {
-        "zone": "All areas",
-        "method": "Fish Super",
-        "pokemon": [
-          {
-            "species": "Carvanha",
-            "rate": 45
-          },
-          {
-            "species": "Gyarados",
-            "rate": 40
-          },
-          {
-            "species": "Whiscash",
-            "rate": 15
-          }
-        ]
-      },
-      {
-        "zone": "Areas 1 and 2",
+        "zone": "Morning",
         "method": "Grass",
         "time": "Morning",
         "pokemon": [
@@ -2715,7 +2673,7 @@
         ]
       },
       {
-        "zone": "Areas 1 and 2",
+        "zone": "Day",
         "method": "Grass",
         "time": "Day",
         "pokemon": [
@@ -2746,7 +2704,7 @@
         ]
       },
       {
-        "zone": "Areas 1 and 2",
+        "zone": "Night",
         "method": "Grass",
         "time": "Night",
         "pokemon": [
@@ -2773,338 +2731,409 @@
           {
             "species": "Yanma",
             "rate": 5
-          }
-        ]
-      },
-      {
-        "zone": "Areas 3 and 4",
-        "method": "Grass",
-        "time": "Morning",
-        "pokemon": [
-          {
-            "species": "Wooper",
-            "rate": 30
-          },
-          {
-            "species": "Bibarel",
-            "rate": 30
-          },
-          {
-            "species": "Tangela",
-            "rate": 25
-          },
-          {
-            "species": "Quagsire",
-            "rate": 10
-          },
-          {
-            "species": "Yanma",
-            "rate": 5
-          }
-        ]
-      },
-      {
-        "zone": "Areas 3 and 4",
-        "method": "Grass",
-        "time": "Day",
-        "pokemon": [
-          {
-            "species": "Wooper",
-            "rate": 30
-          },
-          {
-            "species": "Bibarel",
-            "rate": 30
-          },
-          {
-            "species": "Tangela",
-            "rate": 25
-          },
-          {
-            "species": "Quagsire",
-            "rate": 10
-          },
-          {
-            "species": "Yanma",
-            "rate": 5
-          }
-        ]
-      },
-      {
-        "zone": "Areas 3 and 4",
-        "method": "Grass",
-        "time": "Night",
-        "pokemon": [
-          {
-            "species": "Wooper",
-            "rate": 30
-          },
-          {
-            "species": "Bibarel",
-            "rate": 20
-          },
-          {
-            "species": "Tangela",
-            "rate": 15
-          },
-          {
-            "species": "Hoothoot",
-            "rate": 10
-          },
-          {
-            "species": "Noctowl",
-            "rate": 10
-          },
-          {
-            "species": "Quagsire",
-            "rate": 10
-          },
-          {
-            "species": "Yanma",
-            "rate": 5
-          }
-        ]
-      },
-      {
-        "zone": "Area 5",
-        "method": "Grass",
-        "time": "Morning",
-        "pokemon": [
-          {
-            "species": "Wooper",
-            "rate": 30
-          },
-          {
-            "species": "Bibarel",
-            "rate": 30
-          },
-          {
-            "species": "Yanma",
-            "rate": 25
-          },
-          {
-            "species": "Quagsire",
-            "rate": 10
-          },
-          {
-            "species": "Tangela",
-            "rate": 5
-          }
-        ]
-      },
-      {
-        "zone": "Area 5",
-        "method": "Grass",
-        "time": "Day",
-        "pokemon": [
-          {
-            "species": "Wooper",
-            "rate": 30
-          },
-          {
-            "species": "Bibarel",
-            "rate": 30
-          },
-          {
-            "species": "Yanma",
-            "rate": 25
-          },
-          {
-            "species": "Quagsire",
-            "rate": 10
-          },
-          {
-            "species": "Tangela",
-            "rate": 5
-          }
-        ]
-      },
-      {
-        "zone": "Area 5",
-        "method": "Grass",
-        "time": "Night",
-        "pokemon": [
-          {
-            "species": "Wooper",
-            "rate": 30
-          },
-          {
-            "species": "Hoothoot",
-            "rate": 20
-          },
-          {
-            "species": "Bibarel",
-            "rate": 20
-          },
-          {
-            "species": "Yanma",
-            "rate": 15
-          },
-          {
-            "species": "Quagsire",
-            "rate": 10
-          },
-          {
-            "species": "Tangela",
-            "rate": 5
-          }
-        ]
-      },
-      {
-        "zone": "Area 6",
-        "method": "Grass",
-        "time": "Morning",
-        "pokemon": [
-          {
-            "species": "Wooper",
-            "rate": 30
-          },
-          {
-            "species": "Bibarel",
-            "rate": 30
-          },
-          {
-            "species": "Yanma",
-            "rate": 25
-          },
-          {
-            "species": "Quagsire",
-            "rate": 10
-          },
-          {
-            "species": "Tangela",
-            "rate": 5
-          }
-        ]
-      },
-      {
-        "zone": "Area 6",
-        "method": "Grass",
-        "time": "Day",
-        "pokemon": [
-          {
-            "species": "Wooper",
-            "rate": 30
-          },
-          {
-            "species": "Bibarel",
-            "rate": 30
-          },
-          {
-            "species": "Yanma",
-            "rate": 25
-          },
-          {
-            "species": "Quagsire",
-            "rate": 10
-          },
-          {
-            "species": "Tangela",
-            "rate": 5
-          }
-        ]
-      },
-      {
-        "zone": "Area 6",
-        "method": "Grass",
-        "time": "Night",
-        "pokemon": [
-          {
-            "species": "Wooper",
-            "rate": 30
-          },
-          {
-            "species": "Hoothoot",
-            "rate": 20
-          },
-          {
-            "species": "Bibarel",
-            "rate": 20
-          },
-          {
-            "species": "Yanma",
-            "rate": 15
-          },
-          {
-            "species": "Quagsire",
-            "rate": 10
-          },
-          {
-            "species": "Tangela",
-            "rate": 5
-          }
-        ]
-      },
-      {
-        "zone": "Changing Pokémon",
-        "method": "Grass",
-        "pokemon": [
-          {
-            "species": "Wooper",
-            "rate": 15
-          },
-          {
-            "species": "Skorupi",
-            "rate": 5
-          },
-          {
-            "species": "Croagunk",
-            "rate": 4
-          },
-          {
-            "species": "Carnivine",
-            "rate": 3
-          },
-          {
-            "species": "Quagsire",
-            "rate": 2
-          },
-          {
-            "species": "Paras",
-            "rate": 2
-          },
-          {
-            "species": "Exeggcute",
-            "rate": 2
-          },
-          {
-            "species": "Kangaskhan",
-            "rate": 2
-          },
-          {
-            "species": "Shroomish",
-            "rate": 2
-          },
-          {
-            "species": "Gulpin",
-            "rate": 2
-          },
-          {
-            "species": "Kecleon",
-            "rate": 2
-          },
-          {
-            "species": "Drapion",
-            "rate": 2
-          },
-          {
-            "species": "Tangela",
-            "rate": 1
-          },
-          {
-            "species": "Yanma",
-            "rate": 1
-          },
-          {
-            "species": "Tropius",
-            "rate": 1
-          },
-          {
-            "species": "Toxicroak",
-            "rate": 1
           }
         ]
       }
+    ],
+    "items": [
+      "Toxic Plate"
+    ]
+  },
+  {
+    "id": "great-marsh-areas-3-4",
+    "name": "Great Marsh Areas 3 and 4",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Surf",
+        "pokemon": [
+          {
+            "species": "Wooper",
+            "rate": 90
+          },
+          {
+            "species": "Quagsire",
+            "rate": 10
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fish Old",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 100
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fish Good",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 55
+          },
+          {
+            "species": "Barboach",
+            "rate": 45
+          }
+        ]
+      },
+      {
+        "zone": "Morning",
+        "method": "Grass",
+        "time": "Morning",
+        "pokemon": [
+          {
+            "species": "Wooper",
+            "rate": 30
+          },
+          {
+            "species": "Bibarel",
+            "rate": 30
+          },
+          {
+            "species": "Tangela",
+            "rate": 25
+          },
+          {
+            "species": "Quagsire",
+            "rate": 10
+          },
+          {
+            "species": "Yanma",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "Day",
+        "method": "Grass",
+        "time": "Day",
+        "pokemon": [
+          {
+            "species": "Wooper",
+            "rate": 30
+          },
+          {
+            "species": "Bibarel",
+            "rate": 30
+          },
+          {
+            "species": "Tangela",
+            "rate": 25
+          },
+          {
+            "species": "Quagsire",
+            "rate": 10
+          },
+          {
+            "species": "Yanma",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "Night",
+        "method": "Grass",
+        "time": "Night",
+        "pokemon": [
+          {
+            "species": "Wooper",
+            "rate": 30
+          },
+          {
+            "species": "Bibarel",
+            "rate": 20
+          },
+          {
+            "species": "Tangela",
+            "rate": 15
+          },
+          {
+            "species": "Hoothoot",
+            "rate": 10
+          },
+          {
+            "species": "Noctowl",
+            "rate": 10
+          },
+          {
+            "species": "Quagsire",
+            "rate": 10
+          },
+          {
+            "species": "Yanma",
+            "rate": 5
+          }
+        ]
+      }
+    ],
+    "items": [
+      "Leaf Stone"
+    ]
+  },
+  {
+    "id": "great-marsh-area-5",
+    "name": "Great Marsh Area 5",
+    "zones": [
+      {
+        "zone": "All area",
+        "method": "Surf",
+        "pokemon": [
+          {
+            "species": "Wooper",
+            "rate": 90
+          },
+          {
+            "species": "Quagsire",
+            "rate": 10
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fish Old",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 100
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fish Good",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 55
+          },
+          {
+            "species": "Barboach",
+            "rate": 45
+          }
+        ]
+      },
+      {
+        "zone": "Morning",
+        "method": "Grass",
+        "time": "Morning",
+        "pokemon": [
+          {
+            "species": "Wooper",
+            "rate": 30
+          },
+          {
+            "species": "Bibarel",
+            "rate": 30
+          },
+          {
+            "species": "Yanma",
+            "rate": 25
+          },
+          {
+            "species": "Quagsire",
+            "rate": 10
+          },
+          {
+            "species": "Tangela",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "Day",
+        "method": "Grass",
+        "time": "Day",
+        "pokemon": [
+          {
+            "species": "Wooper",
+            "rate": 30
+          },
+          {
+            "species": "Bibarel",
+            "rate": 30
+          },
+          {
+            "species": "Yanma",
+            "rate": 25
+          },
+          {
+            "species": "Quagsire",
+            "rate": 10
+          },
+          {
+            "species": "Tangela",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "Night",
+        "method": "Grass",
+        "time": "Night",
+        "pokemon": [
+          {
+            "species": "Wooper",
+            "rate": 30
+          },
+          {
+            "species": "Hoothoot",
+            "rate": 20
+          },
+          {
+            "species": "Bibarel",
+            "rate": 20
+          },
+          {
+            "species": "Yanma",
+            "rate": 15
+          },
+          {
+            "species": "Quagsire",
+            "rate": 10
+          },
+          {
+            "species": "Tangela",
+            "rate": 5
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "great-marsh-area-6",
+    "name": "Great Marsh Area 6",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Surf",
+        "pokemon": [
+          {
+            "species": "Wooper",
+            "rate": 90
+          },
+          {
+            "species": "Quagsire",
+            "rate": 10
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fish Old",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 100
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fish Good",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 55
+          },
+          {
+            "species": "Barboach",
+            "rate": 45
+          }
+        ]
+      },
+      {
+        "zone": "Morning",
+        "method": "Grass",
+        "time": "Morning",
+        "pokemon": [
+          {
+            "species": "Wooper",
+            "rate": 30
+          },
+          {
+            "species": "Bibarel",
+            "rate": 30
+          },
+          {
+            "species": "Yanma",
+            "rate": 25
+          },
+          {
+            "species": "Quagsire",
+            "rate": 10
+          },
+          {
+            "species": "Tangela",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "Day",
+        "method": "Grass",
+        "time": "Day",
+        "pokemon": [
+          {
+            "species": "Wooper",
+            "rate": 30
+          },
+          {
+            "species": "Bibarel",
+            "rate": 30
+          },
+          {
+            "species": "Yanma",
+            "rate": 25
+          },
+          {
+            "species": "Quagsire",
+            "rate": 10
+          },
+          {
+            "species": "Tangela",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "Night",
+        "method": "Grass",
+        "time": "Night",
+        "pokemon": [
+          {
+            "species": "Wooper",
+            "rate": 30
+          },
+          {
+            "species": "Hoothoot",
+            "rate": 20
+          },
+          {
+            "species": "Bibarel",
+            "rate": 20
+          },
+          {
+            "species": "Yanma",
+            "rate": 15
+          },
+          {
+            "species": "Quagsire",
+            "rate": 10
+          },
+          {
+            "species": "Tangela",
+            "rate": 5
+          }
+        ]
+      }
+    ],
+    "tmMoves": [
+      "Defog"
     ]
   },
   {
@@ -3112,7 +3141,7 @@
     "name": "Sinnoh Route 213",
     "zones": [
       {
-        "zone": "",
+        "zone": "Morning",
         "method": "Grass",
         "time": "Morning",
         "pokemon": [
@@ -3135,7 +3164,7 @@
         ]
       },
       {
-        "zone": "",
+        "zone": "Day",
         "method": "Grass",
         "time": "Day",
         "pokemon": [
@@ -3158,7 +3187,7 @@
         ]
       },
       {
-        "zone": "",
+        "zone": "Night",
         "method": "Grass",
         "time": "Night",
         "pokemon": [
@@ -3225,42 +3254,21 @@
             "rate": 45
           }
         ]
-      },
-      {
-        "zone": "",
-        "method": "Fish Super",
-        "pokemon": [
-          {
-            "species": "Gyarados",
-            "rate": 55
-          },
-          {
-            "species": "Octillery",
-            "rate": 45
-          }
-        ]
       }
-    ]
-  },
-  {
-    "id": "pre-gym-4-items",
-    "items": [
-      "Rose Incense",
-      "Dawn Stone",
-      "Toxic Plate",
-      "Leaf Stone",
-      "Water Stone"
     ],
     "tmMoves": [
-      "Sunny Day",
-      "Silver Wind",
-      "Toxic",
-      "Poison Jab",
-      "Roar",
       "Aerial Ace",
-      "Trick Room",
-      "Brine",
-      "Defog"
+      {
+        "name": "Roar",
+        "requires": {
+          "type": "move",
+          "name": "Rock Climb"
+        }
+      },
+      "Trick Room"
+    ],
+    "items": [
+      "Water Stone"
     ]
   },
   {
@@ -3268,13 +3276,13 @@
     "name": "Sinnoh Route 214",
     "zones": [
       {
-        "zone": "",
+        "zone": "Morning",
         "method": "Grass",
         "time": "Morning",
         "pokemon": [
           {
             "species": "Graveler",
-            "rate": 25
+            "rate": 35
           },
           {
             "species": "Geodude",
@@ -3282,7 +3290,7 @@
           },
           {
             "species": "Rhyhorn",
-            "rate": 20
+            "rate": 30
           },
           {
             "species": "Houndour",
@@ -3291,13 +3299,13 @@
         ]
       },
       {
-        "zone": "",
+        "zone": "Day",
         "method": "Grass",
         "time": "Day",
         "pokemon": [
           {
             "species": "Graveler",
-            "rate": 25
+            "rate": 35
           },
           {
             "species": "Geodude",
@@ -3305,7 +3313,7 @@
           },
           {
             "species": "Rhyhorn",
-            "rate": 20
+            "rate": 30
           },
           {
             "species": "Houndour",
@@ -3314,7 +3322,7 @@
         ]
       },
       {
-        "zone": "",
+        "zone": "Night",
         "method": "Grass",
         "time": "Night",
         "pokemon": [
@@ -3332,7 +3340,7 @@
           },
           {
             "species": "Houndour",
-            "rate": 15
+            "rate": 25
           },
           {
             "species": "Zubat",
@@ -3377,21 +3385,12 @@
             "rate": 45
           }
         ]
-      },
-      {
-        "zone": "",
-        "method": "Fish Super",
-        "pokemon": [
-          {
-            "species": "Gyarados",
-            "rate": 55
-          },
-          {
-            "species": "Seaking",
-            "rate": 45
-          }
-        ]
       }
+    ],
+    "items": [
+      "Razor Fang",
+      "Magmarizer",
+      "Big Root"
     ]
   },
   {
@@ -3399,7 +3398,7 @@
     "name": "Valor Lakefront",
     "zones": [
       {
-        "zone": "",
+        "zone": "Morning",
         "method": "Grass",
         "time": "Morning",
         "pokemon": [
@@ -3426,7 +3425,7 @@
         ]
       },
       {
-        "zone": "",
+        "zone": "Day",
         "method": "Grass",
         "time": "Day",
         "pokemon": [
@@ -3449,7 +3448,7 @@
         ]
       },
       {
-        "zone": "",
+        "zone": "Night",
         "method": "Grass",
         "time": "Night",
         "pokemon": [
@@ -3474,6 +3473,24 @@
             "rate": 10
           }
         ]
+      }
+    ],
+    "items": [
+      {
+        "name": "Sun Stone",
+        "requires": {
+          "type": "move",
+          "name": "Rock Climb"
+        }
+      }
+    ],
+    "tmMoves": [
+      {
+        "name": "Dream Eater",
+        "requires": {
+          "type": "move",
+          "name": "Rock Climb"
+        }
       }
     ]
   },
@@ -3544,21 +3561,10 @@
             "rate": 5
           }
         ]
-      },
-      {
-        "zone": "",
-        "method": "Fish Super",
-        "pokemon": [
-          {
-            "species": "Gyarados",
-            "rate": 55
-          },
-          {
-            "species": "Seaking",
-            "rate": 45
-          }
-        ]
       }
+    ],
+    "tmMoves": [
+      "Thunder"
     ]
   },
   {
@@ -3566,7 +3572,7 @@
     "name": "Sinnoh Route 215",
     "zones": [
       {
-        "zone": "",
+        "zone": "Morning",
         "method": "Grass",
         "time": "Morning",
         "pokemon": [
@@ -3597,7 +3603,7 @@
         ]
       },
       {
-        "zone": "",
+        "zone": "Day",
         "method": "Grass",
         "time": "Day",
         "pokemon": [
@@ -3628,7 +3634,7 @@
         ]
       },
       {
-        "zone": "",
+        "zone": "Night",
         "method": "Grass",
         "time": "Night",
         "pokemon": [
@@ -3658,6 +3664,13 @@
           }
         ]
       }
+    ],
+    "tmMoves": [
+      "Payback",
+      "Shock Wave"
+    ],
+    "items": [
+      "Fist Plate"
     ]
   },
   {
@@ -3665,7 +3678,7 @@
     "name": "Sinnoh Route 211",
     "zones": [
       {
-        "zone": "Western segment",
+        "zone": "West Morning",
         "method": "Grass",
         "time": "Morning",
         "pokemon": [
@@ -3692,7 +3705,7 @@
         ]
       },
       {
-        "zone": "Western segment",
+        "zone": "West Day",
         "method": "Grass",
         "time": "Day",
         "pokemon": [
@@ -3719,7 +3732,7 @@
         ]
       },
       {
-        "zone": "Western segment",
+        "zone": "West Night",
         "method": "Grass",
         "time": "Night",
         "pokemon": [
@@ -3754,7 +3767,7 @@
         ]
       },
       {
-        "zone": "Eastern segment",
+        "zone": "East Morning",
         "method": "Grass",
         "time": "Morning",
         "pokemon": [
@@ -3781,7 +3794,7 @@
         ]
       },
       {
-        "zone": "Eastern segment",
+        "zone": "East Day",
         "method": "Grass",
         "time": "Day",
         "pokemon": [
@@ -3808,7 +3821,7 @@
         ]
       },
       {
-        "zone": "Eastern segment",
+        "zone": "East Night",
         "method": "Grass",
         "time": "Night",
         "pokemon": [
@@ -3842,27 +3855,23 @@
           }
         ]
       }
-    ]
-  },
-  {
-    "id": "pre-gym-5-items",
-    "items": [
-      "Big Root",
-      "Razor Fang",
-      "Magmarizer",
-      "Sun Stone",
-      "Fist Plate"
     ],
     "tmMoves": [
-      "Dream Eater",
-      "Thunder",
-      "Payback",
-      "Shock Wave",
-      "Taunt",
+      {
+        "name": "Taunt",
+        "requires": {
+          "type": "move",
+          "name": "Rock Smash"
+        }
+      },
       "Psych Up",
-      "Psychic",
-      "Shadow Claw",
-      "Surf"
+      {
+        "name": "Psychic",
+        "requires": {
+          "type": "move",
+          "name": "Rock Climb"
+        }
+      }
     ]
   },
   {
@@ -3870,7 +3879,7 @@
     "name": "Sinnoh Route 218",
     "zones": [
       {
-        "zone": "",
+        "zone": "Morning",
         "method": "Grass",
         "time": "Morning",
         "pokemon": [
@@ -3893,7 +3902,7 @@
         ]
       },
       {
-        "zone": "",
+        "zone": "Day",
         "method": "Grass",
         "time": "Day",
         "pokemon": [
@@ -3916,7 +3925,7 @@
         ]
       },
       {
-        "zone": "",
+        "zone": "Night",
         "method": "Grass",
         "time": "Night",
         "pokemon": [
@@ -3979,20 +3988,6 @@
             "rate": 45
           }
         ]
-      },
-      {
-        "zone": "",
-        "method": "Fish Super",
-        "pokemon": [
-          {
-            "species": "Gyarados",
-            "rate": 55
-          },
-          {
-            "species": "Lumineon",
-            "rate": 45
-          }
-        ]
       }
     ]
   },
@@ -4047,68 +4042,92 @@
         ]
       },
       {
-        "zone": "Exterior",
-        "method": "Fish Super",
-        "pokemon": [
-          {
-            "species": "Lumineon",
-            "rate": 45
-          },
-          {
-            "species": "Gyarados",
-            "rate": 40
-          },
-          {
-            "species": "Qwilfish",
-            "rate": 15
-          }
-        ]
-      },
-      {
-        "zone": "Interior",
+        "zone": "Interior 1F",
         "method": "Cave",
         "pokemon": [
           {
             "species": "Graveler",
-            "rate": 70
+            "rate": 35
           },
           {
             "species": "Geodude",
             "rate": 35
           },
           {
-            "species": "Steelix",
-            "rate": 30
-          },
-          {
             "species": "Golbat",
-            "rate": 20
+            "rate": 10
           },
           {
             "species": "Onix",
-            "rate": 20
+            "rate": 10
           },
           {
             "species": "Zubat",
             "rate": 10
           }
         ]
+      },
+      {
+        "zone": "Interior B1F",
+        "method": "Cave",
+        "pokemon": [
+          {
+            "species": "Golbat",
+            "rate": 20
+          },
+          {
+            "species": "Graveler",
+            "rate": 70
+          },
+          {
+            "species": "Onix",
+            "rate": 10
+          }
+        ]
+      },
+      {
+        "zone": "Interior B2F",
+        "method": "Cave",
+        "pokemon": [
+          {
+            "species": "Golbat",
+            "rate": 20
+          },
+          {
+            "species": "Graveler",
+            "rate": 50
+          },
+          {
+            "species": "Onix",
+            "rate": 20
+          },
+          {
+            "species": "Steelix",
+            "rate": 10
+          }
+        ]
+      },
+      {
+        "zone": "Interior Gift",
+        "method": "Gift",
+        "pokemon": [
+          {
+            "species": "Riolu",
+            "rate": 100
+          }
+        ]
       }
-    ]
-  },
-  {
-    "id": "pre-gym-6-items",
-    "items": [
-      "Metal Coat",
-      "Protector",
-      "Magnet",
-      "Iron Plate",
-      "Shiny Stone"
     ],
     "tmMoves": [
       "Strength",
-      "Iron Tail",
-      "Flash Cannon"
+      "Iron Tail"
+    ],
+    "items": [
+      "Protector",
+      "Magnet",
+      "Iron Plate",
+      "Shiny Stone",
+      "Metal Coat"
     ]
   },
   {
@@ -4116,7 +4135,7 @@
     "name": "Sinnoh Route 216",
     "zones": [
       {
-        "zone": "",
+        "zone": "Morning",
         "method": "Grass",
         "time": "Morning",
         "pokemon": [
@@ -4139,7 +4158,7 @@
         ]
       },
       {
-        "zone": "",
+        "zone": "Day",
         "method": "Grass",
         "time": "Day",
         "pokemon": [
@@ -4162,7 +4181,7 @@
         ]
       },
       {
-        "zone": "",
+        "zone": "Night",
         "method": "Grass",
         "time": "Night",
         "pokemon": [
@@ -4191,6 +4210,15 @@
             "rate": 5
           }
         ]
+      }
+    ],
+    "tmMoves": [
+      {
+        "name": "Ice Beam",
+        "requires": {
+          "type": "move",
+          "name": "Rock Climb"
+        }
       }
     ]
   },
@@ -4199,7 +4227,7 @@
     "name": "Sinnoh Route 217",
     "zones": [
       {
-        "zone": "",
+        "zone": "Morning",
         "method": "Grass",
         "time": "Morning",
         "pokemon": [
@@ -4218,7 +4246,7 @@
         ]
       },
       {
-        "zone": "",
+        "zone": "Day",
         "method": "Grass",
         "time": "Day",
         "pokemon": [
@@ -4237,7 +4265,7 @@
         ]
       },
       {
-        "zone": "",
+        "zone": "Night",
         "method": "Grass",
         "time": "Night",
         "pokemon": [
@@ -4259,6 +4287,14 @@
           }
         ]
       }
+    ],
+    "tmMoves": [
+      "Hail",
+      "Rock Climb"
+    ],
+    "items": [
+      "Icicle Plate",
+      "Spell Tag"
     ]
   },
   {
@@ -4266,7 +4302,7 @@
     "name": "Acuity Lakefront",
     "zones": [
       {
-        "zone": "",
+        "zone": "Morning",
         "method": "Grass",
         "time": "Morning",
         "pokemon": [
@@ -4285,7 +4321,7 @@
         ]
       },
       {
-        "zone": "",
+        "zone": "Day",
         "method": "Grass",
         "time": "Day",
         "pokemon": [
@@ -4304,7 +4340,7 @@
         ]
       },
       {
-        "zone": "",
+        "zone": "Night",
         "method": "Grass",
         "time": "Night",
         "pokemon": [
@@ -4325,6 +4361,15 @@
             "rate": 15
           }
         ]
+      }
+    ],
+    "items": [
+      {
+        "name": "Reaper Cloth",
+        "requires": {
+          "type": "move",
+          "name": "Rock Climb"
+        }
       }
     ]
   },
@@ -4333,7 +4378,7 @@
     "name": "Lake Acuity",
     "zones": [
       {
-        "zone": "",
+        "zone": "Morning",
         "method": "Grass",
         "time": "Morning",
         "pokemon": [
@@ -4343,7 +4388,7 @@
           },
           {
             "species": "Snover",
-            "rate": 25
+            "rate": 45
           },
           {
             "species": "Golduck",
@@ -4360,7 +4405,7 @@
         ]
       },
       {
-        "zone": "",
+        "zone": "Day",
         "method": "Grass",
         "time": "Day",
         "pokemon": [
@@ -4370,7 +4415,7 @@
           },
           {
             "species": "Snover",
-            "rate": 25
+            "rate": 45
           },
           {
             "species": "Golduck",
@@ -4387,7 +4432,7 @@
         ]
       },
       {
-        "zone": "",
+        "zone": "Night",
         "method": "Grass",
         "time": "Night",
         "pokemon": [
@@ -4458,43 +4503,10 @@
             "rate": 5
           }
         ]
-      },
-      {
-        "zone": "",
-        "method": "Fish Super",
-        "pokemon": [
-          {
-            "species": "Gyarados",
-            "rate": 55
-          },
-          {
-            "species": "Seaking",
-            "rate": 45
-          }
-        ]
       }
-    ]
-  },
-  {
-    "id": "pre-gym-7-items",
-    "items": [
-      "Mental Herb",
-      "Icicle Plate",
-      "Spell Tag",
-      "Reaper Cloth",
-      "Shiny Stone",
-      "Meadow Plate",
-      "Wave Incense",
-      "Smoke Ball"
     ],
     "tmMoves": [
-      "Ice Beam",
-      "Hail",
-      "Rock Climb",
-      "Blizzard",
-      "Roost",
-      "Shadow Ball",
-      "Avalanche"
+      "Blizzard"
     ]
   },
   {
@@ -4502,7 +4514,7 @@
     "name": "Sinnoh Route 222",
     "zones": [
       {
-        "zone": "",
+        "zone": "Morning",
         "method": "Grass",
         "time": "Morning",
         "pokemon": [
@@ -4541,7 +4553,7 @@
         ]
       },
       {
-        "zone": "",
+        "zone": "Day",
         "method": "Grass",
         "time": "Day",
         "pokemon": [
@@ -4580,7 +4592,7 @@
         ]
       },
       {
-        "zone": "",
+        "zone": "Night",
         "method": "Grass",
         "time": "Night",
         "pokemon": [
@@ -4659,21 +4671,10 @@
             "rate": 45
           }
         ]
-      },
-      {
-        "zone": "",
-        "method": "Fish Super",
-        "pokemon": [
-          {
-            "species": "Gyarados",
-            "rate": 55
-          },
-          {
-            "species": "Octillery",
-            "rate": 45
-          }
-        ]
       }
+    ],
+    "tmMoves": [
+      "Fling"
     ]
   },
   {
@@ -4729,20 +4730,6 @@
             "rate": 5
           }
         ]
-      },
-      {
-        "zone": "",
-        "method": "Fish Super",
-        "pokemon": [
-          {
-            "species": "Gyarados",
-            "rate": 55
-          },
-          {
-            "species": "Lumineon",
-            "rate": 45
-          }
-        ]
       }
     ]
   },
@@ -4751,7 +4738,7 @@
     "name": "Sinnoh Route 221",
     "zones": [
       {
-        "zone": "",
+        "zone": "Morning",
         "method": "Grass",
         "time": "Morning",
         "pokemon": [
@@ -4774,7 +4761,7 @@
         ]
       },
       {
-        "zone": "",
+        "zone": "Day",
         "method": "Grass",
         "time": "Day",
         "pokemon": [
@@ -4797,7 +4784,7 @@
         ]
       },
       {
-        "zone": "",
+        "zone": "Night",
         "method": "Grass",
         "time": "Night",
         "pokemon": [
@@ -4868,17 +4855,1599 @@
             "rate": 5
           }
         ]
+      }
+    ],
+    "items": [
+      "Pure Incense",
+      "Black Belt",
+      "Expert Belt",
+      "Focus Sash"
+    ],
+    "tmMoves": [
+      "X-Scissor"
+    ]
+  },
+  {
+    "id": "oreburgh-city",
+    "name": "Oreburgh City",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Gift",
+        "pokemon": [
+          {
+            "species": "Cranidos",
+            "rate": 100
+          },
+          {
+            "species": "Shieldon",
+            "rate": 0
+          }
+        ]
       },
       {
         "zone": "",
-        "method": "Fish Super",
+        "method": "Trade",
         "pokemon": [
           {
-            "species": "Gyarados",
+            "species": "Abra",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "pokemon",
+          "name": "Machop"
+        }
+      }
+    ],
+    "tmMoves": [
+      {
+        "name": "Stealth Rock",
+        "requires": {
+          "type": "battle",
+          "name": "roark"
+        }
+      }
+    ]
+  },
+  {
+    "id": "jubilife-city",
+    "name": "Jubilife City",
+    "zones": [],
+    "items": [
+      "Old Rod",
+      "Quick Claw"
+    ]
+  },
+  {
+    "id": "eterna-city",
+    "name": "Eterna City",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Surf",
+        "pokemon": [
+          {
+            "species": "Psyduck",
+            "rate": 90
+          },
+          {
+            "species": "Golduck",
+            "rate": 10
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fish Old",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 100
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fish Good",
+        "pokemon": [
+          {
+            "species": "Magikarp",
             "rate": 55
           },
           {
+            "species": "Barboach",
+            "rate": 45
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Trade",
+        "pokemon": [
+          {
+            "species": "Chatot",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "pokemon",
+          "name": "Buizel"
+        }
+      }
+    ],
+    "items": [
+      "Bike",
+      "Draco Plate",
+      {
+        "name": "Moon Stone",
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      }
+    ],
+    "tmMoves": [
+      "Cut",
+      "Thief",
+      {
+        "name": "Grass Knot",
+        "requires": {
+          "type": "battle",
+          "name": "gardenia"
+        }
+      }
+    ]
+  },
+  {
+    "id": "valley-windworks",
+    "name": "Valley Windworks",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Grass",
+        "pokemon": [
+          {
+            "species": "Shinx",
+            "rate": 20
+          },
+          {
+            "species": "Pachirisu",
+            "rate": 10
+          },
+          {
+            "species": "Buizel",
+            "rate": 25
+          },
+          {
+            "species": "Shellos",
+            "rate": 45
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Surf",
+        "pokemon": [
+          {
+            "species": "Tentacool",
+            "rate": 30
+          },
+          {
+            "species": "Tentacruel",
+            "rate": 1
+          },
+          {
+            "species": "Shellos",
+            "rate": 60
+          },
+          {
+            "species": "Gastrodon",
+            "rate": 9
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fish Old",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 100
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fish Good",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 55
+          },
+          {
+            "species": "Finneon",
+            "rate": 45
+          }
+        ]
+      }
+    ],
+    "tmMoves": [
+      {
+        "name": "Thunderbolt",
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      }
+    ],
+    "items": [
+      {
+        "name": "Electrizer",
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      }
+    ]
+  },
+  {
+    "id": "mount-coronet",
+    "name": "Mount Coronet",
+    "zones": [
+      {
+        "zone": "1F Morning",
+        "method": "Cave",
+        "pokemon": [
+          {
+            "species": "Zubat",
+            "rate": 5
+          },
+          {
+            "species": "Machop",
+            "rate": 10
+          },
+          {
+            "species": "Geodude",
+            "rate": 20
+          },
+          {
+            "species": "Cleffa",
+            "rate": 10
+          },
+          {
+            "species": "Nosepass",
+            "rate": 5
+          },
+          {
+            "species": "Meditite",
+            "rate": 20
+          },
+          {
+            "species": "Chingling",
+            "rate": 10
+          },
+          {
+            "species": "Bronzor",
+            "rate": 20
+          }
+        ]
+      },
+      {
+        "zone": "1F Day",
+        "method": "Cave",
+        "pokemon": [
+          {
+            "species": "Zubat",
+            "rate": 5
+          },
+          {
+            "species": "Machop",
+            "rate": 10
+          },
+          {
+            "species": "Geodude",
+            "rate": 30
+          },
+          {
+            "species": "Nosepass",
+            "rate": 5
+          },
+          {
+            "species": "Meditite",
+            "rate": 20
+          },
+          {
+            "species": "Chingling",
+            "rate": 10
+          },
+          {
+            "species": "Bronzor",
+            "rate": 20
+          }
+        ]
+      },
+      {
+        "zone": "1F Night",
+        "method": "Cave",
+        "pokemon": [
+          {
+            "species": "Zubat",
+            "rate": 15
+          },
+          {
+            "species": "Machop",
+            "rate": 10
+          },
+          {
+            "species": "Geodude",
+            "rate": 20
+          },
+          {
+            "species": "Cleffa",
+            "rate": 10
+          },
+          {
+            "species": "Nosepass",
+            "rate": 5
+          },
+          {
+            "species": "Meditite",
+            "rate": 10
+          },
+          {
+            "species": "Chingling",
+            "rate": 10
+          },
+          {
+            "species": "Bronzor",
+            "rate": 20
+          }
+        ]
+      },
+      {
+        "zone": "B1F Morning",
+        "method": "Cave",
+        "pokemon": [
+          {
+            "species": "Clefairy",
+            "rate": 10
+          },
+          {
+            "species": "Golbat",
+            "rate": 5
+          },
+          {
+            "species": "Machoke",
+            "rate": 10
+          },
+          {
+            "species": "Graveler",
+            "rate": 20
+          },
+          {
+            "species": "Nosepass",
+            "rate": 5
+          },
+          {
+            "species": "Meditite",
+            "rate": 20
+          },
+          {
+            "species": "Chingling",
+            "rate": 10
+          },
+          {
+            "species": "Bronzor",
+            "rate": 20
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Strength"
+        }
+      },
+      {
+        "zone": "B1F Day",
+        "method": "Grass",
+        "pokemon": [
+          {
+            "species": "Golbat",
+            "rate": 5
+          },
+          {
+            "species": "Machoke",
+            "rate": 10
+          },
+          {
+            "species": "Graveler",
+            "rate": 30
+          },
+          {
+            "species": "Nosepass",
+            "rate": 5
+          },
+          {
+            "species": "Meditite",
+            "rate": 20
+          },
+          {
+            "species": "Chingling",
+            "rate": 10
+          },
+          {
+            "species": "Bronzor",
+            "rate": 20
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Strength"
+        }
+      },
+      {
+        "zone": "B1F Night",
+        "method": "Grass",
+        "pokemon": [
+          {
+            "species": "Clefairy",
+            "rate": 10
+          },
+          {
+            "species": "Golbat",
+            "rate": 15
+          },
+          {
+            "species": "Machoke",
+            "rate": 10
+          },
+          {
+            "species": "Graveler",
+            "rate": 20
+          },
+          {
+            "species": "Nosepass",
+            "rate": 5
+          },
+          {
+            "species": "Meditite",
+            "rate": 10
+          },
+          {
+            "species": "Chingling",
+            "rate": 10
+          },
+          {
+            "species": "Bronzor",
+            "rate": 20
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Strength"
+        }
+      },
+      {
+        "zone": "B1F",
+        "method": "Surf",
+        "pokemon": [
+          {
+            "species": "Zubat",
+            "rate": 90
+          },
+          {
+            "species": "Golbat",
+            "rate": 10
+          }
+        ]
+      },
+      {
+        "zone": "B1F",
+        "method": "Fish Old",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 100
+          }
+        ]
+      },
+      {
+        "zone": "B1F",
+        "method": "Fish Good",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 55
+          },
+          {
+            "species": "Barboach",
+            "rate": 45
+          }
+        ]
+      }
+    ],
+    "items": [
+      {
+        "name": "Dawn Stone",
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "name": "Moon Stone",
+        "requires": {
+          "type": "move",
+          "name": "Rock Climb"
+        }
+      },
+      {
+        "name": "Sun Stone",
+        "requires": {
+          "type": "move",
+          "name": "Rock Climb"
+        }
+      },
+      {
+        "name": "Stone Plate",
+        "requires": {
+          "type": "move",
+          "name": "Rock Climb"
+        }
+      },
+      {
+        "name": "Soft Sand",
+        "requires": {
+          "type": "move",
+          "name": "Strength"
+        }
+      },
+      {
+        "name": "Light Clay",
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "name": "NeverMeltIce",
+        "requires": {
+          "type": "move",
+          "name": "Strength"
+        }
+      }
+    ],
+    "tmMoves": [
+      {
+        "name": "Rock Slide",
+        "requires": {
+          "type": "move",
+          "name": "Rock Climb"
+        }
+      },
+      {
+        "name": "Rock Polish",
+        "requires": {
+          "type": "move",
+          "name": "Strength"
+        }
+      },
+      {
+        "name": "Dragon Claw",
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      }
+    ]
+  },
+  {
+    "id": "hearthome-city",
+    "name": "Hearthome City",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Gift",
+        "pokemon": [
+          {
+            "species": "Eevee",
+            "rate": 100
+          }
+        ]
+      }
+    ],
+    "items": [
+      "Shell Bell"
+    ],
+    "tmMoves": [
+      {
+        "name": "Shadow Claw",
+        "requires": {
+          "type": "battle",
+          "name": "fantina"
+        }
+      }
+    ]
+  },
+  {
+    "id": "solaceon-ruins",
+    "name": "Solaceon Ruins",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Cave",
+        "pokemon": [
+          {
+            "species": "Unknown",
+            "rate": 100
+          }
+        ]
+      }
+    ],
+    "items": [
+      "Fire Stone",
+      "Water Stone",
+      "Thunder Stone",
+      "Mind Plate",
+      "Odd Incense"
+    ],
+    "tmMoves": [
+      "Defog"
+    ]
+  },
+  {
+    "id": "veilstone-city",
+    "name": "Veilstone City",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Gift",
+        "pokemon": [
+          {
+            "species": "Porygon",
+            "rate": 100
+          }
+        ]
+      }
+    ],
+    "tmMoves": [
+      {
+        "name": "Drain Punch",
+        "requires": {
+          "type": "battle",
+          "name": "maylene"
+        }
+      },
+      "Embargo",
+      {
+        "name": "Fly",
+        "requires": {
+          "type": "battle",
+          "name": "maylene"
+        }
+      }
+    ],
+    "items": [
+      {
+        "name": "Full Incense",
+        "requires": {
+          "type": "move",
+          "name": "Rock Climb"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ruin-maniacs-tunnel",
+    "name": "Ruin Maniac's Tunnel",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Cave",
+        "pokemon": [
+          {
+            "species": "Geodude",
+            "rate": 95
+          },
+          {
+            "species": "Hippopotas",
+            "rate": 5
+          }
+        ]
+      }
+    ],
+    "tmMoves": [
+      "Dig"
+    ]
+  },
+  {
+    "id": "pastoria-city",
+    "name": "Pastoria City",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Surf",
+        "pokemon": [
+          {
+            "species": "Tentacool",
+            "rate": 60
+          },
+          {
+            "species": "Tentacruel",
+            "rate": 5
+          },
+          {
+            "species": "Wingull",
+            "rate": 4
+          },
+          {
+            "species": "Shellos",
+            "rate": 30
+          },
+          {
+            "species": "Gastrodon",
+            "rate": 1
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fish Old",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 100
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fish Good",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 55
+          },
+          {
+            "species": "Remoraid",
+            "rate": 45
+          }
+        ]
+      }
+    ],
+    "tmMoves": [
+      {
+        "name": "Brine",
+        "requires": {
+          "type": "battle",
+          "name": "crasher-wake"
+        }
+      }
+    ],
+    "items": [
+      {
+        "name": "Mystic Water",
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      }
+    ]
+  },
+  {
+    "id": "celestic-town",
+    "name": "Celestic Town",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Surf",
+        "pokemon": [
+          {
+            "species": "Psyduck",
+            "rate": 90
+          },
+          {
+            "species": "Golduck",
+            "rate": 10
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fish Old",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 100
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fish Good",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 55
+          },
+          {
+            "species": "Goldeen",
+            "rate": 45
+          }
+        ]
+      }
+    ],
+    "tmMoves": [
+      "Surf"
+    ],
+    "items": [
+      "Choice Specs",
+      "Black Glasses",
+      "Wise Glasses",
+      "Dragon Fang",
+      "King's Rock"
+    ]
+  },
+  {
+    "id": "fuego-ironworks",
+    "name": "Fuego Ironworks",
+    "zones": [
+      {
+        "zone": "Morning",
+        "method": "Grass",
+        "pokemon": [
+          {
+            "species": "Magnemite",
+            "rate": 30
+          },
+          {
+            "species": "Magmar",
+            "rate": 30
+          },
+          {
+            "species": "Floatzel",
+            "rate": 25
+          },
+          {
+            "species": "Gastrodon",
+            "rate": 15
+          }
+        ]
+      },
+      {
+        "zone": "Day",
+        "method": "Grass",
+        "pokemon": [
+          {
+            "species": "Magnemite",
+            "rate": 30
+          },
+          {
+            "species": "Magmar",
+            "rate": 30
+          },
+          {
+            "species": "Floatzel",
+            "rate": 25
+          },
+          {
+            "species": "Gastrodon",
+            "rate": 15
+          }
+        ]
+      },
+      {
+        "zone": "Night",
+        "method": "Grass",
+        "pokemon": [
+          {
+            "species": "Magnemite",
+            "rate": 30
+          },
+          {
+            "species": "Magmar",
+            "rate": 20
+          },
+          {
+            "species": "Floatzel",
+            "rate": 25
+          },
+          {
+            "species": "Gastrodon",
+            "rate": 25
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Surf",
+        "pokemon": [
+          {
+            "species": "Tentacool",
+            "rate": 60
+          },
+          {
+            "species": "Tentacruel",
+            "rate": 9
+          },
+          {
+            "species": "Shellos",
+            "rate": 30
+          },
+          {
+            "species": "Gastrodon",
+            "rate": 1
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fish Old",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 100
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fish Good",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 55
+          },
+          {
+            "species": "Finneon",
+            "rate": 45
+          }
+        ]
+      }
+    ],
+    "items": [
+      "Fire Stone"
+    ],
+    "tmMoves": [
+      "Flamethrower"
+    ]
+  },
+  {
+    "id": "sinnoh-route-220",
+    "name": "Sinnoh Route 220",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Surf",
+        "pokemon": [
+          {
+            "species": "Tentacool",
+            "rate": 60
+          },
+          {
+            "species": "Tentacruel",
+            "rate": 9
+          },
+          {
+            "species": "Wingull",
+            "rate": 30
+          },
+          {
+            "species": "Pelipper",
+            "rate": 1
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fish Old",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 100
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fish Good",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 55
+          },
+          {
+            "species": "Finneon",
+            "rate": 40
+          },
+          {
             "species": "Lumineon",
+            "rate": 5
+          }
+        ]
+      }
+    ],
+    "items": [
+      "Splash Plate"
+    ]
+  },
+  {
+    "id": "canalave-city",
+    "name": "Canalave City",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Surf",
+        "pokemon": [
+          {
+            "species": "Tentacool",
+            "rate": 60
+          },
+          {
+            "species": "Tentacruel",
+            "rate": 9
+          },
+          {
+            "species": "Shellos",
+            "rate": 30
+          },
+          {
+            "species": "Gastrodon",
+            "rate": 1
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fish Old",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 100
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fish Good",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 55
+          },
+          {
+            "species": "Finneon",
+            "rate": 45
+          }
+        ]
+      }
+    ],
+    "tmMoves": [
+      "Skill Swap",
+      "U-turn",
+      {
+        "name": "Flash Cannon",
+        "requires": {
+          "type": "battle",
+          "name": "byron"
+        }
+      }
+    ]
+  },
+  {
+    "id": "sunnyshore-city",
+    "name": "Sunnyshore City",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Surf",
+        "pokemon": [
+          {
+            "species": "Tentacool",
+            "rate": 60
+          },
+          {
+            "species": "Tentacruel",
+            "rate": 9
+          },
+          {
+            "species": "Wingull",
+            "rate": 30
+          },
+          {
+            "species": "Pelipper",
+            "rate": 1
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fish Old",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 100
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fish Good",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 55
+          },
+          {
+            "species": "Remoraid",
+            "rate": 45
+          }
+        ]
+      }
+    ],
+    "tmMoves": [
+      {
+        "name": "Charge Beam",
+        "requires": {
+          "type": "battle",
+          "name": "volkner"
+        }
+      },
+      {
+        "name": "Waterfall",
+        "requires": {
+          "type": "battle",
+          "name": "volkner"
+        }
+      }
+    ],
+    "items": [
+      "Thunder Stone",
+      "Zap Plate"
+    ]
+  },
+  {
+    "id": "sinnoh-route-223",
+    "name": "Sinnoh Route 223",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Surf",
+        "pokemon": [
+          {
+            "species": "Tentacruel",
+            "rate": 60
+          },
+          {
+            "species": "Pelipper",
+            "rate": 30
+          },
+          {
+            "species": "Mantyke",
+            "rate": 10
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fish Old",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 100
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fish Good",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 55
+          },
+          {
+            "species": "Remoraid",
+            "rate": 40
+          },
+          {
+            "species": "Octillery",
+            "rate": 5
+          }
+        ]
+      }
+    ],
+    "tmMoves": [
+      "Rain Dance"
+    ]
+  },
+  {
+    "id": "victory-road",
+    "name": "Victory Road",
+    "zones": [
+      {
+        "zone": "1F Morning",
+        "method": "Cave",
+        "pokemon": [
+          {
+            "species": "Golbat",
+            "rate": 5
+          },
+          {
+            "species": "Graveler",
+            "rate": 30
+          },
+          {
+            "species": "Onix",
+            "rate": 20
+          },
+          {
+            "species": "Rhyhorn",
+            "rate": 20
+          },
+          {
+            "species": "Rhydon",
+            "rate": 15
+          },
+          {
+            "species": "Steelix",
+            "rate": 5
+          },
+          {
+            "species": "Gabite",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "1F Day",
+        "method": "Cave",
+        "pokemon": [
+          {
+            "species": "Golbat",
+            "rate": 5
+          },
+          {
+            "species": "Graveler",
+            "rate": 30
+          },
+          {
+            "species": "Onix",
+            "rate": 20
+          },
+          {
+            "species": "Rhyhorn",
+            "rate": 20
+          },
+          {
+            "species": "Rhydon",
+            "rate": 15
+          },
+          {
+            "species": "Steelix",
+            "rate": 5
+          },
+          {
+            "species": "Gabite",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "1F Night",
+        "method": "Cave",
+        "pokemon": [
+          {
+            "species": "Golbat",
+            "rate": 15
+          },
+          {
+            "species": "Graveler",
+            "rate": 20
+          },
+          {
+            "species": "Onix",
+            "rate": 20
+          },
+          {
+            "species": "Rhyhorn",
+            "rate": 20
+          },
+          {
+            "species": "Rhydon",
+            "rate": 15
+          },
+          {
+            "species": "Steelix",
+            "rate": 5
+          },
+          {
+            "species": "Gabite",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "2F Morning",
+        "method": "Cave",
+        "pokemon": [
+          {
+            "species": "Golbat",
+            "rate": 5
+          },
+          {
+            "species": "Graveler",
+            "rate": 15
+          },
+          {
+            "species": "Magneton",
+            "rate": 30
+          },
+          {
+            "species": "Onix",
+            "rate": 5
+          },
+          {
+            "species": "Steelix",
+            "rate": 40
+          },
+          {
+            "species": "Gabite",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "2F Day",
+        "method": "Cave",
+        "pokemon": [
+          {
+            "species": "Golbat",
+            "rate": 5
+          },
+          {
+            "species": "Graveler",
+            "rate": 15
+          },
+          {
+            "species": "Magneton",
+            "rate": 30
+          },
+          {
+            "species": "Onix",
+            "rate": 5
+          },
+          {
+            "species": "Steelix",
+            "rate": 40
+          },
+          {
+            "species": "Gabite",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "2F Night",
+        "method": "Cave",
+        "pokemon": [
+          {
+            "species": "Golbat",
+            "rate": 15
+          },
+          {
+            "species": "Graveler",
+            "rate": 5
+          },
+          {
+            "species": "Magneton",
+            "rate": 30
+          },
+          {
+            "species": "Onix",
+            "rate": 5
+          },
+          {
+            "species": "Steelix",
+            "rate": 40
+          },
+          {
+            "species": "Gabite",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "B1F Morning",
+        "method": "Cave",
+        "pokemon": [
+          {
+            "species": "Golbat",
+            "rate": 5
+          },
+          {
+            "species": "Graveler",
+            "rate": 15
+          },
+          {
+            "species": "Onix",
+            "rate": 10
+          },
+          {
+            "species": "Azumarill",
+            "rate": 30
+          },
+          {
+            "species": "Steelix",
+            "rate": 5
+          },
+          {
+            "species": "Floatzel",
+            "rate": 30
+          },
+          {
+            "species": "Gabite",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "B1F Day",
+        "method": "Cave",
+        "pokemon": [
+          {
+            "species": "Golbat",
+            "rate": 5
+          },
+          {
+            "species": "Graveler",
+            "rate": 15
+          },
+          {
+            "species": "Onix",
+            "rate": 10
+          },
+          {
+            "species": "Azumarill",
+            "rate": 30
+          },
+          {
+            "species": "Steelix",
+            "rate": 5
+          },
+          {
+            "species": "Floatzel",
+            "rate": 30
+          },
+          {
+            "species": "Gabite",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "B1F Night",
+        "method": "Cave",
+        "pokemon": [
+          {
+            "species": "Golbat",
+            "rate": 15
+          },
+          {
+            "species": "Graveler",
+            "rate": 5
+          },
+          {
+            "species": "Onix",
+            "rate": 10
+          },
+          {
+            "species": "Azumarill",
+            "rate": 30
+          },
+          {
+            "species": "Steelix",
+            "rate": 5
+          },
+          {
+            "species": "Floatzel",
+            "rate": 30
+          },
+          {
+            "species": "Gabite",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "B1F",
+        "method": "Surf",
+        "pokemon": [
+          {
+            "species": "Golbat",
+            "rate": 10
+          },
+          {
+            "species": "Floatzel",
+            "rate": 90
+          }
+        ]
+      },
+      {
+        "zone": "B1F",
+        "method": "Fish Old",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 100
+          }
+        ]
+      },
+      {
+        "zone": "B1F",
+        "method": "Fish Good",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 100
+          }
+        ]
+      }
+    ],
+    "items": [
+      "Razor Claw",
+      "Dusk Stone",
+      "Leftovers"
+    ],
+    "tmMoves": [
+      "Torment",
+      "Stone Edge",
+      "Dark Pulse",
+      "Dragon Pulse"
+    ]
+  },
+  {
+    "id": "pokemon-league",
+    "name": "Pokemon League",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Surf",
+        "pokemon": [
+          {
+            "species": "Tentacruel",
+            "rate": 5
+          },
+          {
+            "species": "Wingull",
+            "rate": 60
+          },
+          {
+            "species": "Pelipper",
+            "rate": 35
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fish Old",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 100
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fish Good",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 55
+          },
+          {
+            "species": "Remoraid",
             "rate": 45
           }
         ]
@@ -4886,29 +6455,30 @@
     ]
   },
   {
-    "id": "pre-gym-8-items",
-    "items": [
-      "Black Belt",
-      "Expert Belt",
-      "Focus Sash"
+    "id": "snowpoint-city",
+    "name": "Snowpoint City",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Trade",
+        "pokemon": [
+          {
+            "species": "Medicham",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "pokemon",
+          "name": "Haunter"
+        }
+      }
     ],
     "tmMoves": [
-      "Fling",
-      "X-Scissor",
-      "Charge Beam",
-      "Waterfall"
-    ]
-  },
-  {
-    "id": "oreburgh-city",
-    "name": "Oreburgh City",
-    "zones": [],
-    "tmMoves": [
       {
-        "name": "Stealth Rock",
+        "name": "Avalanche",
         "requires": {
           "type": "battle",
-          "name": "roark"
+          "name": "candice"
         }
       }
     ]

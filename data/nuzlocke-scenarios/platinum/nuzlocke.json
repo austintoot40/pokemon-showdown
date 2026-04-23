@@ -30,7 +30,10 @@
         "sinnoh-route-203",
         "oreburgh-gate",
         "oreburgh-mine",
-        "oreburgh-city"
+        "oreburgh-city",
+        "sinnoh-route-204",
+        "jubilife-city",
+        "sinnoh-route-207"
       ],
       "battles": [
         "roark"
@@ -40,31 +43,42 @@
       "id": "gardenia",
       "name": "Gardenia",
       "locations": [
-        "sinnoh-route-204",
         "ravaged-path",
-        "sinnoh-route-203",
-        "eterna-forest",
         "sinnoh-route-205",
         "old-chateau",
-        "pre-gym-2-gift-1",
-        "pre-gym-2-items"
+        "eterna-city",
+        "valley-windworks",
+        "eterna-forest"
       ],
       "battles": [
         "gardenia"
       ]
     },
     {
+      "id": "fantina",
+      "name": "Fantina",
+      "locations": [
+        "sinnoh-route-211",
+        "sinnoh-route-206",
+        "wayward-cave",
+        "mount-coronet",
+        "hearthome-city"
+      ],
+      "battles": [
+        "fantina"
+      ]
+    },
+    {
       "id": "maylene",
       "name": "Maylene",
       "locations": [
-        "sinnoh-route-206",
-        "wayward-cave",
-        "sinnoh-route-207",
         "sinnoh-route-208",
         "sinnoh-route-209",
         "lost-tower",
         "sinnoh-route-210",
-        "pre-gym-3-items"
+        "solaceon-ruins",
+        "sinnoh-route-215",
+        "veilstone-city"
       ],
       "battles": [
         "maylene"
@@ -75,27 +89,18 @@
       "name": "Crasher Wake",
       "locations": [
         "sinnoh-route-212",
-        "great-marsh",
+        "great-marsh-areas-1-2",
+        "great-marsh-areas-3-4",
+        "great-marsh-area-5",
+        "great-marsh-area-6",
         "sinnoh-route-213",
-        "pre-gym-4-items"
+        "sinnoh-route-214",
+        "ruin-maniacs-tunnel",
+        "valor-lakefront",
+        "pastoria-city"
       ],
       "battles": [
         "crasher-wake"
-      ]
-    },
-    {
-      "id": "fantina",
-      "name": "Fantina",
-      "locations": [
-        "sinnoh-route-214",
-        "valor-lakefront",
-        "lake-valor",
-        "sinnoh-route-215",
-        "sinnoh-route-211",
-        "pre-gym-5-items"
-      ],
-      "battles": [
-        "fantina"
       ]
     },
     {
@@ -104,7 +109,10 @@
       "locations": [
         "sinnoh-route-218",
         "iron-island",
-        "pre-gym-6-items"
+        "celestic-town",
+        "fuego-ironworks",
+        "sinnoh-route-220",
+        "canalave-city"
       ],
       "battles": [
         "byron"
@@ -117,9 +125,8 @@
         "sinnoh-route-216",
         "sinnoh-route-217",
         "acuity-lakefront",
-        "lake-acuity",
-        "sinnoh-route-210",
-        "pre-gym-7-items"
+        "lake-valor",
+        "snowpoint-city"
       ],
       "battles": [
         "candice"
@@ -132,7 +139,8 @@
         "sinnoh-route-222",
         "sinnoh-route-219",
         "sinnoh-route-221",
-        "pre-gym-8-items"
+        "sunnyshore-city",
+        "lake-acuity"
       ],
       "battles": [
         "volkner"
@@ -141,7 +149,11 @@
     {
       "id": "elite-four",
       "name": "Elite Four",
-      "locations": [],
+      "locations": [
+        "sinnoh-route-223",
+        "victory-road",
+        "pokemon-league"
+      ],
       "battles": [
         "aaron",
         "bertha",
@@ -150,5 +162,6 @@
         "cynthia"
       ]
     }
-  ]
+  ],
+  "verified": true
 }
