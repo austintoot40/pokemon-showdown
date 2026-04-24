@@ -1,0 +1,617 @@
+[
+  {
+    "id": "cilan",
+    "trainer": "Leader Cilan",
+    "team": [
+      {
+        "species": "Lillipup",
+        "level": 12,
+        "ability": "Pickup",
+        "moves": [
+          "Bite",
+          "Work Up"
+        ],
+        "item": null
+      },
+      {
+        "species": "Pansage",
+        "level": 14,
+        "ability": "Gluttony",
+        "moves": [
+          "Vine Whip",
+          "Work Up"
+        ],
+        "item": null
+      }
+    ],
+    "sprite": "cilan"
+  },
+  {
+    "id": "lenora",
+    "trainer": "Leader Lenora",
+    "team": [
+      {
+        "species": "Herdier",
+        "level": 18,
+        "ability": "Intimidate",
+        "moves": [
+          "Take Down",
+          "Bite",
+          "Retaliate",
+          "Leer"
+        ],
+        "item": null
+      },
+      {
+        "species": "Watchog",
+        "level": 20,
+        "ability": "Illuminate",
+        "moves": [
+          "Leer",
+          "Crunch",
+          "Retaliate",
+          "Hypnosis"
+        ],
+        "item": null
+      }
+    ],
+    "sprite": "lenora"
+  },
+  {
+    "id": "burgh",
+    "trainer": "Leader Burgh",
+    "team": [
+      {
+        "species": "Whirlipede",
+        "level": 21,
+        "ability": "Swarm",
+        "moves": [
+          "Screech",
+          "Pursuit",
+          "Poison Tail",
+          "Struggle Bug"
+        ],
+        "item": null
+      },
+      {
+        "species": "Dwebble",
+        "level": 21,
+        "ability": "Shell Armor",
+        "moves": [
+          "Sand-Attack",
+          "Faint Attack",
+          "Smack Down",
+          "Struggle Bug"
+        ],
+        "item": null
+      },
+      {
+        "species": "Leavanny",
+        "level": 23,
+        "ability": "Swarm",
+        "moves": [
+          "Protect",
+          "String Shot",
+          "Razor Leaf",
+          "Struggle Bug"
+        ],
+        "item": null
+      }
+    ],
+    "sprite": "burgh"
+  },
+  {
+    "id": "elesa",
+    "trainer": "Leader Elesa",
+    "team": [
+      {
+        "species": "Emolga",
+        "level": 25,
+        "ability": "Static",
+        "moves": [
+          "Quick Attack",
+          "Pursuit",
+          "Aerial Ace",
+          "Volt Switch"
+        ],
+        "item": null
+      },
+      {
+        "species": "Emolga",
+        "level": 25,
+        "ability": "Static",
+        "moves": [
+          "Quick Attack",
+          "Pursuit",
+          "Aerial Ace",
+          "Volt Switch"
+        ],
+        "item": null
+      },
+      {
+        "species": "Zebstrika",
+        "level": 27,
+        "ability": "Lightningrod",
+        "moves": [
+          "Quick Attack",
+          "Flame Charge",
+          "Spark",
+          "Volt Switch"
+        ],
+        "item": null
+      }
+    ],
+    "sprite": "elesa"
+  },
+  {
+    "id": "clay",
+    "trainer": "Leader Clay",
+    "team": [
+      {
+        "species": "Krokorok",
+        "level": 29,
+        "ability": "Moxie",
+        "moves": [
+          "Swagger",
+          "Torment",
+          "Crunch",
+          "Bulldoze"
+        ],
+        "item": null
+      },
+      {
+        "species": "Palpitoad",
+        "level": 29,
+        "ability": "Swift Swim",
+        "moves": [
+          "Aqua Ring",
+          "BubbleBeam",
+          "Muddy Water",
+          "Bulldoze"
+        ],
+        "item": null
+      },
+      {
+        "species": "Excadrill",
+        "level": 31,
+        "ability": "Sand Rush",
+        "moves": [
+          "Hone Claws",
+          "Slash",
+          "Rock Slide",
+          "Bulldoze"
+        ],
+        "item": null
+      }
+    ],
+    "sprite": "clay"
+  },
+  {
+    "id": "skyla",
+    "trainer": "Leader Skyla",
+    "team": [
+      {
+        "species": "Swoobat",
+        "level": 33,
+        "ability": "Unaware",
+        "moves": [
+          "Acrobatics",
+          "Amnesia",
+          "Assurance",
+          "Heart Stamp"
+        ],
+        "item": null
+      },
+      {
+        "species": "Unfezant",
+        "level": 33,
+        "ability": "Big Pecks",
+        "moves": [
+          "Leer",
+          "Quick Attack",
+          "Air Slash",
+          "Razor Wind"
+        ],
+        "item": null
+      },
+      {
+        "species": "Swanna",
+        "level": 35,
+        "ability": "Keen Eye",
+        "moves": [
+          "Aqua Ring",
+          "Aerial Ace",
+          "BubbleBeam",
+          "Air Slash"
+        ],
+        "item": null
+      }
+    ],
+    "sprite": "skyla"
+  },
+  {
+    "id": "brycen",
+    "trainer": "Leader Brycen",
+    "team": [
+      {
+        "species": "Vanillish",
+        "level": 37,
+        "ability": "Ice Body",
+        "moves": [
+          "Acid Armor",
+          "Astonish",
+          "Mirror Shot",
+          "Frost Breath"
+        ],
+        "item": null
+      },
+      {
+        "species": "Cryogonal",
+        "level": 37,
+        "ability": "Levitate",
+        "moves": [
+          "Reflect",
+          "Rapid Spin",
+          "Aurora Beam",
+          "Frost Breath"
+        ],
+        "item": null
+      },
+      {
+        "species": "Beartic",
+        "level": 39,
+        "ability": "Snow Cloak",
+        "moves": [
+          "Swagger",
+          "Brine",
+          "Slash",
+          "Icicle Crash"
+        ],
+        "item": null
+      }
+    ],
+    "sprite": "brycen"
+  },
+  {
+    "id": "drayden",
+    "trainer": "Leader Drayden",
+    "team": [
+      {
+        "species": "Fraxure",
+        "level": 41,
+        "ability": "Rivalry",
+        "moves": [
+          "Dragon Dance",
+          "Dragon Rage",
+          "Assurance",
+          "Dragon Tail"
+        ],
+        "item": null
+      },
+      {
+        "species": "Druddigon",
+        "level": 41,
+        "ability": "Rough Skin",
+        "moves": [
+          "Revenge",
+          "Chip Away",
+          "Night Slash",
+          "Dragon Tail"
+        ],
+        "item": null
+      },
+      {
+        "species": "Haxorus",
+        "level": 43,
+        "ability": "Rivalry",
+        "moves": [
+          "Dragon Dance",
+          "Assurance",
+          "Slash",
+          "Dragon Tail"
+        ],
+        "item": null
+      }
+    ],
+    "sprite": "drayden"
+  },
+  {
+    "id": "shauntal",
+    "trainer": "Elite Four Shauntal",
+    "team": [
+      {
+        "species": "Cofagrigus",
+        "level": 48,
+        "ability": "Mummy",
+        "moves": [
+          "Psychic",
+          "Will-O-Wisp",
+          "Shadow Ball",
+          "Grass Knot"
+        ],
+        "item": null
+      },
+      {
+        "species": "Jellicent",
+        "level": 48,
+        "ability": "Cursed Body",
+        "moves": [
+          "Shadow Ball",
+          "Surf",
+          "Energy Ball",
+          "Brine"
+        ],
+        "item": null
+      },
+      {
+        "species": "Golurk",
+        "level": 48,
+        "ability": "Iron Fist",
+        "moves": [
+          "Curse",
+          "Brick Break",
+          "Earthquake",
+          "Shadow Punch"
+        ],
+        "item": null
+      },
+      {
+        "species": "Chandelure",
+        "level": 50,
+        "ability": "Flame Body",
+        "moves": [
+          "Fire Blast",
+          "Psychic",
+          "Shadow Ball",
+          "Payback"
+        ],
+        "item": null
+      }
+    ],
+    "sprite": "shauntal"
+  },
+  {
+    "id": "marshal",
+    "trainer": "Elite Four Marshal",
+    "team": [
+      {
+        "species": "Throh",
+        "level": 48,
+        "ability": "Guts",
+        "moves": [
+          "Stone Edge",
+          "Payback",
+          "Bulldoze",
+          "Storm Throw"
+        ],
+        "item": null
+      },
+      {
+        "species": "Sawk",
+        "level": 48,
+        "ability": "Sturdy",
+        "moves": [
+          "Stone Edge",
+          "Karate Chop",
+          "Grass Knot",
+          "Retaliate"
+        ],
+        "item": null
+      },
+      {
+        "species": "Conkeldurr",
+        "level": 48,
+        "ability": "Sheer Force",
+        "moves": [
+          "Stone Edge",
+          "Hammer Arm",
+          "Retaliate",
+          "Grass Knot"
+        ],
+        "item": null
+      },
+      {
+        "species": "Mienshao",
+        "level": 50,
+        "ability": "Inner Focus",
+        "moves": [
+          "U-turn",
+          "Jump Kick",
+          "Rock Slide",
+          "Retaliate"
+        ],
+        "item": null
+      }
+    ],
+    "sprite": "marshal"
+  },
+  {
+    "id": "grimsley",
+    "trainer": "Elite Four Grimsley",
+    "team": [
+      {
+        "species": "Scrafty",
+        "level": 48,
+        "ability": "Moxie",
+        "moves": [
+          "Sand-Attack",
+          "Crunch",
+          "Poison Jab",
+          "Brick Break"
+        ],
+        "item": null
+      },
+      {
+        "species": "Krookodile",
+        "level": 48,
+        "ability": "Intimidate",
+        "moves": [
+          "Crunch",
+          "Dragon Claw",
+          "Foul Play",
+          "Earthquake"
+        ],
+        "item": null
+      },
+      {
+        "species": "Liepard",
+        "level": 48,
+        "ability": "Limber",
+        "moves": [
+          "Fake Out",
+          "Attract",
+          "Aerial Ace",
+          "Night Slash"
+        ],
+        "item": null
+      },
+      {
+        "species": "Bisharp",
+        "level": 50,
+        "ability": "Defiant",
+        "moves": [
+          "X-Scissor",
+          "Night Slash",
+          "Metal Claw",
+          "Aerial Ace"
+        ],
+        "item": null
+      }
+    ],
+    "sprite": "grimsley"
+  },
+  {
+    "id": "caitlin",
+    "trainer": "Elite Four Caitlin",
+    "team": [
+      {
+        "species": "Reuniclus",
+        "level": 48,
+        "ability": "Magic Guard",
+        "moves": [
+          "Energy Ball",
+          "Thunder",
+          "Focus Blast",
+          "Psychic"
+        ],
+        "item": null
+      },
+      {
+        "species": "Musharna",
+        "level": 48,
+        "ability": "Synchronize",
+        "moves": [
+          "Reflect",
+          "Charge Beam",
+          "Shadow Ball",
+          "Psychic"
+        ],
+        "item": null
+      },
+      {
+        "species": "Sigilyph",
+        "level": 48,
+        "ability": "Wonder Skin",
+        "moves": [
+          "Shadow Ball",
+          "Ice Beam",
+          "Air Slash",
+          "Psychic"
+        ],
+        "item": null
+      },
+      {
+        "species": "Gothitelle",
+        "level": 50,
+        "ability": "Frisk",
+        "moves": [
+          "Calm Mind",
+          "Thunderbolt",
+          "Shadow Ball",
+          "Psychic"
+        ],
+        "item": null
+      }
+    ],
+    "sprite": "caitlin"
+  },
+  {
+    "id": "alder",
+    "trainer": "Champion Alder",
+    "team": [
+      {
+        "species": "Accelgor",
+        "level": 75,
+        "ability": "Hydration",
+        "moves": [
+          "Bug Buzz",
+          "Focus Blast",
+          "Me First",
+          "Energy Ball"
+        ],
+        "item": null
+      },
+      {
+        "species": "Bouffalant",
+        "level": 75,
+        "ability": "Sap Sipper",
+        "moves": [
+          "Head Charge",
+          "Megahorn",
+          "Stone Edge",
+          "Earthquake"
+        ],
+        "item": null
+      },
+      {
+        "species": "Druddigon",
+        "level": 75,
+        "ability": "Rough Skin",
+        "moves": [
+          "Night Slash",
+          "Outrage",
+          "Superpower",
+          "Payback"
+        ],
+        "item": null
+      },
+      {
+        "species": "Vanilluxe",
+        "level": 75,
+        "ability": "Ice Body",
+        "moves": [
+          "Blizzard",
+          "Light Screen",
+          "Flash Cannon",
+          "Acid Armor"
+        ],
+        "item": null
+      },
+      {
+        "species": "Escavalier",
+        "level": 75,
+        "ability": "Swarm",
+        "moves": [
+          "X-Scissor",
+          "Giga Impact",
+          "Iron Head",
+          "Aerial Ace"
+        ],
+        "item": null
+      },
+      {
+        "species": "Volcarona",
+        "level": 77,
+        "ability": "Flame Body",
+        "moves": [
+          "Overheat",
+          "Bug Buzz",
+          "Quiver Dance",
+          "Hyper Beam"
+        ],
+        "item": null
+      }
+    ],
+    "sprite": "alder"
+  }
+]

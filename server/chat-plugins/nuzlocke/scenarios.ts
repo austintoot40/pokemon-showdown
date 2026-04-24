@@ -174,13 +174,29 @@ function resolveScenario(
 			const encounterZones = loc.zones.filter(z => z.method !== 'Gift');
 			const giftZones = loc.zones.filter(z => z.method === 'Gift');
 
-			if (encounterZones.length) {
-				encounters.push({ route: routeName, zones: encounterZones });
-			}
-			// Each Gift zone becomes its own RouteEncounter. Choice is inferred: multiple
-			// Pokemon options means the player selects; a single Pokemon auto-resolves.
-			for (const gz of giftZones) {
-				gifts.push({ route: routeName, zones: [gz], choice: gz.pokemon.length > 1 });
+			// If a location has ONLY Gift + Trade zones (no wild encounters), merge them into
+			// one encounter entry. Both zone cards appear in the detail panel; the player picks
+			// one (Gift or Trade) to resolve the route.
+			// If the location also has wild encounter zones, gifts go to the auto-resolve path
+			// with a disambiguated name to avoid route-name collisions.
+			const hasWildEncounters = encounterZones.some(z => z.method !== 'Trade');
+
+			if (giftZones.length > 0 && encounterZones.length > 0 && !hasWildEncounters) {
+				encounters.push({ route: routeName, zones: [...giftZones, ...encounterZones] });
+			} else {
+				if (encounterZones.length) {
+					encounters.push({ route: routeName, zones: encounterZones });
+				}
+				// Each Gift zone becomes its own RouteEncounter. Choice is inferred: multiple
+				// Pokemon options means the player selects; a single Pokemon auto-resolves.
+				for (const gz of giftZones) {
+					// Disambiguate name when same location also has wild encounter zones to avoid
+					// route-name collisions (shared name → wrong resolved-state, Preact key conflicts).
+					const effectiveRoute = encounterZones.length > 0
+						? `${routeName} (Gift)`
+						: routeName;
+					gifts.push({ route: effectiveRoute, zones: [gz], choice: gz.pokemon.length > 1 });
+				}
 			}
 		}
 

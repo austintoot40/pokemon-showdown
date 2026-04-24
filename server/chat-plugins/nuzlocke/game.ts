@@ -214,6 +214,39 @@ export class NuzlockeGame {
 		return true;
 	}
 
+	/** Called by /nuzlocke encounterchoice <routeName> <zoneIndex> <speciesId>: player picks a specific
+	 *  species from a Gift zone that is embedded in an encounter route (e.g. fossil revival). */
+	resolveChoiceZone(routeName: string, zoneIndex: number, speciesId: string) {
+		const segment = this.currentSegment;
+		if (!segment) return;
+		const allRoutes = [...flatEncounters(segment), ...this.deferredRoutes, ...this.lockedRoutes];
+		const route = allRoutes.find(r => r.route === routeName);
+		if (!route) return;
+		if (this.resolvedRoutes.includes(route.route)) return;
+		const zone = route.zones[zoneIndex];
+		if (!zone || zone.method !== 'Gift') return;
+
+		this.lockedRoutes = this.lockedRoutes.filter(r => r.route !== routeName);
+
+		// Look up the canonical species name, then apply randomizer mappings if active.
+		let speciesName = zone.pokemon.find(e => toID(e.species) === speciesId)?.species ?? speciesId;
+		if (this.randomizerMappings) {
+			const routeOverride = this.randomizerMappings.routeMap[route.route];
+			if (routeOverride) {
+				speciesName = routeOverride;
+			} else {
+				const mapped = this.randomizerMappings.speciesMap[toID(speciesName)];
+				if (mapped) speciesName = mapped;
+			}
+		}
+
+		const pokemon = resolveChoiceGift(route, speciesName, this.currentLevelCap);
+		pokemon.caughtZoneIndex = zoneIndex;
+		this.resolvedRoutes.push(route.route);
+		this.box.push(pokemon);
+		this.addToParty(pokemon.uid);
+	}
+
 	/** Called by /nuzlocke encounter <routeName> <zoneIndex>: rolls a zone from a wild route. */
 	resolveOneRoute(routeName: string, zoneIndex: number) {
 		const segment = this.currentSegment;

@@ -221,6 +221,21 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 			pushNuzlockeState(user.id, game);
 		},
 
+		encounterchoice(target, room, user) {
+			const game = nuzlockeGames.get(user.id);
+			if (!game) return this.errorReply('No active run.');
+			const parts = target.trim().split(/\s+/);
+			if (parts.length < 3) return this.errorReply('Usage: /nuzlocke encounterchoice <routeName> <zoneIndex> <speciesId>');
+			const speciesId = parts[parts.length - 1];
+			const zoneIndex = parseInt(parts[parts.length - 2]);
+			const routeName = parts.slice(0, -2).join(' ');
+			if (isNaN(zoneIndex) || zoneIndex < 0 || !speciesId) return this.errorReply('Usage: /nuzlocke encounterchoice <routeName> <zoneIndex> <speciesId>');
+			if (!game.currentSegment) return this.errorReply('No active segment.');
+			if (game.resolvedRoutes.includes(routeName)) return this.errorReply('Already explored this route.');
+			game.resolveChoiceZone(routeName, zoneIndex, speciesId);
+			game.goToPage('encounters');
+		},
+
 		choosegift(target, room, user) {
 			const game = nuzlockeGames.get(user.id);
 			if (!game) return this.errorReply('No active run.');

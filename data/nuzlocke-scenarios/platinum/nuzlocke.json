@@ -45,7 +45,6 @@
       "locations": [
         "ravaged-path",
         "sinnoh-route-205",
-        "old-chateau",
         "eterna-city",
         "valley-windworks",
         "eterna-forest"
@@ -62,7 +61,8 @@
         "sinnoh-route-206",
         "wayward-cave",
         "mount-coronet",
-        "hearthome-city"
+        "hearthome-city",
+        "old-chateau"
       ],
       "battles": [
         "fantina"

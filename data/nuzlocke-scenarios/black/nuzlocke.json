@@ -1,0 +1,147 @@
+{
+  "id": "black",
+  "name": "Black",
+  "generation": 5,
+  "description": "",
+  "color": "#37474F",
+  "pokemon": "reshiram",
+  "starters": [
+    {
+      "species": "Snivy",
+      "level": 5
+    },
+    {
+      "species": "Tepig",
+      "level": 5
+    },
+    {
+      "species": "Oshawott",
+      "level": 5
+    }
+  ],
+  "segments": [
+    {
+      "id": "cilan",
+      "name": "Cilan",
+      "locations": [
+        "unova-route-1",
+        "unova-route-2",
+        "striaton-city"
+      ],
+      "battles": [
+        "cilan"
+      ]
+    },
+    {
+      "id": "lenora",
+      "name": "Lenora",
+      "locations": [
+        "dreamyard",
+        "unova-route-3",
+        "wellspring-cave",
+        "nacrene-city"
+      ],
+      "battles": [
+        "lenora"
+      ]
+    },
+    {
+      "id": "burgh",
+      "name": "Burgh",
+      "locations": [
+        "unova-route-16",
+        "lostlorn-forest",
+        "pinwheel-forest"
+      ],
+      "battles": [
+        "burgh"
+      ]
+    },
+    {
+      "id": "elesa",
+      "name": "Elesa",
+      "locations": [
+        "unova-route-4",
+        "desert-resort",
+        "relic-castle",
+        "nimbasa-city"
+      ],
+      "battles": [
+        "elesa"
+      ]
+    },
+    {
+      "id": "clay",
+      "name": "Clay",
+      "locations": [
+        "unova-route-5",
+        "driftveil-drawbridge",
+        "driftveil-city",
+        "cold-storage"
+      ],
+      "battles": [
+        "clay"
+      ]
+    },
+    {
+      "id": "skyla",
+      "name": "Skyla",
+      "locations": [
+        "celestial-tower",
+        "unova-route-14",
+        "unova-route-15",
+        "unova-route-6",
+        "mistralton-cave",
+        "chargestone-cave",
+        "unova-route-7"
+      ],
+      "battles": [
+        "skyla"
+      ]
+    },
+    {
+      "id": "brycen",
+      "name": "Brycen",
+      "locations": [
+        "unova-route-17",
+        "unova-route-18",
+        "p2-laboratory",
+        "castelia-city",
+        "twist-mountain",
+        "icirrus-city"
+      ],
+      "battles": [
+        "brycen"
+      ]
+    },
+    {
+      "id": "drayden",
+      "name": "Drayden",
+      "locations": [
+        "dragonspiral-tower",
+        "unova-route-8",
+        "moor-of-icirrus",
+        "unova-route-9"
+      ],
+      "battles": [
+        "drayden"
+      ]
+    },
+    {
+      "id": "elite-four",
+      "name": "Elite Four",
+      "locations": [
+        "unova-route-10",
+        "victory-road"
+      ],
+      "battles": [
+        "shauntal",
+        "marshal",
+        "grimsley",
+        "caitlin",
+        "alder"
+      ]
+    }
+  ],
+  "verified": true
+}
