@@ -26,7 +26,9 @@
       "locations": [
         "unova-route-1",
         "unova-route-2",
-        "striaton-city"
+        "striaton-city",
+        "test-location",
+        "test-location-2"
       ],
       "battles": [
         "cilan"

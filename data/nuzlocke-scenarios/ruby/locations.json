@@ -5,7 +5,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Zigzagoon",
@@ -29,7 +29,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Zigzagoon",
@@ -59,7 +59,7 @@
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Marill",
@@ -69,11 +69,15 @@
             "species": "Surskit",
             "rate": 1
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -83,11 +87,15 @@
             "species": "Goldeen",
             "rate": 30
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -101,17 +109,25 @@
             "species": "Corphish",
             "rate": 20
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Corphish",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
       }
     ]
   },
@@ -151,7 +167,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Zigzagoon",
@@ -169,7 +185,7 @@
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacool",
@@ -183,11 +199,15 @@
             "species": "Pelipper",
             "rate": 5
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -197,11 +217,15 @@
             "species": "Tentacool",
             "rate": 30
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -215,11 +239,15 @@
             "species": "Wailmer",
             "rate": 20
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Wailmer",
@@ -229,7 +257,11 @@
             "species": "Sharpedo",
             "rate": 40
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
       }
     ]
   },
@@ -239,7 +271,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Zigzagoon",
@@ -282,7 +314,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Zigzagoon",
@@ -304,7 +336,7 @@
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Wingull",
@@ -314,37 +346,53 @@
             "species": "Pelipper",
             "rate": 5
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
       }
     ],
     "tmMoves": [
@@ -357,7 +405,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Whismur",
@@ -427,7 +475,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Whismur",
@@ -459,7 +507,7 @@
     "zones": [
       {
         "zone": "1F",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Makuhita",
@@ -481,7 +529,7 @@
       },
       {
         "zone": "Steven's room",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Makuhita",
@@ -503,7 +551,7 @@
       },
       {
         "zone": "B1F",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Aron",
@@ -529,7 +577,7 @@
       },
       {
         "zone": "B2F",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Aron",
@@ -551,7 +599,7 @@
       },
       {
         "zone": "B2F",
-        "method": "Rock Smash",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Geodude",
@@ -561,7 +609,11 @@
             "species": "Nosepass",
             "rate": 30
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Rock Smash"
+        }
       }
     ],
     "tmMoves": [
@@ -581,7 +633,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacool",
@@ -595,11 +647,15 @@
             "species": "Pelipper",
             "rate": 5
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -609,11 +665,15 @@
             "species": "Tentacool",
             "rate": 30
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -627,17 +687,25 @@
             "species": "Wailmer",
             "rate": 20
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Wailmer",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
       }
     ]
   },
@@ -647,7 +715,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacool",
@@ -661,11 +729,15 @@
             "species": "Pelipper",
             "rate": 5
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -675,11 +747,15 @@
             "species": "Tentacool",
             "rate": 30
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -693,17 +769,25 @@
             "species": "Wailmer",
             "rate": 20
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Wailmer",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
       }
     ]
   },
@@ -713,7 +797,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacool",
@@ -727,11 +811,15 @@
             "species": "Pelipper",
             "rate": 5
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -741,11 +829,15 @@
             "species": "Tentacool",
             "rate": 30
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -759,17 +851,25 @@
             "species": "Wailmer",
             "rate": 20
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Wailmer",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
       }
     ]
   },
@@ -779,7 +879,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacool",
@@ -793,11 +893,15 @@
             "species": "Pelipper",
             "rate": 5
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -807,11 +911,15 @@
             "species": "Tentacool",
             "rate": 30
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -825,17 +933,25 @@
             "species": "Wailmer",
             "rate": 20
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Wailmer",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
       }
     ]
   },
@@ -845,7 +961,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacool",
@@ -859,11 +975,15 @@
             "species": "Pelipper",
             "rate": 5
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -873,11 +993,15 @@
             "species": "Tentacool",
             "rate": 30
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -891,17 +1015,25 @@
             "species": "Wailmer",
             "rate": 20
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Wailmer",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
       }
     ],
     "items": [
@@ -922,7 +1054,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Electrike",
@@ -956,7 +1088,7 @@
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacool",
@@ -970,11 +1102,15 @@
             "species": "Pelipper",
             "rate": 5
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -984,11 +1120,15 @@
             "species": "Tentacool",
             "rate": 30
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -1002,17 +1142,25 @@
             "species": "Wailmer",
             "rate": 20
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Wailmer",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
       }
     ]
   },
@@ -1043,7 +1191,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Zigzagoon",
@@ -1077,7 +1225,7 @@
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Marill",
@@ -1087,11 +1235,15 @@
             "species": "Surskit",
             "rate": 1
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -1101,11 +1253,15 @@
             "species": "Goldeen",
             "rate": 30
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -1119,17 +1275,25 @@
             "species": "Corphish",
             "rate": 20
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Corphish",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
       }
     ]
   },
@@ -1139,7 +1303,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Sand",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Sandshrew",
@@ -1161,17 +1325,21 @@
       },
       {
         "zone": "",
-        "method": "Rock Smash",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Geodude",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Rock Smash"
+        }
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Marill",
@@ -1181,11 +1349,15 @@
             "species": "Surskit",
             "rate": 1
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -1195,11 +1367,15 @@
             "species": "Goldeen",
             "rate": 30
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -1213,17 +1389,25 @@
             "species": "Barboach",
             "rate": 20
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Barboach",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
       }
     ],
     "tmMoves": [
@@ -1243,7 +1427,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Numel",
@@ -1263,7 +1447,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Numel",
@@ -1287,7 +1471,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Numel",
@@ -1341,7 +1525,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Spinda",
@@ -1368,7 +1552,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Swablu",
@@ -1394,17 +1578,21 @@
       },
       {
         "zone": "",
-        "method": "Rock Smash",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Geodude",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Rock Smash"
+        }
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Marill",
@@ -1414,11 +1602,15 @@
             "species": "Surskit",
             "rate": 1
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -1428,11 +1620,15 @@
             "species": "Goldeen",
             "rate": 30
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -1446,17 +1642,25 @@
             "species": "Barboach",
             "rate": 20
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Barboach",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
       }
     ],
     "tmMoves": [
@@ -1504,7 +1708,7 @@
     "zones": [
       {
         "zone": "1F 1R",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Zubat",
@@ -1518,7 +1722,7 @@
       },
       {
         "zone": "1F 1R",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Zubat",
@@ -1528,11 +1732,15 @@
             "species": "Solrock",
             "rate": 10
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "1F 1R",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -1542,11 +1750,15 @@
             "species": "Goldeen",
             "rate": 30
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "1F 1R",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -1560,21 +1772,29 @@
             "species": "Barboach",
             "rate": 20
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "1F 1R",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Barboach",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
       },
       {
         "zone": "1F 2R & B1F 1R",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Golbat",
@@ -1588,7 +1808,7 @@
       },
       {
         "zone": "1F 2R & B1F 1R",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Golbat",
@@ -1598,11 +1818,15 @@
             "species": "Solrock",
             "rate": 10
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "1F 2R & B1F 1R",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -1612,11 +1836,15 @@
             "species": "Goldeen",
             "rate": 30
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "1F 2R & B1F 1R",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -1630,11 +1858,15 @@
             "species": "Barboach",
             "rate": 20
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "1F 2R & B1F 1R",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Barboach",
@@ -1644,11 +1876,15 @@
             "species": "Whiscash",
             "rate": 20
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
       },
       {
         "zone": "B1F 2R",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Golbat",
@@ -1666,7 +1902,7 @@
       },
       {
         "zone": "B1F 2R",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Golbat",
@@ -1676,11 +1912,15 @@
             "species": "Solrock",
             "rate": 10
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "B1F 2R",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -1690,11 +1930,15 @@
             "species": "Goldeen",
             "rate": 30
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "B1F 2R",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -1708,11 +1952,15 @@
             "species": "Barboach",
             "rate": 20
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "B1F 2R",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Barboach",
@@ -1722,7 +1970,11 @@
             "species": "Whiscash",
             "rate": 20
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
       }
     ],
     "items": [
@@ -1751,7 +2003,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Zigzagoon",
@@ -1781,7 +2033,7 @@
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacool",
@@ -1795,11 +2047,15 @@
             "species": "Pelipper",
             "rate": 5
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -1809,11 +2065,15 @@
             "species": "Tentacool",
             "rate": 30
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -1827,11 +2087,15 @@
             "species": "Carvanha",
             "rate": 20
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Carvanha",
@@ -1841,7 +2105,11 @@
             "species": "Sharpedo",
             "rate": 40
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
       }
     ],
     "items": [
@@ -1880,7 +2148,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Taillow",
@@ -1906,7 +2174,7 @@
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacool",
@@ -1920,11 +2188,15 @@
             "species": "Pelipper",
             "rate": 5
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -1934,11 +2206,15 @@
             "species": "Tentacool",
             "rate": 30
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -1952,17 +2228,25 @@
             "species": "Wailmer",
             "rate": 20
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Wailmer",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
       }
     ],
     "tmMoves": [
@@ -1975,7 +2259,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Long grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Oddish",
@@ -2001,7 +2285,7 @@
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacool",
@@ -2015,11 +2299,15 @@
             "species": "Pelipper",
             "rate": 5
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -2029,11 +2317,15 @@
             "species": "Tentacool",
             "rate": 30
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -2047,17 +2339,25 @@
             "species": "Carvanha",
             "rate": 20
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Carvanha",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
       }
     ],
     "items": [
@@ -2103,7 +2403,7 @@
     "zones": [
       {
         "zone": "Entrance",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magnemite",
@@ -2117,7 +2417,7 @@
       },
       {
         "zone": "Basement",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magnemite",
@@ -2148,7 +2448,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Long grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Linoone",
@@ -2182,7 +2482,7 @@
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Marill",
@@ -2192,11 +2492,15 @@
             "species": "Surskit",
             "rate": 1
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -2206,11 +2510,15 @@
             "species": "Goldeen",
             "rate": 30
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -2224,17 +2532,25 @@
             "species": "Barboach",
             "rate": 20
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Barboach",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
       }
     ]
   },
@@ -2244,7 +2560,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Duskull",
@@ -2278,7 +2594,7 @@
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacool",
@@ -2292,11 +2608,15 @@
             "species": "Pelipper",
             "rate": 5
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -2306,11 +2626,15 @@
             "species": "Tentacool",
             "rate": 30
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -2324,17 +2648,25 @@
             "species": "Wailmer",
             "rate": 20
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Wailmer",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
       }
     ]
   },
@@ -2344,7 +2676,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacool",
@@ -2358,11 +2690,15 @@
             "species": "Pelipper",
             "rate": 5
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -2372,11 +2708,15 @@
             "species": "Tentacool",
             "rate": 30
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -2390,11 +2730,15 @@
             "species": "Wailmer",
             "rate": 20
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Wailmer",
@@ -2404,7 +2748,11 @@
             "species": "Sharpedo",
             "rate": 40
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
       }
     ]
   },
@@ -2414,7 +2762,7 @@
     "zones": [
       {
         "zone": "Interior",
-        "method": "1F-3F",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Duskull",
@@ -2424,7 +2772,7 @@
       },
       {
         "zone": "Interior",
-        "method": "4F-6F",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Duskull",
@@ -2438,7 +2786,7 @@
       },
       {
         "zone": "Exterior",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Duskull",
@@ -2460,7 +2808,7 @@
       },
       {
         "zone": "Summit",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Duskull",
@@ -2492,7 +2840,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Duskull",
@@ -2526,7 +2874,7 @@
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacool",
@@ -2540,11 +2888,15 @@
             "species": "Pelipper",
             "rate": 5
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -2554,11 +2906,15 @@
             "species": "Tentacool",
             "rate": 30
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -2572,17 +2928,25 @@
             "species": "Wailmer",
             "rate": 20
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Wailmer",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
       }
     ],
     "tmMoves": [
@@ -2595,7 +2959,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacool",
@@ -2609,11 +2973,15 @@
             "species": "Pelipper",
             "rate": 5
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -2623,11 +2991,15 @@
             "species": "Tentacool",
             "rate": 30
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -2641,11 +3013,15 @@
             "species": "Wailmer",
             "rate": 20
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Wailmer",
@@ -2655,11 +3031,15 @@
             "species": "Sharpedo",
             "rate": 40
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
       },
       {
         "zone": "Underwater",
-        "method": "Dive",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Clamperl",
@@ -2673,7 +3053,11 @@
             "species": "Relicanth",
             "rate": 5
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Dive"
+        }
       }
     ]
   },
@@ -2683,7 +3067,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacool",
@@ -2697,11 +3081,15 @@
             "species": "Pelipper",
             "rate": 5
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -2711,11 +3099,15 @@
             "species": "Tentacool",
             "rate": 30
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -2729,11 +3121,15 @@
             "species": "Wailmer",
             "rate": 20
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Wailmer",
@@ -2743,7 +3139,11 @@
             "species": "Sharpedo",
             "rate": 40
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
       }
     ]
   },
@@ -2785,7 +3185,7 @@
     "zones": [
       {
         "zone": "Main cave",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Spheal",
@@ -2803,7 +3203,7 @@
       },
       {
         "zone": "Main cave",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacool",
@@ -2817,11 +3217,15 @@
             "species": "Spheal",
             "rate": 10
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "Main cave",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -2831,11 +3235,15 @@
             "species": "Tentacool",
             "rate": 30
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "Main cave",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -2849,21 +3257,29 @@
             "species": "Wailmer",
             "rate": 20
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "Main cave",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Wailmer",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
       },
       {
         "zone": "Ice room",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Spheal",
@@ -2899,7 +3315,7 @@
     "zones": [
       {
         "zone": "Grass",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Oddish",
@@ -2939,7 +3355,7 @@
     "zones": [
       {
         "zone": "Grass",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Oddish",
@@ -2973,17 +3389,21 @@
       },
       {
         "zone": "Surf",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Psyduck",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "Fish Old",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -2993,11 +3413,15 @@
             "species": "Goldeen",
             "rate": 30
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "Fish Good",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -3007,11 +3431,15 @@
             "species": "Goldeen",
             "rate": 40
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "Fish Super",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Goldeen",
@@ -3021,7 +3449,11 @@
             "species": "Seaking",
             "rate": 20
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
       }
     ]
   },
@@ -3031,7 +3463,7 @@
     "zones": [
       {
         "zone": "Grass",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Oddish",
@@ -3061,7 +3493,7 @@
       },
       {
         "zone": "Surf",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Psyduck",
@@ -3071,11 +3503,15 @@
             "species": "Golduck",
             "rate": 5
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "Fish Old",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -3085,11 +3521,15 @@
             "species": "Goldeen",
             "rate": 30
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "Fish Good",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -3099,11 +3539,15 @@
             "species": "Goldeen",
             "rate": 40
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "Fish Super",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Goldeen",
@@ -3113,7 +3557,11 @@
             "species": "Seaking",
             "rate": 20
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
       }
     ],
     "tmMoves": [
@@ -3126,7 +3574,7 @@
     "zones": [
       {
         "zone": "Grass",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Oddish",
@@ -3156,13 +3604,17 @@
       },
       {
         "zone": "Rock Smash",
-        "method": "Rock Smash",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Geodude",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Rock Smash"
+        }
       }
     ]
   },
@@ -3172,7 +3624,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacool",
@@ -3186,11 +3638,15 @@
             "species": "Pelipper",
             "rate": 5
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -3200,11 +3656,15 @@
             "species": "Tentacool",
             "rate": 30
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -3218,11 +3678,15 @@
             "species": "Wailmer",
             "rate": 20
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Wailmer",
@@ -3232,11 +3696,15 @@
             "species": "Sharpedo",
             "rate": 40
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
       },
       {
         "zone": "Underwater",
-        "method": "Dive",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Clamperl",
@@ -3250,7 +3718,11 @@
             "species": "Relicanth",
             "rate": 5
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Dive"
+        }
       }
     ]
   },
@@ -3260,7 +3732,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacool",
@@ -3274,11 +3746,15 @@
             "species": "Pelipper",
             "rate": 5
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -3288,11 +3764,15 @@
             "species": "Tentacool",
             "rate": 30
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -3306,11 +3786,15 @@
             "species": "Wailmer",
             "rate": 20
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Wailmer",
@@ -3320,7 +3804,11 @@
             "species": "Sharpedo",
             "rate": 40
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
       }
     ]
   },
@@ -3330,7 +3818,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacool",
@@ -3344,11 +3832,15 @@
             "species": "Pelipper",
             "rate": 5
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -3358,11 +3850,15 @@
             "species": "Tentacool",
             "rate": 30
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -3376,11 +3872,15 @@
             "species": "Luvdisc",
             "rate": 20
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Wailmer",
@@ -3394,7 +3894,11 @@
             "species": "Corsola",
             "rate": 15
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
       }
     ]
   },
@@ -3404,7 +3908,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Zubat",
@@ -3418,7 +3922,7 @@
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacool",
@@ -3432,11 +3936,15 @@
             "species": "Golbat",
             "rate": 5
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -3446,11 +3954,15 @@
             "species": "Tentacool",
             "rate": 30
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -3464,17 +3976,25 @@
             "species": "Wailmer",
             "rate": 20
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Wailmer",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
       }
     ]
   },
@@ -3505,7 +4025,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Zubat",
@@ -3529,7 +4049,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacool",
@@ -3547,11 +4067,15 @@
             "species": "Wailord",
             "rate": 1
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -3561,11 +4085,15 @@
             "species": "Tentacool",
             "rate": 30
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -3579,11 +4107,15 @@
             "species": "Wailmer",
             "rate": 20
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Wailmer",
@@ -3593,7 +4125,11 @@
             "species": "Sharpedo",
             "rate": 40
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
       }
     ]
   },
@@ -3603,7 +4139,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Wynaut",
@@ -3613,7 +4149,7 @@
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacool",
@@ -3627,11 +4163,15 @@
             "species": "Pelipper",
             "rate": 5
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -3641,11 +4181,15 @@
             "species": "Tentacool",
             "rate": 30
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -3659,11 +4203,15 @@
             "species": "Wailmer",
             "rate": 20
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Wailmer",
@@ -3673,7 +4221,11 @@
             "species": "Sharpedo",
             "rate": 40
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
       }
     ]
   },
@@ -3683,7 +4235,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacool",
@@ -3697,11 +4249,15 @@
             "species": "Pelipper",
             "rate": 5
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -3711,11 +4267,15 @@
             "species": "Tentacool",
             "rate": 30
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -3729,11 +4289,15 @@
             "species": "Wailmer",
             "rate": 20
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Wailmer",
@@ -3743,7 +4307,11 @@
             "species": "Sharpedo",
             "rate": 40
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
       }
     ]
   },
@@ -3753,7 +4321,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacool",
@@ -3767,11 +4335,15 @@
             "species": "Pelipper",
             "rate": 5
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -3781,11 +4353,15 @@
             "species": "Tentacool",
             "rate": 30
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -3799,11 +4375,15 @@
             "species": "Wailmer",
             "rate": 20
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Wailmer",
@@ -3817,7 +4397,11 @@
             "species": "Horsea",
             "rate": 15
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
       }
     ]
   },
@@ -3827,7 +4411,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacool",
@@ -3841,11 +4425,15 @@
             "species": "Pelipper",
             "rate": 5
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -3855,11 +4443,15 @@
             "species": "Tentacool",
             "rate": 30
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -3873,11 +4465,15 @@
             "species": "Wailmer",
             "rate": 20
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Wailmer",
@@ -3891,7 +4487,11 @@
             "species": "Horsea",
             "rate": 15
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
       }
     ]
   },
@@ -3901,7 +4501,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacool",
@@ -3915,11 +4515,15 @@
             "species": "Pelipper",
             "rate": 5
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -3929,11 +4533,15 @@
             "species": "Tentacool",
             "rate": 30
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -3947,11 +4555,15 @@
             "species": "Wailmer",
             "rate": 20
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Wailmer",
@@ -3965,7 +4577,11 @@
             "species": "Horsea",
             "rate": 15
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
       }
     ]
   },
@@ -3975,7 +4591,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacool",
@@ -3989,11 +4605,15 @@
             "species": "Pelipper",
             "rate": 5
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -4003,11 +4623,15 @@
             "species": "Tentacool",
             "rate": 30
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -4021,7 +4645,11 @@
             "species": "Wailmer",
             "rate": 20
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "",
@@ -4049,7 +4677,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacool",
@@ -4059,11 +4687,15 @@
             "species": "Tentacruel",
             "rate": 1
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -4073,11 +4705,15 @@
             "species": "Tentacool",
             "rate": 30
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -4087,11 +4723,15 @@
             "species": "Tentacool",
             "rate": 40
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacool",
@@ -4101,7 +4741,11 @@
             "species": "Tentacruel",
             "rate": 20
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
       }
     ],
     "items": [
@@ -4117,7 +4761,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacool",
@@ -4131,11 +4775,15 @@
             "species": "Pelipper",
             "rate": 5
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -4145,11 +4793,15 @@
             "species": "Tentacool",
             "rate": 30
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -4163,11 +4815,15 @@
             "species": "Luvdisc",
             "rate": 20
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Corsola",
@@ -4181,7 +4837,11 @@
             "species": "Luvdisc",
             "rate": 40
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
       }
     ]
   },
@@ -4191,7 +4851,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "1F",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Golbat",
@@ -4213,7 +4873,7 @@
       },
       {
         "zone": "",
-        "method": "3F",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Golbat",
@@ -4235,7 +4895,7 @@
       },
       {
         "zone": "",
-        "method": "5F",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Golbat",
@@ -4267,7 +4927,7 @@
     "zones": [
       {
         "zone": "1F",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Golbat",
@@ -4305,7 +4965,7 @@
       },
       {
         "zone": "B1F",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Golbat",
@@ -4331,7 +4991,7 @@
       },
       {
         "zone": "B1F",
-        "method": "Rock Smash",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Graveler",
@@ -4341,11 +5001,15 @@
             "species": "Geodude",
             "rate": 30
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Rock Smash"
+        }
       },
       {
         "zone": "B2F",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Golbat",
@@ -4367,17 +5031,21 @@
       },
       {
         "zone": "B2F",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Golbat",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "B2F",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -4387,11 +5055,15 @@
             "species": "Goldeen",
             "rate": 30
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "B2F",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -4405,11 +5077,15 @@
             "species": "Barboach",
             "rate": 20
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "B2F",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Barboach",
@@ -4419,7 +5095,11 @@
             "species": "Whiscash",
             "rate": 20
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
       }
     ],
     "tmMoves": [

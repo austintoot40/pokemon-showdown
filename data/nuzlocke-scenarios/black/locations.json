@@ -5,7 +5,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Patrat",
@@ -19,7 +19,7 @@
       },
       {
         "zone": "",
-        "method": "Long grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Herdier",
@@ -33,11 +33,15 @@
             "species": "Scraggy",
             "rate": 25
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Rustling",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Audino",
@@ -47,13 +51,17 @@
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Basculin",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       }
     ]
   },
@@ -63,7 +71,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Patrat",
@@ -81,7 +89,7 @@
       },
       {
         "zone": "",
-        "method": "Rustling",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Audino",
@@ -97,7 +105,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Pidove",
@@ -123,7 +131,7 @@
       },
       {
         "zone": "",
-        "method": "Rustling",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Audino",
@@ -133,13 +141,17 @@
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Basculin",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       }
     ]
   },
@@ -149,7 +161,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Roggenrola",
@@ -163,7 +175,7 @@
       },
       {
         "zone": "",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Drilbur",
@@ -173,13 +185,17 @@
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Basculin",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       }
     ],
     "tmMoves": [
@@ -215,7 +231,7 @@
     "zones": [
       {
         "zone": "Outer area",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tympole",
@@ -237,7 +253,7 @@
       },
       {
         "zone": "Outer area",
-        "method": "Rustling",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Audino",
@@ -251,7 +267,7 @@
       },
       {
         "zone": "Inner area",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Sewaddle",
@@ -273,7 +289,7 @@
       },
       {
         "zone": "Inner area",
-        "method": "Rustling",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Audino",
@@ -299,13 +315,17 @@
       },
       {
         "zone": "Inner area",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Basculin",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       }
     ],
     "tmMoves": [
@@ -326,7 +346,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Sand",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Sandile",
@@ -344,17 +364,21 @@
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Frillish",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Alomomola",
@@ -364,7 +388,11 @@
             "species": "Jellicent",
             "rate": 5
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       }
     ],
     "tmMoves": [
@@ -378,7 +406,7 @@
     "zones": [
       {
         "zone": "Entrance",
-        "method": "Sand",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Sandile",
@@ -404,7 +432,7 @@
       },
       {
         "zone": "Desert",
-        "method": "Sand",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Sandile",
@@ -444,7 +472,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Minccino",
@@ -466,7 +494,7 @@
       },
       {
         "zone": "",
-        "method": "Rustling",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Audino",
@@ -508,7 +536,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Swadloon",
@@ -530,7 +558,7 @@
       },
       {
         "zone": "",
-        "method": "Rustling",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Audino",
@@ -568,13 +596,17 @@
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Basculin",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       }
     ]
   },
@@ -584,7 +616,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Minccino",
@@ -606,7 +638,7 @@
       },
       {
         "zone": "",
-        "method": "Rustling",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Audino",
@@ -630,7 +662,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tranquill",
@@ -656,17 +688,21 @@
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Basculin",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Unfezant",
@@ -714,7 +750,7 @@
     "zones": [
       {
         "zone": "1F, B1F",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Joltik",
@@ -740,7 +776,7 @@
       },
       {
         "zone": "",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Drilbur",
@@ -750,7 +786,7 @@
       },
       {
         "zone": "B2F",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Boldore",
@@ -791,7 +827,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Tall grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Watchog",
@@ -817,7 +853,7 @@
       },
       {
         "zone": "",
-        "method": "Rustling",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Emolga",
@@ -845,7 +881,7 @@
     "zones": [
       {
         "zone": "1F-2F",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Boldore",
@@ -863,7 +899,7 @@
       },
       {
         "zone": "1F-2F",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Drilbur",
@@ -873,7 +909,7 @@
       },
       {
         "zone": "Guidance Chamber",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Boldore",
@@ -891,7 +927,7 @@
       },
       {
         "zone": "Guidance Chamber",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Drilbur",
@@ -914,7 +950,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Drilbur",
@@ -924,7 +960,7 @@
       },
       {
         "zone": "",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Boldore",
@@ -965,7 +1001,7 @@
     "zones": [
       {
         "zone": "2F",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Litwick",
@@ -975,7 +1011,7 @@
       },
       {
         "zone": "3F",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Litwick",
@@ -989,7 +1025,7 @@
       },
       {
         "zone": "4F",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Litwick",
@@ -1003,7 +1039,7 @@
       },
       {
         "zone": "5F",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Elgyem",
@@ -1030,7 +1066,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Rippling",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Palpitoad",
@@ -1048,7 +1084,7 @@
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Stunfisk",
@@ -1058,7 +1094,11 @@
             "species": "Seismitoad",
             "rate": 5
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       }
     ],
     "items": [
@@ -1079,7 +1119,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Jigglypuff",
@@ -1117,7 +1157,7 @@
       },
       {
         "zone": "",
-        "method": "Rustling",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Audino",
@@ -1135,7 +1175,7 @@
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Basculin",
@@ -1145,7 +1185,11 @@
             "species": "Buizel",
             "rate": 30
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       }
     ],
     "items": [
@@ -1173,7 +1217,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Fearow",
@@ -1203,7 +1247,7 @@
       },
       {
         "zone": "",
-        "method": "Dark",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Fearow",
@@ -1237,7 +1281,7 @@
       },
       {
         "zone": "",
-        "method": "Rustling",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Audino",
@@ -1287,7 +1331,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Gothorita",
@@ -1313,7 +1357,7 @@
       },
       {
         "zone": "",
-        "method": "Rustling",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Audino",
@@ -1344,7 +1388,7 @@
     "zones": [
       {
         "zone": "1F-B1F",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Sandile",
@@ -1383,7 +1427,7 @@
     "zones": [
       {
         "zone": "Entrance",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Mienfoo",
@@ -1405,7 +1449,7 @@
       },
       {
         "zone": "Entrance",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Emolga",
@@ -1423,17 +1467,21 @@
       },
       {
         "zone": "Outside",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Basculin",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "Inside 1F",
-        "method": "1F",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Golett",
@@ -1451,7 +1499,7 @@
       },
       {
         "zone": "Inside 2F",
-        "method": "2F",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Golett",
@@ -1474,13 +1522,17 @@
     "zones": [
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Basculin",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       }
     ],
     "tmMoves": [
@@ -1506,7 +1558,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Patrat",
@@ -1524,7 +1576,7 @@
       },
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Musharna",
@@ -1647,7 +1699,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Ducklett",
@@ -1663,7 +1715,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Alomomola",
@@ -1673,7 +1725,11 @@
             "species": "Jellicent",
             "rate": 5
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       }
     ],
     "tmMoves": [
@@ -1704,7 +1760,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Herdier",
@@ -1726,7 +1782,7 @@
       },
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Stoutland",
@@ -1757,7 +1813,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Alomomola",
@@ -1767,7 +1823,11 @@
             "species": "Jellicent",
             "rate": 5
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       }
     ],
     "tmMoves": [
@@ -1780,7 +1840,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Watchog",
@@ -1802,7 +1862,7 @@
       },
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Audino",
@@ -1816,7 +1876,7 @@
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Alomomola",
@@ -1826,7 +1886,11 @@
             "species": "Jellicent",
             "rate": 5
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       }
     ],
     "tmMoves": [
@@ -1841,7 +1905,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Watchog",
@@ -1863,7 +1927,7 @@
       },
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Audino",
@@ -1877,7 +1941,7 @@
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Alomomola",
@@ -1887,7 +1951,11 @@
             "species": "Jellicent",
             "rate": 5
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       }
     ],
     "items": [
@@ -1903,7 +1971,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Palpitoad",
@@ -1921,7 +1989,7 @@
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Stunfisk",
@@ -1931,7 +1999,11 @@
             "species": "Seismitoad",
             "rate": 5
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       }
     ],
     "tmMoves": [
@@ -1952,7 +2024,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Palpitoad",
@@ -1970,7 +2042,7 @@
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Stunfisk",
@@ -1980,7 +2052,11 @@
             "species": "Seismitoad",
             "rate": 5
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       }
     ]
   },
@@ -1990,7 +2066,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Herdier",
@@ -2016,7 +2092,7 @@
       },
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Stoutland",
@@ -2051,7 +2127,7 @@
     "zones": [
       {
         "zone": "Outside",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Fraxure",
@@ -2073,7 +2149,7 @@
       },
       {
         "zone": "1F Right",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Boldore",
@@ -2099,7 +2175,7 @@
       },
       {
         "zone": "",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Excadrill",
@@ -2109,17 +2185,21 @@
       },
       {
         "zone": "1F Right",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Basculin",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "1F Left, 2F-7F",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Boldore",

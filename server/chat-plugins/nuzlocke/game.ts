@@ -152,18 +152,9 @@ export class NuzlockeGame {
 		this.resolvedRoutes.push(route.route);
 	}
 
-	/** Method prerequisites mirrored from the client for server-side lock detection. */
-	static readonly METHOD_PREREQS: Record<string, { type: string; name: string }> = {
-		'Surf':       { type: 'move', name: 'Surf' },
-		'Rock Smash': { type: 'move', name: 'Rock Smash' },
-		'Fish Old':   { type: 'item', name: 'Old Rod' },
-		'Fish Good':  { type: 'item', name: 'Good Rod' },
-		'Fish Super': { type: 'item', name: 'Super Rod' },
-	};
-
 	/** Returns true if a zone's prerequisite is currently unmet. */
 	isZoneLocked(zone: import('./types').ZoneEncounter): boolean {
-		const prereq = zone.requires ?? NuzlockeGame.METHOD_PREREQS[zone.method];
+		const prereq = zone.requires;
 		if (!prereq) return false;
 		if (prereq.type === 'move' || prereq.type === 'hm') return !this.tmMoves.includes(prereq.name);
 		if (prereq.type === 'pokemon') return !this.box.some(p => toID(p.species) === toID(prereq.name));

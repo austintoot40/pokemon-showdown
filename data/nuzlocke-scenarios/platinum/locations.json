@@ -5,7 +5,7 @@
     "zones": [
       {
         "zone": "Morning",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Morning",
         "pokemon": [
           {
@@ -24,7 +24,7 @@
       },
       {
         "zone": "Day",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Day",
         "pokemon": [
           {
@@ -39,7 +39,7 @@
       },
       {
         "zone": "Night",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Night",
         "pokemon": [
           {
@@ -64,7 +64,7 @@
     "zones": [
       {
         "zone": "Morning",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Morning",
         "pokemon": [
           {
@@ -87,7 +87,7 @@
       },
       {
         "zone": "Day",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Day",
         "pokemon": [
           {
@@ -106,7 +106,7 @@
       },
       {
         "zone": "Night",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Night",
         "pokemon": [
           {
@@ -135,7 +135,7 @@
     "zones": [
       {
         "zone": "Morning",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Morning",
         "pokemon": [
           {
@@ -150,7 +150,7 @@
       },
       {
         "zone": "Day",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Day",
         "pokemon": [
           {
@@ -165,7 +165,7 @@
       },
       {
         "zone": "Night",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Night",
         "pokemon": [
           {
@@ -180,7 +180,7 @@
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Psyduck",
@@ -190,21 +190,29 @@
             "species": "Golduck",
             "rate": 10
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -218,7 +226,11 @@
             "species": "Seaking",
             "rate": 5
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       }
     ],
     "tmMoves": [
@@ -237,7 +249,7 @@
     "zones": [
       {
         "zone": "Morning",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Morning",
         "pokemon": [
           {
@@ -264,7 +276,7 @@
       },
       {
         "zone": "Day",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Day",
         "pokemon": [
           {
@@ -287,7 +299,7 @@
       },
       {
         "zone": "Night",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Night",
         "pokemon": [
           {
@@ -318,7 +330,7 @@
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Psyduck",
@@ -328,21 +340,29 @@
             "species": "Golduck",
             "rate": 10
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -352,7 +372,11 @@
             "species": "Goldeen",
             "rate": 45
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       }
     ]
   },
@@ -362,7 +386,7 @@
     "zones": [
       {
         "zone": "1F",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Zubat",
@@ -380,7 +404,7 @@
       },
       {
         "zone": "B1F",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Zubat",
@@ -402,7 +426,7 @@
       },
       {
         "zone": "B1F",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Psyduck",
@@ -420,21 +444,29 @@
             "species": "Golduck",
             "rate": 5
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "B1F",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "B1F",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -444,7 +476,11 @@
             "species": "Barboach",
             "rate": 45
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       }
     ],
     "tmMoves": [
@@ -487,7 +523,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Geodude",
@@ -512,7 +548,7 @@
     "zones": [
       {
         "zone": "South Morning",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Morning",
         "pokemon": [
           {
@@ -543,7 +579,7 @@
       },
       {
         "zone": "South Day",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Day",
         "pokemon": [
           {
@@ -570,7 +606,7 @@
       },
       {
         "zone": "South Night",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Night",
         "pokemon": [
           {
@@ -601,7 +637,7 @@
       },
       {
         "zone": "South",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Psyduck",
@@ -611,21 +647,29 @@
             "species": "Golduck",
             "rate": 10
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "South",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "South",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -635,11 +679,15 @@
             "species": "Goldeen",
             "rate": 45
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "North Morning",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Morning",
         "pokemon": [
           {
@@ -674,7 +722,7 @@
       },
       {
         "zone": "North Day",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Day",
         "pokemon": [
           {
@@ -705,7 +753,7 @@
       },
       {
         "zone": "North Night",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Night",
         "pokemon": [
           {
@@ -771,7 +819,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Zubat",
@@ -785,7 +833,7 @@
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Psyduck",
@@ -803,21 +851,29 @@
             "species": "Golduck",
             "rate": 5
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -827,7 +883,11 @@
             "species": "Barboach",
             "rate": 45
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       }
     ],
     "tmMoves": [
@@ -860,7 +920,7 @@
     "zones": [
       {
         "zone": "Morning",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Morning",
         "pokemon": [
           {
@@ -907,7 +967,7 @@
       },
       {
         "zone": "Day",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Day",
         "pokemon": [
           {
@@ -950,7 +1010,7 @@
       },
       {
         "zone": "Night",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Night",
         "pokemon": [
           {
@@ -1029,7 +1089,7 @@
     "zones": [
       {
         "zone": "South",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Shellos",
@@ -1051,7 +1111,7 @@
       },
       {
         "zone": "South",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Shellos",
@@ -1069,21 +1129,29 @@
             "species": "Tentacruel",
             "rate": 1
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "South",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "South",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -1093,11 +1161,15 @@
             "species": "Finneon",
             "rate": 45
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "North Morning",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Morning",
         "pokemon": [
           {
@@ -1136,7 +1208,7 @@
       },
       {
         "zone": "North Day",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Day",
         "pokemon": [
           {
@@ -1171,7 +1243,7 @@
       },
       {
         "zone": "North Night",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Night",
         "pokemon": [
           {
@@ -1210,7 +1282,7 @@
       },
       {
         "zone": "North",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Psyduck",
@@ -1220,21 +1292,29 @@
             "species": "Golduck",
             "rate": 10
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "North",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "North",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -1244,7 +1324,11 @@
             "species": "Barboach",
             "rate": 45
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       }
     ]
   },
@@ -1254,7 +1338,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Building",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Gastly",
@@ -1306,7 +1390,7 @@
     "zones": [
       {
         "zone": "Morning",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Morning",
         "pokemon": [
           {
@@ -1333,7 +1417,7 @@
       },
       {
         "zone": "Day",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Day",
         "pokemon": [
           {
@@ -1356,7 +1440,7 @@
       },
       {
         "zone": "Night",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Night",
         "pokemon": [
           {
@@ -1402,7 +1486,7 @@
     "zones": [
       {
         "zone": "1F",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Geodude",
@@ -1424,7 +1508,7 @@
       },
       {
         "zone": "B1F",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Bronzor",
@@ -1469,7 +1553,7 @@
     "zones": [
       {
         "zone": "Morning",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Morning",
         "pokemon": [
           {
@@ -1492,7 +1576,7 @@
       },
       {
         "zone": "Day",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Day",
         "pokemon": [
           {
@@ -1511,7 +1595,7 @@
       },
       {
         "zone": "Night",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Night",
         "pokemon": [
           {
@@ -1544,7 +1628,7 @@
     "zones": [
       {
         "zone": "Morning",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Morning",
         "pokemon": [
           {
@@ -1571,7 +1655,7 @@
       },
       {
         "zone": "Day",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Day",
         "pokemon": [
           {
@@ -1598,7 +1682,7 @@
       },
       {
         "zone": "Night",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Night",
         "pokemon": [
           {
@@ -1629,7 +1713,7 @@
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Psyduck",
@@ -1639,21 +1723,29 @@
             "species": "Golduck",
             "rate": 10
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -1663,7 +1755,11 @@
             "species": "Goldeen",
             "rate": 45
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       }
     ]
   },
@@ -1673,7 +1769,7 @@
     "zones": [
       {
         "zone": "Morning",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Morning",
         "pokemon": [
           {
@@ -1700,7 +1796,7 @@
       },
       {
         "zone": "Day",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Day",
         "pokemon": [
           {
@@ -1727,7 +1823,7 @@
       },
       {
         "zone": "Night",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Night",
         "pokemon": [
           {
@@ -1762,7 +1858,7 @@
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Psyduck",
@@ -1772,21 +1868,29 @@
             "species": "Golduck",
             "rate": 10
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -1796,7 +1900,11 @@
             "species": "Goldeen",
             "rate": 35
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       }
     ],
     "items": [
@@ -1825,7 +1933,7 @@
     "zones": [
       {
         "zone": "1F Morning",
-        "method": "Cave",
+        "method": "Standard",
         "time": "Morning",
         "pokemon": [
           {
@@ -1840,7 +1948,7 @@
       },
       {
         "zone": "1F Day",
-        "method": "Cave",
+        "method": "Standard",
         "time": "Day",
         "pokemon": [
           {
@@ -1855,7 +1963,7 @@
       },
       {
         "zone": "1F Night",
-        "method": "Cave",
+        "method": "Standard",
         "time": "Night",
         "pokemon": [
           {
@@ -1874,7 +1982,7 @@
       },
       {
         "zone": "2F Morning",
-        "method": "Cave",
+        "method": "Standard",
         "time": "Morning",
         "pokemon": [
           {
@@ -1889,7 +1997,7 @@
       },
       {
         "zone": "2F Day",
-        "method": "Cave",
+        "method": "Standard",
         "time": "Day",
         "pokemon": [
           {
@@ -1904,7 +2012,7 @@
       },
       {
         "zone": "2F Night",
-        "method": "Cave",
+        "method": "Standard",
         "time": "Night",
         "pokemon": [
           {
@@ -1923,7 +2031,7 @@
       },
       {
         "zone": "3F Morning",
-        "method": "Cave",
+        "method": "Standard",
         "time": "Morning",
         "pokemon": [
           {
@@ -1942,7 +2050,7 @@
       },
       {
         "zone": "3F Day",
-        "method": "Cave",
+        "method": "Standard",
         "time": "Day",
         "pokemon": [
           {
@@ -1961,7 +2069,7 @@
       },
       {
         "zone": "3F Night",
-        "method": "Cave",
+        "method": "Standard",
         "time": "Night",
         "pokemon": [
           {
@@ -1984,7 +2092,7 @@
       },
       {
         "zone": "4F Morning",
-        "method": "Cave",
+        "method": "Standard",
         "time": "Morning",
         "pokemon": [
           {
@@ -2003,7 +2111,7 @@
       },
       {
         "zone": "4F Day",
-        "method": "Cave",
+        "method": "Standard",
         "time": "Day",
         "pokemon": [
           {
@@ -2022,7 +2130,7 @@
       },
       {
         "zone": "4F Night",
-        "method": "Cave",
+        "method": "Standard",
         "time": "Night",
         "pokemon": [
           {
@@ -2045,7 +2153,7 @@
       },
       {
         "zone": "5F Morning",
-        "method": "Cave",
+        "method": "Standard",
         "time": "Morning",
         "pokemon": [
           {
@@ -2064,7 +2172,7 @@
       },
       {
         "zone": "5F Day",
-        "method": "Cave",
+        "method": "Standard",
         "time": "Day",
         "pokemon": [
           {
@@ -2083,7 +2191,7 @@
       },
       {
         "zone": "5F Night",
-        "method": "Cave",
+        "method": "Standard",
         "time": "Night",
         "pokemon": [
           {
@@ -2133,7 +2241,7 @@
     "zones": [
       {
         "zone": "South Morning",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Morning",
         "pokemon": [
           {
@@ -2164,7 +2272,7 @@
       },
       {
         "zone": "South Day",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Day",
         "pokemon": [
           {
@@ -2195,7 +2303,7 @@
       },
       {
         "zone": "South Night",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Night",
         "pokemon": [
           {
@@ -2234,7 +2342,7 @@
       },
       {
         "zone": "North Morning",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Morning",
         "pokemon": [
           {
@@ -2265,7 +2373,7 @@
       },
       {
         "zone": "North Day",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Day",
         "pokemon": [
           {
@@ -2296,7 +2404,7 @@
       },
       {
         "zone": "North Night",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Night",
         "pokemon": [
           {
@@ -2335,7 +2443,7 @@
       },
       {
         "zone": "North",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Psyduck",
@@ -2345,21 +2453,29 @@
             "species": "Golduck",
             "rate": 10
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "North",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "North",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -2373,7 +2489,11 @@
             "species": "Whiscash",
             "rate": 5
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       }
     ],
     "tmMoves": [
@@ -2410,7 +2530,7 @@
     "zones": [
       {
         "zone": "North Morning",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Morning",
         "pokemon": [
           {
@@ -2433,7 +2553,7 @@
       },
       {
         "zone": "North Day",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Day",
         "pokemon": [
           {
@@ -2460,7 +2580,7 @@
       },
       {
         "zone": "North Night",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Night",
         "pokemon": [
           {
@@ -2483,7 +2603,7 @@
       },
       {
         "zone": "North",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Psyduck",
@@ -2493,21 +2613,29 @@
             "species": "Golduck",
             "rate": 10
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "North",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "North",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -2517,11 +2645,15 @@
             "species": "Goldeen",
             "rate": 45
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "South",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Shellos",
@@ -2543,7 +2675,7 @@
       },
       {
         "zone": "South",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Shellos",
@@ -2561,21 +2693,29 @@
             "species": "Tentacruel",
             "rate": 1
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "South",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "South",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -2585,7 +2725,11 @@
             "species": "Remoraid",
             "rate": 45
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       }
     ],
     "tmMoves": [
@@ -2605,7 +2749,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Wooper",
@@ -2615,21 +2759,29 @@
             "species": "Quagsire",
             "rate": 10
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -2639,11 +2791,15 @@
             "species": "Barboach",
             "rate": 45
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "Morning",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Morning",
         "pokemon": [
           {
@@ -2674,7 +2830,7 @@
       },
       {
         "zone": "Day",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Day",
         "pokemon": [
           {
@@ -2705,7 +2861,7 @@
       },
       {
         "zone": "Night",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Night",
         "pokemon": [
           {
@@ -2745,7 +2901,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Wooper",
@@ -2755,21 +2911,29 @@
             "species": "Quagsire",
             "rate": 10
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -2779,11 +2943,15 @@
             "species": "Barboach",
             "rate": 45
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "Morning",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Morning",
         "pokemon": [
           {
@@ -2810,7 +2978,7 @@
       },
       {
         "zone": "Day",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Day",
         "pokemon": [
           {
@@ -2837,7 +3005,7 @@
       },
       {
         "zone": "Night",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Night",
         "pokemon": [
           {
@@ -2881,7 +3049,7 @@
     "zones": [
       {
         "zone": "All area",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Wooper",
@@ -2891,21 +3059,29 @@
             "species": "Quagsire",
             "rate": 10
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -2915,11 +3091,15 @@
             "species": "Barboach",
             "rate": 45
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "Morning",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Morning",
         "pokemon": [
           {
@@ -2946,7 +3126,7 @@
       },
       {
         "zone": "Day",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Day",
         "pokemon": [
           {
@@ -2973,7 +3153,7 @@
       },
       {
         "zone": "Night",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Night",
         "pokemon": [
           {
@@ -3010,7 +3190,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Wooper",
@@ -3020,21 +3200,29 @@
             "species": "Quagsire",
             "rate": 10
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -3044,11 +3232,15 @@
             "species": "Barboach",
             "rate": 45
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "Morning",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Morning",
         "pokemon": [
           {
@@ -3075,7 +3267,7 @@
       },
       {
         "zone": "Day",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Day",
         "pokemon": [
           {
@@ -3102,7 +3294,7 @@
       },
       {
         "zone": "Night",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Night",
         "pokemon": [
           {
@@ -3142,7 +3334,7 @@
     "zones": [
       {
         "zone": "Morning",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Morning",
         "pokemon": [
           {
@@ -3165,7 +3357,7 @@
       },
       {
         "zone": "Day",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Day",
         "pokemon": [
           {
@@ -3188,7 +3380,7 @@
       },
       {
         "zone": "Night",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Night",
         "pokemon": [
           {
@@ -3207,7 +3399,7 @@
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacool",
@@ -3229,21 +3421,29 @@
             "species": "Gastrodon",
             "rate": 1
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -3253,7 +3453,11 @@
             "species": "Remoraid",
             "rate": 45
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       }
     ],
     "tmMoves": [
@@ -3277,7 +3481,7 @@
     "zones": [
       {
         "zone": "Morning",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Morning",
         "pokemon": [
           {
@@ -3300,7 +3504,7 @@
       },
       {
         "zone": "Day",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Day",
         "pokemon": [
           {
@@ -3323,7 +3527,7 @@
       },
       {
         "zone": "Night",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Night",
         "pokemon": [
           {
@@ -3350,7 +3554,7 @@
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Psyduck",
@@ -3360,21 +3564,29 @@
             "species": "Golduck",
             "rate": 10
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -3384,7 +3596,11 @@
             "species": "Goldeen",
             "rate": 45
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       }
     ],
     "items": [
@@ -3399,7 +3615,7 @@
     "zones": [
       {
         "zone": "Morning",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Morning",
         "pokemon": [
           {
@@ -3426,7 +3642,7 @@
       },
       {
         "zone": "Day",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Day",
         "pokemon": [
           {
@@ -3449,7 +3665,7 @@
       },
       {
         "zone": "Night",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Night",
         "pokemon": [
           {
@@ -3500,7 +3716,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Staravia",
@@ -3522,7 +3738,7 @@
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Psyduck",
@@ -3532,21 +3748,29 @@
             "species": "Golduck",
             "rate": 10
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -3560,7 +3784,11 @@
             "species": "Seaking",
             "rate": 5
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       }
     ],
     "tmMoves": [
@@ -3573,7 +3801,7 @@
     "zones": [
       {
         "zone": "Morning",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Morning",
         "pokemon": [
           {
@@ -3604,7 +3832,7 @@
       },
       {
         "zone": "Day",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Day",
         "pokemon": [
           {
@@ -3635,7 +3863,7 @@
       },
       {
         "zone": "Night",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Night",
         "pokemon": [
           {
@@ -3679,7 +3907,7 @@
     "zones": [
       {
         "zone": "West Morning",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Morning",
         "pokemon": [
           {
@@ -3706,7 +3934,7 @@
       },
       {
         "zone": "West Day",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Day",
         "pokemon": [
           {
@@ -3733,7 +3961,7 @@
       },
       {
         "zone": "West Night",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Night",
         "pokemon": [
           {
@@ -3768,7 +3996,7 @@
       },
       {
         "zone": "East Morning",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Morning",
         "pokemon": [
           {
@@ -3795,7 +4023,7 @@
       },
       {
         "zone": "East Day",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Day",
         "pokemon": [
           {
@@ -3822,7 +4050,7 @@
       },
       {
         "zone": "East Night",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Night",
         "pokemon": [
           {
@@ -3880,7 +4108,7 @@
     "zones": [
       {
         "zone": "Morning",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Morning",
         "pokemon": [
           {
@@ -3903,7 +4131,7 @@
       },
       {
         "zone": "Day",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Day",
         "pokemon": [
           {
@@ -3926,7 +4154,7 @@
       },
       {
         "zone": "Night",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Night",
         "pokemon": [
           {
@@ -3945,7 +4173,7 @@
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacool",
@@ -3963,21 +4191,29 @@
             "species": "Gastrodon",
             "rate": 1
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -3987,7 +4223,11 @@
             "species": "Finneon",
             "rate": 45
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       }
     ]
   },
@@ -3997,7 +4237,7 @@
     "zones": [
       {
         "zone": "Exterior",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Wingull",
@@ -4015,21 +4255,29 @@
             "species": "Tentacruel",
             "rate": 1
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "Exterior",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "Exterior",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -4039,11 +4287,15 @@
             "species": "Finneon",
             "rate": 45
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "Interior 1F",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Graveler",
@@ -4069,7 +4321,7 @@
       },
       {
         "zone": "Interior B1F",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Golbat",
@@ -4087,7 +4339,7 @@
       },
       {
         "zone": "Interior B2F",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Golbat",
@@ -4136,7 +4388,7 @@
     "zones": [
       {
         "zone": "Morning",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Morning",
         "pokemon": [
           {
@@ -4159,7 +4411,7 @@
       },
       {
         "zone": "Day",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Day",
         "pokemon": [
           {
@@ -4182,7 +4434,7 @@
       },
       {
         "zone": "Night",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Night",
         "pokemon": [
           {
@@ -4228,7 +4480,7 @@
     "zones": [
       {
         "zone": "Morning",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Morning",
         "pokemon": [
           {
@@ -4247,7 +4499,7 @@
       },
       {
         "zone": "Day",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Day",
         "pokemon": [
           {
@@ -4266,7 +4518,7 @@
       },
       {
         "zone": "Night",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Night",
         "pokemon": [
           {
@@ -4303,7 +4555,7 @@
     "zones": [
       {
         "zone": "Morning",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Morning",
         "pokemon": [
           {
@@ -4322,7 +4574,7 @@
       },
       {
         "zone": "Day",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Day",
         "pokemon": [
           {
@@ -4341,7 +4593,7 @@
       },
       {
         "zone": "Night",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Night",
         "pokemon": [
           {
@@ -4379,7 +4631,7 @@
     "zones": [
       {
         "zone": "Morning",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Morning",
         "pokemon": [
           {
@@ -4406,7 +4658,7 @@
       },
       {
         "zone": "Day",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Day",
         "pokemon": [
           {
@@ -4433,7 +4685,7 @@
       },
       {
         "zone": "Night",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Night",
         "pokemon": [
           {
@@ -4464,7 +4716,7 @@
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Psyduck",
@@ -4474,21 +4726,29 @@
             "species": "Golduck",
             "rate": 10
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -4502,7 +4762,11 @@
             "species": "Seaking",
             "rate": 5
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       }
     ],
     "tmMoves": [
@@ -4515,7 +4779,7 @@
     "zones": [
       {
         "zone": "Morning",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Morning",
         "pokemon": [
           {
@@ -4554,7 +4818,7 @@
       },
       {
         "zone": "Day",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Day",
         "pokemon": [
           {
@@ -4593,7 +4857,7 @@
       },
       {
         "zone": "Night",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Night",
         "pokemon": [
           {
@@ -4628,7 +4892,7 @@
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacool",
@@ -4646,21 +4910,29 @@
             "species": "Pelipper",
             "rate": 1
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -4670,7 +4942,11 @@
             "species": "Remoraid",
             "rate": 45
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       }
     ],
     "tmMoves": [
@@ -4683,7 +4959,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacool",
@@ -4701,21 +4977,29 @@
             "species": "Pelipper",
             "rate": 1
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -4729,7 +5013,11 @@
             "species": "Lumineon",
             "rate": 5
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       }
     ]
   },
@@ -4739,7 +5027,7 @@
     "zones": [
       {
         "zone": "Morning",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Morning",
         "pokemon": [
           {
@@ -4762,7 +5050,7 @@
       },
       {
         "zone": "Day",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Day",
         "pokemon": [
           {
@@ -4785,7 +5073,7 @@
       },
       {
         "zone": "Night",
-        "method": "Grass",
+        "method": "Standard",
         "time": "Night",
         "pokemon": [
           {
@@ -4808,7 +5096,7 @@
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacool",
@@ -4826,21 +5114,29 @@
             "species": "Pelipper",
             "rate": 1
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -4854,7 +5150,11 @@
             "species": "Lumineon",
             "rate": 5
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       }
     ],
     "items": [
@@ -4925,7 +5225,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Psyduck",
@@ -4935,21 +5235,29 @@
             "species": "Golduck",
             "rate": 10
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -4959,7 +5267,11 @@
             "species": "Barboach",
             "rate": 45
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "",
@@ -5005,7 +5317,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Shinx",
@@ -5027,7 +5339,7 @@
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacool",
@@ -5045,21 +5357,29 @@
             "species": "Gastrodon",
             "rate": 9
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -5069,7 +5389,11 @@
             "species": "Finneon",
             "rate": 45
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       }
     ],
     "tmMoves": [
@@ -5097,7 +5421,7 @@
     "zones": [
       {
         "zone": "1F Morning",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Zubat",
@@ -5135,7 +5459,7 @@
       },
       {
         "zone": "1F Day",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Zubat",
@@ -5169,7 +5493,7 @@
       },
       {
         "zone": "1F Night",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Zubat",
@@ -5207,7 +5531,7 @@
       },
       {
         "zone": "B1F Morning",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Clefairy",
@@ -5249,7 +5573,7 @@
       },
       {
         "zone": "B1F Day",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Golbat",
@@ -5287,7 +5611,7 @@
       },
       {
         "zone": "B1F Night",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Clefairy",
@@ -5329,7 +5653,7 @@
       },
       {
         "zone": "B1F",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Zubat",
@@ -5339,21 +5663,29 @@
             "species": "Golbat",
             "rate": 10
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "B1F",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "B1F",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -5363,7 +5695,11 @@
             "species": "Barboach",
             "rate": 45
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       }
     ],
     "items": [
@@ -5475,7 +5811,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Unknown",
@@ -5543,7 +5879,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Geodude",
@@ -5566,7 +5902,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacool",
@@ -5588,21 +5924,29 @@
             "species": "Gastrodon",
             "rate": 1
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -5612,7 +5956,11 @@
             "species": "Remoraid",
             "rate": 45
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       }
     ],
     "tmMoves": [
@@ -5640,7 +5988,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Psyduck",
@@ -5650,21 +5998,29 @@
             "species": "Golduck",
             "rate": 10
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -5674,7 +6030,11 @@
             "species": "Goldeen",
             "rate": 45
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       }
     ],
     "tmMoves": [
@@ -5694,7 +6054,7 @@
     "zones": [
       {
         "zone": "Morning",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magnemite",
@@ -5716,7 +6076,7 @@
       },
       {
         "zone": "Day",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magnemite",
@@ -5738,7 +6098,7 @@
       },
       {
         "zone": "Night",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magnemite",
@@ -5760,7 +6120,7 @@
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacool",
@@ -5778,21 +6138,29 @@
             "species": "Gastrodon",
             "rate": 1
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -5802,7 +6170,11 @@
             "species": "Finneon",
             "rate": 45
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       }
     ],
     "items": [
@@ -5818,7 +6190,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacool",
@@ -5836,21 +6208,29 @@
             "species": "Pelipper",
             "rate": 1
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -5864,7 +6244,11 @@
             "species": "Lumineon",
             "rate": 5
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       }
     ],
     "items": [
@@ -5877,7 +6261,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacool",
@@ -5895,21 +6279,29 @@
             "species": "Gastrodon",
             "rate": 1
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -5919,7 +6311,11 @@
             "species": "Finneon",
             "rate": 45
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       }
     ],
     "tmMoves": [
@@ -5940,7 +6336,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacool",
@@ -5958,21 +6354,29 @@
             "species": "Pelipper",
             "rate": 1
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -5982,7 +6386,11 @@
             "species": "Remoraid",
             "rate": 45
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       }
     ],
     "tmMoves": [
@@ -6012,7 +6420,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacruel",
@@ -6026,21 +6434,29 @@
             "species": "Mantyke",
             "rate": 10
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -6054,7 +6470,11 @@
             "species": "Octillery",
             "rate": 5
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       }
     ],
     "tmMoves": [
@@ -6067,7 +6487,7 @@
     "zones": [
       {
         "zone": "1F Morning",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Golbat",
@@ -6101,7 +6521,7 @@
       },
       {
         "zone": "1F Day",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Golbat",
@@ -6135,7 +6555,7 @@
       },
       {
         "zone": "1F Night",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Golbat",
@@ -6169,7 +6589,7 @@
       },
       {
         "zone": "2F Morning",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Golbat",
@@ -6199,7 +6619,7 @@
       },
       {
         "zone": "2F Day",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Golbat",
@@ -6229,7 +6649,7 @@
       },
       {
         "zone": "2F Night",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Golbat",
@@ -6259,7 +6679,7 @@
       },
       {
         "zone": "B1F Morning",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Golbat",
@@ -6293,7 +6713,7 @@
       },
       {
         "zone": "B1F Day",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Golbat",
@@ -6327,7 +6747,7 @@
       },
       {
         "zone": "B1F Night",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Golbat",
@@ -6361,7 +6781,7 @@
       },
       {
         "zone": "B1F",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Golbat",
@@ -6371,27 +6791,39 @@
             "species": "Floatzel",
             "rate": 90
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "B1F",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "B1F",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       }
     ],
     "items": [
@@ -6412,7 +6844,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacruel",
@@ -6426,21 +6858,29 @@
             "species": "Pelipper",
             "rate": 35
           }
-        ]
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -6450,7 +6890,11 @@
             "species": "Remoraid",
             "rate": 45
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       }
     ]
   },
