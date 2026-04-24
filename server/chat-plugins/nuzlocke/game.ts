@@ -2,13 +2,12 @@
  * Nuzlocke Simulator — Game State
  */
 
-import { saveGameToRedis, deleteGameFromRedis, loadGameFromRedis, pingRedis } from './redis-store';
+import { saveGameToRedis, deleteGameFromRedis, loadGameFromRedis, pingRedis, saveBeatenScenario, loadBeatenScenarios } from './redis-store';
 import { logNuzlockeError } from './error-logger';
 import { resolveOneEncounter, resolveChoiceGift, getAvailablePool, getGiftPool, buildStarterPokemon } from './encounters';
 import { getLegalMoves, type LegalMove } from './learnsets';
 import { listScenarios, getScenario } from './scenarios';
-import type { Scenario, Segment, RouteEncounter, OwnedPokemon, DeadPokemon, NuzlockeScreen, NuzlockeScenarioCard, EvoOption, CompletedRun } from './types';
-export type { CompletedRun };
+import type { Scenario, Segment, RouteEncounter, OwnedPokemon, DeadPokemon, NuzlockeScreen, NuzlockeScenarioCard, EvoOption } from './types';
 
 /** Returns all wild encounters for a segment. */
 export function flatEncounters(segment: Segment): RouteEncounter[] {
@@ -16,6 +15,13 @@ export function flatEncounters(segment: Segment): RouteEncounter[] {
 }
 
 export const nuzlockeGames = new Map<ID, NuzlockeGame>();
+
+const beatenScenariosCache = new Map<ID, string[]>();
+
+export async function loadBeatenScenariosForUser(userId: ID): Promise<void> {
+	const ids = await loadBeatenScenarios(userId);
+	beatenScenariosCache.set(userId, ids);
+}
 
 /** Pending randomizer previews: computed before run start so the user can see randomized starters. */
 export const pendingRandomizers = new Map<ID, {
@@ -44,7 +50,6 @@ export class NuzlockeGame {
 	lockedRoutes: RouteEncounter[];     // auto-carried routes where all zones were inaccessible at segment end
 	settings: { ai: 'basic' | 'smart' | 'competitive'; generation: number };
 	partyErrors: Map<string, string>;
-	lastCompletedRun: CompletedRun | null;
 	randomizerConfig: import('./types').RandomizerConfig | null;
 	randomizerMappings: import('./types').RandomizerMappings | null;
 
@@ -68,7 +73,6 @@ export class NuzlockeGame {
 		this.lockedRoutes = [];
 		this.settings = { ai: 'basic', generation: 9 };
 		this.partyErrors = new Map();
-		this.lastCompletedRun = null;
 		this.randomizerConfig = null;
 		this.randomizerMappings = null;
 	}
@@ -535,12 +539,6 @@ export interface NuzlockePanelPayload {
 
 	// Active battle room (null when no battle in progress)
 	battleRoomId: string | null;
-
-	// Set when a run just ended — client saves this to localStorage
-	completedRun: CompletedRun | null;
-
-	// Party snapshot going into the final battle (populated for both victory and wipe runs)
-	finalParty: { species: string; nickname: string; alive: boolean }[] | null;
 }
 
 // Lightweight run summary delivered globally (|updatenuzlocke| message).
@@ -558,6 +556,7 @@ export interface NuzlockeMenuPayload {
 		ai: string;
 	} | null;
 	scenarios: NuzlockeScenarioCard[];
+	beatenScenarios: string[];
 	/** Set while the user has a pending randomizer preview but hasn't started the run yet. */
 	randomizerPreview: {
 		scenarioId: string;
@@ -582,6 +581,7 @@ export function pushNuzlockeStatus(userID: ID, game: NuzlockeGame | null) {
 			ai: game.settings.ai,
 		} : null,
 		scenarios: buildScenarioCards(),
+		beatenScenarios: beatenScenariosCache.get(userID) ?? [],
 		randomizerPreview: pending ? {
 			scenarioId: pending.scenarioId,
 			starters: pending.mappings.starterSpecies,
@@ -704,8 +704,6 @@ export function serializeGameState(game: NuzlockeGame): NuzlockePanelPayload {
 		segmentNames,
 		scenarios,
 		battleRoomId: game.battleRoomId,
-		completedRun: game.lastCompletedRun,
-		finalParty: game.lastCompletedRun?.finalParty ?? null,
 	};
 }
 
@@ -731,28 +729,15 @@ export function navigateToNuzlocke(userID: ID) {
 	}
 }
 
-export function recordCompletedRun(
-	game: NuzlockeGame,
-	outcome: 'victory' | 'wipe',
-	finalBattle?: string,
-	finalPartySnapshot?: { species: string; nickname: string; alive: boolean }[],
-) {
-	const run: CompletedRun = {
-		id: `${game.user}-${Date.now()}`,
-		userId: game.user,
-		scenarioId: game.scenario.id,
-		scenarioName: game.scenario.name,
-		outcome,
-		date: new Date().toISOString(),
-		deathCount: game.graveyard.length,
-		graveyard: [...game.graveyard],
-		survivors: (finalPartySnapshot ?? []).filter(p => p.alive).map(p => ({ species: p.species, nickname: p.nickname })),
-		finalParty: finalPartySnapshot ?? [],
-		finalBattle: finalBattle ?? game.currentBattle?.trainer ?? '',
-		segmentIndex: game.currentSegmentIndex,
-		ai: game.settings.ai,
-	};
-	game.lastCompletedRun = run;
+export function recordCompletedRun(game: NuzlockeGame, outcome: 'victory' | 'wipe') {
+	if (outcome === 'victory') {
+		const cached = beatenScenariosCache.get(game.user) ?? [];
+		if (!cached.includes(game.scenario.id)) {
+			cached.push(game.scenario.id);
+			beatenScenariosCache.set(game.user, cached);
+		}
+		void saveBeatenScenario(game.user, game.scenario.id);
+	}
 }
 
 export { pingRedis } from './redis-store';

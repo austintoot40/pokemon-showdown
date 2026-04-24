@@ -257,7 +257,7 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 			if (game.curRoom !== 'battle' || game.inBattle || game.lastBattleResult?.won !== false) {
 				return this.errorReply('Can only give up after losing a battle.');
 			}
-			recordCompletedRun(game, 'wipe', game.lastBattleResult.trainerName);
+			recordCompletedRun(game, 'wipe');
 			pushNuzlockeState(user.id, game);
 			nuzlockeGames.delete(user.id);
 			deleteGame(user.id);

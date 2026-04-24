@@ -222,7 +222,7 @@ export const battleHandlers: Chat.Handlers = {
 		// Check for total wipe — push completed run to client then close the panel
 		const alive = game.box.filter(p => p.alive);
 		if (alive.length === 0) {
-			recordCompletedRun(game, 'wipe', game.currentBattle?.trainer, finalPartySnapshot);
+			recordCompletedRun(game, 'wipe');
 			pushNuzlockeState(humanId as ID, game);
 			nuzlockeGames.delete(humanId as ID);
 			void deleteGame(humanId as ID);
@@ -239,7 +239,7 @@ export const battleHandlers: Chat.Handlers = {
 		if (playerWon) {
 			const dest = game.advanceAfterWin();
 			if (dest === 'done') {
-				recordCompletedRun(game, 'victory', trainerName, finalPartySnapshot);
+				recordCompletedRun(game, 'victory');
 				pushNuzlockeState(humanId as ID, game);
 				nuzlockeGames.delete(humanId as ID);
 				void deleteGame(humanId as ID);

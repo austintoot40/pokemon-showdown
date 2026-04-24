@@ -4,28 +4,8 @@
     "name": "Sinnoh Route 201",
     "zones": [
       {
-        "zone": "Morning",
+        "zone": "",
         "method": "Standard",
-        "time": "Morning",
-        "pokemon": [
-          {
-            "species": "Starly",
-            "rate": 50
-          },
-          {
-            "species": "Bidoof",
-            "rate": 40
-          },
-          {
-            "species": "Kricketot",
-            "rate": 10
-          }
-        ]
-      },
-      {
-        "zone": "Day",
-        "method": "Standard",
-        "time": "Day",
         "pokemon": [
           {
             "species": "Starly",
@@ -34,25 +14,6 @@
           {
             "species": "Bidoof",
             "rate": 50
-          }
-        ]
-      },
-      {
-        "zone": "Night",
-        "method": "Standard",
-        "time": "Night",
-        "pokemon": [
-          {
-            "species": "Bidoof",
-            "rate": 50
-          },
-          {
-            "species": "Starly",
-            "rate": 40
-          },
-          {
-            "species": "Kricketot",
-            "rate": 10
           }
         ]
       }
@@ -63,32 +24,8 @@
     "name": "Sinnoh Route 202",
     "zones": [
       {
-        "zone": "Morning",
+        "zone": "",
         "method": "Standard",
-        "time": "Morning",
-        "pokemon": [
-          {
-            "species": "Bidoof",
-            "rate": 40
-          },
-          {
-            "species": "Shinx",
-            "rate": 30
-          },
-          {
-            "species": "Starly",
-            "rate": 20
-          },
-          {
-            "species": "Kricketot",
-            "rate": 10
-          }
-        ]
-      },
-      {
-        "zone": "Day",
-        "method": "Standard",
-        "time": "Day",
         "pokemon": [
           {
             "species": "Bidoof",
@@ -101,29 +38,6 @@
           {
             "species": "Starly",
             "rate": 20
-          }
-        ]
-      },
-      {
-        "zone": "Night",
-        "method": "Standard",
-        "time": "Night",
-        "pokemon": [
-          {
-            "species": "Bidoof",
-            "rate": 50
-          },
-          {
-            "species": "Shinx",
-            "rate": 30
-          },
-          {
-            "species": "Starly",
-            "rate": 10
-          },
-          {
-            "species": "Kricketot",
-            "rate": 10
           }
         ]
       }
@@ -134,9 +48,8 @@
     "name": "Lake Verity",
     "zones": [
       {
-        "zone": "Morning",
+        "zone": "",
         "method": "Standard",
-        "time": "Morning",
         "pokemon": [
           {
             "species": "Starly",
@@ -145,36 +58,6 @@
           {
             "species": "Bidoof",
             "rate": 50
-          }
-        ]
-      },
-      {
-        "zone": "Day",
-        "method": "Standard",
-        "time": "Day",
-        "pokemon": [
-          {
-            "species": "Starly",
-            "rate": 50
-          },
-          {
-            "species": "Bidoof",
-            "rate": 50
-          }
-        ]
-      },
-      {
-        "zone": "Night",
-        "method": "Standard",
-        "time": "Night",
-        "pokemon": [
-          {
-            "species": "Bidoof",
-            "rate": 60
-          },
-          {
-            "species": "Starly",
-            "rate": 40
           }
         ]
       },
@@ -248,36 +131,8 @@
     "name": "Sinnoh Route 203",
     "zones": [
       {
-        "zone": "Morning",
+        "zone": "",
         "method": "Standard",
-        "time": "Morning",
-        "pokemon": [
-          {
-            "species": "Starly",
-            "rate": 35
-          },
-          {
-            "species": "Shinx",
-            "rate": 25
-          },
-          {
-            "species": "Abra",
-            "rate": 15
-          },
-          {
-            "species": "Bidoof",
-            "rate": 15
-          },
-          {
-            "species": "Kricketot",
-            "rate": 10
-          }
-        ]
-      },
-      {
-        "zone": "Day",
-        "method": "Standard",
-        "time": "Day",
         "pokemon": [
           {
             "species": "Starly",
@@ -294,37 +149,6 @@
           {
             "species": "Bidoof",
             "rate": 25
-          }
-        ]
-      },
-      {
-        "zone": "Night",
-        "method": "Standard",
-        "time": "Night",
-        "pokemon": [
-          {
-            "species": "Starly",
-            "rate": 25
-          },
-          {
-            "species": "Shinx",
-            "rate": 25
-          },
-          {
-            "species": "Abra",
-            "rate": 15
-          },
-          {
-            "species": "Bidoof",
-            "rate": 15
-          },
-          {
-            "species": "Zubat",
-            "rate": 10
-          },
-          {
-            "species": "Kricketot",
-            "rate": 10
           }
         ]
       },
@@ -547,40 +371,8 @@
     "name": "Sinnoh Route 204",
     "zones": [
       {
-        "zone": "South Morning",
-        "method": "Standard",
-        "time": "Morning",
-        "pokemon": [
-          {
-            "species": "Starly",
-            "rate": 25
-          },
-          {
-            "species": "Bidoof",
-            "rate": 25
-          },
-          {
-            "species": "Shinx",
-            "rate": 15
-          },
-          {
-            "species": "Budew",
-            "rate": 15
-          },
-          {
-            "species": "Wurmple",
-            "rate": 10
-          },
-          {
-            "species": "Kricketot",
-            "rate": 10
-          }
-        ]
-      },
-      {
         "zone": "South Day",
         "method": "Standard",
-        "time": "Day",
         "pokemon": [
           {
             "species": "Starly",
@@ -600,37 +392,6 @@
           },
           {
             "species": "Wurmple",
-            "rate": 10
-          }
-        ]
-      },
-      {
-        "zone": "South Night",
-        "method": "Standard",
-        "time": "Night",
-        "pokemon": [
-          {
-            "species": "Starly",
-            "rate": 25
-          },
-          {
-            "species": "Bidoof",
-            "rate": 25
-          },
-          {
-            "species": "Shinx",
-            "rate": 15
-          },
-          {
-            "species": "Budew",
-            "rate": 15
-          },
-          {
-            "species": "Zubat",
-            "rate": 10
-          },
-          {
-            "species": "Kricketot",
             "rate": 10
           }
         ]
@@ -686,44 +447,8 @@
         }
       },
       {
-        "zone": "North Morning",
-        "method": "Standard",
-        "time": "Morning",
-        "pokemon": [
-          {
-            "species": "Starly",
-            "rate": 25
-          },
-          {
-            "species": "Bidoof",
-            "rate": 25
-          },
-          {
-            "species": "Shinx",
-            "rate": 15
-          },
-          {
-            "species": "Budew",
-            "rate": 15
-          },
-          {
-            "species": "Wurmple",
-            "rate": 10
-          },
-          {
-            "species": "Kricketot",
-            "rate": 10
-          }
-        ],
-        "requires": {
-          "type": "battle",
-          "name": "roark"
-        }
-      },
-      {
         "zone": "North Day",
         "method": "Standard",
-        "time": "Day",
         "pokemon": [
           {
             "species": "Starly",
@@ -743,41 +468,6 @@
           },
           {
             "species": "Wurmple",
-            "rate": 10
-          }
-        ],
-        "requires": {
-          "type": "battle",
-          "name": "roark"
-        }
-      },
-      {
-        "zone": "North Night",
-        "method": "Standard",
-        "time": "Night",
-        "pokemon": [
-          {
-            "species": "Starly",
-            "rate": 25
-          },
-          {
-            "species": "Bidoof",
-            "rate": 25
-          },
-          {
-            "species": "Shinx",
-            "rate": 15
-          },
-          {
-            "species": "Budew",
-            "rate": 15
-          },
-          {
-            "species": "Zubat",
-            "rate": 10
-          },
-          {
-            "species": "Kricketot",
             "rate": 10
           }
         ],
@@ -919,56 +609,8 @@
     "name": "Eterna Forest",
     "zones": [
       {
-        "zone": "Morning",
+        "zone": "",
         "method": "Standard",
-        "time": "Morning",
-        "pokemon": [
-          {
-            "species": "Budew",
-            "rate": 30
-          },
-          {
-            "species": "Buneary",
-            "rate": 24
-          },
-          {
-            "species": "Wurmple",
-            "rate": 10
-          },
-          {
-            "species": "Bidoof",
-            "rate": 10
-          },
-          {
-            "species": "Kricketot",
-            "rate": 10
-          },
-          {
-            "species": "Silcoon",
-            "rate": 5
-          },
-          {
-            "species": "Cascoon",
-            "rate": 5
-          },
-          {
-            "species": "Gastly",
-            "rate": 4
-          },
-          {
-            "species": "Beautifly",
-            "rate": 1
-          },
-          {
-            "species": "Dustox",
-            "rate": 1
-          }
-        ]
-      },
-      {
-        "zone": "Day",
-        "method": "Standard",
-        "time": "Day",
         "pokemon": [
           {
             "species": "Budew",
@@ -984,53 +626,6 @@
           },
           {
             "species": "Bidoof",
-            "rate": 10
-          },
-          {
-            "species": "Silcoon",
-            "rate": 5
-          },
-          {
-            "species": "Cascoon",
-            "rate": 5
-          },
-          {
-            "species": "Gastly",
-            "rate": 4
-          },
-          {
-            "species": "Beautifly",
-            "rate": 1
-          },
-          {
-            "species": "Dustox",
-            "rate": 1
-          }
-        ]
-      },
-      {
-        "zone": "Night",
-        "method": "Standard",
-        "time": "Night",
-        "pokemon": [
-          {
-            "species": "Budew",
-            "rate": 30
-          },
-          {
-            "species": "Buneary",
-            "rate": 24
-          },
-          {
-            "species": "Hoothoot",
-            "rate": 10
-          },
-          {
-            "species": "Bidoof",
-            "rate": 10
-          },
-          {
-            "species": "Kricketot",
             "rate": 10
           },
           {
@@ -1168,48 +763,8 @@
         }
       },
       {
-        "zone": "North Morning",
-        "method": "Standard",
-        "time": "Morning",
-        "pokemon": [
-          {
-            "species": "Bidoof",
-            "rate": 30
-          },
-          {
-            "species": "Budew",
-            "rate": 28
-          },
-          {
-            "species": "Wurmple",
-            "rate": 10
-          },
-          {
-            "species": "Silcoon",
-            "rate": 10
-          },
-          {
-            "species": "Cascoon",
-            "rate": 10
-          },
-          {
-            "species": "Kricketot",
-            "rate": 10
-          },
-          {
-            "species": "Beautifly",
-            "rate": 1
-          },
-          {
-            "species": "Dustox",
-            "rate": 1
-          }
-        ]
-      },
-      {
         "zone": "North Day",
         "method": "Standard",
-        "time": "Day",
         "pokemon": [
           {
             "species": "Budew",
@@ -1229,45 +784,6 @@
           },
           {
             "species": "Cascoon",
-            "rate": 10
-          },
-          {
-            "species": "Beautifly",
-            "rate": 1
-          },
-          {
-            "species": "Dustox",
-            "rate": 1
-          }
-        ]
-      },
-      {
-        "zone": "North Night",
-        "method": "Standard",
-        "time": "Night",
-        "pokemon": [
-          {
-            "species": "Bidoof",
-            "rate": 30
-          },
-          {
-            "species": "Budew",
-            "rate": 28
-          },
-          {
-            "species": "Hoothoot",
-            "rate": 10
-          },
-          {
-            "species": "Silcoon",
-            "rate": 10
-          },
-          {
-            "species": "Cascoon",
-            "rate": 10
-          },
-          {
-            "species": "Kricketot",
             "rate": 10
           },
           {
@@ -1389,36 +905,8 @@
     "name": "Sinnoh Route 206",
     "zones": [
       {
-        "zone": "Morning",
+        "zone": "",
         "method": "Standard",
-        "time": "Morning",
-        "pokemon": [
-          {
-            "species": "Geodude",
-            "rate": 30
-          },
-          {
-            "species": "Machop",
-            "rate": 20
-          },
-          {
-            "species": "Ponyta",
-            "rate": 20
-          },
-          {
-            "species": "Gligar",
-            "rate": 20
-          },
-          {
-            "species": "Kricketune",
-            "rate": 10
-          }
-        ]
-      },
-      {
-        "zone": "Day",
-        "method": "Standard",
-        "time": "Day",
         "pokemon": [
           {
             "species": "Geodude",
@@ -1435,37 +923,6 @@
           {
             "species": "Gligar",
             "rate": 20
-          }
-        ]
-      },
-      {
-        "zone": "Night",
-        "method": "Standard",
-        "time": "Night",
-        "pokemon": [
-          {
-            "species": "Geodude",
-            "rate": 30
-          },
-          {
-            "species": "Machop",
-            "rate": 20
-          },
-          {
-            "species": "Ponyta",
-            "rate": 20
-          },
-          {
-            "species": "Zubat",
-            "rate": 10
-          },
-          {
-            "species": "Gligar",
-            "rate": 10
-          },
-          {
-            "species": "Kricketune",
-            "rate": 10
           }
         ]
       }
@@ -1552,32 +1009,8 @@
     "name": "Sinnoh Route 207",
     "zones": [
       {
-        "zone": "Morning",
+        "zone": "",
         "method": "Standard",
-        "time": "Morning",
-        "pokemon": [
-          {
-            "species": "Machop",
-            "rate": 35
-          },
-          {
-            "species": "Geodude",
-            "rate": 30
-          },
-          {
-            "species": "Ponyta",
-            "rate": 25
-          },
-          {
-            "species": "Kricketot",
-            "rate": 10
-          }
-        ]
-      },
-      {
-        "zone": "Day",
-        "method": "Standard",
-        "time": "Day",
         "pokemon": [
           {
             "species": "Machop",
@@ -1592,33 +1025,6 @@
             "rate": 25
           }
         ]
-      },
-      {
-        "zone": "Night",
-        "method": "Standard",
-        "time": "Night",
-        "pokemon": [
-          {
-            "species": "Machop",
-            "rate": 35
-          },
-          {
-            "species": "Geodude",
-            "rate": 30
-          },
-          {
-            "species": "Ponyta",
-            "rate": 15
-          },
-          {
-            "species": "Zubat",
-            "rate": 10
-          },
-          {
-            "species": "Kricketot",
-            "rate": 10
-          }
-        ]
       }
     ]
   },
@@ -1627,9 +1033,8 @@
     "name": "Sinnoh Route 208",
     "zones": [
       {
-        "zone": "Morning",
+        "zone": "",
         "method": "Standard",
-        "time": "Morning",
         "pokemon": [
           {
             "species": "Bidoof",
@@ -1650,64 +1055,6 @@
           {
             "species": "Roselia",
             "rate": 15
-          }
-        ]
-      },
-      {
-        "zone": "Day",
-        "method": "Standard",
-        "time": "Day",
-        "pokemon": [
-          {
-            "species": "Bidoof",
-            "rate": 20
-          },
-          {
-            "species": "Bibarel",
-            "rate": 20
-          },
-          {
-            "species": "Budew",
-            "rate": 30
-          },
-          {
-            "species": "Ralts",
-            "rate": 15
-          },
-          {
-            "species": "Roselia",
-            "rate": 15
-          }
-        ]
-      },
-      {
-        "zone": "Night",
-        "method": "Standard",
-        "time": "Night",
-        "pokemon": [
-          {
-            "species": "Bidoof",
-            "rate": 20
-          },
-          {
-            "species": "Bibarel",
-            "rate": 20
-          },
-          {
-            "species": "Budew",
-            "rate": 20
-          },
-          {
-            "species": "Ralts",
-            "rate": 15
-          },
-          {
-            "species": "Roselia",
-            "rate": 15
-          },
-          {
-            "species": "Zubat",
-            "rate": 10
           }
         ]
       },
@@ -1768,9 +1115,8 @@
     "name": "Sinnoh Route 209",
     "zones": [
       {
-        "zone": "Morning",
+        "zone": "",
         "method": "Standard",
-        "time": "Morning",
         "pokemon": [
           {
             "species": "Bibarel",
@@ -1787,68 +1133,6 @@
           {
             "species": "Staravia",
             "rate": 20
-          },
-          {
-            "species": "Chansey",
-            "rate": 5
-          }
-        ]
-      },
-      {
-        "zone": "Day",
-        "method": "Standard",
-        "time": "Day",
-        "pokemon": [
-          {
-            "species": "Bibarel",
-            "rate": 30
-          },
-          {
-            "species": "Roselia",
-            "rate": 25
-          },
-          {
-            "species": "Ralts",
-            "rate": 20
-          },
-          {
-            "species": "Staravia",
-            "rate": 20
-          },
-          {
-            "species": "Chansey",
-            "rate": 5
-          }
-        ]
-      },
-      {
-        "zone": "Night",
-        "method": "Standard",
-        "time": "Night",
-        "pokemon": [
-          {
-            "species": "Bibarel",
-            "rate": 30
-          },
-          {
-            "species": "Roselia",
-            "rate": 25
-          },
-          {
-            "species": "Zubat",
-            "rate": 10
-          },
-          {
-            "species": "Ralts",
-            "rate": 10
-          },
-          {
-            "species": "Duskull",
-            "rate": 10
-          },
-          {
-            "species": "Staravia",
-            "rate": 10
           },
           {
             "species": "Chansey",
@@ -1932,58 +1216,8 @@
     "name": "Lost Tower",
     "zones": [
       {
-        "zone": "1F Morning",
-        "method": "Standard",
-        "time": "Morning",
-        "pokemon": [
-          {
-            "species": "Gastly",
-            "rate": 65
-          },
-          {
-            "species": "Zubat",
-            "rate": 35
-          }
-        ]
-      },
-      {
         "zone": "1F Day",
         "method": "Standard",
-        "time": "Day",
-        "pokemon": [
-          {
-            "species": "Gastly",
-            "rate": 65
-          },
-          {
-            "species": "Zubat",
-            "rate": 35
-          }
-        ]
-      },
-      {
-        "zone": "1F Night",
-        "method": "Standard",
-        "time": "Night",
-        "pokemon": [
-          {
-            "species": "Gastly",
-            "rate": 45
-          },
-          {
-            "species": "Zubat",
-            "rate": 35
-          },
-          {
-            "species": "Duskull",
-            "rate": 20
-          }
-        ]
-      },
-      {
-        "zone": "2F Morning",
-        "method": "Standard",
-        "time": "Morning",
         "pokemon": [
           {
             "species": "Gastly",
@@ -1998,7 +1232,6 @@
       {
         "zone": "2F Day",
         "method": "Standard",
-        "time": "Day",
         "pokemon": [
           {
             "species": "Gastly",
@@ -2011,47 +1244,8 @@
         ]
       },
       {
-        "zone": "2F Night",
-        "method": "Standard",
-        "time": "Night",
-        "pokemon": [
-          {
-            "species": "Gastly",
-            "rate": 45
-          },
-          {
-            "species": "Zubat",
-            "rate": 35
-          },
-          {
-            "species": "Duskull",
-            "rate": 20
-          }
-        ]
-      },
-      {
-        "zone": "3F Morning",
-        "method": "Standard",
-        "time": "Morning",
-        "pokemon": [
-          {
-            "species": "Gastly",
-            "rate": 64
-          },
-          {
-            "species": "Zubat",
-            "rate": 35
-          },
-          {
-            "species": "Golbat",
-            "rate": 1
-          }
-        ]
-      },
-      {
         "zone": "3F Day",
         "method": "Standard",
-        "time": "Day",
         "pokemon": [
           {
             "species": "Gastly",
@@ -2064,55 +1258,12 @@
           {
             "species": "Golbat",
             "rate": 1
-          }
-        ]
-      },
-      {
-        "zone": "3F Night",
-        "method": "Standard",
-        "time": "Night",
-        "pokemon": [
-          {
-            "species": "Gastly",
-            "rate": 44
-          },
-          {
-            "species": "Zubat",
-            "rate": 35
-          },
-          {
-            "species": "Duskull",
-            "rate": 20
-          },
-          {
-            "species": "Golbat",
-            "rate": 1
-          }
-        ]
-      },
-      {
-        "zone": "4F Morning",
-        "method": "Standard",
-        "time": "Morning",
-        "pokemon": [
-          {
-            "species": "Gastly",
-            "rate": 60
-          },
-          {
-            "species": "Zubat",
-            "rate": 35
-          },
-          {
-            "species": "Golbat",
-            "rate": 5
           }
         ]
       },
       {
         "zone": "4F Day",
         "method": "Standard",
-        "time": "Day",
         "pokemon": [
           {
             "species": "Gastly",
@@ -2129,51 +1280,8 @@
         ]
       },
       {
-        "zone": "4F Night",
-        "method": "Standard",
-        "time": "Night",
-        "pokemon": [
-          {
-            "species": "Gastly",
-            "rate": 40
-          },
-          {
-            "species": "Zubat",
-            "rate": 35
-          },
-          {
-            "species": "Duskull",
-            "rate": 20
-          },
-          {
-            "species": "Golbat",
-            "rate": 5
-          }
-        ]
-      },
-      {
-        "zone": "5F Morning",
-        "method": "Standard",
-        "time": "Morning",
-        "pokemon": [
-          {
-            "species": "Gastly",
-            "rate": 55
-          },
-          {
-            "species": "Zubat",
-            "rate": 35
-          },
-          {
-            "species": "Golbat",
-            "rate": 10
-          }
-        ]
-      },
-      {
         "zone": "5F Day",
         "method": "Standard",
-        "time": "Day",
         "pokemon": [
           {
             "species": "Gastly",
@@ -2182,29 +1290,6 @@
           {
             "species": "Zubat",
             "rate": 35
-          },
-          {
-            "species": "Golbat",
-            "rate": 10
-          }
-        ]
-      },
-      {
-        "zone": "5F Night",
-        "method": "Standard",
-        "time": "Night",
-        "pokemon": [
-          {
-            "species": "Gastly",
-            "rate": 35
-          },
-          {
-            "species": "Zubat",
-            "rate": 35
-          },
-          {
-            "species": "Duskull",
-            "rate": 20
           },
           {
             "species": "Golbat",
@@ -2240,40 +1325,8 @@
     "name": "Sinnoh Route 210",
     "zones": [
       {
-        "zone": "South Morning",
-        "method": "Standard",
-        "time": "Morning",
-        "pokemon": [
-          {
-            "species": "Ponyta",
-            "rate": 25
-          },
-          {
-            "species": "Geodude",
-            "rate": 20
-          },
-          {
-            "species": "Staravia",
-            "rate": 20
-          },
-          {
-            "species": "Scyther",
-            "rate": 15
-          },
-          {
-            "species": "Roselia",
-            "rate": 15
-          },
-          {
-            "species": "Chansey",
-            "rate": 5
-          }
-        ]
-      },
-      {
         "zone": "South Day",
         "method": "Standard",
-        "time": "Day",
         "pokemon": [
           {
             "species": "Ponyta",
@@ -2302,79 +1355,8 @@
         ]
       },
       {
-        "zone": "South Night",
-        "method": "Standard",
-        "time": "Night",
-        "pokemon": [
-          {
-            "species": "Geodude",
-            "rate": 20
-          },
-          {
-            "species": "Staravia",
-            "rate": 20
-          },
-          {
-            "species": "Ponyta",
-            "rate": 15
-          },
-          {
-            "species": "Roselia",
-            "rate": 15
-          },
-          {
-            "species": "Hoothoot",
-            "rate": 10
-          },
-          {
-            "species": "Noctowl",
-            "rate": 10
-          },
-          {
-            "species": "Chansey",
-            "rate": 5
-          },
-          {
-            "species": "Scyther",
-            "rate": 5
-          }
-        ]
-      },
-      {
-        "zone": "North Morning",
-        "method": "Standard",
-        "time": "Morning",
-        "pokemon": [
-          {
-            "species": "Meditite",
-            "rate": 20
-          },
-          {
-            "species": "Swablu",
-            "rate": 20
-          },
-          {
-            "species": "Bibarel",
-            "rate": 20
-          },
-          {
-            "species": "Machop",
-            "rate": 15
-          },
-          {
-            "species": "Scyther",
-            "rate": 15
-          },
-          {
-            "species": "Machoke",
-            "rate": 10
-          }
-        ]
-      },
-      {
         "zone": "North Day",
         "method": "Standard",
-        "time": "Day",
         "pokemon": [
           {
             "species": "Swablu",
@@ -2394,45 +1376,6 @@
           },
           {
             "species": "Machoke",
-            "rate": 10
-          },
-          {
-            "species": "Scyther",
-            "rate": 5
-          }
-        ]
-      },
-      {
-        "zone": "North Night",
-        "method": "Standard",
-        "time": "Night",
-        "pokemon": [
-          {
-            "species": "Swablu",
-            "rate": 20
-          },
-          {
-            "species": "Bibarel",
-            "rate": 20
-          },
-          {
-            "species": "Machop",
-            "rate": 15
-          },
-          {
-            "species": "Machoke",
-            "rate": 10
-          },
-          {
-            "species": "Hoothoot",
-            "rate": 10
-          },
-          {
-            "species": "Noctowl",
-            "rate": 10
-          },
-          {
-            "species": "Meditite",
             "rate": 10
           },
           {
@@ -2529,32 +1472,8 @@
     "name": "Sinnoh Route 212",
     "zones": [
       {
-        "zone": "North Morning",
-        "method": "Standard",
-        "time": "Morning",
-        "pokemon": [
-          {
-            "species": "Roselia",
-            "rate": 35
-          },
-          {
-            "species": "Marill",
-            "rate": 25
-          },
-          {
-            "species": "Kirlia",
-            "rate": 20
-          },
-          {
-            "species": "Staravia",
-            "rate": 20
-          }
-        ]
-      },
-      {
         "zone": "North Day",
         "method": "Standard",
-        "time": "Day",
         "pokemon": [
           {
             "species": "Roselia",
@@ -2574,29 +1493,6 @@
           },
           {
             "species": "Kirlia",
-            "rate": 10
-          }
-        ]
-      },
-      {
-        "zone": "North Night",
-        "method": "Standard",
-        "time": "Night",
-        "pokemon": [
-          {
-            "species": "Marill",
-            "rate": 45
-          },
-          {
-            "species": "Roselia",
-            "rate": 35
-          },
-          {
-            "species": "Kirlia",
-            "rate": 10
-          },
-          {
-            "species": "Staravia",
             "rate": 10
           }
         ]
@@ -2798,9 +1694,8 @@
         }
       },
       {
-        "zone": "Morning",
+        "zone": "",
         "method": "Standard",
-        "time": "Morning",
         "pokemon": [
           {
             "species": "Wooper",
@@ -2808,68 +1703,6 @@
           },
           {
             "species": "Tropius",
-            "rate": 20
-          },
-          {
-            "species": "Bibarel",
-            "rate": 20
-          },
-          {
-            "species": "Quagsire",
-            "rate": 10
-          },
-          {
-            "species": "Tangela",
-            "rate": 5
-          },
-          {
-            "species": "Yanma",
-            "rate": 5
-          }
-        ]
-      },
-      {
-        "zone": "Day",
-        "method": "Standard",
-        "time": "Day",
-        "pokemon": [
-          {
-            "species": "Wooper",
-            "rate": 40
-          },
-          {
-            "species": "Tropius",
-            "rate": 20
-          },
-          {
-            "species": "Bibarel",
-            "rate": 20
-          },
-          {
-            "species": "Quagsire",
-            "rate": 10
-          },
-          {
-            "species": "Tangela",
-            "rate": 5
-          },
-          {
-            "species": "Yanma",
-            "rate": 5
-          }
-        ]
-      },
-      {
-        "zone": "Night",
-        "method": "Standard",
-        "time": "Night",
-        "pokemon": [
-          {
-            "species": "Wooper",
-            "rate": 40
-          },
-          {
-            "species": "Noctowl",
             "rate": 20
           },
           {
@@ -2950,9 +1783,8 @@
         }
       },
       {
-        "zone": "Morning",
+        "zone": "",
         "method": "Standard",
-        "time": "Morning",
         "pokemon": [
           {
             "species": "Wooper",
@@ -2965,68 +1797,6 @@
           {
             "species": "Tangela",
             "rate": 25
-          },
-          {
-            "species": "Quagsire",
-            "rate": 10
-          },
-          {
-            "species": "Yanma",
-            "rate": 5
-          }
-        ]
-      },
-      {
-        "zone": "Day",
-        "method": "Standard",
-        "time": "Day",
-        "pokemon": [
-          {
-            "species": "Wooper",
-            "rate": 30
-          },
-          {
-            "species": "Bibarel",
-            "rate": 30
-          },
-          {
-            "species": "Tangela",
-            "rate": 25
-          },
-          {
-            "species": "Quagsire",
-            "rate": 10
-          },
-          {
-            "species": "Yanma",
-            "rate": 5
-          }
-        ]
-      },
-      {
-        "zone": "Night",
-        "method": "Standard",
-        "time": "Night",
-        "pokemon": [
-          {
-            "species": "Wooper",
-            "rate": 30
-          },
-          {
-            "species": "Bibarel",
-            "rate": 20
-          },
-          {
-            "species": "Tangela",
-            "rate": 15
-          },
-          {
-            "species": "Hoothoot",
-            "rate": 10
-          },
-          {
-            "species": "Noctowl",
-            "rate": 10
           },
           {
             "species": "Quagsire",
@@ -3098,9 +1868,8 @@
         }
       },
       {
-        "zone": "Morning",
+        "zone": "",
         "method": "Standard",
-        "time": "Morning",
         "pokemon": [
           {
             "species": "Wooper",
@@ -3113,64 +1882,6 @@
           {
             "species": "Yanma",
             "rate": 25
-          },
-          {
-            "species": "Quagsire",
-            "rate": 10
-          },
-          {
-            "species": "Tangela",
-            "rate": 5
-          }
-        ]
-      },
-      {
-        "zone": "Day",
-        "method": "Standard",
-        "time": "Day",
-        "pokemon": [
-          {
-            "species": "Wooper",
-            "rate": 30
-          },
-          {
-            "species": "Bibarel",
-            "rate": 30
-          },
-          {
-            "species": "Yanma",
-            "rate": 25
-          },
-          {
-            "species": "Quagsire",
-            "rate": 10
-          },
-          {
-            "species": "Tangela",
-            "rate": 5
-          }
-        ]
-      },
-      {
-        "zone": "Night",
-        "method": "Standard",
-        "time": "Night",
-        "pokemon": [
-          {
-            "species": "Wooper",
-            "rate": 30
-          },
-          {
-            "species": "Hoothoot",
-            "rate": 20
-          },
-          {
-            "species": "Bibarel",
-            "rate": 20
-          },
-          {
-            "species": "Yanma",
-            "rate": 15
           },
           {
             "species": "Quagsire",
@@ -3239,9 +1950,8 @@
         }
       },
       {
-        "zone": "Morning",
+        "zone": "",
         "method": "Standard",
-        "time": "Morning",
         "pokemon": [
           {
             "species": "Wooper",
@@ -3254,64 +1964,6 @@
           {
             "species": "Yanma",
             "rate": 25
-          },
-          {
-            "species": "Quagsire",
-            "rate": 10
-          },
-          {
-            "species": "Tangela",
-            "rate": 5
-          }
-        ]
-      },
-      {
-        "zone": "Day",
-        "method": "Standard",
-        "time": "Day",
-        "pokemon": [
-          {
-            "species": "Wooper",
-            "rate": 30
-          },
-          {
-            "species": "Bibarel",
-            "rate": 30
-          },
-          {
-            "species": "Yanma",
-            "rate": 25
-          },
-          {
-            "species": "Quagsire",
-            "rate": 10
-          },
-          {
-            "species": "Tangela",
-            "rate": 5
-          }
-        ]
-      },
-      {
-        "zone": "Night",
-        "method": "Standard",
-        "time": "Night",
-        "pokemon": [
-          {
-            "species": "Wooper",
-            "rate": 30
-          },
-          {
-            "species": "Hoothoot",
-            "rate": 20
-          },
-          {
-            "species": "Bibarel",
-            "rate": 20
-          },
-          {
-            "species": "Yanma",
-            "rate": 15
           },
           {
             "species": "Quagsire",
@@ -3333,9 +1985,8 @@
     "name": "Sinnoh Route 213",
     "zones": [
       {
-        "zone": "Morning",
+        "zone": "",
         "method": "Standard",
-        "time": "Morning",
         "pokemon": [
           {
             "species": "Shellos",
@@ -3351,48 +2002,6 @@
           },
           {
             "species": "Chatot",
-            "rate": 20
-          }
-        ]
-      },
-      {
-        "zone": "Day",
-        "method": "Standard",
-        "time": "Day",
-        "pokemon": [
-          {
-            "species": "Shellos",
-            "rate": 35
-          },
-          {
-            "species": "Buizel",
-            "rate": 25
-          },
-          {
-            "species": "Wingull",
-            "rate": 20
-          },
-          {
-            "species": "Chatot",
-            "rate": 20
-          }
-        ]
-      },
-      {
-        "zone": "Night",
-        "method": "Standard",
-        "time": "Night",
-        "pokemon": [
-          {
-            "species": "Shellos",
-            "rate": 45
-          },
-          {
-            "species": "Buizel",
-            "rate": 35
-          },
-          {
-            "species": "Wingull",
             "rate": 20
           }
         ]
@@ -3480,9 +2089,8 @@
     "name": "Sinnoh Route 214",
     "zones": [
       {
-        "zone": "Morning",
+        "zone": "",
         "method": "Standard",
-        "time": "Morning",
         "pokemon": [
           {
             "species": "Graveler",
@@ -3499,56 +2107,6 @@
           {
             "species": "Houndour",
             "rate": 15
-          }
-        ]
-      },
-      {
-        "zone": "Day",
-        "method": "Standard",
-        "time": "Day",
-        "pokemon": [
-          {
-            "species": "Graveler",
-            "rate": 35
-          },
-          {
-            "species": "Geodude",
-            "rate": 20
-          },
-          {
-            "species": "Rhyhorn",
-            "rate": 30
-          },
-          {
-            "species": "Houndour",
-            "rate": 15
-          }
-        ]
-      },
-      {
-        "zone": "Night",
-        "method": "Standard",
-        "time": "Night",
-        "pokemon": [
-          {
-            "species": "Graveler",
-            "rate": 25
-          },
-          {
-            "species": "Geodude",
-            "rate": 20
-          },
-          {
-            "species": "Rhyhorn",
-            "rate": 20
-          },
-          {
-            "species": "Houndour",
-            "rate": 25
-          },
-          {
-            "species": "Zubat",
-            "rate": 10
           }
         ]
       },
@@ -3614,36 +2172,8 @@
     "name": "Valor Lakefront",
     "zones": [
       {
-        "zone": "Morning",
+        "zone": "",
         "method": "Standard",
-        "time": "Morning",
-        "pokemon": [
-          {
-            "species": "Bibarel",
-            "rate": 30
-          },
-          {
-            "species": "Girafarig",
-            "rate": 25
-          },
-          {
-            "species": "Staravia",
-            "rate": 25
-          },
-          {
-            "species": "Houndour",
-            "rate": 10
-          },
-          {
-            "species": "Kricketune",
-            "rate": 10
-          }
-        ]
-      },
-      {
-        "zone": "Day",
-        "method": "Standard",
-        "time": "Day",
         "pokemon": [
           {
             "species": "Staravia",
@@ -3659,33 +2189,6 @@
           },
           {
             "species": "Houndour",
-            "rate": 10
-          }
-        ]
-      },
-      {
-        "zone": "Night",
-        "method": "Standard",
-        "time": "Night",
-        "pokemon": [
-          {
-            "species": "Bibarel",
-            "rate": 30
-          },
-          {
-            "species": "Girafarig",
-            "rate": 25
-          },
-          {
-            "species": "Houndour",
-            "rate": 20
-          },
-          {
-            "species": "Staravia",
-            "rate": 15
-          },
-          {
-            "species": "Kricketune",
             "rate": 10
           }
         ]
@@ -3800,40 +2303,8 @@
     "name": "Sinnoh Route 215",
     "zones": [
       {
-        "zone": "Morning",
+        "zone": "",
         "method": "Standard",
-        "time": "Morning",
-        "pokemon": [
-          {
-            "species": "Staravia",
-            "rate": 30
-          },
-          {
-            "species": "Marill",
-            "rate": 25
-          },
-          {
-            "species": "Scyther",
-            "rate": 15
-          },
-          {
-            "species": "Abra",
-            "rate": 10
-          },
-          {
-            "species": "Kadabra",
-            "rate": 10
-          },
-          {
-            "species": "Lickitung",
-            "rate": 10
-          }
-        ]
-      },
-      {
-        "zone": "Day",
-        "method": "Standard",
-        "time": "Day",
         "pokemon": [
           {
             "species": "Staravia",
@@ -3842,37 +2313,6 @@
           {
             "species": "Marill",
             "rate": 25
-          },
-          {
-            "species": "Abra",
-            "rate": 10
-          },
-          {
-            "species": "Kadabra",
-            "rate": 10
-          },
-          {
-            "species": "Lickitung",
-            "rate": 10
-          },
-          {
-            "species": "Scyther",
-            "rate": 5
-          }
-        ]
-      },
-      {
-        "zone": "Night",
-        "method": "Standard",
-        "time": "Night",
-        "pokemon": [
-          {
-            "species": "Marill",
-            "rate": 45
-          },
-          {
-            "species": "Staravia",
-            "rate": 20
           },
           {
             "species": "Abra",
@@ -3906,36 +2346,8 @@
     "name": "Sinnoh Route 211",
     "zones": [
       {
-        "zone": "West Morning",
-        "method": "Standard",
-        "time": "Morning",
-        "pokemon": [
-          {
-            "species": "Meditite",
-            "rate": 40
-          },
-          {
-            "species": "Bidoof",
-            "rate": 20
-          },
-          {
-            "species": "Machop",
-            "rate": 15
-          },
-          {
-            "species": "Chingling",
-            "rate": 15
-          },
-          {
-            "species": "Bronzor",
-            "rate": 10
-          }
-        ]
-      },
-      {
         "zone": "West Day",
         "method": "Standard",
-        "time": "Day",
         "pokemon": [
           {
             "species": "Meditite",
@@ -3947,68 +2359,6 @@
           },
           {
             "species": "Machop",
-            "rate": 15
-          },
-          {
-            "species": "Chingling",
-            "rate": 15
-          },
-          {
-            "species": "Bronzor",
-            "rate": 10
-          }
-        ]
-      },
-      {
-        "zone": "West Night",
-        "method": "Standard",
-        "time": "Night",
-        "pokemon": [
-          {
-            "species": "Meditite",
-            "rate": 20
-          },
-          {
-            "species": "Bidoof",
-            "rate": 20
-          },
-          {
-            "species": "Machop",
-            "rate": 15
-          },
-          {
-            "species": "Chingling",
-            "rate": 15
-          },
-          {
-            "species": "Zubat",
-            "rate": 10
-          },
-          {
-            "species": "Hoothoot",
-            "rate": 10
-          },
-          {
-            "species": "Bronzor",
-            "rate": 10
-          }
-        ]
-      },
-      {
-        "zone": "East Morning",
-        "method": "Standard",
-        "time": "Morning",
-        "pokemon": [
-          {
-            "species": "Meditite",
-            "rate": 40
-          },
-          {
-            "species": "Graveler",
-            "rate": 20
-          },
-          {
-            "species": "Machoke",
             "rate": 15
           },
           {
@@ -4024,7 +2374,6 @@
       {
         "zone": "East Day",
         "method": "Standard",
-        "time": "Day",
         "pokemon": [
           {
             "species": "Meditite",
@@ -4041,41 +2390,6 @@
           {
             "species": "Chingling",
             "rate": 15
-          },
-          {
-            "species": "Bronzor",
-            "rate": 10
-          }
-        ]
-      },
-      {
-        "zone": "East Night",
-        "method": "Standard",
-        "time": "Night",
-        "pokemon": [
-          {
-            "species": "Graveler",
-            "rate": 20
-          },
-          {
-            "species": "Meditite",
-            "rate": 20
-          },
-          {
-            "species": "Machoke",
-            "rate": 15
-          },
-          {
-            "species": "Chingling",
-            "rate": 15
-          },
-          {
-            "species": "Zubat",
-            "rate": 10
-          },
-          {
-            "species": "Noctowl",
-            "rate": 10
           },
           {
             "species": "Bronzor",
@@ -4107,9 +2421,8 @@
     "name": "Sinnoh Route 218",
     "zones": [
       {
-        "zone": "Morning",
+        "zone": "",
         "method": "Standard",
-        "time": "Morning",
         "pokemon": [
           {
             "species": "Floatzel",
@@ -4126,48 +2439,6 @@
           {
             "species": "Chatot",
             "rate": 20
-          }
-        ]
-      },
-      {
-        "zone": "Day",
-        "method": "Standard",
-        "time": "Day",
-        "pokemon": [
-          {
-            "species": "Floatzel",
-            "rate": 30
-          },
-          {
-            "species": "Mr. Mime",
-            "rate": 25
-          },
-          {
-            "species": "Gastrodon",
-            "rate": 25
-          },
-          {
-            "species": "Chatot",
-            "rate": 20
-          }
-        ]
-      },
-      {
-        "zone": "Night",
-        "method": "Standard",
-        "time": "Night",
-        "pokemon": [
-          {
-            "species": "Floatzel",
-            "rate": 40
-          },
-          {
-            "species": "Gastrodon",
-            "rate": 35
-          },
-          {
-            "species": "Mr. Mime",
-            "rate": 25
           }
         ]
       },
@@ -4387,9 +2658,8 @@
     "name": "Sinnoh Route 216",
     "zones": [
       {
-        "zone": "Morning",
+        "zone": "",
         "method": "Standard",
-        "time": "Morning",
         "pokemon": [
           {
             "species": "Snover",
@@ -4402,60 +2672,6 @@
           {
             "species": "Meditite",
             "rate": 20
-          },
-          {
-            "species": "Graveler",
-            "rate": 5
-          }
-        ]
-      },
-      {
-        "zone": "Day",
-        "method": "Standard",
-        "time": "Day",
-        "pokemon": [
-          {
-            "species": "Snover",
-            "rate": 40
-          },
-          {
-            "species": "Sneasel",
-            "rate": 35
-          },
-          {
-            "species": "Meditite",
-            "rate": 20
-          },
-          {
-            "species": "Graveler",
-            "rate": 5
-          }
-        ]
-      },
-      {
-        "zone": "Night",
-        "method": "Standard",
-        "time": "Night",
-        "pokemon": [
-          {
-            "species": "Sneasel",
-            "rate": 35
-          },
-          {
-            "species": "Snover",
-            "rate": 30
-          },
-          {
-            "species": "Zubat",
-            "rate": 10
-          },
-          {
-            "species": "Meditite",
-            "rate": 10
-          },
-          {
-            "species": "Snorunt",
-            "rate": 10
           },
           {
             "species": "Graveler",
@@ -4479,9 +2695,8 @@
     "name": "Sinnoh Route 217",
     "zones": [
       {
-        "zone": "Morning",
+        "zone": "",
         "method": "Standard",
-        "time": "Morning",
         "pokemon": [
           {
             "species": "Snover",
@@ -4494,48 +2709,6 @@
           {
             "species": "Sneasel",
             "rate": 25
-          }
-        ]
-      },
-      {
-        "zone": "Day",
-        "method": "Standard",
-        "time": "Day",
-        "pokemon": [
-          {
-            "species": "Snover",
-            "rate": 40
-          },
-          {
-            "species": "Swinub",
-            "rate": 35
-          },
-          {
-            "species": "Sneasel",
-            "rate": 25
-          }
-        ]
-      },
-      {
-        "zone": "Night",
-        "method": "Standard",
-        "time": "Night",
-        "pokemon": [
-          {
-            "species": "Swinub",
-            "rate": 35
-          },
-          {
-            "species": "Snover",
-            "rate": 30
-          },
-          {
-            "species": "Snorunt",
-            "rate": 20
-          },
-          {
-            "species": "Sneasel",
-            "rate": 15
           }
         ]
       }
@@ -4554,9 +2727,8 @@
     "name": "Acuity Lakefront",
     "zones": [
       {
-        "zone": "Morning",
+        "zone": "",
         "method": "Standard",
-        "time": "Morning",
         "pokemon": [
           {
             "species": "Snover",
@@ -4569,48 +2741,6 @@
           {
             "species": "Sneasel",
             "rate": 25
-          }
-        ]
-      },
-      {
-        "zone": "Day",
-        "method": "Standard",
-        "time": "Day",
-        "pokemon": [
-          {
-            "species": "Snover",
-            "rate": 40
-          },
-          {
-            "species": "Swinub",
-            "rate": 35
-          },
-          {
-            "species": "Sneasel",
-            "rate": 25
-          }
-        ]
-      },
-      {
-        "zone": "Night",
-        "method": "Standard",
-        "time": "Night",
-        "pokemon": [
-          {
-            "species": "Swinub",
-            "rate": 35
-          },
-          {
-            "species": "Snover",
-            "rate": 30
-          },
-          {
-            "species": "Snorunt",
-            "rate": 20
-          },
-          {
-            "species": "Sneasel",
-            "rate": 15
           }
         ]
       }
@@ -4630,9 +2760,8 @@
     "name": "Lake Acuity",
     "zones": [
       {
-        "zone": "Morning",
+        "zone": "",
         "method": "Standard",
-        "time": "Morning",
         "pokemon": [
           {
             "species": "Bibarel",
@@ -4641,64 +2770,6 @@
           {
             "species": "Snover",
             "rate": 45
-          },
-          {
-            "species": "Golduck",
-            "rate": 15
-          },
-          {
-            "species": "Sneasel",
-            "rate": 10
-          },
-          {
-            "species": "Psyduck",
-            "rate": 5
-          }
-        ]
-      },
-      {
-        "zone": "Day",
-        "method": "Standard",
-        "time": "Day",
-        "pokemon": [
-          {
-            "species": "Bibarel",
-            "rate": 25
-          },
-          {
-            "species": "Snover",
-            "rate": 45
-          },
-          {
-            "species": "Golduck",
-            "rate": 15
-          },
-          {
-            "species": "Sneasel",
-            "rate": 10
-          },
-          {
-            "species": "Psyduck",
-            "rate": 5
-          }
-        ]
-      },
-      {
-        "zone": "Night",
-        "method": "Standard",
-        "time": "Night",
-        "pokemon": [
-          {
-            "species": "Bibarel",
-            "rate": 25
-          },
-          {
-            "species": "Snover",
-            "rate": 25
-          },
-          {
-            "species": "Snorunt",
-            "rate": 20
           },
           {
             "species": "Golduck",
@@ -4778,9 +2849,8 @@
     "name": "Sinnoh Route 222",
     "zones": [
       {
-        "zone": "Morning",
+        "zone": "",
         "method": "Standard",
-        "time": "Morning",
         "pokemon": [
           {
             "species": "Electabuzz",
@@ -4804,80 +2874,6 @@
           },
           {
             "species": "Chatot",
-            "rate": 10
-          },
-          {
-            "species": "Magneton",
-            "rate": 5
-          },
-          {
-            "species": "Pelipper",
-            "rate": 5
-          }
-        ]
-      },
-      {
-        "zone": "Day",
-        "method": "Standard",
-        "time": "Day",
-        "pokemon": [
-          {
-            "species": "Electabuzz",
-            "rate": 30
-          },
-          {
-            "species": "Floatzel",
-            "rate": 20
-          },
-          {
-            "species": "Magnemite",
-            "rate": 10
-          },
-          {
-            "species": "Wingull",
-            "rate": 10
-          },
-          {
-            "species": "Luxio",
-            "rate": 10
-          },
-          {
-            "species": "Chatot",
-            "rate": 10
-          },
-          {
-            "species": "Magneton",
-            "rate": 5
-          },
-          {
-            "species": "Pelipper",
-            "rate": 5
-          }
-        ]
-      },
-      {
-        "zone": "Night",
-        "method": "Standard",
-        "time": "Night",
-        "pokemon": [
-          {
-            "species": "Floatzel",
-            "rate": 40
-          },
-          {
-            "species": "Electabuzz",
-            "rate": 20
-          },
-          {
-            "species": "Magnemite",
-            "rate": 10
-          },
-          {
-            "species": "Wingull",
-            "rate": 10
-          },
-          {
-            "species": "Luxio",
             "rate": 10
           },
           {
@@ -5026,9 +3022,8 @@
     "name": "Sinnoh Route 221",
     "zones": [
       {
-        "zone": "Morning",
+        "zone": "",
         "method": "Standard",
-        "time": "Morning",
         "pokemon": [
           {
             "species": "Sudowoodo",
@@ -5045,52 +3040,6 @@
           {
             "species": "Floatzel",
             "rate": 25
-          }
-        ]
-      },
-      {
-        "zone": "Day",
-        "method": "Standard",
-        "time": "Day",
-        "pokemon": [
-          {
-            "species": "Sudowoodo",
-            "rate": 25
-          },
-          {
-            "species": "Girafarig",
-            "rate": 25
-          },
-          {
-            "species": "Roselia",
-            "rate": 25
-          },
-          {
-            "species": "Floatzel",
-            "rate": 25
-          }
-        ]
-      },
-      {
-        "zone": "Night",
-        "method": "Standard",
-        "time": "Night",
-        "pokemon": [
-          {
-            "species": "Floatzel",
-            "rate": 35
-          },
-          {
-            "species": "Sudowoodo",
-            "rate": 25
-          },
-          {
-            "species": "Girafarig",
-            "rate": 25
-          },
-          {
-            "species": "Roselia",
-            "rate": 15
           }
         ]
       },
@@ -6053,7 +4002,7 @@
     "name": "Fuego Ironworks",
     "zones": [
       {
-        "zone": "Morning",
+        "zone": "",
         "method": "Standard",
         "pokemon": [
           {
@@ -6071,50 +4020,6 @@
           {
             "species": "Gastrodon",
             "rate": 15
-          }
-        ]
-      },
-      {
-        "zone": "Day",
-        "method": "Standard",
-        "pokemon": [
-          {
-            "species": "Magnemite",
-            "rate": 30
-          },
-          {
-            "species": "Magmar",
-            "rate": 30
-          },
-          {
-            "species": "Floatzel",
-            "rate": 25
-          },
-          {
-            "species": "Gastrodon",
-            "rate": 15
-          }
-        ]
-      },
-      {
-        "zone": "Night",
-        "method": "Standard",
-        "pokemon": [
-          {
-            "species": "Magnemite",
-            "rate": 30
-          },
-          {
-            "species": "Magmar",
-            "rate": 20
-          },
-          {
-            "species": "Floatzel",
-            "rate": 25
-          },
-          {
-            "species": "Gastrodon",
-            "rate": 25
           }
         ]
       },

@@ -16,6 +16,7 @@ import { logNuzlockeError } from './error-logger';
 
 const DB_GAMES = 0;
 const GAME_KEY = (userId: string) => `game:${userId}`;
+const BEATS_KEY = (userId: string) => `beaten:${userId}`;
 const TTL_SECONDS = 60 * 60 * 24 * 30; // 30 days
 
 let client: Redis | null = null;
@@ -74,5 +75,25 @@ export async function loadGameFromRedis(userId: string): Promise<string | null> 
 		return await getRedis().get(GAME_KEY(userId));
 	} catch {
 		return null;
+	}
+}
+
+export async function saveBeatenScenario(userId: string, scenarioId: string): Promise<void> {
+	try {
+		const raw = await getRedis().get(BEATS_KEY(userId));
+		const ids: string[] = raw ? JSON.parse(raw) : [];
+		if (!ids.includes(scenarioId)) {
+			ids.push(scenarioId);
+			await getRedis().set(BEATS_KEY(userId), JSON.stringify(ids));
+		}
+	} catch {}
+}
+
+export async function loadBeatenScenarios(userId: string): Promise<string[]> {
+	try {
+		const raw = await getRedis().get(BEATS_KEY(userId));
+		return raw ? JSON.parse(raw) : [];
+	} catch {
+		return [];
 	}
 }

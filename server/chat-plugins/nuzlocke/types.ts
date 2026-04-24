@@ -33,7 +33,6 @@ export interface EncounterEntry {
 export interface ZoneEncounter {
 	zone: string;      // exact Bulbapedia zone label: "1F", "B2F", "Grass", "Surfing"
 	method: string;    // 'Standard' | 'Gift' | 'Trade'
-	time?: string;     // "Morning" | "Day" | "Night" — only present when rates differ by time of day
 	// choice is not stored; it is inferred at load time: Gift zones with >1 pokemon entry are choice gifts
 	pokemon: EncounterEntry[];
 	requires?: { type: 'move' | 'item' | 'battle' | 'pokemon'; name: string };
@@ -182,18 +181,3 @@ export interface EvoOption {
 	type: 'level' | 'trade' | 'item';
 }
 
-export interface CompletedRun {
-	id: string;
-	userId: ID;
-	scenarioId: string;
-	scenarioName: string;
-	outcome: 'victory' | 'wipe';
-	date: string;           // ISO date string
-	deathCount: number;
-	graveyard: DeadPokemon[];
-	survivors: { species: string; nickname: string }[];
-	finalParty: { species: string; nickname: string; alive: boolean }[];
-	finalBattle: string;    // trainer name that ended the run
-	segmentIndex: number;   // which segment the run ended on
-	ai: string;             // AI difficulty tier used for this run
-}
