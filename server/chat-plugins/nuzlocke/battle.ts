@@ -211,12 +211,6 @@ export const battleHandlers: Chat.Handlers = {
 			});
 		}
 
-		// Snapshot the party before cleanParty() removes dead members.
-		const finalPartySnapshot = game.party
-			.map(uid => game.getPokemon(uid))
-			.filter((p): p is OwnedPokemon => p != null)
-			.map(p => ({ species: p.species, nickname: p.nickname, alive: p.alive }));
-
 		game.cleanParty();
 
 		// Check for total wipe — push completed run to client then close the panel
@@ -256,8 +250,7 @@ export const battleHandlers: Chat.Handlers = {
 				game.goToPage(dest);
 			}
 		} else {
-			// Loss — stay on battle screen so the player can choose to continue or give up
-			game.goToPage('battle');
+			goToTeambuilding(game);
 		}
 	},
 };

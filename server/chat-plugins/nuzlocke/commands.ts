@@ -441,33 +441,6 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 			game.goToPage('teambuilding');
 		},
 
-		// Phase 1 test command — kept for debugging
-		testbattle(target, room, user) {
-			const playerTeam = Teams.pack([{
-				name: 'Charmander', species: 'Charmander', item: '', ability: 'Blaze',
-				moves: ['Scratch', 'Growl', 'Ember'], nature: 'Hardy',
-				evs: { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0 },
-				ivs: { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, spe: 31 },
-				level: 15, gender: 'M',
-			}] as PokemonSet[]);
-			const aiTeam = Teams.pack([{
-				name: 'Onix', species: 'Onix', item: 'Oran Berry', ability: 'Rock Head',
-				moves: ['Tackle', 'Rock Tomb', 'Bind', 'Harden'], nature: 'Hardy',
-				evs: { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0 },
-				ivs: { hp: 31, atk: 31, def: 31, spa: 31, spd: 31, spe: 31 },
-				level: 14,
-			}] as PokemonSet[]);
-			Rooms.createBattle({
-				format: 'gen3nuzlockebattle',
-				isNuzlockeBattle: true,
-				players: [
-					{ user, team: playerTeam },
-					{ user: null, username: 'Leader Brock', team: aiTeam, isAI: true },
-				],
-			});
-			this.sendReply('Test battle created!');
-		},
-
 		refresh(target, room, user) {
 			const game = nuzlockeGames.get(user.id);
 			if (game) {
@@ -495,15 +468,6 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 				segmentId: segment?.id,
 				context: { userId: user.id, ...payload.context },
 			});
-		},
-
-		'': 'help',
-		help() {
-			this.sendReply([
-				'/nuzlocke start [firered] — Start a new run',
-				'/nuzlocke restart — Abandon current run',
-				'/nuzlocke testbattle — Dev: test AI battle',
-			].join('\n'));
 		},
 	},
 };
