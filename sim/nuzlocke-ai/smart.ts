@@ -459,6 +459,7 @@ export class SmartAI extends NuzlockeAI {
 	}
 
 	protected override scoreFocusEnergy(ctx: MoveCtx): number {
+		if (ctx.attacker.volatiles['focusenergy']) return -20;
 		if (ctx.defender.ability === 'shellarmor' as ID || ctx.defender.ability === 'battlearmor' as ID) return -20;
 		const hasHighCrit = (
 			ctx.attacker.ability === 'superluck' as ID ||

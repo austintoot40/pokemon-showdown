@@ -373,6 +373,9 @@ export abstract class NuzlockeAI {
 		// Universal: don't re-apply an existing status
 		if (move.status && defender.status) return -20;
 
+		// Don't try to confuse an already-confused target
+		if ((move as AnyObject).volatileStatus === 'confusion' && defender.volatiles['confusion']) return -20;
+
 		// Type-chart immunity (e.g. Thunder Wave vs Ground-type)
 		if (!this.battle.dex.getImmunity(move.type, defender)) return -20;
 
@@ -585,6 +588,7 @@ export abstract class NuzlockeAI {
 	}
 
 	protected scoreFocusEnergy(ctx: MoveCtx): number {
+		if (ctx.attacker.volatiles['focusenergy']) return -20;
 		if (ctx.defender.ability === 'shellarmor' as ID || ctx.defender.ability === 'battlearmor' as ID) return -20;
 		return 6;
 	}
