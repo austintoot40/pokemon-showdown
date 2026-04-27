@@ -161,7 +161,7 @@ export class NuzlockeGame {
 	isZoneLocked(zone: import('./types').ZoneEncounter): boolean {
 		const prereq = zone.requires;
 		if (!prereq) return false;
-		if (prereq.type === 'move' || prereq.type === 'hm') return !this.tmMoves.includes(prereq.name);
+		if (prereq.type === 'move') return !this.tmMoves.includes(prereq.name);
 		if (prereq.type === 'pokemon') return !this.box.some(p => toID(p.species) === toID(prereq.name));
 		return !this.items.includes(prereq.name);
 	}
@@ -367,9 +367,15 @@ export class NuzlockeGame {
 			// Skip evolutions introduced in a later generation than this scenario.
 			if (evo.gen && evo.gen > this.scenario.generation) continue;
 			const evoType = evo.evoType;
-			if (!evoType || evoType === 'levelFriendship' || evoType === 'levelExtra') {
+			if (!evoType || evoType === 'levelFriendship' || evoType === 'levelExtra' || evoType === 'levelMove') {
+				// levelMove: ignore the move requirement — just check the level cap.
 				if ((evo.evoLevel ?? 0) <= levelCap) {
 					results.push({ species: evo.name, item: null, type: 'level' });
+				}
+			} else if (evoType === 'levelHold' && evo.evoItem) {
+				// levelHold: ignore time-of-day — just check the item.
+				if (this.items.includes(evo.evoItem)) {
+					results.push({ species: evo.name, item: evo.evoItem, type: 'item' });
 				}
 			} else if (evoType === 'trade') {
 				if (evo.evoItem) {
@@ -678,7 +684,7 @@ export function serializeGameState(game: NuzlockeGame): NuzlockePanelPayload {
 		scenarioName: game.scenario.name,
 		scenarioDescription: game.scenario.description,
 		generation: game.scenario.generation,
-		battleGeneration: game.settings.generation,
+
 		currentSegmentIndex: game.currentSegmentIndex,
 		totalSegments: game.scenario.segments.length,
 		currentBattleIndex: game.currentBattleIndex,
