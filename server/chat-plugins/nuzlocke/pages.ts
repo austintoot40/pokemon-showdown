@@ -9,6 +9,7 @@
 'use strict';
 
 import { nuzlockeGames, pushNuzlockeState, closeNuzlockePanel } from './game';
+import { createNuzlockeBattle, goToTeambuilding } from './battle';
 
 export const nuzlockePages: Chat.PageTable = {
 	nuzlocke(query, user) {
@@ -16,7 +17,18 @@ export const nuzlockePages: Chat.PageTable = {
 		// Deferred so it runs after setHTML sends |init|html — otherwise the room
 		// doesn't exist client-side yet when the message arrives and is dropped.
 		if (game) {
-			setImmediate(() => pushNuzlockeState(user.id, game));
+			if (game.curRoom === 'battle' && !game.inBattle) {
+				// Chained battle: user clicked Continue on the previous battle.
+				// Start the next battle in the chain now.
+				const userId = user.id;
+				setImmediate(() => {
+					const u = Users.get(userId);
+					if (u) createNuzlockeBattle(game, u);
+					else goToTeambuilding(game);
+				});
+			} else {
+				setImmediate(() => pushNuzlockeState(user.id, game));
+			}
 		} else {
 			setImmediate(() => closeNuzlockePanel(user.id));
 		}

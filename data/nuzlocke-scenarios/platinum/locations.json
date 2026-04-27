@@ -371,7 +371,7 @@
     "name": "Sinnoh Route 204",
     "zones": [
       {
-        "zone": "South Day",
+        "zone": "South",
         "method": "Standard",
         "pokemon": [
           {
@@ -447,7 +447,7 @@
         }
       },
       {
-        "zone": "North Day",
+        "zone": "North",
         "method": "Standard",
         "pokemon": [
           {
@@ -763,7 +763,7 @@
         }
       },
       {
-        "zone": "North Day",
+        "zone": "North",
         "method": "Standard",
         "pokemon": [
           {
@@ -1216,7 +1216,7 @@
     "name": "Lost Tower",
     "zones": [
       {
-        "zone": "1F Day",
+        "zone": "1F-2F",
         "method": "Standard",
         "pokemon": [
           {
@@ -1230,21 +1230,7 @@
         ]
       },
       {
-        "zone": "2F Day",
-        "method": "Standard",
-        "pokemon": [
-          {
-            "species": "Gastly",
-            "rate": 65
-          },
-          {
-            "species": "Zubat",
-            "rate": 35
-          }
-        ]
-      },
-      {
-        "zone": "3F Day",
+        "zone": "3F",
         "method": "Standard",
         "pokemon": [
           {
@@ -1262,7 +1248,7 @@
         ]
       },
       {
-        "zone": "4F Day",
+        "zone": "4F",
         "method": "Standard",
         "pokemon": [
           {
@@ -1280,7 +1266,7 @@
         ]
       },
       {
-        "zone": "5F Day",
+        "zone": "5F",
         "method": "Standard",
         "pokemon": [
           {
@@ -1325,7 +1311,7 @@
     "name": "Sinnoh Route 210",
     "zones": [
       {
-        "zone": "South Day",
+        "zone": "South",
         "method": "Standard",
         "pokemon": [
           {
@@ -1355,7 +1341,7 @@
         ]
       },
       {
-        "zone": "North Day",
+        "zone": "North",
         "method": "Standard",
         "pokemon": [
           {
@@ -1472,7 +1458,7 @@
     "name": "Sinnoh Route 212",
     "zones": [
       {
-        "zone": "North Day",
+        "zone": "North",
         "method": "Standard",
         "pokemon": [
           {
@@ -1818,7 +1804,7 @@
     "name": "Great Marsh Area 5",
     "zones": [
       {
-        "zone": "All area",
+        "zone": "",
         "method": "Standard",
         "pokemon": [
           {
@@ -2346,7 +2332,7 @@
     "name": "Sinnoh Route 211",
     "zones": [
       {
-        "zone": "West Day",
+        "zone": "West",
         "method": "Standard",
         "pokemon": [
           {
@@ -2372,7 +2358,7 @@
         ]
       },
       {
-        "zone": "East Day",
+        "zone": "East",
         "method": "Standard",
         "pokemon": [
           {
@@ -3369,45 +3355,7 @@
     "name": "Mount Coronet",
     "zones": [
       {
-        "zone": "1F Morning",
-        "method": "Standard",
-        "pokemon": [
-          {
-            "species": "Zubat",
-            "rate": 5
-          },
-          {
-            "species": "Machop",
-            "rate": 10
-          },
-          {
-            "species": "Geodude",
-            "rate": 20
-          },
-          {
-            "species": "Cleffa",
-            "rate": 10
-          },
-          {
-            "species": "Nosepass",
-            "rate": 5
-          },
-          {
-            "species": "Meditite",
-            "rate": 20
-          },
-          {
-            "species": "Chingling",
-            "rate": 10
-          },
-          {
-            "species": "Bronzor",
-            "rate": 20
-          }
-        ]
-      },
-      {
-        "zone": "1F Day",
+        "zone": "1F",
         "method": "Standard",
         "pokemon": [
           {
@@ -3441,87 +3389,7 @@
         ]
       },
       {
-        "zone": "1F Night",
-        "method": "Standard",
-        "pokemon": [
-          {
-            "species": "Zubat",
-            "rate": 15
-          },
-          {
-            "species": "Machop",
-            "rate": 10
-          },
-          {
-            "species": "Geodude",
-            "rate": 20
-          },
-          {
-            "species": "Cleffa",
-            "rate": 10
-          },
-          {
-            "species": "Nosepass",
-            "rate": 5
-          },
-          {
-            "species": "Meditite",
-            "rate": 10
-          },
-          {
-            "species": "Chingling",
-            "rate": 10
-          },
-          {
-            "species": "Bronzor",
-            "rate": 20
-          }
-        ]
-      },
-      {
-        "zone": "B1F Morning",
-        "method": "Standard",
-        "pokemon": [
-          {
-            "species": "Clefairy",
-            "rate": 10
-          },
-          {
-            "species": "Golbat",
-            "rate": 5
-          },
-          {
-            "species": "Machoke",
-            "rate": 10
-          },
-          {
-            "species": "Graveler",
-            "rate": 20
-          },
-          {
-            "species": "Nosepass",
-            "rate": 5
-          },
-          {
-            "species": "Meditite",
-            "rate": 20
-          },
-          {
-            "species": "Chingling",
-            "rate": 10
-          },
-          {
-            "species": "Bronzor",
-            "rate": 20
-          }
-        ],
-        "requires": {
-          "type": "move",
-          "name": "Strength"
-        }
-      },
-      {
-        "zone": "B1F Day",
+        "zone": "B1F",
         "method": "Standard",
         "pokemon": [
           {
@@ -3543,48 +3411,6 @@
           {
             "species": "Meditite",
             "rate": 20
-          },
-          {
-            "species": "Chingling",
-            "rate": 10
-          },
-          {
-            "species": "Bronzor",
-            "rate": 20
-          }
-        ],
-        "requires": {
-          "type": "move",
-          "name": "Strength"
-        }
-      },
-      {
-        "zone": "B1F Night",
-        "method": "Standard",
-        "pokemon": [
-          {
-            "species": "Clefairy",
-            "rate": 10
-          },
-          {
-            "species": "Golbat",
-            "rate": 15
-          },
-          {
-            "species": "Machoke",
-            "rate": 10
-          },
-          {
-            "species": "Graveler",
-            "rate": 20
-          },
-          {
-            "species": "Nosepass",
-            "rate": 5
-          },
-          {
-            "species": "Meditite",
-            "rate": 10
           },
           {
             "species": "Chingling",
@@ -3763,7 +3589,7 @@
         "method": "Standard",
         "pokemon": [
           {
-            "species": "Unknown",
+            "species": "Unown",
             "rate": 100
           }
         ]
@@ -4391,7 +4217,7 @@
     "name": "Victory Road",
     "zones": [
       {
-        "zone": "1F Morning",
+        "zone": "1F",
         "method": "Standard",
         "pokemon": [
           {
@@ -4425,75 +4251,7 @@
         ]
       },
       {
-        "zone": "1F Day",
-        "method": "Standard",
-        "pokemon": [
-          {
-            "species": "Golbat",
-            "rate": 5
-          },
-          {
-            "species": "Graveler",
-            "rate": 30
-          },
-          {
-            "species": "Onix",
-            "rate": 20
-          },
-          {
-            "species": "Rhyhorn",
-            "rate": 20
-          },
-          {
-            "species": "Rhydon",
-            "rate": 15
-          },
-          {
-            "species": "Steelix",
-            "rate": 5
-          },
-          {
-            "species": "Gabite",
-            "rate": 5
-          }
-        ]
-      },
-      {
-        "zone": "1F Night",
-        "method": "Standard",
-        "pokemon": [
-          {
-            "species": "Golbat",
-            "rate": 15
-          },
-          {
-            "species": "Graveler",
-            "rate": 20
-          },
-          {
-            "species": "Onix",
-            "rate": 20
-          },
-          {
-            "species": "Rhyhorn",
-            "rate": 20
-          },
-          {
-            "species": "Rhydon",
-            "rate": 15
-          },
-          {
-            "species": "Steelix",
-            "rate": 5
-          },
-          {
-            "species": "Gabite",
-            "rate": 5
-          }
-        ]
-      },
-      {
-        "zone": "2F Morning",
+        "zone": "2F",
         "method": "Standard",
         "pokemon": [
           {
@@ -4523,7 +4281,7 @@
         ]
       },
       {
-        "zone": "2F Day",
+        "zone": "B1F",
         "method": "Standard",
         "pokemon": [
           {
@@ -4533,134 +4291,6 @@
           {
             "species": "Graveler",
             "rate": 15
-          },
-          {
-            "species": "Magneton",
-            "rate": 30
-          },
-          {
-            "species": "Onix",
-            "rate": 5
-          },
-          {
-            "species": "Steelix",
-            "rate": 40
-          },
-          {
-            "species": "Gabite",
-            "rate": 5
-          }
-        ]
-      },
-      {
-        "zone": "2F Night",
-        "method": "Standard",
-        "pokemon": [
-          {
-            "species": "Golbat",
-            "rate": 15
-          },
-          {
-            "species": "Graveler",
-            "rate": 5
-          },
-          {
-            "species": "Magneton",
-            "rate": 30
-          },
-          {
-            "species": "Onix",
-            "rate": 5
-          },
-          {
-            "species": "Steelix",
-            "rate": 40
-          },
-          {
-            "species": "Gabite",
-            "rate": 5
-          }
-        ]
-      },
-      {
-        "zone": "B1F Morning",
-        "method": "Standard",
-        "pokemon": [
-          {
-            "species": "Golbat",
-            "rate": 5
-          },
-          {
-            "species": "Graveler",
-            "rate": 15
-          },
-          {
-            "species": "Onix",
-            "rate": 10
-          },
-          {
-            "species": "Azumarill",
-            "rate": 30
-          },
-          {
-            "species": "Steelix",
-            "rate": 5
-          },
-          {
-            "species": "Floatzel",
-            "rate": 30
-          },
-          {
-            "species": "Gabite",
-            "rate": 5
-          }
-        ]
-      },
-      {
-        "zone": "B1F Day",
-        "method": "Standard",
-        "pokemon": [
-          {
-            "species": "Golbat",
-            "rate": 5
-          },
-          {
-            "species": "Graveler",
-            "rate": 15
-          },
-          {
-            "species": "Onix",
-            "rate": 10
-          },
-          {
-            "species": "Azumarill",
-            "rate": 30
-          },
-          {
-            "species": "Steelix",
-            "rate": 5
-          },
-          {
-            "species": "Floatzel",
-            "rate": 30
-          },
-          {
-            "species": "Gabite",
-            "rate": 5
-          }
-        ]
-      },
-      {
-        "zone": "B1F Night",
-        "method": "Standard",
-        "pokemon": [
-          {
-            "species": "Golbat",
-            "rate": 15
-          },
-          {
-            "species": "Graveler",
-            "rate": 5
           },
           {
             "species": "Onix",

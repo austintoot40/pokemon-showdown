@@ -4,7 +4,7 @@
 
 'use strict';
 
-import { nuzlockeGames, NuzlockeGame, recordCompletedRun, deleteGame, pushNuzlockeStatus, pushNuzlockeState, closeNuzlockePanel } from './game';
+import { nuzlockeGames, NuzlockeGame, recordCompletedRun, deleteGame, pushNuzlockeStatus, pushNuzlockeState, closeNuzlockePanel, saveGame } from './game';
 import { getLegalMoves } from './learnsets';
 import type { OwnedPokemon, TrainerPokemon } from './types';
 
@@ -240,12 +240,10 @@ export const battleHandlers: Chat.Handlers = {
 				pushNuzlockeStatus(humanId as ID, null);
 				closeNuzlockePanel(humanId as ID);
 			} else if (dest === 'battle') {
-				const user = Users.get(humanId as ID);
-				if (user) {
-					createNuzlockeBattle(game, user);
-				} else {
-					goToTeambuilding(game);
-				}
+				// Chained battle — save state and wait for the user to click Continue
+				// on the current battle before starting the next one.
+				saveGame(game);
+				pushNuzlockeStatus(humanId as ID, game);
 			} else {
 				game.goToPage(dest);
 			}
