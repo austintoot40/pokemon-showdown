@@ -373,8 +373,12 @@ export abstract class NuzlockeAI {
 		// Universal: don't re-apply an existing status
 		if (move.status && defender.status) return -20;
 
-		// Don't try to confuse an already-confused target
-		if ((move as AnyObject).volatileStatus === 'confusion' && defender.volatiles['confusion']) return -20;
+		// Don't re-apply a volatile the target already has (confusion, attract, leech seed, taunt, etc.)
+		const moveVolatile = (move as AnyObject).volatileStatus as string | undefined;
+		if (moveVolatile && move.target !== 'self' && defender.volatiles[moveVolatile]) return -20;
+
+		// Don't re-apply a self-targeting volatile the attacker already has (aqua ring, ingrain, magnet rise, etc.)
+		if (moveVolatile && move.target === 'self' && attacker.volatiles[moveVolatile]) return -20;
 
 		// Type-chart immunity (e.g. Thunder Wave vs Ground-type)
 		if (!this.battle.dex.getImmunity(move.type, defender)) return -20;
@@ -403,6 +407,8 @@ export abstract class NuzlockeAI {
 			return ctx.faster ? -20 : 7;
 		}
 
+		if (moveId === 'attract') return this.scoreAttract(ctx);
+		if (moveId === 'leechseed') return this.scoreLeechSeed(ctx);
 		if (moveId === 'taunt') return this.scoreTaunt(ctx);
 		if (moveId === 'encore') return this.scoreEncore(ctx);
 		if (moveId === 'explosion' || moveId === 'selfdestruct' || moveId === 'mistyexplosion') {
@@ -511,6 +517,7 @@ export abstract class NuzlockeAI {
 	}
 
 	protected scoreTaunt(ctx: MoveCtx): number {
+		if (ctx.defender.volatiles['taunt']) return -20;
 		const opponentHasStatus = ctx.defender.moveSlots.some(
 			s => this.battle.dex.moves.get(s.id).category === 'Status'
 		);
@@ -521,6 +528,22 @@ export abstract class NuzlockeAI {
 		if (!ctx.defender.lastMove) return -20;
 		if (ctx.defender.volatiles['encore']) return -20;
 		return 5;
+	}
+
+	protected scoreAttract(ctx: MoveCtx): number {
+		const { attacker, defender } = ctx;
+		// Already handled upstream (volatiles guard), but kept explicit for clarity
+		if (defender.volatiles['attract']) return -20;
+		const compatible = (attacker.gender === 'M' && defender.gender === 'F') ||
+			(attacker.gender === 'F' && defender.gender === 'M');
+		if (!compatible) return -20;
+		return 6;
+	}
+
+	protected scoreLeechSeed(ctx: MoveCtx): number {
+		if (ctx.defender.volatiles['leechseed']) return -20;
+		if (ctx.defender.types.includes('Grass')) return -20;
+		return 6;
 	}
 
 	protected scoreExplodeSelf(ctx: MoveCtx): number {
@@ -588,7 +611,6 @@ export abstract class NuzlockeAI {
 	}
 
 	protected scoreFocusEnergy(ctx: MoveCtx): number {
-		if (ctx.attacker.volatiles['focusenergy']) return -20;
 		if (ctx.defender.ability === 'shellarmor' as ID || ctx.defender.ability === 'battlearmor' as ID) return -20;
 		return 6;
 	}
