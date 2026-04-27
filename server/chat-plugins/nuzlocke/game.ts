@@ -154,6 +154,7 @@ export class NuzlockeGame {
 		this.box.push(pokemon);
 		this.addToParty(pokemon.uid);
 		this.resolvedRoutes.push(route.route);
+		this.refreshLockedRoutes();
 	}
 
 	/** Returns true if a zone's prerequisite is currently unmet. */
@@ -188,6 +189,14 @@ export class NuzlockeGame {
 			if (!this.isZoneLocked(zone)) return false;
 			return getAvailablePool(zone.pokemon, this.box, this.graveyard as any).length > 0;
 		});
+	}
+
+	/**
+	 * Removes from lockedRoutes any routes that now have an accessible non-dupe zone.
+	 * Called after operations that add Pokemon (or items/TMs) that may unlock trade/prereq zones.
+	 */
+	refreshLockedRoutes() {
+		this.lockedRoutes = this.lockedRoutes.filter(r => this.isRouteDeferrable(r));
 	}
 
 	/** Explicitly defer a route; moves it from lockedRoutes to deferredRoutes if needed. */
@@ -240,6 +249,7 @@ export class NuzlockeGame {
 		this.resolvedRoutes.push(route.route);
 		this.box.push(pokemon);
 		this.addToParty(pokemon.uid);
+		this.refreshLockedRoutes();
 	}
 
 	/** Called by /nuzlocke encounter <routeName> <zoneIndex>: rolls a zone from a wild route. */
@@ -272,6 +282,7 @@ export class NuzlockeGame {
 				this.box.splice(tradedIdx, 1);
 			}
 		}
+		this.refreshLockedRoutes();
 	}
 
 	get currentSegment() {

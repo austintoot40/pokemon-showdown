@@ -3118,7 +3118,11 @@
             "species": "Shieldon",
             "rate": 0
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Explorer Kit"
+        }
       },
       {
         "zone": "",
@@ -3232,7 +3236,8 @@
           "type": "move",
           "name": "Surf"
         }
-      }
+      },
+      "Explorer Kit"
     ],
     "tmMoves": [
       "Cut",

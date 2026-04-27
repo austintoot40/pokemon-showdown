@@ -240,8 +240,9 @@ export const battleHandlers: Chat.Handlers = {
 				pushNuzlockeStatus(humanId as ID, null);
 				closeNuzlockePanel(humanId as ID);
 			} else if (dest === 'battle') {
-				// Chained battle — save state and wait for the user to click Continue
-				// on the current battle before starting the next one.
+				// Chained battle — signal the client so the Continue button starts
+				// the next battle via /nuzlocke battle (safe command-handler path).
+				battle.room.add('|nuzlockechain|').update();
 				saveGame(game);
 				pushNuzlockeStatus(humanId as ID, game);
 			} else {
