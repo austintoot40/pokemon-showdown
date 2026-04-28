@@ -183,6 +183,12 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 			closeNuzlockePanel(user.id);
 		},
 
+		status(target, room, user) {
+			// Client requests this on connect so the mainmenu populates even before the user logs in.
+			const game = nuzlockeGames.get(user.id) ?? null;
+			pushNuzlockeStatus(user.id, game);
+		},
+
 		setai(target, room, user) {
 			const difficulty = target.trim().toLowerCase();
 			if (!['basic', 'smart', 'competitive'].includes(difficulty)) {

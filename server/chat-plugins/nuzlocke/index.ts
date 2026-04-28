@@ -9,7 +9,10 @@ import { loadUserGame, nuzlockeGames, pushNuzlockeStatus, pushNuzlockeState, nav
 void pingRedis();
 
 export const loginfilter: Chat.LoginFilter = user => {
-	if (!user.named) return;
+	if (!user.named) {
+		pushNuzlockeStatus(user.id, null);
+		return;
+	}
 	void (async () => {
 		await loadBeatenScenariosForUser(user.id);
 		const game = nuzlockeGames.get(user.id) ?? await loadUserGame(user.id);
