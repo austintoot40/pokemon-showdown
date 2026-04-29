@@ -17,39 +17,31 @@ export class SmartAI extends NuzlockeAI {
 	}
 
 	// =========================================================================
-	// Voluntary switching — with survivability filter
+	// Voluntary switching — unified scoring path
+	//
+	// Returns a scored switch candidate that competes directly against the best
+	// move score in decide(). Score is on the same integer scale as move scores
+	// (~6 = regular move, ~9–12 = kill shot).
+	//
+	// Key properties:
+	//  - Only considers bench Pokemon that can absorb the switch-in hit.
+	//  - Score scales with how much better the bench matchup is vs staying in.
+	//  - Penalised by the current Pokemon's positive boost total so a set-up
+	//    Pokemon won't casually abandon its boosts for a marginal improvement.
+	//  - Hard cap of 10 so switching never outbids a kill shot (which scores 9–14).
 	// =========================================================================
 
-	protected override considerVoluntarySwitch(request: ChoiceRequest): string | null {
+	protected override chooseBestSwitch(request: ChoiceRequest): { slot: number; score: number } | null {
 		// @ts-expect-error jank request parser
 		if (request.active?.[0]?.trapped) return null;
 		const aiActive = this.battle.sides[1].active[0];
 		const opponent = this.battle.sides[0].active[0];
 		if (!aiActive || !opponent) return null;
 
-		// Switch if all offensive moves are immune or fully resisted by opponent
-		const usableMoves = aiActive.moveSlots.filter(slot => {
-			if (slot.disabled) return false;
-			const move = this.battle.dex.moves.get(slot.id);
-			if (move.basePower === 0) return true;
-			if (!this.battle.dex.getImmunity(move.type, opponent)) return false;
-			return this.battle.dex.getEffectiveness(move.type, opponent) >= 0;
-		});
-
-		// Switch if opponent has a 2× move vs AI and AI is below 60% HP
-		const hardCountered = opponent.moveSlots.some(slot => {
-			const move = this.battle.dex.moves.get(slot.id);
-			return move.basePower > 0 &&
-				this.battle.dex.getImmunity(move.type, aiActive) &&
-				this.battle.dex.getEffectiveness(move.type, aiActive) >= 1;
-		});
-
-		const shouldSwitch = usableMoves.length === 0 || (hardCountered && aiActive.hp / aiActive.maxhp < 0.6);
-		if (!shouldSwitch) return null;
-
-		// Safety filter: only switch into a Pokemon that can absorb the next hit
 		const oppSpd = this.getEffectiveSpeed(opponent);
 		const aiBench = this.battle.sides[1].pokemon.slice(1).filter(p => p && !p.fainted && p.hp > 0);
+
+		// Safety filter: only switch into a Pokemon that can absorb the switch-in hit
 		const candidates = aiBench.filter(p => {
 			const benchSpd = this.getEffectiveSpeed(p);
 			const incomingDmg = this.maxOpponentDamage(opponent, p);
@@ -60,20 +52,33 @@ export class SmartAI extends NuzlockeAI {
 		if (candidates.length === 0) return null;
 
 		const currentScore = this.scoreSwitchTarget(aiActive, opponent);
-		const bestBenchScore = Math.max(...candidates.map(p => this.scoreSwitchTarget(p, opponent)));
-		if (bestBenchScore <= currentScore) return null;
 
 		let bestSlot = -1;
-		let bestScore = -Infinity;
+		let bestBenchScore = -Infinity;
 		for (const p of candidates) {
 			const score = this.scoreSwitchTarget(p, opponent);
-			if (score > bestScore) {
-				bestScore = score;
+			if (score > bestBenchScore) {
+				bestBenchScore = score;
 				const idx = this.battle.sides[1].pokemon.indexOf(p);
 				if (idx > 0) bestSlot = idx + 1;
 			}
 		}
-		return bestSlot !== -1 ? `switch ${bestSlot}` : null;
+		if (bestSlot === -1) return null;
+
+		const delta = bestBenchScore - currentScore;
+		if (delta <= 0) return null;
+
+		// Reduce switch appeal proportional to positive boosts being abandoned
+		const boostTotal = Object.values(aiActive.boosts)
+			.reduce((sum, v) => sum + Math.max(0, v as number), 0);
+
+		// delta=1 → ~6 (ties with a normal damaging move)
+		// delta=2 → ~8 (beats normal moves, loses to kill shots)
+		// delta=3+ → capped at 10 (loses to faster kill shots scoring 12+)
+		const rawScore = 4 + delta * 2 - boostTotal * 1.5;
+		if (rawScore <= 0) return null;
+
+		return { slot: bestSlot, score: Math.min(rawScore, 10) };
 	}
 
 	// =========================================================================

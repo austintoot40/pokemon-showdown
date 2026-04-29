@@ -40,6 +40,14 @@ export abstract class NuzlockeAI {
 		if (request.forceSwitch) return this.forceSwitch(request);
 		// @ts-expect-error jank request parser
 		if (request.active?.[0]) {
+			const switchCandidate = this.chooseBestSwitch(request);
+			if (switchCandidate !== null) {
+				// Unified path: switch competes directly against best move
+				const { slot: moveSlot, score: moveScore } = this.chooseBestMove(request);
+				if (switchCandidate.score > moveScore) return `switch ${switchCandidate.slot}`;
+				return `move ${moveSlot}`;
+			}
+			// Legacy path: hard-gated voluntary switch then move (used by CompetitiveAI)
 			const voluntarySwitch = this.considerVoluntarySwitch(request);
 			if (voluntarySwitch) return voluntarySwitch;
 			return this.chooseMove(request);
@@ -78,12 +86,12 @@ export abstract class NuzlockeAI {
 		return `switch ${bestSlot}`;
 	}
 
-	protected chooseMove(request: ChoiceRequest): string {
+	protected chooseBestMove(request: ChoiceRequest): { slot: number; score: number } {
 		const aiActive = this.battle.sides[1].active[0];
 		const opponent = this.battle.sides[0].active[0];
 		if (!aiActive || !opponent) {
 			// @ts-expect-error jank request parser
-			return `move ${this.battle.random(1, request.active[0].moves.length + 1)}`;
+			return { slot: this.battle.random(1, request.active[0].moves.length + 1), score: 0 };
 		}
 		// @ts-expect-error jank request parser
 		const moves = request.active[0].moves as Array<{id: string, disabled: boolean | string}>;
@@ -133,7 +141,11 @@ export abstract class NuzlockeAI {
 				if (Math.floor(Math.random() * tiedCount) === 0) bestSlot = i + 1;
 			}
 		}
-		return `move ${bestSlot}`;
+		return { slot: bestSlot, score: bestScore };
+	}
+
+	protected chooseMove(request: ChoiceRequest): string {
+		return `move ${this.chooseBestMove(request).slot}`;
 	}
 
 	protected scoreSwitchTarget(benched: Pokemon, opponent: Pokemon): number {
@@ -199,8 +211,20 @@ export abstract class NuzlockeAI {
 
 	// =========================================================================
 	// Decision point: voluntary switching
-	// Basic default: never switch voluntarily.
+	//
+	// Two mechanisms — only one fires per subclass:
+	//
+	// chooseBestSwitch (unified path): returns a scored switch candidate that
+	//   competes directly against move scores in decide(). Used by SmartAI.
+	//   Return null to fall through to the legacy path.
+	//
+	// considerVoluntarySwitch (legacy path): hard-gated switch decision used by
+	//   CompetitiveAI, which has its own depth-1 minimax on a separate scale.
 	// =========================================================================
+
+	protected chooseBestSwitch(request: ChoiceRequest): { slot: number; score: number } | null {
+		return null;
+	}
 
 	protected considerVoluntarySwitch(request: ChoiceRequest): string | null {
 		return null;

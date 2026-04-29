@@ -13,7 +13,7 @@ import type { Battle } from '../battle';
 import type { Pokemon } from '../pokemon';
 import type { ChoiceRequest } from '../side';
 import { NuzlockeAI } from './base';
-import { PositionEvaluator, projectMoveState } from './evaluator';
+import { PositionEvaluator, projectMoveState, snapshotState } from './evaluator';
 import { initRolloutState, type RolloutState } from './rollout';
 import { MCTSEngine } from './mcts';
 import { isAbilityImmune } from './calculator';
@@ -95,7 +95,6 @@ export class CompetitiveAI extends NuzlockeAI {
 		if (!ai || !opp) return null;
 
 		const oppOptions = this.getOpponentOptions(opp);
-		const oppBestMove = this.getBestMoveAgainst(opp, ai);
 
 		// Score of staying in: best move we can use vs worst opponent response
 		const stayInScore = this.minMaxScore(ai, opp, oppOptions);
@@ -151,7 +150,11 @@ export class CompetitiveAI extends NuzlockeAI {
 				this.battle.dex.getImmunity(move.type, opp.types) &&
 				!isAbilityImmune(ai.ability as string, opp.ability as string, move.type));
 
-		if (aiMoves.length === 0) return -Infinity;
+		if (aiMoves.length === 0) {
+			// No effective damaging moves (e.g. dedicated wall) — score the position
+			// as-is rather than -Infinity, which would force an unnecessary switch.
+			return this.evaluator.evaluate(snapshotState(this.battle, ai, opp));
+		}
 
 		let bestMinScore = -Infinity;
 		for (const { move: aiMove } of aiMoves) {
@@ -303,8 +306,8 @@ export class CompetitiveAI extends NuzlockeAI {
 			if (m.basePower === 0) continue;
 			if (!this.battle.dex.getImmunity(m.type, defender.types)) continue;
 			if (isAbilityImmune(attacker.ability as string, defender.ability as string, m.type)) continue;
-			const eff = Math.pow(2, this.battle.dex.getEffectiveness(m.type, defender.types));
-			if (eff > bestDmg) { bestDmg = eff; bestMove = m; }
+			const { damage } = this.simulateDamage(m, attacker, defender);
+			if (damage > bestDmg) { bestDmg = damage; bestMove = m; }
 		}
 		return bestMove ?? this.battle.dex.moves.get(attacker.moveSlots[0]?.id ?? 'tackle');
 	}
