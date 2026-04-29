@@ -1,0 +1,616 @@
+[
+  {
+    "id": "cheren",
+    "trainer": "Leader Cheren",
+    "team": [
+      {
+        "species": "Patrat",
+        "level": 10,
+        "ability": "Keen Eye",
+        "moves": [
+          "Work Up",
+          "Tackle",
+          "Bite"
+        ],
+        "item": null
+      },
+      {
+        "species": "Lillipup",
+        "level": 12,
+        "ability": "Vital Spirit",
+        "moves": [
+          "Work Up",
+          "Tackle",
+          "Bite"
+        ],
+        "item": null
+      }
+    ],
+    "sprite": "cheren-gen5bw2"
+  },
+  {
+    "id": "roxie",
+    "trainer": "Leader Roxie",
+    "team": [
+      {
+        "species": "Koffing",
+        "level": 15,
+        "ability": "Levitate",
+        "moves": [
+          "Assurance",
+          "Tackle",
+          "Smog"
+        ],
+        "item": null
+      },
+      {
+        "species": "Whirlipede",
+        "level": 17,
+        "ability": "Poison Point",
+        "moves": [
+          "Venoshock",
+          "Protect",
+          "Poison Sting",
+          "Pursuit"
+        ],
+        "item": null
+      }
+    ],
+    "sprite": "roxie"
+  },
+  {
+    "id": "burgh",
+    "trainer": "Leader Burgh",
+    "team": [
+      {
+        "species": "Swadloon",
+        "level": 20,
+        "ability": "Leaf Guard",
+        "moves": [
+          "String Shot",
+          "Razor Leaf",
+          "Struggle Bug",
+          "Protect"
+        ],
+        "item": null
+      },
+      {
+        "species": "Dwebble",
+        "level": 20,
+        "ability": "Sturdy",
+        "moves": [
+          "Smack Down",
+          "Faint Attack",
+          "Rock Polish",
+          "Struggle Bug"
+        ],
+        "item": null
+      },
+      {
+        "species": "Leavanny",
+        "level": 22,
+        "ability": "Swarm",
+        "moves": [
+          "Razor Leaf",
+          "Cut",
+          "String Shot",
+          "Struggle Bug"
+        ],
+        "item": "Sitrus Berry"
+      }
+    ],
+    "sprite": "burgh"
+  },
+  {
+    "id": "elesa",
+    "trainer": "Leader Elesa",
+    "team": [
+      {
+        "species": "Emolga",
+        "level": 26,
+        "ability": "Static",
+        "moves": [
+          "Quick Attack",
+          "Pursuit",
+          "Volt Switch"
+        ],
+        "item": null
+      },
+      {
+        "species": "Flaaffy",
+        "level": 26,
+        "ability": "Static",
+        "moves": [
+          "Thunder Wave",
+          "Volt Switch",
+          "Take Down"
+        ],
+        "item": null
+      },
+      {
+        "species": "Zebstrika",
+        "level": 28,
+        "ability": "Motor Drive",
+        "moves": [
+          "Flame Charge",
+          "Pursuit",
+          "Volt Switch",
+          "Quick Attack"
+        ],
+        "item": "Sitrus Berry"
+      }
+    ],
+    "sprite": "elesa-gen5bw2"
+  },
+  {
+    "id": "clay",
+    "trainer": "Leader Clay",
+    "team": [
+      {
+        "species": "Krokorok",
+        "level": 28,
+        "ability": "Intimidate",
+        "moves": [
+          "Crunch",
+          "Sand Tomb",
+          "Bulldoze",
+          "Torment"
+        ],
+        "item": null
+      },
+      {
+        "species": "Sandslash",
+        "level": 28,
+        "ability": "Sand Veil",
+        "moves": [
+          "Crush Claw",
+          "Bulldoze",
+          "Fury Cutter",
+          "Rollout"
+        ],
+        "item": null
+      },
+      {
+        "species": "Excadrill",
+        "level": 30,
+        "ability": "Sand Force",
+        "moves": [
+          "Slash",
+          "Rock Slide",
+          "Metal Claw",
+          "Bulldoze"
+        ],
+        "item": "Sitrus Berry"
+      }
+    ],
+    "sprite": "clay"
+  },
+  {
+    "id": "skyla",
+    "trainer": "Leader Skyla",
+    "team": [
+      {
+        "species": "Swoobat",
+        "level": 34,
+        "ability": "Unaware",
+        "moves": [
+          "Heart Stamp",
+          "Attract",
+          "Acrobatics",
+          "Assurance"
+        ],
+        "item": null
+      },
+      {
+        "species": "Skarmory",
+        "level": 34,
+        "ability": "Sturdy",
+        "moves": [
+          "Air Cutter",
+          "Agility",
+          "Steel Wing",
+          "Fury Attack"
+        ],
+        "item": null
+      },
+      {
+        "species": "Swanna",
+        "level": 36,
+        "ability": "Big Pecks",
+        "moves": [
+          "FeatherDance",
+          "Roost",
+          "BubbleBeam",
+          "Air Slash"
+        ],
+        "item": "Sitrus Berry"
+      }
+    ],
+    "sprite": "skyla"
+  },
+  {
+    "id": "drayden",
+    "trainer": "Leader Drayden",
+    "team": [
+      {
+        "species": "Druddigon",
+        "level": 42,
+        "ability": "Sheer Force",
+        "moves": [
+          "Revenge",
+          "Crunch",
+          "Slash",
+          "Dragon Tail"
+        ],
+        "item": null
+      },
+      {
+        "species": "Flygon",
+        "level": 42,
+        "ability": "Levitate",
+        "moves": [
+          "Rock Slide",
+          "Earth Power",
+          "Crunch",
+          "Dragon Tail"
+        ],
+        "item": null
+      },
+      {
+        "species": "Haxorus",
+        "level": 44,
+        "ability": "Mold Breaker",
+        "moves": [
+          "Dragon Dance",
+          "Dragon Tail",
+          "Slash",
+          "Assurance"
+        ],
+        "item": "Sitrus Berry"
+      }
+    ],
+    "sprite": "drayden"
+  },
+  {
+    "id": "marlon",
+    "trainer": "Leader Marlon",
+    "team": [
+      {
+        "species": "Carracosta",
+        "level": 45,
+        "ability": "Sturdy",
+        "moves": [
+          "Smack Down",
+          "Shell Smash",
+          "Scald",
+          "Crunch"
+        ],
+        "item": null
+      },
+      {
+        "species": "Wailord",
+        "level": 45,
+        "ability": "Water Veil",
+        "moves": [
+          "Amnesia",
+          "Scald",
+          "Rollout",
+          "Bounce"
+        ],
+        "item": null
+      },
+      {
+        "species": "Jellicent",
+        "level": 47,
+        "ability": "Cursed Body",
+        "moves": [
+          "Brine",
+          "Recover",
+          "Scald",
+          "Ominous Wind"
+        ],
+        "item": "Sitrus Berry"
+      }
+    ],
+    "sprite": "marlon"
+  },
+  {
+    "id": "shauntal",
+    "trainer": "Elite Four Shauntal",
+    "team": [
+      {
+        "species": "Cofagrigus",
+        "level": 52,
+        "ability": "Mummy",
+        "moves": [
+          "Psychic",
+          "Shadow Ball",
+          "Will-O-Wisp",
+          "Grass Knot"
+        ],
+        "item": null
+      },
+      {
+        "species": "Drifblim",
+        "level": 52,
+        "ability": "Aftermath",
+        "moves": [
+          "Acrobatics",
+          "Thunderbolt",
+          "Shadow Ball",
+          "Psychic"
+        ],
+        "item": null
+      },
+      {
+        "species": "Golurk",
+        "level": 52,
+        "ability": "Iron Fist",
+        "moves": [
+          "Earthquake",
+          "Shadow Punch",
+          "Heavy Slam",
+          "Brick Break"
+        ],
+        "item": null
+      },
+      {
+        "species": "Chandelure",
+        "level": 54,
+        "ability": "Flame Body",
+        "moves": [
+          "Fire Blast",
+          "Energy Ball",
+          "Shadow Ball",
+          "Psychic"
+        ],
+        "item": "Sitrus Berry"
+      }
+    ],
+    "sprite": "shauntal"
+  },
+  {
+    "id": "marshal",
+    "trainer": "Elite Four Marshal",
+    "team": [
+      {
+        "species": "Throh",
+        "level": 52,
+        "ability": "Guts",
+        "moves": [
+          "Rock Tomb",
+          "Bulldoze",
+          "Storm Throw",
+          "Payback"
+        ],
+        "item": null
+      },
+      {
+        "species": "Sawk",
+        "level": 52,
+        "ability": "Sturdy",
+        "moves": [
+          "Payback",
+          "Rock Slide",
+          "Retaliate",
+          "Brick Break"
+        ],
+        "item": null
+      },
+      {
+        "species": "Mienshao",
+        "level": 52,
+        "ability": "Regenerator",
+        "moves": [
+          "Hi Jump Kick",
+          "U-turn",
+          "Bounce",
+          "Retaliate"
+        ],
+        "item": null
+      },
+      {
+        "species": "Conkeldurr",
+        "level": 54,
+        "ability": "Guts",
+        "moves": [
+          "Stone Edge",
+          "Hammer Arm",
+          "Retaliate",
+          "Bulk Up"
+        ],
+        "item": "Sitrus Berry"
+      }
+    ],
+    "sprite": "marshal"
+  },
+  {
+    "id": "grimsley",
+    "trainer": "Elite Four Grimsley",
+    "team": [
+      {
+        "species": "Liepard",
+        "level": 52,
+        "ability": "Limber",
+        "moves": [
+          "Fake Out",
+          "Night Slash",
+          "Aerial Ace",
+          "Attract"
+        ],
+        "item": null
+      },
+      {
+        "species": "Scrafty",
+        "level": 52,
+        "ability": "Moxie",
+        "moves": [
+          "Rock Tomb",
+          "Brick Break",
+          "Crunch",
+          "Poison Jab"
+        ],
+        "item": null
+      },
+      {
+        "species": "Krookodile",
+        "level": 52,
+        "ability": "Intimidate",
+        "moves": [
+          "Crunch",
+          "Earthquake",
+          "Dragon Claw",
+          "Rock Tomb"
+        ],
+        "item": null
+      },
+      {
+        "species": "Bisharp",
+        "level": 54,
+        "ability": "Defiant",
+        "moves": [
+          "Aerial Ace",
+          "Night Slash",
+          "X-Scissor",
+          "Metal Claw"
+        ],
+        "item": "Sitrus Berry"
+      }
+    ],
+    "sprite": "grimsley"
+  },
+  {
+    "id": "caitlin",
+    "trainer": "Elite Four Caitlin",
+    "team": [
+      {
+        "species": "Musharna",
+        "level": 52,
+        "ability": "Synchronize",
+        "moves": [
+          "Reflect",
+          "Yawn",
+          "Dream Eater",
+          "Charge Beam"
+        ],
+        "item": null
+      },
+      {
+        "species": "Sigilyph",
+        "level": 52,
+        "ability": "Wonder Skin",
+        "moves": [
+          "Psychic",
+          "Shadow Ball",
+          "Ice Beam",
+          "Air Slash"
+        ],
+        "item": null
+      },
+      {
+        "species": "Reuniclus",
+        "level": 52,
+        "ability": "Magic Guard",
+        "moves": [
+          "Focus Blast",
+          "Psychic",
+          "Energy Ball",
+          "Recover"
+        ],
+        "item": null
+      },
+      {
+        "species": "Gothitelle",
+        "level": 54,
+        "ability": "Frisk",
+        "moves": [
+          "Calm Mind",
+          "Psychic",
+          "Shadow Ball",
+          "Thunderbolt"
+        ],
+        "item": "Sitrus Berry"
+      }
+    ],
+    "sprite": "caitlin"
+  },
+  {
+    "id": "iris",
+    "trainer": "Champion Iris",
+    "team": [
+      {
+        "species": "Hydreigon",
+        "level": 53,
+        "ability": "Levitate",
+        "moves": [
+          "Flamethrower",
+          "Charge Beam",
+          "Dragon Pulse",
+          "Surf"
+        ],
+        "item": null
+      },
+      {
+        "species": "Druddigon",
+        "level": 53,
+        "ability": "Sheer Force",
+        "moves": [
+          "Rock Slide",
+          "Flamethrower",
+          "Dragon Tail",
+          "Focus Blast"
+        ],
+        "item": "Life Orb"
+      },
+      {
+        "species": "Archeops",
+        "level": 53,
+        "ability": "Defeatist",
+        "moves": [
+          "Acrobatics",
+          "Rock Slide",
+          "Dragon Claw",
+          "Endeavor"
+        ],
+        "item": null
+      },
+      {
+        "species": "Aggron",
+        "level": 53,
+        "ability": "Rock Head",
+        "moves": [
+          "Earthquake",
+          "Double-Edge",
+          "Rock Slide",
+          "Autotomize"
+        ],
+        "item": null
+      },
+      {
+        "species": "Lapras",
+        "level": 53,
+        "ability": "Water Absorb",
+        "moves": [
+          "Surf",
+          "Ice Beam",
+          "Thunderbolt",
+          "Sing"
+        ],
+        "item": null
+      },
+      {
+        "species": "Haxorus",
+        "level": 55,
+        "ability": "Mold Breaker",
+        "moves": [
+          "Earthquake",
+          "X-Scissor",
+          "Dual Chop",
+          "Dragon Dance"
+        ],
+        "item": "Focus Sash"
+      }
+    ],
+    "sprite": "iris-gen5bw2"
+  }
+]

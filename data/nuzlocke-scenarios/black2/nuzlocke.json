@@ -1,0 +1,161 @@
+{
+  "id": "black2",
+  "name": "Black 2",
+  "generation": 5,
+  "description": "",
+  "color": "#263238",
+  "pokemon": "kyurem",
+  "starters": [
+    {
+      "species": "Snivy",
+      "level": 5
+    },
+    {
+      "species": "Tepig",
+      "level": 5
+    },
+    {
+      "species": "Oshawott",
+      "level": 5
+    }
+  ],
+  "segments": [
+    {
+      "id": "cheren",
+      "name": "Cheren",
+      "locations": [
+        "unova-route-19",
+        "aspertia-city",
+        "unova-route-20",
+        "floccesy-ranch"
+      ],
+      "battles": [
+        "cheren"
+      ]
+    },
+    {
+      "id": "roxie",
+      "name": "Roxie",
+      "locations": [
+        "unova-route-16",
+        "virbank-city",
+        "virbank-complex"
+      ],
+      "battles": [
+        "roxie"
+      ]
+    },
+    {
+      "id": "burgh",
+      "name": "Burgh",
+      "locations": [
+        "castelia-city",
+        "castelia-sewers",
+        "relic-passage"
+      ],
+      "battles": [
+        "burgh"
+      ]
+    },
+    {
+      "id": "elesa",
+      "name": "Elesa",
+      "locations": [
+        "unova-route-4",
+        "desert-resort",
+        "nimbasa-city",
+        "relic-castle"
+      ],
+      "battles": [
+        "elesa"
+      ]
+    },
+    {
+      "id": "clay",
+      "name": "Clay",
+      "locations": [
+        "unova-route-8",
+        "moor-of-icirrus",
+        "icirrus-city",
+        "dragonspiral-tower",
+        "lostlorn-forest",
+        "unova-route-5",
+        "driftveil-city"
+      ],
+      "battles": [
+        "clay"
+      ]
+    },
+    {
+      "id": "skyla",
+      "name": "Skyla",
+      "locations": [
+        "unova-route-14",
+        "unova-route-15",
+        "pre-gym-6-gift-1",
+        "world-tournament",
+        "unova-route-6",
+        "mistralton-cave",
+        "chargestone-cave",
+        "mistralton-city",
+        "unova-route-7",
+        "celestial-tower"
+      ],
+      "battles": [
+        "skyla"
+      ]
+    },
+    {
+      "id": "drayden",
+      "name": "Drayden",
+      "locations": [
+        "lentimas-town",
+        "strange-house",
+        "reversal-mountain",
+        "undella-town",
+        "undella-bay",
+        "unova-route-13",
+        "lacunosa-town",
+        "unova-route-12",
+        "village-bridge",
+        "unova-route-11",
+        "opelucid-city",
+        "unova-route-9"
+      ],
+      "battles": [
+        "drayden"
+      ]
+    },
+    {
+      "id": "marlon",
+      "name": "Marlon",
+      "locations": [
+        "humilau-city"
+      ],
+      "battles": [
+        "marlon"
+      ]
+    },
+    {
+      "id": "elite-four",
+      "name": "Elite Four",
+      "locations": [
+        "unova-route-22",
+        "unova-route-21",
+        "seaside-cave",
+        "plasma-frigate",
+        "giant-chasm",
+        "unova-route-23",
+        "victory-road"
+      ],
+      "battles": [
+        "shauntal",
+        "marshal",
+        "grimsley",
+        "caitlin",
+        "iris"
+      ]
+    }
+  ],
+  "verified": true
+}

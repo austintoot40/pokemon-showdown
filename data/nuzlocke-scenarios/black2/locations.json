@@ -1,0 +1,4266 @@
+[
+  {
+    "id": "unova-route-4",
+    "name": "Unova Route 4",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Sand",
+        "pokemon": [
+          {
+            "species": "Sandile",
+            "rate": 35
+          },
+          {
+            "species": "Darumaka",
+            "rate": 35
+          },
+          {
+            "species": "Trubbish",
+            "rate": 25
+          },
+          {
+            "species": "Scraggy",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "5-15",
+        "pokemon": [
+          {
+            "species": "Frillish",
+            "rate": 100
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Rippling",
+        "pokemon": [
+          {
+            "species": "Alomomola",
+            "rate": 95
+          },
+          {
+            "species": "Jellicent",
+            "rate": 5
+          }
+        ]
+      }
+    ],
+    "items": [
+      "Mystic Water",
+      "Wide Lens",
+      "Grip Claw"
+    ],
+    "tmMoves": [
+      "Dig"
+    ]
+  },
+  {
+    "id": "desert-resort",
+    "name": "Desert Resort",
+    "zones": [
+      {
+        "zone": "Entrance",
+        "method": "Sand",
+        "pokemon": [
+          {
+            "species": "Sandile",
+            "rate": 30
+          },
+          {
+            "species": "Darumaka",
+            "rate": 30
+          },
+          {
+            "species": "Sandshrew",
+            "rate": 10
+          },
+          {
+            "species": "Maractus",
+            "rate": 10
+          },
+          {
+            "species": "Dwebble",
+            "rate": 10
+          },
+          {
+            "species": "Scraggy",
+            "rate": 10
+          }
+        ]
+      },
+      {
+        "zone": "Desert",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Sandshrew",
+            "rate": 15
+          },
+          {
+            "species": "Trapinch",
+            "rate": 5
+          },
+          {
+            "species": "Sandile",
+            "rate": 30
+          },
+          {
+            "species": "Darumaka",
+            "rate": 20
+          },
+          {
+            "species": "Maractus",
+            "rate": 10
+          },
+          {
+            "species": "Dwebble",
+            "rate": 10
+          },
+          {
+            "species": "Sigilyph",
+            "rate": 10
+          }
+        ]
+      }
+    ],
+    "items": [
+      "Soft Sand",
+      "Fire Stone"
+    ]
+  },
+  {
+    "id": "relic-castle",
+    "name": "Relic Castle",
+    "zones": [
+      {
+        "zone": "1F-B1F",
+        "method": "1F",
+        "pokemon": [
+          {
+            "species": "Sandile",
+            "rate": 40
+          },
+          {
+            "species": "Yamask",
+            "rate": 40
+          },
+          {
+            "species": "Sandshrew",
+            "rate": 20
+          }
+        ]
+      },
+      {
+        "zone": "Lowest Floor",
+        "method": "Lowest floor",
+        "pokemon": [
+          {
+            "species": "Yamask",
+            "rate": 40
+          },
+          {
+            "species": "Sandile",
+            "rate": 30
+          },
+          {
+            "species": "Sandslash",
+            "rate": 20
+          },
+          {
+            "species": "Krokorok",
+            "rate": 10
+          }
+        ],
+        "requires": {
+          "type": "battle",
+          "name": "clay"
+        }
+      },
+      {
+        "zone": "Volcarona's Room",
+        "method": "Volcarona's room",
+        "pokemon": [
+          {
+            "species": "Baltoy",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "battle",
+          "name": "clay"
+        }
+      },
+      {
+        "zone": "Volcarona's Room",
+        "method": "Gift",
+        "pokemon": [
+          {
+            "species": "Volcarona",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "battle",
+          "name": "clay"
+        }
+      }
+    ],
+    "tmMoves": [
+      "Rock Tomb"
+    ],
+    "items": [
+      {
+        "name": "Sun Stone",
+        "requires": {
+          "type": "battle",
+          "name": "clay"
+        }
+      }
+    ]
+  },
+  {
+    "id": "unova-route-16",
+    "name": "Unova Route 16",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Grass",
+        "pokemon": [
+          {
+            "species": "Minccino",
+            "rate": 30
+          },
+          {
+            "species": "Gothita",
+            "rate": 30
+          },
+          {
+            "species": "Liepard",
+            "rate": 20
+          },
+          {
+            "species": "Trubbish",
+            "rate": 20
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Rustling",
+        "pokemon": [
+          {
+            "species": "Audino",
+            "rate": 85
+          },
+          {
+            "species": "Emolga",
+            "rate": 10
+          },
+          {
+            "species": "Cinccino",
+            "rate": 5
+          }
+        ]
+      }
+    ],
+    "tmMoves": [
+      {
+        "name": "Payback",
+        "requires": {
+          "type": "move",
+          "name": "Strength"
+        }
+      }
+    ]
+  },
+  {
+    "id": "lostlorn-forest",
+    "name": "Lostlorn Forest",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Grass",
+        "pokemon": [
+          {
+            "species": "Swadloon",
+            "rate": 25
+          },
+          {
+            "species": "Cottonee",
+            "rate": 25
+          },
+          {
+            "species": "Venipede",
+            "rate": 20
+          },
+          {
+            "species": "Roselia",
+            "rate": 15
+          },
+          {
+            "species": "Combee",
+            "rate": 10
+          },
+          {
+            "species": "Heracross",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "Rustling Grass",
+        "method": "Rustling",
+        "pokemon": [
+          {
+            "species": "Audino",
+            "rate": 40
+          },
+          {
+            "species": "Pansage",
+            "rate": 10
+          },
+          {
+            "species": "Pansear",
+            "rate": 10
+          },
+          {
+            "species": "Panpour",
+            "rate": 10
+          },
+          {
+            "species": "Emolga",
+            "rate": 10
+          },
+          {
+            "species": "Roserade",
+            "rate": 5
+          },
+          {
+            "species": "Vespiquen",
+            "rate": 5
+          },
+          {
+            "species": "Leavanny",
+            "rate": 5
+          },
+          {
+            "species": "Whimsicott",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Surf",
+        "pokemon": [
+          {
+            "species": "Basculin",
+            "rate": 70
+          },
+          {
+            "species": "Buizel",
+            "rate": 30
+          }
+        ]
+      }
+    ],
+    "tmMoves": [
+      "Snarl"
+    ],
+    "items": [
+      "Leaf Stone"
+    ]
+  },
+  {
+    "id": "unova-route-5",
+    "name": "Unova Route 5",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Grass",
+        "pokemon": [
+          {
+            "species": "Minccino",
+            "rate": 30
+          },
+          {
+            "species": "Gothita",
+            "rate": 30
+          },
+          {
+            "species": "Liepard",
+            "rate": 20
+          },
+          {
+            "species": "Trubbish",
+            "rate": 20
+          }
+        ]
+      },
+      {
+        "zone": "Rustling Grass",
+        "method": "Rustling",
+        "pokemon": [
+          {
+            "species": "Audino",
+            "rate": 85
+          },
+          {
+            "species": "Emolga",
+            "rate": 10
+          },
+          {
+            "species": "Cinccino",
+            "rate": 5
+          }
+        ]
+      }
+    ],
+    "tmMoves": [
+      "Fly"
+    ]
+  },
+  {
+    "id": "unova-route-6",
+    "name": "Unova Route 6",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Grass",
+        "pokemon": [
+          {
+            "species": "Shelmet",
+            "rate": 25
+          },
+          {
+            "species": "Tranquill",
+            "rate": 15
+          },
+          {
+            "species": "Swadloon",
+            "rate": 10
+          },
+          {
+            "species": "Foongus",
+            "rate": 10
+          },
+          {
+            "species": "Marill",
+            "rate": 5
+          },
+          {
+            "species": "Karrablast",
+            "rate": 5
+          },
+          {
+            "species": "Deerling",
+            "rate": 30
+          }
+        ]
+      },
+      {
+        "zone": "Rustling Grass",
+        "method": "Rustling",
+        "pokemon": [
+          {
+            "species": "Audino",
+            "rate": 50
+          },
+          {
+            "species": "Emolga",
+            "rate": 20
+          },
+          {
+            "species": "Dunsparce",
+            "rate": 10
+          },
+          {
+            "species": "Azumarill",
+            "rate": 5
+          },
+          {
+            "species": "Castform",
+            "rate": 5
+          },
+          {
+            "species": "Leavanny",
+            "rate": 5
+          },
+          {
+            "species": "Unfezant",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Surf",
+        "pokemon": [
+          {
+            "species": "Basculin",
+            "rate": 70
+          },
+          {
+            "species": "Marill",
+            "rate": 30
+          }
+        ]
+      },
+      {
+        "zone": "Fake Item",
+        "method": "Gift",
+        "pokemon": [
+          {
+            "species": "Foongus",
+            "rate": 100
+          }
+        ]
+      }
+    ],
+    "items": [
+      "Moon Stone",
+      "Shiny Stone"
+    ],
+    "tmMoves": [
+      "Surf",
+      "Fling"
+    ]
+  },
+  {
+    "id": "chargestone-cave",
+    "name": "Chargestone Cave",
+    "zones": [
+      {
+        "zone": "1F-B1F",
+        "method": "Cave",
+        "pokemon": [
+          {
+            "species": "Joltik",
+            "rate": 39
+          },
+          {
+            "species": "Klink",
+            "rate": 24
+          },
+          {
+            "species": "Ferroseed",
+            "rate": 20
+          },
+          {
+            "species": "Nosepass",
+            "rate": 10
+          },
+          {
+            "species": "Tynamo",
+            "rate": 5
+          },
+          {
+            "species": "Boldore",
+            "rate": 2
+          }
+        ]
+      },
+      {
+        "zone": "B2F",
+        "method": "Dust",
+        "pokemon": [
+          {
+            "species": "Joltik",
+            "rate": 36
+          },
+          {
+            "species": "Klink",
+            "rate": 21
+          },
+          {
+            "species": "Ferroseed",
+            "rate": 20
+          },
+          {
+            "species": "Nosepass",
+            "rate": 10
+          },
+          {
+            "species": "Tynamo",
+            "rate": 8
+          },
+          {
+            "species": "Boldore",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "Dust Cloud",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Drilbur",
+            "rate": 100
+          }
+        ]
+      }
+    ],
+    "items": [
+      "Magnet",
+      "Thunder Stone",
+      "Metal Coat"
+    ]
+  },
+  {
+    "id": "unova-route-7",
+    "name": "Unova Route 7",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Tranquill",
+            "rate": 30
+          },
+          {
+            "species": "Zebstrika",
+            "rate": 20
+          },
+          {
+            "species": "Deerling",
+            "rate": 20
+          },
+          {
+            "species": "Watchog",
+            "rate": 15
+          },
+          {
+            "species": "Zangoose",
+            "rate": 5
+          },
+          {
+            "species": "Seviper",
+            "rate": 5
+          },
+          {
+            "species": "Foongus",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "Rustling Grass",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Audino",
+            "rate": 85
+          },
+          {
+            "species": "Emolga",
+            "rate": 10
+          },
+          {
+            "species": "Unfezant",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Trade",
+        "pokemon": [
+          {
+            "species": "Gigalith",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "pokemon",
+          "name": "Emolga"
+        }
+      },
+      {
+        "zone": "Fake Item",
+        "method": "Gift",
+        "pokemon": [
+          {
+            "species": "Foongus",
+            "rate": 100
+          }
+        ]
+      }
+    ],
+    "items": [
+      "Leaf Stone"
+    ],
+    "tmMoves": [
+      "X-Scissor"
+    ]
+  },
+  {
+    "id": "mistralton-cave",
+    "name": "Mistralton Cave",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Cave",
+        "pokemon": [
+          {
+            "species": "Boldore",
+            "rate": 30
+          },
+          {
+            "species": "Woobat",
+            "rate": 30
+          },
+          {
+            "species": "Aron",
+            "rate": 20
+          },
+          {
+            "species": "Axew",
+            "rate": 20
+          }
+        ]
+      },
+      {
+        "zone": "Dust Cloud",
+        "method": "Dust",
+        "pokemon": [
+          {
+            "species": "Drilbur",
+            "rate": 100
+          }
+        ]
+      },
+      {
+        "zone": "Guidance Chamber",
+        "method": "Cave",
+        "pokemon": [
+          {
+            "species": "Boldore",
+            "rate": 30
+          },
+          {
+            "species": "Woobat",
+            "rate": 30
+          },
+          {
+            "species": "Aron",
+            "rate": 20
+          },
+          {
+            "species": "Axew",
+            "rate": 20
+          }
+        ]
+      },
+      {
+        "zone": "Guidance Chamber",
+        "method": "Dust",
+        "pokemon": [
+          {
+            "species": "Drilbur",
+            "rate": 100
+          }
+        ]
+      }
+    ],
+    "tmMoves": [
+      "Rock Slide"
+    ]
+  },
+  {
+    "id": "unova-route-8",
+    "name": "Unova Route 8",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Surf",
+        "pokemon": [
+          {
+            "species": "Stunfisk",
+            "rate": 70
+          },
+          {
+            "species": "Palpitoad",
+            "rate": 30
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Rippling",
+        "pokemon": [
+          {
+            "species": "Stunfisk",
+            "rate": 65
+          },
+          {
+            "species": "Barboach",
+            "rate": 40
+          },
+          {
+            "species": "Palpitoad",
+            "rate": 30
+          },
+          {
+            "species": "Whiscash",
+            "rate": 20
+          },
+          {
+            "species": "Seismitoad",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fish Super",
+        "pokemon": [
+          {
+            "species": "Barboach",
+            "rate": 60
+          },
+          {
+            "species": "Stunfisk",
+            "rate": 40
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "moor-of-icirrus",
+    "name": "Moor Of Icirrus",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Surf",
+        "pokemon": [
+          {
+            "species": "Stunfisk",
+            "rate": 70
+          },
+          {
+            "species": "Palpitoad",
+            "rate": 30
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Rippling",
+        "pokemon": [
+          {
+            "species": "Stunfisk",
+            "rate": 65
+          },
+          {
+            "species": "Barboach",
+            "rate": 40
+          },
+          {
+            "species": "Palpitoad",
+            "rate": 30
+          },
+          {
+            "species": "Whiscash",
+            "rate": 20
+          },
+          {
+            "species": "Seismitoad",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fish Super",
+        "pokemon": [
+          {
+            "species": "Barboach",
+            "rate": 60
+          },
+          {
+            "species": "Stunfisk",
+            "rate": 40
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "icirrus-city",
+    "name": "Icirrus City",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Surf",
+        "pokemon": [
+          {
+            "species": "Stunfisk",
+            "rate": 100
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Rippling",
+        "pokemon": [
+          {
+            "species": "Stunfisk",
+            "rate": 95
+          },
+          {
+            "species": "Barboach",
+            "rate": 40
+          },
+          {
+            "species": "Whiscash",
+            "rate": 20
+          },
+          {
+            "species": "Seismitoad",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fish Super",
+        "pokemon": [
+          {
+            "species": "Barboach",
+            "rate": 60
+          },
+          {
+            "species": "Stunfisk",
+            "rate": 40
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dragonspiral-tower",
+    "name": "Dragonspiral Tower",
+    "zones": [
+      {
+        "zone": "Entrance",
+        "method": "Rustling",
+        "pokemon": [
+          {
+            "species": "Audino",
+            "rate": 85
+          },
+          {
+            "species": "Emolga",
+            "rate": 10
+          }
+        ]
+      },
+      {
+        "zone": "Outside",
+        "method": "Grass",
+        "pokemon": [
+          {
+            "species": "Mienshao",
+            "rate": 25
+          },
+          {
+            "species": "Druddigon",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "Outside",
+        "method": "Dark",
+        "pokemon": [
+          {
+            "species": "Mienshao",
+            "rate": 25
+          },
+          {
+            "species": "Druddigon",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "Outside",
+        "method": "Rustling",
+        "pokemon": [
+          {
+            "species": "Audino",
+            "rate": 85
+          },
+          {
+            "species": "Emolga",
+            "rate": 10
+          }
+        ]
+      },
+      {
+        "zone": "Outside",
+        "method": "Surf",
+        "pokemon": [
+          {
+            "species": "Basculin",
+            "rate": 100
+          }
+        ]
+      },
+      {
+        "zone": "Outside",
+        "method": "Rippling",
+        "pokemon": [
+          {
+            "species": "Basculin",
+            "rate": 100
+          },
+          {
+            "species": "Dratini",
+            "rate": 40
+          },
+          {
+            "species": "Dragonair",
+            "rate": 19
+          },
+          {
+            "species": "Dragonite",
+            "rate": 1
+          }
+        ]
+      },
+      {
+        "zone": "Outside",
+        "method": "Fish Super",
+        "pokemon": [
+          {
+            "species": "Dratini",
+            "rate": 60
+          },
+          {
+            "species": "Basculin",
+            "rate": 40
+          }
+        ]
+      },
+      {
+        "zone": "Inside",
+        "method": "1F",
+        "pokemon": [
+          {
+            "species": "Golurk",
+            "rate": 50
+          },
+          {
+            "species": "Druddigon",
+            "rate": 30
+          },
+          {
+            "species": "Mienshao",
+            "rate": 20
+          }
+        ]
+      },
+      {
+        "zone": "Inside",
+        "method": "2F",
+        "pokemon": [
+          {
+            "species": "Golurk",
+            "rate": 100
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "unova-route-14",
+    "name": "Unova Route 14",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Grass",
+        "pokemon": [
+          {
+            "species": "Golduck",
+            "rate": 25
+          },
+          {
+            "species": "Swablu",
+            "rate": 20
+          },
+          {
+            "species": "Mienfoo",
+            "rate": 20
+          },
+          {
+            "species": "Absol",
+            "rate": 15
+          },
+          {
+            "species": "Drifblim",
+            "rate": 15
+          },
+          {
+            "species": "Altaria",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Dark",
+        "pokemon": [
+          {
+            "species": "Mienfoo",
+            "rate": 30
+          },
+          {
+            "species": "Golduck",
+            "rate": 25
+          },
+          {
+            "species": "Altaria",
+            "rate": 15
+          },
+          {
+            "species": "Absol",
+            "rate": 15
+          },
+          {
+            "species": "Drifblim",
+            "rate": 15
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Rustling",
+        "pokemon": [
+          {
+            "species": "Audino",
+            "rate": 90
+          },
+          {
+            "species": "Emolga",
+            "rate": 10
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Surf",
+        "pokemon": [
+          {
+            "species": "Basculin",
+            "rate": 70
+          },
+          {
+            "species": "Buizel",
+            "rate": 30
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Rippling",
+        "pokemon": [
+          {
+            "species": "Buizel",
+            "rate": 60
+          },
+          {
+            "species": "Basculin",
+            "rate": 40
+          },
+          {
+            "species": "Goldeen",
+            "rate": 40
+          },
+          {
+            "species": "Seaking",
+            "rate": 20
+          },
+          {
+            "species": "Floatzel",
+            "rate": 10
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fishing",
+        "pokemon": [
+          {
+            "species": "Goldeen",
+            "rate": 60
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fish Super",
+        "pokemon": [
+          {
+            "species": "Basculin",
+            "rate": 40
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "unova-route-15",
+    "name": "Unova Route 15",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Grass",
+        "pokemon": [
+          {
+            "species": "Fearow",
+            "rate": 40
+          },
+          {
+            "species": "Sandslash",
+            "rate": 30
+          },
+          {
+            "species": "Gligar",
+            "rate": 25
+          },
+          {
+            "species": "Sawk",
+            "rate": 20
+          },
+          {
+            "species": "Pupitar",
+            "rate": 15
+          },
+          {
+            "species": "Scrafty",
+            "rate": 10
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Dark",
+        "pokemon": [
+          {
+            "species": "Sandslash",
+            "rate": 30
+          },
+          {
+            "species": "Gligar",
+            "rate": 25
+          },
+          {
+            "species": "Sawk",
+            "rate": 20
+          },
+          {
+            "species": "Pupitar",
+            "rate": 15
+          },
+          {
+            "species": "Scrafty",
+            "rate": 10
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Rustling",
+        "pokemon": [
+          {
+            "species": "Audino",
+            "rate": 75
+          },
+          {
+            "species": "Emolga",
+            "rate": 10
+          },
+          {
+            "species": "Tyranitar",
+            "rate": 5
+          },
+          {
+            "species": "Gliscor",
+            "rate": 5
+          },
+          {
+            "species": "Throh",
+            "rate": 5
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "unova-route-13",
+    "name": "Unova Route 13",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Grass",
+        "pokemon": [
+          {
+            "species": "Tangela",
+            "rate": 25
+          },
+          {
+            "species": "Pelipper",
+            "rate": 25
+          },
+          {
+            "species": "Absol",
+            "rate": 15
+          },
+          {
+            "species": "Drifblim",
+            "rate": 15
+          },
+          {
+            "species": "Lunatone",
+            "rate": 10
+          },
+          {
+            "species": "Solrock",
+            "rate": 10
+          }
+        ]
+      },
+      {
+        "zone": "Rustling Grass",
+        "method": "Rustling",
+        "pokemon": [
+          {
+            "species": "Audino",
+            "rate": 85
+          },
+          {
+            "species": "Emolga",
+            "rate": 10
+          },
+          {
+            "species": "Tangrowth",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Surf",
+        "pokemon": [
+          {
+            "species": "Staryu",
+            "rate": 30
+          },
+          {
+            "species": "Basculin",
+            "rate": 5
+          },
+          {
+            "species": "Frillish",
+            "rate": 65
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "zone": "Rippling Water",
+        "method": "Rippling",
+        "pokemon": [
+          {
+            "species": "Staryu",
+            "rate": 60
+          },
+          {
+            "species": "Starmie",
+            "rate": 5
+          },
+          {
+            "species": "Basculin",
+            "rate": 5
+          },
+          {
+            "species": "Jellicent",
+            "rate": 30
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      }
+    ],
+    "tmMoves": [
+      {
+        "name": "Psychic",
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      }
+    ]
+  },
+  {
+    "id": "pre-gym-6-gift-1",
+    "name": "Fossil Revival (Nacrene Museum)",
+    "zones": [
+      {
+        "zone": "Fossil Revival (Nacrene Museum)",
+        "method": "Gift",
+        "pokemon": [
+          {
+            "species": "Tirtouga",
+            "rate": 50
+          },
+          {
+            "species": "Archen",
+            "rate": 50
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "giant-chasm",
+    "name": "Giant Chasm",
+    "zones": [
+      {
+        "zone": "Entrance",
+        "method": "Grass",
+        "pokemon": [
+          {
+            "species": "Tangela",
+            "rate": 30
+          },
+          {
+            "species": "Pelipper",
+            "rate": 20
+          },
+          {
+            "species": "Clefairy",
+            "rate": 15
+          },
+          {
+            "species": "Lunatone",
+            "rate": 10
+          },
+          {
+            "species": "Solrock",
+            "rate": 10
+          },
+          {
+            "species": "Vanillish",
+            "rate": 10
+          },
+          {
+            "species": "Delibird",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "Entrance",
+        "method": "Dark",
+        "pokemon": [
+          {
+            "species": "Tangela",
+            "rate": 30
+          },
+          {
+            "species": "Pelipper",
+            "rate": 20
+          },
+          {
+            "species": "Clefairy",
+            "rate": 15
+          },
+          {
+            "species": "Lunatone",
+            "rate": 10
+          },
+          {
+            "species": "Solrock",
+            "rate": 10
+          },
+          {
+            "species": "Vanillish",
+            "rate": 10
+          },
+          {
+            "species": "Delibird",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "Entrance",
+        "method": "Rustling",
+        "pokemon": [
+          {
+            "species": "Audino",
+            "rate": 85
+          },
+          {
+            "species": "Clefable",
+            "rate": 5
+          },
+          {
+            "species": "Tangrowth",
+            "rate": 5
+          },
+          {
+            "species": "Vanilluxe",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "Cave",
+        "method": "Cave",
+        "pokemon": [
+          {
+            "species": "Piloswine",
+            "rate": 25
+          },
+          {
+            "species": "Sneasel",
+            "rate": 20
+          },
+          {
+            "species": "Clefairy",
+            "rate": 15
+          },
+          {
+            "species": "Vanillish",
+            "rate": 15
+          },
+          {
+            "species": "Lunatone",
+            "rate": 10
+          },
+          {
+            "species": "Solrock",
+            "rate": 10
+          },
+          {
+            "species": "Delibird",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "Cave",
+        "method": "Dust",
+        "pokemon": [
+          {
+            "species": "Excadrill",
+            "rate": 100
+          }
+        ]
+      },
+      {
+        "zone": "Cave",
+        "method": "Surf",
+        "pokemon": [
+          {
+            "species": "Basculin",
+            "rate": 70
+          },
+          {
+            "species": "Seel",
+            "rate": 30
+          }
+        ]
+      },
+      {
+        "zone": "Cave",
+        "method": "Rippling",
+        "pokemon": [
+          {
+            "species": "Seel",
+            "rate": 60
+          },
+          {
+            "species": "Basculin",
+            "rate": 30
+          },
+          {
+            "species": "Dewgong",
+            "rate": 10
+          }
+        ]
+      },
+      {
+        "zone": "Cave",
+        "method": "Fish Super",
+        "pokemon": [
+          {
+            "species": "Poliwag",
+            "rate": 60
+          },
+          {
+            "species": "Poliwhirl",
+            "rate": 55
+          },
+          {
+            "species": "Basculin",
+            "rate": 40
+          },
+          {
+            "species": "Poliwrath",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "Crater forest",
+        "method": "Grass",
+        "pokemon": [
+          {
+            "species": "Piloswine",
+            "rate": 30
+          },
+          {
+            "species": "Clefairy",
+            "rate": 20
+          },
+          {
+            "species": "Ditto",
+            "rate": 15
+          },
+          {
+            "species": "Lunatone",
+            "rate": 10
+          },
+          {
+            "species": "Solrock",
+            "rate": 10
+          },
+          {
+            "species": "Metang",
+            "rate": 10
+          },
+          {
+            "species": "Delibird",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "Crater forest",
+        "method": "Dark",
+        "pokemon": [
+          {
+            "species": "Piloswine",
+            "rate": 30
+          },
+          {
+            "species": "Clefairy",
+            "rate": 20
+          },
+          {
+            "species": "Ditto",
+            "rate": 15
+          },
+          {
+            "species": "Lunatone",
+            "rate": 10
+          },
+          {
+            "species": "Solrock",
+            "rate": 10
+          },
+          {
+            "species": "Metang",
+            "rate": 10
+          },
+          {
+            "species": "Delibird",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "Crater forest",
+        "method": "Rustling",
+        "pokemon": [
+          {
+            "species": "Audino",
+            "rate": 85
+          },
+          {
+            "species": "Clefable",
+            "rate": 5
+          },
+          {
+            "species": "Metagross",
+            "rate": 5
+          },
+          {
+            "species": "Mamoswine",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "Cave depths",
+        "method": "Cave",
+        "pokemon": [
+          {
+            "species": "Piloswine",
+            "rate": 25
+          },
+          {
+            "species": "Sneasel",
+            "rate": 20
+          },
+          {
+            "species": "Clefairy",
+            "rate": 15
+          },
+          {
+            "species": "Vanillish",
+            "rate": 15
+          },
+          {
+            "species": "Lunatone",
+            "rate": 10
+          },
+          {
+            "species": "Solrock",
+            "rate": 10
+          },
+          {
+            "species": "Delibird",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "Cave depths",
+        "method": "Dust",
+        "pokemon": [
+          {
+            "species": "Excadrill",
+            "rate": 100
+          }
+        ]
+      },
+      {
+        "zone": "Cave depths",
+        "method": "Surf",
+        "pokemon": [
+          {
+            "species": "Basculin",
+            "rate": 70
+          },
+          {
+            "species": "Seel",
+            "rate": 30
+          }
+        ]
+      },
+      {
+        "zone": "Cave depths",
+        "method": "Rippling",
+        "pokemon": [
+          {
+            "species": "Seel",
+            "rate": 60
+          },
+          {
+            "species": "Poliwhirl",
+            "rate": 55
+          },
+          {
+            "species": "Basculin",
+            "rate": 40
+          },
+          {
+            "species": "Dewgong",
+            "rate": 10
+          },
+          {
+            "species": "Poliwrath",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "Cave depths",
+        "method": "Fish Super",
+        "pokemon": [
+          {
+            "species": "Poliwag",
+            "rate": 60
+          },
+          {
+            "species": "Basculin",
+            "rate": 40
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "unova-route-19",
+    "name": "Unova Route 19",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Patrat",
+            "rate": 100
+          },
+          {
+            "species": "Purrloin",
+            "rate": 0
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Patrat",
+            "rate": 100
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Basculin",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      }
+    ],
+    "items": [
+      {
+        "name": "Water Stone",
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "name": "Expert Belt",
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      }
+    ]
+  },
+  {
+    "id": "aspertia-city",
+    "name": "Aspertia City",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Basculin",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      }
+    ],
+    "items": [],
+    "tmMoves": [
+      {
+        "name": "Return",
+        "requires": {
+          "type": "battle",
+          "name": "cheren"
+        }
+      },
+      {
+        "name": "Energy Ball",
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "name": "Work Up",
+        "requires": {
+          "type": "battle",
+          "name": "cheren"
+        }
+      }
+    ]
+  },
+  {
+    "id": "unova-route-20",
+    "name": "Unova Route 20",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Sunkern",
+            "rate": 25
+          },
+          {
+            "species": "Patrat",
+            "rate": 20
+          },
+          {
+            "species": "Purrloin",
+            "rate": 15
+          },
+          {
+            "species": "Pidove",
+            "rate": 5
+          },
+          {
+            "species": "Sewaddle",
+            "rate": 35
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Sunkern",
+            "rate": 25
+          },
+          {
+            "species": "Patrat",
+            "rate": 20
+          },
+          {
+            "species": "Purrloin",
+            "rate": 15
+          },
+          {
+            "species": "Pidove",
+            "rate": 5
+          },
+          {
+            "species": "Sewaddle",
+            "rate": 15
+          },
+          {
+            "species": "Venipede",
+            "rate": 20
+          }
+        ]
+      },
+      {
+        "zone": "Rustling Grass",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Dunsparce",
+            "rate": 10
+          },
+          {
+            "species": "Audino",
+            "rate": 90
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Azurill",
+            "rate": 35
+          },
+          {
+            "species": "Basculin",
+            "rate": 65
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      }
+    ]
+  },
+  {
+    "id": "floccesy-ranch",
+    "name": "Floccesy Ranch",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Psyduck",
+            "rate": 10
+          },
+          {
+            "species": "Mareep",
+            "rate": 10
+          },
+          {
+            "species": "Azurill",
+            "rate": 20
+          },
+          {
+            "species": "Riolu",
+            "rate": 5
+          },
+          {
+            "species": "Patrat",
+            "rate": 10
+          },
+          {
+            "species": "Lillipup",
+            "rate": 40
+          },
+          {
+            "species": "Pidove",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "Rustling Grass",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Dunsparce",
+            "rate": 10
+          },
+          {
+            "species": "Audino",
+            "rate": 90
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Azurill",
+            "rate": 35
+          },
+          {
+            "species": "Basculin",
+            "rate": 65
+          }
+        ]
+      }
+    ],
+    "tmMoves": [
+      "Frustration"
+    ]
+  },
+  {
+    "id": "virbank-city",
+    "name": "Virbank City",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Frillish",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      }
+    ],
+    "tmMoves": [
+      {
+        "name": "Cut",
+        "requires": {
+          "type": "battle",
+          "name": "roxie"
+        }
+      },
+      {
+        "name": "Venoshock",
+        "requires": {
+          "type": "battle",
+          "name": "roxie"
+        }
+      }
+    ]
+  },
+  {
+    "id": "virbank-complex",
+    "name": "Virbank Complex",
+    "zones": [
+      {
+        "zone": "Outside",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Magnemite",
+            "rate": 15
+          },
+          {
+            "species": "Magby",
+            "rate": 15
+          },
+          {
+            "species": "Patrat",
+            "rate": 35
+          },
+          {
+            "species": "Pidove",
+            "rate": 35
+          }
+        ]
+      },
+      {
+        "zone": "Rustling Grass",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Audino",
+            "rate": 100
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Jellicent",
+            "rate": 5
+          },
+          {
+            "species": "Alomomola",
+            "rate": 95
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Frillish",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "zone": "Inside",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Growlithe",
+            "rate": 20
+          },
+          {
+            "species": "Magnemite",
+            "rate": 25
+          },
+          {
+            "species": "Koffing",
+            "rate": 15
+          },
+          {
+            "species": "Magby",
+            "rate": 25
+          },
+          {
+            "species": "Patrat",
+            "rate": 15
+          }
+        ]
+      }
+    ],
+    "items": [
+      "Silk Scarf"
+    ],
+    "tmMoves": [
+      "Thief",
+      "Rock Smash"
+    ]
+  },
+  {
+    "id": "castelia-city",
+    "name": "Castelia City",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Rattata",
+            "rate": 30
+          },
+          {
+            "species": "Eevee",
+            "rate": 5
+          },
+          {
+            "species": "Buneary",
+            "rate": 15
+          },
+          {
+            "species": "Pidove",
+            "rate": 15
+          },
+          {
+            "species": "Cottonee",
+            "rate": 35
+          }
+        ]
+      },
+      {
+        "zone": "Rustling Grass",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Lopunny",
+            "rate": 5
+          },
+          {
+            "species": "Audino",
+            "rate": 90
+          },
+          {
+            "species": "Whimsicott",
+            "rate": 5
+          }
+        ]
+      }
+    ],
+    "tmMoves": [
+      {
+        "name": "Struggle Bug",
+        "requires": {
+          "type": "battle",
+          "name": "burgh"
+        }
+      },
+      "Rest",
+      "Flash",
+      "Attract"
+    ],
+    "items": [
+      "Eviolite",
+      "Charcoal",
+      "Miracle Seed",
+      "Black Glasses",
+      "Mystic Water",
+      "Scope Lens",
+      "Destiny Knot"
+    ]
+  },
+  {
+    "id": "castelia-sewers",
+    "name": "Castelia Sewers",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Rattata",
+            "rate": 45
+          },
+          {
+            "species": "Zubat",
+            "rate": 45
+          },
+          {
+            "species": "Grimer",
+            "rate": 10
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Grimer",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      }
+    ],
+    "items": [
+      "TwistedSpoon",
+      "Leftovers",
+      {
+        "name": "Black Sludge",
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      }
+    ],
+    "tmMoves": [
+      "Strength",
+      {
+        "name": "Torment",
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      }
+    ]
+  },
+  {
+    "id": "nimbasa-city",
+    "name": "Nimbasa City",
+    "zones": [],
+    "tmMoves": [
+      {
+        "name": "Volt Switch",
+        "requires": {
+          "type": "battle",
+          "name": "elesa"
+        }
+      }
+    ],
+    "items": [
+      "Sun Stone",
+      "Thunder Stone"
+    ]
+  },
+  {
+    "id": "driftveil-city",
+    "name": "Driftveil City",
+    "zones": [],
+    "items": [
+      "Expert Belt",
+      "Big Root",
+      "Air Balloon",
+      "Shell Bell"
+    ],
+    "tmMoves": [
+      "Embargo",
+      {
+        "name": "Bulldoze",
+        "requires": {
+          "type": "battle",
+          "name": "clay"
+        }
+      }
+    ]
+  },
+  {
+    "id": "world-tournament",
+    "name": "World Tournament",
+    "zones": [],
+    "items": [
+      "Rocky Helmet"
+    ]
+  },
+  {
+    "id": "relic-passage",
+    "name": "Relic Passage",
+    "zones": [
+      {
+        "zone": "North and Middle",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Boldore",
+            "rate": 34
+          },
+          {
+            "species": "Woobat",
+            "rate": 31
+          },
+          {
+            "species": "Gurdurr",
+            "rate": 20
+          },
+          {
+            "species": "Raticate",
+            "rate": 10
+          },
+          {
+            "species": "Onix",
+            "rate": 5
+          }
+        ],
+        "requires": {
+          "type": "battle",
+          "name": "clay"
+        }
+      },
+      {
+        "zone": "South",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Roggenrola",
+            "rate": 34
+          },
+          {
+            "species": "Woobat",
+            "rate": 31
+          },
+          {
+            "species": "Timburr",
+            "rate": 20
+          },
+          {
+            "species": "Rattata",
+            "rate": 10
+          },
+          {
+            "species": "Onix",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "Dust Cloud",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Drilbur",
+            "rate": 80
+          },
+          {
+            "species": "Onix",
+            "rate": 20
+          }
+        ]
+      }
+    ],
+    "items": [
+      "Hard Stone",
+      {
+        "name": "Rocky Helmet",
+        "requires": {
+          "type": "battle",
+          "name": "clay"
+        }
+      }
+    ]
+  },
+  {
+    "id": "mistralton-city",
+    "name": "Mistralton City",
+    "zones": [],
+    "items": [
+      "Sharp Beak"
+    ],
+    "tmMoves": [
+      "Sky Drop",
+      {
+        "name": "Acrobatics",
+        "requires": {
+          "type": "battle",
+          "name": "skyla"
+        }
+      },
+      {
+        "name": "Aerial Ace",
+        "requires": {
+          "type": "battle",
+          "name": "skyla"
+        }
+      }
+    ]
+  },
+  {
+    "id": "celestial-tower",
+    "name": "Celestial Tower",
+    "zones": [
+      {
+        "zone": "2F",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Litwick",
+            "rate": 100
+          }
+        ]
+      },
+      {
+        "zone": "3F",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Litwick",
+            "rate": 80
+          },
+          {
+            "species": "Elgyem",
+            "rate": 15
+          },
+          {
+            "species": "Golbat",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "4F",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Litwick",
+            "rate": 65
+          },
+          {
+            "species": "Elgyem",
+            "rate": 25
+          },
+          {
+            "species": "Golbat",
+            "rate": 10
+          }
+        ]
+      },
+      {
+        "zone": "Roof",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Litwick",
+            "rate": 40
+          },
+          {
+            "species": "Elgyem",
+            "rate": 40
+          },
+          {
+            "species": "Golbat",
+            "rate": 20
+          }
+        ]
+      }
+    ],
+    "tmMoves": [
+      "Shadow Claw",
+      "Will-O-Wisp"
+    ]
+  },
+  {
+    "id": "lentimas-town",
+    "name": "Lentimas Town",
+    "zones": [],
+    "items": [
+      "Fire Stone",
+      "Spell Tag"
+    ],
+    "tmMoves": [
+      "Charge Beam"
+    ]
+  },
+  {
+    "id": "strange-house",
+    "name": "Strange House",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Litwick",
+            "rate": 30
+          },
+          {
+            "species": "Gothita",
+            "rate": 20
+          },
+          {
+            "species": "Raticate",
+            "rate": 15
+          },
+          {
+            "species": "Golbat",
+            "rate": 15
+          },
+          {
+            "species": "Banette",
+            "rate": 15
+          },
+          {
+            "species": "Gothorita",
+            "rate": 5
+          }
+        ]
+      }
+    ],
+    "items": [
+      "Spell Tag",
+      "Dusk Stone"
+    ]
+  },
+  {
+    "id": "reversal-mountain",
+    "name": "Reversal Mountain",
+    "zones": [
+      {
+        "zone": "Outside",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Skorupi",
+            "rate": 30
+          },
+          {
+            "species": "Spoink",
+            "rate": 20
+          },
+          {
+            "species": "Drifblim",
+            "rate": 20
+          },
+          {
+            "species": "Trapinch",
+            "rate": 15
+          },
+          {
+            "species": "Grumpig",
+            "rate": 10
+          },
+          {
+            "species": "Skarmory",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "Outside Dark Grass",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Skorupi",
+            "rate": 30
+          },
+          {
+            "species": "Grumpig",
+            "rate": 30
+          },
+          {
+            "species": "Drifblim",
+            "rate": 20
+          },
+          {
+            "species": "Skarmory",
+            "rate": 15
+          },
+          {
+            "species": "Vibrava",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "Rustling Grass",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Audino",
+            "rate": 100
+          }
+        ]
+      },
+      {
+        "zone": "Inside",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Woobat",
+            "rate": 35
+          },
+          {
+            "species": "Boldore",
+            "rate": 25
+          },
+          {
+            "species": "Spoink",
+            "rate": 20
+          },
+          {
+            "species": "Skorupi",
+            "rate": 15
+          },
+          {
+            "species": "Grumpig",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "Dust Cloud",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Excadrill",
+            "rate": 100
+          }
+        ]
+      }
+    ],
+    "items": [
+      "Toxic Orb"
+    ],
+    "tmMoves": [
+      "Shadow Ball",
+      "Rock Polish",
+      "False Swipe"
+    ]
+  },
+  {
+    "id": "undella-town",
+    "name": "Undella Town",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Frillish",
+            "rate": 65
+          },
+          {
+            "species": "Staryu",
+            "rate": 30
+          },
+          {
+            "species": "Basculin",
+            "rate": 5
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "zone": "Rippling Water",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Staryu",
+            "rate": 60
+          },
+          {
+            "species": "Fellicent",
+            "rate": 30
+          },
+          {
+            "species": "Starmie",
+            "rate": 5
+          },
+          {
+            "species": "Basculin",
+            "rate": 5
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      }
+    ],
+    "items": [
+      "Shiny Stone"
+    ],
+    "tmMoves": [
+      "Dive"
+    ]
+  },
+  {
+    "id": "undella-bay",
+    "name": "Undella Bay",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Frillish",
+            "rate": 65
+          },
+          {
+            "species": "Mantyke",
+            "rate": 30
+          },
+          {
+            "species": "Remoraid",
+            "rate": 5
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "zone": "Rippling Water",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Wailmer",
+            "rate": 30
+          },
+          {
+            "species": "Jellicent",
+            "rate": 60
+          },
+          {
+            "species": "Wailord",
+            "rate": 5
+          },
+          {
+            "species": "Mantine",
+            "rate": 5
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      }
+    ],
+    "items": [
+      "Draco Plate",
+      "Splash Plate"
+    ]
+  },
+  {
+    "id": "lacunosa-town",
+    "name": "Lacunosa Town",
+    "zones": [],
+    "items": [
+      "Metronome"
+    ]
+  },
+  {
+    "id": "unova-route-12",
+    "name": "Unova Route 12",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Roselia",
+            "rate": 25
+          },
+          {
+            "species": "Tranquill",
+            "rate": 25
+          },
+          {
+            "species": "Combee",
+            "rate": 20
+          },
+          {
+            "species": "Heracross",
+            "rate": 15
+          },
+          {
+            "species": "Sewaddle",
+            "rate": 15
+          }
+        ]
+      },
+      {
+        "zone": "Rustling Grass",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Audino",
+            "rate": 60
+          },
+          {
+            "species": "Dunsparce",
+            "rate": 10
+          },
+          {
+            "species": "Emolga",
+            "rate": 10
+          },
+          {
+            "species": "Roserade",
+            "rate": 5
+          },
+          {
+            "species": "Vespiquen",
+            "rate": 5
+          },
+          {
+            "species": "Unfezant",
+            "rate": 5
+          },
+          {
+            "species": "Leavanny",
+            "rate": 5
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "village-bridge",
+    "name": "Village Bridge",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Golduck",
+            "rate": 35
+          },
+          {
+            "species": "Marill",
+            "rate": 35
+          },
+          {
+            "species": "Zangoose",
+            "rate": 15
+          },
+          {
+            "species": "Seviper",
+            "rate": 15
+          }
+        ]
+      },
+      {
+        "zone": "Rustling Grass",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Audino",
+            "rate": 75
+          },
+          {
+            "species": "Dunsparce",
+            "rate": 10
+          },
+          {
+            "species": "Emolga",
+            "rate": 10
+          },
+          {
+            "species": "Azumarill",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Basculin",
+            "rate": 70
+          },
+          {
+            "species": "Maril",
+            "rate": 30
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "zone": "Rippling Water",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Marill",
+            "rate": 60
+          },
+          {
+            "species": "Basculin",
+            "rate": 30
+          },
+          {
+            "species": "Lapras",
+            "rate": 5
+          },
+          {
+            "species": "Azumarill",
+            "rate": 5
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      }
+    ]
+  },
+  {
+    "id": "unova-route-11",
+    "name": "Unova Route 11",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Shelmet",
+            "rate": 25
+          },
+          {
+            "species": "Golduck",
+            "rate": 20
+          },
+          {
+            "species": "Gligar",
+            "rate": 15
+          },
+          {
+            "species": "Marill",
+            "rate": 10
+          },
+          {
+            "species": "Zangoose",
+            "rate": 10
+          },
+          {
+            "species": "Seviper",
+            "rate": 10
+          },
+          {
+            "species": "Karrablast",
+            "rate": 5
+          },
+          {
+            "species": "Amoonguss",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "Rustling Grass",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Audino",
+            "rate": 80
+          },
+          {
+            "species": "Emolga",
+            "rate": 10
+          },
+          {
+            "species": "Azumarill",
+            "rate": 5
+          },
+          {
+            "species": "Gliscor",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Basculin",
+            "rate": 70
+          },
+          {
+            "species": "Buizel",
+            "rate": 30
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "zone": "Rippling Water",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Buizel",
+            "rate": 60
+          },
+          {
+            "species": "Basculin",
+            "rate": 30
+          },
+          {
+            "species": "Floatzel",
+            "rate": 10
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "zone": "Fake Item",
+        "method": "Gift",
+        "pokemon": [
+          {
+            "species": "Amoonguss",
+            "rate": 100
+          }
+        ]
+      }
+    ],
+    "items": [
+      "Razor Fang"
+    ]
+  },
+  {
+    "id": "opelucid-city",
+    "name": "Opelucid City",
+    "zones": [],
+    "items": [
+      "Float Stone",
+      "Ring Target"
+    ],
+    "tmMoves": [
+      {
+        "name": "Dragon Tail",
+        "requires": {
+          "type": "battle",
+          "name": "drayden"
+        }
+      }
+    ]
+  },
+  {
+    "id": "unova-route-9",
+    "name": "Unova Route 9",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Minccino",
+            "rate": 30
+          },
+          {
+            "species": "Gothorita",
+            "rate": 25
+          },
+          {
+            "species": "Garbodor",
+            "rate": 15
+          },
+          {
+            "species": "Pawniard",
+            "rate": 15
+          },
+          {
+            "species": "Liepard",
+            "rate": 10
+          },
+          {
+            "species": "Muk",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "Rustling Grass",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Audino",
+            "rate": 80
+          },
+          {
+            "species": "Emolga",
+            "rate": 10
+          },
+          {
+            "species": "Cinccino",
+            "rate": 5
+          },
+          {
+            "species": "Gothitelle",
+            "rate": 5
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "marine-tube",
+    "name": "Marine Tube",
+    "zones": [],
+    "items": [
+      "Black Sludge"
+    ],
+    "tmMoves": [
+      "Facade"
+    ]
+  },
+  {
+    "id": "humilau-city",
+    "name": "Humilau City",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Frillish",
+            "rate": 65
+          },
+          {
+            "species": "Staryu",
+            "rate": 30
+          },
+          {
+            "species": "Basculin",
+            "rate": 5
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "zone": "Rippling Water",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Jellicent",
+            "rate": 60
+          },
+          {
+            "species": "Corsola",
+            "rate": 30
+          },
+          {
+            "species": "Starmie",
+            "rate": 5
+          },
+          {
+            "species": "Basculin",
+            "rate": 5
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Trade",
+        "pokemon": [
+          {
+            "species": "Tangrowth",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "pokemon",
+          "name": "Mantine"
+        }
+      }
+    ],
+    "items": [
+      "Shell Bell"
+    ],
+    "tmMoves": [
+      {
+        "name": "Scald",
+        "requires": {
+          "type": "battle",
+          "name": "marlon"
+        }
+      }
+    ]
+  },
+  {
+    "id": "unova-route-22",
+    "name": "Unova Route 22",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Mienfoo",
+            "rate": 25
+          },
+          {
+            "species": "Amoonguss",
+            "rate": 20
+          },
+          {
+            "species": "Golduck",
+            "rate": 10
+          },
+          {
+            "species": "Marill",
+            "rate": 10
+          },
+          {
+            "species": "Pelipper",
+            "rate": 10
+          },
+          {
+            "species": "Lunatone",
+            "rate": 10
+          },
+          {
+            "species": "Solrock",
+            "rate": 10
+          },
+          {
+            "species": "Delibird",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "Rustling Grass",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Audino",
+            "rate": 85
+          },
+          {
+            "species": "Emolga",
+            "rate": 10
+          },
+          {
+            "species": "Azumarill",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Basculin",
+            "rate": 70
+          },
+          {
+            "species": "Marill",
+            "rate": 30
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "zone": "Rippling Water",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Marill",
+            "rate": 60
+          },
+          {
+            "species": "Basculin",
+            "rate": 35
+          },
+          {
+            "species": "Azumarill",
+            "rate": 5
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "zone": "Fake Item",
+        "method": "Gift",
+        "pokemon": [
+          {
+            "species": "Amoonguss",
+            "rate": 100
+          }
+        ]
+      }
+    ],
+    "items": [
+      "Poison Barb"
+    ]
+  },
+  {
+    "id": "unova-route-21",
+    "name": "Unova Route 21",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Frillish",
+            "rate": 65
+          },
+          {
+            "species": "Mantyke",
+            "rate": 30
+          },
+          {
+            "species": "Remoraid",
+            "rate": 5
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "zone": "Rippling Water",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Jellicent",
+            "rate": 60
+          },
+          {
+            "species": "Alomomola",
+            "rate": 35
+          },
+          {
+            "species": "Mantine",
+            "rate": 5
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      }
+    ]
+  },
+  {
+    "id": "seaside-cave",
+    "name": "Seaside Cave",
+    "zones": [
+      {
+        "zone": "1F",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Golduck",
+            "rate": 35
+          },
+          {
+            "species": "Woobat",
+            "rate": 35
+          },
+          {
+            "species": "Boldore",
+            "rate": 15
+          },
+          {
+            "species": "Seel",
+            "rate": 10
+          },
+          {
+            "species": "Tynamo",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "B1F",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Boldore",
+            "rate": 35
+          },
+          {
+            "species": "Woobat",
+            "rate": 35
+          },
+          {
+            "species": "Golduck",
+            "rate": 20
+          },
+          {
+            "species": "Shuckle",
+            "rate": 5
+          },
+          {
+            "species": "Elektrik",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "Dust Cloud",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Excadrill",
+            "rate": 100
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Frillish",
+            "rate": 70
+          },
+          {
+            "species": "Seel",
+            "rate": 30
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "zone": "Rippling Water",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Seel",
+            "rate": 60
+          },
+          {
+            "species": "Jellicent",
+            "rate": 30
+          },
+          {
+            "species": "Dewgong",
+            "rate": 10
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Gift",
+        "pokemon": [
+          {
+            "species": "Crustle",
+            "rate": 100
+          }
+        ]
+      }
+    ],
+    "tmMoves": [
+      {
+        "name": "Toxic",
+        "requires": {
+          "type": "move",
+          "name": "Strength"
+        }
+      }
+    ]
+  },
+  {
+    "id": "plasma-frigate",
+    "name": "Plasma Frigate",
+    "zones": [],
+    "items": [
+      "Magmarizer"
+    ],
+    "tmMoves": [
+      "Retaliate"
+    ]
+  },
+  {
+    "id": "giant-chasm",
+    "name": "Giant Chasm",
+    "zones": [
+      {
+        "zone": "Route 13 Entrance",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Tangela",
+            "rate": 30
+          },
+          {
+            "species": "Pelipper",
+            "rate": 20
+          },
+          {
+            "species": "Clefairy",
+            "rate": 15
+          },
+          {
+            "species": "Lunatone",
+            "rate": 10
+          },
+          {
+            "species": "Solrock",
+            "rate": 10
+          },
+          {
+            "species": "Vanillish",
+            "rate": 10
+          },
+          {
+            "species": "Delibird",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "Route 13 Entrance Rustling Grass",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Audino",
+            "rate": 85
+          },
+          {
+            "species": "Clefable",
+            "rate": 5
+          },
+          {
+            "species": "Tangrowth",
+            "rate": 5
+          },
+          {
+            "species": "Vanilluxe",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "Cave",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Piloswine",
+            "rate": 25
+          },
+          {
+            "species": "Sneasel",
+            "rate": 20
+          },
+          {
+            "species": "Clefairy",
+            "rate": 15
+          },
+          {
+            "species": "Vanillish",
+            "rate": 15
+          },
+          {
+            "species": "Lunatone",
+            "rate": 10
+          },
+          {
+            "species": "Solrock",
+            "rate": 10
+          },
+          {
+            "species": "Delibird",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "Cave Dust Cloud",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Excadrill",
+            "rate": 100
+          }
+        ]
+      },
+      {
+        "zone": "Cave",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Basculin",
+            "rate": 70
+          },
+          {
+            "species": "Seel",
+            "rate": 30
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "zone": "Cave Rippling Water",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Seel",
+            "rate": 60
+          },
+          {
+            "species": "Basculin",
+            "rate": 30
+          },
+          {
+            "species": "Dewgong",
+            "rate": 10
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "zone": "Crater Forest",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Piloswine",
+            "rate": 30
+          },
+          {
+            "species": "Clefairy",
+            "rate": 20
+          },
+          {
+            "species": "Ditto",
+            "rate": 15
+          },
+          {
+            "species": "Lunatone",
+            "rate": 10
+          },
+          {
+            "species": "Solrock",
+            "rate": 10
+          },
+          {
+            "species": "Metang",
+            "rate": 10
+          },
+          {
+            "species": "Delibird",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "Crater Forest Rustling Grass",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Audino",
+            "rate": 85
+          },
+          {
+            "species": "Clefable",
+            "rate": 5
+          },
+          {
+            "species": "Metagross",
+            "rate": 5
+          },
+          {
+            "species": "Mamoswine",
+            "rate": 5
+          }
+        ]
+      }
+    ],
+    "items": [
+      "Moon Stone",
+      "Razor Claw",
+      "Sun Stone",
+      "Moon Stone"
+    ],
+    "tmMoves": [
+      "Ice Beam",
+      "Psyshock"
+    ]
+  },
+  {
+    "id": "unova-route-23",
+    "name": "Unova Route 23",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Sawk",
+            "rate": 25
+          },
+          {
+            "species": "Bouffalant",
+            "rate": 25
+          },
+          {
+            "species": "Mienfoo",
+            "rate": 15
+          },
+          {
+            "species": "Golduck",
+            "rate": 10
+          },
+          {
+            "species": "Gligar",
+            "rate": 10
+          },
+          {
+            "species": "Amoonguss",
+            "rate": 10
+          },
+          {
+            "species": "Vullaby",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "Rustling Grass",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Audino",
+            "rate": 80
+          },
+          {
+            "species": "Emolga",
+            "rate": 10
+          },
+          {
+            "species": "Gliscor",
+            "rate": 5
+          },
+          {
+            "species": "Throh",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Basculin",
+            "rate": 70
+          },
+          {
+            "species": "Buizel",
+            "rate": 30
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "zone": "Rippling Water",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Buizel",
+            "rate": 60
+          },
+          {
+            "species": "Basculin",
+            "rate": 30
+          },
+          {
+            "species": "Floatzel",
+            "rate": 10
+          }
+        ]
+      },
+      {
+        "zone": "Fake Item",
+        "method": "Gift",
+        "pokemon": [
+          {
+            "species": "Amoonguss",
+            "rate": 100
+          }
+        ]
+      }
+    ],
+    "tmMoves": [
+      {
+        "name": "Flamethrower",
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      "Roar"
+    ]
+  },
+  {
+    "id": "victory-road",
+    "name": "Victory Road",
+    "zones": [
+      {
+        "zone": "Cave 1F",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Banette",
+            "rate": 70
+          },
+          {
+            "species": "Golurk",
+            "rate": 30
+          }
+        ]
+      },
+      {
+        "zone": "Cave 1F",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Basculin",
+            "rate": 70
+          },
+          {
+            "species": "Marill",
+            "rate": 30
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "zone": "Cave 1F Rippling Water",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Marill",
+            "rate": 60
+          },
+          {
+            "species": "Basculin",
+            "rate": 35
+          },
+          {
+            "species": "Azumarill",
+            "rate": 5
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "zone": "Grove",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Cottonee",
+            "rate": 70
+          },
+          {
+            "species": "Roselia",
+            "rate": 30
+          }
+        ]
+      },
+      {
+        "zone": "Grove Rustling Grass",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Audino",
+            "rate": 80
+          },
+          {
+            "species": "Dunsparce",
+            "rate": 10
+          },
+          {
+            "species": "Roserade",
+            "rate": 5
+          },
+          {
+            "species": "Whimsicott",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "River Valley",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Tranquill",
+            "rate": 80
+          },
+          {
+            "species": "Altaria",
+            "rate": 20
+          }
+        ]
+      },
+      {
+        "zone": "River Valley Rustling Grass",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Audino",
+            "rate": 85
+          },
+          {
+            "species": "Dunsparce",
+            "rate": 10
+          },
+          {
+            "species": "Unfezant",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "River Valley",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Basculin",
+            "rate": 70
+          },
+          {
+            "species": "Buizel",
+            "rate": 30
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "zone": "River Valley Rippling Water",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Buizel",
+            "rate": 60
+          },
+          {
+            "species": "Basculin",
+            "rate": 30
+          },
+          {
+            "species": "Floatzel",
+            "rate": 10
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "zone": "Cave 2F",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Boldore",
+            "rate": 80
+          },
+          {
+            "species": "Onix",
+            "rate": 20
+          }
+        ]
+      },
+      {
+        "zone": "Dust Cloud",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Excadrill",
+            "rate": 80
+          },
+          {
+            "species": "Onix",
+            "rate": 20
+          }
+        ]
+      },
+      {
+        "zone": "Cave 2F",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Basculin",
+            "rate": 70
+          },
+          {
+            "species": "Marill",
+            "rate": 30
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "zone": "Cave 2F Rippling Water",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Marill",
+            "rate": 60
+          },
+          {
+            "species": "Basculin",
+            "rate": 35
+          },
+          {
+            "species": "Azumarill",
+            "rate": 5
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "zone": "Cave 3F",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Druddigon",
+            "rate": 80
+          },
+          {
+            "species": "Zweilous",
+            "rate": 20
+          }
+        ]
+      },
+      {
+        "zone": "Mountainside",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Gurdurr",
+            "rate": 70
+          },
+          {
+            "species": "Throh",
+            "rate": 30
+          }
+        ]
+      },
+      {
+        "zone": "Mountainside Rustling Grass",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Audino",
+            "rate": 95
+          },
+          {
+            "species": "Sawk",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "Cave 4F",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Boldore",
+            "rate": 80
+          },
+          {
+            "species": "Onix",
+            "rate": 20
+          }
+        ]
+      }
+    ],
+    "tmMoves": [
+      "Waterfall",
+      "Hone Claws",
+      "Wild Charge"
+    ],
+    "items": [
+      "Dusk Stone",
+      "Dragon Fang",
+      "Dragon Scale"
+    ]
+  }
+]
