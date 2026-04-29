@@ -414,7 +414,8 @@ export class SmartAI extends NuzlockeAI {
 	}
 
 	protected override scoreReflectLightScreen(ctx: MoveCtx): number {
-		const condKey = ctx.move.id === 'reflect' ? 'reflect' : 'lightscreen';
+		const condKey = (ctx.move as AnyObject).sideCondition as string | undefined
+			?? (ctx.move.id === 'reflect' ? 'reflect' : 'lightscreen');
 		if (this.battle.sides[1].sideConditions[condKey]) return -20;
 		const correspondingCategory: 'Physical' | 'Special' = ctx.move.id === 'reflect' ? 'Physical' : 'Special';
 		let score = 6;
@@ -434,12 +435,8 @@ export class SmartAI extends NuzlockeAI {
 	}
 
 	protected override scoreWeather(ctx: MoveCtx): number {
-		const weatherMap: Record<string, string> = {
-			sunnyday: 'sunnyday', raindance: 'raindance', sandstorm: 'sandstorm',
-			hail: 'hail', snowscape: 'snow', chillyreception: 'snow',
-		};
-		const target = weatherMap[ctx.move.id];
-		if (target && this.battle.field.isWeather(target)) return -20;
+		const moveWeather = (ctx.move as AnyObject).weather as string | undefined;
+		if (moveWeather && this.battle.field.weather === moveWeather) return -20;
 		return 7;
 	}
 

@@ -407,6 +407,10 @@ export abstract class NuzlockeAI {
 			return ctx.faster ? -20 : 7;
 		}
 
+		if (moveId === 'block' || moveId === 'meanlook' || moveId === 'spiderweb') {
+			if (defender.volatiles['trapped']) return -20;
+			return 6;
+		}
 		if (moveId === 'attract') return this.scoreAttract(ctx);
 		if (moveId === 'leechseed') return this.scoreLeechSeed(ctx);
 		if (moveId === 'taunt') return this.scoreTaunt(ctx);
@@ -582,7 +586,9 @@ export abstract class NuzlockeAI {
 	}
 
 	protected scoreReflectLightScreen(ctx: MoveCtx): number {
-		const condKey = ctx.move.id === 'reflect' ? 'reflect' : 'lightscreen';
+		// Use the move's own sideCondition key — more reliable than deriving from move.id.
+		const condKey = (ctx.move as AnyObject).sideCondition as string | undefined
+			?? (ctx.move.id === 'reflect' ? 'reflect' : 'lightscreen');
 		if (this.battle.sides[1].sideConditions[condKey]) return -20;
 		return 6;
 	}
@@ -593,12 +599,10 @@ export abstract class NuzlockeAI {
 	}
 
 	protected scoreWeather(ctx: MoveCtx): number {
-		const weatherMap: Record<string, string> = {
-			sunnyday: 'sunnyday', raindance: 'raindance', sandstorm: 'sandstorm',
-			hail: 'hail', snowscape: 'snow', chillyreception: 'snow',
-		};
-		const target = weatherMap[ctx.move.id];
-		if (target && this.battle.field.isWeather(target)) return -20;
+		// Use the move's own weather property and compare directly to field.weather.
+		// isWeather() expects an array in this codebase; direct equality is unambiguous.
+		const moveWeather = (ctx.move as AnyObject).weather as string | undefined;
+		if (moveWeather && this.battle.field.weather === moveWeather) return -20;
 		return 6;
 	}
 

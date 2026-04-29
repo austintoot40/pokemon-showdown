@@ -13,12 +13,13 @@ import type { Battle } from '../battle';
 import type { Pokemon } from '../pokemon';
 import type { ChoiceRequest } from '../side';
 import { NuzlockeAI } from './base';
-import { PositionEvaluator, projectMoveState, projectSwitchInState } from './evaluator';
+import { PositionEvaluator, projectMoveState } from './evaluator';
 import { initRolloutState, type RolloutState } from './rollout';
 import { MCTSEngine } from './mcts';
 import { isAbilityImmune } from './calculator';
 
 const PROTECT_IDS = new Set(['protect', 'kingsshield', 'spikyshield', 'banefulbunker']);
+const TRAP_IDS = new Set(['block', 'meanlook', 'spiderweb']);
 
 // ─── Action descriptors (used for voluntary switch depth-1 eval) ──────────────
 
@@ -99,7 +100,11 @@ export class CompetitiveAI extends NuzlockeAI {
 		// Score of staying in: best move we can use vs worst opponent response
 		const stayInScore = this.minMaxScore(ai, opp, oppOptions);
 
-		// Score of each bench option
+		// Score of each bench option.
+		// Evaluated at the same depth as stayInScore: pivot hit cost + one turn of
+		// fighting with the switch-in. Without this, a fresh bench mon always looks
+		// artificially good (more HP than the beaten-up active) regardless of whether
+		// it can actually turn the position around.
 		let bestSwitchScore = -Infinity;
 		let bestSlot = -1;
 
@@ -108,17 +113,21 @@ export class CompetitiveAI extends NuzlockeAI {
 			const p = bench[i];
 			if (!p || p.fainted || p.hp <= 0) continue;
 
-			// Project state after switching in (opponent gets a free hit)
-			let worstScore = Infinity;
-			for (const oppAction of oppOptions) {
-				const oppMove = oppAction.kind === 'move' ? oppAction.move : oppBestMove;
-				const state = projectSwitchInState(this.battle, p, opp, oppMove);
-				const score = this.evaluator.evaluate(state);
-				if (score < worstScore) worstScore = score;
+			// Pivot hit: opponent's best move against this switch-in (in evaluator units).
+			const pivotOppMove = this.getBestMoveAgainst(opp, p);
+			let pivotCost = 0;
+			if (pivotOppMove.basePower > 0 && this.battle.dex.getImmunity(pivotOppMove.type, p.types)) {
+				const { damage } = this.simulateDamage(pivotOppMove, opp, p);
+				pivotCost = (damage / p.maxhp) * 100;
 			}
 
-			if (worstScore > bestSwitchScore) {
-				bestSwitchScore = worstScore;
+			// Expected score one turn after switching in (bench mon fights back).
+			// Uses the same minimax as stayInScore so depth is symmetric.
+			const benchNextTurn = this.minMaxScore(p, opp, oppOptions);
+			const switchScore = benchNextTurn - pivotCost;
+
+			if (switchScore > bestSwitchScore) {
+				bestSwitchScore = switchScore;
 				bestSlot = i + 1;
 			}
 		}
@@ -193,9 +202,26 @@ export class CompetitiveAI extends NuzlockeAI {
 		const oppMon = state.opp[state.oppActiveIdx];
 		const hazards = state.hazardsOnOppSide;
 		const oppHasStatus = !!oppMon.status;
+		const oppIsTrapped = !!opp.volatiles['trapped'];
 		const lastWasProtect = PROTECT_IDS.has(lastChosenId);
 
 		const ai = this.battle.sides[1].active[0];
+
+		// Detect whether AI is about to be KO'd so it doesn't waste turns on self-buffs.
+		let dyingThisTurn = false;
+		let likelyDyingSoon = false;
+		if (ai) {
+			const oppBestMove = this.getBestMoveAgainst(opp, ai);
+			if (oppBestMove.basePower > 0 && this.battle.dex.getImmunity(oppBestMove.type, ai.types)) {
+				const { damage } = this.simulateDamage(oppBestMove, opp, ai);
+				const oppGoesFirst = !this.isFaster(ai, opp);
+				// Dying this turn: opponent is faster AND their hit kills outright.
+				dyingThisTurn = oppGoesFirst && damage >= ai.hp;
+				// Dying soon: low HP and opponent hits hard enough to finish in ~2 turns.
+				likelyDyingSoon = (ai.hp / ai.maxhp < 0.40) && (damage / ai.maxhp >= 0.35);
+			}
+		}
+
 		const filtered = candidates.filter(({ move }) => {
 			// Immune moves: type or ability makes the move deal zero damage
 			if (move.basePower > 0 && !this.battle.dex.getImmunity(move.type, opp.types)) return false;
@@ -210,8 +236,22 @@ export class CompetitiveAI extends NuzlockeAI {
 			// Status infliction: target already has a status condition
 			if (move.status && oppHasStatus) return false;
 
+			// Trap moves: target already trapped
+			if (TRAP_IDS.has(move.id) && oppIsTrapped) return false;
+
 			// Protect: consecutive use always fails
 			if (PROTECT_IDS.has(move.id) && lastWasProtect) return false;
+
+			// Self-buffs are useless when dying: the AI won't survive to use the boost.
+			// Permanent debuffs on the opponent (burn, par, psn) and hazards are still
+			// worth using because they persist after the AI faints — those pass through.
+			if ((dyingThisTurn || likelyDyingSoon) && move.target === 'self') {
+				const boosts = (move as AnyObject).boosts as AnyObject | undefined;
+				if (boosts && Object.values(boosts).some((v: number) => v > 0)) return false;
+			}
+
+			// Protect when dying this turn just hands the opponent a free turn.
+			if (dyingThisTurn && PROTECT_IDS.has(move.id)) return false;
 
 			return true;
 		});
