@@ -49,9 +49,10 @@ function getDefaultMoves(p: OwnedPokemon, game: NuzlockeGame): string[] {
 		.slice(0, 4).map(m => m.name);
 }
 
-/** Auto-fill party + moves, then navigate to teambuilding. Use instead of game.goToPage('teambuilding'). */
-export function goToTeambuilding(game: NuzlockeGame) {
-	game.autoFillParty();
+/** Auto-fill party + moves, then navigate to teambuilding. Use instead of game.goToPage('teambuilding').
+ *  Pass skipAutoFill=true for chained battles to keep party as-is (box is locked). */
+export function goToTeambuilding(game: NuzlockeGame, skipAutoFill = false) {
+	if (!skipAutoFill) game.autoFillParty();
 	// Auto-fill moves for any party Pokemon with no moves assigned
 	if (game.currentSegment) {
 		for (const p of game.box) {
@@ -239,12 +240,9 @@ export const battleHandlers: Chat.Handlers = {
 				void deleteGame(humanId as ID);
 				pushNuzlockeStatus(humanId as ID, null);
 				closeNuzlockePanel(humanId as ID);
-			} else if (dest === 'battle') {
-				// Chained battle — signal the client so the Continue button starts
-				// the next battle via /nuzlocke battle (safe command-handler path).
-				battle.room.add('|nuzlockechain|').update();
-				saveGame(game);
-				pushNuzlockeStatus(humanId as ID, game);
+			} else if (dest === 'teambuilding') {
+				// Chained battle — go to teambuilder with box locked; don't auto-fill party
+				goToTeambuilding(game, true);
 			} else {
 				game.goToPage(dest);
 			}

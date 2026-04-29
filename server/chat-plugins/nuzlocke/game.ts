@@ -35,6 +35,7 @@ export class NuzlockeGame {
 	scenario: Scenario;
 	curRoom: NuzlockeScreen;
 	inBattle: boolean;
+	inChainedTeambuilding: boolean;
 	battleRoomId: string | null;
 	lastBattleResult: { won: boolean; perfect: boolean; trainerName: string; deaths: DeadPokemon[] } | null;
 	currentSegmentIndex: number;
@@ -58,6 +59,7 @@ export class NuzlockeGame {
 		this.scenario = scenario;
 		this.curRoom = 'encounters';
 		this.inBattle = false;
+		this.inChainedTeambuilding = false;
 		this.battleRoomId = null;
 		this.lastBattleResult = null;
 		this.currentSegmentIndex = 0;
@@ -455,6 +457,7 @@ export class NuzlockeGame {
 		this.currentBattleIndex++;
 
 		if (this.currentBattleIndex >= segment.battles.length) {
+			this.inChainedTeambuilding = false;
 			// Auto-carry fully-locked routes from the current segment before advancing.
 			// These are routes the player couldn't act on because all zones had unmet prereqs.
 			for (const route of flatEncounters(segment)) {
@@ -483,9 +486,9 @@ export class NuzlockeGame {
 				return 'encounters';
 			}
 		} else {
-			// More battles remain in this segment — chained, go straight to next battle
-			this.cleanParty();
-			return 'battle';
+			// More battles remain in this segment — go to teambuilder with box locked
+			this.inChainedTeambuilding = true;
+			return 'teambuilding';
 		}
 	}
 
@@ -556,6 +559,9 @@ export interface NuzlockePanelPayload {
 
 	// Active battle room (null when no battle in progress)
 	battleRoomId: string | null;
+
+	// True when in teambuilder between chained battles; box ↔ party transfers are disabled
+	boxDisabled: boolean;
 }
 
 // Lightweight run summary delivered globally (|updatenuzlocke| message).
@@ -721,6 +727,7 @@ export function serializeGameState(game: NuzlockeGame): NuzlockePanelPayload {
 		segmentNames,
 		scenarios,
 		battleRoomId: game.battleRoomId,
+		boxDisabled: game.inChainedTeambuilding,
 	};
 }
 

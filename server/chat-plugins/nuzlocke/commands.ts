@@ -287,6 +287,7 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 			if (game.inBattle) return this.errorReply('Already in a battle.');
 			if (!game.currentBattle) return this.errorReply('No battle available.');
 			if (game.party.length === 0) return this.errorReply('Add Pokémon to your party first.');
+			game.inChainedTeambuilding = false;
 			createNuzlockeBattle(game, user);
 		},
 
