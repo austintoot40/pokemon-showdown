@@ -13,6 +13,7 @@ export interface Scenario {
 	starters: { species: string; level: number }[];
 	segments: Segment[];
 	tmRouteMap: Record<string, string>; // moveId → location name (e.g. "Hoenn Route 111")
+	itemRouteMap: Record<string, string>; // itemId → location name (e.g. "Petalburg Woods")
 }
 
 export interface Segment {

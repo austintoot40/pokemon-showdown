@@ -230,7 +230,7 @@ function buildEncounter(
 	const gender = dexSpecies.gender === 'M' ? 'M'
 		: dexSpecies.gender === 'F' ? 'F'
 		: dexSpecies.gender === 'N' ? 'N'
-		: Math.random() < 0.5 ? 'M' : 'F';
+		: Math.random() < (dexSpecies.genderRatio?.M ?? 0.5) ? 'M' : 'F';
 	const uid = `${toID(dexSpecies.name)}-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`;
 
 	return {
@@ -272,7 +272,7 @@ export function buildStarterPokemon(speciesName: string, level: number): OwnedPo
 		gender: dexSpecies.gender === 'M' ? 'M'
 			: dexSpecies.gender === 'F' ? 'F'
 			: dexSpecies.gender === 'N' ? 'N'
-			: Math.random() < 0.5 ? 'M' : 'F',
+			: Math.random() < (dexSpecies.genderRatio?.M ?? 0.5) ? 'M' : 'F',
 		caughtRoute: 'Starter',
 		alive: true,
 	};

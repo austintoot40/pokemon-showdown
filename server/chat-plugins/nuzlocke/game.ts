@@ -165,6 +165,7 @@ export class NuzlockeGame {
 		if (!prereq) return false;
 		if (prereq.type === 'move') return !this.tmMoves.includes(prereq.name);
 		if (prereq.type === 'pokemon') return !this.box.some(p => toID(p.species) === toID(prereq.name));
+		if (prereq.type === 'battle') return !this.completedBattles.includes(prereq.name);
 		return !this.items.includes(prereq.name);
 	}
 
@@ -715,7 +716,11 @@ export function serializeGameState(game: NuzlockeGame): NuzlockePanelPayload {
 				if (!it.exists || !it.fling) return false;
 				if (it.isBerry || it.isGem) return true;
 				return Object.keys(it).some(k => k.startsWith('on') && (it as any)[k] !== undefined);
-			});
+			}).map(name => ({
+				id: toID(name),
+				name,
+				location: game.scenario.itemRouteMap[toID(name)] ?? '',
+			}));
 		})(),
 		tmMoves: game.tmMoves,
 		resolvedRoutes: game.resolvedRoutes,

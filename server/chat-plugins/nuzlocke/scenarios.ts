@@ -107,6 +107,7 @@ function resolveRequires(raw: any): Scenario {
 	}
 
 	raw.tmRouteMap = {};
+	raw.itemRouteMap = {};
 	return raw as Scenario;
 }
 
@@ -211,6 +212,16 @@ function resolveScenario(
 		}
 	}
 
+	const itemRouteMap: Record<string, string> = {};
+	for (const loc of locationDefs) {
+		const routeName = loc.name ?? loc.id;
+		for (const entry of loc.items ?? []) {
+			const itemName = typeof entry === 'string' ? entry : entry.name;
+			const id = toID(itemName);
+			if (!itemRouteMap[id]) itemRouteMap[id] = routeName;
+		}
+	}
+
 	return {
 		id: raw.id,
 		name: raw.name,
@@ -222,6 +233,7 @@ function resolveScenario(
 		starters: raw.starters,
 		segments,
 		tmRouteMap,
+		itemRouteMap,
 	};
 }
 

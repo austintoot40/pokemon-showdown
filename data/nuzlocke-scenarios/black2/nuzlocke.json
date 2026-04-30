@@ -74,10 +74,6 @@
       "id": "clay",
       "name": "Clay",
       "locations": [
-        "unova-route-8",
-        "moor-of-icirrus",
-        "icirrus-city",
-        "dragonspiral-tower",
         "lostlorn-forest",
         "unova-route-5",
         "driftveil-city"
@@ -92,7 +88,6 @@
       "locations": [
         "unova-route-14",
         "unova-route-15",
-        "pre-gym-6-gift-1",
         "world-tournament",
         "unova-route-6",
         "mistralton-cave",
