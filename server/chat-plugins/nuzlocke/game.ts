@@ -47,8 +47,8 @@ export class NuzlockeGame {
 	tmMoves: string[];   // move IDs unlocked by TMs/HMs across segments
 	completedBattles: string[];
 	resolvedRoutes: string[];
-	deferredRoutes: RouteEncounter[];   // explicitly deferred by player; re-appear as pending each session
-	lockedRoutes: RouteEncounter[];     // auto-carried routes where all zones were inaccessible at segment end
+	deferredRoutes: string[];   // explicitly deferred by player; re-appear as pending each session
+	lockedRoutes: string[];     // auto-carried routes where all zones were inaccessible at segment end
 	settings: { ai: 'basic' | 'smart' | 'competitive'; generation: number };
 	partyErrors: Map<string, string>;
 	randomizerConfig: import('./types').RandomizerConfig | null;
@@ -105,10 +105,11 @@ export class NuzlockeGame {
 		// Re-lock previously-deferred routes that are still fully inaccessible.
 		// This prevents routes in deferredRoutes from showing confusing "Deferred" badges
 		// when they haven't become accessible yet.
-		this.deferredRoutes = this.deferredRoutes.filter(r => {
-			if (!this.isRouteDeferrable(r)) return true; // accessible or all dupes — keep as deferred
-			if (!this.lockedRoutes.some(lr => lr.route === r.route)) {
-				this.lockedRoutes.push(r);
+		this.deferredRoutes = this.deferredRoutes.filter(routeId => {
+			const r = this.findRouteById(routeId);
+			if (!r || !this.isRouteDeferrable(r)) return true; // accessible or all dupes — keep as deferred
+			if (!this.lockedRoutes.includes(routeId)) {
+				this.lockedRoutes.push(routeId);
 			}
 			return false; // moved to lockedRoutes
 		});
@@ -118,9 +119,9 @@ export class NuzlockeGame {
 		// from the moment the segment loads rather than waiting until segment end.
 		for (const route of flatEncounters(segment)) {
 			if (this.resolvedRoutes.includes(route.route)) continue;
-			if (this.deferredRoutes.some(r => r.route === route.route)) continue;
-			if (this.lockedRoutes.some(r => r.route === route.route)) continue;
-			if (this.isRouteDeferrable(route)) this.lockedRoutes.push(route);
+			if (this.deferredRoutes.includes(route.route)) continue;
+			if (this.lockedRoutes.includes(route.route)) continue;
+			if (this.isRouteDeferrable(route)) this.lockedRoutes.push(route.route);
 		}
 	}
 
@@ -174,6 +175,14 @@ export class NuzlockeGame {
 		return route.zones.every(zone => this.isZoneLocked(zone));
 	}
 
+	findRouteById(routeId: string): RouteEncounter | undefined {
+		for (const seg of this.scenario.segments) {
+			const found = [...(seg.encounters ?? []), ...(seg.gifts ?? [])].find(r => r.route === routeId);
+			if (found) return found;
+		}
+		return undefined;
+	}
+
 	/**
 	 * Returns true if the route should be auto-carried to a future segment.
 	 * Conditions: no accessible zone has a non-duplicate available,
@@ -199,24 +208,26 @@ export class NuzlockeGame {
 	 * Called after operations that add Pokemon (or items/TMs) that may unlock trade/prereq zones.
 	 */
 	refreshLockedRoutes() {
-		this.lockedRoutes = this.lockedRoutes.filter(r => this.isRouteDeferrable(r));
+		this.lockedRoutes = this.lockedRoutes.filter(id => {
+			const r = this.findRouteById(id);
+			return r ? this.isRouteDeferrable(r) : false;
+		});
 	}
 
 	/** Explicitly defer a route; moves it from lockedRoutes to deferredRoutes if needed. */
 	deferRoute(routeName: string): boolean {
 		if (this.resolvedRoutes.includes(routeName)) return false;
 		const segment = this.currentSegment;
-		const allRoutes = [
-			...(segment ? flatEncounters(segment) : []),
+		const allRouteIds = [
+			...(segment ? flatEncounters(segment).map(r => r.route) : []),
 			...this.deferredRoutes,
 			...this.lockedRoutes,
 		];
-		const route = allRoutes.find(r => r.route === routeName);
-		if (!route) return false;
+		if (!allRouteIds.includes(routeName)) return false;
 		// Move from lockedRoutes to deferredRoutes if it was auto-carried
-		this.lockedRoutes = this.lockedRoutes.filter(r => r.route !== routeName);
-		if (!this.deferredRoutes.some(r => r.route === routeName)) {
-			this.deferredRoutes.push(route);
+		this.lockedRoutes = this.lockedRoutes.filter(id => id !== routeName);
+		if (!this.deferredRoutes.includes(routeName)) {
+			this.deferredRoutes.push(routeName);
 		}
 		return true;
 	}
@@ -226,14 +237,18 @@ export class NuzlockeGame {
 	resolveChoiceZone(routeName: string, zoneIndex: number, speciesId: string) {
 		const segment = this.currentSegment;
 		if (!segment) return;
-		const allRoutes = [...flatEncounters(segment), ...this.deferredRoutes, ...this.lockedRoutes];
+		const allRoutes = [
+			...flatEncounters(segment),
+			...this.deferredRoutes.map(id => this.findRouteById(id)).filter(Boolean) as RouteEncounter[],
+			...this.lockedRoutes.map(id => this.findRouteById(id)).filter(Boolean) as RouteEncounter[],
+		];
 		const route = allRoutes.find(r => r.route === routeName);
 		if (!route) return;
 		if (this.resolvedRoutes.includes(route.route)) return;
 		const zone = route.zones[zoneIndex];
 		if (!zone || zone.method !== 'Gift') return;
 
-		this.lockedRoutes = this.lockedRoutes.filter(r => r.route !== routeName);
+		this.lockedRoutes = this.lockedRoutes.filter(id => id !== routeName);
 
 		// Look up the canonical species name, then apply randomizer mappings if active.
 		let speciesName = zone.pokemon.find(e => toID(e.species) === speciesId)?.species ?? speciesId;
@@ -261,14 +276,14 @@ export class NuzlockeGame {
 		if (!segment) return;
 		const allRoutes = [
 			...flatEncounters(segment),
-			...this.deferredRoutes,
-			...this.lockedRoutes,
+			...this.deferredRoutes.map(id => this.findRouteById(id)).filter(Boolean) as RouteEncounter[],
+			...this.lockedRoutes.map(id => this.findRouteById(id)).filter(Boolean) as RouteEncounter[],
 		];
 		const route = allRoutes.find(r => r.route === routeName);
 		if (!route) return;
 		if (this.resolvedRoutes.includes(route.route)) return;
 		// Remove from lockedRoutes; keep in deferredRoutes so resolved carry-over routes remain visible
-		this.lockedRoutes = this.lockedRoutes.filter(r => r.route !== routeName);
+		this.lockedRoutes = this.lockedRoutes.filter(id => id !== routeName);
 		const pokemon = resolveOneEncounter(route, zoneIndex, this.box, this.graveyard as any, this.currentLevelCap, this.randomizerMappings);
 		this.resolvedRoutes.push(route.route);
 		if (!pokemon) return; // all dupes — route resolved with no encounter
@@ -463,10 +478,10 @@ export class NuzlockeGame {
 			// These are routes the player couldn't act on because all zones had unmet prereqs.
 			for (const route of flatEncounters(segment)) {
 				if (this.resolvedRoutes.includes(route.route)) continue;
-				if (this.deferredRoutes.some(r => r.route === route.route)) continue;
-				if (this.lockedRoutes.some(r => r.route === route.route)) continue;
+				if (this.deferredRoutes.includes(route.route)) continue;
+				if (this.lockedRoutes.includes(route.route)) continue;
 				if (this.isRouteDeferrable(route)) {
-					this.lockedRoutes.push(route);
+					this.lockedRoutes.push(route.route);
 				}
 			}
 
@@ -481,7 +496,7 @@ export class NuzlockeGame {
 				// New segment: add items/gifts; wild routes are player-initiated
 				// Prune resolved deferred routes before clearing resolvedRoutes, or the check in
 				// resolveSegmentStart would always see an empty list and never remove them.
-				this.deferredRoutes = this.deferredRoutes.filter(r => !this.resolvedRoutes.includes(r.route));
+				this.deferredRoutes = this.deferredRoutes.filter(id => !this.resolvedRoutes.includes(id));
 				this.resolvedRoutes = [];
 				this.resolveSegmentStart();
 				return 'encounters';
@@ -539,7 +554,7 @@ export interface NuzlockePanelPayload {
 	party: string[];
 	graveyard: DeadPokemon[];
 	items: string[];
-	holdableItems: string[];
+	holdableItems: { id: string; name: string; location: string }[];
 	tmMoves: string[];
 	resolvedRoutes: string[];
 	deferredRoutes: import('./types').RouteEncounter[];
@@ -578,6 +593,7 @@ export interface NuzlockeMenuPayload {
 		partySpecies: string[];
 		curRoom: NuzlockeScreen;
 		ai: string;
+		generation: number;
 	} | null;
 	scenarios: NuzlockeScenarioCard[];
 	beatenScenarios: string[];
@@ -603,6 +619,7 @@ export function pushNuzlockeStatus(userID: ID, game: NuzlockeGame | null) {
 			partySpecies: game.party.map(uid => game.getPokemon(uid)?.species ?? '').filter(Boolean),
 			curRoom: game.curRoom,
 			ai: game.settings.ai,
+			generation: game.scenario.generation,
 		} : null,
 		scenarios: buildScenarioCards(),
 		beatenScenarios: beatenScenariosCache.get(userID) ?? [],
@@ -724,8 +741,14 @@ export function serializeGameState(game: NuzlockeGame): NuzlockePanelPayload {
 		})(),
 		tmMoves: game.tmMoves,
 		resolvedRoutes: game.resolvedRoutes,
-		deferredRoutes: m ? applyMappingsToRoutes(game.deferredRoutes, m) : game.deferredRoutes,
-		lockedRoutes: m ? applyMappingsToRoutes(game.lockedRoutes, m) : game.lockedRoutes,
+		deferredRoutes: (() => {
+			const routes = game.deferredRoutes.map(id => game.findRouteById(id)).filter(Boolean) as RouteEncounter[];
+			return m ? applyMappingsToRoutes(routes, m) : routes;
+		})(),
+		lockedRoutes: (() => {
+			const routes = game.lockedRoutes.map(id => game.findRouteById(id)).filter(Boolean) as RouteEncounter[];
+			return m ? applyMappingsToRoutes(routes, m) : routes;
+		})(),
 		legalMoves,
 		availableEvolutions,
 		lastBattleResult: game.lastBattleResult,
@@ -796,6 +819,13 @@ export async function loadUserGame(userId: ID): Promise<NuzlockeGame | null> {
 			return null;
 		}
 		const game = Object.assign(new NuzlockeGame(userId, scenario), gameData, { scenario });
+		// Migrate saves where deferredRoutes/lockedRoutes were stored as full RouteEncounter objects
+		if (game.deferredRoutes.length > 0 && typeof (game.deferredRoutes[0] as any) === 'object') {
+			game.deferredRoutes = (game.deferredRoutes as any[]).map((r: any) => r.route ?? r);
+		}
+		if (game.lockedRoutes.length > 0 && typeof (game.lockedRoutes[0] as any) === 'object') {
+			game.lockedRoutes = (game.lockedRoutes as any[]).map((r: any) => r.route ?? r);
+		}
 		// Battle rooms don't survive server restarts — put the player back at teambuilding
 		if (game.inBattle) {
 			game.inBattle = false;

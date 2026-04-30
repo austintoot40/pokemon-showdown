@@ -140,7 +140,7 @@ export function getLegalMoves(
 			const move = Dex.moves.get(id);
 			if (!move.exists) return null;
 			const tmIdx = tmMoves.findIndex(m => toID(m) === id);
-			return toMove(move, true, false, undefined, tmRoutes[id] ?? '', newTmMoveIds.has(id), 200 + tmIdx);
+			return toMove(move, true, false, undefined, tmRoutes[id] ?? '', newTmMoveIds.has(id as ID), 200 + tmIdx);
 		})
 		.filter((m): m is LegalMove => m !== null);
 
@@ -157,7 +157,7 @@ export function getLegalMoves(
 			const move = Dex.moves.get(id);
 			if (!move.exists) return null;
 			const tmIdx = tmMoves.findIndex(m => toID(m) === id);
-			return toMove(move, false, true, undefined, tmRoutes[id] ?? '', newTmMoveIds.has(id), 200 + tmIdx);
+			return toMove(move, false, true, undefined, tmRoutes[id] ?? '', newTmMoveIds.has(id as ID), 200 + tmIdx);
 		})
 		.filter((m): m is LegalMove => m !== null);
 

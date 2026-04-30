@@ -1833,7 +1833,7 @@
             "rate": 60
           },
           {
-            "species": "Fellicent",
+            "species": "Jellicent",
             "rate": 30
           },
           {
@@ -2047,7 +2047,7 @@
             "rate": 70
           },
           {
-            "species": "Maril",
+            "species": "Marill",
             "rate": 30
           }
         ],
@@ -2586,7 +2586,7 @@
             "rate": 5
           },
           {
-            "species": "Elektrik",
+            "species": "Eelektrik",
             "rate": 5
           }
         ]
