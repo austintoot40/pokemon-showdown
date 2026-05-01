@@ -210,6 +210,27 @@ export class SmartAI extends NuzlockeAI {
 	// Status move hooks
 	// =========================================================================
 
+	protected override scoreLeechSeed(ctx: MoveCtx): number {
+		if (ctx.defender.types.includes('Grass')) return -20;
+
+		const aiDmg = this.maxOpponentDamage(ctx.attacker, ctx.defender);
+		const oppDmg = this.maxOpponentDamage(ctx.defender, ctx.attacker);
+
+		// Opponent OHKOs — leech never fires
+		if (oppDmg >= ctx.attacker.hp) return -20;
+
+		// We can 2HKO — attacking is strictly better than waiting for leech chip
+		if (aiDmg * 2 >= ctx.defender.hp) return 3;
+
+		// Opponent 2HKOs — leech has marginal value, probably not enough turns to matter
+		if (oppDmg * 2 >= ctx.attacker.hp) return 4;
+
+		// Long fight expected — leech seed is strong here
+		let score = 7;
+		if (ctx.faster) score += 1;  // drain ticks same turn we use it relative to opponent's EOT
+		return score;
+	}
+
 	protected override scoreStealthRock(ctx: MoveCtx): number {
 		if (this.battle.sides[0].sideConditions['stealthrock']) return -20;
 		const firstTurn = ctx.attacker.activeTurns <= 1;
@@ -326,7 +347,16 @@ export class SmartAI extends NuzlockeAI {
 	protected override scoreSubstitute(ctx: MoveCtx): number {
 		if (ctx.hpFrac <= 0.5) return -20;
 		if (ctx.defender.ability === 'infiltrator' as ID) return -20;
+
+		const oppDmg = this.maxOpponentDamage(ctx.defender, ctx.attacker);
+		const subHp = ctx.attacker.maxhp * 0.25;
+
+		// Opponent breaks sub AND their follow-up KOs remaining HP — sub buys nothing
+		if (oppDmg >= subHp && oppDmg >= ctx.attacker.hp - subHp) return 1;
+
 		let score = 6;
+		// Sub survives opponent's best move — free turns to attack or set up behind it
+		if (oppDmg < subHp) score += 2;
 		if (ctx.defender.status === 'slp') score += 2;
 		if (ctx.defender.volatiles['leechseed'] && ctx.faster) score += 2;
 		if (Math.random() < 0.5) score -= 1;
@@ -335,6 +365,27 @@ export class SmartAI extends NuzlockeAI {
 		);
 		if (playerHasSoundMove) score -= 8;
 		return score;
+	}
+
+	protected override scoreBlockMove(ctx: MoveCtx): number {
+		const { attacker, defender } = ctx;
+		const aiDmg = this.maxOpponentDamage(attacker, defender);
+		const oppDmg = this.maxOpponentDamage(defender, attacker);
+
+		// Opponent OHKOs us — Block just hands them a free turn
+		if (oppDmg >= attacker.hp) return -20;
+
+		// We OHKO — trap is excellent, forces opponent to lose their Pokemon
+		if (aiDmg >= defender.hp) return 9;
+
+		// Opponent 2HKOs us — we're losing this 1v1, use the turn for damage instead
+		if (oppDmg * 2 >= attacker.hp) return 2;
+
+		// We 2HKO and they don't — we're winning, trapping is useful
+		if (aiDmg * 2 >= defender.hp) return 7;
+
+		// Neither side 2HKOs — trap has some value (chip from switching is avoided)
+		return 6;
 	}
 
 	protected override scoreTaunt(ctx: MoveCtx): number {
@@ -463,6 +514,13 @@ export class SmartAI extends NuzlockeAI {
 
 	protected override scoreFocusEnergy(ctx: MoveCtx): number {
 		if (ctx.defender.ability === 'shellarmor' as ID || ctx.defender.ability === 'battlearmor' as ID) return -20;
+
+		const oppDmg = this.maxOpponentDamage(ctx.defender, ctx.attacker);
+		// Opponent OHKOs — we never get to use the crits
+		if (oppDmg >= ctx.attacker.hp) return -20;
+		// Opponent 2HKOs — we may only get one attack behind Focus Energy, not worth the setup turn
+		if (oppDmg * 2 >= ctx.attacker.hp) return 3;
+
 		const hasHighCrit = (
 			ctx.attacker.ability === 'superluck' as ID ||
 			ctx.attacker.ability === 'sniper' as ID ||

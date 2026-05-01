@@ -2,10 +2,10 @@
  * Nuzlocke AI — Rollout Engine
  *
  * Multi-turn state representation and simulation for MCTS rollouts.
- * Tracks per-Pokémon HP/status for all team members so battles can be
+ * Tracks per-Pokémon HP/status/boosts for all team members so battles can be
  * simulated across KOs and switch-ins without touching the real Battle object.
  *
- * `ref` fields are never mutated — only hp/status/fainted in RolloutMon change.
+ * `ref` fields are never mutated — only hp/status/boosts/fainted in RolloutMon change.
  */
 
 import type { Battle } from '../battle';
@@ -22,6 +22,8 @@ export interface RolloutMon {
 	status: string;      // '' | 'brn' | 'psn' | 'tox' | 'par' | 'slp' | 'frz'
 	toxicCounter: number;
 	fainted: boolean;
+	/** Simulated stat boosts accumulated during the rollout (on top of ref.boosts). */
+	boosts: Partial<BoostsTable>;
 }
 
 export interface RolloutState {
@@ -51,6 +53,7 @@ function buildTeam(side: any): RolloutMon[] {
 		status: p.status || '',
 		toxicCounter: (p.statusState as AnyObject)?.toxicTurns ?? 0,
 		fainted: p.fainted || p.hp <= 0,
+		boosts: { ...p.boosts },
 	}));
 }
 
@@ -85,8 +88,8 @@ export function initRolloutState(battle: Battle): RolloutState {
 
 export function cloneRolloutState(state: RolloutState): RolloutState {
 	return {
-		ai: state.ai.map(m => ({ ...m })),
-		opp: state.opp.map(m => ({ ...m })),
+		ai: state.ai.map(m => ({ ...m, boosts: { ...m.boosts } })),
+		opp: state.opp.map(m => ({ ...m, boosts: { ...m.boosts } })),
 		aiActiveIdx: state.aiActiveIdx,
 		oppActiveIdx: state.oppActiveIdx,
 		hazardsOnAiSide: { ...state.hazardsOnAiSide },
@@ -98,6 +101,33 @@ export function cloneRolloutState(state: RolloutState): RolloutState {
 		lastAiMoveId: state.lastAiMoveId,
 		lastOppMoveId: state.lastOppMoveId,
 	};
+}
+
+// ─── Boost helpers ────────────────────────────────────────────────────────────
+
+/** Standard stat-boost stage multiplier: +1 = 1.5×, +2 = 2×, etc. */
+function boostMult(stage: number): number {
+	return stage >= 0 ? (2 + stage) / 2 : 2 / (2 - stage);
+}
+
+/**
+ * Damage correction factor accounting for rollout boosts accumulated on top of
+ * the real Pokemon's current boosts (which simulateDamage already uses).
+ */
+function boostDamageCorrection(mon: RolloutMon, move: Move): number {
+	if (move.category === 'Physical') {
+		const refStage = (mon.ref.boosts as AnyObject).atk ?? 0;
+		const rolloutStage = (mon.boosts as AnyObject).atk ?? 0;
+		if (rolloutStage === refStage) return 1;
+		return boostMult(rolloutStage) / boostMult(refStage);
+	}
+	if (move.category === 'Special') {
+		const refStage = (mon.ref.boosts as AnyObject).spa ?? 0;
+		const rolloutStage = (mon.boosts as AnyObject).spa ?? 0;
+		if (rolloutStage === refStage) return 1;
+		return boostMult(rolloutStage) / boostMult(refStage);
+	}
+	return 1;
 }
 
 // ─── Rollout policy ───────────────────────────────────────────────────────────
@@ -131,13 +161,35 @@ export function rolloutPolicy(battle: Battle, state: RolloutState, side: 'ai' | 
 		if (!battle.dex.getImmunity(move.type, defender.types)) continue;
 		if (isAbilityImmune(attacker.ability as string, defender.ability as string, move.type)) continue;
 		const { damage } = simulateDamage(battle, move, attacker, defender);
-		if (damage > bestDamage) {
-			bestDamage = damage;
+		const acc = move.accuracy === true ? 1 : (move.accuracy as number) / 100;
+		const expectedDamage = damage * acc;
+		if (expectedDamage > bestDamage) {
+			bestDamage = expectedDamage;
 			bestIdx = i;
 		}
 	}
 
-	if (bestIdx >= 0) return bestIdx;
+	if (bestIdx >= 0) {
+		// 25% of rollouts explore setup rather than always attacking — gives MCTS enough
+		// samples to learn whether Dragon Dance / Swords Dance / etc. is better than
+		// fighting straight through, regardless of current HP standing.
+		if (Math.random() < 0.25) {
+			const aiMon = team[activeIdx];
+			for (let i = 0; i < attacker.moveSlots.length; i++) {
+				const move = battle.dex.moves.get(attacker.moveSlots[i].id);
+				if (move.basePower > 0) continue;
+				const boosts = (move as AnyObject).boosts as AnyObject | undefined;
+				if (!boosts) continue;
+				if ((boosts.atk ?? 0) > 0 || (boosts.spa ?? 0) > 0) {
+					// Don't stack boosts past +4 — setup becomes useless above that
+					const curAtk = (aiMon.boosts as AnyObject).atk ?? 0;
+					const curSpa = (aiMon.boosts as AnyObject).spa ?? 0;
+					if (curAtk < 4 && curSpa < 4) return i;
+				}
+			}
+		}
+		return bestIdx;
+	}
 
 	// No damaging move available. Pick the least-useless non-damaging move,
 	// skipping options that would clearly be no-ops.
@@ -239,8 +291,13 @@ function applyStatusMove(state: RolloutState, move: Move, attackerSide: 'ai' | '
 	} else if ((move as AnyObject).heal?.[0] > 0) {
 		const fraction = (move as AnyObject).heal[0] / (move as AnyObject).heal[1];
 		attackerMon.hp = Math.min(attackerMon.maxHp, attackerMon.hp + attackerMon.maxHp * fraction);
+	} else if ((move as AnyObject).boosts) {
+		const moveBoosts = (move as AnyObject).boosts as AnyObject;
+		const current = attackerMon.boosts as AnyObject;
+		for (const stat of Object.keys(moveBoosts)) {
+			current[stat] = Math.max(-6, Math.min(6, (current[stat] ?? 0) + moveBoosts[stat]));
+		}
 	}
-	// Stat boosts / other effects: no-op (boosts not tracked in rollouts)
 }
 
 // ─── End-of-turn effects ──────────────────────────────────────────────────────
@@ -348,7 +405,10 @@ export function stepRollout(
 			if (battle.dex.getImmunity(move.type, defender.ref.types) &&
 					!isAbilityImmune(attacker.ref.ability as string, defender.ref.ability as string, move.type)) {
 				const { damage } = simulateDamage(battle, move, attacker.ref, defender.ref);
-				defender.hp = Math.max(0, defender.hp - damage);
+				const correction = boostDamageCorrection(attacker, move);
+				const acc = move.accuracy === true ? 1 : (move.accuracy as number) / 100;
+				const finalDamage = Math.round(damage * correction * acc);
+				defender.hp = Math.max(0, defender.hp - finalDamage);
 				if (defender.hp <= 0) {
 					defender.fainted = true;
 					// Switch in replacement for the KO'd side; switch-in acts next turn
@@ -430,6 +490,16 @@ export function evaluateRolloutState(battle: Battle, state: RolloutState): numbe
 	// Status
 	score += statusValue(oppActive.status, oppActive.toxicCounter);
 	score -= statusValue(aiActive.status, aiActive.toxicCounter);
+
+	// Offensive boost advantage — each +1 Atk/SpA is roughly +12 points;
+	// Spe and defensive boosts are worth less since they don't directly convert to damage
+	const boostScore = (mon: RolloutMon): number => {
+		const b = mon.boosts as AnyObject;
+		return ((b.atk ?? 0) + (b.spa ?? 0)) * 12
+			+ (b.spe ?? 0) * 5
+			+ ((b.def ?? 0) + (b.spd ?? 0)) * 4;
+	};
+	score += boostScore(aiActive) - boostScore(oppActive);
 
 	// Hazard advantage — expected chip to opponent's bench
 	const hazardChip = (hazards: HazardState, bench: RolloutMon[]): number => {

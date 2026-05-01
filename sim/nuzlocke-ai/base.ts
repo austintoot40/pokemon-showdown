@@ -433,7 +433,7 @@ export abstract class NuzlockeAI {
 
 		if (moveId === 'block' || moveId === 'meanlook' || moveId === 'spiderweb') {
 			if (defender.volatiles['trapped']) return -20;
-			return 6;
+			return this.scoreBlockMove(ctx);
 		}
 		if (moveId === 'attract') return this.scoreAttract(ctx);
 		if (moveId === 'leechseed') return this.scoreLeechSeed(ctx);
@@ -556,6 +556,10 @@ export abstract class NuzlockeAI {
 		if (!ctx.defender.lastMove) return -20;
 		if (ctx.defender.volatiles['encore']) return -20;
 		return 5;
+	}
+
+	protected scoreBlockMove(ctx: MoveCtx): number {
+		return 6;
 	}
 
 	protected scoreAttract(ctx: MoveCtx): number {

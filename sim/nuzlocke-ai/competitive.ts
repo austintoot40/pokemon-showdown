@@ -131,8 +131,11 @@ export class CompetitiveAI extends NuzlockeAI {
 			}
 		}
 
-		// Only switch if bench is meaningfully better (>10 pts avoids thrashing)
-		if (bestSlot !== -1 && bestSwitchScore > stayInScore + 10) {
+		// Switching costs all accumulated boosts on the current mon — raise the
+		// threshold proportionally so a set-up sweeper doesn't casually abandon its boosts.
+		const boostTotal = Object.values(ai.boosts).reduce((sum, v) => sum + Math.max(0, v as number), 0);
+		const switchThreshold = 10 + boostTotal * 8;
+		if (bestSlot !== -1 && bestSwitchScore > stayInScore + switchThreshold) {
 			return `switch ${bestSlot}`;
 		}
 		return null;
