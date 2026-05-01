@@ -2384,7 +2384,12 @@
       {
         "zone": "",
         "method": "Standard",
-        "pokemon": [],
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 100
+          }
+        ],
         "requires": {
           "type": "item",
           "name": "Old Rod"
@@ -2399,6 +2404,56 @@
             "rate": 100
           }
         ]
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 99
+          },
+          {
+            "species": "Grimer",
+            "rate": 1
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Psyduck",
+            "rate": 99
+          },
+          {
+            "species": "Koffing",
+            "rate": 1
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
       }
     ],
     "tmMoves": [
@@ -3129,26 +3184,20 @@
     "name": "Saffron City",
     "zones": [
       {
-        "zone": "Silph Co.",
+        "zone": "",
         "method": "Gift",
         "pokemon": [
           {
             "species": "Lapras",
             "rate": 100
-          }
-        ]
-      },
-      {
-        "zone": "Fighting Dojo",
-        "method": "Gift",
-        "pokemon": [
+          },
           {
             "species": "Hitmonlee",
-            "rate": 50
+            "rate": 0
           },
           {
             "species": "Hitmonchan",
-            "rate": 50
+            "rate": 0
           }
         ]
       }
@@ -3234,7 +3283,7 @@
             "rate": 15
           },
           {
-            "species": "Deadra",
+            "species": "Seadra",
             "rate": 4
           },
           {
@@ -4416,8 +4465,16 @@
             "rate": 40
           },
           {
-            "species": "",
-            "rate": 60
+            "species": "Poliwhirl",
+            "rate": 40
+          },
+          {
+            "species": "Gyarados",
+            "rate": 15
+          },
+          {
+            "species": "Psyduck",
+            "rate": 5
           }
         ],
         "requires": {

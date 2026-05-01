@@ -263,6 +263,7 @@ export abstract class NuzlockeAI {
 			};
 
 			if (moveId === 'rollout' || moveId === 'iceball') return 7;
+			if (moveId === 'dreameater' && defender.status !== 'slp') return -20;
 			if ((move as AnyObject).flags?.trap) return this.scoreTrap(ctx);
 			if (moveId === 'futuresight' || moveId === 'doomdesire') return this.scoreFutureSight(ctx);
 			if (moveId === 'relicsong') return this.scoreRelicSong(ctx);
@@ -461,6 +462,16 @@ export abstract class NuzlockeAI {
 			return this.scoreTerrain(ctx);
 		}
 		if (moveId === 'counter' || moveId === 'mirrorcoat') return this.scoreCounterMirrorCoat(ctx);
+
+		if (moveId === 'nightmare') {
+			if (defender.status !== 'slp') return -20;
+			// generic volatile guard above already returns -20 if nightmare is already applied
+			return 6;
+		}
+		if (moveId === 'safeguard') {
+			if (this.battle.sides[1].sideConditions['safeguard']) return -20;
+			return 6;
+		}
 
 		if (move.boosts) return this.scoreSetupMove(ctx);
 
