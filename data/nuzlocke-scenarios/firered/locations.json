@@ -492,22 +492,6 @@
     ]
   },
   {
-    "id": "pre-gym-2-gift-1",
-    "name": "Cerulean City Gift",
-    "zones": [
-      {
-        "zone": "Cerulean City Gift",
-        "method": "Gift",
-        "pokemon": [
-          {
-            "species": "Magikarp",
-            "rate": 100
-          }
-        ]
-      }
-    ]
-  },
-  {
     "id": "kanto-route-5",
     "name": "Kanto Route 5",
     "zones": [
@@ -725,13 +709,6 @@
           "name": "Super Rod"
         }
       }
-    ]
-  },
-  {
-    "id": "pre-gym-3-items",
-    "tmMoves": [
-      "Shock Wave",
-      "Cut"
     ]
   },
   {
@@ -1853,26 +1830,6 @@
     "items": [
       "Water Stone",
       "Water Stone"
-    ]
-  },
-  {
-    "id": "pre-gym-7-gift-1",
-    "name": "Fossil Revival (Cinnabar Lab)",
-    "zones": [
-      {
-        "zone": "Fossil Revival (Cinnabar Lab)",
-        "method": "Gift",
-        "pokemon": [
-          {
-            "species": "Omanyte",
-            "rate": 50
-          },
-          {
-            "species": "Kabuto",
-            "rate": 50
-          }
-        ]
-      }
     ]
   },
   {
