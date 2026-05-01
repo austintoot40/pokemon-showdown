@@ -1,0 +1,168 @@
+{
+  "id": "firered",
+  "name": "FireRed",
+  "generation": 3,
+  "description": "",
+  "color": "#C62828",
+  "pokemon": "charizard",
+  "starters": [
+    {
+      "species": "Bulbasaur",
+      "level": 5
+    },
+    {
+      "species": "Charmander",
+      "level": 5
+    },
+    {
+      "species": "Squirtle",
+      "level": 5
+    }
+  ],
+  "segments": [
+    {
+      "id": "brock",
+      "name": "Brock",
+      "locations": [
+        "kanto-route-1",
+        "kanto-route-2",
+        "viridian-forest",
+        "kanto-route-22",
+        "pewter-city"
+      ],
+      "battles": [
+        "brock"
+      ]
+    },
+    {
+      "id": "misty",
+      "name": "Misty",
+      "locations": [
+        "kanto-route-3",
+        "kanto-route-4",
+        "kanto-route-24",
+        "kanto-route-25",
+        "pre-gym-2-gift-1",
+        "mt-moon",
+        "cerulean-city",
+        "kanto-route-5"
+      ],
+      "battles": [
+        "misty"
+      ]
+    },
+    {
+      "id": "lt-surge",
+      "name": "Lt. Surge",
+      "locations": [
+        "kanto-route-6",
+        "kanto-route-11",
+        "pre-gym-3-items",
+        "vermilion-city",
+        "vermilion-harbor",
+        "ss-anne",
+        "digletts-cave"
+      ],
+      "battles": [
+        "lt-surge"
+      ]
+    },
+    {
+      "id": "erika",
+      "name": "Erika",
+      "locations": [
+        "kanto-route-9",
+        "kanto-route-10",
+        "rock-tunnel",
+        "kanto-route-8",
+        "kanto-route-7",
+        "celadon city"
+      ],
+      "battles": [
+        "erika"
+      ]
+    },
+    {
+      "id": "koga",
+      "name": "Koga",
+      "locations": [
+        "kanto-route-12",
+        "kanto-route-13",
+        "kanto-route-14",
+        "kanto-route-15",
+        "rocket-hideout",
+        "pokemon-tower",
+        "fuchsia-city",
+        "safari-zone-center-area",
+        "safari-zone-area-1",
+        "safari-zone-area-2",
+        "safari-zone-area-3"
+      ],
+      "battles": [
+        "koga"
+      ]
+    },
+    {
+      "id": "sabrina",
+      "name": "Sabrina",
+      "locations": [
+        "kanto-route-18",
+        "kanto-route-17",
+        "kanto-route-16",
+        "saffron-city",
+        "power-plant"
+      ],
+      "battles": [
+        "sabrina"
+      ]
+    },
+    {
+      "id": "blaine",
+      "name": "Blaine",
+      "locations": [
+        "kanto-route-19",
+        "seafoam-islands",
+        "pre-gym-7-gift-1",
+        "kanto-route-20",
+        "cinnabar-island",
+        "pokemon-mansion"
+      ],
+      "battles": [
+        "blaine"
+      ]
+    },
+    {
+      "id": "giovanni",
+      "name": "Giovanni",
+      "locations": [
+        "viridian-city",
+        "treasure-beach",
+        "kindle-road",
+        "mt-ember",
+        "cape-brink",
+        "bond-bridge",
+        "berry-forest",
+        "kanto-route-21"
+      ],
+      "battles": [
+        "giovanni"
+      ]
+    },
+    {
+      "id": "elite-four",
+      "name": "Elite Four",
+      "locations": [
+        "kanto-route-23",
+        "victory-road"
+      ],
+      "battles": [
+        "lorelei",
+        "bruno",
+        "agatha",
+        "lance",
+        "blue"
+      ]
+    }
+  ],
+  "verified": true
+}

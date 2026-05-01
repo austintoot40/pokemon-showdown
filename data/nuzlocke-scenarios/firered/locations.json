@@ -1,0 +1,4565 @@
+[
+  {
+    "id": "kanto-route-1",
+    "name": "Kanto Route 1",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Grass",
+        "pokemon": [
+          {
+            "species": "Pidgey",
+            "rate": 50
+          },
+          {
+            "species": "Rattata",
+            "rate": 50
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kanto-route-2",
+    "name": "Kanto Route 2",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Grass",
+        "pokemon": [
+          {
+            "species": "Pidgey",
+            "rate": 45
+          },
+          {
+            "species": "Rattata",
+            "rate": 45
+          },
+          {
+            "species": "Caterpie",
+            "rate": 5
+          },
+          {
+            "species": "Weedle",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Trade",
+        "pokemon": [
+          {
+            "species": "Mr. Mime",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "pokemon",
+          "name": "Abra"
+        }
+      }
+    ],
+    "tmMoves": [
+      {
+        "name": "Flash",
+        "requires": {
+          "type": "move",
+          "name": "Cut"
+        }
+      }
+    ]
+  },
+  {
+    "id": "viridian-forest",
+    "name": "Viridian Forest",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Grass",
+        "pokemon": [
+          {
+            "species": "Caterpie",
+            "rate": 40
+          },
+          {
+            "species": "Weedle",
+            "rate": 40
+          },
+          {
+            "species": "Kakuna",
+            "rate": 10
+          },
+          {
+            "species": "Metapod",
+            "rate": 5
+          },
+          {
+            "species": "Pikachu",
+            "rate": 5
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kanto-route-3",
+    "name": "Kanto Route 3",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Grass",
+        "pokemon": [
+          {
+            "species": "Spearow",
+            "rate": 35
+          },
+          {
+            "species": "Pidgey",
+            "rate": 30
+          },
+          {
+            "species": "Nidoran-M",
+            "rate": 14
+          },
+          {
+            "species": "Jigglypuff",
+            "rate": 10
+          },
+          {
+            "species": "Mankey",
+            "rate": 10
+          },
+          {
+            "species": "Nidoran-F",
+            "rate": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kanto-route-4",
+    "name": "Kanto Route 4",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Grass",
+        "pokemon": [
+          {
+            "species": "Rattata",
+            "rate": 35
+          },
+          {
+            "species": "Spearow",
+            "rate": 35
+          },
+          {
+            "species": "Ekans",
+            "rate": 25
+          },
+          {
+            "species": "Mankey",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Surf",
+        "pokemon": [
+          {
+            "species": "Tentacool",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Fish Old",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Fish Good",
+        "pokemon": [
+          {
+            "species": "Horsea",
+            "rate": 60
+          },
+          {
+            "species": "Krabby",
+            "rate": 20
+          },
+          {
+            "species": "Magikarp",
+            "rate": 20
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Fish Super",
+        "pokemon": [
+          {
+            "species": "Horsea",
+            "rate": 84
+          },
+          {
+            "species": "Gyarados",
+            "rate": 15
+          },
+          {
+            "species": "Psyduck",
+            "rate": 1
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Gift",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 100
+          }
+        ]
+      }
+    ],
+    "tmMoves": [
+      "Roar"
+    ]
+  },
+  {
+    "id": "kanto-route-24",
+    "name": "Kanto Route 24",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Grass",
+        "pokemon": [
+          {
+            "species": "Oddish",
+            "rate": 25
+          },
+          {
+            "species": "Caterpie",
+            "rate": 20
+          },
+          {
+            "species": "Weedle",
+            "rate": 20
+          },
+          {
+            "species": "Pidgey",
+            "rate": 15
+          },
+          {
+            "species": "Abra",
+            "rate": 15
+          },
+          {
+            "species": "Kakuna",
+            "rate": 4
+          },
+          {
+            "species": "Metapod",
+            "rate": 1
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Surf",
+        "pokemon": [
+          {
+            "species": "Tentacool",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Fish Old",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Fish Good",
+        "pokemon": [
+          {
+            "species": "Horsea",
+            "rate": 60
+          },
+          {
+            "species": "Krabby",
+            "rate": 20
+          },
+          {
+            "species": "Magikarp",
+            "rate": 20
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Fish Super",
+        "pokemon": [
+          {
+            "species": "Horsea",
+            "rate": 84
+          },
+          {
+            "species": "Gyarados",
+            "rate": 15
+          },
+          {
+            "species": "Psyduck",
+            "rate": 1
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
+      }
+    ],
+    "tmMoves": [
+      "Attract"
+    ]
+  },
+  {
+    "id": "kanto-route-25",
+    "name": "Kanto Route 25",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Grass",
+        "pokemon": [
+          {
+            "species": "Oddish",
+            "rate": 25
+          },
+          {
+            "species": "Caterpie",
+            "rate": 20
+          },
+          {
+            "species": "Weedle",
+            "rate": 20
+          },
+          {
+            "species": "Pidgey",
+            "rate": 15
+          },
+          {
+            "species": "Abra",
+            "rate": 15
+          },
+          {
+            "species": "Kakuna",
+            "rate": 4
+          },
+          {
+            "species": "Metapod",
+            "rate": 1
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Surf",
+        "pokemon": [
+          {
+            "species": "Psyduck",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Fish Old",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Fish Good",
+        "pokemon": [
+          {
+            "species": "Poliwag",
+            "rate": 60
+          },
+          {
+            "species": "Goldeen",
+            "rate": 20
+          },
+          {
+            "species": "Magikarp",
+            "rate": 20
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Fish Super",
+        "pokemon": [
+          {
+            "species": "Poliwag",
+            "rate": 40
+          },
+          {
+            "species": "Poliwhirl",
+            "rate": 40
+          },
+          {
+            "species": "Gyarados",
+            "rate": 15
+          },
+          {
+            "species": "Psyduck",
+            "rate": 5
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
+      }
+    ],
+    "tmMoves": [
+      {
+        "name": "Secret Power",
+        "requires": {
+          "type": "move",
+          "name": "Cut"
+        }
+      }
+    ]
+  },
+  {
+    "id": "pre-gym-2-gift-1",
+    "name": "Cerulean City Gift",
+    "zones": [
+      {
+        "zone": "Cerulean City Gift",
+        "method": "Gift",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 100
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kanto-route-5",
+    "name": "Kanto Route 5",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Grass",
+        "pokemon": [
+          {
+            "species": "Pidgey",
+            "rate": 40
+          },
+          {
+            "species": "Meowth",
+            "rate": 35
+          },
+          {
+            "species": "Oddish",
+            "rate": 25
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kanto-route-6",
+    "name": "Kanto Route 6",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Grass",
+        "pokemon": [
+          {
+            "species": "Pidgey",
+            "rate": 40
+          },
+          {
+            "species": "Meowth",
+            "rate": 35
+          },
+          {
+            "species": "Oddish",
+            "rate": 25
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Surf",
+        "pokemon": [
+          {
+            "species": "Psyduck",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Fish Old",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Fish Good",
+        "pokemon": [
+          {
+            "species": "Poliwag",
+            "rate": 60
+          },
+          {
+            "species": "Goldeen",
+            "rate": 20
+          },
+          {
+            "species": "Magikarp",
+            "rate": 20
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Fish Super",
+        "pokemon": [
+          {
+            "species": "Poliwag",
+            "rate": 40
+          },
+          {
+            "species": "Poliwhirl",
+            "rate": 40
+          },
+          {
+            "species": "Gyarados",
+            "rate": 15
+          },
+          {
+            "species": "Psyduck",
+            "rate": 5
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
+      }
+    ]
+  },
+  {
+    "id": "kanto-route-11",
+    "name": "Kanto Route 11",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Grass",
+        "pokemon": [
+          {
+            "species": "Ekans",
+            "rate": 40
+          },
+          {
+            "species": "Spearow",
+            "rate": 35
+          },
+          {
+            "species": "Drowzee",
+            "rate": 25
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Surf",
+        "pokemon": [
+          {
+            "species": "Tentacool",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Fish Old",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Fish Good",
+        "pokemon": [
+          {
+            "species": "Horsea",
+            "rate": 60
+          },
+          {
+            "species": "Krabby",
+            "rate": 20
+          },
+          {
+            "species": "Magikarp",
+            "rate": 20
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Fish Super",
+        "pokemon": [
+          {
+            "species": "Horsea",
+            "rate": 84
+          },
+          {
+            "species": "Gyarados",
+            "rate": 15
+          },
+          {
+            "species": "Psyduck",
+            "rate": 1
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
+      }
+    ]
+  },
+  {
+    "id": "pre-gym-3-items",
+    "tmMoves": [
+      "Shock Wave",
+      "Cut"
+    ]
+  },
+  {
+    "id": "kanto-route-9",
+    "name": "Kanto Route 9",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Grass",
+        "pokemon": [
+          {
+            "species": "Rattata",
+            "rate": 40
+          },
+          {
+            "species": "Spearow",
+            "rate": 35
+          },
+          {
+            "species": "Ekans",
+            "rate": 25
+          }
+        ]
+      }
+    ],
+    "tmMoves": [
+      "Aerial Ace"
+    ]
+  },
+  {
+    "id": "kanto-route-10",
+    "name": "Kanto Route 10",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Grass",
+        "pokemon": [
+          {
+            "species": "Voltorb",
+            "rate": 40
+          },
+          {
+            "species": "Spearow",
+            "rate": 35
+          },
+          {
+            "species": "Ekans",
+            "rate": 25
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Surf",
+        "pokemon": [
+          {
+            "species": "Tentacool",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Fish Old",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Fish Good",
+        "pokemon": [
+          {
+            "species": "Horsea",
+            "rate": 60
+          },
+          {
+            "species": "Krabby",
+            "rate": 20
+          },
+          {
+            "species": "Magikarp",
+            "rate": 20
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Fish Super",
+        "pokemon": [
+          {
+            "species": "Horsea",
+            "rate": 84
+          },
+          {
+            "species": "Gyarados",
+            "rate": 15
+          },
+          {
+            "species": "Psyduck",
+            "rate": 1
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
+      }
+    ]
+  },
+  {
+    "id": "rock-tunnel",
+    "name": "Rock Tunnel",
+    "zones": [
+      {
+        "zone": "1F",
+        "method": "Cave",
+        "pokemon": [
+          {
+            "species": "Geodude",
+            "rate": 35
+          },
+          {
+            "species": "Zubat",
+            "rate": 30
+          },
+          {
+            "species": "Mankey",
+            "rate": 15
+          },
+          {
+            "species": "Machop",
+            "rate": 15
+          },
+          {
+            "species": "Onix",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "B1F",
+        "method": "Cave",
+        "pokemon": [
+          {
+            "species": "Geodude",
+            "rate": 35
+          },
+          {
+            "species": "Zubat",
+            "rate": 30
+          },
+          {
+            "species": "Mankey",
+            "rate": 15
+          },
+          {
+            "species": "Machop",
+            "rate": 10
+          },
+          {
+            "species": "Onix",
+            "rate": 10
+          }
+        ]
+      },
+      {
+        "zone": "B1F",
+        "method": "Rock Smash",
+        "pokemon": [
+          {
+            "species": "Geodude",
+            "rate": 95
+          },
+          {
+            "species": "Graveler",
+            "rate": 5
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Rock Smash"
+        }
+      }
+    ]
+  },
+  {
+    "id": "kanto-route-8",
+    "name": "Kanto Route 8",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Grass",
+        "pokemon": [
+          {
+            "species": "Pidgey",
+            "rate": 30
+          },
+          {
+            "species": "Meowth",
+            "rate": 30
+          },
+          {
+            "species": "Ekans",
+            "rate": 20
+          },
+          {
+            "species": "Growlithe",
+            "rate": 20
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kanto-route-7",
+    "name": "Kanto Route 7",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Grass",
+        "pokemon": [
+          {
+            "species": "Meowth",
+            "rate": 40
+          },
+          {
+            "species": "Pidgey",
+            "rate": 30
+          },
+          {
+            "species": "Oddish",
+            "rate": 20
+          },
+          {
+            "species": "Growlithe",
+            "rate": 10
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kanto-route-12",
+    "name": "Kanto Route 12",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Grass",
+        "pokemon": [
+          {
+            "species": "Oddish",
+            "rate": 35
+          },
+          {
+            "species": "Pidgey",
+            "rate": 30
+          },
+          {
+            "species": "Venonat",
+            "rate": 30
+          },
+          {
+            "species": "Gloom",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Surf",
+        "pokemon": [
+          {
+            "species": "Tentacool",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Fish Old",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Fish Good",
+        "pokemon": [
+          {
+            "species": "Horsea",
+            "rate": 60
+          },
+          {
+            "species": "Krabby",
+            "rate": 20
+          },
+          {
+            "species": "Magikarp",
+            "rate": 20
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Fish Super",
+        "pokemon": [
+          {
+            "species": "Horsea",
+            "rate": 84
+          },
+          {
+            "species": "Gyarados",
+            "rate": 15
+          },
+          {
+            "species": "Psyduck",
+            "rate": 1
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Snorlax",
+            "rate": 100
+          }
+        ]
+      }
+    ],
+    "tmMoves": [
+      "Return",
+      "Skill Swap"
+    ],
+    "items": [
+      "Super Rod"
+    ]
+  },
+  {
+    "id": "kanto-route-13",
+    "name": "Kanto Route 13",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Grass",
+        "pokemon": [
+          {
+            "species": "Oddish",
+            "rate": 35
+          },
+          {
+            "species": "Venonat",
+            "rate": 30
+          },
+          {
+            "species": "Pidgey",
+            "rate": 20
+          },
+          {
+            "species": "Pidgeotto",
+            "rate": 5
+          },
+          {
+            "species": "Gloom",
+            "rate": 5
+          },
+          {
+            "species": "Ditto",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Surf",
+        "pokemon": [
+          {
+            "species": "Tentacool",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Fish Old",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Fish Good",
+        "pokemon": [
+          {
+            "species": "Horsea",
+            "rate": 60
+          },
+          {
+            "species": "Krabby",
+            "rate": 20
+          },
+          {
+            "species": "Magikarp",
+            "rate": 20
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Fish Super",
+        "pokemon": [
+          {
+            "species": "Horsea",
+            "rate": 84
+          },
+          {
+            "species": "Gyarados",
+            "rate": 15
+          },
+          {
+            "species": "Psyduck",
+            "rate": 1
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
+      }
+    ]
+  },
+  {
+    "id": "kanto-route-14",
+    "name": "Kanto Route 14",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Grass",
+        "pokemon": [
+          {
+            "species": "Oddish",
+            "rate": 35
+          },
+          {
+            "species": "Venonat",
+            "rate": 30
+          },
+          {
+            "species": "Ditto",
+            "rate": 15
+          },
+          {
+            "species": "Pidgey",
+            "rate": 10
+          },
+          {
+            "species": "Pidgeotto",
+            "rate": 5
+          },
+          {
+            "species": "Gloom",
+            "rate": 5
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kanto-route-15",
+    "name": "Kanto Route 15",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Grass",
+        "pokemon": [
+          {
+            "species": "Oddish",
+            "rate": 35
+          },
+          {
+            "species": "Venonat",
+            "rate": 30
+          },
+          {
+            "species": "Pidgey",
+            "rate": 20
+          },
+          {
+            "species": "Pidgeotto",
+            "rate": 5
+          },
+          {
+            "species": "Gloom",
+            "rate": 5
+          },
+          {
+            "species": "Ditto",
+            "rate": 5
+          }
+        ]
+      }
+    ],
+    "tmMoves": [
+      "Rain Dance"
+    ]
+  },
+  {
+    "id": "kanto-route-16",
+    "name": "Kanto Route 16",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Grass",
+        "pokemon": [
+          {
+            "species": "Doduo",
+            "rate": 35
+          },
+          {
+            "species": "Rattata",
+            "rate": 30
+          },
+          {
+            "species": "Spearow",
+            "rate": 30
+          },
+          {
+            "species": "Raticate",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Snorlax",
+            "rate": 100
+          }
+        ]
+      }
+    ],
+    "tmMoves": [
+      {
+        "name": "Fly",
+        "requires": {
+          "type": "move",
+          "name": "Cut"
+        }
+      }
+    ],
+    "items": [
+      "Leftovers"
+    ]
+  },
+  {
+    "id": "kanto-route-17",
+    "name": "Kanto Route 17",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Grass",
+        "pokemon": [
+          {
+            "species": "Doduo",
+            "rate": 35
+          },
+          {
+            "species": "Spearow",
+            "rate": 30
+          },
+          {
+            "species": "Raticate",
+            "rate": 25
+          },
+          {
+            "species": "Rattata",
+            "rate": 5
+          },
+          {
+            "species": "Fearow",
+            "rate": 5
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kanto-route-18",
+    "name": "Kanto Route 18",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Grass",
+        "pokemon": [
+          {
+            "species": "Doduo",
+            "rate": 35
+          },
+          {
+            "species": "Spearow",
+            "rate": 30
+          },
+          {
+            "species": "Raticate",
+            "rate": 15
+          },
+          {
+            "species": "Fearow",
+            "rate": 15
+          },
+          {
+            "species": "Rattata",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Trade",
+        "pokemon": [
+          {
+            "species": "Lickitung",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "pokemon",
+          "name": "Golduck"
+        }
+      }
+    ]
+  },
+  {
+    "id": "kanto-route-19",
+    "name": "Kanto Route 19",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Surf",
+        "pokemon": [
+          {
+            "species": "Tentacool",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Fish Old",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Fish Good",
+        "pokemon": [
+          {
+            "species": "Horsea",
+            "rate": 60
+          },
+          {
+            "species": "Krabby",
+            "rate": 20
+          },
+          {
+            "species": "Magikarp",
+            "rate": 20
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Fish Super",
+        "pokemon": [
+          {
+            "species": "Horsea",
+            "rate": 80
+          },
+          {
+            "species": "Gyarados",
+            "rate": 15
+          },
+          {
+            "species": "Seadra",
+            "rate": 4
+          },
+          {
+            "species": "Psyduck",
+            "rate": 1
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
+      }
+    ]
+  },
+  {
+    "id": "kanto-route-21",
+    "name": "Kanto Route 21",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Grass",
+        "pokemon": [
+          {
+            "species": "Tangela",
+            "rate": 100
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Surf",
+        "pokemon": [
+          {
+            "species": "Tentacool",
+            "rate": 100
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fish Old",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 100
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fish Good",
+        "pokemon": [
+          {
+            "species": "Horsea",
+            "rate": 60
+          },
+          {
+            "species": "Krabby",
+            "rate": 20
+          },
+          {
+            "species": "Magikarp",
+            "rate": 20
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fish Super",
+        "pokemon": [
+          {
+            "species": "Horsea",
+            "rate": 80
+          },
+          {
+            "species": "Gyarados",
+            "rate": 15
+          },
+          {
+            "species": "Seadra",
+            "rate": 4
+          },
+          {
+            "species": "Psyduck",
+            "rate": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "seafoam-islands",
+    "name": "Seafoam Islands",
+    "zones": [
+      {
+        "zone": "1F",
+        "method": "Cave",
+        "pokemon": [
+          {
+            "species": "Psyduck",
+            "rate": 55
+          },
+          {
+            "species": "Zubat",
+            "rate": 34
+          },
+          {
+            "species": "Golbat",
+            "rate": 11
+          }
+        ]
+      },
+      {
+        "zone": "B1F",
+        "method": "Cave",
+        "pokemon": [
+          {
+            "species": "Psyduck",
+            "rate": 40
+          },
+          {
+            "species": "Zubat",
+            "rate": 34
+          },
+          {
+            "species": "Golbat",
+            "rate": 11
+          },
+          {
+            "species": "Seel",
+            "rate": 10
+          },
+          {
+            "species": "Golduck",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "B2F",
+        "method": "Cave",
+        "pokemon": [
+          {
+            "species": "Psyduck",
+            "rate": 40
+          },
+          {
+            "species": "Seel",
+            "rate": 20
+          },
+          {
+            "species": "Zubat",
+            "rate": 20
+          },
+          {
+            "species": "Golbat",
+            "rate": 10
+          },
+          {
+            "species": "Golduck",
+            "rate": 10
+          }
+        ]
+      },
+      {
+        "zone": "B3F",
+        "method": "Cave",
+        "pokemon": [
+          {
+            "species": "Seel",
+            "rate": 40
+          },
+          {
+            "species": "Psyduck",
+            "rate": 20
+          },
+          {
+            "species": "Golduck",
+            "rate": 15
+          },
+          {
+            "species": "Zubat",
+            "rate": 10
+          },
+          {
+            "species": "Golbat",
+            "rate": 10
+          },
+          {
+            "species": "Dewgong",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "B3F",
+        "method": "Surf",
+        "pokemon": [
+          {
+            "species": "Seel",
+            "rate": 60
+          },
+          {
+            "species": "Horsea",
+            "rate": 30
+          },
+          {
+            "species": "Dewgong",
+            "rate": 5
+          },
+          {
+            "species": "Psyduck",
+            "rate": 4
+          },
+          {
+            "species": "Golduck",
+            "rate": 1
+          }
+        ]
+      },
+      {
+        "zone": "B3F",
+        "method": "Fish Old",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 100
+          }
+        ]
+      },
+      {
+        "zone": "B3F",
+        "method": "Fish Good",
+        "pokemon": [
+          {
+            "species": "Horsea",
+            "rate": 60
+          },
+          {
+            "species": "Krabby",
+            "rate": 20
+          },
+          {
+            "species": "Magikarp",
+            "rate": 20
+          }
+        ]
+      },
+      {
+        "zone": "B3F",
+        "method": "Fish Super",
+        "pokemon": [
+          {
+            "species": "Horsea",
+            "rate": 80
+          },
+          {
+            "species": "Gyarados",
+            "rate": 16
+          },
+          {
+            "species": "Psyduck",
+            "rate": 4
+          }
+        ]
+      },
+      {
+        "zone": "B4F",
+        "method": "Cave",
+        "pokemon": [
+          {
+            "species": "Seel",
+            "rate": 50
+          },
+          {
+            "species": "Golbat",
+            "rate": 15
+          },
+          {
+            "species": "Golduck",
+            "rate": 15
+          },
+          {
+            "species": "Psyduck",
+            "rate": 10
+          },
+          {
+            "species": "Dewgong",
+            "rate": 10
+          }
+        ]
+      },
+      {
+        "zone": "B4F",
+        "method": "Surf",
+        "pokemon": [
+          {
+            "species": "Seel",
+            "rate": 60
+          },
+          {
+            "species": "Horsea",
+            "rate": 30
+          },
+          {
+            "species": "Dewgong",
+            "rate": 5
+          },
+          {
+            "species": "Psyduck",
+            "rate": 4
+          },
+          {
+            "species": "Golduck",
+            "rate": 1
+          }
+        ]
+      },
+      {
+        "zone": "B4F",
+        "method": "Fish Old",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 100
+          }
+        ]
+      },
+      {
+        "zone": "B4F",
+        "method": "Fish Good",
+        "pokemon": [
+          {
+            "species": "Horsea",
+            "rate": 60
+          },
+          {
+            "species": "Krabby",
+            "rate": 20
+          },
+          {
+            "species": "Magikarp",
+            "rate": 20
+          }
+        ]
+      },
+      {
+        "zone": "B4F",
+        "method": "Fish Super",
+        "pokemon": [
+          {
+            "species": "Horsea",
+            "rate": 80
+          },
+          {
+            "species": "Gyarados",
+            "rate": 16
+          },
+          {
+            "species": "Psyduck",
+            "rate": 4
+          }
+        ]
+      }
+    ],
+    "items": [
+      "Water Stone",
+      "Water Stone"
+    ]
+  },
+  {
+    "id": "pre-gym-7-gift-1",
+    "name": "Fossil Revival (Cinnabar Lab)",
+    "zones": [
+      {
+        "zone": "Fossil Revival (Cinnabar Lab)",
+        "method": "Gift",
+        "pokemon": [
+          {
+            "species": "Omanyte",
+            "rate": 50
+          },
+          {
+            "species": "Kabuto",
+            "rate": 50
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kanto-route-22",
+    "name": "Kanto Route 22",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Grass",
+        "pokemon": [
+          {
+            "species": "Rattata",
+            "rate": 45
+          },
+          {
+            "species": "Mankey",
+            "rate": 45
+          },
+          {
+            "species": "Spearow",
+            "rate": 10
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Surf",
+        "pokemon": [
+          {
+            "species": "Psyduck",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Fish Old",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Fish Good",
+        "pokemon": [
+          {
+            "species": "Poliwag",
+            "rate": 60
+          },
+          {
+            "species": "Goldeen",
+            "rate": 20
+          },
+          {
+            "species": "Magikarp",
+            "rate": 20
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Fish Super",
+        "pokemon": [
+          {
+            "species": "Poliwag",
+            "rate": 40
+          },
+          {
+            "species": "Poliwhirl",
+            "rate": 40
+          },
+          {
+            "species": "Gyarados",
+            "rate": 15
+          },
+          {
+            "species": "Psyduck",
+            "rate": 5
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
+      }
+    ]
+  },
+  {
+    "id": "kanto-route-23",
+    "name": "Kanto Route 23",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Grass",
+        "pokemon": [
+          {
+            "species": "Mankey",
+            "rate": 30
+          },
+          {
+            "species": "Fearow",
+            "rate": 25
+          },
+          {
+            "species": "Ekans",
+            "rate": 20
+          },
+          {
+            "species": "Spearow",
+            "rate": 15
+          },
+          {
+            "species": "Arbok",
+            "rate": 5
+          },
+          {
+            "species": "Primeape",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Surf",
+        "pokemon": [
+          {
+            "species": "Psyduck",
+            "rate": 100
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fish Old",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 100
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fish Good",
+        "pokemon": [
+          {
+            "species": "Poliwag",
+            "rate": 60
+          },
+          {
+            "species": "Goldeen",
+            "rate": 20
+          },
+          {
+            "species": "Magikarp",
+            "rate": 20
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Fish Super",
+        "pokemon": [
+          {
+            "species": "Poliwag",
+            "rate": 40
+          },
+          {
+            "species": "Poliwhirl",
+            "rate": 40
+          },
+          {
+            "species": "Gyarados",
+            "rate": 15
+          },
+          {
+            "species": "Psyduck",
+            "rate": 5
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "viridian-city",
+    "name": "Viridian City",
+    "zones": [],
+    "items": [],
+    "tmMoves": [
+      {
+        "name": "Earthquake",
+        "requires": {
+          "type": "battle",
+          "name": "giovanni"
+        }
+      }
+    ]
+  },
+  {
+    "id": "pewter-city",
+    "name": "Pewter City",
+    "zones": [],
+    "tmMoves": [
+      {
+        "name": "Rock Tomb",
+        "requires": {
+          "type": "battle",
+          "name": "brock"
+        }
+      }
+    ],
+    "items": []
+  },
+  {
+    "id": "mt-moon",
+    "name": "Mt. Moon",
+    "zones": [
+      {
+        "zone": "1F",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Zubat",
+            "rate": 69
+          },
+          {
+            "species": "Geodude",
+            "rate": 25
+          },
+          {
+            "species": "Paras",
+            "rate": 5
+          },
+          {
+            "species": "Clefairy",
+            "rate": 1
+          }
+        ]
+      },
+      {
+        "zone": "B1F",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Paras",
+            "rate": 100
+          }
+        ]
+      },
+      {
+        "zone": "B2F",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Zubat",
+            "rate": 49
+          },
+          {
+            "species": "Geodude",
+            "rate": 30
+          },
+          {
+            "species": "Paras",
+            "rate": 15
+          },
+          {
+            "species": "Clefairy",
+            "rate": 6
+          }
+        ]
+      }
+    ],
+    "tmMoves": [
+      "Bullet Seed",
+      "Thief"
+    ],
+    "items": [
+      "Moon Stone",
+      "Moon Stone"
+    ]
+  },
+  {
+    "id": "cerulean-city",
+    "name": "Cerulean City",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Trade",
+        "pokemon": [
+          {
+            "species": "Jynx",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "pokemon",
+          "name": "Poliwhirl"
+        }
+      }
+    ],
+    "tmMoves": [
+      {
+        "name": "Water Pulse",
+        "requires": {
+          "type": "battle",
+          "name": "misty"
+        }
+      },
+      "Dig"
+    ]
+  },
+  {
+    "id": "vermilion-city",
+    "name": "Vermilion City",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Trade",
+        "pokemon": [
+          {
+            "species": "Farfetch'd",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "pokemon",
+          "name": "Spearow"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Krabby",
+            "rate": 20
+          },
+          {
+            "species": "Horsea",
+            "rate": 60
+          },
+          {
+            "species": "Magikarp",
+            "rate": 20
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Psyduck",
+            "rate": 1
+          },
+          {
+            "species": "Shellder",
+            "rate": 40
+          },
+          {
+            "species": "Horsea",
+            "rate": 44
+          },
+          {
+            "species": "Gyarados",
+            "rate": 15
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Tentacool",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      }
+    ],
+    "tmMoves": [
+      {
+        "name": "Shock Wave",
+        "requires": {
+          "type": "battle",
+          "name": "lt-surge"
+        }
+      }
+    ],
+    "items": [
+      "Old Rod"
+    ]
+  },
+  {
+    "id": "vermilion-harbor",
+    "name": "Vermilion Harbor",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Tentacool",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Krabby",
+            "rate": 20
+          },
+          {
+            "species": "Horsea",
+            "rate": 60
+          },
+          {
+            "species": "Magikarp",
+            "rate": 20
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Psyduck",
+            "rate": 1
+          },
+          {
+            "species": "Shellder",
+            "rate": 40
+          },
+          {
+            "species": "Horsea",
+            "rate": 44
+          },
+          {
+            "species": "Gyarados",
+            "rate": 15
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ss-anne",
+    "name": "S.S. Anne",
+    "zones": [],
+    "items": [],
+    "tmMoves": [
+      "Brick Break",
+      "Cut",
+      "Rest"
+    ]
+  },
+  {
+    "id": "digletts-cave",
+    "name": "Diglett's Cave",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Diglett",
+            "rate": 95
+          },
+          {
+            "species": "Dugtrio",
+            "rate": 5
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "celadon city",
+    "name": "Celadon City",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Gift",
+        "pokemon": [
+          {
+            "species": "Eevee",
+            "rate": 100
+          }
+        ]
+      }
+    ],
+    "tmMoves": [
+      "Light Screen",
+      "Reflect",
+      "Safeguard",
+      {
+        "name": "Giga Drain",
+        "requires": {
+          "type": "battle",
+          "name": "erika"
+        }
+      }
+    ]
+  },
+  {
+    "id": "rocket-hideout",
+    "name": "Rocket Hideout",
+    "zones": [],
+    "items": [
+      "Moon Stone",
+      "Black Glasses"
+    ],
+    "tmMoves": [
+      "Taunt",
+      "Frustration",
+      "Snatch"
+    ]
+  },
+  {
+    "id": "pokemon-tower",
+    "name": "Pokemon Tower",
+    "zones": [
+      {
+        "zone": "3F",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Gastly",
+            "rate": 90
+          },
+          {
+            "species": "Cubone",
+            "rate": 9
+          },
+          {
+            "species": "Haunter",
+            "rate": 1
+          }
+        ]
+      },
+      {
+        "zone": "4F",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Gastly",
+            "rate": 86
+          },
+          {
+            "species": "Cubone",
+            "rate": 9
+          },
+          {
+            "species": "Haunter",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "5F",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Gastly",
+            "rate": 75
+          },
+          {
+            "species": "Haunter",
+            "rate": 15
+          },
+          {
+            "species": "Cubone",
+            "rate": 10
+          }
+        ]
+      }
+    ],
+    "items": [
+      "Cleanse Tag"
+    ]
+  },
+  {
+    "id": "fuchsia-city",
+    "name": "Fuchsia City",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Psyduck",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Poliwag",
+            "rate": 20
+          },
+          {
+            "species": "Goldeen",
+            "rate": 60
+          },
+          {
+            "species": "Magikarp",
+            "rate": 20
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Goldeen",
+            "rate": 40
+          },
+          {
+            "species": "Seaking",
+            "rate": 40
+          },
+          {
+            "species": "Gyarados",
+            "rate": 15
+          },
+          {
+            "species": "Psyduck",
+            "rate": 5
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
+      }
+    ],
+    "items": [
+      "Good Rod"
+    ],
+    "tmMoves": [
+      "Strength",
+      {
+        "name": "Toxic",
+        "requires": {
+          "type": "battle",
+          "name": "koga"
+        }
+      }
+    ]
+  },
+  {
+    "id": "safari-zone-center-area",
+    "name": "Safari Zone Center Area",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Nidoran-F",
+            "rate": 20
+          },
+          {
+            "species": "Exeggcute",
+            "rate": 20
+          },
+          {
+            "species": "Rhyhorn",
+            "rate": 20
+          },
+          {
+            "species": "Venonat",
+            "rate": 15
+          },
+          {
+            "species": "Nidorino",
+            "rate": 10
+          },
+          {
+            "species": "Nidorina",
+            "rate": 5
+          },
+          {
+            "species": "Parasect",
+            "rate": 5
+          },
+          {
+            "species": "Scyther",
+            "rate": 4
+          },
+          {
+            "species": "Chansey",
+            "rate": 1
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Psyduck",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Poliwag",
+            "rate": 20
+          },
+          {
+            "species": "Goldeen",
+            "rate": 60
+          },
+          {
+            "species": "Magikarp",
+            "rate": 20
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Psyduck",
+            "rate": 4
+          },
+          {
+            "species": "Goldeen",
+            "rate": 40
+          },
+          {
+            "species": "Seaking",
+            "rate": 40
+          },
+          {
+            "species": "Dratini",
+            "rate": 15
+          },
+          {
+            "species": "Dragonair",
+            "rate": 1
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
+      }
+    ],
+    "items": [
+      {
+        "name": "Leaf Stone",
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      }
+    ]
+  },
+  {
+    "id": "safari-zone-area-1",
+    "name": "Safari Zone Area 1",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Nidoran-F",
+            "rate": 5
+          },
+          {
+            "species": "Nidoran-M",
+            "rate": 20
+          },
+          {
+            "species": "Nidorino",
+            "rate": 10
+          },
+          {
+            "species": "Paras",
+            "rate": 15
+          },
+          {
+            "species": "Parasect",
+            "rate": 5
+          },
+          {
+            "species": "Doduo",
+            "rate": 20
+          },
+          {
+            "species": "Exeggcute",
+            "rate": 20
+          },
+          {
+            "species": "Kangaskhan",
+            "rate": 4
+          },
+          {
+            "species": "Scyther",
+            "rate": 1
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Psyduck",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Poliwag",
+            "rate": 20
+          },
+          {
+            "species": "Goldeen",
+            "rate": 60
+          },
+          {
+            "species": "Magikarp",
+            "rate": 20
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Psyduck",
+            "rate": 4
+          },
+          {
+            "species": "Goldeen",
+            "rate": 40
+          },
+          {
+            "species": "Seaking",
+            "rate": 40
+          },
+          {
+            "species": "Dratini",
+            "rate": 15
+          },
+          {
+            "species": "Dragonair",
+            "rate": 1
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
+      }
+    ],
+    "items": [
+      "Leaf Stone"
+    ],
+    "tmMoves": [
+      "Sunny Day"
+    ]
+  },
+  {
+    "id": "safari-zone-area-2",
+    "name": "Safari Zone Area 2",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Nidorina",
+            "rate": 5
+          },
+          {
+            "species": "Nidoran-M",
+            "rate": 20
+          },
+          {
+            "species": "Nidorino",
+            "rate": 10
+          },
+          {
+            "species": "Paras",
+            "rate": 15
+          },
+          {
+            "species": "Venomoth",
+            "rate": 5
+          },
+          {
+            "species": "Exeggcute",
+            "rate": 20
+          },
+          {
+            "species": "Rhyhorn",
+            "rate": 20
+          },
+          {
+            "species": "Chansey",
+            "rate": 4
+          },
+          {
+            "species": "Tauros",
+            "rate": 1
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Psyduck",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Poliwag",
+            "rate": 20
+          },
+          {
+            "species": "Goldeen",
+            "rate": 60
+          },
+          {
+            "species": "Magikarp",
+            "rate": 20
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Psyduck",
+            "rate": 4
+          },
+          {
+            "species": "Goldeen",
+            "rate": 40
+          },
+          {
+            "species": "Seaking",
+            "rate": 40
+          },
+          {
+            "species": "Dratini",
+            "rate": 15
+          },
+          {
+            "species": "Dragonair",
+            "rate": 1
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
+      }
+    ],
+    "items": [
+      "Quick Claw"
+    ],
+    "tmMoves": [
+      "Steel Wing"
+    ]
+  },
+  {
+    "id": "safari-zone-area-3",
+    "name": "Safari Zone Area 3",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Nidoran-F",
+            "rate": 5
+          },
+          {
+            "species": "Nidoran-M",
+            "rate": 20
+          },
+          {
+            "species": "Nidorino",
+            "rate": 10
+          },
+          {
+            "species": "Venonat",
+            "rate": 15
+          },
+          {
+            "species": "Venomoth",
+            "rate": 5
+          },
+          {
+            "species": "Doduo",
+            "rate": 20
+          },
+          {
+            "species": "Exeggcute",
+            "rate": 20
+          },
+          {
+            "species": "Kangaskhan",
+            "rate": 1
+          },
+          {
+            "species": "Tauros",
+            "rate": 4
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Psyduck",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Poliwag",
+            "rate": 20
+          },
+          {
+            "species": "Goldeen",
+            "rate": 60
+          },
+          {
+            "species": "Magikarp",
+            "rate": 20
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Psyduck",
+            "rate": 4
+          },
+          {
+            "species": "Goldeen",
+            "rate": 40
+          },
+          {
+            "species": "Seaking",
+            "rate": 40
+          },
+          {
+            "species": "Dratini",
+            "rate": 15
+          },
+          {
+            "species": "Dragonair",
+            "rate": 1
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
+      }
+    ],
+    "tmMoves": [
+      "Double Team",
+      "Surf"
+    ],
+    "items": []
+  },
+  {
+    "id": "saffron-city",
+    "name": "Saffron City",
+    "zones": [
+      {
+        "zone": "Silph Co.",
+        "method": "Gift",
+        "pokemon": [
+          {
+            "species": "Lapras",
+            "rate": 100
+          }
+        ]
+      },
+      {
+        "zone": "Fighting Dojo",
+        "method": "Gift",
+        "pokemon": [
+          {
+            "species": "Hitmonlee",
+            "rate": 50
+          },
+          {
+            "species": "Hitmonchan",
+            "rate": 50
+          }
+        ]
+      }
+    ],
+    "tmMoves": [
+      "Psychic",
+      {
+        "name": "Calm Mind",
+        "requires": {
+          "type": "battle",
+          "name": "sabrina"
+        }
+      },
+      "Torment",
+      "Focus Punch",
+      "Bulk Up"
+    ]
+  },
+  {
+    "id": "kanto-route-20",
+    "name": "Kanto Route 20",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Tentacool",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Horsea",
+            "rate": 60
+          },
+          {
+            "species": "Krabby",
+            "rate": 20
+          },
+          {
+            "species": "Magikarp",
+            "rate": 20
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Horsea",
+            "rate": 80
+          },
+          {
+            "species": "Gyarados",
+            "rate": 15
+          },
+          {
+            "species": "Deadra",
+            "rate": 4
+          },
+          {
+            "species": "Psyduck",
+            "rate": 1
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
+      }
+    ]
+  },
+  {
+    "id": "cinnabar-island",
+    "name": "Cinnabar Island",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Tentacool",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Horsea",
+            "rate": 60
+          },
+          {
+            "species": "Krabby",
+            "rate": 20
+          },
+          {
+            "species": "Magikarp",
+            "rate": 20
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Shellder",
+            "rate": 40
+          },
+          {
+            "species": "Horsea",
+            "rate": 40
+          },
+          {
+            "species": "Gyarados",
+            "rate": 15
+          },
+          {
+            "species": "Seadra",
+            "rate": 4
+          },
+          {
+            "species": "Psyduck",
+            "rate": 1
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Gift",
+        "pokemon": [
+          {
+            "species": "Omanyte",
+            "rate": 100
+          },
+          {
+            "species": "Kabuto",
+            "rate": 0
+          },
+          {
+            "species": "Aerodactyl",
+            "rate": 0
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Trade",
+        "pokemon": [
+          {
+            "species": "Seel",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "pokemon",
+          "name": "Ponyta"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Trade",
+        "pokemon": [
+          {
+            "species": "Electrode",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "pokemon",
+          "name": "Raichu"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Trade",
+        "pokemon": [
+          {
+            "species": "Tangela",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "pokemon",
+          "name": "Venonat"
+        }
+      }
+    ],
+    "tmMoves": [
+      {
+        "name": "Fire Blast",
+        "requires": {
+          "type": "battle",
+          "name": "blaine"
+        }
+      }
+    ]
+  },
+  {
+    "id": "pokemon-mansion",
+    "name": "Pokemon Mansion",
+    "zones": [
+      {
+        "zone": "1F-3F",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Raticate",
+            "rate": 30
+          },
+          {
+            "species": "Koffing",
+            "rate": 30
+          },
+          {
+            "species": "Rattata",
+            "rate": 15
+          },
+          {
+            "species": "Growlithe",
+            "rate": 15
+          },
+          {
+            "species": "Grimer",
+            "rate": 5
+          },
+          {
+            "species": "Weezing",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "B1F",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Raticate",
+            "rate": 30
+          },
+          {
+            "species": "Koffing",
+            "rate": 30
+          },
+          {
+            "species": "Growlithe",
+            "rate": 15
+          },
+          {
+            "species": "Ditto",
+            "rate": 10
+          },
+          {
+            "species": "Rattata",
+            "rate": 5
+          },
+          {
+            "species": "Grimer",
+            "rate": 5
+          },
+          {
+            "species": "Weezing",
+            "rate": 5
+          }
+        ]
+      }
+    ],
+    "items": [
+      "Moon Stone"
+    ],
+    "tmMoves": [
+      "Blizzard",
+      "SolarBeam"
+    ]
+  },
+  {
+    "id": "treasure-beach",
+    "name": "Treasure Beach",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Spearow",
+            "rate": 30
+          },
+          {
+            "species": "Tangela",
+            "rate": 30
+          },
+          {
+            "species": "Fearow",
+            "rate": 20
+          },
+          {
+            "species": "Meowth",
+            "rate": 10
+          },
+          {
+            "species": "Persian",
+            "rate": 5
+          },
+          {
+            "species": "Psyduck",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Tentacool",
+            "rate": 95
+          },
+          {
+            "species": "Tentacruel",
+            "rate": 5
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Horsea",
+            "rate": 80
+          },
+          {
+            "species": "Magikarp",
+            "rate": 20
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Horsea",
+            "rate": 80
+          },
+          {
+            "species": "Gyarados",
+            "rate": 15
+          },
+          {
+            "species": "Seadra",
+            "rate": 4
+          },
+          {
+            "species": "Psyduck",
+            "rate": 1
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
+      }
+    ]
+  },
+  {
+    "id": "kindle-road",
+    "name": "Kindle Road",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Ponyta",
+            "rate": 30
+          },
+          {
+            "species": "Spearow",
+            "rate": 25
+          },
+          {
+            "species": "Fearow",
+            "rate": 10
+          },
+          {
+            "species": "Meowth",
+            "rate": 10
+          },
+          {
+            "species": "Geodude",
+            "rate": 10
+          },
+          {
+            "species": "Persian",
+            "rate": 5
+          },
+          {
+            "species": "Psyduck",
+            "rate": 5
+          },
+          {
+            "species": "Rapidash",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Tentacool",
+            "rate": 95
+          },
+          {
+            "species": "Tentacruel",
+            "rate": 5
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Horsea",
+            "rate": 80
+          },
+          {
+            "species": "Magikarp",
+            "rate": 20
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Horsea",
+            "rate": 80
+          },
+          {
+            "species": "Gyarados",
+            "rate": 15
+          },
+          {
+            "species": "Seadra",
+            "rate": 4
+          },
+          {
+            "species": "Psyduck",
+            "rate": 1
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Geodude",
+            "rate": 95
+          },
+          {
+            "species": "Graveler",
+            "rate": 5
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Rock Smash"
+        }
+      }
+    ],
+    "tmMoves": [
+      "Rock Smash"
+    ]
+  },
+  {
+    "id": "mt-ember",
+    "name": "Mt. Ember",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Ponyta",
+            "rate": 35
+          },
+          {
+            "species": "Fearow",
+            "rate": 25
+          },
+          {
+            "species": "Spearow",
+            "rate": 15
+          },
+          {
+            "species": "Machop",
+            "rate": 10
+          },
+          {
+            "species": "Geodude",
+            "rate": 10
+          },
+          {
+            "species": "Rapidash",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Geodude",
+            "rate": 95
+          },
+          {
+            "species": "Graveler",
+            "rate": 5
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Rock Smash"
+        }
+      }
+    ],
+    "items": [
+      "Fire Stone",
+      "Fire Stone"
+    ]
+  },
+  {
+    "id": "cape-brink",
+    "name": "Cape Brink",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Oddish",
+            "rate": 30
+          },
+          {
+            "species": "Spearow",
+            "rate": 20
+          },
+          {
+            "species": "Gloom",
+            "rate": 15
+          },
+          {
+            "species": "Fearow",
+            "rate": 10
+          },
+          {
+            "species": "Meowth",
+            "rate": 10
+          },
+          {
+            "species": "Persian",
+            "rate": 5
+          },
+          {
+            "species": "Psyduck",
+            "rate": 5
+          },
+          {
+            "species": "Golduck",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Psyduck",
+            "rate": 95
+          },
+          {
+            "species": "Golduck",
+            "rate": 5
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Poliwag",
+            "rate": 60
+          },
+          {
+            "species": "Goldeen",
+            "rate": 20
+          },
+          {
+            "species": "Magikarp",
+            "rate": 20
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Poliwag",
+            "rate": 40
+          },
+          {
+            "species": "Poliwhirl",
+            "rate": 40
+          },
+          {
+            "species": "Gyarados",
+            "rate": 15
+          },
+          {
+            "species": "Psyduck",
+            "rate": 5
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
+      }
+    ],
+    "items": [
+      "Moon Stone"
+    ]
+  },
+  {
+    "id": "bond-bridge",
+    "name": "Bond Bridge",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Pidgey",
+            "rate": 30
+          },
+          {
+            "species": "Oddish",
+            "rate": 20
+          },
+          {
+            "species": "Pidgeotto",
+            "rate": 15
+          },
+          {
+            "species": "Gloom",
+            "rate": 10
+          },
+          {
+            "species": "Meowth",
+            "rate": 10
+          },
+          {
+            "species": "Venonat",
+            "rate": 5
+          },
+          {
+            "species": "Persian",
+            "rate": 5
+          },
+          {
+            "species": "Psyduck",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Tentacool",
+            "rate": 95
+          },
+          {
+            "species": "Tentacruel",
+            "rate": 5
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Horsea",
+            "rate": 80
+          },
+          {
+            "species": "Magikarp",
+            "rate": 20
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Horsea",
+            "rate": 80
+          },
+          {
+            "species": "Gyarados",
+            "rate": 15
+          },
+          {
+            "species": "Seadra",
+            "rate": 4
+          },
+          {
+            "species": "Psyduck",
+            "rate": 1
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
+      }
+    ]
+  },
+  {
+    "id": "berry-forest",
+    "name": "Berry Forest",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Pidgeotto",
+            "rate": 20
+          },
+          {
+            "species": "Gloom",
+            "rate": 20
+          },
+          {
+            "species": "Pidgey",
+            "rate": 10
+          },
+          {
+            "species": "Oddish",
+            "rate": 10
+          },
+          {
+            "species": "Venonat",
+            "rate": 10
+          },
+          {
+            "species": "Drowzee",
+            "rate": 10
+          },
+          {
+            "species": "Venomoth",
+            "rate": 5
+          },
+          {
+            "species": "Psyduck",
+            "rate": 5
+          },
+          {
+            "species": "Hypno",
+            "rate": 5
+          },
+          {
+            "species": "Exeggcute",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Psyduck",
+            "rate": 95
+          },
+          {
+            "species": "Golduck",
+            "rate": 5
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Goldeen",
+            "rate": 60
+          },
+          {
+            "species": "Poliwag",
+            "rate": 20
+          },
+          {
+            "species": "Magikarp",
+            "rate": 20
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Goldeen",
+            "rate": 40
+          },
+          {
+            "species": "Seaking",
+            "rate": 40
+          },
+          {
+            "species": "Gyarados",
+            "rate": 15
+          },
+          {
+            "species": "Psyduck",
+            "rate": 5
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Hypno",
+            "rate": 100
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kanto-route-21",
+    "name": "Kanto Route 21",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Tangela",
+            "rate": 100
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Tentacool",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Horsea",
+            "rate": 60
+          },
+          {
+            "species": "Krabby",
+            "rate": 20
+          },
+          {
+            "species": "Magikarp",
+            "rate": 20
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Horsea",
+            "rate": 80
+          },
+          {
+            "species": "Gyarados",
+            "rate": 15
+          },
+          {
+            "species": "Seadra",
+            "rate": 4
+          },
+          {
+            "species": "Psyduck",
+            "rate": 1
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
+      }
+    ]
+  },
+  {
+    "id": "power-plant",
+    "name": "Power Plant",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Magnemite",
+            "rate": 30
+          },
+          {
+            "species": "Voltorb",
+            "rate": 30
+          },
+          {
+            "species": "Pikachu",
+            "rate": 25
+          },
+          {
+            "species": "Magneton",
+            "rate": 10
+          },
+          {
+            "species": "Electabuzz",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "Fake Item",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Electrode",
+            "rate": 100
+          }
+        ]
+      }
+    ],
+    "items": [
+      "Thunder Stone",
+      "Thunder Stone"
+    ],
+    "tmMoves": [
+      "Protect",
+      "Thunder"
+    ]
+  },
+  {
+    "id": "kanto-route-23",
+    "name": "Kanto Route 23",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Mankey",
+            "rate": 30
+          },
+          {
+            "species": "Fearow",
+            "rate": 25
+          },
+          {
+            "species": "Ekans",
+            "rate": 20
+          },
+          {
+            "species": "Spearow",
+            "rate": 15
+          },
+          {
+            "species": "Arbok",
+            "rate": 5
+          },
+          {
+            "species": "Primeape",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Psyduck",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "move",
+          "name": "Surf"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Magikarp",
+            "rate": 100
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Poliwag",
+            "rate": 60
+          },
+          {
+            "species": "Goldeen",
+            "rate": 20
+          },
+          {
+            "species": "Magikarp",
+            "rate": 20
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
+      },
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Poliwag",
+            "rate": 40
+          },
+          {
+            "species": "",
+            "rate": 60
+          }
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
+      }
+    ]
+  },
+  {
+    "id": "victory-road",
+    "name": "Victory Road",
+    "zones": [
+      {
+        "zone": "1F and 3F",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Onix",
+            "rate": 30
+          },
+          {
+            "species": "Machop",
+            "rate": 20
+          },
+          {
+            "species": "Geodude",
+            "rate": 20
+          },
+          {
+            "species": "Zubat",
+            "rate": 10
+          },
+          {
+            "species": "Arbok",
+            "rate": 5
+          },
+          {
+            "species": "Golbat",
+            "rate": 5
+          },
+          {
+            "species": "Machoke",
+            "rate": 5
+          },
+          {
+            "species": "Marowak",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "zone": "2F",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Machop",
+            "rate": 20
+          },
+          {
+            "species": "Geodude",
+            "rate": 20
+          },
+          {
+            "species": "Onix",
+            "rate": 20
+          },
+          {
+            "species": "Zubat",
+            "rate": 10
+          },
+          {
+            "species": "Primeape",
+            "rate": 10
+          },
+          {
+            "species": "Arbok",
+            "rate": 5
+          },
+          {
+            "species": "Golbat",
+            "rate": 5
+          },
+          {
+            "species": "Machoke",
+            "rate": 5
+          },
+          {
+            "species": "Marowak",
+            "rate": 5
+          }
+        ]
+      }
+    ],
+    "tmMoves": [
+      "Dragon Claw",
+      "Sandstorm",
+      "Hail",
+      "Overheat"
+    ]
+  }
+]

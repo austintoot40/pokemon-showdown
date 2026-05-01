@@ -1,0 +1,727 @@
+[
+  {
+    "id": "brock",
+    "trainer": "Leader Brock",
+    "team": [
+      {
+        "species": "Geodude",
+        "level": 12,
+        "ability": "Rock Head",
+        "moves": [
+          "Tackle",
+          "Defense Curl"
+        ],
+        "item": null
+      },
+      {
+        "species": "Onix",
+        "level": 14,
+        "ability": "Rock Head",
+        "moves": [
+          "Tackle",
+          "Harden",
+          "Bind",
+          "Rock Tomb"
+        ],
+        "item": null
+      }
+    ],
+    "sprite": "brock"
+  },
+  {
+    "id": "misty",
+    "trainer": "Leader Misty",
+    "team": [
+      {
+        "species": "Staryu",
+        "level": 18,
+        "ability": "Natural Cure",
+        "moves": [
+          "Tackle",
+          "Harden",
+          "Recover",
+          "Water Pulse"
+        ],
+        "item": null
+      },
+      {
+        "species": "Starmie",
+        "level": 21,
+        "ability": "Natural Cure",
+        "moves": [
+          "Rapid Spin",
+          "Swift",
+          "Recover",
+          "Water Pulse"
+        ],
+        "item": null
+      }
+    ],
+    "sprite": "misty"
+  },
+  {
+    "id": "lt-surge",
+    "trainer": "Leader Lt. Surge",
+    "team": [
+      {
+        "species": "Voltorb",
+        "level": 21,
+        "ability": "Soundproof",
+        "moves": [
+          "Shock Wave",
+          "Tackle",
+          "Screech",
+          "SonicBoom"
+        ],
+        "item": null
+      },
+      {
+        "species": "Pikachu",
+        "level": 18,
+        "ability": "Static",
+        "moves": [
+          "Shock Wave",
+          "Thunder Wave",
+          "Quick Attack",
+          "Double Team"
+        ],
+        "item": null
+      },
+      {
+        "species": "Raichu",
+        "level": 24,
+        "ability": "Static",
+        "moves": [
+          "Shock Wave",
+          "Thunder Wave",
+          "Quick Attack",
+          "Double Team"
+        ],
+        "item": null
+      }
+    ],
+    "sprite": "ltsurge"
+  },
+  {
+    "id": "erika",
+    "trainer": "Leader Erika",
+    "team": [
+      {
+        "species": "Victreebel",
+        "level": 29,
+        "ability": "Chlorophyll",
+        "moves": [
+          "Stun Spore",
+          "Acid",
+          "PoisonPowder",
+          "Giga Drain"
+        ],
+        "item": null
+      },
+      {
+        "species": "Tangela",
+        "level": 24,
+        "ability": "Chlorophyll",
+        "moves": [
+          "PoisonPowder",
+          "Constrict",
+          "Ingrain",
+          "Giga Drain"
+        ],
+        "item": null
+      },
+      {
+        "species": "Vileplume",
+        "level": 29,
+        "ability": "Chlorophyll",
+        "moves": [
+          "Sleep Powder",
+          "Acid",
+          "Stun Spore",
+          "Giga Drain"
+        ],
+        "item": null
+      }
+    ],
+    "sprite": "erika"
+  },
+  {
+    "id": "koga",
+    "trainer": "Leader Koga",
+    "team": [
+      {
+        "species": "Koffing",
+        "level": 37,
+        "ability": "Levitate",
+        "moves": [
+          "Selfdestruct",
+          "Sludge",
+          "SmokeScreen",
+          "Toxic"
+        ],
+        "item": null
+      },
+      {
+        "species": "Muk",
+        "level": 39,
+        "ability": "Sticky Hold",
+        "moves": [
+          "Minimize",
+          "Sludge",
+          "Acid Armor",
+          "Toxic"
+        ],
+        "item": null
+      },
+      {
+        "species": "Koffing",
+        "level": 37,
+        "ability": "Levitate",
+        "moves": [
+          "Selfdestruct",
+          "Sludge",
+          "SmokeScreen",
+          "Toxic"
+        ],
+        "item": null
+      },
+      {
+        "species": "Weezing",
+        "level": 43,
+        "ability": "Levitate",
+        "moves": [
+          "Tackle",
+          "Sludge",
+          "SmokeScreen",
+          "Toxic"
+        ],
+        "item": null
+      }
+    ],
+    "sprite": "koga"
+  },
+  {
+    "id": "sabrina",
+    "trainer": "Leader Sabrina",
+    "team": [
+      {
+        "species": "Kadabra",
+        "level": 38,
+        "ability": "Synchronize",
+        "moves": [
+          "Psybeam",
+          "Reflect",
+          "Future Sight",
+          "Calm Mind"
+        ],
+        "item": null
+      },
+      {
+        "species": "Mr. Mime",
+        "level": 37,
+        "ability": "Soundproof",
+        "moves": [
+          "Barrier",
+          "Psybeam",
+          "Baton Pass",
+          "Calm Mind"
+        ],
+        "item": null
+      },
+      {
+        "species": "Venomoth",
+        "level": 38,
+        "ability": "Shield Dust",
+        "moves": [
+          "Psybeam",
+          "Gust",
+          "Leech Life",
+          "Supersonic"
+        ],
+        "item": null
+      },
+      {
+        "species": "Alakazam",
+        "level": 43,
+        "ability": "Synchronize",
+        "moves": [
+          "Psychic",
+          "Recover",
+          "Future Sight",
+          "Calm Mind"
+        ],
+        "item": null
+      }
+    ],
+    "sprite": "sabrina"
+  },
+  {
+    "id": "blaine",
+    "trainer": "Leader Blaine",
+    "team": [
+      {
+        "species": "Growlithe",
+        "level": 42,
+        "ability": "Intimidate",
+        "moves": [
+          "Bite",
+          "Roar",
+          "Take Down",
+          "Fire Blast"
+        ],
+        "item": null
+      },
+      {
+        "species": "Ponyta",
+        "level": 40,
+        "ability": "Flash Fire",
+        "moves": [
+          "Stomp",
+          "Bounce",
+          "Fire Spin",
+          "Fire Blast"
+        ],
+        "item": null
+      },
+      {
+        "species": "Rapidash",
+        "level": 42,
+        "ability": "Flash Fire",
+        "moves": [
+          "Stomp",
+          "Bounce",
+          "Fire Spin",
+          "Fire Blast"
+        ],
+        "item": null
+      },
+      {
+        "species": "Arcanine",
+        "level": 47,
+        "ability": "Intimidate",
+        "moves": [
+          "Bite",
+          "Roar",
+          "Take Down",
+          "Fire Blast"
+        ],
+        "item": null
+      }
+    ],
+    "sprite": "blaine"
+  },
+  {
+    "id": "giovanni",
+    "trainer": "Leader Giovanni",
+    "team": [
+      {
+        "species": "Rhyhorn",
+        "level": 45,
+        "ability": "Lightningrod",
+        "moves": [
+          "Take Down",
+          "Rock Blast",
+          "Scary Face",
+          "Earthquake"
+        ],
+        "item": null
+      },
+      {
+        "species": "Dugtrio",
+        "level": 42,
+        "ability": "Sand Veil",
+        "moves": [
+          "Slash",
+          "Sand Tomb",
+          "Mud-Slap",
+          "Earthquake"
+        ],
+        "item": null
+      },
+      {
+        "species": "Nidoqueen",
+        "level": 44,
+        "ability": "Poison Point",
+        "moves": [
+          "Double Kick",
+          "Earthquake",
+          "Poison Sting",
+          "Body Slam"
+        ],
+        "item": null
+      },
+      {
+        "species": "Nidoking",
+        "level": 45,
+        "ability": "Poison Point",
+        "moves": [
+          "Double Kick",
+          "Earthquake",
+          "Poison Sting",
+          "Thrash"
+        ],
+        "item": null
+      },
+      {
+        "species": "Rhyhorn",
+        "level": 50,
+        "ability": "Lightningrod",
+        "moves": [
+          "Take Down",
+          "Rock Blast",
+          "Scary Face",
+          "Earthquake"
+        ],
+        "item": null
+      }
+    ],
+    "sprite": "giovanni"
+  },
+  {
+    "id": "lorelei",
+    "trainer": "Elite Four Lorelei",
+    "team": [
+      {
+        "species": "Dewgong",
+        "level": 52,
+        "ability": "Thick Fat",
+        "moves": [
+          "Surf",
+          "Ice Beam",
+          "Hail",
+          "Safeguard"
+        ],
+        "item": null
+      },
+      {
+        "species": "Cloyster",
+        "level": 51,
+        "ability": "Shell Armor",
+        "moves": [
+          "Spikes",
+          "Dive",
+          "Hail",
+          "Protect"
+        ],
+        "item": null
+      },
+      {
+        "species": "Slowbro",
+        "level": 52,
+        "ability": "Oblivious",
+        "moves": [
+          "Ice Beam",
+          "Surf",
+          "Amnesia",
+          "Yawn"
+        ],
+        "item": null
+      },
+      {
+        "species": "Jynx",
+        "level": 54,
+        "ability": "Oblivious",
+        "moves": [
+          "DoubleSlap",
+          "Ice Punch",
+          "Lovely Kiss",
+          "Attract"
+        ],
+        "item": null
+      },
+      {
+        "species": "Lapras",
+        "level": 54,
+        "ability": "Water Absorb",
+        "moves": [
+          "Body Slam",
+          "Confuse Ray",
+          "Surf",
+          "Ice Beam"
+        ],
+        "item": "Sitrus Berry"
+      }
+    ],
+    "sprite": "lorelei"
+  },
+  {
+    "id": "bruno",
+    "trainer": "Elite Four Bruno",
+    "team": [
+      {
+        "species": "Onix",
+        "level": 51,
+        "ability": "Rock Head",
+        "moves": [
+          "Earthquake",
+          "Rock Tomb",
+          "Iron Tail",
+          "Roar"
+        ],
+        "item": null
+      },
+      {
+        "species": "Hitmonchan",
+        "level": 53,
+        "ability": "Keen Eye",
+        "moves": [
+          "Sky Uppercut",
+          "Mach Punch",
+          "Rock Tomb",
+          "Counter"
+        ],
+        "item": null
+      },
+      {
+        "species": "Hitmonlee",
+        "level": 53,
+        "ability": "Limber",
+        "moves": [
+          "Mega Kick",
+          "Foresight",
+          "Brick Break",
+          "Facade"
+        ],
+        "item": null
+      },
+      {
+        "species": "Onix",
+        "level": 54,
+        "ability": "Rock Head",
+        "moves": [
+          "Double-Edge",
+          "Iron Tail",
+          "Earthquake",
+          "Sand Tomb"
+        ],
+        "item": null
+      },
+      {
+        "species": "Machamp",
+        "level": 56,
+        "ability": "Guts",
+        "moves": [
+          "Bulk Up",
+          "Cross Chop",
+          "Scary Face",
+          "Rock Tomb"
+        ],
+        "item": "Sitrus Berry"
+      }
+    ],
+    "sprite": "bruno"
+  },
+  {
+    "id": "agatha",
+    "trainer": "Elite Four Agatha",
+    "team": [
+      {
+        "species": "Gengar",
+        "level": 54,
+        "ability": "Levitate",
+        "moves": [
+          "Confuse Ray",
+          "Shadow Punch",
+          "Double Team",
+          "Toxic"
+        ],
+        "item": null
+      },
+      {
+        "species": "Golbat",
+        "level": 54,
+        "ability": "Inner Focus",
+        "moves": [
+          "Confuse Ray",
+          "Bite",
+          "Air Cutter",
+          "Poison Fang"
+        ],
+        "item": null
+      },
+      {
+        "species": "Haunter",
+        "level": 53,
+        "ability": "Levitate",
+        "moves": [
+          "Mean Look",
+          "Curse",
+          "Hypnosis",
+          "Dream Eater"
+        ],
+        "item": null
+      },
+      {
+        "species": "Arbok",
+        "level": 56,
+        "ability": "Intimidate",
+        "moves": [
+          "Bite",
+          "Sludge Bomb",
+          "Screech",
+          "Iron Tail"
+        ],
+        "item": null
+      },
+      {
+        "species": "Gengar",
+        "level": 58,
+        "ability": "Levitate",
+        "moves": [
+          "Shadow Ball",
+          "Sludge Bomb",
+          "Hypnosis",
+          "Nightmare"
+        ],
+        "item": "Sitrus Berry"
+      }
+    ],
+    "sprite": "agatha"
+  },
+  {
+    "id": "lance",
+    "trainer": "Elite Four Lance",
+    "team": [
+      {
+        "species": "Gyarados",
+        "level": 56,
+        "ability": "Intimidate",
+        "moves": [
+          "Bite",
+          "Dragon Rage",
+          "Twister",
+          "Hyper Beam"
+        ],
+        "item": null
+      },
+      {
+        "species": "Dragonair",
+        "level": 54,
+        "ability": "Shed Skin",
+        "moves": [
+          "Safeguard",
+          "Outrage",
+          "Dragon Rage",
+          "Hyper Beam"
+        ],
+        "item": null
+      },
+      {
+        "species": "Dragonair",
+        "level": 54,
+        "ability": "Shed Skin",
+        "moves": [
+          "Safeguard",
+          "Outrage",
+          "Thunder Wave",
+          "Hyper Beam"
+        ],
+        "item": null
+      },
+      {
+        "species": "Aerodactyl",
+        "level": 58,
+        "ability": "Rock Head",
+        "moves": [
+          "Wing Attack",
+          "AncientPower",
+          "Scary Face",
+          "Hyper Beam"
+        ],
+        "item": null
+      },
+      {
+        "species": "Dragonite",
+        "level": 60,
+        "ability": "Inner Focus",
+        "moves": [
+          "Safeguard",
+          "Outrage",
+          "Wing Attack",
+          "Hyper Beam"
+        ],
+        "item": "Sitrus Berry"
+      }
+    ],
+    "sprite": "lance"
+  },
+  {
+    "id": "blue",
+    "trainer": "Champion Blue",
+    "team": [
+      {
+        "species": "Pidgeot",
+        "level": 59,
+        "ability": "Keen Eye",
+        "moves": [
+          "Aerial Ace",
+          "FeatherDance",
+          "Sand-Attack",
+          "Whirlwind"
+        ],
+        "item": null
+      },
+      {
+        "species": "Alakazam",
+        "level": 57,
+        "ability": "Synchronize",
+        "moves": [
+          "Psychic",
+          "Future Sight",
+          "Recover",
+          "Reflect"
+        ],
+        "item": null
+      },
+      {
+        "species": "Rhydon",
+        "level": 59,
+        "ability": "Lightningrod",
+        "moves": [
+          "Take Down",
+          "Earthquake",
+          "Rock Tomb",
+          "Scary Face"
+        ],
+        "item": null
+      },
+      {
+        "species": "Exeggutor",
+        "level": 59,
+        "ability": "Chlorophyll",
+        "moves": [
+          "Giga Drain",
+          "Egg Bomb",
+          "Sleep Powder",
+          "Light Screen"
+        ],
+        "item": null
+      },
+      {
+        "species": "Gyarados",
+        "level": 61,
+        "ability": "Intimidate",
+        "moves": [
+          "Hydro Pump",
+          "Dragon Rage",
+          "Bite",
+          "Thrash"
+        ],
+        "item": null
+      },
+      {
+        "species": "Charizard",
+        "level": 63,
+        "ability": "Blaze",
+        "moves": [
+          "Fire Blast",
+          "Aerial Ace",
+          "Slash",
+          "Fire Spin"
+        ],
+        "item": "Sitrus Berry"
+      }
+    ],
+    "sprite": "blue"
+  }
+]
