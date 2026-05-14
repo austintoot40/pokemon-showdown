@@ -9,7 +9,6 @@ export interface Scenario {
 	description: string;
 	color: string;
 	pokemon: string;
-	verified: boolean;
 	starters: { species: string; level: number }[];
 	segments: Segment[];
 	tmRouteMap: Record<string, string>; // moveId → location name (e.g. "Hoenn Route 111")
@@ -160,7 +159,7 @@ export interface RandomizerMappings {
 }
 
 export type NuzlockeScreen =
-	'encounters' | 'teambuilding' | 'battle' | 'done';
+	'encounters' | 'teambuilding' | 'battle' | 'done' | 'wipe';
 
 export interface NuzlockeScenarioCard {
 	id: string;
@@ -173,7 +172,6 @@ export interface NuzlockeScenarioCard {
 	starters: string[];
 	color: string;
 	pokemon: string;
-	verified: boolean;
 }
 
 export interface EvoOption {

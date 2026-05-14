@@ -428,11 +428,15 @@ export class NuzlockeGame {
 			if (idx === -1) return;
 			this.items.splice(idx, 1);
 		}
+		const preDexSpecies = Dex.species.get(pokemon.species);
+		const abilitySlot = (['0', '1', 'H'] as const).find(
+			k => preDexSpecies.abilities[k] === pokemon.ability
+		) ?? '0';
 		if (toID(pokemon.nickname) === toID(pokemon.species)) pokemon.nickname = target.species;
 		const wasNincada = toID(pokemon.species) === 'nincada';
 		pokemon.species = target.species;
 		const dexSpecies = Dex.species.get(target.species);
-		pokemon.ability = dexSpecies.abilities[0];
+		pokemon.ability = dexSpecies.abilities[abilitySlot] || dexSpecies.abilities[0];
 
 		// Nincada → Ninjask also creates a Shedinja inheriting Nincada's stats.
 		if (wasNincada && toID(target.species) === 'ninjask') {
@@ -643,7 +647,6 @@ function buildScenarioCards(): NuzlockeScenarioCard[] {
 		starters: s.starters.map(st => st.species),
 		color: s.color,
 		pokemon: s.pokemon,
-		verified: s.verified,
 	}));
 }
 

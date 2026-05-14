@@ -112,6 +112,8 @@ export abstract class NuzlockeAI {
 			const kills = damage >= opponent.hp;
 			const excludedFromHighest = (
 				!!(move as AnyObject).flags?.trap ||
+				!!(move as AnyObject).flags?.recharge ||
+				!!(move as AnyObject).flags?.charge ||
 				move.id === 'rollout' || move.id === 'iceball' ||
 				move.id === 'futuresight' || move.id === 'doomdesire' ||
 				move.id === 'meteorbeam' || move.id === 'relicsong'
@@ -268,6 +270,8 @@ export abstract class NuzlockeAI {
 			if (moveId === 'futuresight' || moveId === 'doomdesire') return this.scoreFutureSight(ctx);
 			if (moveId === 'relicsong') return this.scoreRelicSong(ctx);
 			if (moveId === 'meteorbeam') return this.scoreMeteorBeam(ctx);
+			if ((move as AnyObject).flags?.recharge) return this.scoreRechargeMove(ctx);
+			if ((move as AnyObject).flags?.charge) return this.scoreChargingMove(ctx);
 			if (moveId === 'fellstinger') return this.scoreFellStinger(ctx);
 			if (moveId === 'suckerpunch') return this.scoreSuckerPunch(ctx);
 			if (moveId === 'fakeout') return this.scoreFakeOut(ctx);
@@ -314,6 +318,23 @@ export abstract class NuzlockeAI {
 		let score = 9;
 		score += this.killBonus(ctx.dmgCtx!);
 		return score;
+	}
+
+	/**
+	 * Attack-then-recharge moves (Hyper Beam, Giga Impact, Blast Burn, etc.).
+	 * Basic: only recommend if it kills; otherwise too risky.
+	 */
+	protected scoreRechargeMove(ctx: MoveCtx): number {
+		if (ctx.dmgCtx!.kills) return 7 + this.killBonus(ctx.dmgCtx!);
+		return 2;
+	}
+
+	/**
+	 * Charge-then-attack moves (Solar Beam, Fly, Bounce, Dig, etc.).
+	 * Basic: flat low score to avoid; subclasses refine with weather/invulnerability checks.
+	 */
+	protected scoreChargingMove(ctx: MoveCtx): number {
+		return 3;
 	}
 
 	/** Fell Stinger — basic: treat as normal damage */

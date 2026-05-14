@@ -193,6 +193,67 @@ export class SmartAI extends NuzlockeAI {
 	}
 
 	// =========================================================================
+	// Two-turn moves
+	// =========================================================================
+
+	private static readonly INVULNERABLE_CHARGE = new Set([
+		'fly', 'bounce', 'dig', 'dive', 'phantomforce', 'shadowforce', 'skydrop',
+	]);
+
+	private canSkipCharge(move: Move, attacker: Pokemon): boolean {
+		const weather = this.battle.field.weather as string;
+		if (move.id === 'solarbeam' || move.id === 'solarblade') {
+			return weather === 'sunnyday' || weather === 'desolateland';
+		}
+		if (move.id === 'electroshot') {
+			return weather === 'raindance' || weather === 'primordialsea';
+		}
+		if (attacker.item === 'powerherb' as ID) return true;
+		return false;
+	}
+
+	/**
+	 * Attack-then-recharge moves (Hyper Beam, Giga Impact, Blast Burn, etc.).
+	 * If the move kills, no recharge turn is spent against a live opponent — full credit.
+	 * If it doesn't kill, we're gifting the opponent a free turn: heavily penalize.
+	 */
+	protected override scoreRechargeMove(ctx: MoveCtx): number {
+		const { dmgCtx } = ctx;
+		if (dmgCtx!.kills) {
+			return this.highestDamageBonus() + this.killBonus(dmgCtx!);
+		}
+		return 2;
+	}
+
+	/**
+	 * Charge-then-attack moves (Solar Beam, Sky Attack, Fly, Bounce, Dig, etc.).
+	 * - Weather/Power Herb skip: treat as a full-power one-turn move.
+	 * - Invulnerable (Fly/Bounce/Dig/Dive/Phantom Force/Shadow Force): safe during charge,
+	 *   but still effectively half-power over two turns unless killing.
+	 * - Grounded charge (Solar Beam without sun, Skull Bash, etc.): opponent can hit us;
+	 *   reject if incoming damage would KO during the charge turn.
+	 */
+	protected override scoreChargingMove(ctx: MoveCtx): number {
+		const { move, attacker, defender, dmgCtx } = ctx;
+
+		if (this.canSkipCharge(move, attacker)) {
+			// Full single-turn move — give competitive score since isHighestDamage is excluded
+			if (dmgCtx!.kills) return 12;
+			return 7;
+		}
+
+		const isInvulnerable = SmartAI.INVULNERABLE_CHARGE.has(move.id);
+		if (!isInvulnerable) {
+			const incomingDmg = this.maxOpponentDamage(defender, attacker);
+			if (incomingDmg >= attacker.hp) return -20; // die during charge turn
+			if (incomingDmg * 2 >= attacker.hp) return 1; // heavy damage during charge
+		}
+
+		if (dmgCtx!.kills) return 5 + this.killBonus(dmgCtx!);
+		return isInvulnerable ? 4 : 2;
+	}
+
+	// =========================================================================
 	// Fell Stinger
 	// =========================================================================
 
@@ -493,6 +554,13 @@ export class SmartAI extends NuzlockeAI {
 	protected override scoreWeather(ctx: MoveCtx): number {
 		const moveWeather = (ctx.move as AnyObject).weather as string | undefined;
 		if (moveWeather && this.battle.field.weather === moveWeather) return -20;
+		// Sunny Day synergy: AI has Solar Beam/Blade → strong incentive to set up sun
+		if (moveWeather === 'sunnyday') {
+			const hasSolarMove = ctx.attacker.moveSlots.some(
+				s => s.id === 'solarbeam' || s.id === 'solarblade'
+			);
+			if (hasSolarMove) return Math.random() < 0.5 ? 9 : 10;
+		}
 		return 7;
 	}
 

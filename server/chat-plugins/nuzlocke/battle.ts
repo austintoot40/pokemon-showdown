@@ -218,12 +218,13 @@ export const battleHandlers: Chat.Handlers = {
 
 		if (!playerWon) {
 			// Any loss ends the run immediately — no retry
+			game.curRoom = 'wipe';
 			recordCompletedRun(game, 'wipe');
 			pushNuzlockeState(humanId as ID, game);
 			nuzlockeGames.delete(humanId as ID);
 			void deleteGame(humanId as ID);
 			pushNuzlockeStatus(humanId as ID, null);
-			closeNuzlockePanel(humanId as ID);
+			// Panel stays open for Hall of Shame screen; client sends /nuzlocke done to close it.
 			return;
 		}
 
@@ -233,12 +234,13 @@ export const battleHandlers: Chat.Handlers = {
 
 		const dest = game.advanceAfterWin();
 		if (dest === 'done') {
+			game.curRoom = 'done';
 			recordCompletedRun(game, 'victory');
 			pushNuzlockeState(humanId as ID, game);
 			nuzlockeGames.delete(humanId as ID);
 			void deleteGame(humanId as ID);
 			pushNuzlockeStatus(humanId as ID, null);
-			closeNuzlockePanel(humanId as ID);
+			// Panel stays open for victory screen; client sends /nuzlocke done to close it.
 		} else if (dest === 'teambuilding') {
 			// Chained battle — go to teambuilder with box locked; don't auto-fill party
 			goToTeambuilding(game, true);

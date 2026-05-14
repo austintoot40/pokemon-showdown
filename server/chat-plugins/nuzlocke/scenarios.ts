@@ -229,7 +229,6 @@ function resolveScenario(
 		description: raw.description ?? '',
 		color: raw.color ?? '',
 		pokemon: raw.pokemon ?? '',
-		verified: raw.verified ?? false,
 		starters: raw.starters,
 		segments,
 		tmRouteMap,
@@ -256,6 +255,7 @@ export function loadScenarios() {
 			if (FS(path).isDirectorySync()) {
 				// New 3-file format: {game}/nuzlocke.json + locations.json + battles.json
 				const nuzlocke: RawScenario = JSON.parse(FS(`${path}/nuzlocke.json`).readSync());
+				if (!nuzlocke.verified) continue;
 				const locations: LocationDefinition[] = JSON.parse(FS(`${path}/locations.json`).readSync());
 				const battles: TrainerBattle[] = JSON.parse(FS(`${path}/battles.json`).readSync());
 				const data = resolveScenario(nuzlocke, locations, battles);
@@ -264,7 +264,9 @@ export function loadScenarios() {
 				// Legacy flat format — skip if a subfolder for this game already exists
 				const baseName = entry.slice(0, -5);
 				if (migratedFolders.has(baseName)) continue;
-				const data: Scenario = resolveRequires(JSON.parse(FS(path).readSync()));
+				const raw = JSON.parse(FS(path).readSync());
+				if (!raw.verified) continue;
+				const data: Scenario = resolveRequires(raw);
 				scenarios.set(data.id, data);
 			}
 		} catch (e) {
