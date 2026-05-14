@@ -5,7 +5,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Pidgey",
@@ -25,7 +25,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Pidgey",
@@ -76,7 +76,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Caterpie",
@@ -108,7 +108,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Spearow",
@@ -144,7 +144,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Rattata",
@@ -166,7 +166,7 @@
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacool",
@@ -180,7 +180,7 @@
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -194,7 +194,7 @@
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Horsea",
@@ -216,7 +216,7 @@
       },
       {
         "zone": "",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Horsea",
@@ -257,7 +257,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Oddish",
@@ -291,7 +291,7 @@
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacool",
@@ -305,7 +305,7 @@
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -319,7 +319,7 @@
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Horsea",
@@ -341,7 +341,7 @@
       },
       {
         "zone": "",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Horsea",
@@ -372,7 +372,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Oddish",
@@ -406,7 +406,7 @@
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Psyduck",
@@ -420,7 +420,7 @@
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -434,7 +434,7 @@
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Poliwag",
@@ -456,7 +456,7 @@
       },
       {
         "zone": "",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Poliwag",
@@ -497,7 +497,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Pidgey",
@@ -521,7 +521,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Pidgey",
@@ -539,7 +539,7 @@
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Psyduck",
@@ -553,7 +553,7 @@
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -567,7 +567,7 @@
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Poliwag",
@@ -589,7 +589,7 @@
       },
       {
         "zone": "",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Poliwag",
@@ -621,7 +621,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Ekans",
@@ -639,7 +639,7 @@
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacool",
@@ -653,7 +653,7 @@
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -667,7 +667,7 @@
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Horsea",
@@ -689,7 +689,7 @@
       },
       {
         "zone": "",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Horsea",
@@ -717,7 +717,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Rattata",
@@ -744,7 +744,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Voltorb",
@@ -762,7 +762,7 @@
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacool",
@@ -776,7 +776,7 @@
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -790,7 +790,7 @@
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Horsea",
@@ -812,7 +812,7 @@
       },
       {
         "zone": "",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Horsea",
@@ -840,7 +840,7 @@
     "zones": [
       {
         "zone": "1F",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Geodude",
@@ -866,7 +866,7 @@
       },
       {
         "zone": "B1F",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Geodude",
@@ -892,7 +892,7 @@
       },
       {
         "zone": "B1F",
-        "method": "Rock Smash",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Geodude",
@@ -916,7 +916,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Pidgey",
@@ -944,7 +944,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Meowth",
@@ -972,7 +972,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Oddish",
@@ -994,7 +994,7 @@
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacool",
@@ -1008,7 +1008,7 @@
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -1022,7 +1022,7 @@
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Horsea",
@@ -1044,7 +1044,7 @@
       },
       {
         "zone": "",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Horsea",
@@ -1089,7 +1089,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Oddish",
@@ -1119,7 +1119,7 @@
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacool",
@@ -1133,7 +1133,7 @@
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -1147,7 +1147,7 @@
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Horsea",
@@ -1169,7 +1169,7 @@
       },
       {
         "zone": "",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Horsea",
@@ -1197,7 +1197,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Oddish",
@@ -1233,7 +1233,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Oddish",
@@ -1272,7 +1272,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Doduo",
@@ -1322,7 +1322,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Doduo",
@@ -1354,7 +1354,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Doduo",
@@ -1400,7 +1400,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacool",
@@ -1414,7 +1414,7 @@
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -1428,7 +1428,7 @@
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Horsea",
@@ -1450,7 +1450,7 @@
       },
       {
         "zone": "",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Horsea",
@@ -1482,7 +1482,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tangela",
@@ -1492,7 +1492,7 @@
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Tentacool",
@@ -1502,17 +1502,21 @@
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Horsea",
@@ -1526,11 +1530,15 @@
             "species": "Magikarp",
             "rate": 20
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Horsea",
@@ -1548,7 +1556,11 @@
             "species": "Psyduck",
             "rate": 1
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
       }
     ]
   },
@@ -1558,7 +1570,7 @@
     "zones": [
       {
         "zone": "1F",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Psyduck",
@@ -1576,7 +1588,7 @@
       },
       {
         "zone": "B1F",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Psyduck",
@@ -1602,7 +1614,7 @@
       },
       {
         "zone": "B2F",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Psyduck",
@@ -1628,7 +1640,7 @@
       },
       {
         "zone": "B3F",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Seel",
@@ -1658,7 +1670,7 @@
       },
       {
         "zone": "B3F",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Seel",
@@ -1684,17 +1696,21 @@
       },
       {
         "zone": "B3F",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "B3F",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Horsea",
@@ -1708,11 +1724,15 @@
             "species": "Magikarp",
             "rate": 20
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "B3F",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Horsea",
@@ -1726,11 +1746,15 @@
             "species": "Psyduck",
             "rate": 4
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
       },
       {
         "zone": "B4F",
-        "method": "Cave",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Seel",
@@ -1756,7 +1780,7 @@
       },
       {
         "zone": "B4F",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Seel",
@@ -1782,17 +1806,21 @@
       },
       {
         "zone": "B4F",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "B4F",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Horsea",
@@ -1806,11 +1834,15 @@
             "species": "Magikarp",
             "rate": 20
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "B4F",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Horsea",
@@ -1824,7 +1856,11 @@
             "species": "Psyduck",
             "rate": 4
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
       }
     ],
     "items": [
@@ -1838,7 +1874,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Rattata",
@@ -1856,7 +1892,7 @@
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Psyduck",
@@ -1870,7 +1906,7 @@
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
@@ -1884,7 +1920,7 @@
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Poliwag",
@@ -1906,7 +1942,7 @@
       },
       {
         "zone": "",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Poliwag",
@@ -1938,7 +1974,7 @@
     "zones": [
       {
         "zone": "",
-        "method": "Grass",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Mankey",
@@ -1968,7 +2004,7 @@
       },
       {
         "zone": "",
-        "method": "Surf",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Psyduck",
@@ -1978,17 +2014,21 @@
       },
       {
         "zone": "",
-        "method": "Fish Old",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Magikarp",
             "rate": 100
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Old Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Good",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Poliwag",
@@ -2002,11 +2042,15 @@
             "species": "Magikarp",
             "rate": 20
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Good Rod"
+        }
       },
       {
         "zone": "",
-        "method": "Fish Super",
+        "method": "Standard",
         "pokemon": [
           {
             "species": "Poliwag",
@@ -2024,7 +2068,11 @@
             "species": "Psyduck",
             "rate": 5
           }
-        ]
+        ],
+        "requires": {
+          "type": "item",
+          "name": "Super Rod"
+        }
       }
     ]
   },
@@ -2454,6 +2502,32 @@
           "type": "move",
           "name": "Surf"
         }
+      },
+      {
+        "zone": "Game Corner",
+        "method": "Gift",
+        "pokemon": [
+          {
+            "species": "Abra",
+            "rate": 100
+          },
+          {
+            "species": "Clefairy",
+            "rate": 0
+          },
+          {
+            "species": "Dratini",
+            "rate": 0
+          },
+          {
+            "species": "Scyther",
+            "rate": 0
+          },
+          {
+            "species": "Porygon",
+            "rate": 0
+          }
+        ]
       }
     ],
     "tmMoves": [
@@ -2466,7 +2540,17 @@
           "type": "battle",
           "name": "erika"
         }
-      }
+      },
+      "Ice Beam",
+      "Iron Tail",
+      "Thunderbolt",
+      "Shadow Ball",
+      "Flamethrower"
+    ],
+    "items": [
+      "Miracle Seed",
+      "Charcoal",
+      "Mystic Water"
     ]
   },
   {

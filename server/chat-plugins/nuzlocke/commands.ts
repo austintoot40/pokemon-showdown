@@ -257,30 +257,6 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 			game.goToPage('encounters');
 		},
 
-		giveup(target, room, user) {
-			const game = nuzlockeGames.get(user.id);
-			if (!game) return this.errorReply('No active run.');
-			if (game.curRoom !== 'battle' || game.inBattle || game.lastBattleResult?.won !== false) {
-				return this.errorReply('Can only give up after losing a battle.');
-			}
-			recordCompletedRun(game, 'wipe');
-			pushNuzlockeState(user.id, game);
-			nuzlockeGames.delete(user.id);
-			deleteGame(user.id);
-			pushNuzlockeStatus(user.id, null);
-			closeNuzlockePanel(user.id);
-		},
-
-		continue(target, room, user) {
-			const game = nuzlockeGames.get(user.id);
-			if (game?.curRoom === 'battle' && !game.inBattle) {
-				game.lastBattleResult = null;
-				goToTeambuilding(game);
-			} else {
-				void this.parse('/join view-nuzlocke');
-			}
-		},
-
 		battle(target, room, user) {
 			const game = nuzlockeGames.get(user.id);
 			if (!game) return this.errorReply('No active run.');

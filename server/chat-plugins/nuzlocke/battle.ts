@@ -214,9 +214,10 @@ export const battleHandlers: Chat.Handlers = {
 
 		game.cleanParty();
 
-		// Check for total wipe — push completed run to client then close the panel
-		const alive = game.box.filter(p => p.alive);
-		if (alive.length === 0) {
+		const playerWon = humanId === winner;
+
+		if (!playerWon) {
+			// Any loss ends the run immediately — no retry
 			recordCompletedRun(game, 'wipe');
 			pushNuzlockeState(humanId as ID, game);
 			nuzlockeGames.delete(humanId as ID);
@@ -226,28 +227,23 @@ export const battleHandlers: Chat.Handlers = {
 			return;
 		}
 
-		const playerWon = humanId === winner;
 		const trainerName = game.currentBattle?.trainer ?? 'the trainer';
 		const battleDeaths = deaths.map(({ uid }) => game.graveyard.find(d => d.uid === uid)!).filter(Boolean);
-		game.lastBattleResult = { won: playerWon, perfect: playerWon && deaths.length === 0, trainerName, deaths: battleDeaths };
+		game.lastBattleResult = { won: true, perfect: deaths.length === 0, trainerName, deaths: battleDeaths };
 
-		if (playerWon) {
-			const dest = game.advanceAfterWin();
-			if (dest === 'done') {
-				recordCompletedRun(game, 'victory');
-				pushNuzlockeState(humanId as ID, game);
-				nuzlockeGames.delete(humanId as ID);
-				void deleteGame(humanId as ID);
-				pushNuzlockeStatus(humanId as ID, null);
-				closeNuzlockePanel(humanId as ID);
-			} else if (dest === 'teambuilding') {
-				// Chained battle — go to teambuilder with box locked; don't auto-fill party
-				goToTeambuilding(game, true);
-			} else {
-				game.goToPage(dest);
-			}
+		const dest = game.advanceAfterWin();
+		if (dest === 'done') {
+			recordCompletedRun(game, 'victory');
+			pushNuzlockeState(humanId as ID, game);
+			nuzlockeGames.delete(humanId as ID);
+			void deleteGame(humanId as ID);
+			pushNuzlockeStatus(humanId as ID, null);
+			closeNuzlockePanel(humanId as ID);
+		} else if (dest === 'teambuilding') {
+			// Chained battle — go to teambuilder with box locked; don't auto-fill party
+			goToTeambuilding(game, true);
 		} else {
-			goToTeambuilding(game);
+			game.goToPage(dest);
 		}
 	},
 };
