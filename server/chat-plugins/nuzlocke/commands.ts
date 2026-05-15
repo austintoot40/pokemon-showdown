@@ -52,6 +52,12 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 			}
 			game.pickStarter(starterIndex);
 			game.resolveSegmentStart();
+			game.goToPage('segment');
+		},
+
+		proceed(target, room, user) {
+			const game = nuzlockeGames.get(user.id);
+			if (!game || game.curRoom !== 'segment') return;
 			game.goToPage('encounters');
 		},
 

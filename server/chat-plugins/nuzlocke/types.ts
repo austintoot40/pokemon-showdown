@@ -159,7 +159,7 @@ export interface RandomizerMappings {
 }
 
 export type NuzlockeScreen =
-	'encounters' | 'teambuilding' | 'battle' | 'done' | 'wipe';
+	'segment' | 'encounters' | 'teambuilding' | 'battle' | 'done' | 'wipe';
 
 export interface NuzlockeScenarioCard {
 	id: string;

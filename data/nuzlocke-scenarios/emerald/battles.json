@@ -572,7 +572,7 @@
         "item": "Sitrus Berry"
       }
     ],
-    "sprite": "phoebe"
+    "sprite": "phoebe-gen3"
   },
   {
     "id": "glacia",
@@ -706,7 +706,7 @@
         "item": "Sitrus Berry"
       }
     ],
-    "sprite": "drake"
+    "sprite": "drake-gen3"
   },
   {
     "id": "wallace",

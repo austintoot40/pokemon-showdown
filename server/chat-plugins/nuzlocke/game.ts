@@ -57,7 +57,7 @@ export class NuzlockeGame {
 	constructor(userID: ID, scenario: Scenario) {
 		this.user = userID;
 		this.scenario = scenario;
-		this.curRoom = 'encounters';
+		this.curRoom = 'segment';
 		this.inBattle = false;
 		this.inChainedTeambuilding = false;
 		this.battleRoomId = null;
@@ -503,7 +503,7 @@ export class NuzlockeGame {
 				this.deferredRoutes = this.deferredRoutes.filter(id => !this.resolvedRoutes.includes(id));
 				this.resolvedRoutes = [];
 				this.resolveSegmentStart();
-				return 'encounters';
+				return 'segment';
 			}
 		} else {
 			// More battles remain in this segment — go to teambuilder with box locked
@@ -573,6 +573,17 @@ export interface NuzlockePanelPayload {
 
 	// Segment name lookup for graveyard display
 	segmentNames: Record<string, string>;
+
+	// Per-segment history for the timeline screen
+	segmentSummaries: Array<{
+		id: string;
+		name: string;
+		battles: import('./types').TrainerBattle[];
+		catches: OwnedPokemon[];
+		deaths: DeadPokemon[];
+		availableEncounters: import('./types').RouteEncounter[];
+		status: 'completed' | 'current' | 'upcoming';
+	}>;
 
 	// Dashboard data
 	scenarios: NuzlockeScenarioCard[];
@@ -703,6 +714,27 @@ export function serializeGameState(game: NuzlockeGame): NuzlockePanelPayload {
 		segmentNames[seg.id] = seg.name;
 	}
 
+	// Route-ID → segment-ID map for catch attribution in timeline
+	const routeToSegment = new Map<string, string>();
+	for (const seg of game.scenario.segments) {
+		for (const enc of flatEncounters(seg)) {
+			routeToSegment.set(enc.route, seg.id);
+		}
+	}
+	const segmentSummaries = game.scenario.segments.map((seg, i) => ({
+		id: seg.id,
+		name: seg.name,
+		battles: seg.battles,
+		catches: game.box.filter(p => routeToSegment.get(p.caughtRoute) === seg.id),
+		deaths: game.graveyard.filter(d => d.segment === seg.id),
+		availableEncounters: i === game.currentSegmentIndex
+			? (game.randomizerMappings ? applyMappingsToRoutes(flatEncounters(seg), game.randomizerMappings) : flatEncounters(seg))
+			: [],
+		status: (i < game.currentSegmentIndex ? 'completed'
+			: i === game.currentSegmentIndex ? 'current'
+			: 'upcoming') as 'completed' | 'current' | 'upcoming',
+	}));
+
 	const seg = game.currentSegment;
 	const m = game.randomizerMappings;
 	return {
@@ -710,6 +742,8 @@ export function serializeGameState(game: NuzlockeGame): NuzlockePanelPayload {
 		scenarioId: game.scenario.id,
 		scenarioName: game.scenario.name,
 		scenarioDescription: game.scenario.description,
+		scenarioColor: game.scenario.color,
+		scenarioPokemon: game.scenario.pokemon,
 		generation: game.scenario.generation,
 
 		currentSegmentIndex: game.currentSegmentIndex,
@@ -756,6 +790,7 @@ export function serializeGameState(game: NuzlockeGame): NuzlockePanelPayload {
 		availableEvolutions,
 		lastBattleResult: game.lastBattleResult,
 		segmentNames,
+		segmentSummaries,
 		scenarios,
 		battleRoomId: game.battleRoomId,
 		boxDisabled: game.inChainedTeambuilding,
