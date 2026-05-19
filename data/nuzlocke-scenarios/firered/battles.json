@@ -442,7 +442,7 @@
         "item": "Sitrus Berry"
       }
     ],
-    "sprite": "lorelei"
+    "sprite": "lorelei-gen3"
   },
   {
     "id": "bruno",
@@ -576,7 +576,7 @@
         "item": "Sitrus Berry"
       }
     ],
-    "sprite": "agatha"
+    "sprite": "agatha-gen3"
   },
   {
     "id": "lance",
