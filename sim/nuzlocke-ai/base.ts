@@ -429,6 +429,15 @@ export abstract class NuzlockeAI {
 		// Type-chart immunity (e.g. Thunder Wave vs Ground-type)
 		if (!this.battle.dex.getImmunity(move.type, defender)) return -20;
 
+		// Substitute blocks status moves targeting individual opponents
+		const notBlockedBySubTargets = ['self', 'foeSide', 'allySide', 'all', 'allyTeam', 'allies', 'adjacentAlly', 'adjacentAllyOrSelf'];
+		if (
+			defender.volatiles['substitute'] &&
+			!notBlockedBySubTargets.includes(move.target) &&
+			!(move as AnyObject).flags?.bypasssub &&
+			!(move as AnyObject).flags?.sound
+		) return -20;
+
 		if (moveId === 'stealthrock') return this.scoreStealthRock(ctx);
 		if (moveId === 'spikes') return this.scoreSpikes(ctx);
 		if (moveId === 'toxicspikes') return this.scoreToxicSpikes(ctx);
@@ -659,10 +668,10 @@ export abstract class NuzlockeAI {
 	}
 
 	protected scoreWeather(ctx: MoveCtx): number {
-		// Use the move's own weather property and compare directly to field.weather.
-		// isWeather() expects an array in this codebase; direct equality is unambiguous.
+		// move.weather is stored in mixed case (e.g. 'Sandstorm', 'RainDance') while
+		// field.weather is a lowercase ID — normalize before comparing.
 		const moveWeather = (ctx.move as AnyObject).weather as string | undefined;
-		if (moveWeather && this.battle.field.weather === moveWeather) return -20;
+		if (moveWeather && this.battle.field.weather === moveWeather.toLowerCase()) return -20;
 		return 6;
 	}
 

@@ -553,7 +553,7 @@ export class SmartAI extends NuzlockeAI {
 
 	protected override scoreWeather(ctx: MoveCtx): number {
 		const moveWeather = (ctx.move as AnyObject).weather as string | undefined;
-		if (moveWeather && this.battle.field.weather === moveWeather) return -20;
+		if (moveWeather && this.battle.field.weather === moveWeather.toLowerCase()) return -20;
 		// Sunny Day synergy: AI has Solar Beam/Blade → strong incentive to set up sun
 		if (moveWeather === 'sunnyday') {
 			const hasSolarMove = ctx.attacker.moveSlots.some(
