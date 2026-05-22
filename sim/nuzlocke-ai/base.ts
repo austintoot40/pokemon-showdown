@@ -2,7 +2,7 @@
  * Nuzlocke AI — Base Class
  *
  * Defines the full decision-making interface. Basic behavior is the default
- * for all overridable methods. Subclasses (SmartAI, CompetitiveAI) override only the
+ * for all overridable methods. Subclasses (SmartAI) override only the
  * methods where their difficulty diverges.
  */
 
@@ -47,7 +47,7 @@ export abstract class NuzlockeAI {
 				if (switchCandidate.score > moveScore) return `switch ${switchCandidate.slot}`;
 				return `move ${moveSlot}`;
 			}
-			// Legacy path: hard-gated voluntary switch then move (used by CompetitiveAI)
+			// Legacy path: hard-gated voluntary switch then move
 			const voluntarySwitch = this.considerVoluntarySwitch(request);
 			if (voluntarySwitch) return voluntarySwitch;
 			return this.chooseMove(request);
@@ -220,8 +220,7 @@ export abstract class NuzlockeAI {
 	//   competes directly against move scores in decide(). Used by SmartAI.
 	//   Return null to fall through to the legacy path.
 	//
-	// considerVoluntarySwitch (legacy path): hard-gated switch decision used by
-	//   CompetitiveAI, which has its own depth-1 minimax on a separate scale.
+	// considerVoluntarySwitch (legacy path): hard-gated switch decision.
 	// =========================================================================
 
 	protected chooseBestSwitch(request: ChoiceRequest): { slot: number; score: number } | null {
@@ -381,7 +380,7 @@ export abstract class NuzlockeAI {
 	// Per-feature damage move hooks (basic defaults = no bonus)
 	// =========================================================================
 
-	/** +6 for basic, randomized for smart/competitive. */
+	/** +6 for basic, randomized for smart. */
 	protected highestDamageBonus(): number { return 6; }
 
 	/** Kill bonus added to killing moves. Basic: 0. */
@@ -531,7 +530,7 @@ export abstract class NuzlockeAI {
 
 	protected scoreParalysis(ctx: MoveCtx): number {
 		if (ctx.defender.types.includes('Electric')) return -20;
-		// Paralysis logic is the same for smart and competitive (non-basic):
+		// Paralysis logic is the same for smart (non-basic):
 		// basic simply returns 6.
 		return 6;
 	}

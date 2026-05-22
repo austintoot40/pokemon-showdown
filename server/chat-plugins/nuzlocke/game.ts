@@ -49,7 +49,7 @@ export class NuzlockeGame {
 	resolvedRoutes: string[];
 	deferredRoutes: string[];   // explicitly deferred by player; re-appear as pending each session
 	lockedRoutes: string[];     // auto-carried routes where all zones were inaccessible at segment end
-	settings: { ai: 'basic' | 'smart' | 'competitive'; generation: number };
+	settings: { ai: 'basic' | 'smart'; generation: number };
 	partyErrors: Map<string, string>;
 	randomizerConfig: import('./types').RandomizerConfig | null;
 	randomizerMappings: import('./types').RandomizerMappings | null;

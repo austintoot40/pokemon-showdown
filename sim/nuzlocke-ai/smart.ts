@@ -237,7 +237,7 @@ export class SmartAI extends NuzlockeAI {
 		const { move, attacker, defender, dmgCtx } = ctx;
 
 		if (this.canSkipCharge(move, attacker)) {
-			// Full single-turn move — give competitive score since isHighestDamage is excluded
+			// Full single-turn move — bypass isHighestDamage check
 			if (dmgCtx!.kills) return 12;
 			return 7;
 		}

@@ -1,0 +1,155 @@
+{
+  "id": "heartgold",
+  "name": "HeartGold",
+  "generation": 4,
+  "description": "",
+  "color": "#E65100",
+  "pokemon": "ho-oh",
+  "starters": [
+    {
+      "species": "Chikorita",
+      "level": 5
+    },
+    {
+      "species": "Cyndaquil",
+      "level": 5
+    },
+    {
+      "species": "Totodile",
+      "level": 5
+    }
+  ],
+  "segments": [
+    {
+      "id": "falkner",
+      "name": "Falkner",
+      "locations": [
+        "johto-route-29",
+        "johto-route-46",
+        "cherrygrove-city",
+        "johto-route-30",
+        "johto-route-31",
+        "violet-city",
+        "sprout-tower"
+      ],
+      "battles": [
+        "falkner"
+      ]
+    },
+    {
+      "id": "bugsy",
+      "name": "Bugsy",
+      "locations": [
+        "union-cave",
+        "slowpoke-well",
+        "johto-route-33",
+        "johto-route-32",
+        "ruins-of-alph",
+        "azalea-town"
+      ],
+      "battles": [
+        "bugsy"
+      ]
+    },
+    {
+      "id": "whitney",
+      "name": "Whitney",
+      "locations": [
+        "national-park",
+        "johto-route-37",
+        "ilex-forest",
+        "johto-route-34",
+        "goldenrod-city"
+      ],
+      "battles": [
+        "whitney"
+      ]
+    },
+    {
+      "id": "morty",
+      "name": "Morty",
+      "locations": [
+        "burned-tower",
+        "johto-route-35",
+        "johto-route-36",
+        "ecruteak-city"
+      ],
+      "battles": [
+        "morty"
+      ]
+    },
+    {
+      "id": "chuck",
+      "name": "Chuck",
+      "locations": [
+        "johto-route-40",
+        "johto-route-41",
+        "whirl-islands",
+        "johto-route-38",
+        "johto-route-39",
+        "olivine-city",
+        "cianwood-city"
+      ],
+      "battles": [
+        "chuck"
+      ]
+    },
+    {
+      "id": "jasmine",
+      "name": "Jasmine",
+      "locations": [],
+      "battles": [
+        "jasmine"
+      ]
+    },
+    {
+      "id": "pryce",
+      "name": "Pryce",
+      "locations": [
+        "johto-route-42",
+        "johto-route-43",
+        "mt-mortar",
+        "mahogany-town",
+        "lake-of-rage",
+        "team-rocket-hq"
+      ],
+      "battles": [
+        "pryce"
+      ]
+    },
+    {
+      "id": "clair",
+      "name": "Clair",
+      "locations": [
+        "johto-route-44",
+        "ice-path",
+        "blackthorn-city"
+      ],
+      "battles": [
+        "clair"
+      ]
+    },
+    {
+      "id": "elite-four",
+      "name": "Elite Four",
+      "locations": [
+        "johto-route-45",
+        "dark-cave",
+        "bell-tower",
+        "johto-route-27",
+        "tohjo-falls",
+        "kanto-route-26",
+        "victory-road",
+        "dragons-den"
+      ],
+      "battles": [
+        "will",
+        "koga",
+        "bruno",
+        "karen",
+        "lance"
+      ]
+    }
+  ],
+  "verified": true
+}

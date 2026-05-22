@@ -1,0 +1,672 @@
+[
+  {
+    "id": "falkner",
+    "trainer": "Leader Falkner",
+    "team": [
+      {
+        "species": "Pidgey",
+        "level": 9,
+        "ability": "Keen Eye",
+        "moves": [
+          "Tackle",
+          "Sand-Attack"
+        ],
+        "item": null
+      },
+      {
+        "species": "Pidgeotto",
+        "level": 13,
+        "ability": "Keen Eye",
+        "moves": [
+          "Tackle",
+          "Roost",
+          "Gust"
+        ],
+        "item": null
+      }
+    ],
+    "sprite": "falkner"
+  },
+  {
+    "id": "bugsy",
+    "trainer": "Leader Bugsy",
+    "team": [
+      {
+        "species": "Scyther",
+        "level": 17,
+        "ability": "Technician",
+        "moves": [
+          "U-turn",
+          "Quick Attack",
+          "Leer",
+          "Focus Energy"
+        ],
+        "item": "Sitrus Berry"
+      },
+      {
+        "species": "Metapod",
+        "level": 15,
+        "ability": "Shed Skin",
+        "moves": [
+          "Tackle"
+        ],
+        "item": null
+      },
+      {
+        "species": "Kakuna",
+        "level": 15,
+        "ability": "Shed Skin",
+        "moves": [
+          "Poison Sting"
+        ],
+        "item": null
+      }
+    ],
+    "sprite": "bugsy"
+  },
+  {
+    "id": "whitney",
+    "trainer": "Leader Whitney",
+    "team": [
+      {
+        "species": "Clefairy",
+        "level": 17,
+        "ability": "Cute Charm",
+        "moves": [
+          "Mimic",
+          "Encore",
+          "DoubleSlap",
+          "Metronome"
+        ],
+        "item": null
+      },
+      {
+        "species": "Miltank",
+        "level": 19,
+        "ability": "Scrappy",
+        "moves": [
+          "Stomp",
+          "Rollout",
+          "Attract",
+          "Milk Drink"
+        ],
+        "item": "Lum Berry"
+      }
+    ],
+    "sprite": "whitney"
+  },
+  {
+    "id": "morty",
+    "trainer": "Leader Morty",
+    "team": [
+      {
+        "species": "Gastly",
+        "level": 21,
+        "ability": "Levitate",
+        "moves": [
+          "Lick",
+          "Spite",
+          "Mean Look",
+          "Curse"
+        ],
+        "item": null
+      },
+      {
+        "species": "Haunter",
+        "level": 21,
+        "ability": "Levitate",
+        "moves": [
+          "Hypnosis",
+          "Dream Eater",
+          "Curse",
+          "Nightmare"
+        ],
+        "item": null
+      },
+      {
+        "species": "Gengar",
+        "level": 25,
+        "ability": "Levitate",
+        "moves": [
+          "Hypnosis",
+          "Shadow Ball",
+          "Mean Look",
+          "Sucker Punch"
+        ],
+        "item": "Sitrus Berry"
+      },
+      {
+        "species": "Haunter",
+        "level": 23,
+        "ability": "Levitate",
+        "moves": [
+          "Curse",
+          "Mean Look",
+          "Sucker Punch",
+          "Night Shade"
+        ],
+        "item": null
+      }
+    ],
+    "sprite": "morty"
+  },
+  {
+    "id": "chuck",
+    "trainer": "Leader Chuck",
+    "team": [
+      {
+        "species": "Primeape",
+        "level": 29,
+        "ability": "Vital Spirit",
+        "moves": [
+          "Leer",
+          "Double Team",
+          "Rock Slide",
+          "Focus Punch"
+        ],
+        "item": null
+      },
+      {
+        "species": "Poliwrath",
+        "level": 31,
+        "ability": "Water Absorb",
+        "moves": [
+          "Hypnosis",
+          "Body Slam",
+          "Surf",
+          "Focus Punch"
+        ],
+        "item": "Sitrus Berry"
+      }
+    ],
+    "sprite": "chuck"
+  },
+  {
+    "id": "jasmine",
+    "trainer": "Leader Jasmine",
+    "team": [
+      {
+        "species": "Magnemite",
+        "level": 30,
+        "ability": "Magnet Pull",
+        "moves": [
+          "Thunderbolt",
+          "SonicBoom",
+          "Supersonic",
+          "Thunder Wave"
+        ],
+        "item": null
+      },
+      {
+        "species": "Magnemite",
+        "level": 30,
+        "ability": "Magnet Pull",
+        "moves": [
+          "Thunderbolt",
+          "SonicBoom",
+          "Supersonic",
+          "Thunder Wave"
+        ],
+        "item": null
+      },
+      {
+        "species": "Steelix",
+        "level": 35,
+        "ability": "Sturdy",
+        "moves": [
+          "Iron Tail",
+          "Rock Throw",
+          "Sandstorm",
+          "Screech"
+        ],
+        "item": "Sitrus Berry"
+      }
+    ],
+    "sprite": "jasmine"
+  },
+  {
+    "id": "pryce",
+    "trainer": "Leader Pryce",
+    "team": [
+      {
+        "species": "Seel",
+        "level": 30,
+        "ability": "Thick Fat",
+        "moves": [
+          "Icy Wind",
+          "Rest",
+          "Snore",
+          "Hail"
+        ],
+        "item": null
+      },
+      {
+        "species": "Dewgong",
+        "level": 32,
+        "ability": "Thick Fat",
+        "moves": [
+          "Aurora Beam",
+          "Rest",
+          "Sleep Talk",
+          "Ice Shard"
+        ],
+        "item": null
+      },
+      {
+        "species": "Piloswine",
+        "level": 34,
+        "ability": "Snow Cloak",
+        "moves": [
+          "Blizzard",
+          "Ice Fang",
+          "Mud Bomb",
+          "Hail"
+        ],
+        "item": "Sitrus Berry"
+      }
+    ],
+    "sprite": "pryce"
+  },
+  {
+    "id": "clair",
+    "trainer": "Leader Clair",
+    "team": [
+      {
+        "species": "Gyarados",
+        "level": 38,
+        "ability": "Intimidate",
+        "moves": [
+          "Bite",
+          "Twister",
+          "Dragon Rage",
+          "Dragon Pulse"
+        ],
+        "item": null
+      },
+      {
+        "species": "Dragonair",
+        "level": 38,
+        "ability": "Shed Skin",
+        "moves": [
+          "Thunder Wave",
+          "Slam",
+          "Aqua Tail",
+          "Dragon Pulse"
+        ],
+        "item": null
+      },
+      {
+        "species": "Dragonair",
+        "level": 38,
+        "ability": "Shed Skin",
+        "moves": [
+          "Thunder Wave",
+          "Slam",
+          "Fire Blast",
+          "Dragon Pulse"
+        ],
+        "item": null
+      },
+      {
+        "species": "Kingdra",
+        "level": 41,
+        "ability": "Sniper",
+        "moves": [
+          "Hydro Pump",
+          "SmokeScreen",
+          "Hyper Beam",
+          "Dragon Pulse"
+        ],
+        "item": "Sitrus Berry"
+      }
+    ],
+    "sprite": "clair"
+  },
+  {
+    "id": "will",
+    "trainer": "Elite Four Will",
+    "team": [
+      {
+        "species": "Xatu",
+        "level": 40,
+        "ability": "Synchronize",
+        "moves": [
+          "U-turn",
+          "Me First",
+          "Confuse Ray",
+          "Psychic"
+        ],
+        "item": null
+      },
+      {
+        "species": "Jynx",
+        "level": 41,
+        "ability": "Oblivious",
+        "moves": [
+          "Lovely Kiss",
+          "DoubleSlap",
+          "Ice Punch",
+          "Psychic"
+        ],
+        "item": null
+      },
+      {
+        "species": "Slowbro",
+        "level": 41,
+        "ability": "Own Tempo",
+        "moves": [
+          "Curse",
+          "Amnesia",
+          "Water Pulse",
+          "Psychic"
+        ],
+        "item": null
+      },
+      {
+        "species": "Exeggutor",
+        "level": 41,
+        "ability": "Chlorophyll",
+        "moves": [
+          "Reflect",
+          "Hypnosis",
+          "Egg Bomb",
+          "Psychic"
+        ],
+        "item": null
+      },
+      {
+        "species": "Xatu",
+        "level": 42,
+        "ability": "Early Bird",
+        "moves": [
+          "Aerial Ace",
+          "Ominous Wind",
+          "Confuse Ray",
+          "Psychic"
+        ],
+        "item": "Sitrus Berry"
+      }
+    ],
+    "sprite": "will"
+  },
+  {
+    "id": "koga",
+    "trainer": "Elite Four Koga",
+    "team": [
+      {
+        "species": "Ariados",
+        "level": 40,
+        "ability": "Insomnia",
+        "moves": [
+          "Spider Web",
+          "Baton Pass",
+          "Giga Drain",
+          "Poison Jab"
+        ],
+        "item": null
+      },
+      {
+        "species": "Forretress",
+        "level": 43,
+        "ability": "Sturdy",
+        "moves": [
+          "Swift",
+          "Explosion",
+          "Protect",
+          "Toxic Spikes"
+        ],
+        "item": null
+      },
+      {
+        "species": "Muk",
+        "level": 42,
+        "ability": "Sticky Hold",
+        "moves": [
+          "Gunk Shot",
+          "Minimize",
+          "Screech",
+          "Toxic"
+        ],
+        "item": "Black Sludge"
+      },
+      {
+        "species": "Venomoth",
+        "level": 41,
+        "ability": "Shield Dust",
+        "moves": [
+          "Psychic",
+          "Gust",
+          "Supersonic",
+          "Toxic"
+        ],
+        "item": null
+      },
+      {
+        "species": "Crobat",
+        "level": 44,
+        "ability": "Inner Focus",
+        "moves": [
+          "Quick Attack",
+          "Wing Attack",
+          "Double Team",
+          "Poison Fang"
+        ],
+        "item": "Sitrus Berry"
+      }
+    ],
+    "sprite": "koga"
+  },
+  {
+    "id": "bruno",
+    "trainer": "Elite Four Bruno",
+    "team": [
+      {
+        "species": "Hitmontop",
+        "level": 42,
+        "ability": "Technician",
+        "moves": [
+          "Dig",
+          "Counter",
+          "Triple Kick",
+          "Quick Attack"
+        ],
+        "item": null
+      },
+      {
+        "species": "Hitmonlee",
+        "level": 42,
+        "ability": "Reckless",
+        "moves": [
+          "Hi Jump Kick",
+          "Blaze Kick",
+          "Focus Energy",
+          "Swagger"
+        ],
+        "item": null
+      },
+      {
+        "species": "Hitmonchan",
+        "level": 42,
+        "ability": "Iron Fist",
+        "moves": [
+          "ThunderPunch",
+          "Ice Punch",
+          "Fire Punch",
+          "Bullet Punch"
+        ],
+        "item": null
+      },
+      {
+        "species": "Onix",
+        "level": 43,
+        "ability": "Sturdy",
+        "moves": [
+          "Sandstorm",
+          "DragonBreath",
+          "Rock Slide",
+          "Earthquake"
+        ],
+        "item": null
+      },
+      {
+        "species": "Machamp",
+        "level": 46,
+        "ability": "No Guard",
+        "moves": [
+          "Revenge",
+          "Cross Chop",
+          "Rock Slide",
+          "Foresight"
+        ],
+        "item": "Sitrus Berry"
+      }
+    ],
+    "sprite": "bruno"
+  },
+  {
+    "id": "karen",
+    "trainer": "Elite Four Karen",
+    "team": [
+      {
+        "species": "Umbreon",
+        "level": 42,
+        "ability": "Synchronize",
+        "moves": [
+          "Double Team",
+          "Confuse Ray",
+          "Faint Attack",
+          "Payback"
+        ],
+        "item": null
+      },
+      {
+        "species": "Vileplume",
+        "level": 42,
+        "ability": "Chlorophyll",
+        "moves": [
+          "Stun Spore",
+          "Petal Dance",
+          "Acid",
+          "Moonlight"
+        ],
+        "item": null
+      },
+      {
+        "species": "Murkrow",
+        "level": 44,
+        "ability": "Super Luck",
+        "moves": [
+          "Sucker Punch",
+          "Faint Attack",
+          "Pluck",
+          "Whirlwind"
+        ],
+        "item": null
+      },
+      {
+        "species": "Gengar",
+        "level": 45,
+        "ability": "Levitate",
+        "moves": [
+          "Focus Blast",
+          "Destiny Bond",
+          "Spite",
+          "Lick"
+        ],
+        "item": null
+      },
+      {
+        "species": "Houndoom",
+        "level": 47,
+        "ability": "Flash Fire",
+        "moves": [
+          "Nasty Plot",
+          "Dark Pulse",
+          "Flamethrower",
+          "Crunch"
+        ],
+        "item": "Sitrus Berry"
+      }
+    ],
+    "sprite": "karen"
+  },
+  {
+    "id": "lance",
+    "trainer": "Elite Four Lance",
+    "team": [
+      {
+        "species": "Gyarados",
+        "level": 46,
+        "ability": "Intimidate",
+        "moves": [
+          "Dragon Pulse",
+          "Flail",
+          "Waterfall",
+          "Ice Fang"
+        ],
+        "item": null
+      },
+      {
+        "species": "Dragonite",
+        "level": 49,
+        "ability": "Inner Focus",
+        "moves": [
+          "Thunder Wave",
+          "Hyper Beam",
+          "Thunder",
+          "Dragon Rush"
+        ],
+        "item": null
+      },
+      {
+        "species": "Dragonite",
+        "level": 49,
+        "ability": "Inner Focus",
+        "moves": [
+          "Thunder Wave",
+          "Hyper Beam",
+          "Blizzard",
+          "Dragon Rush"
+        ],
+        "item": null
+      },
+      {
+        "species": "Aerodactyl",
+        "level": 48,
+        "ability": "Pressure",
+        "moves": [
+          "Thunder Fang",
+          "Rock Slide",
+          "Aerial Ace",
+          "Crunch"
+        ],
+        "item": null
+      },
+      {
+        "species": "Charizard",
+        "level": 48,
+        "ability": "Blaze",
+        "moves": [
+          "Air Slash",
+          "Fire Fang",
+          "Shadow Claw",
+          "Dragon Claw"
+        ],
+        "item": null
+      },
+      {
+        "species": "Dragonite",
+        "level": 50,
+        "ability": "Inner Focus",
+        "moves": [
+          "Safeguard",
+          "Outrage",
+          "Fire Blast",
+          "Hyper Beam"
+        ],
+        "item": "Sitrus Berry"
+      }
+    ],
+    "sprite": "lance"
+  }
+]

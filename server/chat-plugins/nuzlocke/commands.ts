@@ -35,8 +35,8 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 			const [scenarioId = 'firered', difficulty = 'basic', generationMode = 'original', starterIndexStr] = target.trim().split(/\s+/);
 			const scenario = getScenario(scenarioId.toLowerCase());
 			if (!scenario) return this.errorReply(`Unknown scenario "${scenarioId}". Available: firered`);
-			if (!['basic', 'smart', 'competitive'].includes(difficulty)) {
-				return this.errorReply(`Unknown difficulty "${difficulty}". Options: basic, smart, competitive`);
+			if (!['basic', 'smart'].includes(difficulty)) {
+				return this.errorReply(`Unknown difficulty "${difficulty}". Options: basic, smart`);
 			}
 			if (!['original', 'modern'].includes(generationMode)) {
 				return this.errorReply(`Unknown generation mode "${generationMode}". Options: original, modern`);
@@ -99,8 +99,8 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 			}
 			const scenario = getScenario(scenarioId);
 			if (!scenario) return this.errorReply(`Unknown scenario "${scenarioId}".`);
-			if (!['basic', 'smart', 'competitive'].includes(difficulty)) {
-				return this.errorReply(`Unknown difficulty "${difficulty}". Options: basic, smart, competitive`);
+			if (!['basic', 'smart'].includes(difficulty)) {
+				return this.errorReply(`Unknown difficulty "${difficulty}". Options: basic, smart`);
 			}
 			if (!['original', 'modern'].includes(generationMode)) {
 				return this.errorReply(`Unknown generation mode "${generationMode}". Options: original, modern`);
@@ -135,8 +135,8 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 			const [scenarioId = 'firered', difficulty = 'basic', starterIndexStr, mode = 'shuffle', bstVariance = 'medium'] = target.trim().split(/\s+/);
 			const scenario = getScenario(scenarioId.toLowerCase());
 			if (!scenario) return this.errorReply(`Unknown scenario "${scenarioId}". Available: firered`);
-			if (!['basic', 'smart', 'competitive'].includes(difficulty)) {
-				return this.errorReply(`Unknown difficulty "${difficulty}". Options: basic, smart, competitive`);
+			if (!['basic', 'smart'].includes(difficulty)) {
+				return this.errorReply(`Unknown difficulty "${difficulty}". Options: basic, smart`);
 			}
 			if (!['shuffle', 'fully-random'].includes(mode)) {
 				return this.errorReply(`Unknown randomizer mode "${mode}". Options: shuffle, fully-random`);
@@ -197,8 +197,8 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 
 		setai(target, room, user) {
 			const difficulty = target.trim().toLowerCase();
-			if (!['basic', 'smart', 'competitive'].includes(difficulty)) {
-				return this.errorReply(`Unknown difficulty "${difficulty}". Options: basic, smart, competitive`);
+			if (!['basic', 'smart'].includes(difficulty)) {
+				return this.errorReply(`Unknown difficulty "${difficulty}". Options: basic, smart`);
 			}
 			const game = nuzlockeGames.get(user.id);
 			if (game) {
@@ -392,7 +392,25 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 			const item = resolveItem(itemId);
 			if (item === null) return this.errorReply(`Unknown item "${itemId}".`);
 			game.setItem(uid, item);
-			game.goToPage('teambuilding');
+			saveGame(game);
+		},
+
+		setmoves(target, room, user) {
+			const game = nuzlockeGames.get(user.id);
+			if (!game) return this.errorReply('No active run.');
+			const spaceIdx = target.indexOf(' ');
+			if (spaceIdx === -1) return this.errorReply('Usage: /nuzlocke setmoves <uid> <move1,move2,...>');
+			const uid = target.slice(0, spaceIdx);
+			const pokemon = game.getPokemon(uid);
+			if (!pokemon || !pokemon.alive) return this.errorReply('Pokemon not found.');
+			const moveStr = target.slice(spaceIdx + 1).trim();
+			const rawMoves = moveStr === 'none' ? [] : moveStr.split(',').map(m => m.trim()).filter(Boolean);
+			const legalMoveIds = new Set(
+				getLegalMoves(pokemon, game.currentLevelCap, game.scenario.generation, game.tmMoves)
+					.map(m => toID(m.name))
+			);
+			game.setMoves(uid, rawMoves.filter(m => legalMoveIds.has(toID(m))));
+			saveGame(game);
 		},
 
 		setnicks(target, room, user) {

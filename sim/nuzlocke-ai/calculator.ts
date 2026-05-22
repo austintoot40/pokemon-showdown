@@ -3,8 +3,7 @@
  *
  * Pure functions for damage estimation, speed comparison, and stat lookups.
  * No class state — pass battle/pokemon explicitly.
- * Shared by all AI difficulties: base.ts wraps these as instance methods,
- * competitive.ts calls them directly.
+ * Shared by all AI difficulties; base.ts wraps these as instance methods.
  */
 
 import type { Battle } from '../battle';
