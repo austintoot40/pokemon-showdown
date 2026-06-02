@@ -19,7 +19,7 @@ function packPlayerTeam(game: NuzlockeGame): string {
 
 	const sets: PokemonSet[] = partyPokemon.map(p => {
 		const legalMoveIds = new Set(
-			getLegalMoves(p, game.currentLevelCap, game.scenario.generation, game.tmMoves)
+			getLegalMoves(p, game.currentLevelCap, game.learnsetGeneration, game.tmMoves)
 				.map(m => toID(m.name))
 		);
 		const raw = p.moves.length ? p.moves : getDefaultMoves(p, game);
@@ -45,7 +45,7 @@ function packPlayerTeam(game: NuzlockeGame): string {
 }
 
 function getDefaultMoves(p: OwnedPokemon, game: NuzlockeGame): string[] {
-	return getLegalMoves(p, game.currentLevelCap, game.scenario.generation, game.tmMoves)
+	return getLegalMoves(p, game.currentLevelCap, game.learnsetGeneration, game.tmMoves)
 		.slice(0, 4).map(m => m.name);
 }
 
@@ -61,7 +61,7 @@ export function goToTeambuilding(game: NuzlockeGame, skipAutoFill = false) {
 			if (filled.length < 4) {
 				// Fill empty slots with level-up moves (no TMs — those require manual selection)
 				const filledIds = new Set(filled.map(m => toID(m)));
-				const legal = getLegalMoves(p, game.currentLevelCap, game.scenario.generation, []);
+				const legal = getLegalMoves(p, game.currentLevelCap, game.learnsetGeneration, []);
 				const toAdd = legal.filter(m => !filledIds.has(toID(m.name))).slice(0, 4 - filled.length);
 				p.moves = [...filled, ...toAdd.map(m => m.name)];
 			}
@@ -102,6 +102,8 @@ export function createNuzlockeBattle(game: NuzlockeGame, user: User) {
 		? `gen9modernizednuzlocke${doublesTag}battle`
 		: `gen${gen}nuzlocke${doublesTag}battle`;
 
+	const playerTeam = packPlayerTeam(game);
+
 	game.partyErrors.clear();
 
 	Rooms.createBattle({
@@ -110,7 +112,7 @@ export function createNuzlockeBattle(game: NuzlockeGame, user: User) {
 		players: [
 			{
 				user,
-				team: packPlayerTeam(game),
+				team: playerTeam,
 			},
 			{
 				user: null,

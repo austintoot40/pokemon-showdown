@@ -146,6 +146,7 @@ export interface StatsTable {
 export interface RandomizerConfig {
 	mode: 'shuffle' | 'fully-random';
 	bstVariance: 'low' | 'medium' | 'high';
+	dexPool: 'regional' | 'national' | 'all';
 	seed: number;
 }
 

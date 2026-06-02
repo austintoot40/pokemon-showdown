@@ -67,7 +67,7 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 		 */
 		randomizerpreview(target, room, user) {
 			if (nuzlockeGames.has(user.id)) return this.errorReply('Already in a run.');
-			const [scenarioId = 'firered', mode = 'shuffle', bstVariance = 'medium'] = target.trim().split(/\s+/);
+			const [scenarioId = 'firered', mode = 'shuffle', bstVariance = 'medium', dexPool = 'national'] = target.trim().split(/\s+/);
 			const scenario = getScenario(scenarioId.toLowerCase());
 			if (!scenario) return this.errorReply(`Unknown scenario "${scenarioId}".`);
 			if (!['shuffle', 'fully-random'].includes(mode)) {
@@ -76,9 +76,13 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 			if (!['low', 'medium', 'high'].includes(bstVariance)) {
 				return this.errorReply(`Unknown BST variance "${bstVariance}". Options: low, medium, high`);
 			}
+			if (!['regional', 'national', 'all'].includes(dexPool)) {
+				return this.errorReply(`Unknown dex pool "${dexPool}". Options: regional, national, all`);
+			}
 			const config: RandomizerConfig = {
 				mode: mode as RandomizerConfig['mode'],
 				bstVariance: bstVariance as RandomizerConfig['bstVariance'],
+				dexPool: dexPool as RandomizerConfig['dexPool'],
 				seed: Date.now(),
 			};
 			const mappings = buildRandomizerMappings(scenario, config);
@@ -151,6 +155,7 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 			const config: RandomizerConfig = {
 				mode: mode as RandomizerConfig['mode'],
 				bstVariance: bstVariance as RandomizerConfig['bstVariance'],
+				dexPool: 'national',
 				seed: Date.now(),
 			};
 			const mappings = buildRandomizerMappings(scenario, config);
@@ -316,7 +321,7 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 			if (idx !== -1) {
 				pokemon.moves.splice(idx, 1);
 			} else if (pokemon.moves.length < 4) {
-				const legal = getLegalMoves(pokemon, game.currentLevelCap, game.scenario.generation, game.tmMoves);
+				const legal = getLegalMoves(pokemon, game.currentLevelCap, game.learnsetGeneration, game.tmMoves);
 				if (!legal.some(m => toID(m.name) === toID(move))) {
 					return this.errorReply(`${move} is not a legal move for this Pokémon.`);
 				}
@@ -343,7 +348,7 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 				if (!pokemon || !pokemon.alive) continue;
 				// Only allow moves that are legal for this Pokemon at the current level cap.
 				const legalMoveIds = new Set(
-					getLegalMoves(pokemon, game.currentLevelCap, game.scenario.generation, game.tmMoves)
+					getLegalMoves(pokemon, game.currentLevelCap, game.learnsetGeneration, game.tmMoves)
 						.map(m => toID(m.name))
 				);
 				const moves = rawMoves.filter(m => legalMoveIds.has(toID(m)));
@@ -406,7 +411,7 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 			const moveStr = target.slice(spaceIdx + 1).trim();
 			const rawMoves = moveStr === 'none' ? [] : moveStr.split(',').map(m => m.trim()).filter(Boolean);
 			const legalMoveIds = new Set(
-				getLegalMoves(pokemon, game.currentLevelCap, game.scenario.generation, game.tmMoves)
+				getLegalMoves(pokemon, game.currentLevelCap, game.learnsetGeneration, game.tmMoves)
 					.map(m => toID(m.name))
 			);
 			game.setMoves(uid, rawMoves.filter(m => legalMoveIds.has(toID(m))));

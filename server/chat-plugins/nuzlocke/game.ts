@@ -318,6 +318,12 @@ export class NuzlockeGame {
 		return Math.max(...battle.team.map(p => p.level));
 	}
 
+	// In modern mode (settings.generation=9 over a non-gen-9 scenario), allow learnset entries
+	// from all gens up to 9 so that Pokemon introduced after the scenario's gen still have moves.
+	get learnsetGeneration(): number {
+		return Math.max(this.scenario.generation, this.settings.generation);
+	}
+
 	getPokemon(uid: string): OwnedPokemon | null {
 		return this.box.find(p => p.uid === uid) ?? null;
 	}
@@ -695,7 +701,7 @@ export function serializeGameState(game: NuzlockeGame): NuzlockePanelPayload {
 		for (const p of game.box) {
 			if (p.alive) {
 				legalMoves[p.uid] = getLegalMoves(
-					p, game.currentLevelCap, game.scenario.generation, game.tmMoves,
+					p, game.currentLevelCap, game.learnsetGeneration, game.tmMoves,
 					previousLevelCap, newTmMoves, tmRoutes
 				);
 			}

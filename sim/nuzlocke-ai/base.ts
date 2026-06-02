@@ -504,6 +504,8 @@ export abstract class NuzlockeAI {
 
 		if (move.boosts) return this.scoreSetupMove(ctx);
 
+		if (moveId === 'metronome') return this.scoreMetronome(ctx);
+
 		return 6;
 	}
 
@@ -693,6 +695,11 @@ export abstract class NuzlockeAI {
 
 	protected scoreCounterMirrorCoat(ctx: MoveCtx): number {
 		return 6;
+	}
+
+	/** Metronome — score above the baseline so it beats idle damaging moves, but loses to kills/priority. */
+	protected scoreMetronome(ctx: MoveCtx): number {
+		return 8;
 	}
 
 	protected scoreSetupMove(ctx: MoveCtx): number {

@@ -28,10 +28,19 @@ function withinBstVariance(origBst: number, newBst: number, variance: Randomizer
 	return variance === 'low' ? ratio <= 0.33 : ratio <= 0.66;
 }
 
-/** Returns all base-form, non-fangame species available in the given generation. */
-function getGenPool(generation: number): string[] {
-	return (Dex.forGen(generation).species.all() as import('../../../sim/dex-species').Species[])
-		.filter(s => !s.prevo && s.gen <= generation && !s.isNonstandard && s.name === s.baseSpecies)
+/** Returns species names for the randomizer candidate pool based on dexPool setting.
+ *  regional = only species introduced in the scenario's own generation
+ *  national = all species up to and including the scenario's generation (default)
+ *  all      = all species from every generation
+ */
+function getGenPool(generation: number, dexPool: RandomizerConfig['dexPool']): string[] {
+	return (Dex.species.all() as import('../../../sim/dex-species').Species[])
+		.filter(s => {
+			if (s.isNonstandard || s.name !== s.baseSpecies) return false;
+			if (dexPool === 'regional') return s.gen === generation;
+			if (dexPool === 'national') return s.gen <= generation;
+			return true; // 'all'
+		})
 		.map(s => s.name);
 }
 
@@ -45,7 +54,7 @@ export function buildRandomizerMappings(scenario: Scenario, config: RandomizerCo
 	const speciesMap: Record<string, string> = {};
 	const routeMap: Record<string, string> = {};
 
-	const candidates = seededShuffle(getGenPool(scenario.generation), rng);
+	const candidates = seededShuffle(getGenPool(scenario.generation, config.dexPool), rng);
 
 	if (config.mode === 'shuffle') {
 		// Collect all unique original species from starters, routes, and gifts across all segments
@@ -69,10 +78,15 @@ export function buildRandomizerMappings(scenario: Scenario, config: RandomizerCo
 		const used = new Set<string>();
 		for (const orig of origSpecies) {
 			const origBst = (Dex.species.get(orig) as import('../../../sim/dex-species').Species).bst ?? 0;
-			const assigned =
-				candidates.find(c => !used.has(c) && withinBstVariance(origBst, (Dex.species.get(c) as import('../../../sim/dex-species').Species).bst ?? 0, config.bstVariance)) ??
-				candidates.find(c => !used.has(c)) ??
-				orig; // impossible fallback: no candidates available
+			const getBst = (c: string) => (Dex.species.get(c) as import('../../../sim/dex-species').Species).bst ?? 0;
+			let assigned =
+				candidates.find(c => !used.has(c) && withinBstVariance(origBst, getBst(c), config.bstVariance)) ??
+				candidates.find(c => !used.has(c));
+			if (!assigned) {
+				// Pool exhausted — allow repeats, preferring BST match
+				const fallback = candidates.filter(c => withinBstVariance(origBst, getBst(c), config.bstVariance));
+				assigned = (fallback.length ? fallback : candidates)[Math.floor(rng() * (fallback.length || candidates.length))] ?? orig;
+			}
 			speciesMap[orig] = assigned;
 			used.add(assigned);
 		}
