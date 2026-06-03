@@ -12,6 +12,7 @@ import { nuzlockeGames, pushNuzlockeState, closeNuzlockePanel } from './game';
 
 export const nuzlockePages: Chat.PageTable = {
 	nuzlocke(query, user) {
+		this.title = 'Nuzlocke';
 		const game = nuzlockeGames.get(user.id);
 		// Deferred so it runs after setHTML sends |init|html — otherwise the room
 		// doesn't exist client-side yet when the message arrives and is dropped.
