@@ -1064,6 +1064,7 @@ export class RoomBattle extends RoomGame<RoomBattlePlayer> {
 		const player = super.addPlayer(user);
 		if (typeof user === 'string') user = null;
 		if (!player) return null;
+		if (playerOpts?.username && user) player.name = playerOpts.username;
 		if (playerOpts?.isAI) player.isAI = playerOpts.isAI;
 		const slot = player.slot;
 		this[slot] = player;

@@ -2,7 +2,7 @@
  * Nuzlocke Simulator — Game State
  */
 
-import { saveGameToRedis, deleteGameFromRedis, loadGameFromRedis, pingRedis, saveBeatenScenario, loadBeatenScenarios } from './redis-store';
+import { saveGameToRedis, deleteGameFromRedis, loadGameFromRedis, pingRedis, saveBeatenScenario, loadBeatenScenarios, incrementTotalRuns, getTotalRuns } from './redis-store';
 import { logNuzlockeError } from './error-logger';
 import { resolveOneEncounter, resolveChoiceGift, getAvailablePool, getGiftPool, buildStarterPokemon } from './encounters';
 import { getLegalMoves, type LegalMove } from './learnsets';
@@ -623,6 +623,18 @@ export interface NuzlockeMenuPayload {
 		scenarioId: string;
 		starters: string[];
 	} | null;
+	/** Total number of runs ever started across all users. */
+	totalRunsStarted: number;
+}
+
+let cachedTotalRuns = 0;
+
+export async function initTotalRunsCache(): Promise<void> {
+	cachedTotalRuns = await getTotalRuns();
+}
+
+export function bumpTotalRuns(): void {
+	void incrementTotalRuns().then(count => { cachedTotalRuns = count; });
 }
 
 export function pushNuzlockeStatus(userID: ID, game: NuzlockeGame | null) {
@@ -648,6 +660,7 @@ export function pushNuzlockeStatus(userID: ID, game: NuzlockeGame | null) {
 			scenarioId: pending.scenarioId,
 			starters: pending.mappings.starterSpecies,
 		} : null,
+		totalRunsStarted: cachedTotalRuns,
 	};
 	user.send(`|updatenuzlocke|${JSON.stringify(payload)}`);
 }

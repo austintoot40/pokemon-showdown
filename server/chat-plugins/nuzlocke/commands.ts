@@ -4,7 +4,7 @@
 
 'use strict';
 
-import { nuzlockeGames, NuzlockeGame, flatEncounters, saveGame, deleteGame, pushNuzlockeStatus, pushNuzlockeState, closeNuzlockePanel, recordCompletedRun, pendingRandomizers } from './game';
+import { nuzlockeGames, NuzlockeGame, flatEncounters, saveGame, deleteGame, pushNuzlockeStatus, pushNuzlockeState, closeNuzlockePanel, recordCompletedRun, pendingRandomizers, bumpTotalRuns } from './game';
 import { logNuzlockeError } from './error-logger';
 import { postBugReportToDiscord } from './feedback';
 
@@ -50,6 +50,7 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 			game.settings.generation = generationMode === 'modern' ? 9 : scenario.generation;
 			pendingRandomizers.delete(user.id);
 			nuzlockeGames.set(user.id, game);
+			bumpTotalRuns();
 			const starterIndex = parseInt(starterIndexStr);
 			if (isNaN(starterIndex) || starterIndex < 0 || starterIndex >= scenario.starters.length) {
 				return this.errorReply(`Invalid starter index. Choose 0-${scenario.starters.length - 1}.`);
@@ -124,6 +125,7 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 			game.randomizerMappings = pending.mappings;
 			pendingRandomizers.delete(user.id);
 			nuzlockeGames.set(user.id, game);
+			bumpTotalRuns();
 			const randStarterSpecies = pending.mappings.starterSpecies[starterIndex];
 			const starterDef = scenario.starters[starterIndex];
 			const starter = buildStarterPokemon(randStarterSpecies ?? starterDef.species, starterDef.level);
@@ -170,6 +172,7 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 			game.randomizerMappings = mappings;
 			pendingRandomizers.delete(user.id);
 			nuzlockeGames.set(user.id, game);
+			bumpTotalRuns();
 			const randStarterSpecies = mappings.starterSpecies[starterIndex];
 			const starterDef = scenario.starters[starterIndex];
 			const starter = buildStarterPokemon(randStarterSpecies ?? starterDef.species, starterDef.level);

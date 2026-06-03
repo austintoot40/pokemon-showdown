@@ -112,6 +112,7 @@ export function createNuzlockeBattle(game: NuzlockeGame, user: User) {
 		players: [
 			{
 				user,
+				username: 'Player',
 				team: playerTeam,
 			},
 			{
@@ -216,7 +217,7 @@ export const battleHandlers: Chat.Handlers = {
 
 		game.cleanParty();
 
-		const playerWon = humanId === winner;
+		const playerWon = winner === toID(battle.p1.name);
 
 		if (!playerWon) {
 			// Any loss ends the run immediately — no retry

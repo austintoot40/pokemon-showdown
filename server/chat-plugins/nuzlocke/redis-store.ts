@@ -97,3 +97,22 @@ export async function loadBeatenScenarios(userId: string): Promise<string[]> {
 		return [];
 	}
 }
+
+const TOTAL_RUNS_KEY = 'runs:total';
+
+export async function incrementTotalRuns(): Promise<number> {
+	try {
+		return await getRedis().incr(TOTAL_RUNS_KEY);
+	} catch {
+		return 0;
+	}
+}
+
+export async function getTotalRuns(): Promise<number> {
+	try {
+		const val = await getRedis().get(TOTAL_RUNS_KEY);
+		return val ? parseInt(val, 10) : 0;
+	} catch {
+		return 0;
+	}
+}
