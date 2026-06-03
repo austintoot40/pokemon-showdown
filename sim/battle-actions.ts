@@ -1920,6 +1920,7 @@ export class BattleActions {
 		if (pokemon.getItem().zMove || pokemon.canMegaEvo || this.dex.gen !== 9) {
 			return null;
 		}
+		console.log(`[canTerastallize] format=${this.battle.format} dex.gen=${this.dex.gen} pokemon=${pokemon.name} teraType=${pokemon.teraType}`);
 		return pokemon.teraType;
 	}
 

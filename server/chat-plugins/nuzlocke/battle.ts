@@ -102,6 +102,9 @@ export function createNuzlockeBattle(game: NuzlockeGame, user: User) {
 		? `gen9modernizednuzlocke${doublesTag}battle`
 		: `gen${gen}nuzlocke${doublesTag}battle`;
 
+	const resolvedFormat = Dex.formats.get(formatId);
+	console.log(`[nuzlocke] createBattle: formatId=${formatId} exists=${resolvedFormat.exists} mod=${resolvedFormat.mod ?? 'none'} settings.gen=${gen} scenario.gen=${game.scenario.generation} isModernized=${isModernized}`);
+
 	const playerTeam = packPlayerTeam(game);
 
 	game.partyErrors.clear();
