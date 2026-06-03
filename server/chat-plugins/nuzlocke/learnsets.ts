@@ -39,14 +39,14 @@ export function hiddenPowerType(ivs: { hp: number; atk: number; def: number; spe
 	return HP_TYPES[Math.floor(bits * 15 / 63)];
 }
 
-export function getLegalMoves(
+function getLegalMovesForGen(
 	pokemon: OwnedPokemon,
 	levelCap: number,
 	generation: number,
 	tmMoves: string[],
-	previousLevelCap = 0,
-	newTmMoves: string[] = [],
-	tmRoutes: Record<string, string> = {}
+	previousLevelCap: number,
+	newTmMoves: string[],
+	tmRoutes: Record<string, string>
 ): LegalMove[] {
 	const hpType = generation >= 2 && pokemon.ivs ? hiddenPowerType(pokemon.ivs) : undefined;
 	const speciesName = pokemon.species;
@@ -162,4 +162,20 @@ export function getLegalMoves(
 		.filter((m): m is LegalMove => m !== null);
 
 	return [...levelResults, ...tmResults, ...hmResults];
+}
+
+export function getLegalMoves(
+	pokemon: OwnedPokemon,
+	levelCap: number,
+	generation: number,
+	tmMoves: string[],
+	previousLevelCap = 0,
+	newTmMoves: string[] = [],
+	tmRoutes: Record<string, string> = {}
+): LegalMove[] {
+	for (let gen = generation; gen >= 1; gen--) {
+		const moves = getLegalMovesForGen(pokemon, levelCap, gen, tmMoves, previousLevelCap, newTmMoves, tmRoutes);
+		if (moves.length > 0) return moves;
+	}
+	return [];
 }
