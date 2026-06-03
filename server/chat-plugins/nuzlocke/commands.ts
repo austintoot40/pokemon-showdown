@@ -6,6 +6,10 @@
 
 import { nuzlockeGames, NuzlockeGame, flatEncounters, saveGame, deleteGame, pushNuzlockeStatus, pushNuzlockeState, closeNuzlockePanel, recordCompletedRun, pendingRandomizers } from './game';
 import { logNuzlockeError } from './error-logger';
+import { postBugReportToDiscord } from './feedback';
+
+const FEEDBACK_COOLDOWN_MS = 5 * 60 * 1000;
+const feedbackCooldowns = new Map<string, number>();
 import { getScenario } from './scenarios';
 import { createNuzlockeBattle, goToTeambuilding } from './battle';
 import { buildRandomizerMappings, buildStarterPokemon } from './encounters';
@@ -460,6 +464,41 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 			} else {
 				closeNuzlockePanel(user.id);
 			}
+		},
+
+		feedback(target, room, user) {
+			if (!user.named) return;
+
+			const now = Date.now();
+			const lastSent = feedbackCooldowns.get(user.id) ?? 0;
+			const remaining = FEEDBACK_COOLDOWN_MS - (now - lastSent);
+			if (remaining > 0) {
+				const minutes = Math.ceil(remaining / 60000);
+				this.sendReply(`|html|<p style="color:#e74c3c;margin:4px 0">Please wait ${minutes} minute${minutes !== 1 ? 's' : ''} before sending another report.</p>`);
+				return;
+			}
+
+			let payload: any;
+			try {
+				payload = JSON.parse(Buffer.from(target, 'base64').toString('utf8'));
+			} catch {
+				return;
+			}
+			const message = String(payload.message ?? '').trim().slice(0, 2000);
+			if (!message) return;
+
+			feedbackCooldowns.set(user.id, now);
+
+			const game = nuzlockeGames.get(user.id);
+			postBugReportToDiscord({
+				message,
+				username: user.name,
+				screen: payload.context?.curScreen ?? game?.curRoom,
+				recentCommands: payload.context?.recentCommands,
+				userAgent: payload.context?.userAgent,
+				gameState: game?.toJSON(),
+			});
+			this.sendReply('|html|<p style="color:var(--nz-success,#2ecc71);margin:4px 0">Report sent — thanks!</p>');
 		},
 
 		logerror(target, room, user) {
