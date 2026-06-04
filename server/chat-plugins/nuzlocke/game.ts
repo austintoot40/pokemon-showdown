@@ -344,6 +344,11 @@ export class NuzlockeGame {
 		[this.party[indexA], this.party[indexB]] = [this.party[indexB], this.party[indexA]];
 	}
 
+	setPartyOrder(uids: string[]) {
+		const valid = [...new Set(uids)].filter(uid => this.box.find(p => p.uid === uid && p.alive));
+		this.party = valid.slice(0, 6);
+	}
+
 	setMoves(uid: string, moves: string[]) {
 		const pokemon = this.getPokemon(uid);
 		if (!pokemon) return;

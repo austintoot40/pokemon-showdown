@@ -315,6 +315,15 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 			game.goToPage('teambuilding');
 		},
 
+		partyreorder(target, room, user) {
+			const game = nuzlockeGames.get(user.id);
+			if (!game) return this.errorReply('No active run.');
+			const uids = target.trim().split(' ').filter(Boolean);
+			if (!uids.length) return this.errorReply('Usage: /nuzlocke partyreorder uid1 uid2...');
+			game.setPartyOrder(uids);
+			game.goToPage('teambuilding');
+		},
+
 		togglemove(target, room, user) {
 			const game = nuzlockeGames.get(user.id);
 			if (!game) return this.errorReply('No active run.');
