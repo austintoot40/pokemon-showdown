@@ -235,9 +235,8 @@ export function resolveOneEncounter(
 function buildEncounter(
 	speciesName: string,
 	route: string,
-	levelCap: number
+	level: number
 ): OwnedPokemon {
-	const baseSpecies = Dex.species.get(speciesName).name;
 	const dexSpecies = Dex.species.get(speciesName);
 	const ability = pickAbility(dexSpecies);
 	const nature = NATURES[Math.floor(Math.random() * NATURES.length)];
@@ -245,30 +244,6 @@ function buildEncounter(
 		: dexSpecies.gender === 'F' ? 'F'
 		: dexSpecies.gender === 'N' ? 'N'
 		: Math.random() < (dexSpecies.genderRatio?.M ?? 0.5) ? 'M' : 'F';
-	const uid = `${toID(dexSpecies.name)}-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`;
-
-	return {
-		uid,
-		species: dexSpecies.name,
-		baseSpecies,
-		nickname: dexSpecies.name,
-		level: levelCap,
-		nature,
-		ability,
-		ivs: randomIVs(),
-		evs: { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0 },
-		moves: [],
-		item: '',
-		gender,
-		caughtRoute: route,
-		alive: true,
-	};
-}
-
-export function buildStarterPokemon(speciesName: string, level: number): OwnedPokemon {
-	const dexSpecies = Dex.species.get(speciesName);
-	const ability = pickAbility(dexSpecies);
-	const nature = NATURES[Math.floor(Math.random() * NATURES.length)];
 	const uid = `${toID(dexSpecies.name)}-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`;
 
 	return {
@@ -283,11 +258,12 @@ export function buildStarterPokemon(speciesName: string, level: number): OwnedPo
 		evs: { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0 },
 		moves: [],
 		item: '',
-		gender: dexSpecies.gender === 'M' ? 'M'
-			: dexSpecies.gender === 'F' ? 'F'
-			: dexSpecies.gender === 'N' ? 'N'
-			: Math.random() < (dexSpecies.genderRatio?.M ?? 0.5) ? 'M' : 'F',
-		caughtRoute: 'Starter',
+		gender,
+		caughtRoute: route,
 		alive: true,
 	};
+}
+
+export function buildStarterPokemon(speciesName: string, level: number): OwnedPokemon {
+	return buildEncounter(speciesName, 'Starter', level);
 }

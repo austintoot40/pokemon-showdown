@@ -705,6 +705,15 @@ function applyMappingsToRoutes(
 	});
 }
 
+function resolveRouteList(
+	ids: string[],
+	game: NuzlockeGame,
+	m: import('./types').RandomizerMappings | null
+): RouteEncounter[] {
+	const routes = ids.map(id => game.findRouteById(id)).filter(Boolean) as RouteEncounter[];
+	return m ? applyMappingsToRoutes(routes, m) : routes;
+}
+
 export function serializeGameState(game: NuzlockeGame): NuzlockePanelPayload {
 	const scenarios = buildScenarioCards();
 
@@ -803,14 +812,8 @@ export function serializeGameState(game: NuzlockeGame): NuzlockePanelPayload {
 		})(),
 		tmMoves: game.tmMoves,
 		resolvedRoutes: game.resolvedRoutes,
-		deferredRoutes: (() => {
-			const routes = game.deferredRoutes.map(id => game.findRouteById(id)).filter(Boolean) as RouteEncounter[];
-			return m ? applyMappingsToRoutes(routes, m) : routes;
-		})(),
-		lockedRoutes: (() => {
-			const routes = game.lockedRoutes.map(id => game.findRouteById(id)).filter(Boolean) as RouteEncounter[];
-			return m ? applyMappingsToRoutes(routes, m) : routes;
-		})(),
+		deferredRoutes: resolveRouteList(game.deferredRoutes, game, m),
+		lockedRoutes: resolveRouteList(game.lockedRoutes, game, m),
 		legalMoves,
 		availableEvolutions,
 		lastBattleResult: game.lastBattleResult,
@@ -855,7 +858,7 @@ export function recordCompletedRun(game: NuzlockeGame, outcome: 'victory' | 'wip
 	}
 }
 
-export { pingRedis } from './redis-store';
+export { pingRedis, migrateBeatenScenariosToSets } from './redis-store';
 
 export function saveGame(game: NuzlockeGame) {
 	void saveGameToRedis(game);

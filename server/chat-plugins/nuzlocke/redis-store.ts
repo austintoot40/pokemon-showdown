@@ -78,21 +78,33 @@ export async function loadGameFromRedis(userId: string): Promise<string | null> 
 	}
 }
 
+export async function migrateBeatenScenariosToSets(): Promise<void> {
+	let cursor = '0';
+	let migrated = 0;
+	do {
+		const [next, keys] = await getRedis().scan(cursor, 'MATCH', 'beaten:*', 'COUNT', 100);
+		cursor = next;
+		for (const key of keys) {
+			if (await getRedis().type(key) !== 'string') continue;
+			const raw = await getRedis().get(key);
+			const ids: string[] = raw ? JSON.parse(raw) : [];
+			await getRedis().del(key);
+			if (ids.length) await getRedis().sadd(key, ...ids);
+			migrated++;
+		}
+	} while (cursor !== '0');
+	if (migrated > 0) console.log(`[nuzlocke] Migrated ${migrated} beaten: key(s) to Redis Sets`);
+}
+
 export async function saveBeatenScenario(userId: string, scenarioId: string): Promise<void> {
 	try {
-		const raw = await getRedis().get(BEATS_KEY(userId));
-		const ids: string[] = raw ? JSON.parse(raw) : [];
-		if (!ids.includes(scenarioId)) {
-			ids.push(scenarioId);
-			await getRedis().set(BEATS_KEY(userId), JSON.stringify(ids));
-		}
+		await getRedis().sadd(BEATS_KEY(userId), scenarioId);
 	} catch {}
 }
 
 export async function loadBeatenScenarios(userId: string): Promise<string[]> {
 	try {
-		const raw = await getRedis().get(BEATS_KEY(userId));
-		return raw ? JSON.parse(raw) : [];
+		return await getRedis().smembers(BEATS_KEY(userId));
 	} catch {
 		return [];
 	}

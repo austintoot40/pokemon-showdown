@@ -4,9 +4,10 @@
 
 'use strict';
 
-import { loadUserGame, nuzlockeGames, pushNuzlockeStatus, pushNuzlockeState, navigateToNuzlocke, pingRedis, loadBeatenScenariosForUser, initTotalRunsCache } from './game';
+import { loadUserGame, nuzlockeGames, pushNuzlockeStatus, pushNuzlockeState, navigateToNuzlocke, pingRedis, migrateBeatenScenariosToSets, loadBeatenScenariosForUser, initTotalRunsCache } from './game';
 
 void pingRedis();
+void migrateBeatenScenariosToSets();
 void initTotalRunsCache();
 
 export const loginfilter: Chat.LoginFilter = user => {
