@@ -1420,7 +1420,7 @@ export class GlobalRoomState {
 			// prevents players from being re-added to games like Scavengers after they've finished
 			if (player.completed) continue;
 			user.games.add(room.roomid);
-			player.name = user.name;
+			if (!(room.game as any).options?.isNuzlockeBattle) player.name = user.name;
 			user.joinRoom(room.roomid);
 		}
 	}

@@ -638,6 +638,7 @@ export async function initTotalRunsCache(): Promise<void> {
 	cachedTotalRuns = await getTotalRuns();
 }
 
+
 export function bumpTotalRuns(): void {
 	void incrementTotalRuns().then(count => { cachedTotalRuns = count; });
 }

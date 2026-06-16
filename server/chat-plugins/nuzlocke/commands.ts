@@ -190,7 +190,14 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 			deleteGame(user.id);
 			pushNuzlockeStatus(user.id, null);
 			closeNuzlockePanel(user.id);
-			if (battleRoomId) user.send(`>${battleRoomId}\n|deinit|`);
+			if (battleRoomId) {
+				const battleRoom = Rooms.get(battleRoomId);
+				if (battleRoom) {
+					battleRoom.destroy();
+				} else {
+					user.send(`>${battleRoomId}\n|deinit|`);
+				}
+			}
 		},
 
 		// Called after a run naturally ends (victory or wipe) — clears the game and closes the panel

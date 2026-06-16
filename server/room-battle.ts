@@ -991,6 +991,18 @@ export class RoomBattle extends RoomGame<RoomBattlePlayer> {
 		}
 		if (user.id in this.playerTable) return;
 		const player = this.playerTable[oldUserid];
+		if (this.options.isNuzlockeBattle) {
+			// Re-key the playerTable so future onJoin calls find the right player,
+			// but preserve player.name = "Player" — updatePlayer would overwrite it
+			// with the user's PS username (e.g. when they auto-login from a cookie).
+			if (player) {
+				delete this.playerTable[oldUserid];
+				(player.id as string) = user.id;
+				this.playerTable[user.id] = player;
+				user.games.add(this.roomid);
+			}
+			return;
+		}
 		if (player) {
 			this.updatePlayer(player, user);
 		}
@@ -1005,7 +1017,9 @@ export class RoomBattle extends RoomGame<RoomBattlePlayer> {
 		if (player && !player.active) {
 			player.active = true;
 			this.timer.checkActivity();
-			this.room.add(`|player|${player.slot}|${user.name}|${user.avatar}|`);
+			if (!this.options.isNuzlockeBattle) {
+				this.room.add(`|player|${player.slot}|${player.name}|${user.avatar}|`);
+			}
 			Chat.runHandlers('onBattleJoin', player.slot, user, this);
 		}
 	}
@@ -1015,7 +1029,11 @@ export class RoomBattle extends RoomGame<RoomBattlePlayer> {
 			player.sendRoom(`|request|null`);
 			player.active = false;
 			this.timer.checkActivity();
-			this.room.add(`|player|${player.slot}|`);
+			// Nuzlocke battles are single-player; omit the disconnect indicator so
+			// the |player| slot retains its name/avatar in the log for reconnects.
+			if (!this.options.isNuzlockeBattle) {
+				this.room.add(`|player|${player.slot}|`);
+			}
 		}
 	}
 
