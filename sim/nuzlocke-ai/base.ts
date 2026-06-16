@@ -15,6 +15,7 @@ export interface DmgCtx {
 	damage: number;
 	kills: boolean;
 	faster: boolean;
+	excludedFromHighest: boolean;
 }
 
 export interface MoveCtx {
@@ -28,7 +29,7 @@ export interface MoveCtx {
 	hpFrac: number;
 }
 
-export abstract class NuzlockeAI {
+export class NuzlockeAI {
 	constructor(protected battle: Battle) {}
 
 	// =========================================================================
@@ -42,14 +43,10 @@ export abstract class NuzlockeAI {
 		if (request.active?.[0]) {
 			const switchCandidate = this.chooseBestSwitch(request);
 			if (switchCandidate !== null) {
-				// Unified path: switch competes directly against best move
 				const { slot: moveSlot, score: moveScore } = this.chooseBestMove(request);
 				if (switchCandidate.score > moveScore) return `switch ${switchCandidate.slot}`;
 				return `move ${moveSlot}`;
 			}
-			// Legacy path: hard-gated voluntary switch then move
-			const voluntarySwitch = this.considerVoluntarySwitch(request);
-			if (voluntarySwitch) return voluntarySwitch;
 			return this.chooseMove(request);
 		}
 		return 'default';
@@ -96,7 +93,7 @@ export abstract class NuzlockeAI {
 		// @ts-expect-error jank request parser
 		const moves = request.active[0].moves as Array<{id: string, disabled: boolean | string}>;
 
-		const aiFaster = this.isFaster(aiActive, opponent);
+		const aiFaster = calc.isFaster(this.battle,aiActive, opponent);
 
 		const dmgCtxMap = new Map<number, DmgCtx>();
 		let highestDamage = 0;
@@ -108,7 +105,7 @@ export abstract class NuzlockeAI {
 			if (move.basePower === 0) continue;
 			if (!this.battle.dex.getImmunity(move.type, opponent)) continue;
 			const faster = aiFaster || move.priority > 0;
-			const { damage } = this.simulateDamage(move, aiActive, opponent);
+			const { damage } = calc.simulateDamage(this.battle,move, aiActive, opponent);
 			const kills = damage >= opponent.hp;
 			const excludedFromHighest = (
 				!!(move as AnyObject).flags?.trap ||
@@ -118,7 +115,7 @@ export abstract class NuzlockeAI {
 				move.id === 'futuresight' || move.id === 'doomdesire' ||
 				move.id === 'meteorbeam' || move.id === 'relicsong'
 			);
-			dmgCtxMap.set(i, { damage, kills, faster, excludedFromHighest } as any);
+			dmgCtxMap.set(i, { damage, kills, faster, excludedFromHighest });
 			if (!excludedFromHighest) {
 				if (damage > highestDamage) highestDamage = damage;
 				if (kills) anyKills = true;
@@ -130,8 +127,8 @@ export abstract class NuzlockeAI {
 		let tiedCount = 0;
 		for (let i = 0; i < moves.length; i++) {
 			if (moves[i].disabled) continue;
-			const dmgCtx = dmgCtxMap.get(i) as (DmgCtx & { excludedFromHighest: boolean }) | undefined ?? null;
-			const isHighestDamage = dmgCtx !== null && !(dmgCtx as any).excludedFromHighest &&
+			const dmgCtx = dmgCtxMap.get(i) ?? null;
+			const isHighestDamage = dmgCtx !== null && !dmgCtx.excludedFromHighest &&
 				(anyKills ? dmgCtx.kills : dmgCtx.damage >= highestDamage);
 			const score = this.scoreMove(moves[i].id, this.battle.dex.moves.get(moves[i].id), aiActive, opponent, dmgCtx, isHighestDamage);
 			if (score > bestScore) {
@@ -178,56 +175,17 @@ export abstract class NuzlockeAI {
 			const isGrounded = !benched.types.includes('Flying') && benched.ability !== 'levitate' as ID;
 			if (isGrounded) hazardHpLost += benched.maxhp * spikeFraction;
 		}
-		const switchInDamage = this.maxOpponentDamage(opponent, benched);
+		const switchInDamage = calc.maxOpponentDamage(this.battle,opponent, benched);
 		const effectiveHp = Math.max(0, benched.hp - hazardHpLost - switchInDamage);
 		return offensiveScore - defensivePenalty + effectiveHp / benched.maxhp;
 	}
 
-	protected simulateDamage(move: Move, attacker: Pokemon, defender: Pokemon): { damage: number } {
-		return calc.simulateDamage(this.battle, move, attacker, defender);
-	}
-
-	protected maxOpponentDamage(attacker: Pokemon, defender: Pokemon): number {
-		return calc.maxOpponentDamage(this.battle, attacker, defender);
-	}
-
-	protected getBoostedStat(pokemon: Pokemon, stat: 'atk' | 'def' | 'spa' | 'spd' | 'spe'): number {
-		return calc.getBoostedStat(pokemon, stat);
-	}
-
-	protected getEffectiveSpeed(pokemon: Pokemon): number {
-		return calc.getEffectiveSpeed(this.battle, pokemon);
-	}
-
-	protected isFaster(a: Pokemon, b: Pokemon): boolean {
-		return calc.isFaster(this.battle, a, b);
-	}
-
-	protected hasMoveCategory(pokemon: Pokemon, category: 'Physical' | 'Special'): boolean {
-		return calc.hasMoveCategory(this.battle, pokemon, category);
-	}
-
-	protected isIncapacitated(pokemon: Pokemon): boolean {
-		return calc.isIncapacitated(pokemon);
-	}
-
 	// =========================================================================
 	// Decision point: voluntary switching
-	//
-	// Two mechanisms — only one fires per subclass:
-	//
-	// chooseBestSwitch (unified path): returns a scored switch candidate that
-	//   competes directly against move scores in decide(). Used by SmartAI.
-	//   Return null to fall through to the legacy path.
-	//
-	// considerVoluntarySwitch (legacy path): hard-gated switch decision.
+	// Base: no voluntary switching. SmartAI overrides chooseBestSwitch.
 	// =========================================================================
 
 	protected chooseBestSwitch(request: ChoiceRequest): { slot: number; score: number } | null {
-		return null;
-	}
-
-	protected considerVoluntarySwitch(request: ChoiceRequest): string | null {
 		return null;
 	}
 
@@ -278,7 +236,7 @@ export abstract class NuzlockeAI {
 		}
 
 		// Status move
-		const faster = this.isFaster(attacker, defender);
+		const faster = calc.isFaster(this.battle,attacker, defender);
 		const ctx: MoveCtx = {
 			move, attacker, defender, dmgCtx: null, isHighestDamage: false,
 			faster, hpFrac: attacker.hp / attacker.maxhp,
@@ -297,7 +255,7 @@ export abstract class NuzlockeAI {
 
 	/** Future Sight / Doom Desire */
 	protected scoreFutureSight(ctx: MoveCtx): number {
-		const dies = this.maxOpponentDamage(ctx.defender, ctx.attacker) >= ctx.attacker.hp;
+		const dies = calc.maxOpponentDamage(this.battle,ctx.defender, ctx.attacker) >= ctx.attacker.hp;
 		let score = (ctx.dmgCtx!.faster && dies) ? 8 : 6;
 		score += this.killBonus(ctx.dmgCtx!);
 		return score;

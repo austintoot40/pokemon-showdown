@@ -10,6 +10,7 @@ import type { Battle } from '../battle';
 import type { Pokemon } from '../pokemon';
 import type { ChoiceRequest } from '../side';
 import { NuzlockeAI, type DmgCtx, type MoveCtx } from './base';
+import * as calc from './calculator';
 
 export class SmartAI extends NuzlockeAI {
 	constructor(battle: Battle) {
@@ -38,13 +39,13 @@ export class SmartAI extends NuzlockeAI {
 		const opponent = this.battle.sides[0].active[0];
 		if (!aiActive || !opponent) return null;
 
-		const oppSpd = this.getEffectiveSpeed(opponent);
+		const oppSpd = calc.getEffectiveSpeed(this.battle,opponent);
 		const aiBench = this.battle.sides[1].pokemon.slice(1).filter(p => p && !p.fainted && p.hp > 0);
 
 		// Safety filter: only switch into a Pokemon that can absorb the switch-in hit
 		const candidates = aiBench.filter(p => {
-			const benchSpd = this.getEffectiveSpeed(p);
-			const incomingDmg = this.maxOpponentDamage(opponent, p);
+			const benchSpd = calc.getEffectiveSpeed(this.battle,p);
+			const incomingDmg = calc.maxOpponentDamage(this.battle,opponent, p);
 			if (benchSpd > oppSpd && incomingDmg < p.hp) return true;
 			if (benchSpd <= oppSpd && incomingDmg * 2 < p.hp) return true;
 			return false;
@@ -89,9 +90,9 @@ export class SmartAI extends NuzlockeAI {
 		const hpFrac = attacker.hp / attacker.maxhp;
 		if (attacker.status === 'tox') return false;
 		const healAmount = attacker.maxhp * healFraction;
-		const maxDamage = this.maxOpponentDamage(defender, attacker);
+		const maxDamage = calc.maxOpponentDamage(this.battle,defender, attacker);
 		if (maxDamage >= healAmount) return false;
-		const faster = this.getBoostedStat(attacker, 'spe') > this.getBoostedStat(defender, 'spe');
+		const faster = calc.getBoostedStat(attacker, 'spe') > calc.getBoostedStat(defender, 'spe');
 		if (faster) {
 			if (maxDamage >= attacker.hp && attacker.hp + healAmount > maxDamage) return true;
 			if (hpFrac < 0.4) return true;
@@ -118,7 +119,7 @@ export class SmartAI extends NuzlockeAI {
 
 	protected override priorityBonus(ctx: MoveCtx): number {
 		if (ctx.move.priority > 0 && !ctx.faster) {
-			if (this.maxOpponentDamage(ctx.defender, ctx.attacker) >= ctx.attacker.hp) return 11;
+			if (calc.maxOpponentDamage(this.battle,ctx.defender, ctx.attacker) >= ctx.attacker.hp) return 11;
 		}
 		return 0;
 	}
@@ -151,10 +152,10 @@ export class SmartAI extends NuzlockeAI {
 		const atkBoost = -(selfBoosts.atk ?? 0);
 		if (spaBoost >= 2) {
 			let score = 6;
-			if (this.isIncapacitated(defender)) {
+			if (calc.isIncapacitated(defender)) {
 				score += 3;
 			} else {
-				const can3HKO = this.maxOpponentDamage(defender, attacker) * 3 >= attacker.hp;
+				const can3HKO = calc.maxOpponentDamage(this.battle,defender, attacker) * 3 >= attacker.hp;
 				if (!can3HKO) {
 					score += 1;
 					if (faster) score += 1;
@@ -164,8 +165,8 @@ export class SmartAI extends NuzlockeAI {
 			return score;
 		} else if (atkBoost >= 1) {
 			let score = 6;
-			const can2HKO = this.maxOpponentDamage(defender, attacker) * 2 >= attacker.hp;
-			if (this.isIncapacitated(defender)) score += 3;
+			const can2HKO = calc.maxOpponentDamage(this.battle,defender, attacker) * 2 >= attacker.hp;
+			if (calc.isIncapacitated(defender)) score += 3;
 			else if (can2HKO && !faster) score -= 5;
 			return score;
 		}
@@ -186,7 +187,7 @@ export class SmartAI extends NuzlockeAI {
 		const hasSpaDown = sec?.chance === 100 && (sec?.boosts?.spa ?? 0) < 0;
 		if (hasAtkDown || hasSpaDown) {
 			const relevantCategory: 'Physical' | 'Special' = hasAtkDown ? 'Physical' : 'Special';
-			const targetHasSplit = this.hasMoveCategory(defender, relevantCategory);
+			const targetHasSplit = calc.hasMoveCategory(this.battle,defender, relevantCategory);
 			return (!blocked && targetHasSplit) ? 6 : 5;
 		}
 		return 0;
@@ -244,7 +245,7 @@ export class SmartAI extends NuzlockeAI {
 
 		const isInvulnerable = SmartAI.INVULNERABLE_CHARGE.has(move.id);
 		if (!isInvulnerable) {
-			const incomingDmg = this.maxOpponentDamage(defender, attacker);
+			const incomingDmg = calc.maxOpponentDamage(this.battle,defender, attacker);
 			if (incomingDmg >= attacker.hp) return -20; // die during charge turn
 			if (incomingDmg * 2 >= attacker.hp) return 1; // heavy damage during charge
 		}
@@ -274,8 +275,8 @@ export class SmartAI extends NuzlockeAI {
 	protected override scoreLeechSeed(ctx: MoveCtx): number {
 		if (ctx.defender.types.includes('Grass')) return -20;
 
-		const aiDmg = this.maxOpponentDamage(ctx.attacker, ctx.defender);
-		const oppDmg = this.maxOpponentDamage(ctx.defender, ctx.attacker);
+		const aiDmg = calc.maxOpponentDamage(this.battle,ctx.attacker, ctx.defender);
+		const oppDmg = calc.maxOpponentDamage(this.battle,ctx.defender, ctx.attacker);
 
 		// Opponent OHKOs — leech never fires
 		if (oppDmg >= ctx.attacker.hp) return -20;
@@ -319,8 +320,8 @@ export class SmartAI extends NuzlockeAI {
 
 	protected override scoreParalysis(ctx: MoveCtx): number {
 		if (ctx.defender.types.includes('Electric')) return -20;
-		const oppEffSpd = this.getEffectiveSpeed(ctx.defender);
-		const aiEffSpd = this.getEffectiveSpeed(ctx.attacker);
+		const oppEffSpd = calc.getEffectiveSpeed(this.battle,ctx.defender);
+		const aiEffSpd = calc.getEffectiveSpeed(this.battle,ctx.attacker);
 		const parFactor = this.battle.gen >= 7 ? 0.5 : 0.25;
 		const playerFasterButSlowedByPar = oppEffSpd > aiEffSpd && Math.floor(oppEffSpd * parFactor) < aiEffSpd;
 		const aiHasFlinchMove = ctx.attacker.moveSlots.some(slot => {
@@ -337,7 +338,7 @@ export class SmartAI extends NuzlockeAI {
 		if (ctx.defender.types.includes('Fire')) return -20;
 		let score = 6;
 		if (Math.random() < 0.37) {
-			if (this.hasMoveCategory(ctx.defender, 'Physical')) score += 1;
+			if (calc.hasMoveCategory(this.battle,ctx.defender, 'Physical')) score += 1;
 			if (ctx.attacker.moveSlots.some(s => s.id === 'hex')) score += 1;
 		}
 		return score;
@@ -350,7 +351,7 @@ export class SmartAI extends NuzlockeAI {
 			const aiHasHex = ctx.attacker.moveSlots.some(s => s.id === 'hex');
 			const aiHasVenoshock = ctx.attacker.moveSlots.some(s => s.id === 'venoshock');
 			const aiHasMerciless = ctx.attacker.ability === 'merciless' as ID;
-			const playerHasDmg = this.hasMoveCategory(ctx.defender, 'Physical') || this.hasMoveCategory(ctx.defender, 'Special');
+			const playerHasDmg = calc.hasMoveCategory(this.battle,ctx.defender, 'Physical') || calc.hasMoveCategory(this.battle,ctx.defender, 'Special');
 			if ((aiHasHex || aiHasVenoshock || aiHasMerciless) && !playerHasDmg) score += 2;
 		}
 		return score;
@@ -409,7 +410,7 @@ export class SmartAI extends NuzlockeAI {
 		if (ctx.hpFrac <= 0.5) return -20;
 		if (ctx.defender.ability === 'infiltrator' as ID) return -20;
 
-		const oppDmg = this.maxOpponentDamage(ctx.defender, ctx.attacker);
+		const oppDmg = calc.maxOpponentDamage(this.battle,ctx.defender, ctx.attacker);
 		const subHp = ctx.attacker.maxhp * 0.25;
 
 		// Opponent breaks sub AND their follow-up KOs remaining HP — sub buys nothing
@@ -430,8 +431,8 @@ export class SmartAI extends NuzlockeAI {
 
 	protected override scoreBlockMove(ctx: MoveCtx): number {
 		const { attacker, defender } = ctx;
-		const aiDmg = this.maxOpponentDamage(attacker, defender);
-		const oppDmg = this.maxOpponentDamage(defender, attacker);
+		const aiDmg = calc.maxOpponentDamage(this.battle,attacker, defender);
+		const oppDmg = calc.maxOpponentDamage(this.battle,defender, attacker);
 
 		// Opponent OHKOs us — Block just hands them a free turn
 		if (oppDmg >= attacker.hp) return -20;
@@ -491,7 +492,7 @@ export class SmartAI extends NuzlockeAI {
 	}
 
 	protected override scoreDestinyBond(ctx: MoveCtx): number {
-		const dies = this.maxOpponentDamage(ctx.defender, ctx.attacker) >= ctx.attacker.hp;
+		const dies = calc.maxOpponentDamage(this.battle,ctx.defender, ctx.attacker) >= ctx.attacker.hp;
 		if (ctx.faster && dies) return Math.random() < 0.81 ? 7 : 6;
 		return Math.random() < 0.5 ? 5 : 6;
 	}
@@ -536,7 +537,7 @@ export class SmartAI extends NuzlockeAI {
 		if (this.battle.sides[1].sideConditions[condKey]) return -20;
 		const correspondingCategory: 'Physical' | 'Special' = ctx.move.id === 'reflect' ? 'Physical' : 'Special';
 		let score = 6;
-		if (this.hasMoveCategory(ctx.defender, correspondingCategory)) {
+		if (calc.hasMoveCategory(this.battle,ctx.defender, correspondingCategory)) {
 			if (ctx.attacker.item === 'lightclay' as ID) score += 1;
 			if (Math.random() < 0.5) score += 1;
 		}
@@ -566,7 +567,7 @@ export class SmartAI extends NuzlockeAI {
 
 	protected override scoreFinalGambit(ctx: MoveCtx): number {
 		if (ctx.faster && ctx.attacker.hp > ctx.defender.hp) return 8;
-		const dies = this.maxOpponentDamage(ctx.defender, ctx.attacker) >= ctx.attacker.hp;
+		const dies = calc.maxOpponentDamage(this.battle,ctx.defender, ctx.attacker) >= ctx.attacker.hp;
 		if (ctx.faster && dies) return 7;
 		return 6;
 	}
@@ -583,7 +584,7 @@ export class SmartAI extends NuzlockeAI {
 	protected override scoreFocusEnergy(ctx: MoveCtx): number {
 		if (ctx.defender.ability === 'shellarmor' as ID || ctx.defender.ability === 'battlearmor' as ID) return -20;
 
-		const oppDmg = this.maxOpponentDamage(ctx.defender, ctx.attacker);
+		const oppDmg = calc.maxOpponentDamage(this.battle,ctx.defender, ctx.attacker);
 		// Opponent OHKOs — we never get to use the crits
 		if (oppDmg >= ctx.attacker.hp) return -20;
 		// Opponent 2HKOs — we may only get one attack behind Focus Energy, not worth the setup turn
@@ -606,14 +607,14 @@ export class SmartAI extends NuzlockeAI {
 	protected override scoreCounterMirrorCoat(ctx: MoveCtx): number {
 		const { attacker, defender, faster } = ctx;
 		const relevantCategory: 'Physical' | 'Special' = ctx.move.id === 'counter' ? 'Physical' : 'Special';
-		const canOHKO = this.maxOpponentDamage(defender, attacker) >= attacker.hp;
+		const canOHKO = calc.maxOpponentDamage(this.battle,defender, attacker) >= attacker.hp;
 		const hasSturdy = attacker.ability === 'sturdy' as ID;
 		const hasSash = attacker.item === 'focussash' as ID;
 		if (canOHKO && !hasSturdy && !hasSash) return -14;
 		let score = 6;
 		const targetOnlyHasRelevantSplit = (
-			this.hasMoveCategory(defender, relevantCategory) &&
-			!this.hasMoveCategory(defender, relevantCategory === 'Physical' ? 'Special' : 'Physical')
+			calc.hasMoveCategory(this.battle,defender, relevantCategory) &&
+			!calc.hasMoveCategory(this.battle,defender, relevantCategory === 'Physical' ? 'Special' : 'Physical')
 		);
 		if (canOHKO && (hasSturdy || hasSash) && attacker.hp === attacker.maxhp && targetOnlyHasRelevantSplit) {
 			score += 2;
@@ -634,26 +635,26 @@ export class SmartAI extends NuzlockeAI {
 
 		if (speBoost > 0 && offBoost === 0 && defBoost === 0) return faster ? -20 : 7;
 
-		const canOHKO = this.maxOpponentDamage(defender, attacker) >= attacker.hp;
-		const can2HKO = this.maxOpponentDamage(defender, attacker) * 2 >= attacker.hp;
+		const canOHKO = calc.maxOpponentDamage(this.battle,defender, attacker) >= attacker.hp;
+		const can2HKO = calc.maxOpponentDamage(this.battle,defender, attacker) * 2 >= attacker.hp;
 
 		if (ctx.move.id === 'shellsmash') {
 			if (canOHKO) return -20;
 			if ((attacker.boosts.atk ?? 0) >= 1) return -20;
 			let score = 6;
-			if (this.isIncapacitated(defender)) score += 3;
+			if (calc.isIncapacitated(defender)) score += 3;
 			const hasWhiteHerb = attacker.item === 'whiteherb' as ID;
 			const postSmashMult = hasWhiteHerb ? 1.0 : 1.5;
-			const postSmashDamage = this.maxOpponentDamage(defender, attacker) * postSmashMult;
+			const postSmashDamage = calc.maxOpponentDamage(this.battle,defender, attacker) * postSmashMult;
 			score += postSmashDamage < attacker.hp ? 2 : -2;
 			return score;
 		}
 
 		if (ctx.move.id === 'bellydrum') {
-			if (this.isIncapacitated(defender)) return 9;
+			if (calc.isIncapacitated(defender)) return 9;
 			const hasSitrus = attacker.item === 'sitrusberry' as ID;
 			const hpAfterDrum = hasSitrus ? attacker.maxhp * 0.75 : attacker.hp * 0.5;
-			if (this.maxOpponentDamage(defender, attacker) >= hpAfterDrum) return 4;
+			if (calc.maxOpponentDamage(this.battle,defender, attacker) >= hpAfterDrum) return 4;
 			return 8;
 		}
 
@@ -667,9 +668,9 @@ export class SmartAI extends NuzlockeAI {
 		let treatAsOffensive: boolean;
 		if (isMixed) {
 			if ((boosts.atk ?? 0) > 0 && (boosts.spa ?? 0) === 0) {
-				treatAsOffensive = !(this.hasMoveCategory(defender, 'Physical') && !this.hasMoveCategory(defender, 'Special'));
+				treatAsOffensive = !(calc.hasMoveCategory(this.battle,defender, 'Physical') && !calc.hasMoveCategory(this.battle,defender, 'Special'));
 			} else {
-				treatAsOffensive = !(this.hasMoveCategory(defender, 'Special') && !this.hasMoveCategory(defender, 'Physical'));
+				treatAsOffensive = !(calc.hasMoveCategory(this.battle,defender, 'Special') && !calc.hasMoveCategory(this.battle,defender, 'Physical'));
 			}
 		} else {
 			treatAsOffensive = offBoost > 0;
@@ -677,14 +678,14 @@ export class SmartAI extends NuzlockeAI {
 
 		let score = 6;
 		if (treatAsOffensive) {
-			if (this.isIncapacitated(defender)) {
+			if (calc.isIncapacitated(defender)) {
 				score += 3;
 			} else if (can2HKO && !faster) {
 				score -= 5;
 			}
 			if (!isMixed && (boosts.spa ?? 0) > 0) {
-				const can3HKO = this.maxOpponentDamage(defender, attacker) * 3 >= attacker.hp;
-				if (!this.isIncapacitated(defender) && !can3HKO) {
+				const can3HKO = calc.maxOpponentDamage(this.battle,defender, attacker) * 3 >= attacker.hp;
+				if (!calc.isIncapacitated(defender) && !can3HKO) {
 					score += 1;
 					if (faster) score += 1;
 				}
@@ -693,7 +694,7 @@ export class SmartAI extends NuzlockeAI {
 		} else {
 			if (can2HKO && !faster) score -= 5;
 			if (Math.random() < 0.95) {
-				if (this.isIncapacitated(defender)) score += 2;
+				if (calc.isIncapacitated(defender)) score += 2;
 				if ((boosts.def ?? 0) > 0 && (boosts.spd ?? 0) > 0 &&
 					((attacker.boosts.def ?? 0) < 2 || (attacker.boosts.spd ?? 0) < 2)) {
 					score += 2;
