@@ -4,7 +4,7 @@
 
 import { saveGameToRedis, deleteGameFromRedis, loadGameFromRedis, pingRedis, saveBeatenScenario, loadBeatenScenarios, incrementTotalRuns, getTotalRuns } from './redis-store';
 import { logNuzlockeError } from './error-logger';
-import { resolveOneEncounter, resolveChoiceGift, getAvailablePool, getGiftPool, buildStarterPokemon } from './encounters';
+import { resolveOneEncounter, resolveChoiceGift, getAvailablePool, getGiftPool, buildStarterPokemon, applyRouteMapping } from './encounters';
 import { getLegalMoves, type LegalMove } from './learnsets';
 import { listScenarios, getScenario } from './scenarios';
 import type { Scenario, Segment, RouteEncounter, OwnedPokemon, DeadPokemon, NuzlockeScreen, NuzlockeScenarioCard, EvoOption } from './types';
@@ -135,22 +135,11 @@ export class NuzlockeGame {
 		if (this.resolvedRoutes.includes(route.route)) return;
 
 		// Resolve species accounting for randomizer mappings.
-		// The client sends the *randomized* species ID, but the original route still has the original pool.
-		let speciesName: string | null = null;
+		// The client sends the *randomized* species ID; match it against the mapped pool.
 		const m = this.randomizerMappings;
-		if (m?.routeMap[route.route]) {
-			// Fully-random: one species pre-assigned for the whole route
-			const mapped = m.routeMap[route.route];
-			if (toID(mapped) === speciesId) speciesName = mapped;
-		} else if (m && Object.keys(m.speciesMap).length > 0) {
-			// Shuffle: find original entry whose remapped species matches
-			const entry = getGiftPool(route).find(e => toID(m.speciesMap[toID(e.species)] ?? e.species) === speciesId);
-			if (entry) speciesName = m.speciesMap[toID(entry.species)] ?? entry.species;
-		} else {
-			// No randomizer: direct match against original pool
-			const entry = getGiftPool(route).find(e => toID(e.species) === speciesId);
-			if (entry) speciesName = entry.species;
-		}
+		const pool = getGiftPool(m ? applyRouteMapping(route, m) : route);
+		const entry = pool.find(e => toID(e.species) === speciesId);
+		const speciesName = entry?.species ?? null;
 		if (!speciesName) return;
 
 		const pokemon = resolveChoiceGift(route, speciesName, this.currentLevelCap);
@@ -250,17 +239,10 @@ export class NuzlockeGame {
 
 		this.lockedRoutes = this.lockedRoutes.filter(id => id !== routeName);
 
-		// Look up the canonical species name, then apply randomizer mappings if active.
-		let speciesName = zone.pokemon.find(e => toID(e.species) === speciesId)?.species ?? speciesId;
-		if (this.randomizerMappings) {
-			const routeOverride = this.randomizerMappings.routeMap[route.route];
-			if (routeOverride) {
-				speciesName = routeOverride;
-			} else {
-				const mapped = this.randomizerMappings.speciesMap[toID(speciesName)];
-				if (mapped) speciesName = mapped;
-			}
-		}
+		// Look up the species name, applying randomizer mappings if active.
+		const m = this.randomizerMappings;
+		const mappedZone = m ? applyRouteMapping(route, m).zones[zoneIndex] : zone;
+		const speciesName = mappedZone.pokemon.find(e => toID(e.species) === speciesId)?.species ?? speciesId;
 
 		const pokemon = resolveChoiceGift(route, speciesName, this.currentLevelCap);
 		pokemon.caughtZoneIndex = zoneIndex;
@@ -690,19 +672,7 @@ function applyMappingsToRoutes(
 	routes: RouteEncounter[],
 	m: import('./types').RandomizerMappings
 ): RouteEncounter[] {
-	return routes.map(route => {
-		const routeOverride = m.routeMap[route.route];
-		if (routeOverride) {
-			return { ...route, zones: route.zones.map(z => ({ ...z, pokemon: [{ species: routeOverride, rate: 1 }] })) };
-		}
-		if (Object.keys(m.speciesMap).length > 0) {
-			return { ...route, zones: route.zones.map(z => ({
-				...z,
-				pokemon: z.pokemon.map(e => ({ ...e, species: m.speciesMap[toID(e.species)] ?? e.species })),
-			})) };
-		}
-		return route;
-	});
+	return routes.map(route => applyRouteMapping(route, m));
 }
 
 function resolveRouteList(

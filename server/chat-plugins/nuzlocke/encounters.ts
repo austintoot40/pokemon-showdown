@@ -52,7 +52,7 @@ function getGenPool(generation: number, dexPool: RandomizerConfig['dexPool']): s
 export function buildRandomizerMappings(scenario: Scenario, config: RandomizerConfig): RandomizerMappings {
 	const rng = mulberry32(config.seed);
 	const speciesMap: Record<string, string> = {};
-	const routeMap: Record<string, string> = {};
+	const routeMap: Record<string, string[]> = {};
 
 	const candidates = seededShuffle(getGenPool(scenario.generation, config.dexPool), rng);
 
@@ -91,19 +91,22 @@ export function buildRandomizerMappings(scenario: Scenario, config: RandomizerCo
 			used.add(assigned);
 		}
 	} else {
-		// Fully Random: independently assign one species per route
+		// Fully Random: independently assign a replacement for every original slot in every zone
 		for (const seg of scenario.segments) {
 			const allRoutes: RouteEncounter[] = [
 				...(seg.encounters ?? []),
 				...(seg.gifts ?? []),
 			];
 			for (const route of allRoutes) {
-				if (routeMap[route.route]) continue; // already assigned (same route name in multiple segments)
-				const allPokemon = route.zones.flatMap(z => z.pokemon);
-				const avgBst = allPokemon.reduce((sum, e) => sum + ((Dex.species.get(e.species) as import('../../../sim/dex-species').Species).bst ?? 0), 0) / (allPokemon.length || 1);
-				const pool = candidates.filter(c => withinBstVariance(avgBst, (Dex.species.get(c) as import('../../../sim/dex-species').Species).bst ?? 0, config.bstVariance));
-				const pick = (pool.length ? pool : candidates)[Math.floor(rng() * (pool.length || candidates.length))];
-				routeMap[route.route] = pick;
+				route.zones.forEach((zone, zoneIndex) => {
+					const key = `${route.route}::${zoneIndex}`;
+					if (routeMap[key]) return; // already assigned (same route name in multiple segments)
+					routeMap[key] = zone.pokemon.map(e => {
+						const origBst = (Dex.species.get(e.species) as import('../../../sim/dex-species').Species).bst ?? 0;
+						const pool = candidates.filter(c => withinBstVariance(origBst, (Dex.species.get(c) as import('../../../sim/dex-species').Species).bst ?? 0, config.bstVariance));
+						return (pool.length ? pool : candidates)[Math.floor(rng() * (pool.length || candidates.length))];
+					});
+				});
 			}
 		}
 	}
@@ -120,6 +123,23 @@ export function buildRandomizerMappings(scenario: Scenario, config: RandomizerCo
 	}
 
 	return { speciesMap, routeMap, starterSpecies };
+}
+
+/** Applies randomizer mappings to a route, remapping every zone's pokemon entries. */
+export function applyRouteMapping(route: RouteEncounter, mappings: RandomizerMappings): RouteEncounter {
+	return {
+		...route,
+		zones: route.zones.map((zone, zoneIndex) => {
+			const override = mappings.routeMap[`${route.route}::${zoneIndex}`];
+			if (override) {
+				return { ...zone, pokemon: zone.pokemon.map((e, i) => ({ ...e, species: override[i] ?? e.species })) };
+			}
+			if (Object.keys(mappings.speciesMap).length > 0) {
+				return { ...zone, pokemon: zone.pokemon.map(e => ({ ...e, species: mappings.speciesMap[toID(e.species)] ?? e.species })) };
+			}
+			return zone;
+		}),
+	};
 }
 
 const NATURES = [
@@ -208,23 +228,10 @@ export function resolveOneEncounter(
 	levelCap: number,
 	mappings?: RandomizerMappings | null
 ): OwnedPokemon | null {
-	const zone = route.zones[zoneIndex];
+	const mappedRoute = mappings ? applyRouteMapping(route, mappings) : route;
+	const zone = mappedRoute.zones[zoneIndex];
 	if (!zone) return null;
-	let entries = zone.pokemon;
-
-	if (mappings) {
-		const routeOverride = mappings.routeMap[route.route];
-		if (routeOverride) {
-			// Fully Random: use pre-assigned species for this route
-			entries = [{ species: routeOverride, rate: 1 }];
-		} else if (Object.keys(mappings.speciesMap).length > 0) {
-			// Shuffle: remap each entry's species using the pre-built species map
-			entries = entries.map(e => ({
-				...e,
-				species: mappings.speciesMap[toID(e.species)] ?? e.species,
-			}));
-		}
-	}
+	const entries = zone.pokemon;
 
 	const pool = getAvailablePool(entries, box, graveyard);
 	if (!pool.length) return null; // all dupes — nothing to encounter

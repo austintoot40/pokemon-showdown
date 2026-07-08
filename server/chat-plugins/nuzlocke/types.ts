@@ -153,8 +153,8 @@ export interface RandomizerConfig {
 export interface RandomizerMappings {
 	/** Shuffle mode: original species ID → replacement species name */
 	speciesMap: Record<string, string>;
-	/** Fully Random mode: route name → replacement species name */
-	routeMap: Record<string, string>;
+	/** Fully Random mode: "route::zoneIndex" → replacement species, one per original slot in that zone */
+	routeMap: Record<string, string[]>;
 /** Randomized starter species in original slot order */
 	starterSpecies: string[];
 }
