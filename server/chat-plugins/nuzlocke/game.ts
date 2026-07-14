@@ -513,6 +513,11 @@ export class NuzlockeGame {
 	goToPage(target: NuzlockeScreen) {
 		this.curRoom = target;
 		navigateToNuzlocke(this.user);
+		// Push the fresh state immediately rather than relying solely on the page handler's
+		// deferred push (pages.ts) after navigateToNuzlocke's forced /join round-trips back.
+		// Otherwise a client-side re-join (e.g. clicking "Continue" out of a chained battle)
+		// can race that round trip and briefly render the room's stale cached state.
+		pushNuzlockeState(this.user, this);
 		pushNuzlockeStatus(this.user, this);
 		saveGame(this);
 	}
