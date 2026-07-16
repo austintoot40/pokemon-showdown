@@ -1,0 +1,50 @@
+[
+  {
+    "id": "chain1",
+    "trainer": "Chain Tester 1",
+    "team": [
+      {
+        "species": "Zigzagoon",
+        "level": 5,
+        "ability": "Pickup",
+        "moves": [
+          "Tackle"
+        ],
+        "item": null
+      }
+    ],
+    "sprite": "youngster"
+  },
+  {
+    "id": "chain2",
+    "trainer": "Chain Tester 2",
+    "team": [
+      {
+        "species": "Zigzagoon",
+        "level": 5,
+        "ability": "Pickup",
+        "moves": [
+          "Tackle"
+        ],
+        "item": null
+      }
+    ],
+    "sprite": "youngster"
+  },
+  {
+    "id": "chain3",
+    "trainer": "Chain Tester 3",
+    "team": [
+      {
+        "species": "Zigzagoon",
+        "level": 5,
+        "ability": "Pickup",
+        "moves": [
+          "Tackle"
+        ],
+        "item": null
+      }
+    ],
+    "sprite": "youngster"
+  }
+]

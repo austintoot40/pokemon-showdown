@@ -1,0 +1,18 @@
+[
+  {
+    "id": "test-start",
+    "name": "Test Route",
+    "zones": [
+      {
+        "zone": "",
+        "method": "Standard",
+        "pokemon": [
+          {
+            "species": "Zigzagoon",
+            "rate": 100
+          }
+        ]
+      }
+    ]
+  }
+]
