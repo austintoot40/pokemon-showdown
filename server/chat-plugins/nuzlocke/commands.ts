@@ -131,6 +131,7 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 			const starter = buildStarterPokemon(randStarterSpecies ?? starterDef.species, starterDef.level);
 			game.box.push(starter);
 			game.addToParty(starter.uid);
+			game.starterIndex = starterIndex;
 			game.resolveSegmentStart();
 			game.goToPage('encounters');
 		},
@@ -178,6 +179,7 @@ export const nuzlockeCommands: Chat.ChatCommands = {
 			const starter = buildStarterPokemon(randStarterSpecies ?? starterDef.species, starterDef.level);
 			game.box.push(starter);
 			game.addToParty(starter.uid);
+			game.starterIndex = starterIndex;
 			game.resolveSegmentStart();
 			game.goToPage('encounters');
 		},

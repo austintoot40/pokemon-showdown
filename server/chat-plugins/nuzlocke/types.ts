@@ -47,7 +47,8 @@ export interface RouteEncounter {
 export interface TrainerBattle {
 	id: string;
 	trainer: string;
-	team: TrainerPokemon[];
+	/** One team for every starter, or one team per starter (same order/length as `Scenario.starters`) when the team depends on starter choice. */
+	team: TrainerPokemon[] | TrainerPokemon[][];
 	battleType?: 'singles' | 'doubles';
 	sprite?: string;
 }

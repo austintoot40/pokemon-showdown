@@ -7,11 +7,23 @@ import { logNuzlockeError } from './error-logger';
 import { resolveOneEncounter, resolveChoiceGift, getAvailablePool, getGiftPool, buildStarterPokemon, applyRouteMapping } from './encounters';
 import { getLegalMoves, type LegalMove } from './learnsets';
 import { listScenarios, getScenario } from './scenarios';
-import type { Scenario, Segment, RouteEncounter, OwnedPokemon, DeadPokemon, NuzlockeScreen, NuzlockeScenarioCard, EvoOption } from './types';
+import type { Scenario, Segment, RouteEncounter, OwnedPokemon, DeadPokemon, NuzlockeScreen, NuzlockeScenarioCard, EvoOption, TrainerPokemon, TrainerBattle } from './types';
 
 /** Returns all wild encounters for a segment. */
 export function flatEncounters(segment: Segment): RouteEncounter[] {
 	return segment.encounters ?? [];
+}
+
+/** Resolves a TrainerBattle's `team` (flat, or one team per starter) down to the team for the given starter index. */
+export function resolveBattleTeam(team: TrainerPokemon[] | TrainerPokemon[][], starterIndex: number | null): TrainerPokemon[] {
+	if (!Array.isArray(team[0])) return team as TrainerPokemon[];
+	const teams = team as TrainerPokemon[][];
+	return teams[starterIndex ?? 0] ?? teams[0];
+}
+
+/** Resolves every battle's `team` in a list down to the flat form, for sending to the client (scouting preview, etc). */
+function resolveBattles(battles: TrainerBattle[], starterIndex: number | null): TrainerBattle[] {
+	return battles.map(b => ({ ...b, team: resolveBattleTeam(b.team, starterIndex) }));
 }
 
 export const nuzlockeGames = new Map<ID, NuzlockeGame>();
@@ -53,6 +65,7 @@ export class NuzlockeGame {
 	partyErrors: Map<string, string>;
 	randomizerConfig: import('./types').RandomizerConfig | null;
 	randomizerMappings: import('./types').RandomizerMappings | null;
+	starterIndex: number | null;
 
 	constructor(userID: ID, scenario: Scenario) {
 		this.user = userID;
@@ -77,6 +90,7 @@ export class NuzlockeGame {
 		this.partyErrors = new Map();
 		this.randomizerConfig = null;
 		this.randomizerMappings = null;
+		this.starterIndex = null;
 	}
 
 	pickStarter(index: number) {
@@ -85,6 +99,7 @@ export class NuzlockeGame {
 		const starter = buildStarterPokemon(starterDef.species, starterDef.level);
 		this.box.push(starter);
 		this.addToParty(starter.uid);
+		this.starterIndex = index;
 	}
 
 	/** Called when entering a new segment: adds items/TMs and auto-resolves non-choice gift encounters. */
@@ -290,7 +305,9 @@ export class NuzlockeGame {
 	}
 
 	get currentBattle() {
-		return this.currentSegment?.battles[this.currentBattleIndex] ?? null;
+		const raw = this.currentSegment?.battles[this.currentBattleIndex] ?? null;
+		if (!raw) return null;
+		return { ...raw, team: resolveBattleTeam(raw.team, this.starterIndex) };
 	}
 
 	/** Level cap for the current battle: the highest level on the upcoming trainer's team. */
@@ -697,7 +714,7 @@ export function serializeGameState(game: NuzlockeGame): NuzlockePanelPayload {
 	if (game.currentSegment) {
 		const prevSeg = game.scenario.segments[game.currentSegmentIndex - 1];
 		const previousLevelCap = prevSeg?.battles.length
-			? Math.max(...prevSeg.battles.flatMap(b => b.team.map(p => p.level)))
+			? Math.max(...prevSeg.battles.flatMap(b => resolveBattleTeam(b.team, game.starterIndex).map(p => p.level)))
 			: 0;
 		const tmRoutes = game.scenario.tmRouteMap;
 		const newTmMoves = game.currentSegment.tmMoves ?? [];
@@ -733,7 +750,7 @@ export function serializeGameState(game: NuzlockeGame): NuzlockePanelPayload {
 	const segmentSummaries = game.scenario.segments.map((seg, i) => ({
 		id: seg.id,
 		name: seg.name,
-		battles: seg.battles,
+		battles: resolveBattles(seg.battles, game.starterIndex),
 		catches: game.box.filter(p => routeToSegment.get(p.caughtRoute) === seg.id),
 		deaths: game.graveyard.filter(d => d.segment === seg.id),
 		availableEncounters: i === game.currentSegmentIndex
@@ -766,7 +783,7 @@ export function serializeGameState(game: NuzlockeGame): NuzlockePanelPayload {
 			tmMoves: seg.tmMoves ?? [],
 			encounters: m ? applyMappingsToRoutes(seg.encounters ?? [], m) : (seg.encounters ?? []),
 			gifts: m ? applyMappingsToRoutes(seg.gifts ?? [], m) : (seg.gifts ?? []),
-			battles: seg.battles,
+			battles: resolveBattles(seg.battles, game.starterIndex),
 		} : null,
 		box: game.box,
 		party: game.party,

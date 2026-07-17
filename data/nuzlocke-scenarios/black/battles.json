@@ -3,26 +3,72 @@
     "id": "cilan",
     "trainer": "Leader Cilan",
     "team": [
-      {
-        "species": "Lillipup",
-        "level": 12,
-        "ability": "Pickup",
-        "moves": [
-          "Bite",
-          "Work Up"
-        ],
-        "item": null
-      },
-      {
-        "species": "Pansage",
-        "level": 14,
-        "ability": "Gluttony",
-        "moves": [
-          "Vine Whip",
-          "Work Up"
-        ],
-        "item": null
-      }
+      [
+        {
+          "species": "Lillipup",
+          "level": 12,
+          "ability": "Pickup",
+          "moves": [
+            "Bite",
+            "Work Up"
+          ],
+          "item": null
+        },
+        {
+          "species": "Pansear",
+          "level": 14,
+          "ability": "Gluttony",
+          "moves": [
+            "Incinerate",
+            "Work Up"
+          ],
+          "item": null
+        }
+      ],
+      [
+        {
+          "species": "Lillipup",
+          "level": 12,
+          "ability": "Pickup",
+          "moves": [
+            "Bite",
+            "Work Up"
+          ],
+          "item": null
+        },
+        {
+          "species": "Panpour",
+          "level": 14,
+          "ability": "Gluttony",
+          "moves": [
+            "Water Gun",
+            "Work Up"
+          ],
+          "item": null
+        }
+      ],
+      [
+        {
+          "species": "Lillipup",
+          "level": 12,
+          "ability": "Pickup",
+          "moves": [
+            "Bite",
+            "Work Up"
+          ],
+          "item": null
+        },
+        {
+          "species": "Pansage",
+          "level": 14,
+          "ability": "Gluttony",
+          "moves": [
+            "Vine Whip",
+            "Work Up"
+          ],
+          "item": null
+        }
+      ]
     ],
     "sprite": "cilan"
   },
