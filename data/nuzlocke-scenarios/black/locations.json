@@ -980,7 +980,7 @@
             "rate": 4
           },
           {
-            "species": "Cryagonal",
+            "species": "Cryogonal",
             "rate": 1
           }
         ]
@@ -1112,218 +1112,6 @@
     "tmMoves": [
       "Sludge Bomb",
       "Facade"
-    ]
-  },
-  {
-    "id": "unova-route-14",
-    "name": "Unova Route 14",
-    "zones": [
-      {
-        "zone": "",
-        "method": "Standard",
-        "pokemon": [
-          {
-            "species": "Jigglypuff",
-            "rate": 20
-          },
-          {
-            "species": "Golduck",
-            "rate": 20
-          },
-          {
-            "species": "Tropius",
-            "rate": 15
-          },
-          {
-            "species": "Altaria",
-            "rate": 10
-          },
-          {
-            "species": "Drifblim",
-            "rate": 10
-          },
-          {
-            "species": "Beheeyem",
-            "rate": 10
-          },
-          {
-            "species": "Mienfoo",
-            "rate": 10
-          },
-          {
-            "species": "Shuckle",
-            "rate": 5
-          }
-        ]
-      },
-      {
-        "zone": "",
-        "method": "Standard",
-        "pokemon": [
-          {
-            "species": "Audino",
-            "rate": 85
-          },
-          {
-            "species": "Emolga",
-            "rate": 10
-          },
-          {
-            "species": "Wigglytuff",
-            "rate": 5
-          }
-        ]
-      },
-      {
-        "zone": "",
-        "method": "Standard",
-        "pokemon": [
-          {
-            "species": "Basculin",
-            "rate": 70
-          },
-          {
-            "species": "Buizel",
-            "rate": 30
-          }
-        ],
-        "requires": {
-          "type": "move",
-          "name": "Surf"
-        }
-      }
-    ],
-    "items": [
-      {
-        "name": "Reaper Cloth",
-        "requires": {
-          "type": "move",
-          "name": "Waterfall"
-        }
-      }
-    ],
-    "tmMoves": [
-      {
-        "name": "Bulk Up",
-        "requires": {
-          "type": "move",
-          "name": "Waterfall"
-        }
-      }
-    ]
-  },
-  {
-    "id": "unova-route-15",
-    "name": "Unova Route 15",
-    "zones": [
-      {
-        "zone": "",
-        "method": "Standard",
-        "pokemon": [
-          {
-            "species": "Fearow",
-            "rate": 30
-          },
-          {
-            "species": "Marowak",
-            "rate": 20
-          },
-          {
-            "species": "Gligar",
-            "rate": 15
-          },
-          {
-            "species": "Sawk",
-            "rate": 15
-          },
-          {
-            "species": "Kangaskhan",
-            "rate": 10
-          },
-          {
-            "species": "Pupitar",
-            "rate": 10
-          }
-        ]
-      },
-      {
-        "zone": "",
-        "method": "Standard",
-        "pokemon": [
-          {
-            "species": "Fearow",
-            "rate": 30
-          },
-          {
-            "species": "Marowak",
-            "rate": 20
-          },
-          {
-            "species": "Sawk",
-            "rate": 15
-          },
-          {
-            "species": "Kangaskhan",
-            "rate": 10
-          },
-          {
-            "species": "Gligar",
-            "rate": 10
-          },
-          {
-            "species": "Pupitar",
-            "rate": 10
-          },
-          {
-            "species": "Watchog",
-            "rate": 5
-          }
-        ]
-      },
-      {
-        "zone": "",
-        "method": "Standard",
-        "pokemon": [
-          {
-            "species": "Audino",
-            "rate": 75
-          },
-          {
-            "species": "Emolga",
-            "rate": 10
-          },
-          {
-            "species": "Tyranitar",
-            "rate": 5
-          },
-          {
-            "species": "Gliscor",
-            "rate": 5
-          },
-          {
-            "species": "Throh",
-            "rate": 5
-          }
-        ]
-      }
-    ],
-    "items": [
-      {
-        "name": "Up-Grade",
-        "requires": {
-          "type": "move",
-          "name": "Strength"
-        }
-      }
-    ],
-    "tmMoves": [
-      {
-        "name": "Venoshock",
-        "requires": {
-          "type": "move",
-          "name": "Strength"
-        }
-      }
     ]
   },
   {
@@ -2135,7 +1923,7 @@
             "rate": 5
           },
           {
-            "species": "Meinfoo",
+            "species": "Mienfoo",
             "rate": 15
           },
           {
@@ -2161,7 +1949,7 @@
             "rate": 10
           },
           {
-            "species": "Meinfoo",
+            "species": "Mienfoo",
             "rate": 10
           },
           {
@@ -2211,7 +1999,7 @@
             "rate": 20
           },
           {
-            "species": "Meinfoo",
+            "species": "Mienfoo",
             "rate": 10
           },
           {
